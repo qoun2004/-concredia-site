@@ -636,6 +636,55 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   .acc-inner{padding:0 1.25rem 3rem;}
 }
 
+
+/* ===== MUSIC PLAYER ===== */
+.music-player{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.75rem 1.1rem;
+  background:rgba(42,39,36,0.92);
+  border:1px solid rgba(212,207,200,0.2);
+  backdrop-filter:blur(12px);
+  border-radius:50px;
+  transition:all 0.3s;
+  box-shadow:0 4px 24px rgba(0,0,0,0.4);
+}
+.music-player:hover{border-color:rgba(155,91,58,0.5);}
+.music-btn{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--rust);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background 0.2s;
+}
+.music-btn:hover{background:var(--rust-light);}
+.music-btn svg{width:14px;height:14px;fill:white;}
+.music-info{
+  font-family:var(--font-body);font-size:0.68rem;
+  letter-spacing:0.08em;color:var(--concrete-light);
+  white-space:nowrap;opacity:0.85;
+  max-width:160px;overflow:hidden;text-overflow:ellipsis;
+}
+.music-info strong{color:var(--warm-white);display:block;font-weight:500;font-size:0.72rem;}
+.music-volume{
+  width:60px;height:3px;background:rgba(212,207,200,0.2);
+  border-radius:2px;cursor:pointer;position:relative;overflow:hidden;
+}
+.music-volume-fill{
+  height:100%;background:var(--rust-light);border-radius:2px;
+  width:70%;transition:width 0.1s;
+}
+.music-close{
+  background:none;border:none;cursor:pointer;
+  color:rgba(212,207,200,0.4);font-size:1rem;line-height:1;
+  padding:0;transition:color 0.2s;
+}
+.music-close:hover{color:var(--warm-white);}
+@media(max-width:768px){
+  .music-player{bottom:1.25rem;right:1.25rem;padding:0.6rem 0.9rem;}
+  .music-info{display:none;}
+  .music-volume{display:none;}
+}
+
 </style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js">
 function openLightbox(src,cap){
@@ -720,8 +769,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
     <span class="hero-tag">寂寞公路</span>
   </div>
 
-  <!-- 主標語：畫面正中偏上，避開副標和按鈕 -->
-  <div style="position:absolute;top:50%;left:0;right:0;z-index:4;transform:translateY(-60%);padding:0 6rem;pointer-events:none;">
+  <!-- 主標語：垂直正中，完全獨立 -->
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;padding:80px 6rem 0;pointer-events:none;">
     <h1 class="hero-manifesto">
       <span class="solid">Concrete</span>
       <span class="accent">as a Media.</span>
@@ -729,7 +778,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
   </div>
 
   <!-- 底部資訊區：副標語 + 按鈕 + 數據 -->
-  <div style="position:absolute;bottom:0;left:0;right:0;z-index:5;padding:0 6rem 3.5rem;">
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:6;padding:0 6rem 3.5rem;background:linear-gradient(to top,rgba(10,8,6,0.92) 0%,rgba(10,8,6,0.7) 60%,transparent 100%);">
     <p class="hero-sub">
       混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br>
       <em style="font-size:0.88em;opacity:0.7;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
@@ -841,6 +890,46 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
       <a href="contact.html" style="display:inline-block;padding:0.82rem 1.75rem;background:var(--rust);color:white;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">預約投資人會談</a>
     </div>
 
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="blog-section">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="sec-eye">最新動態</div>
+      <h2 class="sec-title">消息 · Maker 實錄 · 公路現場</h2>
+    </div>
+    <a href="#" class="btn-o">查看全部</a>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:#111;">
+        <img src="images/story-night.jpg" alt="寂寞公路" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+      </div>
+      <div class="blog-cat">寂寞公路計劃</div>
+      <h3>旭海 · 180 公斤的相遇——帶著水泥桌去見陌生人</h3>
+      <p>屏東旭海的沙灘上，一張水泥桌、一壺茶、幾個不期而遇的旅人。這不是展覽，是 Concredia.Lab 最真實的品牌宣言。</p>
+      <div class="blog-meta"><span class="blog-date">2025 年 4 月</span><span class="blog-read">閱讀全文 →</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb">
+        <img src="images/studio-pour.jpg" alt="水泥灌漿過程" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
+      </div>
+      <div class="blog-cat">Maker 實錄</div>
+      <h3>開模、灌漿、水磨——一顆水泥音響的三小時誕生記</h3>
+      <p>從迷宮迴路設計到 EAC 水磨工序，透明化過程、保留核心配方。這是一件作品的誕生，也是一段廢料的重生。</p>
+      <div class="blog-meta"><span class="blog-date">2025 年 3 月</span><span class="blog-read">閱讀全文 →</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb">
+        <img src="images/baomei.jpg" alt="寶妹" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
+      </div>
+      <div class="blog-cat">倉庫日常</div>
+      <h3>寶妹對這張新桌子的熱情，只有三分鐘</h3>
+      <p>三分鐘，恰好是水泥從流動走向凝固的關鍵時刻。寶妹每次的熱情很短暫，但這張桌子能陪你一輩子。</p>
+      <div class="blog-meta"><span class="blog-date">2025 年 2 月</span><span class="blog-read">閱讀全文 →</span></div>
+    </div>
   </div>
 </section>
 
@@ -1001,6 +1090,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
         <div class="team-chips">
           <span class="chip">IMC 行銷</span><span class="chip">社群經營</span><span class="chip">影像記錄</span><span class="chip">業務開發</span>
         </div>
+      </div>
+    </div>
     <div class="team-card">
       <div class="team-photo" style="aspect-ratio:3/2;">
         <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
@@ -1262,45 +1353,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
   </div>
 </div>
 
-<!-- BLOG -->
-<section id="blog" class="blog-section">
-  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
-    <div>
-      <div class="sec-eye">最新動態</div>
-      <h2 class="sec-title">消息 · Maker 實錄 · 公路現場</h2>
-    </div>
-    <a href="#" class="btn-o">查看全部</a>
-  </div>
-  <div class="blog-grid">
-    <div class="blog-card">
-      <div class="blog-thumb" style="background:#111;">
-        <img src="images/story-night.jpg" alt="寂寞公路" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
-      </div>
-      <div class="blog-cat">寂寞公路計劃</div>
-      <h3>旭海 · 180 公斤的相遇——帶著水泥桌去見陌生人</h3>
-      <p>屏東旭海的沙灘上，一張水泥桌、一壺茶、幾個不期而遇的旅人。這不是展覽，是 Concredia.Lab 最真實的品牌宣言。</p>
-      <div class="blog-meta"><span class="blog-date">2025 年 4 月</span><span class="blog-read">閱讀全文 →</span></div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-thumb">
-        <img src="images/studio-pour.jpg" alt="水泥灌漿過程" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
-      </div>
-      <div class="blog-cat">Maker 實錄</div>
-      <h3>開模、灌漿、水磨——一顆水泥音響的三小時誕生記</h3>
-      <p>從迷宮迴路設計到 EAC 水磨工序，透明化過程、保留核心配方。這是一件作品的誕生，也是一段廢料的重生。</p>
-      <div class="blog-meta"><span class="blog-date">2025 年 3 月</span><span class="blog-read">閱讀全文 →</span></div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-thumb">
-        <img src="images/baomei.jpg" alt="寶妹" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
-      </div>
-      <div class="blog-cat">倉庫日常</div>
-      <h3>寶妹對這張新桌子的熱情，只有三分鐘</h3>
-      <p>三分鐘，恰好是水泥從流動走向凝固的關鍵時刻。寶妹每次的熱情很短暫，但這張桌子能陪你一輩子。</p>
-      <div class="blog-meta"><span class="blog-date">2025 年 2 月</span><span class="blog-read">閱讀全文 →</span></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- IMC STRATEGY -->
 <section class="imc-section">
@@ -1573,15 +1626,61 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
-// ACCORDION
-function toggleAcc(id){
-  var el=document.getElementById(id);
-  if(!el)return;
-  el.classList.toggle('open');
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// ===== BACKGROUND MUSIC =====
+var bgMusic = null;
+var isPlaying = false;
+
+function initMusic(){
+  bgMusic = document.getElementById('bgMusic');
+  if(!bgMusic) return;
+  bgMusic.volume = 0.35;
+  document.getElementById('volumeFill').style.width = '35%';
 }
 
-</script><script>
+function toggleMusic(){
+  if(!bgMusic) initMusic();
+  if(!bgMusic) return;
+  if(isPlaying){
+    bgMusic.pause();
+    document.getElementById('playIcon').style.display = '';
+    document.getElementById('pauseIcon').style.display = 'none';
+    isPlaying = false;
+  } else {
+    var playPromise = bgMusic.play();
+    if(playPromise !== undefined){
+      playPromise.then(function(){
+        document.getElementById('playIcon').style.display = 'none';
+        document.getElementById('pauseIcon').style.display = '';
+        isPlaying = true;
+      }).catch(function(e){
+        console.log('音樂播放需要用戶互動');
+      });
+    }
+  }
+}
+
+function adjustVolume(e){
+  if(!bgMusic) return;
+  var bar = e.currentTarget;
+  var rect = bar.getBoundingClientRect();
+  var ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  bgMusic.volume = ratio;
+  document.getElementById('volumeFill').style.width = (ratio*100) + '%';
+}
+
+function closePlayer(){
+  var player = document.getElementById('musicPlayer');
+  if(player) player.style.display = 'none';
+  if(bgMusic) bgMusic.pause();
+  isPlaying = false;
+}
+
+// 頁面載入後初始化
+window.addEventListener('load', initMusic);
+
+function toggleAcc(id){var el=document.getElementById(id);if(!el)return;el.classList.toggle('open');}
 function toggleFaq(el){const i=el.closest('.faq-item');document.querySelectorAll('.faq-item').forEach(x=>{if(x!==i)x.classList.remove('open');});i.classList.toggle('open');}
 function switchTab(tab,btn){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-standard').style.display=tab==='standard'?'grid':'none';document.getElementById('tab-custom').style.display=tab==='custom'?'grid':'none';}
 const navEl=document.querySelector('nav');
