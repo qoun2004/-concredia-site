@@ -476,46 +476,139 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 .manifesto-body{font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.9;font-weight:300;max-width:680px;margin:0 auto;}
 .manifesto-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2rem;}
 
-@media(max-width:900px){
-nav{padding:1rem 1.5rem;}
-.nav-links,.nav-cta{display:none;}
-.hero,.hw-inner,.contact-section{grid-template-columns:1fr;}
-.hero-left{padding:3rem 1.5rem;}
-.hero-right{min-height:50vw;}
-section,.faq-section,.pyramid-section,.esg-section{padding:4rem 1.5rem;}
-.hw-left,.hw-right{padding:3rem 1.5rem;}
-.hw-right{border-left:none;border-top:1px solid rgba(212,207,200,0.09);}
-.contact-left,.contact-right{padding:3rem 1.5rem;}
-.mat-cards,.prod-grid,.cases-grid,.articles-grid,.blog-grid,.whw-grid,.team-grid,.imc-grid,.esg-grid{grid-template-columns:1fr;}
-.baomei-wrap,.pyramid-grid{grid-template-columns:1fr;}
-.mat-data{grid-template-columns:repeat(2,1fr);}
-.footer-grid{grid-template-columns:1fr 1fr;}
-.faq-section{grid-template-columns:1fr;gap:2.5rem;}
-.form-row{grid-template-columns:1fr;}
-.partners-section{padding:3rem 1.5rem;}
-footer{padding:4rem 1.5rem 0;}
-.manifesto-section{padding:4rem 1.5rem;}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:768px){
+  nav{padding:0.9rem 1.25rem !important;}
+  .nav-links,.nav-cta{display:none !important;}
+  .hamburger{display:flex !important;flex-direction:column;gap:5px;cursor:pointer;z-index:200;}
+  .hamburger span{display:block;width:26px;height:2px;background:#FAF8F5;border-radius:2px;transition:all 0.3s;}
+  nav.scrolled .hamburger span{background:var(--concrete-dark);}
+  .mobile-menu{position:fixed;inset:0;background:rgba(42,39,36,0.98);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;transform:translateX(100%);transition:transform 0.35s ease;backdrop-filter:blur(10px);}
+  .mobile-menu.open{transform:translateX(0);}
+  .mobile-menu a{font-size:1.35rem;font-family:var(--font-display);color:var(--warm-white);text-decoration:none;font-weight:700;letter-spacing:0.04em;}
+  .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;color:var(--concrete-light);cursor:pointer;background:none;border:none;font-family:sans-serif;line-height:1;}
+  .hero{min-height:100svh;}
+  .hero-content{padding:0 1.25rem 3.5rem !important;max-width:100% !important;}
+  .hero-manifesto{font-size:clamp(2.6rem,11vw,4rem) !important;margin-bottom:1.5rem !important;}
+  .hero-manifesto .accent{font-size:1.15em !important;}
+  .hero-sub{font-size:0.88rem !important;margin-bottom:1.75rem !important;max-width:100% !important;}
+  .hero-actions{flex-direction:column;gap:0.7rem !important;margin-bottom:2.5rem !important;}
+  .btn-p,.btn-o{padding:0.95rem 1.5rem !important;font-size:0.75rem !important;text-align:center;}
+  .hero-stats{gap:1.25rem !important;padding-top:1.5rem !important;flex-wrap:wrap;}
+  .stat-num{font-size:1.5rem !important;}
+  .stat-label{font-size:0.6rem !important;}
+  .hero-side-label,.hero-year,.hero-tags,.hero-topbar{display:none !important;}
+  section{padding:3rem 1.25rem !important;}
+  .sec-title{font-size:clamp(1.65rem,6.5vw,2.1rem) !important;}
+  .sec-sub{font-size:0.88rem !important;max-width:100% !important;}
+  .whw-grid,.mat-cards,.esg-grid,.imc-grid,.cases-grid,.articles-grid,.prod-grid{grid-template-columns:1fr !important;}
+  .team-grid,.cycle-grid,.pvs-grid,.pyramid-grid,.carbon-grid,.baomei-wrap,.contact-section,.hw-inner{grid-template-columns:1fr !important;}
+  .sdgs-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important;}
+  .team-photo{aspect-ratio:3/2 !important;}
+  .baomei-illo{border-right:none !important;border-bottom:1px solid rgba(212,207,200,0.08);padding:1.5rem !important;}
+  .baomei-illo svg{max-width:160px !important;}
+  .baomei-content{padding:1.75rem 1.25rem !important;}
+  .bm-name{font-size:1.35rem !important;}
+  .mat-data{grid-template-columns:1fr 1fr !important;gap:1rem !important;}
+  .formula-row{flex-direction:column;align-items:flex-start;gap:0.3rem !important;}
+  .prod-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab-btn{font-size:0.68rem !important;padding:0.55rem 0.9rem !important;white-space:nowrap;}
+  .blog-grid{grid-template-columns:1fr !important;}
+  .hw-left,.hw-right{padding:3rem 1.25rem !important;}
+  .hw-right{border-left:none !important;border-top:1px solid rgba(212,207,200,0.09);}
+  .hw-title{font-size:clamp(1.7rem,7.5vw,2.4rem) !important;}
+  .hwi{gap:1rem !important;}
+  .faq-section{grid-template-columns:1fr !important;padding:3rem 1.25rem !important;gap:2rem !important;}
+  .faq-q h4{font-size:0.83rem !important;}
+  .contact-left,.contact-right{padding:3rem 1.25rem !important;}
+  .form-row{grid-template-columns:1fr !important;}
+  .manifesto-title{font-size:1.45rem !important;}
+  .manifesto-body{font-size:0.88rem !important;}
+  footer{padding:3rem 1.25rem 0 !important;}
+  .footer-grid{grid-template-columns:1fr !important;gap:2rem !important;}
+  .footer-bottom{flex-direction:column;gap:1rem;text-align:center;}
+  .pyramid-grid{gap:2rem !important;}
+  .pyramid-svg{max-width:220px !important;margin:0 auto;}
+  .hub-flow{flex-direction:column;align-items:flex-start !important;}
+  .award-strip{flex-direction:column;gap:0.75rem !important;}
+  .partner-grid{gap:1.25rem !important;}
+  .hero-stats > div:last-child{display:none;}
+  #gallery > div:nth-child(2){grid-template-columns:1fr 1fr !important;}
+  .esg-hub{overflow-x:auto;}
+  .esg-section,.pyramid-section{padding:3rem 1.25rem !important;}
+  .whw-section,.material-section,.cycle-section,.products-section,.blog-section,.cases-section,.seo-section,.partners-section,.manifesto-section,.imc-section{padding:3rem 1.25rem !important;}
+  .impact-4col{grid-template-columns:1fr 1fr !important;}
+  .impact-3col{grid-template-columns:1fr 1fr !important;}
+  .impact-flow{flex-direction:column !important;}
+  .impact-flow > div[style*="flex:1"]{min-width:auto !important;}
+  .impact-flow > div[style*="display:flex;align-items:center;padding:0"]{transform:rotate(90deg);padding:0.5rem 0 !important;height:30px;justify-content:center;}
 }
+@media(min-width:769px) and (max-width:1024px){
+  nav{padding:1rem 2.5rem;}
+  section{padding:4rem 2.5rem !important;}
+  .hero-content{padding:0 3rem 5rem !important;}
+  .hero-manifesto{font-size:clamp(3rem,6.5vw,5rem) !important;}
+  .whw-grid,.mat-cards{grid-template-columns:1fr 1fr !important;}
+  .prod-grid,.blog-grid{grid-template-columns:1fr 1fr !important;}
+  .footer-grid{grid-template-columns:1fr 1fr !important;}
+  .sdgs-grid{grid-template-columns:1fr 1fr !important;}
+  .cases-grid{grid-template-columns:1fr 1fr !important;}
+  .articles-grid{grid-template-columns:1fr 1fr !important;}
+}
+
 </style>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js">
+function openLightbox(src,cap){
+  const lb=document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-cap').textContent=cap;
+  lb.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+
+</script>
 </head>
 <body>
 
 <nav>
   <a href="#" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
   <ul class="nav-links">
-    <li><a href="#impact">環境現況</a></li>
+    <li><a href="impact.html">環境現況</a></li>
     <li><a href="#why">使命</a></li>
     <li><a href="#about">關於團隊</a></li>
     <li><a href="#material">材料哲學</a></li>
-    <li><a href="#products">產品系列</a></li>
-    <li><a href="#story">品牌故事</a></li>
+    <li><a href="products.html">產品系列</a></li>
+    <li><a href="story.html">品牌故事</a></li>
     <li><a href="#blog">最新動態</a></li>
-    <li><a href="#gallery">作品影像集</a></li>
-    <li><a href="#contact">聯絡</a></li>
+    <li><a href="gallery.html">作品影像集</a></li>
+    <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="#contact" class="nav-cta">合作洽詢</a>
+  <!-- 漢堡選單（手機用） -->
+  <button class="hamburger" id="hamburger" aria-label="選單" style="display:none;background:none;border:none;">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- 手機全螢幕選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">×</button>
+  <a href="impact.html" onclick="closeMobileMenu()">環境現況</a>
+  <a href="#why" onclick="closeMobileMenu()">使命</a>
+  <a href="#about" onclick="closeMobileMenu()">關於團隊</a>
+  <a href="#material" onclick="closeMobileMenu()">材料哲學</a>
+  <a href="#products" onclick="closeMobileMenu()">產品系列</a>
+  <a href="story.html" onclick="closeMobileMenu()">品牌故事</a>
+  <a href="gallery.html" onclick="closeMobileMenu()">作品影像集</a>
+  <a href="#blog" onclick="closeMobileMenu()">最新動態</a>
+  <a href="contact.html" onclick="closeMobileMenu()" style="color:var(--rust-light);">合作洽詢</a>
+</div>
 
 <!-- HERO — full-bleed cinematic -->
 <div class="hero">
@@ -564,8 +657,8 @@ footer{padding:4rem 1.5rem 0;}
     <!-- CTA 按鈕 -->
     <div class="hero-actions">
       <a href="#products" class="btn-p">探索產品系列</a>
-      <a href="#story" class="btn-o">品牌故事</a>
-      <a href="#why" class="btn-o">使命與方法</a>
+      <a href="story.html" class="btn-o">品牌故事</a>
+      <a href="impact.html" class="btn-o">使命與方法</a>
     </div>
 
     <!-- 底部數據 -->
