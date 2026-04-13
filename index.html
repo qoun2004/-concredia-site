@@ -229,18 +229,18 @@ section{padding:5.5rem 4rem;}
 .whw-items li::before{content:'→';position:absolute;left:0;color:var(--rust-light);}
 
 /* ABOUT / TEAM */
-.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
+.team-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:3rem;}
 .team-card{background:var(--cream);border:1px solid var(--concrete-light);}
-.team-photo{aspect-ratio:4/5;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.team-photo{aspect-ratio:3/2;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .team-photo img{width:100%;height:100%;object-fit:cover;}
 .team-ph-text{font-family:var(--font-display);font-size:4.5rem;color:rgba(212,207,200,0.1);font-weight:700;}
 .team-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);}
 .team-ph-tag{position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);}
 .team-info{padding:1.75rem;}
 .team-role{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;}
-.team-name{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;}
+.team-name{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;}
 .team-name-en{font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;}
-.team-bio{font-size:0.85rem;color:var(--concrete);line-height:1.75;font-weight:300;}
+.team-bio{font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;}
 .team-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
 .chip{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;}
 
@@ -618,9 +618,9 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 .acc-section.open .acc-toggle svg{transform:rotate(180deg);stroke:var(--rust-light);}
 .acc-body{
   max-height:0;overflow:hidden;
-  transition:max-height 0.55s cubic-bezier(0.4,0,0.2,1);
+  transition:max-height 0.6s ease;
 }
-.acc-section.open .acc-body{max-height:9999px;}
+.acc-section.open .acc-body{max-height:8000px;}
 .acc-inner{padding:0 4rem 3.5rem;}
 
 /* 數字徽章 */
@@ -651,15 +651,6 @@ function closeLightbox(){
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
-
-// ===== ACCORDION =====
-function toggleAcc(id){
-  const section = document.getElementById(id);
-  if(!section) return;
-  const isOpen = section.classList.contains('open');
-  // 先關閉同一個父層的其他項目（選項：可以允許多開，這裡設定可多開）
-  section.classList.toggle('open');
-}
 
 </script>
 </head>
@@ -729,8 +720,8 @@ function toggleAcc(id){
     <span class="hero-tag">寂寞公路</span>
   </div>
 
-  <!-- 主標語：絕對置中於畫面 -->
-  <div style="position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:flex-start;padding:0 6rem;pointer-events:none;">
+  <!-- 主標語：畫面正中偏上，避開副標和按鈕 -->
+  <div style="position:absolute;top:50%;left:0;right:0;z-index:4;transform:translateY(-60%);padding:0 6rem;pointer-events:none;">
     <h1 class="hero-manifesto">
       <span class="solid">Concrete</span>
       <span class="accent">as a Media.</span>
@@ -738,7 +729,7 @@ function toggleAcc(id){
   </div>
 
   <!-- 底部資訊區：副標語 + 按鈕 + 數據 -->
-  <div style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:0 6rem 3.5rem;">
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:5;padding:0 6rem 3.5rem;">
     <p class="hero-sub">
       混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br>
       <em style="font-size:0.88em;opacity:0.7;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
@@ -786,8 +777,10 @@ function toggleAcc(id){
 <section id="cta" style="padding:0;background:var(--concrete-dark);">
 
   <!-- 主口號 Banner -->
-  <div style="background:linear-gradient(135deg,#2A2724 0%,#3A3230 50%,#2A2724 100%);padding:5rem 4rem;text-align:center;border-top:1px solid rgba(155,91,58,0.3);border-bottom:1px solid rgba(155,91,58,0.3);position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(155,91,58,0.18) 0%,transparent 60%);pointer-events:none;"></div>
+  <div style="position:relative;padding:5rem 4rem;text-align:center;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url('images/studio-night.jpg');background-size:cover;background-position:center 30%;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(22,18,14,0.88) 0%,rgba(42,30,22,0.85) 50%,rgba(22,18,14,0.88) 100%);"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(155,91,58,0.25) 0%,transparent 60%);pointer-events:none;"></div>
     <div style="position:relative;z-index:1;">
       <div style="font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.5rem;">立即加入 · 共同實踐</div>
       <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,3rem);color:var(--warm-white);font-weight:700;line-height:1.25;margin-bottom:1rem;">廢料不是問題的終點，<br>而是<em style="color:var(--rust-light);font-style:italic;">故事的起點</em>。</h2>
@@ -1008,75 +1001,23 @@ function toggleAcc(id){
         <div class="team-chips">
           <span class="chip">IMC 行銷</span><span class="chip">社群經營</span><span class="chip">影像記錄</span><span class="chip">業務開發</span>
         </div>
+    <div class="team-card">
+      <div class="team-photo" style="aspect-ratio:3/2;">
+        <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
+        <div class="team-photo-overlay"></div>
+        <div class="team-ph-tag">首席士氣官 · 品質監察</div>
+      </div>
+      <div class="team-info">
+        <div class="team-role">實驗室第三號成員 · Chief Quality Inspector</div>
+        <div class="team-name">寶妹 Bao Mei</div>
+        <div class="team-name-en">2020.07.01 · 法鬥 × 彰化和美鐵鍋工廠台灣土狗</div>
+        <p class="team-bio">出生於火與鐵的交界，成長於水泥粉塵與深夜打磨的聲響之間。她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室；老師回來時，她是那個讓他知道回家意義的理由。</p>
+        <div class="team-chips">
+          <span class="chip">品質把關</span><span class="chip">士氣管理</span><span class="chip">3分鐘熱度</span><span class="chip">倉庫守護</span>
+        </div>
       </div>
     </div>
-  </div>
-
-  <!-- BAOMEI -->
-  <div class="baomei-wrap">
-    <div class="baomei-illo">
-      <!-- 寶妹 SVG 品牌插圖 -->
-      <svg viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:240px;">
-        <rect width="680" height="680" fill="#3A3632"/>
-        <line x1="0" y1="200" x2="680" y2="200" stroke="#D4CFC8" stroke-width="0.5" opacity="0.07"/>
-        <line x1="0" y1="440" x2="680" y2="440" stroke="#D4CFC8" stroke-width="0.5" opacity="0.07"/>
-        <line x1="280" y1="0" x2="280" y2="680" stroke="#D4CFC8" stroke-width="0.5" opacity="0.07"/>
-        <ellipse cx="340" cy="490" rx="110" ry="75" fill="#C8B89A"/>
-        <ellipse cx="340" cy="510" rx="75" ry="45" fill="#A89278"/>
-        <ellipse cx="340" cy="480" rx="55" ry="50" fill="#D4C4A8"/>
-        <ellipse cx="280" cy="545" rx="32" ry="18" fill="#A89278"/>
-        <ellipse cx="262" cy="555" rx="9" ry="6" fill="#8A7460"/>
-        <ellipse cx="277" cy="558" rx="9" ry="6" fill="#8A7460"/>
-        <ellipse cx="292" cy="557" rx="9" ry="6" fill="#8A7460"/>
-        <ellipse cx="400" cy="545" rx="32" ry="18" fill="#A89278"/>
-        <ellipse cx="382" cy="555" rx="9" ry="6" fill="#8A7460"/>
-        <ellipse cx="397" cy="558" rx="9" ry="6" fill="#8A7460"/>
-        <ellipse cx="412" cy="557" rx="9" ry="6" fill="#8A7460"/>
-        <rect x="295" y="418" width="90" height="16" rx="8" fill="#5A3E2A"/>
-        <rect x="330" y="432" width="20" height="16" rx="3" fill="#9B5B3A"/>
-        <text x="340" y="443" fill="#FAF8F5" font-family="sans-serif" font-size="11" font-weight="500" text-anchor="middle">C</text>
-        <ellipse cx="340" cy="340" rx="105" ry="98" fill="#C8B89A"/>
-        <path d="M248 290 Q220 220 250 180 Q270 200 275 260 Z" fill="#8A7460"/>
-        <path d="M432 290 Q460 220 430 180 Q410 200 405 260 Z" fill="#8A7460"/>
-        <path d="M255 282 Q238 235 255 200 Q265 212 268 255 Z" fill="#C47A54" opacity="0.4"/>
-        <path d="M425 282 Q442 235 425 200 Q415 212 412 255 Z" fill="#C47A54" opacity="0.4"/>
-        <ellipse cx="340" cy="370" rx="72" ry="58" fill="#D4C4A8"/>
-        <ellipse cx="340" cy="385" rx="48" ry="35" fill="#C8B89A"/>
-        <path d="M295 355 Q310 350 325 360" fill="none" stroke="#8A7460" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M385 355 Q370 350 355 360" fill="none" stroke="#8A7460" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M318 305 Q340 298 362 305" fill="none" stroke="#8A7460" stroke-width="1.5" stroke-linecap="round"/>
-        <ellipse cx="302" cy="335" rx="22" ry="20" fill="#FAF8F5"/>
-        <ellipse cx="305" cy="337" rx="15" ry="15" fill="#3A2A1A"/>
-        <ellipse cx="308" cy="337" rx="9" ry="9" fill="#1A0E06"/>
-        <ellipse cx="312" cy="331" rx="4" ry="4" fill="#FAF8F5"/>
-        <ellipse cx="378" cy="335" rx="22" ry="20" fill="#FAF8F5"/>
-        <ellipse cx="375" cy="337" rx="15" ry="15" fill="#3A2A1A"/>
-        <ellipse cx="372" cy="337" rx="9" ry="9" fill="#1A0E06"/>
-        <ellipse cx="370" cy="331" rx="4" ry="4" fill="#FAF8F5"/>
-        <ellipse cx="340" cy="378" rx="24" ry="14" fill="#2A2420"/>
-        <ellipse cx="328" cy="381" rx="7" ry="5" fill="#1A0E06"/>
-        <ellipse cx="352" cy="381" rx="7" ry="5" fill="#1A0E06"/>
-        <path d="M315 398 Q340 412 365 398" fill="none" stroke="#7A6050" stroke-width="2" stroke-linecap="round"/>
-        <ellipse cx="340" cy="407" rx="12" ry="7" fill="#D4708A" opacity="0.7"/>
-        <path d="M236 310 Q240 240 340 232 Q440 240 444 310 Z" fill="#E8951A" opacity="0.92"/>
-        <rect x="228" y="305" width="224" height="18" rx="5" fill="#C47A54" opacity="0.9"/>
-        <text x="340" y="285" text-anchor="middle" fill="#3A3632" font-family="sans-serif" font-size="10" font-weight="600" opacity="0.85">CONCREDIA.LAB</text>
-        <ellipse cx="340" cy="640" rx="180" ry="1" fill="#D4CFC8" opacity="0.15"/>
-        <text x="340" y="620" text-anchor="middle" fill="#FAF8F5" font-family="Georgia,serif" font-size="18" font-weight="700" opacity="0.9">寶妹 Bao Mei</text>
-        <text x="340" y="638" text-anchor="middle" fill="#C47A54" font-family="sans-serif" font-size="9" font-weight="500" opacity="0.8" letter-spacing="2">CHIEF QUALITY INSPECTOR</text>
-        <text x="340" y="654" text-anchor="middle" fill="#D4CFC8" font-family="sans-serif" font-size="8.5" opacity="0.4">2020.07.01</text>
-        <ellipse cx="148" cy="548" rx="14" ry="10" fill="#D4CFC8" opacity="0.1" transform="rotate(-15,148,548)"/>
-        <ellipse cx="532" cy="568" rx="14" ry="10" fill="#D4CFC8" opacity="0.1" transform="rotate(20,532,568)"/>
-      </svg>
-    </div>
-    <div class="baomei-content">
-      <div class="bm-eye">實驗室第三號成員 · Chief Quality Inspector</div>
-      <div class="bm-name">寶妹 Bao Mei</div>
-      <div class="bm-title">首席士氣官 · 倉庫守護者 · 品質監檢官</div>
-      <div class="bm-birth">生於 2020 年 7 月 1 日 · 那個全球動盪、最需要定錨的時刻</div>
-      <p class="bm-bio">在 Concredia.Lab，所有的配方都要經過她的鼻子。寶妹的血統，是這個品牌精神最完美的化身——<strong style="color:var(--warm-white);font-weight:400;">母系：法國鬥牛犬</strong>，帶來對美學與生活質感的敏銳直覺；<strong style="color:var(--warm-white);font-weight:400;">父系：彰化和美鐵鍋工廠台灣土狗</strong>，帶來工業的剛強、耐火的韌性，以及這塊土地最純粹的守護力。<br><br>她出生於火與鐵的交界，成長於水泥粉塵與深夜打磨的聲響之間，見證了 Ivor 老師每一次脫模的瞬間。她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室；老師回來時，她是那個讓他知道回家意義的理由。</p>
-      <div class="bm-quote">「爸爸守護著和美的鐵鍋，我守護著 Ivor 的水泥。我們這一家，一輩子都在跟重量與溫度打交道。」</div>
-      <div class="bm-origin">法國鬥牛犬（優雅美學）× 彰化和美鐵鍋工廠台灣土狗（工業韌性）· 鋼鐵意志下的溫柔靈魂</div>
+      </div>
     </div>
   </div>
 
@@ -1632,7 +1573,15 @@ function toggleAcc(id){
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+// ACCORDION
+function toggleAcc(id){
+  var el=document.getElementById(id);
+  if(!el)return;
+  el.classList.toggle('open');
+}
+
+</script><script>
 function toggleFaq(el){const i=el.closest('.faq-item');document.querySelectorAll('.faq-item').forEach(x=>{if(x!==i)x.classList.remove('open');});i.classList.toggle('open');}
 function switchTab(tab,btn){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-standard').style.display=tab==='standard'?'grid':'none';document.getElementById('tab-custom').style.display=tab==='custom'?'grid':'none';}
 const navEl=document.querySelector('nav');
