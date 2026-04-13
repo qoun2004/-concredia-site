@@ -6,7 +6,7 @@
 <title>Concredia.Lab — 混凝土作為媒介</title>
 <meta name="description" content="Concredia.Lab — Concrete as a media with lifestyle, culture, creative, usage. 土木博士 Ivor Lee 以再生廢棄物創作工業美學家具、水泥音響與生活器物。台灣 · 循環設計。">
 <meta name="keywords" content="Concredia Lab,Ivor Lee,再生建材,營建廢棄物,水泥音響,ESG企業禮品,工業風家具,EAC,Exposed Aggregate Concrete,永續設計,循環經濟,寂寞公路">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
@@ -18,7 +18,7 @@
   --font-body:'DM Sans',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth;}
-body{font-family:var(--font-body);background:var(--warm-white);color:var(--charcoal);overflow-x:hidden;}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--charcoal);overflow-x:hidden;font-size:17px;}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 4rem;background:transparent;transition:all 0.4s;}
@@ -30,7 +30,7 @@ nav.scrolled .nav-logo .dot{color:var(--rust);}
 .nav-logo .lab{font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.18em;color:rgba(212,207,200,0.5);vertical-align:super;font-weight:500;margin-left:1px;transition:color 0.4s;}
 nav.scrolled .nav-logo .lab{color:var(--concrete);}
 .nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.75);text-decoration:none;font-weight:500;transition:color 0.2s;}
+.nav-links a{font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,248,240,0.92);text-decoration:none;font-weight:500;transition:color 0.2s;text-shadow:0 1px 8px rgba(0,0,0,0.8);}
 nav.scrolled .nav-links a{color:var(--concrete-dark);}
 .nav-links a:hover{color:#FAF8F5;}
 nav.scrolled .nav-links a:hover{color:var(--rust);}
@@ -88,9 +88,10 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 /* 主內容容器 */
 .hero-content{
   position:relative;z-index:4;
-  padding:0 6rem 5rem 6rem;
-  max-width:1200px;
+  padding:0 6rem 5.5rem 6rem;
+  max-width:1280px;
   width:100%;
+  margin-top:auto;
 }
 /* 頂部細節線 */
 .hero-topbar{
@@ -103,38 +104,49 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   flex:1;height:1px;background:rgba(212,207,200,0.12);
 }
 .hero-topbar-tag{
-  font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:rgba(212,207,200,0.35);padding:0 1.5rem;white-space:nowrap;
+  font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,248,240,0.7);padding:0.3rem 1.5rem;white-space:nowrap;
+  background:rgba(0,0,0,0.3);text-shadow:0 1px 6px rgba(0,0,0,0.6);
 }
 /* 品牌核心語——超大主角字 */
 .hero-manifesto{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(3.2rem,7.5vw,7rem);
-  font-weight:700;
+  font-size:clamp(3.8rem,8.5vw,8.5rem);
   line-height:1.0;
-  color:#FAF8F5;
-  letter-spacing:-0.01em;
   margin-bottom:2.5rem;
+  text-shadow:0 4px 32px rgba(0,0,0,0.7),0 2px 8px rgba(0,0,0,0.5);
+}
+.hero-manifesto .solid{
+  font-family:'Playfair Display',Georgia,serif;
+  font-weight:700;
+  color:#FAF8F5;
+  display:block;
+  letter-spacing:-0.02em;
 }
 .hero-manifesto .accent{
-  font-style:italic;
-  color:transparent;
-  -webkit-text-stroke:1.5px var(--rust-light);
+  font-family:'Pinyon Script',cursive;
+  font-size:1.35em;
+  color:var(--rust-light);
+  display:block;
+  letter-spacing:0.02em;
+  line-height:0.95;
+  text-shadow:0 4px 40px rgba(155,91,58,0.6),0 2px 10px rgba(0,0,0,0.6);
 }
-.hero-manifesto .solid{color:#FAF8F5;}
 /* 副標語 */
 .hero-sub{
   font-family:var(--font-body);
-  font-size:clamp(0.85rem,1.5vw,1.05rem);
-  color:rgba(212,207,200,0.7);
+  font-size:clamp(0.9rem,1.5vw,1.1rem);
+  color:rgba(255,248,240,0.92);
   font-weight:300;
   letter-spacing:0.04em;
   max-width:640px;
-  line-height:1.75;
+  line-height:1.8;
   margin-bottom:3rem;
   font-style:italic;
-  border-left:2px solid var(--rust);
+  border-left:3px solid var(--rust-light);
   padding-left:1.25rem;
+  text-shadow:0 2px 12px rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.18);
+  padding:0.7rem 1.25rem;
 }
 /* 按鈕列 */
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;}
@@ -163,8 +175,8 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   color:#FAF8F5;
 }
 .stat-label{
-  font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:rgba(212,207,200,0.45);margin-top:0.2rem;
+  font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,248,240,0.75);margin-top:0.2rem;text-shadow:0 1px 6px rgba(0,0,0,0.7);
 }
 /* 底部關鍵字 tags */
 .hero-tags{
@@ -172,11 +184,13 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;
 }
 .hero-tag{
-  font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;
-  color:rgba(212,207,200,0.45);
-  border:1px solid rgba(212,207,200,0.15);
-  padding:0.3rem 0.75rem;
+  font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,248,240,0.85);
+  border:1px solid rgba(255,248,240,0.3);
+  padding:0.38rem 0.85rem;
+  background:rgba(0,0,0,0.35);
   transition:all 0.2s;
+  backdrop-filter:blur(4px);
 }
 .hero-tag:hover{color:var(--rust-light);border-color:var(--rust-light);}
 
@@ -194,7 +208,7 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 section{padding:5.5rem 4rem;}
 .sec-eye{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem;}
 .sec-eye::before{content:'';display:inline-block;width:22px;height:1px;background:var(--rust);}
-.sec-title{font-family:var(--font-display);font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:700;color:var(--concrete-dark);line-height:1.2;margin-bottom:1.25rem;}
+.sec-title{font-family:var(--font-display);font-size:clamp(2.1rem,3.5vw,2.9rem);font-weight:700;color:var(--concrete-dark);line-height:1.15;margin-bottom:1.25rem;}
 .sec-sub{font-size:0.97rem;color:var(--concrete);line-height:1.75;font-weight:300;max-width:560px;}
 
 /* WHY-HOW-WHAT */
@@ -497,6 +511,7 @@ footer{padding:4rem 1.5rem 0;}
     <li><a href="#products">產品系列</a></li>
     <li><a href="#story">品牌故事</a></li>
     <li><a href="#blog">最新動態</a></li>
+    <li><a href="#gallery">作品影像集</a></li>
     <li><a href="#contact">聯絡</a></li>
   </ul>
   <a href="#contact" class="nav-cta">合作洽詢</a>
