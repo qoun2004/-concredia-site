@@ -686,22 +686,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 }
 
 </style>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js">
-function openLightbox(src,cap){
-  const lb=document.getElementById('lightbox');
-  document.getElementById('lightbox-img').src=src;
-  document.getElementById('lightbox-cap').textContent=cap;
-  lb.style.display='flex';
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('lightbox').style.display='none';
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
-
-
-</script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -777,23 +762,28 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
     </h1>
   </div>
 
-  <!-- 底部資訊區：副標語 + 按鈕 + 數據 -->
-  <div style="position:absolute;bottom:0;left:0;right:0;z-index:6;padding:0 6rem 3.5rem;background:linear-gradient(to top,rgba(10,8,6,0.92) 0%,rgba(10,8,6,0.7) 60%,transparent 100%);">
-    <p class="hero-sub">
-      混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br>
-      <em style="font-size:0.88em;opacity:0.7;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
-    </p>
-    <div class="hero-actions">
-      <a href="products.html" class="btn-p">探索產品系列</a>
-      <a href="story.html" class="btn-o">品牌故事</a>
-      <a href="impact.html" class="btn-o">使命與方法</a>
-    </div>
-    <div class="hero-stats">
-      <div><div class="stat-num">70%+</div><div class="stat-label">再生廢料佔比</div></div>
-      <div><div class="stat-num">-62%</div><div class="stat-label">碳排放削減</div></div>
-      <div><div class="stat-num">40+</div><div class="stat-label">設計作品</div></div>
-      <div style="margin-left:auto;text-align:right;">
-        <div style="font-family:var(--font-display);font-size:0.72rem;color:rgba(212,207,200,0.32);letter-spacing:0.08em;line-height:1.8;">台灣 · 再生設計<br>Circular Design · Taiwan</div>
+  <!-- 底部：左側按鈕+數據，右側副標語 -->
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:6;padding:0 6rem 3.5rem;background:linear-gradient(to top,rgba(10,8,6,0.95) 0%,rgba(10,8,6,0.75) 55%,transparent 100%);">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-end;">
+      <!-- 左：按鈕 + 數據 -->
+      <div>
+        <div class="hero-actions" style="margin-bottom:2rem;">
+          <a href="products.html" class="btn-p">探索產品系列</a>
+          <a href="story.html" class="btn-o">品牌故事</a>
+          <a href="impact.html" class="btn-o">使命與方法</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">70%+</div><div class="stat-label">再生廢料佔比</div></div>
+          <div><div class="stat-num">-62%</div><div class="stat-label">碳排放削減</div></div>
+          <div><div class="stat-num">40+</div><div class="stat-label">設計作品</div></div>
+        </div>
+      </div>
+      <!-- 右：副標語 -->
+      <div style="text-align:right;">
+        <p style="font-family:var(--font-body);font-size:clamp(0.85rem,1.3vw,1rem);color:rgba(255,248,240,0.88);font-weight:300;line-height:1.82;font-style:italic;text-shadow:0 2px 12px rgba(0,0,0,0.8);border-right:3px solid var(--rust-light);padding-right:1.25rem;margin-left:auto;max-width:420px;">
+          混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br>
+          <em style="font-size:0.88em;opacity:0.7;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
+        </p>
       </div>
     </div>
   </div>
@@ -820,6 +810,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
     <span class="mi">再生建材 · 台灣製造</span><span class="md">◆</span>
   </div>
 </div>
+
+
 
 
 <!-- ===== 行動呼籲 CTA ===== -->
@@ -932,6 +924,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
     </div>
   </div>
 </section>
+
+
 
 <!-- IMPACT: 環境現況 + SDGs + ESG（折疊式） -->
 <section id="impact" style="padding:0;background:#1A1714;">
@@ -1057,10 +1051,12 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 <section id="about">
   <div class="sec-eye">關於團隊</div>
   <h2 class="sec-title">三個靈魂，<br>一間實驗室</h2>
-  <p class="sec-sub">Concredia.Lab 去個人化、品牌先行。以 IG、Threads、YouTube 統一以官方名義發聲，讓作品說話——研發者的硬度、策略者的寬度、守護者的溫度，三者共構這個品牌完整的樣貌。</p>
-  <div class="team-grid">
+  <p class="sec-sub">Concredia.Lab 去個人化、品牌先行。研發者的硬度、策略者的寬度、守護者的溫度，三者共構這個品牌完整的樣貌。</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:3rem;">
+
+    <!-- Ivor 老師 — 影子照 -->
     <div class="team-card">
-      <div class="team-photo">
+      <div class="team-photo" style="aspect-ratio:3/2;">
         <img src="images/ivor-shadow.jpg" alt="Dr. Ivor Lee" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
         <div class="team-photo-overlay"></div>
         <div class="team-ph-tag">研發核心 · 技術</div>
@@ -1069,16 +1065,17 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
         <div class="team-role">Co-Founder · 研發核心</div>
         <div class="team-name">李博士</div>
         <div class="team-name-en">Dr. Ivor Lee · 土木工程博士</div>
-        <p class="team-bio">混凝土材料科學研究者。以博士級的工程專業深入廢棄物再生的可能性，建立完整的 EAC 再生配方體系與生產 SOP——讓每一個操作步驟都可被記錄、可被複製、可在地推廣。<br><br>喜歡帶著那張 180 公斤的水泥桌，開四個半小時的車去屏東旭海。在山海交界、收訊微弱的地方，驗證他最深的信念：混凝土不只是建築法規裡的條文，它是大地最堅實的語言。</p>
+        <p class="team-bio">混凝土材料科學研究者。以博士級的工程專業深入廢棄物再生的可能性，建立完整的 EAC 再生配方體系與生產 SOP。喜歡帶著那張 180 公斤的水泥桌，開四個半小時的車去屏東旭海，在山海交界驗證他最深的信念：混凝土不只是建築法規裡的條文，它是大地最堅實的語言。</p>
         <div class="team-chips">
           <span class="chip">EAC 技術</span><span class="chip">配方研發</span><span class="chip">SOP建立</span><span class="chip">社區培力</span>
         </div>
       </div>
     </div>
+
+    <!-- 建凱 -->
     <div class="team-card">
-      <div class="team-photo">
-        <!-- <img src="images/kasper.jpg" alt="建凱 Kasper"> -->
-        <div class="team-ph-text">建凱</div>
+      <div class="team-photo" style="aspect-ratio:3/2;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;">
+        <div style="font-family:var(--font-display);font-size:4rem;color:rgba(212,207,200,0.1);font-weight:700;">建凱</div>
         <div class="team-photo-overlay"></div>
         <div class="team-ph-tag">品牌策略 · 行銷</div>
       </div>
@@ -1086,12 +1083,14 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
         <div class="team-role">Co-Founder · 品牌主理人</div>
         <div class="team-name">建凱</div>
         <div class="team-name-en">Kasper · 品牌策略 · 社群營運</div>
-        <p class="team-bio">從商業視角切入，協助 Ivor 老師的研究能量找到與市場對話的語言。負責整體 IMC（整合行銷傳播）策略、IG / Threads / YouTube 社群內容、Maker 過程影像記錄，以及業務開發。<br><br>深信 Concredia.Lab 不只是一門生意，而是一件值得踏實推進的事。用有規劃的策略，讓這個實驗室一步步走進更多人的生活，讓更多廢料找到它的第二章。</p>
+        <p class="team-bio">從商業視角切入，協助 Ivor 老師的研究能量找到與市場對話的語言。負責整體 IMC 策略、IG / Threads / YouTube 社群內容、Maker 過程影像記錄，以及業務開發。深信 Concredia.Lab 不只是一門生意，而是一件值得踏實推進的事。</p>
         <div class="team-chips">
           <span class="chip">IMC 行銷</span><span class="chip">社群經營</span><span class="chip">影像記錄</span><span class="chip">業務開發</span>
         </div>
       </div>
     </div>
+
+    <!-- 寶妹 -->
     <div class="team-card">
       <div class="team-photo" style="aspect-ratio:3/2;">
         <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
@@ -1108,11 +1107,10 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
         </div>
       </div>
     </div>
-      </div>
-    </div>
+
   </div>
 
-  <!-- CORE VALUES -->
+<!-- CORE VALUES -->
   <div style="margin-top:4rem;">
     <div class="sec-eye">核心理念</div>
     <h2 class="sec-title" style="max-width:480px;">Ivor 的硬度<br>建凱的寬度<br>寶妹的溫度</h2>
@@ -1627,6 +1625,21 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+function openLightbox(src,cap){
+  var lb=document.getElementById('lightbox');
+  if(!lb)return;
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-cap').textContent=cap;
+  lb.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  var lb=document.getElementById('lightbox');
+  if(lb)lb.style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLightbox();closeMobileMenu();}});
 
 // ===== BACKGROUND MUSIC =====
 var bgMusic = null;
