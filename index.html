@@ -47,12 +47,7 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
-  /* 佔位底圖：具質感的水泥紋理漸層，等待換成真實照片 */
-  background:
-    radial-gradient(ellipse at 70% 40%,rgba(155,91,58,0.28) 0%,transparent 45%),
-    radial-gradient(ellipse at 20% 80%,rgba(74,94,62,0.22) 0%,transparent 40%),
-    radial-gradient(ellipse at 85% 85%,rgba(58,54,50,0.5) 0%,transparent 35%),
-    linear-gradient(160deg,#1A1714 0%,#2C2824 35%,#3A3430 65%,#2A2420 100%);
+  background:url('images/hero-bg.jpg') center/cover no-repeat;
 }
 /* 換成真實照片時取消以上 background，改用：
    background: url('images/hero-bg.jpg') center/cover no-repeat; */
@@ -66,10 +61,11 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(
     to top,
-    rgba(22,18,15,0.96) 0%,
-    rgba(22,18,15,0.72) 30%,
-    rgba(22,18,15,0.25) 65%,
-    rgba(22,18,15,0.08) 100%
+    rgba(10,8,6,0.97) 0%,
+    rgba(10,8,6,0.82) 28%,
+    rgba(10,8,6,0.45) 55%,
+    rgba(10,8,6,0.15) 80%,
+    rgba(10,8,6,0.05) 100%
   );
 }
 /* 左側豎向品牌標記 */
