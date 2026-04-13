@@ -41,9 +41,8 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 
 /* HERO — full-bleed cinematic */
 .hero{
-  position:relative;min-height:100vh;display:flex;flex-direction:column;
-  justify-content:flex-end;overflow:hidden;
-  background:#1A1714;
+  position:relative;min-height:100vh;display:block;
+  overflow:hidden;background:#1A1714;
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
@@ -88,16 +87,20 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 /* 主內容容器 */
 .hero-content{
   position:relative;z-index:4;
-  padding:0 6rem 5.5rem 6rem;
+  padding:8rem 6rem 5.5rem 6rem;
   max-width:1280px;
   width:100%;
-  margin-top:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:100vh;
+  box-sizing:border-box;
 }
 /* 頂部細節線 */
 .hero-topbar{
   position:absolute;top:0;left:0;right:0;z-index:3;
   display:flex;align-items:center;justify-content:space-between;
-  padding:7rem 6rem 0;
+  padding:5.5rem 6rem 0;
   pointer-events:none;
 }
 .hero-topbar-line{
@@ -110,10 +113,11 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 }
 /* 品牌核心語——超大主角字 */
 .hero-manifesto{
-  font-size:clamp(3.8rem,8.5vw,8.5rem);
+  font-size:clamp(3.5rem,8.5vw,9rem);
   line-height:1.0;
-  margin-bottom:2.5rem;
-  text-shadow:0 4px 32px rgba(0,0,0,0.7),0 2px 8px rgba(0,0,0,0.5);
+  margin-bottom:0;
+  text-shadow:0 4px 32px rgba(0,0,0,0.75),0 2px 8px rgba(0,0,0,0.5);
+  pointer-events:none;
 }
 .hero-manifesto .solid{
   font-family:'Playfair Display',Georgia,serif;
@@ -121,35 +125,36 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   color:#FAF8F5;
   display:block;
   letter-spacing:-0.02em;
+  line-height:0.92;
 }
 .hero-manifesto .accent{
   font-family:'Pinyon Script',cursive;
-  font-size:1.35em;
+  font-size:1.3em;
   color:var(--rust-light);
   display:block;
   letter-spacing:0.02em;
   line-height:0.95;
-  text-shadow:0 4px 40px rgba(155,91,58,0.6),0 2px 10px rgba(0,0,0,0.6);
+  text-shadow:0 4px 40px rgba(155,91,58,0.65),0 2px 10px rgba(0,0,0,0.7);
+  margin-top:0.05em;
 }
 /* 副標語 */
 .hero-sub{
   font-family:var(--font-body);
-  font-size:clamp(0.9rem,1.5vw,1.1rem);
-  color:rgba(255,248,240,0.92);
+  font-size:clamp(0.88rem,1.4vw,1.05rem);
+  color:rgba(255,248,240,0.9);
   font-weight:300;
   letter-spacing:0.04em;
-  max-width:640px;
-  line-height:1.8;
-  margin-bottom:3rem;
+  max-width:580px;
+  line-height:1.78;
+  margin-bottom:2rem;
   font-style:italic;
   border-left:3px solid var(--rust-light);
-  padding-left:1.25rem;
-  text-shadow:0 2px 12px rgba(0,0,0,0.8);
-  background:rgba(0,0,0,0.18);
-  padding:0.7rem 1.25rem;
+  padding:0.65rem 1.25rem;
+  text-shadow:0 2px 12px rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.22);
 }
 /* 按鈕列 */
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
 .btn-p{
   display:inline-block;padding:0.9rem 2.2rem;
   background:var(--warm-white);color:var(--concrete-dark);
@@ -166,9 +171,10 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 .btn-o:hover{border-color:rgba(212,207,200,0.9);color:#FAF8F5;}
 /* 底部統計 */
 .hero-stats{
-  display:flex;gap:3rem;
-  padding-top:2.5rem;
+  display:flex;gap:2.5rem;
+  padding-top:2rem;
   border-top:1px solid rgba(212,207,200,0.12);
+  flex-wrap:wrap;
 }
 .stat-num{
   font-family:var(--font-display);font-size:2rem;font-weight:700;
@@ -489,15 +495,16 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   .mobile-menu a{font-size:1.35rem;font-family:var(--font-display);color:var(--warm-white);text-decoration:none;font-weight:700;letter-spacing:0.04em;}
   .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;color:var(--concrete-light);cursor:pointer;background:none;border:none;font-family:sans-serif;line-height:1;}
   .hero{min-height:100svh;}
-  .hero-content{padding:0 1.25rem 3.5rem !important;max-width:100% !important;}
-  .hero-manifesto{font-size:clamp(2.6rem,11vw,4rem) !important;margin-bottom:1.5rem !important;}
-  .hero-manifesto .accent{font-size:1.15em !important;}
-  .hero-sub{font-size:0.88rem !important;margin-bottom:1.75rem !important;max-width:100% !important;}
-  .hero-actions{flex-direction:column;gap:0.7rem !important;margin-bottom:2.5rem !important;}
+  .hero-manifesto{font-size:clamp(2.4rem,10vw,3.8rem) !important;margin-bottom:0 !important;}
+  .hero-manifesto .accent{font-size:1.1em !important;}
+  .hero > div[style*="position:absolute;inset:0"]{padding:0 1.25rem !important;}
+  .hero > div[style*="position:absolute;bottom:0"]{padding:0 1.25rem 3rem !important;}
+  .hero-sub{font-size:0.85rem !important;margin-bottom:1.5rem !important;max-width:100% !important;}
+  .hero-actions{flex-direction:column;gap:0.65rem !important;margin-bottom:0 !important;}
   .btn-p,.btn-o{padding:0.95rem 1.5rem !important;font-size:0.75rem !important;text-align:center;}
-  .hero-stats{gap:1.25rem !important;padding-top:1.5rem !important;flex-wrap:wrap;}
-  .stat-num{font-size:1.5rem !important;}
-  .stat-label{font-size:0.6rem !important;}
+  .hero-stats{gap:1rem !important;padding-top:1.5rem !important;flex-wrap:wrap;}
+  .stat-num{font-size:1.4rem !important;}
+  .stat-label{font-size:0.58rem !important;}
   .hero-side-label,.hero-year,.hero-tags,.hero-topbar{display:none !important;}
   section{padding:3rem 1.25rem !important;}
   .sec-title{font-size:clamp(1.65rem,6.5vw,2.1rem) !important;}
@@ -557,6 +564,19 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   .articles-grid{grid-template-columns:1fr 1fr !important;}
 }
 
+
+/* mobile-menu 桌機預設完全隱藏 */
+.mobile-menu{display:none;}
+@media(max-width:768px){
+  .mobile-menu{
+    display:flex;position:fixed;inset:0;
+    background:rgba(42,39,36,0.98);z-index:150;
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:2.5rem;transform:translateX(100%);
+    transition:transform 0.35s ease;backdrop-filter:blur(10px);
+  }
+  .mobile-menu.open{transform:translateX(0);}
+}
 </style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js">
 function openLightbox(src,cap){
@@ -638,51 +658,33 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
     <span class="hero-tag">寂寞公路</span>
   </div>
 
-  <!-- 主內容 -->
-  <div class="hero-content">
-
-    <!-- 品牌核心語——全幅超大字 -->
+  <!-- 主標語：絕對置中於畫面 -->
+  <div style="position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:flex-start;padding:0 6rem;pointer-events:none;">
     <h1 class="hero-manifesto">
-      <span class="solid">Concrete</span><br>
+      <span class="solid">Concrete</span>
       <span class="accent">as a Media.</span>
     </h1>
+  </div>
 
-    <!-- 副標語 -->
+  <!-- 底部資訊區：副標語 + 按鈕 + 數據 -->
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:4;padding:0 6rem 3.5rem;">
     <p class="hero-sub">
-      混凝土不只是材料，它是承載生活風格、文化底蘊、<br>
-      創意表達與實用機能的媒介。<br>
-      <em style="font-size:0.9em;opacity:0.75;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
+      混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br>
+      <em style="font-size:0.88em;opacity:0.7;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
     </p>
-
-    <!-- CTA 按鈕 -->
     <div class="hero-actions">
-      <a href="#products" class="btn-p">探索產品系列</a>
+      <a href="products.html" class="btn-p">探索產品系列</a>
       <a href="story.html" class="btn-o">品牌故事</a>
       <a href="impact.html" class="btn-o">使命與方法</a>
     </div>
-
-    <!-- 底部數據 -->
     <div class="hero-stats">
-      <div>
-        <div class="stat-num">70%+</div>
-        <div class="stat-label">再生廢料佔比</div>
-      </div>
-      <div>
-        <div class="stat-num">-62%</div>
-        <div class="stat-label">碳排放削減</div>
-      </div>
-      <div>
-        <div class="stat-num">40+</div>
-        <div class="stat-label">設計作品</div>
-      </div>
+      <div><div class="stat-num">70%+</div><div class="stat-label">再生廢料佔比</div></div>
+      <div><div class="stat-num">-62%</div><div class="stat-label">碳排放削減</div></div>
+      <div><div class="stat-num">40+</div><div class="stat-label">設計作品</div></div>
       <div style="margin-left:auto;text-align:right;">
-        <div style="font-family:var(--font-display);font-size:0.75rem;color:rgba(212,207,200,0.35);letter-spacing:0.08em;line-height:1.8;">
-          台灣 · 再生設計<br>
-          Circular Design · Taiwan
-        </div>
+        <div style="font-family:var(--font-display);font-size:0.72rem;color:rgba(212,207,200,0.32);letter-spacing:0.08em;line-height:1.8;">台灣 · 再生設計<br>Circular Design · Taiwan</div>
       </div>
     </div>
-
   </div>
 </div>
 

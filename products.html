@@ -556,6 +556,19 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   .articles-grid{grid-template-columns:1fr 1fr !important;}
 }
 
+
+/* mobile-menu 桌機預設完全隱藏 */
+.mobile-menu{display:none;}
+@media(max-width:768px){
+  .mobile-menu{
+    display:flex;position:fixed;inset:0;
+    background:rgba(42,39,36,0.98);z-index:150;
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:2.5rem;transform:translateX(100%);
+    transition:transform 0.35s ease;backdrop-filter:blur(10px);
+  }
+  .mobile-menu.open{transform:translateX(0);}
+}
 </style>
 </head>
 <body>
