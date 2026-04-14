@@ -685,6 +685,46 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   .music-volume{display:none;}
 }
 
+
+/* ===== MUSIC PLAYER ===== */
+.music-player{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.75rem 1.1rem 0.75rem 0.9rem;
+  background:rgba(42,39,36,0.95);
+  border:1px solid rgba(155,91,58,0.35);
+  backdrop-filter:blur(12px);
+  border-radius:50px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.45);
+  transition:border-color 0.2s;
+}
+.music-player:hover{border-color:rgba(155,91,58,0.65);}
+.mp-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--rust);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background 0.2s;padding:0;
+}
+.mp-btn:hover{background:var(--rust-light);}
+.mp-btn svg{width:13px;height:13px;fill:white;display:block;}
+.mp-label{
+  font-size:0.7rem;letter-spacing:0.06em;
+  color:rgba(212,207,200,0.8);white-space:nowrap;
+  line-height:1.3;
+}
+.mp-label strong{color:var(--warm-white);display:block;font-size:0.72rem;font-weight:500;}
+.mp-vol{
+  width:55px;height:3px;background:rgba(212,207,200,0.18);
+  border-radius:2px;cursor:pointer;flex-shrink:0;
+}
+.mp-vol-bar{height:100%;background:var(--rust-light);border-radius:2px;width:40%;pointer-events:none;}
+.mp-x{
+  background:none;border:none;cursor:pointer;
+  color:rgba(212,207,200,0.4);font-size:1.1rem;line-height:1;
+  padding:0 0 0 0.2rem;transition:color 0.2s;
+}
+.mp-x:hover{color:var(--warm-white);}
+
 </style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -1048,62 +1088,69 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 </section>
 
 <!-- TEAM -->
-<section id="about">
+<section id="about" style="padding:5.5rem 4rem;">
   <div class="sec-eye">關於團隊</div>
   <h2 class="sec-title">三個靈魂，<br>一間實驗室</h2>
   <p class="sec-sub">Concredia.Lab 去個人化、品牌先行。研發者的硬度、策略者的寬度、守護者的溫度，三者共構這個品牌完整的樣貌。</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:3rem;">
 
-    <!-- Ivor 老師 — 影子照 -->
-    <div class="team-card">
-      <div class="team-photo" style="aspect-ratio:3/2;">
-        <img src="images/ivor-shadow.jpg" alt="Dr. Ivor Lee" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-        <div class="team-photo-overlay"></div>
-        <div class="team-ph-tag">研發核心 · 技術</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;">
+
+    <!-- 格子 1：Ivor 老師（影子照） -->
+    <div style="background:var(--cream);border:1px solid var(--concrete-light);">
+      <div style="aspect-ratio:4/3;position:relative;overflow:hidden;">
+        <img src="images/ivor-shadow.jpg" alt="Dr. Ivor Lee 影子" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);"></div>
+        <div style="position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);">研發核心 · 技術</div>
       </div>
-      <div class="team-info">
-        <div class="team-role">Co-Founder · 研發核心</div>
-        <div class="team-name">李博士</div>
-        <div class="team-name-en">Dr. Ivor Lee · 土木工程博士</div>
-        <p class="team-bio">混凝土材料科學研究者。以博士級的工程專業深入廢棄物再生的可能性，建立完整的 EAC 再生配方體系與生產 SOP。喜歡帶著那張 180 公斤的水泥桌，開四個半小時的車去屏東旭海，在山海交界驗證他最深的信念：混凝土不只是建築法規裡的條文，它是大地最堅實的語言。</p>
-        <div class="team-chips">
-          <span class="chip">EAC 技術</span><span class="chip">配方研發</span><span class="chip">SOP建立</span><span class="chip">社區培力</span>
+      <div style="padding:1.75rem;">
+        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;">Co-Founder · 研發核心</div>
+        <div style="font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;">李博士</div>
+        <div style="font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;">Dr. Ivor Lee · 土木工程博士</div>
+        <p style="font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;">混凝土材料科學研究者。以博士級的工程專業深入廢棄物再生的可能性，建立完整的 EAC 再生配方體系與生產 SOP。喜歡帶著那張 180 公斤的水泥桌，開四個半小時的車去屏東旭海，在山海交界驗證他最深的信念。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">EAC 技術</span>
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">配方研發</span>
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">SOP建立</span>
         </div>
       </div>
     </div>
 
-    <!-- 建凱 -->
-    <div class="team-card">
-      <div class="team-photo" style="aspect-ratio:3/2;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;">
-        <div style="font-family:var(--font-display);font-size:4rem;color:rgba(212,207,200,0.1);font-weight:700;">建凱</div>
-        <div class="team-photo-overlay"></div>
-        <div class="team-ph-tag">品牌策略 · 行銷</div>
+    <!-- 格子 2：建凱（無照片） -->
+    <div style="background:var(--cream);border:1px solid var(--concrete-light);">
+      <div style="aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;">
+        <div style="font-family:var(--font-display);font-size:5rem;color:rgba(212,207,200,0.08);font-weight:700;">建凱</div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);"></div>
+        <div style="position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);">品牌策略 · 行銷</div>
       </div>
-      <div class="team-info">
-        <div class="team-role">Co-Founder · 品牌主理人</div>
-        <div class="team-name">建凱</div>
-        <div class="team-name-en">Kasper · 品牌策略 · 社群營運</div>
-        <p class="team-bio">從商業視角切入，協助 Ivor 老師的研究能量找到與市場對話的語言。負責整體 IMC 策略、IG / Threads / YouTube 社群內容、Maker 過程影像記錄，以及業務開發。深信 Concredia.Lab 不只是一門生意，而是一件值得踏實推進的事。</p>
-        <div class="team-chips">
-          <span class="chip">IMC 行銷</span><span class="chip">社群經營</span><span class="chip">影像記錄</span><span class="chip">業務開發</span>
+      <div style="padding:1.75rem;">
+        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;">Co-Founder · 品牌主理人</div>
+        <div style="font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;">建凱</div>
+        <div style="font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;">Kasper · 品牌策略 · 社群營運</div>
+        <p style="font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;">從商業視角切入，協助 Ivor 老師的研究能量找到與市場對話的語言。負責整體 IMC 策略、IG / Threads / YouTube 社群內容、Maker 過程影像記錄，以及業務開發。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">IMC 行銷</span>
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">社群經營</span>
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">業務開發</span>
         </div>
       </div>
     </div>
 
-    <!-- 寶妹 -->
-    <div class="team-card">
-      <div class="team-photo" style="aspect-ratio:3/2;">
+    <!-- 格子 3：寶妹（本人照） -->
+    <div style="background:var(--cream);border:1px solid var(--concrete-light);">
+      <div style="aspect-ratio:4/3;position:relative;overflow:hidden;">
         <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
-        <div class="team-photo-overlay"></div>
-        <div class="team-ph-tag">首席士氣官 · 品質監察</div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);"></div>
+        <div style="position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);">首席士氣官 · 品質監察</div>
       </div>
-      <div class="team-info">
-        <div class="team-role">實驗室第三號成員 · Chief Quality Inspector</div>
-        <div class="team-name">寶妹 Bao Mei</div>
-        <div class="team-name-en">2020.07.01 · 法鬥 × 彰化和美鐵鍋工廠台灣土狗</div>
-        <p class="team-bio">出生於火與鐵的交界，成長於水泥粉塵與深夜打磨的聲響之間。她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室；老師回來時，她是那個讓他知道回家意義的理由。</p>
-        <div class="team-chips">
-          <span class="chip">品質把關</span><span class="chip">士氣管理</span><span class="chip">3分鐘熱度</span><span class="chip">倉庫守護</span>
+      <div style="padding:1.75rem;">
+        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;">實驗室第三號成員 · Chief Quality Inspector</div>
+        <div style="font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;">寶妹 Bao Mei</div>
+        <div style="font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;">2020.07.01 · 法鬥 × 彰化和美鐵鍋工廠台灣土狗</div>
+        <p style="font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;">出生於火與鐵的交界，成長於水泥粉塵與深夜打磨的聲響之間。她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">品質把關</span>
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">3分鐘熱度</span>
+          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">倉庫守護</span>
         </div>
       </div>
     </div>
@@ -1626,6 +1673,27 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
+// MUSIC PLAYER
+var mpAud=null,mpOn=false;
+function mpInit(){mpAud=document.getElementById('mpAudio');if(mpAud)mpAud.volume=0.4;}
+function mpToggle(){
+  if(!mpAud)mpInit();
+  if(!mpAud)return;
+  if(mpOn){mpAud.pause();document.getElementById('mpPlay').style.display='';document.getElementById('mpPause').style.display='none';mpOn=false;}
+  else{mpAud.play().then(function(){document.getElementById('mpPlay').style.display='none';document.getElementById('mpPause').style.display='';mpOn=true;}).catch(function(){});}
+}
+function mpVol(e){
+  if(!mpAud)return;
+  var r=e.currentTarget.getBoundingClientRect();
+  var v=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+  mpAud.volume=v;document.getElementById('mpVolBar').style.width=(v*100)+'%';
+}
+function mpClose(){
+  var p=document.getElementById('musicPlayer');if(p)p.style.display='none';
+  if(mpAud){mpAud.pause();mpOn=false;}
+}
+window.addEventListener('load',mpInit);
+
 function openLightbox(src,cap){
   var lb=document.getElementById('lightbox');
   if(!lb)return;
@@ -1698,4 +1766,22 @@ function toggleFaq(el){const i=el.closest('.faq-item');document.querySelectorAll
 function switchTab(tab,btn){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-standard').style.display=tab==='standard'?'grid':'none';document.getElementById('tab-custom').style.display=tab==='custom'?'grid':'none';}
 const navEl=document.querySelector('nav');
 window.addEventListener('scroll',()=>{if(window.scrollY>80){navEl.classList.add('scrolled');}else{navEl.classList.remove('scrolled');}});
-//dummy
+//dumm
+<!-- 背景音樂播放器 -->
+<div class="music-player" id="musicPlayer">
+  <button class="mp-btn" onclick="mpToggle()" id="mpBtn">
+    <svg id="mpPlay" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+    <svg id="mpPause" viewBox="0 0 24 24" style="display:none"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
+  </button>
+  <div class="mp-label"><strong>Concredia.Lab</strong>背景音樂</div>
+  <div class="mp-vol" onclick="mpVol(event)" title="點擊調整音量">
+    <div class="mp-vol-bar" id="mpVolBar"></div>
+  </div>
+  <button class="mp-x" onclick="mpClose()">×</button>
+</div>
+<audio id="mpAudio" loop preload="none">
+  <source src="music/bgm.mp3" type="audio/mpeg">
+</audio>
+
+
+y
