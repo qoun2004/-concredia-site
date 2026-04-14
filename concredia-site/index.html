@@ -586,7 +586,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 }
 
 /* ===== ACCORDION / EXPAND SECTIONS ===== */
-.acc-section{border-bottom:1px solid rgba(212,207,200,0.1);}
+.acc-section{border-bottom:1px solid rgba(212,207,200,0.1);position:relative;z-index:2;}
 .acc-header{
   display:flex;align-items:center;gap:1.5rem;
   padding:2rem 4rem;cursor:pointer;
@@ -802,10 +802,17 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
     </h1>
   </div>
 
-  <!-- 底部：左側按鈕+數據，右側副標語 -->
-  <div style="position:absolute;bottom:0;left:0;right:0;z-index:6;padding:0 6rem 3.5rem;background:linear-gradient(to top,rgba(10,8,6,0.95) 0%,rgba(10,8,6,0.75) 55%,transparent 100%);">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-end;">
-      <!-- 左：按鈕 + 數據 -->
+  <!-- 副標語：右側固定 -->
+  <div style="position:absolute;top:0;right:0;width:38%;bottom:0;z-index:5;display:flex;align-items:center;justify-content:flex-end;padding:80px 5rem 220px 2rem;pointer-events:none;">
+    <p style="font-size:clamp(0.8rem,1.15vw,0.95rem);color:rgba(255,248,240,0.9);font-weight:300;line-height:1.88;font-style:italic;text-shadow:0 2px 16px rgba(0,0,0,0.9);border-right:3px solid var(--rust-light);padding-right:1.25rem;text-align:right;">
+      混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br><br>
+      <em style="font-size:0.88em;opacity:0.6;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
+    </p>
+  </div>
+
+  <!-- 底部：按鈕 + 數據（左側區域） -->
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:6;padding:0 5rem 3rem;background:linear-gradient(to top,rgba(10,8,6,0.97) 0%,rgba(10,8,6,0.82) 45%,transparent 100%);">
+    <div style="display:grid;grid-template-columns:55% 45%;gap:3rem;align-items:flex-end;">
       <div>
         <div class="hero-actions" style="margin-bottom:2rem;">
           <a href="products.html" class="btn-p">探索產品系列</a>
@@ -818,11 +825,10 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
           <div><div class="stat-num">40+</div><div class="stat-label">設計作品</div></div>
         </div>
       </div>
-      <!-- 右：副標語 -->
-      <div style="text-align:right;">
-        <p style="font-family:var(--font-body);font-size:clamp(0.85rem,1.3vw,1rem);color:rgba(255,248,240,0.88);font-weight:300;line-height:1.82;font-style:italic;text-shadow:0 2px 12px rgba(0,0,0,0.8);border-right:3px solid var(--rust-light);padding-right:1.25rem;margin-left:auto;max-width:420px;">
-          混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br>
-          <em style="font-size:0.88em;opacity:0.7;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
+      <div style="text-align:right;padding-bottom:0.25rem;">
+        <p style="font-size:clamp(0.85rem,1.1vw,0.98rem);color:rgba(255,248,240,0.9);font-weight:300;line-height:1.9;font-style:italic;text-shadow:0 2px 14px rgba(0,0,0,0.9);border-right:3px solid var(--rust-light);padding-right:1.25rem;margin:0;display:inline-block;text-align:right;">
+          混凝土不只是材料，<br>它是承載生活風格、文化底蘊、<br>創意表達與實用機能的媒介。<br>
+          <em style="font-size:0.83em;opacity:0.62;">"Concrete as a media with lifestyle,<br>culture, creative, usage."</em>
         </p>
       </div>
     </div>
@@ -932,7 +938,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
       <div class="sec-eye">最新動態</div>
       <h2 class="sec-title">消息 · Maker 實錄 · 公路現場</h2>
     </div>
-    <a href="#" class="btn-o">查看全部</a>
+    <a href="index.html#blog" class="btn-o">查看全部</a>
   </div>
   <div class="blog-grid">
     <div class="blog-card">
@@ -942,7 +948,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
       <div class="blog-cat">寂寞公路計劃</div>
       <h3>旭海 · 180 公斤的相遇——帶著水泥桌去見陌生人</h3>
       <p>屏東旭海的沙灘上，一張水泥桌、一壺茶、幾個不期而遇的旅人。這不是展覽，是 Concredia.Lab 最真實的品牌宣言。</p>
-      <div class="blog-meta"><span class="blog-date">2025 年 4 月</span><span class="blog-read">閱讀全文 →</span></div>
+      <div class="blog-meta"><span class="blog-date">2025 年 4 月</span><span class="blog-read" style="cursor:pointer;color:var(--rust);" onclick="alert('文章頁面建置中，敬請期待！')">閱讀全文 →</span></div>
     </div>
     <div class="blog-card">
       <div class="blog-thumb">
@@ -951,7 +957,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
       <div class="blog-cat">Maker 實錄</div>
       <h3>開模、灌漿、水磨——一顆水泥音響的三小時誕生記</h3>
       <p>從迷宮迴路設計到 EAC 水磨工序，透明化過程、保留核心配方。這是一件作品的誕生，也是一段廢料的重生。</p>
-      <div class="blog-meta"><span class="blog-date">2025 年 3 月</span><span class="blog-read">閱讀全文 →</span></div>
+      <div class="blog-meta"><span class="blog-date">2025 年 3 月</span><span class="blog-read" style="cursor:pointer;color:var(--rust);" onclick="alert('文章頁面建置中，敬請期待！')">閱讀全文 →</span></div>
     </div>
     <div class="blog-card">
       <div class="blog-thumb">
@@ -960,258 +966,348 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
       <div class="blog-cat">倉庫日常</div>
       <h3>寶妹對這張新桌子的熱情，只有三分鐘</h3>
       <p>三分鐘，恰好是水泥從流動走向凝固的關鍵時刻。寶妹每次的熱情很短暫，但這張桌子能陪你一輩子。</p>
-      <div class="blog-meta"><span class="blog-date">2025 年 2 月</span><span class="blog-read">閱讀全文 →</span></div>
+      <div class="blog-meta"><span class="blog-date">2025 年 2 月</span><span class="blog-read" style="cursor:pointer;color:var(--rust);" onclick="alert('文章頁面建置中，敬請期待！')">閱讀全文 →</span></div>
     </div>
   </div>
 </section>
 
 
 
-<!-- IMPACT: 環境現況 + SDGs + ESG（折疊式） -->
+<!-- IMPACT: 環境現況 + SDGs + ESG（全展開） -->
 <section id="impact" style="padding:0;background:#1A1714;">
 
-  <!-- 區塊標題列 -->
-  <div style="padding:3.5rem 4rem 2rem;border-bottom:1px solid rgba(212,207,200,0.08);">
+  <!-- 主標 -->
+  <div style="padding:5rem 4rem 3rem;border-bottom:1px solid rgba(212,207,200,0.08);">
     <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>為什麼現在就要行動</div>
-    <h2 class="sec-title" style="color:var(--warm-white);max-width:600px;">地球正在耗盡原材料，<br>廢棄物卻<em style="color:var(--rust-light);font-style:italic;">無處可去</em>。</h2>
+    <h2 class="sec-title" style="color:var(--warm-white);font-size:clamp(2rem,3.5vw,3rem);">地球正在耗盡原材料，<br>廢棄物卻<em style="color:var(--rust-light);font-style:italic;">無處可去</em>。</h2>
   </div>
 
-  <!-- 折疊 1：環境危機數字 -->
-  <div class="acc-section" id="acc-crisis">
-    <div class="acc-header" onclick="toggleAcc('acc-crisis')">
-      <div class="acc-icon-wrap">🌍</div>
-      <div class="acc-headline">
-        <div class="acc-title">全球環境危機 — 四個關鍵數字</div>
-        <div class="acc-subtitle">建築業 37% 碳排 · 水泥業 8% CO₂ · 台灣 1,000 萬噸廢料 · 53% 老屋拆除潮</div>
-      </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  <!-- 四大危機數字 -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(212,207,200,0.05);">
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #E74C3C;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🏗️</div>
+      <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:#E74C3C;line-height:1;margin-bottom:0.5rem;">37%</div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">全球溫室氣體排放來自<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">建築與營建業</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">UNEP 2022</div>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(212,207,200,0.06);" class="impact-4col">
-        <div style="padding:2.5rem 2rem;background:#1A1714;border-top:3px solid #C0392B;"><div style="font-size:2rem;margin-bottom:0.6rem;">🏗️</div><div style="font-family:var(--font-display);font-size:2.8rem;font-weight:700;color:#E74C3C;line-height:1;margin-bottom:0.4rem;">37%</div><div style="font-size:0.82rem;color:var(--concrete-light);line-height:1.6;font-weight:300;">全球溫室氣體排放來自<strong style="color:var(--warm-white);font-weight:400;">建築與營建業</strong></div><div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.35;margin-top:0.6rem;">UNEP 2022 建築現狀報告</div></div>
-        <div style="padding:2.5rem 2rem;background:#1A1714;border-top:3px solid #E67E22;"><div style="font-size:2rem;margin-bottom:0.6rem;">🏭</div><div style="font-family:var(--font-display);font-size:2.8rem;font-weight:700;color:#E67E22;line-height:1;margin-bottom:0.4rem;">8%</div><div style="font-size:0.82rem;color:var(--concrete-light);line-height:1.6;font-weight:300;">全球 CO₂ 排放來自<strong style="color:var(--warm-white);font-weight:400;">水泥業</strong>，相當於航空業的 4 倍</div><div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.35;margin-top:0.6rem;">GCCA · 世界經濟論壇 2024</div></div>
-        <div style="padding:2.5rem 2rem;background:#1A1714;border-top:3px solid #F39C12;"><div style="font-size:2rem;margin-bottom:0.6rem;">🗑️</div><div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:#F39C12;line-height:1;margin-bottom:0.4rem;">1,000萬噸</div><div style="font-size:0.82rem;color:var(--concrete-light);line-height:1.6;font-weight:300;">台灣每年廢棄物總量，暫置垃圾 2017–2022 年<strong style="color:var(--warm-white);font-weight:400;">暴增 9 倍</strong></div><div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.35;margin-top:0.6rem;">環境部 · 綠色和平 2024</div></div>
-        <div style="padding:2.5rem 2rem;background:#1A1714;border-top:3px solid #2980B9;"><div style="font-size:2rem;margin-bottom:0.6rem;">🏢</div><div style="font-family:var(--font-display);font-size:2.8rem;font-weight:700;color:#5DADE2;line-height:1;margin-bottom:0.4rem;">53%</div><div style="font-size:0.82rem;color:var(--concrete-light);line-height:1.6;font-weight:300;">台灣建築屋齡<strong style="color:var(--warm-white);font-weight:400;">超過 30 年</strong>，龐大拆除潮正在到來</div><div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.35;margin-top:0.6rem;">內政部不動產資訊平台 2023</div></div>
-      </div>
-      <div style="text-align:right;margin-top:1.25rem;"><a href="impact.html" style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust-light);text-decoration:none;">查看完整環境數據 →</a></div>
-    </div></div>
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #E67E22;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🏭</div>
+      <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:#E67E22;line-height:1;margin-bottom:0.5rem;">8%</div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">全球 CO₂ 來自<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">水泥業（航空業的4倍）</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">GCCA 2024</div>
+    </div>
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #F39C12;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🗑️</div>
+      <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:#F39C12;line-height:1;margin-bottom:0.5rem;">1,000<span style="font-size:1.2rem;opacity:0.8;">萬噸</span></div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">台灣每年廢棄物，暫置垃圾<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">2017–2022 年暴增 9 倍</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">環境部 2024</div>
+    </div>
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #2980B9;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🏢</div>
+      <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:#5DADE2;line-height:1;margin-bottom:0.5rem;">53%</div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">台灣建築屋齡超過30年<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">龐大拆除潮正在到來</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">內政部 2023</div>
+    </div>
   </div>
 
-  <!-- 折疊 2：SDGs -->
-  <div class="acc-section" id="acc-sdgs">
-    <div class="acc-header" onclick="toggleAcc('acc-sdgs')">
-      <div class="acc-icon-wrap">🎯</div>
-      <div class="acc-headline">
-        <div class="acc-title">聯合國 SDGs — 對應 4 個永續目標</div>
-        <div class="acc-subtitle">SDG 9 工業創新 · SDG 11 永續城市 · SDG 12 責任生產 · SDG 13 氣候行動</div>
+  <!-- SDGs -->
+  <div style="padding:4rem 4rem;border-top:1px solid rgba(212,207,200,0.08);">
+    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>聯合國永續發展目標</div>
+    <h3 style="font-family:var(--font-display);font-size:1.8rem;color:var(--warm-white);font-weight:700;margin-bottom:2.5rem;">SDGs — Concredia.Lab 對應 4 個永續目標</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#F36D25;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🏭</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 9</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">工業、創新與基礎建設</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">EAC 技術創新，建立可授權的再生設計工業體系。</div>
       </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#F99D26;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🏙️</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 11</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">永續城市與社區</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">Hub & Satellite 讓各地社區在地處理廢料、在地生產。</div>
+      </div>
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#BF8B2E;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🔄</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 12</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">負責任的消費與生產</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">每件產品超過 50% 再生廢料，附完整溯源文件。</div>
+      </div>
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#407F46;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🌍</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 13</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">氣候行動</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">引入爐石粉降低 62% 碳排，每件附可驗證減碳量。</div>
+      </div>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
-        <div style="border-radius:6px;padding:1.5rem;background:#F36D25;"><div style="font-size:0.6rem;color:rgba(255,255,255,0.7);letter-spacing:0.1em;margin-bottom:0.3rem;">SDGs 目標 9</div><div style="font-size:1.8rem;margin-bottom:0.4rem;">🏭</div><div style="font-size:0.85rem;font-weight:500;color:white;margin-bottom:0.5rem;">工業、創新與基礎建設</div><div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-style:italic;border-top:1px solid rgba(255,255,255,0.2);padding-top:0.5rem;margin-top:0.5rem;">EAC 技術創新，建立可授權的再生設計工業體系。</div></div>
-        <div style="border-radius:6px;padding:1.5rem;background:#F99D26;"><div style="font-size:0.6rem;color:rgba(255,255,255,0.7);letter-spacing:0.1em;margin-bottom:0.3rem;">SDGs 目標 11</div><div style="font-size:1.8rem;margin-bottom:0.4rem;">🏙️</div><div style="font-size:0.85rem;font-weight:500;color:white;margin-bottom:0.5rem;">永續城市與社區</div><div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-style:italic;border-top:1px solid rgba(255,255,255,0.2);padding-top:0.5rem;margin-top:0.5rem;">Hub & Satellite 讓各地社區在地處理廢料、在地生產。</div></div>
-        <div style="border-radius:6px;padding:1.5rem;background:#BF8B2E;"><div style="font-size:0.6rem;color:rgba(255,255,255,0.7);letter-spacing:0.1em;margin-bottom:0.3rem;">SDGs 目標 12</div><div style="font-size:1.8rem;margin-bottom:0.4rem;">🔄</div><div style="font-size:0.85rem;font-weight:500;color:white;margin-bottom:0.5rem;">負責任的消費與生產</div><div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-style:italic;border-top:1px solid rgba(255,255,255,0.2);padding-top:0.5rem;margin-top:0.5rem;">每件產品超過 50% 再生廢料，附完整溯源文件。</div></div>
-        <div style="border-radius:6px;padding:1.5rem;background:#407F46;"><div style="font-size:0.6rem;color:rgba(255,255,255,0.7);letter-spacing:0.1em;margin-bottom:0.3rem;">SDGs 目標 13</div><div style="font-size:1.8rem;margin-bottom:0.4rem;">🌍</div><div style="font-size:0.85rem;font-weight:500;color:white;margin-bottom:0.5rem;">氣候行動</div><div style="font-size:0.72rem;color:rgba(255,255,255,0.6);font-style:italic;border-top:1px solid rgba(255,255,255,0.2);padding-top:0.5rem;margin-top:0.5rem;">引入爐石粉降低 62% 碳排，每件附可驗證減碳量計算。</div></div>
-      </div>
-    </div></div>
   </div>
 
-  <!-- 折疊 3：ESG -->
-  <div class="acc-section" id="acc-esg">
-    <div class="acc-header" onclick="toggleAcc('acc-esg')">
-      <div class="acc-icon-wrap">📊</div>
-      <div class="acc-headline">
-        <div class="acc-title">ESG 三支柱 — 環境、社會、治理全覆蓋</div>
-        <div class="acc-subtitle">-62% 碳排 · Hub & Satellite 社區培力 · 材料溯源文件 · 2026 碳費準備</div>
+  <!-- ESG 三支柱 -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);border-top:1px solid rgba(212,207,200,0.08);">
+    <div style="padding:3rem;background:#1A1714;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🌱</div>
+      <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#27AE60;line-height:1;margin-bottom:0.4rem;">E</div>
+      <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#2ECC71;margin-bottom:0.85rem;">Environmental · 環境</div>
+      <div style="font-size:1rem;font-weight:500;color:var(--warm-white);margin-bottom:0.5rem;">減碳、廢料再生、資源循環</div>
+      <p style="font-size:0.88rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;">相較傳統製程削減 62% 碳排，85% 在地廢料，超過 50% 符合政府綠色採購，每件附材料溯源文件。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;">
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(39,174,96,0.15);color:#2ECC71;border-radius:2px;">-62% 碳排</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(39,174,96,0.15);color:#2ECC71;border-radius:2px;">材料溯源</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(39,174,96,0.15);color:#2ECC71;border-radius:2px;">綠色採購</span>
       </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);">
-        <div style="padding:2rem;background:#1A1714;"><div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#27AE60;line-height:1;margin-bottom:0.4rem;">E</div><div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#2ECC71;margin-bottom:0.7rem;">Environmental · 環境</div><p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.7;font-weight:300;opacity:0.85;">相較傳統製程削減 62% 碳排，85% 在地廢料，超過 50% 符合政府綠色採購，每件附材料溯源文件。</p></div>
-        <div style="padding:2rem;background:#1A1714;"><div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#3498DB;line-height:1;margin-bottom:0.4rem;">S</div><div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#5DADE2;margin-bottom:0.7rem;">Social · 社會</div><p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.7;font-weight:300;opacity:0.85;">Hub & Satellite 技術授權，讓各地社區建立衛星工廠，在地拆除、在地生產、全台銷售，創造地方就業。</p></div>
-        <div style="padding:2rem;background:#1A1714;"><div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#9B59B6;line-height:1;margin-bottom:0.4rem;">G</div><div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:#BB8FCE;margin-bottom:0.7rem;">Governance · 治理</div><p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.7;font-weight:300;opacity:0.85;">完整材料溯源文件，可納入 ESG 報告正式佐證。符合政府綠色採購，台灣 2026 年正式徵收碳費。</p></div>
+    <div style="padding:3rem;background:#1A1714;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🤝</div>
+      <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#3498DB;line-height:1;margin-bottom:0.4rem;">S</div>
+      <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#5DADE2;margin-bottom:0.85rem;">Social · 社會</div>
+      <div style="font-size:1rem;font-weight:500;color:var(--warm-white);margin-bottom:0.5rem;">社區培力、地方創生、共好</div>
+      <p style="font-size:0.88rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;">Hub & Satellite 技術授權，讓各地社區建立衛星工廠，在地拆除、在地生產、全台銷售，創造地方就業。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;">
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(52,152,219,0.15);color:#5DADE2;border-radius:2px;">地方創生</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(52,152,219,0.15);color:#5DADE2;border-radius:2px;">技術授權</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(52,152,219,0.15);color:#5DADE2;border-radius:2px;">衛星工廠</span>
       </div>
-      <div style="text-align:right;margin-top:1.25rem;"><a href="impact.html" style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust-light);text-decoration:none;">查看完整 ESG 資料 →</a></div>
-    </div></div>
+    </div>
+    <div style="padding:3rem;background:#1A1714;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">📋</div>
+      <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#9B59B6;line-height:1;margin-bottom:0.4rem;">G</div>
+      <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#BB8FCE;margin-bottom:0.85rem;">Governance · 治理</div>
+      <div style="font-size:1rem;font-weight:500;color:var(--warm-white);margin-bottom:0.5rem;">透明文件、認證、綠色採購</div>
+      <p style="font-size:0.88rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;">完整材料溯源文件，可納入 ESG 報告正式佐證。符合政府綠色採購，台灣 2026 年正式徵收碳費。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;">
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(155,89,182,0.15);color:#BB8FCE;border-radius:2px;">ESG 文件套件</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(155,89,182,0.15);color:#BB8FCE;border-radius:2px;">2026 碳費</span>
+      </div>
+    </div>
   </div>
 
 </section>
 
-<!-- WHY / HOW / WHAT（折疊式） -->
-<section id="why" style="padding:0;background:var(--concrete-dark);">
-  <div style="padding:2.5rem 4rem 1.5rem;border-bottom:1px solid rgba(212,207,200,0.08);">
-    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>Overall Review of Concredia.Lab</div>
-    <h2 class="sec-title" style="color:var(--warm-white);">三個問題，一個答案</h2>
-  </div>
-  <div class="acc-section" id="acc-why">
-    <div class="acc-header" onclick="toggleAcc('acc-why')">
-      <div class="acc-icon-wrap">❓</div>
-      <div class="acc-headline">
-        <div class="acc-title">Why — 為什麼做：故事、動機、重要性</div>
-        <div class="acc-subtitle">山上的礦石被挖盡，廢料無處安放，每一塊廢料都是一段未完成的故事</div>
-      </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+<!-- WHY / HOW / WHAT（全展開） -->
+<section id="why" style="padding:5rem 4rem;background:var(--concrete-dark);position:relative;overflow:hidden;">
+  <!-- 底紋裝飾 -->
+  <div style="position:absolute;right:-5rem;top:-5rem;width:400px;height:400px;border-radius:50%;border:1px solid rgba(155,91,58,0.08);pointer-events:none;"></div>
+  <div style="position:absolute;right:-2rem;top:-2rem;width:250px;height:250px;border-radius:50%;border:1px solid rgba(155,91,58,0.05);pointer-events:none;"></div>
+
+  <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>Overall Review of Concredia.Lab</div>
+  <h2 class="sec-title" style="color:var(--warm-white);margin-bottom:3rem;">三個問題，<br>一個答案</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);">
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:4px solid var(--rust);">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">❓</div>
+      <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;">Why · 為什麼做</div>
+      <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--warm-white);font-weight:700;margin-bottom:1rem;">故事、動機、重要性</div>
+      <p style="font-size:0.9rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;">山上的礦石被挖掘、運到平地蓋樓、再拆除成堆無法歸還的碎石。台灣的建成環境正以不可逆的方式消耗原生材料。民國 60 年代建物進入大規模拆除潮，廢料無法迴填，填埋空間日漸耗盡。每一塊廢料，都是一段未完成的故事——Concredia.Lab 要讓它有下一章。</p>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.82;font-weight:300;max-width:720px;">山上的礦石被挖掘、運到平地蓋樓、再拆除成堆無法歸還的碎石。台灣的建成環境（Built-up Environment）正以不可逆的方式消耗原生材料（Virgin Material）。民國 60 年代建物進入大規模拆除潮，廢料無法迴填，填埋空間日漸耗盡。每一塊廢料，都是一段未完成的故事——Concredia.Lab 要讓它有下一章。</p>
-    </div></div>
-  </div>
-  <div class="acc-section" id="acc-how">
-    <div class="acc-header" onclick="toggleAcc('acc-how')">
-      <div class="acc-icon-wrap">⚙️</div>
-      <div class="acc-headline">
-        <div class="acc-title">How — 怎麼做：技術、工法、動能</div>
-        <div class="acc-subtitle">EAC 骨料裸露技術 · Down-cycle → Up-cycle · 完整 SOP 可授權</div>
-      </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:4px solid var(--rust);">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">⚙️</div>
+      <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;">How · 怎麼做</div>
+      <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--warm-white);font-weight:700;margin-bottom:1rem;">技術、工法、動能</div>
+      <p style="font-size:0.9rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;">運用 EAC（Exposed Aggregate Concrete）骨料裸露技術，透過水磨將混凝土表面磨出地質記憶，讓廢棄骨料的紋路和色澤重新成為設計語言。Down-cycle → Up-cycle：廢料不再是問題的終點，而是設計的起點。完整 SOP 可複製、可授權、可在地化。</p>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.82;font-weight:300;max-width:720px;">運用 EAC（Exposed Aggregate Concrete）骨料裸露技術，透過水磨將混凝土表面磨出地質記憶，讓廢棄骨料的紋路和色澤重新成為設計語言。Down-cycle → Up-cycle：廢料不再是問題的終點，而是設計的起點。完整 SOP 可複製、可授權、可在地化。</p>
-    </div></div>
-  </div>
-  <div class="acc-section" id="acc-what">
-    <div class="acc-header" onclick="toggleAcc('acc-what')">
-      <div class="acc-icon-wrap">✦</div>
-      <div class="acc-headline">
-        <div class="acc-title">What — 產出什麼：尺度、機能、意義</div>
-        <div class="acc-subtitle">從 180 kg 定錨家具到 150 g 生活小物，每件附材料溯源與減碳量文件</div>
-      </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:4px solid var(--rust);">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">✦</div>
+      <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;">What · 產出什麼</div>
+      <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--warm-white);font-weight:700;margin-bottom:1rem;">尺度、機能、意義</div>
+      <p style="font-size:0.9rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;">從 180 公斤的定錨家具到 150 克的生活小物，橫跨多種尺度，在機能與意義之間找到平衡。Ready-made（量產）+ Custom-made（客製化），每件附材料溯源與減碳量文件，可直接納入 ESG 報告。</p>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.82;font-weight:300;max-width:720px;">從 180 公斤的定錨家具到 150 克的生活小物，Concredia.Lab 的產品橫跨多種尺度，在機能與意義之間找到平衡——每件作品都是混凝土作為媒介的具體實踐。Ready-made（量產）+ Custom-made（客製化），每件附材料溯源與減碳量文件。</p>
-      <div style="margin-top:1.5rem;"><a href="products.html" class="btn-p" style="font-size:0.72rem;">探索產品系列 →</a></div>
-    </div></div>
   </div>
 </section>
 
 <!-- TEAM -->
-<section id="about" style="padding:5.5rem 4rem;">
+<section id="about" style="padding:5rem 4rem;background:var(--warm-white);">
   <div class="sec-eye">關於團隊</div>
   <h2 class="sec-title">三個靈魂，<br>一間實驗室</h2>
-  <p class="sec-sub">Concredia.Lab 去個人化、品牌先行。研發者的硬度、策略者的寬度、守護者的溫度，三者共構這個品牌完整的樣貌。</p>
+  <p class="sec-sub">研發者的硬度、策略者的寬度、守護者的溫度，三者共構這個品牌完整的樣貌。</p>
 
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;">
 
-    <!-- 格子 1：Ivor 老師（影子照） -->
-    <div style="background:var(--cream);border:1px solid var(--concrete-light);">
-      <div style="aspect-ratio:4/3;position:relative;overflow:hidden;">
-        <img src="images/ivor-shadow.jpg" alt="Dr. Ivor Lee 影子" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);"></div>
-        <div style="position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);">研發核心 · 技術</div>
+    <!-- 格子1：寶妹（本人照） -->
+    <div style="background:var(--cream);border:1px solid rgba(155,91,58,0.15);overflow:hidden;">
+      <div style="aspect-ratio:3/2;position:relative;overflow:hidden;">
+        <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.88) 0%,transparent 50%);"></div>
+        <div style="position:absolute;top:1rem;left:1rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.3);padding:0.25rem 0.6rem;background:rgba(42,39,36,0.5);backdrop-filter:blur(4px);">首席士氣官 · 品質監察</div>
       </div>
-      <div style="padding:1.75rem;">
-        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;">Co-Founder · 研發核心</div>
-        <div style="font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;">李博士</div>
-        <div style="font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;">Dr. Ivor Lee · 土木工程博士</div>
-        <p style="font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;">混凝土材料科學研究者。以博士級的工程專業深入廢棄物再生的可能性，建立完整的 EAC 再生配方體系與生產 SOP。喜歡帶著那張 180 公斤的水泥桌，開四個半小時的車去屏東旭海，在山海交界驗證他最深的信念。</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">EAC 技術</span>
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">配方研發</span>
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">SOP建立</span>
+      <div style="padding:1.5rem 1.75rem 2rem;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.35rem;">實驗室第三號成員</div>
+        <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--concrete-dark);line-height:1.1;margin-bottom:0.2rem;">寶妹 Bao Mei</div>
+        <div style="font-size:0.8rem;color:var(--concrete);opacity:0.7;margin-bottom:1rem;">2020.07.01 · 法鬥 × 和美鐵鍋工廠台灣土狗</div>
+        <p style="font-size:0.88rem;color:var(--concrete);line-height:1.82;font-weight:300;">出生於火與鐵的交界，成長於水泥粉塵與深夜打磨的聲響之間。她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.1rem;">
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">品質把關</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">士氣管理</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">3分鐘熱度</span>
         </div>
       </div>
     </div>
 
-    <!-- 格子 2：建凱（無照片） -->
-    <div style="background:var(--cream);border:1px solid var(--concrete-light);">
-      <div style="aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;">
-        <div style="font-family:var(--font-display);font-size:5rem;color:rgba(212,207,200,0.08);font-weight:700;">建凱</div>
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);"></div>
-        <div style="position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);">品牌策略 · 行銷</div>
+    <!-- 格子2：老師（影子照） -->
+    <div style="background:var(--cream);border:1px solid rgba(155,91,58,0.15);overflow:hidden;">
+      <div style="aspect-ratio:3/2;position:relative;overflow:hidden;">
+        <img src="images/ivor-shadow.jpg" alt="Dr. Ivor Lee" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.88) 0%,transparent 50%);"></div>
+        <div style="position:absolute;top:1rem;left:1rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.3);padding:0.25rem 0.6rem;background:rgba(42,39,36,0.5);backdrop-filter:blur(4px);">研發核心 · 技術</div>
       </div>
-      <div style="padding:1.75rem;">
-        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;">Co-Founder · 品牌主理人</div>
-        <div style="font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;">建凱</div>
-        <div style="font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;">Kasper · 品牌策略 · 社群營運</div>
-        <p style="font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;">從商業視角切入，協助 Ivor 老師的研究能量找到與市場對話的語言。負責整體 IMC 策略、IG / Threads / YouTube 社群內容、Maker 過程影像記錄，以及業務開發。</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">IMC 行銷</span>
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">社群經營</span>
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">業務開發</span>
+      <div style="padding:1.5rem 1.75rem 2rem;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.35rem;">Co-Founder · 研發核心</div>
+        <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--concrete-dark);line-height:1.1;margin-bottom:0.2rem;">李博士</div>
+        <div style="font-size:0.8rem;color:var(--concrete);opacity:0.7;margin-bottom:1rem;">Dr. Ivor Lee · 土木工程博士</div>
+        <p style="font-size:0.88rem;color:var(--concrete);line-height:1.82;font-weight:300;">混凝土材料科學研究者。以博士級的工程專業深入廢棄物再生的可能性，建立完整的 EAC 再生配方體系與生產 SOP——讓每一個操作步驟都可被記錄、可被複製、可在地推廣。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.1rem;">
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">EAC 技術</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">配方研發</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">SOP建立</span>
         </div>
       </div>
     </div>
 
-    <!-- 格子 3：寶妹（本人照） -->
-    <div style="background:var(--cream);border:1px solid var(--concrete-light);">
-      <div style="aspect-ratio:4/3;position:relative;overflow:hidden;">
-        <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);"></div>
-        <div style="position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);">首席士氣官 · 品質監察</div>
+    <!-- 格子3：建凱（無照片） -->
+    <div style="background:var(--cream);border:1px solid rgba(155,91,58,0.15);overflow:hidden;">
+      <div style="aspect-ratio:3/2;position:relative;overflow:hidden;background:#2A2724;display:flex;align-items:center;justify-content:center;">
+        <div style="font-family:var(--font-display);font-size:6rem;color:rgba(212,207,200,0.06);font-weight:700;user-select:none;">建凱</div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(42,39,36,0.9) 0%,transparent 50%);"></div>
+        <div style="position:absolute;top:1rem;left:1rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.3);padding:0.25rem 0.6rem;background:rgba(42,39,36,0.5);backdrop-filter:blur(4px);">品牌策略 · 行銷</div>
       </div>
-      <div style="padding:1.75rem;">
-        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;">實驗室第三號成員 · Chief Quality Inspector</div>
-        <div style="font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;">寶妹 Bao Mei</div>
-        <div style="font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;">2020.07.01 · 法鬥 × 彰化和美鐵鍋工廠台灣土狗</div>
-        <p style="font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;">出生於火與鐵的交界，成長於水泥粉塵與深夜打磨的聲響之間。她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室。</p>
-        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;">
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">品質把關</span>
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">3分鐘熱度</span>
-          <span style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;">倉庫守護</span>
+      <div style="padding:1.5rem 1.75rem 2rem;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.35rem;">Co-Founder · 品牌主理人</div>
+        <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--concrete-dark);line-height:1.1;margin-bottom:0.2rem;">建凱</div>
+        <div style="font-size:0.8rem;color:var(--concrete);opacity:0.7;margin-bottom:1rem;">Kasper · 品牌策略 · 社群營運</div>
+        <p style="font-size:0.88rem;color:var(--concrete);line-height:1.82;font-weight:300;">從商業視角切入，協助 Ivor 老師的研究能量找到與市場對話的語言。負責整體 IMC 策略、IG / Threads / YouTube 社群內容、Maker 過程影像記錄，以及業務開發。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.1rem;">
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">IMC 行銷</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">社群經營</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">業務開發</span>
         </div>
       </div>
     </div>
 
   </div>
+</section>
 
-<!-- CORE VALUES -->
-  <div style="margin-top:4rem;">
-    <div class="sec-eye">核心理念</div>
-    <h2 class="sec-title" style="max-width:480px;">Ivor 的硬度<br>建凱的寬度<br>寶妹的溫度</h2>
-    <div class="values-list">
-      <div class="vi"><div class="vn">01</div><div class="vc"><h4>科學驅動設計</h4><p>以材料工程研究為基礎，精準掌握泥水（Paste）、砂漿（Mortar）、混凝土（Concrete）的層次關係與配比邏輯，確保每件作品在美感之外達到耐用性能標準。研究不是背景，而是每件作品最核心的底氣。</p></div></div>
-      <div class="vi"><div class="vn">02</div><div class="vc"><h4>非結構創作的自由</h4><p>Concredia.Lab 不碰建築法規涉及的結構物——這反而是最大的自由。生活用品、裝飾用品、空間擺件，全部在法規之外，在設計之內。廢料在這裡不是問題，是靈感的來源。</p></div></div>
-      <div class="vi"><div class="vn">03</div><div class="vc"><h4>混凝土作為媒介</h4><p>Concrete as a media with lifestyle, culture, creative, usage. 混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介——就像旭海沙灘上那張水泥桌，讓陌生人坐下來喝一壺茶。</p></div></div>
+<!-- CORE VALUES（加底圖裝飾） -->
+<section style="padding:5rem 4rem;background:var(--warm-white);position:relative;overflow:hidden;">
+  <!-- 底圖裝飾 -->
+  <div style="position:absolute;right:0;top:0;bottom:0;width:40%;background-image:url('images/studio-tablescape4.jpg');background-size:cover;background-position:center;opacity:0.06;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,var(--warm-white) 55%,rgba(245,242,237,0.5) 100%);pointer-events:none;"></div>
+  <!-- 大型裝飾符號 -->
+  <div style="position:absolute;right:4rem;top:50%;transform:translateY(-50%);font-size:16rem;color:rgba(155,91,58,0.04);font-family:var(--font-display);font-weight:700;pointer-events:none;user-select:none;line-height:1;">∴</div>
+
+  <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;">
+    <div>
+      <div class="sec-eye" style="color:var(--rust);">核心理念</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.5rem);color:var(--concrete-dark);font-weight:700;line-height:1.2;margin-bottom:0;">
+        Ivor 的硬度<br>建凱的寬度<br>寶妹的溫度
+      </h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;padding-top:0.5rem;">
+      <div style="padding:1.75rem 0;border-bottom:1px solid rgba(58,54,50,0.1);">
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="font-size:2rem;flex-shrink:0;margin-top:0.1rem;">🔬</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+              <span style="font-family:var(--font-display);font-size:0.85rem;color:var(--rust);font-weight:700;">01</span>
+              <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--concrete-dark);">科學驅動設計</h4>
+            </div>
+            <p style="font-size:0.88rem;color:var(--concrete);line-height:1.78;font-weight:300;">以材料工程研究為基礎，精準掌握泥水、砂漿、混凝土的層次關係與配比邏輯，確保每件作品在美感之外達到耐用性能標準。研究不是背景，而是每件作品最核心的底氣。</p>
+          </div>
+        </div>
+      </div>
+      <div style="padding:1.75rem 0;border-bottom:1px solid rgba(58,54,50,0.1);">
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="font-size:2rem;flex-shrink:0;margin-top:0.1rem;">🎨</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+              <span style="font-family:var(--font-display);font-size:0.85rem;color:var(--rust);font-weight:700;">02</span>
+              <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--concrete-dark);">非結構創作的自由</h4>
+            </div>
+            <p style="font-size:0.88rem;color:var(--concrete);line-height:1.78;font-weight:300;">Concredia.Lab 不碰建築法規涉及的結構物——這反而是最大的自由。生活用品、裝飾用品、空間擺件，全部在法規之外，在設計之內。廢料在這裡不是問題，是靈感的來源。</p>
+          </div>
+        </div>
+      </div>
+      <div style="padding:1.75rem 0;">
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="font-size:2rem;flex-shrink:0;margin-top:0.1rem;">📡</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+              <span style="font-family:var(--font-display);font-size:0.85rem;color:var(--rust);font-weight:700;">03</span>
+              <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--concrete-dark);">混凝土作為媒介</h4>
+            </div>
+            <p style="font-size:0.88rem;color:var(--concrete);line-height:1.78;font-weight:300;">Concrete as a media with lifestyle, culture, creative, usage. 混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介——就像旭海沙灘上那張水泥桌，讓陌生人坐下來喝一壺茶。</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- MATERIAL PHILOSOPHY（折疊式） -->
-<section id="material" style="padding:0;background:var(--concrete-dark);">
-  <div style="padding:2.5rem 4rem 1.5rem;border-bottom:1px solid rgba(212,207,200,0.08);">
+<!-- MATERIAL PHILOSOPHY（全展開 + 底圖） -->
+<section id="material" style="padding:5rem 4rem;background:var(--concrete-dark);position:relative;overflow:hidden;">
+  <!-- 底圖裝飾 -->
+  <div style="position:absolute;inset:0;background-image:url('images/material-maze.jpg');background-size:cover;background-position:center;opacity:0.06;pointer-events:none;"></div>
+  <div style="position:absolute;left:-8rem;bottom:-8rem;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(155,91,58,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:1;">
     <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>材料哲學</div>
-    <h2 class="sec-title" style="color:var(--warm-white);">混凝土的層次，廢料的升華</h2>
-  </div>
-  <div class="acc-section" id="acc-formula">
-    <div class="acc-header" onclick="toggleAcc('acc-formula')">
-      <div class="acc-icon-wrap">🧪</div>
-      <div class="acc-headline">
-        <div class="acc-title">泥水 → 砂漿 → 混凝土的層次結構</div>
-        <div class="acc-subtitle">水泥 + 水 + 砂 + 骨料（力料）→ Concrete，加鋼筋 = Structural Concrete</div>
+    <h2 class="sec-title" style="color:var(--warm-white);">混凝土的層次，<br>廢料的升華</h2>
+
+    <!-- 層次公式 -->
+    <div style="margin:3rem 0;display:flex;flex-direction:column;gap:1rem;max-width:700px;">
+      <div style="display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;background:rgba(212,207,200,0.05);border-left:4px solid rgba(155,91,58,0.4);">
+        <span style="font-size:1.5rem;">💧</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);">水泥 + 水</span>
+        <span style="color:var(--rust-light);font-size:1.2rem;">→</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--rust-light);font-weight:600;">泥水 Paste</span>
+        <span style="font-size:0.78rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">表層灰色的來源</span>
       </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+      <div style="display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;background:rgba(212,207,200,0.05);border-left:4px solid rgba(155,91,58,0.5);">
+        <span style="font-size:1.5rem;">🪨</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);">+ 砂</span>
+        <span style="color:var(--rust-light);font-size:1.2rem;">→</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--rust-light);font-weight:600;">砂漿 Mortar</span>
+        <span style="font-size:0.78rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">傳統工法抹面</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;background:rgba(212,207,200,0.07);border-left:4px solid var(--rust);">
+        <span style="font-size:1.5rem;">🔩</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);">+ 骨料（力料）</span>
+        <span style="color:var(--rust-light);font-size:1.2rem;">→</span>
+        <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--rust-light);font-weight:700;">混凝土 Concrete</span>
+        <span style="font-size:0.78rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">+ 鋼筋 = Structural</span>
+      </div>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:680px;">
-        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;"><span style="font-family:var(--font-display);font-size:1.05rem;color:var(--warm-white);">水泥 + 水</span><span style="color:var(--rust-light);">→</span><span style="font-family:var(--font-display);font-size:1.05rem;color:var(--rust-light);border-bottom:1px solid var(--rust);">泥水 Paste</span><span style="font-size:0.75rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">表層灰色的來源</span></div>
-        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;"><span style="font-family:var(--font-display);font-size:1.05rem;color:var(--warm-white);">水泥 + 水 + 砂</span><span style="color:var(--rust-light);">→</span><span style="font-family:var(--font-display);font-size:1.05rem;color:var(--rust-light);border-bottom:1px solid var(--rust);">砂漿 Mortar</span><span style="font-size:0.75rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">傳統工法抹面</span></div>
-        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;"><span style="font-family:var(--font-display);font-size:1.05rem;color:var(--warm-white);">水泥 + 水 + 砂 + 骨料</span><span style="color:var(--rust-light);">→</span><span style="font-family:var(--font-display);font-size:1.05rem;color:var(--rust-light);border-bottom:1px solid var(--rust);">混凝土 Concrete</span><span style="font-size:0.75rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">+ 鋼筋 = Structural</span></div>
+
+    <!-- EAC 核心工法 -->
+    <div style="padding:1.75rem 2rem;border:1px solid rgba(155,91,58,0.4);background:rgba(155,91,58,0.08);margin-bottom:3rem;display:flex;align-items:center;gap:1.5rem;max-width:700px;">
+      <div style="font-size:2.5rem;flex-shrink:0;">⚡</div>
+      <div>
+        <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.3rem;">核心工法</div>
+        <div style="font-family:var(--font-display);font-size:1.15rem;color:var(--warm-white);font-weight:600;">EAC — Exposed Aggregate Concrete</div>
+        <div style="font-size:0.85rem;color:var(--concrete-light);opacity:0.8;margin-top:0.3rem;">骨料裸露工法，讓廢料的地質記憶重新顯現為設計語言</div>
       </div>
-      <div style="margin-top:1.75rem;padding:1rem 1.25rem;border:1px solid rgba(155,91,58,0.3);display:inline-flex;align-items:center;gap:0.75rem;">
-        <span style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust-light);">核心工法</span>
-        <span style="font-family:var(--font-display);font-size:0.92rem;color:var(--warm-white);font-style:italic;">EAC — Exposed Aggregate Concrete · 骨料裸露，讓廢料的地質記憶重新顯現</span>
-      </div>
-    </div></div>
-  </div>
-  <div class="acc-section" id="acc-materials">
-    <div class="acc-header" onclick="toggleAcc('acc-materials')">
-      <div class="acc-icon-wrap">♻️</div>
-      <div class="acc-headline">
-        <div class="acc-title">三種核心再生材料</div>
-        <div class="acc-subtitle">再生骨料 · 廢磚粉料 · 爐石粉（低碳交接材）</div>
-      </div>
-      <div class="acc-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </div>
-    <div class="acc-body"><div class="acc-inner">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);">
-        <div style="padding:1.75rem;background:var(--concrete-dark);"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.55;margin-bottom:0.7rem;">01</div><h3 style="font-family:var(--font-display);font-size:1rem;color:var(--warm-white);margin-bottom:0.5rem;">再生骨料（力料）</h3><p style="font-size:0.8rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.85;">拆除廢料中的混凝土碎塊，破碎、篩分、品質分級後作為骨料。水磨後的顆粒感是 Concredia.Lab 獨特觸感的來源——每塊廢料都有自己的地質故事。</p></div>
-        <div style="padding:1.75rem;background:var(--concrete-dark);"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.55;margin-bottom:0.7rem;">02</div><h3 style="font-family:var(--font-display);font-size:1rem;color:var(--warm-white);margin-bottom:0.5rem;">廢磚粉料與石粉</h3><p style="font-size:0.8rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.85;">磚瓦與石材廢料研磨成粉，作為表層介質。不同拆除現場的磚粉各有色澤與礦物組成，使每件作品表面紋路自然天成、不可複製。</p></div>
-        <div style="padding:1.75rem;background:var(--concrete-dark);"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.55;margin-bottom:0.7rem;">03</div><h3 style="font-family:var(--font-display);font-size:1rem;color:var(--warm-white);margin-bottom:0.5rem;">爐石粉 · 低碳交接材</h3><p style="font-size:0.8rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.85;">煉鋼廠高爐爐渣磨成粉，部分取代水泥。是降低碳足跡的關鍵策略，讓我們在使用廢料的同時，也在減少生產端的排放。</p></div>
+
+    <!-- 三種再生材料 -->
+    <h3 style="font-family:var(--font-display);font-size:1.5rem;color:var(--warm-white);font-weight:700;margin-bottom:2rem;">♻️ 三種核心再生材料</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);">
+      <div style="padding:2.5rem 2rem;background:var(--concrete-dark);border-top:3px solid var(--rust-light);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🏚️</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.6;margin-bottom:0.5rem;">01</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--warm-white);margin-bottom:0.6rem;">再生骨料（力料）</div>
+        <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.72;font-weight:300;opacity:0.85;">拆除廢料中的混凝土碎塊，破碎、篩分、品質分級後作為骨料。水磨後的顆粒感是 Concredia.Lab 獨特觸感的來源——每塊廢料都有自己的地質故事。</p>
       </div>
-    </div></div>
+      <div style="padding:2.5rem 2rem;background:var(--concrete-dark);border-top:3px solid var(--rust-light);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🧱</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.6;margin-bottom:0.5rem;">02</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--warm-white);margin-bottom:0.6rem;">廢磚粉料與石粉</div>
+        <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.72;font-weight:300;opacity:0.85;">磚瓦與石材廢料研磨成粉，作為表層介質。不同拆除現場的磚粉各有色澤與礦物組成，使每件作品表面紋路自然天成、不可複製。</p>
+      </div>
+      <div style="padding:2.5rem 2rem;background:var(--concrete-dark);border-top:3px solid var(--rust-light);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🏭</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.6;margin-bottom:0.5rem;">03</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--warm-white);margin-bottom:0.6rem;">爐石粉 · 低碳交接材</div>
+        <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.72;font-weight:300;opacity:0.85;">煉鋼廠高爐爐渣磨成粉，部分取代水泥。是降低碳足跡的關鍵策略，讓我們在使用廢料的同時，也在減少生產端的排放，達成 -62% 碳排目標。</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1763,7 +1859,16 @@ window.addEventListener('load', initMusic);
 
 function toggleAcc(id){var el=document.getElementById(id);if(!el)return;el.classList.toggle('open');}
 function toggleFaq(el){const i=el.closest('.faq-item');document.querySelectorAll('.faq-item').forEach(x=>{if(x!==i)x.classList.remove('open');});i.classList.toggle('open');}
-function switchTab(tab,btn){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-standard').style.display=tab==='standard'?'grid':'none';document.getElementById('tab-custom').style.display=tab==='custom'?'grid':'none';}
+function switchTab(tab,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  var s=document.getElementById('tab-standard');
+  var cu=document.getElementById('tab-custom');
+  if(s)s.style.display=tab==='standard'?'grid':'none';
+  if(cu)cu.style.display=tab==='custom'?'grid':'none';
+}
+// 舊版 switchTab 保留（會被下面的覆蓋）
+function _switchTab_old(tab,btn){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-standard').style.display=tab==='standard'?'grid':'none';document.getElementById('tab-custom').style.display=tab==='custom'?'grid':'none';}
 const navEl=document.querySelector('nav');
 window.addEventListener('scroll',()=>{if(window.scrollY>80){navEl.classList.add('scrolled');}else{navEl.classList.remove('scrolled');}});
 //dumm
