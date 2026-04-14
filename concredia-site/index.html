@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concredia.Lab — 混凝土作為媒介</title>
+<meta name="description" content="Concredia.Lab — Concrete as a media with lifestyle, culture, creative, usage. 土木博士 Ivor Lee 以再生廢棄物創作工業美學家具、水泥音響與生活器物。台灣 · 循環設計。">
+<meta name="keywords" content="Concredia Lab,Ivor Lee,再生建材,營建廢棄物,水泥音響,ESG企業禮品,工業風家具,EAC,Exposed Aggregate Concrete,永續設計,循環經濟,寂寞公路">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --concrete:#8B8680;--concrete-light:#D4CFC8;--concrete-dark:#3A3632;
+  --cream:#F5F2ED;--warm-white:#FAF8F5;--charcoal:#2A2724;
+  --rust:#9B5B3A;--rust-light:#C47A54;--moss:#4A5E3E;
+  --amber:#E8951A;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--charcoal);overflow-x:hidden;font-size:17px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 4rem;background:transparent;transition:all 0.4s;}
+nav.scrolled{background:rgba(250,248,245,0.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(139,134,128,0.15);padding:0.9rem 4rem;}
+.nav-logo{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#FAF8F5;letter-spacing:0.02em;text-decoration:none;transition:color 0.4s;}
+nav.scrolled .nav-logo{color:var(--concrete-dark);}
+.nav-logo .dot{color:var(--rust-light);}
+nav.scrolled .nav-logo .dot{color:var(--rust);}
+.nav-logo .lab{font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.18em;color:rgba(212,207,200,0.5);vertical-align:super;font-weight:500;margin-left:1px;transition:color 0.4s;}
+nav.scrolled .nav-logo .lab{color:var(--concrete);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,248,240,0.92);text-decoration:none;font-weight:500;transition:color 0.2s;text-shadow:0 1px 8px rgba(0,0,0,0.8);}
+nav.scrolled .nav-links a{color:var(--concrete-dark);}
+.nav-links a:hover{color:#FAF8F5;}
+nav.scrolled .nav-links a:hover{color:var(--rust);}
+.nav-cta{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;padding:0.55rem 1.3rem;border:1px solid rgba(212,207,200,0.4);color:rgba(212,207,200,0.85);text-decoration:none;transition:all 0.3s;}
+nav.scrolled .nav-cta{border:1.5px solid var(--concrete-dark);color:var(--concrete-dark);}
+.nav-cta:hover{border-color:#FAF8F5;color:#FAF8F5;}
+nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-white);}
+
+/* HERO — full-bleed cinematic */
+.hero{
+  position:relative;min-height:100vh;display:block;
+  overflow:hidden;background:#1A1714;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url('images/hero-bg.jpg') center/cover no-repeat;
+}
+/* 換成真實照片時取消以上 background，改用：
+   background: url('images/hero-bg.jpg') center/cover no-repeat; */
+.hero-bg-photo{
+  position:absolute;inset:0;z-index:0;
+  width:100%;height:100%;object-fit:cover;opacity:0.55;
+  /* 上傳照片後：<img class="hero-bg-photo" src="images/hero-bg.jpg"> */
+}
+/* 底部往上的遮罩，確保文字可讀 */
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(
+    to top,
+    rgba(10,8,6,0.97) 0%,
+    rgba(10,8,6,0.82) 28%,
+    rgba(10,8,6,0.45) 55%,
+    rgba(10,8,6,0.15) 80%,
+    rgba(10,8,6,0.05) 100%
+  );
+}
+/* 左側豎向品牌標記 */
+.hero-side-label{
+  position:absolute;left:3rem;top:50%;transform:translateY(-50%) rotate(-90deg);
+  transform-origin:center center;
+  z-index:3;
+  font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.28em;
+  text-transform:uppercase;color:rgba(212,207,200,0.35);
+  white-space:nowrap;
+}
+/* 右側年份 */
+.hero-year{
+  position:absolute;right:3rem;top:50%;transform:translateY(-50%) rotate(90deg);
+  transform-origin:center center;
+  z-index:3;
+  font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.15em;
+  color:rgba(212,207,200,0.22);
+}
+/* 主內容容器 */
+.hero-content{
+  position:relative;z-index:4;
+  padding:8rem 6rem 5.5rem 6rem;
+  max-width:1280px;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:100vh;
+  box-sizing:border-box;
+}
+/* 頂部細節線 */
+.hero-topbar{
+  position:absolute;top:0;left:0;right:0;z-index:3;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:5.5rem 6rem 0;
+  pointer-events:none;
+}
+.hero-topbar-line{
+  flex:1;height:1px;background:rgba(212,207,200,0.12);
+}
+.hero-topbar-tag{
+  font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,248,240,0.7);padding:0.3rem 1.5rem;white-space:nowrap;
+  background:rgba(0,0,0,0.3);text-shadow:0 1px 6px rgba(0,0,0,0.6);
+}
+/* 品牌核心語——超大主角字 */
+.hero-manifesto{
+  font-size:clamp(3.5rem,8.5vw,9rem);
+  line-height:1.0;
+  margin-bottom:0;
+  text-shadow:0 4px 32px rgba(0,0,0,0.75),0 2px 8px rgba(0,0,0,0.5);
+  pointer-events:none;
+}
+.hero-manifesto .solid{
+  font-family:'Playfair Display',Georgia,serif;
+  font-weight:700;
+  color:#FAF8F5;
+  display:block;
+  letter-spacing:-0.02em;
+  line-height:0.92;
+}
+.hero-manifesto .accent{
+  font-family:'Pinyon Script',cursive;
+  font-size:1.3em;
+  color:var(--rust-light);
+  display:block;
+  letter-spacing:0.02em;
+  line-height:0.95;
+  text-shadow:0 4px 40px rgba(155,91,58,0.65),0 2px 10px rgba(0,0,0,0.7);
+  margin-top:0.05em;
+}
+/* 副標語 */
+.hero-sub{
+  font-family:var(--font-body);
+  font-size:clamp(0.88rem,1.4vw,1.05rem);
+  color:rgba(255,248,240,0.9);
+  font-weight:300;
+  letter-spacing:0.04em;
+  max-width:580px;
+  line-height:1.78;
+  margin-bottom:2rem;
+  font-style:italic;
+  border-left:3px solid var(--rust-light);
+  padding:0.65rem 1.25rem;
+  text-shadow:0 2px 12px rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.22);
+}
+/* 按鈕列 */
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn-p{
+  display:inline-block;padding:0.9rem 2.2rem;
+  background:var(--warm-white);color:var(--concrete-dark);
+  font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+  font-weight:500;text-decoration:none;transition:all 0.25s;
+}
+.btn-p:hover{background:var(--rust);color:var(--warm-white);}
+.btn-o{
+  display:inline-block;padding:0.9rem 2.2rem;
+  border:1px solid rgba(212,207,200,0.4);color:rgba(212,207,200,0.85);
+  font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+  font-weight:500;text-decoration:none;transition:all 0.25s;
+}
+.btn-o:hover{border-color:rgba(212,207,200,0.9);color:#FAF8F5;}
+/* 底部統計 */
+.hero-stats{
+  display:flex;gap:2.5rem;
+  padding-top:2rem;
+  border-top:1px solid rgba(212,207,200,0.12);
+  flex-wrap:wrap;
+}
+.stat-num{
+  font-family:var(--font-display);font-size:2rem;font-weight:700;
+  color:#FAF8F5;
+}
+.stat-label{
+  font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,248,240,0.75);margin-top:0.2rem;text-shadow:0 1px 6px rgba(0,0,0,0.7);
+}
+/* 底部關鍵字 tags */
+.hero-tags{
+  position:absolute;top:7rem;right:6rem;z-index:3;
+  display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;
+}
+.hero-tag{
+  font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,248,240,0.85);
+  border:1px solid rgba(255,248,240,0.3);
+  padding:0.38rem 0.85rem;
+  background:rgba(0,0,0,0.35);
+  transition:all 0.2s;
+  backdrop-filter:blur(4px);
+}
+.hero-tag:hover{color:var(--rust-light);border-color:var(--rust-light);}
+
+.eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
+.eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--rust);}
+
+/* MARQUEE */
+.marquee-bar{background:var(--concrete-dark);padding:0.9rem 0;overflow:hidden;}
+.marquee-track{display:flex;gap:3rem;animation:marquee 26s linear infinite;white-space:nowrap;}
+.mi{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--concrete-light);opacity:0.65;flex-shrink:0;}
+.md{color:var(--rust);opacity:1;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* COMMON */
+section{padding:5.5rem 4rem;}
+.sec-eye{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem;}
+.sec-eye::before{content:'';display:inline-block;width:22px;height:1px;background:var(--rust);}
+.sec-title{font-family:var(--font-display);font-size:clamp(2.1rem,3.5vw,2.9rem);font-weight:700;color:var(--concrete-dark);line-height:1.15;margin-bottom:1.25rem;}
+.sec-sub{font-size:0.97rem;color:var(--concrete);line-height:1.75;font-weight:300;max-width:560px;}
+
+/* WHY-HOW-WHAT */
+.whw-section{background:var(--concrete-dark);}
+.whw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.08);margin-top:3rem;}
+.whw-card{background:var(--concrete-dark);padding:2.5rem;}
+.whw-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);font-weight:500;margin-bottom:1rem;}
+.whw-head{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--warm-white);margin-bottom:1rem;}
+.whw-body{font-size:0.87rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;}
+.whw-items{list-style:none;margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;}
+.whw-items li{font-size:0.82rem;color:var(--concrete-light);padding-left:1rem;position:relative;opacity:0.8;}
+.whw-items li::before{content:'→';position:absolute;left:0;color:var(--rust-light);}
+
+/* ABOUT / TEAM */
+.team-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:3rem;}
+.team-card{background:var(--cream);border:1px solid var(--concrete-light);}
+.team-photo{aspect-ratio:3/2;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.team-photo img{width:100%;height:100%;object-fit:cover;}
+.team-ph-text{font-family:var(--font-display);font-size:4.5rem;color:rgba(212,207,200,0.1);font-weight:700;}
+.team-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);}
+.team-ph-tag{position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);}
+.team-info{padding:1.75rem;}
+.team-role{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;}
+.team-name{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;}
+.team-name-en{font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;}
+.team-bio{font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;}
+.team-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
+.chip{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;}
+
+/* BAOMEI */
+.baomei-wrap{background:var(--concrete-dark);display:grid;grid-template-columns:320px 1fr;margin-top:2rem;}
+.baomei-illo{display:flex;align-items:center;justify-content:center;padding:2.5rem;border-right:1px solid rgba(212,207,200,0.08);}
+.baomei-illo svg{width:260px;height:auto;}
+.baomei-content{padding:2.75rem;}
+.bm-eye{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.5rem;}
+.bm-name{font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--warm-white);margin-bottom:0.2rem;}
+.bm-title{font-size:0.75rem;letter-spacing:0.08em;color:var(--concrete-light);opacity:0.6;margin-bottom:0.3rem;}
+.bm-birth{font-size:0.72rem;color:var(--rust-light);opacity:0.8;margin-bottom:1.25rem;font-weight:300;}
+.bm-bio{font-size:0.9rem;color:var(--concrete-light);line-height:1.82;font-weight:300;opacity:0.9;}
+.bm-quote{margin-top:1.75rem;padding-left:1rem;border-left:2px solid var(--rust);font-family:var(--font-display);font-size:1rem;color:var(--cream);font-style:italic;line-height:1.65;}
+.bm-origin{margin-top:1.25rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.55;font-style:italic;}
+
+/* VALUES */
+.values-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem;}
+.vi{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.5rem;border-bottom:1px solid var(--concrete-light);}
+.vn{font-family:var(--font-display);font-size:1.1rem;color:var(--rust);font-weight:700;min-width:2rem;}
+.vc h4{font-size:0.92rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.3rem;}
+.vc p{font-size:0.85rem;color:var(--concrete);line-height:1.65;font-weight:300;}
+
+/* MATERIAL PHILOSOPHY */
+.material-section{background:var(--concrete-dark);}
+.mat-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:2rem;}
+.mat-formula{background:rgba(212,207,200,0.06);border:1px solid rgba(212,207,200,0.12);padding:2rem;margin-bottom:3rem;}
+.mat-formula-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.25rem;}
+.formula-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;flex-wrap:wrap;}
+.formula-item{font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);font-weight:700;}
+.formula-arrow{color:var(--rust-light);font-size:1rem;opacity:0.8;}
+.formula-result{font-family:var(--font-display);font-size:1.1rem;color:var(--rust-light);font-weight:700;border-bottom:1px solid var(--rust);padding-bottom:2px;}
+.formula-note{font-size:0.78rem;color:var(--concrete-light);opacity:0.6;margin-left:auto;}
+.mat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.08);}
+.mat-card{background:var(--concrete-dark);padding:2.25rem;}
+.mat-card:hover{background:rgba(212,207,200,0.05);}
+.mat-n{font-family:var(--font-display);font-size:1.8rem;color:var(--rust-light);opacity:0.55;margin-bottom:0.9rem;}
+.mat-card h3{font-family:var(--font-display);font-size:1.15rem;color:var(--warm-white);margin-bottom:0.7rem;font-weight:700;}
+.mat-card p{font-size:0.85rem;color:var(--concrete-light);line-height:1.7;opacity:0.85;font-weight:300;}
+.mat-data{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;padding-top:3rem;border-top:1px solid rgba(212,207,200,0.12);}
+.dn{font-family:var(--font-display);font-size:2.1rem;font-weight:700;color:var(--rust-light);}
+.dl{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--concrete-light);opacity:0.55;margin-top:0.3rem;}
+.eac-badge{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid var(--rust-light);padding:0.5rem 1rem;margin-top:2.5rem;}
+.eac-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust-light);}
+.eac-text{font-family:var(--font-display);font-size:0.88rem;color:var(--warm-white);font-style:italic;}
+
+/* CYCLE */
+.cycle-section{background:var(--cream);}
+.cycle-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--concrete-light);margin-top:3rem;}
+.cycle-card{padding:2.5rem;background:var(--cream);}
+.cycle-card.dark{background:var(--concrete-dark);}
+.cycle-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;margin-bottom:0.75rem;}
+.cycle-card .cycle-label{color:var(--concrete);}
+.cycle-card.dark .cycle-label{color:var(--rust-light);}
+.cycle-head{font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin-bottom:0.75rem;}
+.cycle-card .cycle-head{color:var(--concrete-dark);}
+.cycle-card.dark .cycle-head{color:var(--warm-white);}
+.cycle-body{font-size:0.85rem;line-height:1.72;font-weight:300;}
+.cycle-card .cycle-body{color:var(--concrete);}
+.cycle-card.dark .cycle-body{color:var(--concrete-light);opacity:0.85;}
+
+/* PRODUCTS */
+.products-section{background:var(--warm-white);}
+.prod-tabs{display:flex;margin:2.5rem 0;border-bottom:1px solid var(--concrete-light);}
+.tab-btn{padding:0.7rem 1.4rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;cursor:pointer;border:none;background:none;color:var(--concrete);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;font-family:var(--font-body);}
+.tab-btn.active{color:var(--concrete-dark);border-bottom-color:var(--concrete-dark);}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--concrete-light);}
+.prod-card{background:var(--warm-white);transition:background 0.2s;}
+.prod-card:hover{background:var(--cream);}
+.prod-img{aspect-ratio:1;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.prod-img img{width:100%;height:100%;object-fit:cover;}
+.prod-img-label{font-family:var(--font-display);font-size:2.8rem;color:rgba(212,207,200,0.18);font-weight:700;}
+.prod-badge{position:absolute;top:1rem;left:1rem;background:var(--rust);color:white;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.58rem;z-index:2;}
+.prod-info{padding:1.25rem;}
+.prod-info h4{font-size:0.9rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.35rem;}
+.prod-info p{font-size:0.77rem;color:var(--concrete);line-height:1.6;font-weight:300;}
+.prod-mat{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--moss);margin-top:0.5rem;}
+.prod-spec{font-size:0.73rem;color:var(--concrete);margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--concrete-light);line-height:1.6;}
+
+/* PYRAMID */
+.pyramid-section{background:var(--concrete-dark);padding:5.5rem 4rem;}
+.pyramid-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+.pyramid-svg{width:100%;max-width:320px;margin:0 auto;display:block;}
+.pyramid-levels{display:flex;flex-direction:column;gap:1rem;}
+.pyramid-level{display:flex;gap:1.5rem;align-items:flex-start;padding:1.25rem;border:1px solid rgba(212,207,200,0.12);}
+.pyramid-level-num{font-family:var(--font-display);font-size:1.2rem;color:var(--rust-light);font-weight:700;min-width:1.5rem;opacity:0.7;}
+.pyramid-level h4{font-size:0.9rem;color:var(--warm-white);font-weight:500;margin-bottom:0.25rem;}
+.pyramid-level p{font-size:0.82rem;color:var(--concrete-light);font-weight:300;opacity:0.8;}
+.pyramid-level .wt{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust-light);margin-top:0.3rem;}
+
+/* HIGHWAY STORY */
+.highway-section{background:var(--concrete-dark);position:relative;overflow:hidden;}
+.hw-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 8% 85%,rgba(155,91,58,0.2) 0%,transparent 50%);}
+.hw-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;min-height:78vh;}
+.hw-left{padding:5.5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.hw-right{padding:5.5rem 4rem;border-left:1px solid rgba(212,207,200,0.09);display:flex;flex-direction:column;justify-content:center;}
+.hw-eye{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust-light);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.7rem;}
+.hw-eye::before{content:'';display:inline-block;width:22px;height:1px;background:var(--rust-light);}
+.hw-title{font-family:var(--font-display);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:700;color:var(--warm-white);line-height:1.1;margin-bottom:1.5rem;}
+.hw-title em{font-style:italic;color:var(--rust-light);}
+.hw-pull{font-family:var(--font-display);font-size:1.1rem;color:var(--cream);line-height:1.62;font-style:italic;padding:1.5rem;border-left:3px solid var(--rust);margin-bottom:2rem;}
+.hw-lead{font-size:0.97rem;color:var(--concrete-light);line-height:1.88;font-weight:300;opacity:0.92;margin-bottom:1.5rem;}
+.hw-body{font-size:0.88rem;color:var(--concrete-light);line-height:1.9;font-weight:300;opacity:0.78;}
+.hw-timeline{display:flex;flex-direction:column;}
+.hwi{display:flex;gap:2rem;padding:1.5rem 0;border-bottom:1px solid rgba(212,207,200,0.1);}
+.hwy{font-family:var(--font-display);font-size:0.98rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;}
+.hwc h4{font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;}
+.hwc p{font-size:0.82rem;color:var(--concrete-light);line-height:1.62;font-weight:300;opacity:0.78;}
+
+/* BLOG */
+.blog-section{background:var(--cream);}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.blog-card{background:var(--warm-white);cursor:pointer;transition:transform 0.2s;}
+.blog-card:hover{transform:translateY(-4px);}
+.blog-thumb{aspect-ratio:16/9;background:var(--concrete-dark);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.blog-thumb img{width:100%;height:100%;object-fit:cover;}
+.blog-thumb-label{font-family:var(--font-display);font-size:1.8rem;color:rgba(212,207,200,0.28);font-weight:700;}
+.blog-cat{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);font-weight:500;margin:1rem 1.25rem 0.4rem;}
+.blog-card h3{font-size:0.97rem;font-weight:500;color:var(--concrete-dark);line-height:1.42;padding:0 1.25rem;margin-bottom:0.5rem;}
+.blog-card p{font-size:0.8rem;color:var(--concrete);line-height:1.65;padding:0 1.25rem;font-weight:300;}
+.blog-meta{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;margin-top:0.75rem;border-top:1px solid var(--concrete-light);}
+.blog-date{font-size:0.68rem;color:var(--concrete);opacity:0.58;}
+.blog-read{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);font-weight:500;}
+
+/* IMC / STRATEGY */
+.imc-section{background:var(--warm-white);}
+.imc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--concrete-light);margin-top:3rem;}
+.imc-card{background:var(--warm-white);padding:2rem;}
+.imc-formula{font-size:0.72rem;color:var(--rust);letter-spacing:0.05em;margin-bottom:0.75rem;font-style:italic;}
+.imc-card h4{font-size:0.95rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.5rem;}
+.imc-card p{font-size:0.82rem;color:var(--concrete);line-height:1.68;font-weight:300;}
+
+/* CASES */
+.cases-section{background:var(--cream);}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.case-card{border:1px solid var(--concrete-light);padding:2rem;transition:border-color 0.2s;}
+.case-card:hover{border-color:var(--concrete);}
+.case-logo{width:44px;height:44px;background:var(--concrete-light);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;}
+.case-logo span{font-family:var(--font-display);font-size:1rem;color:var(--concrete-dark);font-weight:700;}
+.case-card h4{font-size:0.92rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.45rem;}
+.case-card blockquote{font-size:0.83rem;color:var(--concrete);line-height:1.68;font-style:italic;font-weight:300;}
+.case-meta{font-size:0.68rem;color:var(--rust);margin-top:1rem;}
+.award-strip{display:flex;gap:1.5rem;margin-top:3rem;flex-wrap:wrap;}
+.award-badge{display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1.1rem;border:1px solid var(--concrete-light);}
+.award-icon{font-size:1.1rem;}
+.award-info{font-size:0.75rem;}
+.award-info strong{display:block;color:var(--concrete-dark);font-weight:500;}
+.award-info span{color:var(--concrete);font-weight:300;}
+
+/* PARTNERS */
+.partners-section{padding:3.5rem 4rem;background:var(--warm-white);}
+.partner-title{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--concrete);text-align:center;margin-bottom:2.25rem;}
+.partner-grid{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;}
+.partner-item{font-family:var(--font-display);font-size:0.97rem;color:var(--concrete);font-weight:700;opacity:0.45;transition:opacity 0.2s;}
+.partner-item:hover{opacity:0.9;}
+
+/* ESG */
+.esg-section{background:var(--concrete-dark);}
+.esg-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(212,207,200,0.08);margin-top:3rem;}
+.esg-card{padding:2.5rem;background:var(--concrete-dark);}
+.esg-card.accent{background:rgba(155,91,58,0.12);}
+.esg-tag{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;}
+.esg-card h3{font-family:var(--font-display);font-size:1.2rem;color:var(--warm-white);margin-bottom:0.75rem;font-weight:700;}
+.esg-card p{font-size:0.85rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;}
+.esg-hub{margin-top:3rem;padding:2rem;border:1px solid rgba(212,207,200,0.15);}
+.esg-hub-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.25rem;}
+.hub-flow{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.hub-node{padding:0.7rem 1.2rem;border:1px solid rgba(212,207,200,0.2);font-size:0.82rem;color:var(--concrete-light);text-align:center;}
+.hub-node.main{border-color:var(--rust-light);color:var(--rust-light);font-weight:500;}
+.hub-arr{color:var(--rust-light);opacity:0.6;font-size:1.1rem;}
+
+/* SEO ARTICLES */
+.seo-section{background:var(--cream);}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.art-card{border:1px solid var(--concrete-light);padding:1.75rem;transition:border-color 0.2s;cursor:pointer;}
+.art-card:hover{border-color:var(--concrete);}
+.art-tag{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.7rem;}
+.art-card h4{font-size:0.9rem;font-weight:500;color:var(--concrete-dark);line-height:1.42;margin-bottom:0.45rem;}
+.art-card p{font-size:0.78rem;color:var(--concrete);line-height:1.65;font-weight:300;}
+
+/* FAQ */
+.faq-section{display:grid;grid-template-columns:1fr 2fr;gap:5rem;background:var(--concrete-dark);padding:5.5rem 4rem;}
+.faq-left .sec-eye{color:var(--rust-light);}
+.faq-left .sec-eye::before{background:var(--rust-light);}
+.faq-left .sec-title{color:var(--warm-white);}
+.faq-list{display:flex;flex-direction:column;}
+.faq-item{border-top:1px solid rgba(212,207,200,0.13);}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;cursor:pointer;}
+.faq-q h4{font-size:0.92rem;font-weight:500;color:var(--warm-white);}
+.faq-toggle{width:22px;height:22px;border:1px solid rgba(212,207,200,0.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.faq-toggle span{color:var(--concrete-light);font-size:1rem;line-height:1;transition:transform 0.3s;display:block;}
+.faq-ans{font-size:0.85rem;color:var(--concrete-light);line-height:1.75;font-weight:300;padding-bottom:1.4rem;display:none;opacity:0.82;}
+.faq-item.open .faq-ans{display:block;}
+.faq-item.open .faq-toggle span{transform:rotate(45deg);}
+
+/* CONTACT */
+.contact-section{display:grid;grid-template-columns:1fr 1fr;}
+.contact-left{background:var(--rust);padding:5.5rem 4rem;}
+.contact-left .sec-eye{color:rgba(255,255,255,0.65);}
+.contact-left .sec-eye::before{background:rgba(255,255,255,0.65);}
+.contact-left .sec-title{color:white;}
+.contact-items{display:flex;flex-direction:column;gap:1.4rem;margin-top:2.5rem;}
+.contact-item{display:flex;gap:1rem;align-items:flex-start;}
+.contact-icon{width:34px;height:34px;border:1px solid rgba(255,255,255,0.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;}
+.contact-text{font-size:0.85rem;color:rgba(255,255,255,0.82);line-height:1.5;}
+.contact-text strong{color:white;display:block;font-weight:500;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.18rem;}
+.contact-right{padding:5.5rem 4rem;background:var(--cream);}
+.form-group{margin-bottom:1.4rem;}
+.form-group label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--concrete);display:block;margin-bottom:0.5rem;font-weight:500;}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.82rem;border:1px solid var(--concrete-light);background:var(--warm-white);font-family:var(--font-body);font-size:0.88rem;color:var(--charcoal);outline:none;transition:border-color 0.2s;border-radius:0;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--concrete);}
+.form-group textarea{height:115px;resize:vertical;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{width:100%;padding:0.95rem;background:var(--concrete-dark);color:var(--warm-white);border:none;font-family:var(--font-body);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background 0.25s;}
+.submit-btn:hover{background:var(--rust);}
+
+/* FOOTER */
+footer{background:var(--charcoal);padding:4rem 4rem 0;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand .logo{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--warm-white);margin-bottom:0.75rem;}
+.footer-brand .logo .dot{color:var(--rust-light);}
+.footer-brand .logo .lab{font-family:var(--font-body);font-size:0.58rem;letter-spacing:0.15em;color:var(--concrete-light);opacity:0.6;vertical-align:super;}
+.footer-brand p{font-size:0.8rem;color:var(--concrete-light);line-height:1.65;opacity:0.65;font-weight:300;}
+.footer-col h5{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-light);opacity:0.45;margin-bottom:1rem;font-weight:500;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col a{font-size:0.82rem;color:var(--concrete-light);text-decoration:none;opacity:0.65;transition:opacity 0.2s;}
+.footer-col a:hover{opacity:1;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:2rem 0;border-top:1px solid rgba(212,207,200,0.09);}
+.footer-bottom p{font-size:0.72rem;color:var(--concrete-light);opacity:0.38;}
+.social-links{display:flex;gap:1rem;}
+.social-link{width:30px;height:30px;border:1px solid rgba(212,207,200,0.18);display:flex;align-items:center;justify-content:center;font-size:0.68rem;color:var(--concrete-light);opacity:0.55;text-decoration:none;transition:opacity 0.2s;}
+.social-link:hover{opacity:1;}
+.footer-easter{border-top:1px solid rgba(212,207,200,0.06);padding:1.2rem 0;display:flex;align-items:center;gap:0.9rem;}
+.footer-easter-text{font-size:0.7rem;color:var(--concrete-light);opacity:0.28;font-style:italic;}
+
+/* MANIFESTO */
+.manifesto-section{background:var(--rust);padding:5rem 4rem;text-align:center;}
+.manifesto-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);color:white;font-weight:700;margin-bottom:1.5rem;line-height:1.3;}
+.manifesto-body{font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.9;font-weight:300;max-width:680px;margin:0 auto;}
+.manifesto-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2rem;}
+
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:768px){
+  nav{padding:0.9rem 1.25rem !important;}
+  .nav-links,.nav-cta{display:none !important;}
+  .hamburger{display:flex !important;flex-direction:column;gap:5px;cursor:pointer;z-index:200;}
+  .hamburger span{display:block;width:26px;height:2px;background:#FAF8F5;border-radius:2px;transition:all 0.3s;}
+  nav.scrolled .hamburger span{background:var(--concrete-dark);}
+  .mobile-menu{position:fixed;inset:0;background:rgba(42,39,36,0.98);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;transform:translateX(100%);transition:transform 0.35s ease;backdrop-filter:blur(10px);}
+  .mobile-menu.open{transform:translateX(0);}
+  .mobile-menu a{font-size:1.35rem;font-family:var(--font-display);color:var(--warm-white);text-decoration:none;font-weight:700;letter-spacing:0.04em;}
+  .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;color:var(--concrete-light);cursor:pointer;background:none;border:none;font-family:sans-serif;line-height:1;}
+  .hero{min-height:100svh;}
+  .hero-manifesto{font-size:clamp(2.4rem,10vw,3.8rem) !important;margin-bottom:0 !important;}
+  .hero-manifesto .accent{font-size:1.1em !important;}
+  .hero > div[style*="position:absolute;inset:0"]{padding:0 1.25rem !important;}
+  .hero > div[style*="position:absolute;bottom:0"]{padding:0 1.25rem 3rem !important;}
+  .hero-sub{font-size:0.85rem !important;margin-bottom:1.5rem !important;max-width:100% !important;}
+  .hero-actions{flex-direction:column;gap:0.65rem !important;margin-bottom:0 !important;}
+  .btn-p,.btn-o{padding:0.95rem 1.5rem !important;font-size:0.75rem !important;text-align:center;}
+  .hero-stats{gap:1rem !important;padding-top:1.5rem !important;flex-wrap:wrap;}
+  .stat-num{font-size:1.4rem !important;}
+  .stat-label{font-size:0.58rem !important;}
+  .hero-side-label,.hero-year,.hero-tags,.hero-topbar{display:none !important;}
+  section{padding:3rem 1.25rem !important;}
+  .sec-title{font-size:clamp(1.65rem,6.5vw,2.1rem) !important;}
+  .sec-sub{font-size:0.88rem !important;max-width:100% !important;}
+  .whw-grid,.mat-cards,.esg-grid,.imc-grid,.cases-grid,.articles-grid,.prod-grid{grid-template-columns:1fr !important;}
+  .team-grid,.cycle-grid,.pvs-grid,.pyramid-grid,.carbon-grid,.baomei-wrap,.contact-section,.hw-inner{grid-template-columns:1fr !important;}
+  .sdgs-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important;}
+  .team-photo{aspect-ratio:3/2 !important;}
+  .baomei-illo{border-right:none !important;border-bottom:1px solid rgba(212,207,200,0.08);padding:1.5rem !important;}
+  .baomei-illo svg{max-width:160px !important;}
+  .baomei-content{padding:1.75rem 1.25rem !important;}
+  .bm-name{font-size:1.35rem !important;}
+  .mat-data{grid-template-columns:1fr 1fr !important;gap:1rem !important;}
+  .formula-row{flex-direction:column;align-items:flex-start;gap:0.3rem !important;}
+  .prod-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab-btn{font-size:0.68rem !important;padding:0.55rem 0.9rem !important;white-space:nowrap;}
+  .blog-grid{grid-template-columns:1fr !important;}
+  .hw-left,.hw-right{padding:3rem 1.25rem !important;}
+  .hw-right{border-left:none !important;border-top:1px solid rgba(212,207,200,0.09);}
+  .hw-title{font-size:clamp(1.7rem,7.5vw,2.4rem) !important;}
+  .hwi{gap:1rem !important;}
+  .faq-section{grid-template-columns:1fr !important;padding:3rem 1.25rem !important;gap:2rem !important;}
+  .faq-q h4{font-size:0.83rem !important;}
+  .contact-left,.contact-right{padding:3rem 1.25rem !important;}
+  .form-row{grid-template-columns:1fr !important;}
+  .manifesto-title{font-size:1.45rem !important;}
+  .manifesto-body{font-size:0.88rem !important;}
+  footer{padding:3rem 1.25rem 0 !important;}
+  .footer-grid{grid-template-columns:1fr !important;gap:2rem !important;}
+  .footer-bottom{flex-direction:column;gap:1rem;text-align:center;}
+  .pyramid-grid{gap:2rem !important;}
+  .pyramid-svg{max-width:220px !important;margin:0 auto;}
+  .hub-flow{flex-direction:column;align-items:flex-start !important;}
+  .award-strip{flex-direction:column;gap:0.75rem !important;}
+  .partner-grid{gap:1.25rem !important;}
+  .hero-stats > div:last-child{display:none;}
+  #gallery > div:nth-child(2){grid-template-columns:1fr 1fr !important;}
+  .esg-hub{overflow-x:auto;}
+  .esg-section,.pyramid-section{padding:3rem 1.25rem !important;}
+  .whw-section,.material-section,.cycle-section,.products-section,.blog-section,.cases-section,.seo-section,.partners-section,.manifesto-section,.imc-section{padding:3rem 1.25rem !important;}
+  .impact-4col{grid-template-columns:1fr 1fr !important;}
+  .impact-3col{grid-template-columns:1fr 1fr !important;}
+  .impact-flow{flex-direction:column !important;}
+  .impact-flow > div[style*="flex:1"]{min-width:auto !important;}
+  .impact-flow > div[style*="display:flex;align-items:center;padding:0"]{transform:rotate(90deg);padding:0.5rem 0 !important;height:30px;justify-content:center;}
+}
+@media(min-width:769px) and (max-width:1024px){
+  nav{padding:1rem 2.5rem;}
+  section{padding:4rem 2.5rem !important;}
+  .hero-content{padding:0 3rem 5rem !important;}
+  .hero-manifesto{font-size:clamp(3rem,6.5vw,5rem) !important;}
+  .whw-grid,.mat-cards{grid-template-columns:1fr 1fr !important;}
+  .prod-grid,.blog-grid{grid-template-columns:1fr 1fr !important;}
+  .footer-grid{grid-template-columns:1fr 1fr !important;}
+  .sdgs-grid{grid-template-columns:1fr 1fr !important;}
+  .cases-grid{grid-template-columns:1fr 1fr !important;}
+  .articles-grid{grid-template-columns:1fr 1fr !important;}
+}
+
+
+/* mobile-menu 桌機預設完全隱藏 */
+.mobile-menu{display:none;}
+
+@media(max-width:768px){
+  #cta > div:last-child{grid-template-columns:1fr !important;}
+  #cta > div:first-child{padding:3.5rem 1.25rem !important;}
+  #cta > div:first-child > div > div:last-child{flex-direction:column;}
+}
+
+@media(max-width:768px){
+  .mobile-menu{
+    display:flex;position:fixed;inset:0;
+    background:rgba(42,39,36,0.98);z-index:150;
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:2.5rem;transform:translateX(100%);
+    transition:transform 0.35s ease;backdrop-filter:blur(10px);
+  }
+  .mobile-menu.open{transform:translateX(0);}
+}
+
+/* ===== ACCORDION / EXPAND SECTIONS ===== */
+.acc-section{border-bottom:1px solid rgba(212,207,200,0.1);position:relative;z-index:2;}
+.acc-header{
+  display:flex;align-items:center;gap:1.5rem;
+  padding:2rem 4rem;cursor:pointer;
+  transition:background 0.2s;
+  user-select:none;
+  position:relative;
+}
+.acc-header:hover{background:rgba(212,207,200,0.04);}
+.acc-icon-wrap{
+  width:52px;height:52px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;border-radius:4px;
+  background:rgba(155,91,58,0.12);
+  border:1px solid rgba(155,91,58,0.2);
+}
+.acc-headline{flex:1;}
+.acc-title{
+  font-family:var(--font-display);font-size:1.35rem;font-weight:700;
+  color:var(--warm-white);line-height:1.2;margin-bottom:0.2rem;
+}
+.acc-subtitle{font-size:0.82rem;color:var(--concrete-light);opacity:0.7;font-weight:300;}
+.acc-toggle{
+  width:36px;height:36px;border:1px solid rgba(212,207,200,0.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  border-radius:2px;transition:all 0.3s;
+}
+.acc-toggle svg{width:14px;height:14px;stroke:var(--concrete-light);transition:transform 0.35s;fill:none;stroke-width:2;stroke-linecap:round;}
+.acc-section.open .acc-toggle{background:rgba(155,91,58,0.15);border-color:var(--rust-light);}
+.acc-section.open .acc-toggle svg{transform:rotate(180deg);stroke:var(--rust-light);}
+.acc-body{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.6s ease;
+}
+.acc-section.open .acc-body{max-height:8000px;}
+.acc-inner{padding:0 4rem 3.5rem;}
+
+/* 數字徽章 */
+.acc-badge{
+  font-family:var(--font-display);font-size:1.6rem;font-weight:700;
+  color:var(--rust-light);opacity:0.6;min-width:2.5rem;
+}
+
+@media(max-width:768px){
+  .acc-header{padding:1.5rem 1.25rem;gap:1rem;}
+  .acc-icon-wrap{width:42px;height:42px;font-size:1.4rem;}
+  .acc-title{font-size:1.1rem;}
+  .acc-inner{padding:0 1.25rem 3rem;}
+}
+
+
+/* ===== MUSIC PLAYER ===== */
+.music-player{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.75rem 1.1rem;
+  background:rgba(42,39,36,0.92);
+  border:1px solid rgba(212,207,200,0.2);
+  backdrop-filter:blur(12px);
+  border-radius:50px;
+  transition:all 0.3s;
+  box-shadow:0 4px 24px rgba(0,0,0,0.4);
+}
+.music-player:hover{border-color:rgba(155,91,58,0.5);}
+.music-btn{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--rust);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background 0.2s;
+}
+.music-btn:hover{background:var(--rust-light);}
+.music-btn svg{width:14px;height:14px;fill:white;}
+.music-info{
+  font-family:var(--font-body);font-size:0.68rem;
+  letter-spacing:0.08em;color:var(--concrete-light);
+  white-space:nowrap;opacity:0.85;
+  max-width:160px;overflow:hidden;text-overflow:ellipsis;
+}
+.music-info strong{color:var(--warm-white);display:block;font-weight:500;font-size:0.72rem;}
+.music-volume{
+  width:60px;height:3px;background:rgba(212,207,200,0.2);
+  border-radius:2px;cursor:pointer;position:relative;overflow:hidden;
+}
+.music-volume-fill{
+  height:100%;background:var(--rust-light);border-radius:2px;
+  width:70%;transition:width 0.1s;
+}
+.music-close{
+  background:none;border:none;cursor:pointer;
+  color:rgba(212,207,200,0.4);font-size:1rem;line-height:1;
+  padding:0;transition:color 0.2s;
+}
+.music-close:hover{color:var(--warm-white);}
+@media(max-width:768px){
+  .music-player{bottom:1.25rem;right:1.25rem;padding:0.6rem 0.9rem;}
+  .music-info{display:none;}
+  .music-volume{display:none;}
+}
+
+
+/* ===== MUSIC PLAYER ===== */
+.music-player{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.75rem 1.1rem 0.75rem 0.9rem;
+  background:rgba(42,39,36,0.95);
+  border:1px solid rgba(155,91,58,0.35);
+  backdrop-filter:blur(12px);
+  border-radius:50px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.45);
+  transition:border-color 0.2s;
+}
+.music-player:hover{border-color:rgba(155,91,58,0.65);}
+.mp-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--rust);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background 0.2s;padding:0;
+}
+.mp-btn:hover{background:var(--rust-light);}
+.mp-btn svg{width:13px;height:13px;fill:white;display:block;}
+.mp-label{
+  font-size:0.7rem;letter-spacing:0.06em;
+  color:rgba(212,207,200,0.8);white-space:nowrap;
+  line-height:1.3;
+}
+.mp-label strong{color:var(--warm-white);display:block;font-size:0.72rem;font-weight:500;}
+.mp-vol{
+  width:55px;height:3px;background:rgba(212,207,200,0.18);
+  border-radius:2px;cursor:pointer;flex-shrink:0;
+}
+.mp-vol-bar{height:100%;background:var(--rust-light);border-radius:2px;width:40%;pointer-events:none;}
+.mp-x{
+  background:none;border:none;cursor:pointer;
+  color:rgba(212,207,200,0.4);font-size:1.1rem;line-height:1;
+  padding:0 0 0 0.2rem;transition:color 0.2s;
+}
+.mp-x:hover{color:var(--warm-white);}
+
+</style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
+  <ul class="nav-links">
+    <li><a href="impact.html">環境現況</a></li>
+    <li><a href="#cta">支持方案</a></li>
+    <li><a href="#why">使命</a></li>
+    <li><a href="#about">關於團隊</a></li>
+    <li><a href="#material">材料哲學</a></li>
+    <li><a href="products.html">產品系列</a></li>
+    <li><a href="story.html">品牌故事</a></li>
+    <li><a href="#blog">最新動態</a></li>
+    <li><a href="gallery.html">作品影像集</a></li>
+    <li><a href="contact.html">聯絡</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">合作洽詢</a>
+  <!-- 漢堡選單（手機用） -->
+  <button class="hamburger" id="hamburger" aria-label="選單" style="display:none;background:none;border:none;">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- 手機全螢幕選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">×</button>
+  <a href="impact.html" onclick="closeMobileMenu()">環境現況</a>
+  <a href="#cta" onclick="closeMobileMenu()">支持方案</a>
+  <a href="#why" onclick="closeMobileMenu()">使命</a>
+  <a href="#about" onclick="closeMobileMenu()">關於團隊</a>
+  <a href="#material" onclick="closeMobileMenu()">材料哲學</a>
+  <a href="#products" onclick="closeMobileMenu()">產品系列</a>
+  <a href="story.html" onclick="closeMobileMenu()">品牌故事</a>
+  <a href="gallery.html" onclick="closeMobileMenu()">作品影像集</a>
+  <a href="#blog" onclick="closeMobileMenu()">最新動態</a>
+  <a href="contact.html" onclick="closeMobileMenu()" style="color:var(--rust-light);">合作洽詢</a>
+</div>
+
+<!-- HERO — full-bleed cinematic -->
+<div class="hero">
+
+  <!-- 底圖層：換成真實照片時，在此加入 <img class="hero-bg-photo" src="images/hero-bg.jpg"> -->
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+
+  <!-- 左側豎標 -->
+  <div class="hero-side-label">Concredia.Lab · Taiwan · Est. 2021</div>
+  <!-- 右側年份 -->
+  <div class="hero-year">2025</div>
+
+  <!-- 頂部細節線 -->
+  <div class="hero-topbar">
+    <div class="hero-topbar-line"></div>
+    <div class="hero-topbar-tag">Dr. Ivor Lee · 土木博士 · 材料科學</div>
+    <div class="hero-topbar-line"></div>
+  </div>
+
+  <!-- 右上關鍵字 -->
+  <div class="hero-tags">
+    <span class="hero-tag">EAC 技術</span>
+    <span class="hero-tag">Up-cycle</span>
+    <span class="hero-tag">ESG</span>
+    <span class="hero-tag">水泥音響</span>
+    <span class="hero-tag">寂寞公路</span>
+  </div>
+
+  <!-- 主標語：垂直正中，完全獨立 -->
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;padding:80px 6rem 0;pointer-events:none;">
+    <h1 class="hero-manifesto">
+      <span class="solid">Concrete</span>
+      <span class="accent">as a Media.</span>
+    </h1>
+  </div>
+
+  <!-- 副標語：右側固定 -->
+  <div style="position:absolute;top:0;right:0;width:38%;bottom:0;z-index:5;display:flex;align-items:center;justify-content:flex-end;padding:80px 5rem 220px 2rem;pointer-events:none;">
+    <p style="font-size:clamp(0.8rem,1.15vw,0.95rem);color:rgba(255,248,240,0.9);font-weight:300;line-height:1.88;font-style:italic;text-shadow:0 2px 16px rgba(0,0,0,0.9);border-right:3px solid var(--rust-light);padding-right:1.25rem;text-align:right;">
+      混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介。<br><br>
+      <em style="font-size:0.88em;opacity:0.6;">"Concrete as a media with lifestyle, culture, creative, usage."</em>
+    </p>
+  </div>
+
+  <!-- 底部：按鈕 + 數據（左側區域） -->
+  <div style="position:absolute;bottom:0;left:0;right:0;z-index:6;padding:0 5rem 3rem;background:linear-gradient(to top,rgba(10,8,6,0.97) 0%,rgba(10,8,6,0.82) 45%,transparent 100%);">
+    <div style="display:grid;grid-template-columns:55% 45%;gap:3rem;align-items:flex-end;">
+      <div>
+        <div class="hero-actions" style="margin-bottom:2rem;">
+          <a href="products.html" class="btn-p">探索產品系列</a>
+          <a href="story.html" class="btn-o">品牌故事</a>
+          <a href="impact.html" class="btn-o">使命與方法</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">70%+</div><div class="stat-label">再生廢料佔比</div></div>
+          <div><div class="stat-num">-62%</div><div class="stat-label">碳排放削減</div></div>
+          <div><div class="stat-num">40+</div><div class="stat-label">設計作品</div></div>
+        </div>
+      </div>
+      <div style="text-align:right;padding-bottom:0.25rem;">
+        <p style="font-size:clamp(0.85rem,1.1vw,0.98rem);color:rgba(255,248,240,0.9);font-weight:300;line-height:1.9;font-style:italic;text-shadow:0 2px 14px rgba(0,0,0,0.9);border-right:3px solid var(--rust-light);padding-right:1.25rem;margin:0;display:inline-block;text-align:right;">
+          混凝土不只是材料，<br>它是承載生活風格、文化底蘊、<br>創意表達與實用機能的媒介。<br>
+          <em style="font-size:0.83em;opacity:0.62;">"Concrete as a media with lifestyle,<br>culture, creative, usage."</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="mi">Concrete as a Media</span><span class="md">◆</span>
+    <span class="mi">The Lonely Highway</span><span class="md">◆</span>
+    <span class="mi">EAC · Exposed Aggregate Concrete</span><span class="md">◆</span>
+    <span class="mi">Up-cycle · 升級改造</span><span class="md">◆</span>
+    <span class="mi">水泥音響 Concrete Speaker</span><span class="md">◆</span>
+    <span class="mi">ESG 企業禮品</span><span class="md">◆</span>
+    <span class="mi">寶妹坐鎮 · 品質把關</span><span class="md">◆</span>
+    <span class="mi">再生建材 · 台灣製造</span><span class="md">◆</span>
+    <span class="mi">Concrete as a Media</span><span class="md">◆</span>
+    <span class="mi">The Lonely Highway</span><span class="md">◆</span>
+    <span class="mi">EAC · Exposed Aggregate Concrete</span><span class="md">◆</span>
+    <span class="mi">Up-cycle · 升級改造</span><span class="md">◆</span>
+    <span class="mi">水泥音響 Concrete Speaker</span><span class="md">◆</span>
+    <span class="mi">ESG 企業禮品</span><span class="md">◆</span>
+    <span class="mi">寶妹坐鎮 · 品質把關</span><span class="md">◆</span>
+    <span class="mi">再生建材 · 台灣製造</span><span class="md">◆</span>
+  </div>
+</div>
+
+
+
+
+<!-- ===== 行動呼籲 CTA ===== -->
+<section id="cta" style="padding:0;background:var(--concrete-dark);">
+
+  <!-- 主口號 Banner -->
+  <div style="position:relative;padding:5rem 4rem;text-align:center;overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url('images/studio-night.jpg');background-size:cover;background-position:center 30%;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(22,18,14,0.88) 0%,rgba(42,30,22,0.85) 50%,rgba(22,18,14,0.88) 100%);"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(155,91,58,0.25) 0%,transparent 60%);pointer-events:none;"></div>
+    <div style="position:relative;z-index:1;">
+      <div style="font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.5rem;">立即加入 · 共同實踐</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,3rem);color:var(--warm-white);font-weight:700;line-height:1.25;margin-bottom:1rem;">廢料不是問題的終點，<br>而是<em style="color:var(--rust-light);font-style:italic;">故事的起點</em>。</h2>
+      <p style="font-size:1rem;color:var(--concrete-light);opacity:0.82;max-width:580px;margin:0 auto 3rem;line-height:1.8;font-weight:300;">台灣正在進入排碳有價的時代。每一件 Concredia.Lab 作品，都是對廢棄物危機最直接、最有力的回應。</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html?type=esg" class="btn-p" style="background:var(--rust);font-size:0.8rem;padding:1rem 2rem;">企業 ESG 合作洽詢</a>
+        <a href="contact.html?type=invest" class="btn-o" style="border-color:rgba(212,207,200,0.5);color:var(--warm-white);font-size:0.8rem;padding:1rem 2rem;">投資人 / 募資計畫</a>
+        <a href="contact.html?type=gov" class="btn-o" style="border-color:rgba(212,207,200,0.5);color:var(--warm-white);font-size:0.8rem;padding:1rem 2rem;">政府採購提案</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三種受眾 CTA 卡片 -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);">
+
+    <!-- 企業 ESG -->
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:3px solid #27AE60;transition:background 0.2s;" onmouseover="this.style.background='rgba(39,174,96,0.06)'" onmouseout="this.style.background='var(--concrete-dark)'">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🏢</div>
+      <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#2ECC71;margin-bottom:0.6rem;">For 企業與集團</div>
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--warm-white);font-weight:700;margin-bottom:0.75rem;line-height:1.3;">你的 ESG 報告，<br>需要一塊真實的石頭。</h3>
+      <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;margin-bottom:1.5rem;">企業紀念磚、ESG 禮品、空間家具——每件附材料溯源證書與減碳量報告，直接計入 ESG 報告佐證。台灣 2026 年碳費開徵，提前佈局最划算。</p>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#2ECC71;">✓</span> 附正式 ESG 認證文件套件</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#2ECC71;">✓</span> 超過 50% 再生料，符合綠色採購</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#2ECC71;">✓</span> 可客製企業故事與 Logo</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#2ECC71;">✓</span> 2026 碳費提前布局</div>
+      </div>
+      <a href="contact.html" style="display:inline-block;padding:0.82rem 1.75rem;background:#27AE60;color:white;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#2ECC71'" onmouseout="this.style.background='#27AE60'">洽詢企業採購方案</a>
+    </div>
+
+    <!-- 政府 -->
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:3px solid #3498DB;transition:background 0.2s;" onmouseover="this.style.background='rgba(52,152,219,0.06)'" onmouseout="this.style.background='var(--concrete-dark)'">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🏛️</div>
+      <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#5DADE2;margin-bottom:0.6rem;">For 中央與地方政府</div>
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--warm-white);font-weight:700;margin-bottom:0.75rem;line-height:1.3;">廢料在地解決，<br>政策落地實踐。</h3>
+      <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;margin-bottom:1.5rem;">從環境部資源循環到文化部文創補助，Concredia.Lab 的 Hub & Satellite 模式，可切入多個政策窗口，讓廢料在地再生，創造地方就業，符合循環經濟政策方向。</p>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#5DADE2;">✓</span> 符合政府綠色採購規範</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#5DADE2;">✓</span> 對應環境部、文化部、農業部</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#5DADE2;">✓</span> Hub & Satellite 在地工廠模式</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:#5DADE2;">✓</span> 15 萬以下小型標案優先切入</div>
+      </div>
+      <a href="contact.html" style="display:inline-block;padding:0.82rem 1.75rem;background:#2980B9;color:white;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#3498DB'" onmouseout="this.style.background='#2980B9'">提交政府合作提案</a>
+    </div>
+
+    <!-- 投資人 -->
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:3px solid var(--rust-light);transition:background 0.2s;" onmouseover="this.style.background='rgba(155,91,58,0.08)'" onmouseout="this.style.background='var(--concrete-dark)'">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🌱</div>
+      <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.6rem;">For 天使投資人 / 募資計畫</div>
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;color:var(--warm-white);font-weight:700;margin-bottom:0.75rem;line-height:1.3;">投資一塊石頭，<br>守護一座城市。</h3>
+      <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;margin-bottom:1.5rem;">台灣建築廢棄物年產千萬噸，營建廢料再生市場龐大且幾乎空白。Concredia.Lab 已有完整技術 SOP、產品線與市場驗證，正在尋找共同推進這件事的夥伴。</p>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:var(--rust-light);">✓</span> 技術壁壘高、可授權可複製</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:var(--rust-light);">✓</span> B2B / B2G / B2ESG 多元通路</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:var(--rust-light);">✓</span> 募資餐會 · 說帖提供</div>
+        <div style="display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.8;"><span style="color:var(--rust-light);">✓</span> 歡迎預約工廠參觀</div>
+      </div>
+      <a href="contact.html" style="display:inline-block;padding:0.82rem 1.75rem;background:var(--rust);color:white;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">預約投資人會談</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="blog-section">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="sec-eye">最新動態</div>
+      <h2 class="sec-title">消息 · Maker 實錄 · 公路現場</h2>
+    </div>
+    <a href="index.html#blog" class="btn-o">查看全部</a>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-thumb" style="background:#111;">
+        <img src="images/story-night.jpg" alt="寂寞公路" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+      </div>
+      <div class="blog-cat">寂寞公路計劃</div>
+      <h3>旭海 · 180 公斤的相遇——帶著水泥桌去見陌生人</h3>
+      <p>屏東旭海的沙灘上，一張水泥桌、一壺茶、幾個不期而遇的旅人。這不是展覽，是 Concredia.Lab 最真實的品牌宣言。</p>
+      <div class="blog-meta"><span class="blog-date">2025 年 4 月</span><span class="blog-read" style="cursor:pointer;color:var(--rust);" onclick="alert('文章頁面建置中，敬請期待！')">閱讀全文 →</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb">
+        <img src="images/studio-pour.jpg" alt="水泥灌漿過程" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
+      </div>
+      <div class="blog-cat">Maker 實錄</div>
+      <h3>開模、灌漿、水磨——一顆水泥音響的三小時誕生記</h3>
+      <p>從迷宮迴路設計到 EAC 水磨工序，透明化過程、保留核心配方。這是一件作品的誕生，也是一段廢料的重生。</p>
+      <div class="blog-meta"><span class="blog-date">2025 年 3 月</span><span class="blog-read" style="cursor:pointer;color:var(--rust);" onclick="alert('文章頁面建置中，敬請期待！')">閱讀全文 →</span></div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-thumb">
+        <img src="images/baomei.jpg" alt="寶妹" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;">
+      </div>
+      <div class="blog-cat">倉庫日常</div>
+      <h3>寶妹對這張新桌子的熱情，只有三分鐘</h3>
+      <p>三分鐘，恰好是水泥從流動走向凝固的關鍵時刻。寶妹每次的熱情很短暫，但這張桌子能陪你一輩子。</p>
+      <div class="blog-meta"><span class="blog-date">2025 年 2 月</span><span class="blog-read" style="cursor:pointer;color:var(--rust);" onclick="alert('文章頁面建置中，敬請期待！')">閱讀全文 →</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- IMPACT: 環境現況 + SDGs + ESG（全展開） -->
+<section id="impact" style="padding:0;background:#1A1714;">
+
+  <!-- 主標 -->
+  <div style="padding:5rem 4rem 3rem;border-bottom:1px solid rgba(212,207,200,0.08);">
+    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>為什麼現在就要行動</div>
+    <h2 class="sec-title" style="color:var(--warm-white);font-size:clamp(2rem,3.5vw,3rem);">地球正在耗盡原材料，<br>廢棄物卻<em style="color:var(--rust-light);font-style:italic;">無處可去</em>。</h2>
+  </div>
+
+  <!-- 四大危機數字 -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(212,207,200,0.05);">
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #E74C3C;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🏗️</div>
+      <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:#E74C3C;line-height:1;margin-bottom:0.5rem;">37%</div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">全球溫室氣體排放來自<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">建築與營建業</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">UNEP 2022</div>
+    </div>
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #E67E22;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🏭</div>
+      <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:#E67E22;line-height:1;margin-bottom:0.5rem;">8%</div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">全球 CO₂ 來自<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">水泥業（航空業的4倍）</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">GCCA 2024</div>
+    </div>
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #F39C12;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🗑️</div>
+      <div style="font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:#F39C12;line-height:1;margin-bottom:0.5rem;">1,000<span style="font-size:1.2rem;opacity:0.8;">萬噸</span></div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">台灣每年廢棄物，暫置垃圾<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">2017–2022 年暴增 9 倍</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">環境部 2024</div>
+    </div>
+    <div style="padding:3rem 2rem;background:#1A1714;border-top:4px solid #2980B9;">
+      <div style="font-size:3rem;margin-bottom:0.75rem;">🏢</div>
+      <div style="font-family:var(--font-display);font-size:3.5rem;font-weight:700;color:#5DADE2;line-height:1;margin-bottom:0.5rem;">53%</div>
+      <div style="font-size:0.9rem;color:var(--concrete-light);line-height:1.65;font-weight:300;">台灣建築屋齡超過30年<strong style="color:var(--warm-white);font-weight:500;display:block;margin-top:0.3rem;font-size:1rem;">龐大拆除潮正在到來</strong></div>
+      <div style="font-size:0.6rem;color:var(--concrete-light);opacity:0.3;margin-top:0.75rem;">內政部 2023</div>
+    </div>
+  </div>
+
+  <!-- SDGs -->
+  <div style="padding:4rem 4rem;border-top:1px solid rgba(212,207,200,0.08);">
+    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>聯合國永續發展目標</div>
+    <h3 style="font-family:var(--font-display);font-size:1.8rem;color:var(--warm-white);font-weight:700;margin-bottom:2.5rem;">SDGs — Concredia.Lab 對應 4 個永續目標</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#F36D25;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🏭</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 9</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">工業、創新與基礎建設</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">EAC 技術創新，建立可授權的再生設計工業體系。</div>
+      </div>
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#F99D26;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🏙️</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 11</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">永續城市與社區</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">Hub & Satellite 讓各地社區在地處理廢料、在地生產。</div>
+      </div>
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#BF8B2E;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🔄</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 12</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">負責任的消費與生產</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">每件產品超過 50% 再生廢料，附完整溯源文件。</div>
+      </div>
+      <div style="border-radius:6px;padding:2rem 1.5rem;background:#407F46;">
+        <div style="font-size:2.2rem;margin-bottom:0.6rem;">🌍</div>
+        <div style="font-size:0.62rem;color:rgba(255,255,255,0.75);letter-spacing:0.12em;margin-bottom:0.4rem;">SDGs 目標 13</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.6rem;">氣候行動</div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.85);line-height:1.6;">引入爐石粉降低 62% 碳排，每件附可驗證減碳量。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESG 三支柱 -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);border-top:1px solid rgba(212,207,200,0.08);">
+    <div style="padding:3rem;background:#1A1714;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🌱</div>
+      <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#27AE60;line-height:1;margin-bottom:0.4rem;">E</div>
+      <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#2ECC71;margin-bottom:0.85rem;">Environmental · 環境</div>
+      <div style="font-size:1rem;font-weight:500;color:var(--warm-white);margin-bottom:0.5rem;">減碳、廢料再生、資源循環</div>
+      <p style="font-size:0.88rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;">相較傳統製程削減 62% 碳排，85% 在地廢料，超過 50% 符合政府綠色採購，每件附材料溯源文件。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;">
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(39,174,96,0.15);color:#2ECC71;border-radius:2px;">-62% 碳排</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(39,174,96,0.15);color:#2ECC71;border-radius:2px;">材料溯源</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(39,174,96,0.15);color:#2ECC71;border-radius:2px;">綠色採購</span>
+      </div>
+    </div>
+    <div style="padding:3rem;background:#1A1714;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🤝</div>
+      <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#3498DB;line-height:1;margin-bottom:0.4rem;">S</div>
+      <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#5DADE2;margin-bottom:0.85rem;">Social · 社會</div>
+      <div style="font-size:1rem;font-weight:500;color:var(--warm-white);margin-bottom:0.5rem;">社區培力、地方創生、共好</div>
+      <p style="font-size:0.88rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;">Hub & Satellite 技術授權，讓各地社區建立衛星工廠，在地拆除、在地生產、全台銷售，創造地方就業。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;">
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(52,152,219,0.15);color:#5DADE2;border-radius:2px;">地方創生</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(52,152,219,0.15);color:#5DADE2;border-radius:2px;">技術授權</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(52,152,219,0.15);color:#5DADE2;border-radius:2px;">衛星工廠</span>
+      </div>
+    </div>
+    <div style="padding:3rem;background:#1A1714;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">📋</div>
+      <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:#9B59B6;line-height:1;margin-bottom:0.4rem;">G</div>
+      <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#BB8FCE;margin-bottom:0.85rem;">Governance · 治理</div>
+      <div style="font-size:1rem;font-weight:500;color:var(--warm-white);margin-bottom:0.5rem;">透明文件、認證、綠色採購</div>
+      <p style="font-size:0.88rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;">完整材料溯源文件，可納入 ESG 報告正式佐證。符合政府綠色採購，台灣 2026 年正式徵收碳費。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;">
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(155,89,182,0.15);color:#BB8FCE;border-radius:2px;">ESG 文件套件</span>
+        <span style="font-size:0.65rem;padding:0.3rem 0.7rem;background:rgba(155,89,182,0.15);color:#BB8FCE;border-radius:2px;">2026 碳費</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- WHY / HOW / WHAT（全展開） -->
+<section id="why" style="padding:5rem 4rem;background:var(--concrete-dark);position:relative;overflow:hidden;">
+  <!-- 底紋裝飾 -->
+  <div style="position:absolute;right:-5rem;top:-5rem;width:400px;height:400px;border-radius:50%;border:1px solid rgba(155,91,58,0.08);pointer-events:none;"></div>
+  <div style="position:absolute;right:-2rem;top:-2rem;width:250px;height:250px;border-radius:50%;border:1px solid rgba(155,91,58,0.05);pointer-events:none;"></div>
+
+  <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>Overall Review of Concredia.Lab</div>
+  <h2 class="sec-title" style="color:var(--warm-white);margin-bottom:3rem;">三個問題，<br>一個答案</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);">
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:4px solid var(--rust);">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">❓</div>
+      <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;">Why · 為什麼做</div>
+      <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--warm-white);font-weight:700;margin-bottom:1rem;">故事、動機、重要性</div>
+      <p style="font-size:0.9rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;">山上的礦石被挖掘、運到平地蓋樓、再拆除成堆無法歸還的碎石。台灣的建成環境正以不可逆的方式消耗原生材料。民國 60 年代建物進入大規模拆除潮，廢料無法迴填，填埋空間日漸耗盡。每一塊廢料，都是一段未完成的故事——Concredia.Lab 要讓它有下一章。</p>
+    </div>
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:4px solid var(--rust);">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">⚙️</div>
+      <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;">How · 怎麼做</div>
+      <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--warm-white);font-weight:700;margin-bottom:1rem;">技術、工法、動能</div>
+      <p style="font-size:0.9rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;">運用 EAC（Exposed Aggregate Concrete）骨料裸露技術，透過水磨將混凝土表面磨出地質記憶，讓廢棄骨料的紋路和色澤重新成為設計語言。Down-cycle → Up-cycle：廢料不再是問題的終點，而是設計的起點。完整 SOP 可複製、可授權、可在地化。</p>
+    </div>
+    <div style="padding:3rem 2.5rem;background:var(--concrete-dark);border-top:4px solid var(--rust);">
+      <div style="font-size:3.5rem;margin-bottom:1rem;">✦</div>
+      <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;">What · 產出什麼</div>
+      <div style="font-family:var(--font-display);font-size:1.4rem;color:var(--warm-white);font-weight:700;margin-bottom:1rem;">尺度、機能、意義</div>
+      <p style="font-size:0.9rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;">從 180 公斤的定錨家具到 150 克的生活小物，橫跨多種尺度，在機能與意義之間找到平衡。Ready-made（量產）+ Custom-made（客製化），每件附材料溯源與減碳量文件，可直接納入 ESG 報告。</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="about" style="padding:5rem 4rem;background:var(--warm-white);">
+  <div class="sec-eye">關於團隊</div>
+  <h2 class="sec-title">三個靈魂，<br>一間實驗室</h2>
+  <p class="sec-sub">研發者的硬度、策略者的寬度、守護者的溫度，三者共構這個品牌完整的樣貌。</p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;">
+
+    <!-- 格子1：寶妹（本人照） -->
+    <div style="background:var(--cream);border:1px solid rgba(155,91,58,0.15);overflow:hidden;">
+      <div style="aspect-ratio:3/2;position:relative;overflow:hidden;">
+        <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.88) 0%,transparent 50%);"></div>
+        <div style="position:absolute;top:1rem;left:1rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.3);padding:0.25rem 0.6rem;background:rgba(42,39,36,0.5);backdrop-filter:blur(4px);">首席士氣官 · 品質監察</div>
+      </div>
+      <div style="padding:1.5rem 1.75rem 2rem;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.35rem;">實驗室第三號成員</div>
+        <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--concrete-dark);line-height:1.1;margin-bottom:0.2rem;">寶妹 Bao Mei</div>
+        <div style="font-size:0.8rem;color:var(--concrete);opacity:0.7;margin-bottom:1rem;">2020.07.01 · 法鬥 × 和美鐵鍋工廠台灣土狗</div>
+        <p style="font-size:0.88rem;color:var(--concrete);line-height:1.82;font-weight:300;">出生於火與鐵的交界，成長於水泥粉塵與深夜打磨的聲響之間。她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.1rem;">
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">品質把關</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">士氣管理</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">3分鐘熱度</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 格子2：老師（影子照） -->
+    <div style="background:var(--cream);border:1px solid rgba(155,91,58,0.15);overflow:hidden;">
+      <div style="aspect-ratio:3/2;position:relative;overflow:hidden;">
+        <img src="images/ivor-shadow.jpg" alt="Dr. Ivor Lee" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.88) 0%,transparent 50%);"></div>
+        <div style="position:absolute;top:1rem;left:1rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.3);padding:0.25rem 0.6rem;background:rgba(42,39,36,0.5);backdrop-filter:blur(4px);">研發核心 · 技術</div>
+      </div>
+      <div style="padding:1.5rem 1.75rem 2rem;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.35rem;">Co-Founder · 研發核心</div>
+        <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--concrete-dark);line-height:1.1;margin-bottom:0.2rem;">李博士</div>
+        <div style="font-size:0.8rem;color:var(--concrete);opacity:0.7;margin-bottom:1rem;">Dr. Ivor Lee · 土木工程博士</div>
+        <p style="font-size:0.88rem;color:var(--concrete);line-height:1.82;font-weight:300;">混凝土材料科學研究者。以博士級的工程專業深入廢棄物再生的可能性，建立完整的 EAC 再生配方體系與生產 SOP——讓每一個操作步驟都可被記錄、可被複製、可在地推廣。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.1rem;">
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">EAC 技術</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">配方研發</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">SOP建立</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 格子3：建凱（無照片） -->
+    <div style="background:var(--cream);border:1px solid rgba(155,91,58,0.15);overflow:hidden;">
+      <div style="aspect-ratio:3/2;position:relative;overflow:hidden;background:#2A2724;display:flex;align-items:center;justify-content:center;">
+        <div style="font-family:var(--font-display);font-size:6rem;color:rgba(212,207,200,0.06);font-weight:700;user-select:none;">建凱</div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(42,39,36,0.9) 0%,transparent 50%);"></div>
+        <div style="position:absolute;top:1rem;left:1rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.3);padding:0.25rem 0.6rem;background:rgba(42,39,36,0.5);backdrop-filter:blur(4px);">品牌策略 · 行銷</div>
+      </div>
+      <div style="padding:1.5rem 1.75rem 2rem;">
+        <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.35rem;">Co-Founder · 品牌主理人</div>
+        <div style="font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--concrete-dark);line-height:1.1;margin-bottom:0.2rem;">建凱</div>
+        <div style="font-size:0.8rem;color:var(--concrete);opacity:0.7;margin-bottom:1rem;">Kasper · 品牌策略 · 社群營運</div>
+        <p style="font-size:0.88rem;color:var(--concrete);line-height:1.82;font-weight:300;">從商業視角切入，協助 Ivor 老師的研究能量找到與市場對話的語言。負責整體 IMC 策略、IG / Threads / YouTube 社群內容、Maker 過程影像記錄，以及業務開發。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.1rem;">
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">IMC 行銷</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">社群經營</span>
+          <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.25rem 0.6rem;">業務開發</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CORE VALUES（加底圖裝飾） -->
+<section style="padding:5rem 4rem;background:var(--warm-white);position:relative;overflow:hidden;">
+  <!-- 底圖裝飾 -->
+  <div style="position:absolute;right:0;top:0;bottom:0;width:40%;background-image:url('images/studio-tablescape4.jpg');background-size:cover;background-position:center;opacity:0.06;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,var(--warm-white) 55%,rgba(245,242,237,0.5) 100%);pointer-events:none;"></div>
+  <!-- 大型裝飾符號 -->
+  <div style="position:absolute;right:4rem;top:50%;transform:translateY(-50%);font-size:16rem;color:rgba(155,91,58,0.04);font-family:var(--font-display);font-weight:700;pointer-events:none;user-select:none;line-height:1;">∴</div>
+
+  <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;">
+    <div>
+      <div class="sec-eye" style="color:var(--rust);">核心理念</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.5rem);color:var(--concrete-dark);font-weight:700;line-height:1.2;margin-bottom:0;">
+        Ivor 的硬度<br>建凱的寬度<br>寶妹的溫度
+      </h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;padding-top:0.5rem;">
+      <div style="padding:1.75rem 0;border-bottom:1px solid rgba(58,54,50,0.1);">
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="font-size:2rem;flex-shrink:0;margin-top:0.1rem;">🔬</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+              <span style="font-family:var(--font-display);font-size:0.85rem;color:var(--rust);font-weight:700;">01</span>
+              <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--concrete-dark);">科學驅動設計</h4>
+            </div>
+            <p style="font-size:0.88rem;color:var(--concrete);line-height:1.78;font-weight:300;">以材料工程研究為基礎，精準掌握泥水、砂漿、混凝土的層次關係與配比邏輯，確保每件作品在美感之外達到耐用性能標準。研究不是背景，而是每件作品最核心的底氣。</p>
+          </div>
+        </div>
+      </div>
+      <div style="padding:1.75rem 0;border-bottom:1px solid rgba(58,54,50,0.1);">
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="font-size:2rem;flex-shrink:0;margin-top:0.1rem;">🎨</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+              <span style="font-family:var(--font-display);font-size:0.85rem;color:var(--rust);font-weight:700;">02</span>
+              <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--concrete-dark);">非結構創作的自由</h4>
+            </div>
+            <p style="font-size:0.88rem;color:var(--concrete);line-height:1.78;font-weight:300;">Concredia.Lab 不碰建築法規涉及的結構物——這反而是最大的自由。生活用品、裝飾用品、空間擺件，全部在法規之外，在設計之內。廢料在這裡不是問題，是靈感的來源。</p>
+          </div>
+        </div>
+      </div>
+      <div style="padding:1.75rem 0;">
+        <div style="display:flex;align-items:flex-start;gap:1.25rem;">
+          <div style="font-size:2rem;flex-shrink:0;margin-top:0.1rem;">📡</div>
+          <div>
+            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+              <span style="font-family:var(--font-display);font-size:0.85rem;color:var(--rust);font-weight:700;">03</span>
+              <h4 style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--concrete-dark);">混凝土作為媒介</h4>
+            </div>
+            <p style="font-size:0.88rem;color:var(--concrete);line-height:1.78;font-weight:300;">Concrete as a media with lifestyle, culture, creative, usage. 混凝土不只是材料，它是承載生活風格、文化底蘊、創意表達與實用機能的媒介——就像旭海沙灘上那張水泥桌，讓陌生人坐下來喝一壺茶。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIAL PHILOSOPHY（全展開 + 底圖） -->
+<section id="material" style="padding:5rem 4rem;background:var(--concrete-dark);position:relative;overflow:hidden;">
+  <!-- 底圖裝飾 -->
+  <div style="position:absolute;inset:0;background-image:url('images/material-maze.jpg');background-size:cover;background-position:center;opacity:0.06;pointer-events:none;"></div>
+  <div style="position:absolute;left:-8rem;bottom:-8rem;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(155,91,58,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:1;">
+    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>材料哲學</div>
+    <h2 class="sec-title" style="color:var(--warm-white);">混凝土的層次，<br>廢料的升華</h2>
+
+    <!-- 層次公式 -->
+    <div style="margin:3rem 0;display:flex;flex-direction:column;gap:1rem;max-width:700px;">
+      <div style="display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;background:rgba(212,207,200,0.05);border-left:4px solid rgba(155,91,58,0.4);">
+        <span style="font-size:1.5rem;">💧</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);">水泥 + 水</span>
+        <span style="color:var(--rust-light);font-size:1.2rem;">→</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--rust-light);font-weight:600;">泥水 Paste</span>
+        <span style="font-size:0.78rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">表層灰色的來源</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;background:rgba(212,207,200,0.05);border-left:4px solid rgba(155,91,58,0.5);">
+        <span style="font-size:1.5rem;">🪨</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);">+ 砂</span>
+        <span style="color:var(--rust-light);font-size:1.2rem;">→</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--rust-light);font-weight:600;">砂漿 Mortar</span>
+        <span style="font-size:0.78rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">傳統工法抹面</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem;background:rgba(212,207,200,0.07);border-left:4px solid var(--rust);">
+        <span style="font-size:1.5rem;">🔩</span>
+        <span style="font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);">+ 骨料（力料）</span>
+        <span style="color:var(--rust-light);font-size:1.2rem;">→</span>
+        <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--rust-light);font-weight:700;">混凝土 Concrete</span>
+        <span style="font-size:0.78rem;color:var(--concrete-light);opacity:0.55;margin-left:auto;">+ 鋼筋 = Structural</span>
+      </div>
+    </div>
+
+    <!-- EAC 核心工法 -->
+    <div style="padding:1.75rem 2rem;border:1px solid rgba(155,91,58,0.4);background:rgba(155,91,58,0.08);margin-bottom:3rem;display:flex;align-items:center;gap:1.5rem;max-width:700px;">
+      <div style="font-size:2.5rem;flex-shrink:0;">⚡</div>
+      <div>
+        <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.3rem;">核心工法</div>
+        <div style="font-family:var(--font-display);font-size:1.15rem;color:var(--warm-white);font-weight:600;">EAC — Exposed Aggregate Concrete</div>
+        <div style="font-size:0.85rem;color:var(--concrete-light);opacity:0.8;margin-top:0.3rem;">骨料裸露工法，讓廢料的地質記憶重新顯現為設計語言</div>
+      </div>
+    </div>
+
+    <!-- 三種再生材料 -->
+    <h3 style="font-family:var(--font-display);font-size:1.5rem;color:var(--warm-white);font-weight:700;margin-bottom:2rem;">♻️ 三種核心再生材料</h3>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);">
+      <div style="padding:2.5rem 2rem;background:var(--concrete-dark);border-top:3px solid var(--rust-light);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🏚️</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.6;margin-bottom:0.5rem;">01</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--warm-white);margin-bottom:0.6rem;">再生骨料（力料）</div>
+        <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.72;font-weight:300;opacity:0.85;">拆除廢料中的混凝土碎塊，破碎、篩分、品質分級後作為骨料。水磨後的顆粒感是 Concredia.Lab 獨特觸感的來源——每塊廢料都有自己的地質故事。</p>
+      </div>
+      <div style="padding:2.5rem 2rem;background:var(--concrete-dark);border-top:3px solid var(--rust-light);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🧱</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.6;margin-bottom:0.5rem;">02</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--warm-white);margin-bottom:0.6rem;">廢磚粉料與石粉</div>
+        <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.72;font-weight:300;opacity:0.85;">磚瓦與石材廢料研磨成粉，作為表層介質。不同拆除現場的磚粉各有色澤與礦物組成，使每件作品表面紋路自然天成、不可複製。</p>
+      </div>
+      <div style="padding:2.5rem 2rem;background:var(--concrete-dark);border-top:3px solid var(--rust-light);">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem;">🏭</div>
+        <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--rust-light);opacity:0.6;margin-bottom:0.5rem;">03</div>
+        <div style="font-size:1rem;font-weight:600;color:var(--warm-white);margin-bottom:0.6rem;">爐石粉 · 低碳交接材</div>
+        <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.72;font-weight:300;opacity:0.85;">煉鋼廠高爐爐渣磨成粉，部分取代水泥。是降低碳足跡的關鍵策略，讓我們在使用廢料的同時，也在減少生產端的排放，達成 -62% 碳排目標。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UP/DOWN CYCLE -->
+<section class="cycle-section">
+  <div class="sec-eye">循環哲學</div>
+  <h2 class="sec-title">從 Down-cycle<br>到 Up-cycle</h2>
+  <p class="sec-sub">同樣是「再利用」，結果可以差很遠。Concredia.Lab 選擇最難走的那條路。</p>
+  <div class="cycle-grid">
+    <div class="cycle-card">
+      <div class="cycle-label">Down-cycle · 降級使用</div>
+      <div class="cycle-head">CLSM — 低強度填充</div>
+      <p class="cycle-body">將廢棄混凝土打碎後作為 CLSM（低強度可控制穩定體），用於管線回填或工地基底。強度約 80 kg/cm²，僅是原始混凝土的三分之一。這是最常見的「再生」，但本質上是降級消耗。</p>
+    </div>
+    <div class="cycle-card dark">
+      <div class="cycle-label">Up-cycle · 升級改造</div>
+      <div class="cycle-head">Concredia.Lab 的選擇</div>
+      <p class="cycle-body">不把廢料變填土，而是讓它成為設計的語言。透過精準的配方研發、EAC 工法與水磨技術，讓每一塊廢料的地質記憶重新顯現——這不只是材料的升級，是價值的重生。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="products-section">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;">
+    <div>
+      <div class="sec-eye">產品系列</div>
+      <h2 class="sec-title">以廢料為媒介的<br>當代設計作品</h2>
+    </div>
+    <a href="#contact" class="btn-o" style="margin-bottom:0.5rem;">詢問客製化</a>
+  </div>
+  <div class="prod-tabs">
+    <button class="tab-btn active" onclick="switchTab('standard',this)">Ready-made · 標準量產</button>
+    <button class="tab-btn" onclick="switchTab('custom',this)">Custom-made · 客製故事系列</button>
+  </div>
+  <div id="tab-standard" class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-img" style="background:#1a1714;">
+        <img src="images/material-maze.jpg" alt="迷宮式迴路截面" style="width:100%;height:100%;object-fit:cover;opacity:0.9;">
+        <div class="prod-badge">旗艦作品</div>
+      </div>
+      <div class="prod-info">
+        <h4>Concrete Speaker — 迷宮式音響</h4>
+        <p>以再生混凝土為外殼，內建迷宮式導流迴路設計，利用混凝土天然的高密度與毛細孔結構優化音場。提供殼體版（DIY 自組，可指定單體）及完整組裝版。</p>
+        <div class="prod-mat">再生骨料 · 迷宮迴路 · 可指定單體</div>
+        <div class="prod-spec">重量：視尺寸 ／ 適合定點擺設 ／ 一個月可產約 10 對</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="images/product-colorful-table.jpg" alt="彩色骨料橢圓桌几" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="prod-info">
+        <h4>Fragment Table — 定錨桌几系列</h4>
+        <p>以廢磚粉料重鑄，內含鋼筋抗拉結構，每件表面紋路獨特不可複製。耐水易清洗，適合陽臺、庭院或室內固定擺設——重量就是它最誠實的語言。</p>
+        <div class="prod-mat">再生磚粉 · 鋼筋嵌件 · EAC 水磨表面</div>
+        <div class="prod-spec">重量：50–180 kg（視尺寸）／ 建議定位使用</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="images/product-succulent.jpg" alt="Conbox 多肉景觀座" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="prod-info">
+        <h4>Concrete Taiwan · Conbox 系列</h4>
+        <p>以老台灣地圖為主題，提供荷蘭時期、康熙輿圖等 4 款 Pattern × 多色系選項。三種功能：聚財盒（Coin box）、水盆器（Water container）、景觀座（Landscape container）。</p>
+        <div class="prod-mat">再生骨料 · 輕量小品 · 可宅配</div>
+        <div class="prod-spec">重量：150–500 g ／ 4 款地圖 × 3 功能 × 多色系</div>
+      </div>
+    </div>
+  </div>
+  <div id="tab-custom" class="prod-grid" style="display:none;">
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="images/artwork-figures.jpg" alt="人物剪影系列" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
+        <div class="prod-badge">ESG</div>
+      </div>
+      <div class="prod-info">
+        <h4>企業故事紀念磚</h4>
+        <p>以企業原址廢料重製，附材料溯源證書與減碳量報告，可直接納入 ESG 報告佐證。是最有意義的永續禮品——不是 Logo 貼紙，是一塊有歷史的石頭。</p>
+        <div class="prod-mat">企業廢料 · 故事設計 · ESG 認證文件</div>
+        <div class="prod-spec">具文化意涵 + 達到金額門檻方承接 ／ 請洽詢</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img">
+        <img src="images/product-chair2.jpg" alt="曲線木混凝土椅" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div class="prod-info">
+        <h4>Origins — 客製化桌椅</h4>
+        <p>依客戶指定材料、配色、尺寸與使用情境打造，含鋼筋抗拉結構。每件附設計圖、材料履歷與減碳量計算——這是一件有身分證的傢俱。</p>
+        <div class="prod-mat">客製材料 · Structural Concrete · 減碳認證</div>
+        <div class="prod-spec">需現場丈量討論 ／ 視複雜度報價</div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img" style="background:#1a1714;">
+        <img src="images/product-lamp4.jpg" alt="荷風漢字燈" style="width:100%;height:100%;object-fit:cover;object-position:center;" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+      </div>
+      <div class="prod-info">
+        <h4>場域記憶計劃</h4>
+        <p>以場域特定素材融入混凝土設計，創作兼具文化敘事與實用性的空間元素——步道、街道家具、公共裝置。芒果家族的故事，可以鑄進一條步道裡。</p>
+        <div class="prod-mat">在地材料 · 文化敘事 · 空間整合</div>
+        <div class="prod-spec">適合：民宿、社區、文化場館 ／ 需現場提案</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT PYRAMID -->
+<section class="pyramid-section">
+  <div class="sec-eye" style="color:var(--rust-light);"><span style="display:inline-block;width:22px;height:1px;background:var(--rust-light);"></span>產品金字塔</div>
+  <h2 class="sec-title" style="color:var(--warm-white);">重量 × 市場<br>的平衡</h2>
+  <div class="pyramid-grid">
+    <div>
+      <!-- Pyramid SVG -->
+      <svg class="pyramid-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="160,30 270,280 50,280" fill="none" stroke="#D4CFC8" stroke-width="0.5" opacity="0.2"/>
+        <polygon points="160,30 220,140 100,140" fill="#9B5B3A" opacity="0.7"/>
+        <text x="160" y="100" text-anchor="middle" fill="#FAF8F5" font-family="Georgia,serif" font-size="11" font-weight="700">定錨家具</text>
+        <text x="160" y="115" text-anchor="middle" fill="#FAF8F5" font-family="sans-serif" font-size="9" opacity="0.7">180 kg+</text>
+        <polygon points="220,148 252,210 68,210" fill="#7A5030" opacity="0.6"/>
+        <text x="160" y="186" text-anchor="middle" fill="#FAF8F5" font-family="Georgia,serif" font-size="11" font-weight="700">燈具 · 配件</text>
+        <text x="160" y="200" text-anchor="middle" fill="#FAF8F5" font-family="sans-serif" font-size="9" opacity="0.7">中型</text>
+        <polygon points="252,218 270,272 50,272" fill="#5A3A20" opacity="0.55"/>
+        <text x="160" y="250" text-anchor="middle" fill="#FAF8F5" font-family="Georgia,serif" font-size="11" font-weight="700">Conbox 小物</text>
+        <text x="160" y="264" text-anchor="middle" fill="#FAF8F5" font-family="sans-serif" font-size="9" opacity="0.7">150 g — 可宅配</text>
+        <text x="160" y="300" text-anchor="middle" fill="#D4CFC8" font-family="sans-serif" font-size="9" opacity="0.4">↑ 市場量大 · 單價低</text>
+      </svg>
+    </div>
+    <div class="pyramid-levels">
+      <div class="pyramid-level">
+        <div class="pyramid-level-num">頂</div>
+        <div>
+          <h4>定錨家具 · 水泥音響</h4>
+          <p>高單價、定位擺設、進場一次安心長久。重量是它最誠實的語言，也是最強的差異化。</p>
+          <div class="wt">180 kg+ · B2B · B2ESG</div>
+        </div>
+      </div>
+      <div class="pyramid-level">
+        <div class="pyramid-level-num">中</div>
+        <div>
+          <h4>燈具 · 居家配件</h4>
+          <p>平衡重量與美學，進入家居通路或設計選物店的好媒介，價格帶適中。</p>
+          <div class="wt">中型 · B2B 通路合作</div>
+        </div>
+      </div>
+      <div class="pyramid-level">
+        <div class="pyramid-level-num">底</div>
+        <div>
+          <h4>Conbox 桌上小物</h4>
+          <p>高頻率接觸、可宅配、適合募資與電商。讓更多人以低門檻與混凝土建立第一次關係。</p>
+          <div class="wt">150–500 g · B2C · 募資平台</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LONELY HIGHWAY -->
+<div id="story" class="highway-section" style="padding:0;">
+  <div class="hw-bg" style="background-image:url('images/studio-night.jpg');background-size:cover;background-position:center;opacity:0.18;"></div>
+  <div style="position:absolute;inset:0;z-index:1;background:rgba(22,18,15,0.82);"></div>
+  <div class="hw-inner">
+    <div class="hw-left">
+      <div class="hw-eye">品牌故事 · The Lonely Highway</div>
+      <h2 class="hw-title">每一顆水泥<br>石子心裡，<br>都有一段<br><em>寂寞公路</em></h2>
+      <div class="hw-pull">「在那個山海交界、收訊微弱的地方，水泥不再是建築法規裡的條文，而是大地的延伸。」</div>
+      <p class="hw-lead">Ivor 老師常說，他最喜歡帶著那張 180 公斤的桌角，開四個半小時的車去屏東旭海。在沙灘上展開桌子，邀請路過的陌生人坐下，泡一壺茶——<em>Travel with Concredia goods</em>，在寂寞公路上，讓水泥遇見人。</p>
+      <p class="hw-body">冷硬的水泥與壯闊的山海地景之間的極端反差，正是我們最真實的品牌語言。未來，「寂寞公路計劃」將帶著 Stand-bar 高腳桌走入台灣各個山海地景，以美學 + 文化 + 在地 + 環境 + 口語化的 IMC 策略，把每一次相遇變成 IG、Threads、YouTube 上最有溫度的內容。</p>
+    </div>
+    <div class="hw-right">
+      <div class="hw-eye">品牌大事記</div>
+      <div class="hw-timeline">
+        <div class="hwi"><div class="hwy">2016</div><div class="hwc"><h4>白米社區的起點</h4><p>輔導宜蘭蘇澳白米社區社造計劃，提出以水泥為特色創作的可能，開始研發 SOP。</p></div></div>
+        <div class="hwi"><div class="hwy">2019</div><div class="hwc"><h4>首件水泥音響誕生</h4><p>完成第一代迷宮式迴路水泥音響，確立「混凝土作為生活媒介」的品牌核心方向。</p></div></div>
+        <div class="hwi"><div class="hwy">2020</div><div class="hwc"><h4>寶妹加入</h4><p>7 月 1 日，那個全球動盪、最需要定錨的時刻，寶妹來到 Ivor 老師身邊。實驗室有了溫度。</p></div></div>
+        <div class="hwi"><div class="hwy">2021</div><div class="hwc"><h4>Concredia.Lab 成形</h4><p>品牌名稱確立，完成三大產品線研發，建立完整生產 SOP 與模具設計圖庫。</p></div></div>
+        <div class="hwi"><div class="hwy">2023</div><div class="hwc"><h4>ESG 市場切入</h4><p>完成首批企業 ESG 紀念禮品合作案，提供材料溯源與減碳量認證文件。</p></div></div>
+        <div class="hwi"><div class="hwy">2025</div><div class="hwc"><h4>品牌重啟 · 建凱加入</h4><p>以 IMC 整合策略重新整備品牌，寂寞公路計劃啟動，開始系統化傳播 Concredia.Lab 的故事。</p></div></div>
+        <div class="hwi"><div class="hwy">Next</div><div class="hwc"><h4>衛星工廠 · Hub &amp; Satellite</h4><p>技術授權模式啟動，在各地社區、協會、社企建立衛星工廠，讓在地拆除、在地生產、全台銷售的循環成真。</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- IMC STRATEGY -->
+<section class="imc-section">
+  <div class="sec-eye">行銷策略</div>
+  <h2 class="sec-title">IMC · 整合行銷<br>美學 + 文化 + 在地 + 環境</h2>
+  <p class="sec-sub">以 4C（消費者需求、成本、便利、溝通）重新詮釋傳統 4P，讓 Concredia.Lab 的故事以口語化的方式流通於各個平台與社群。</p>
+  <div class="imc-grid">
+    <div class="imc-card">
+      <div class="imc-formula">IG · Threads · YouTube</div>
+      <h4>Maker 過程透明化</h4>
+      <p>不露臉的「手部勞動」記錄——開模、水磨、組裝。這種 Maker 美學建立極高的專業信任感，也讓觀看者感受到混凝土在手中「活著」的溫度。</p>
+    </div>
+    <div class="imc-card">
+      <div class="imc-formula">Travel with Concredia goods</div>
+      <h4>寂寞公路計劃</h4>
+      <p>帶著水泥 Stand-bar 走入台灣山海地景，記錄與陌生人的相遇。極端的視覺反差（冷硬水泥 × 壯闊自然）是最強的品牌內容，在社群上自然傳播。</p>
+    </div>
+    <div class="imc-card">
+      <div class="imc-formula">寶妹的 3 分鐘熱情</div>
+      <h4>IP 溫度行銷</h4>
+      <p>每年 7 月 1 日寶妹生日，作為品牌年度限定活動節點。寶妹的日常側拍，讓「冷硬實驗室」有了最柔軟的核心，也是社群最高互動率的內容類型。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ESG & HUB -->
+<section class="esg-section" style="padding:5.5rem 4rem;">
+  <div class="sec-eye" style="color:var(--rust-light);"><span style="display:inline-block;width:22px;height:1px;background:var(--rust-light);"></span>ESG · 社會影響力</div>
+  <h2 class="sec-title" style="color:var(--warm-white);">Hub &amp; Satellite<br>在地拆除，全台循環</h2>
+  <div class="esg-grid">
+    <div class="esg-card">
+      <div class="esg-tag">B2G · 政府合作</div>
+      <h3>政府綠色採購</h3>
+      <p>超過 50% 再生廢料佔比，符合政府綠色採購規範。可切入環境部資源循環署、文化部文創補助、內政部城鄉計劃、農業部水保署農村再生等多個政策窗口，從 15 萬以下的小型標案開始建立合作關係。</p>
+    </div>
+    <div class="esg-card accent">
+      <div class="esg-tag">B2ESG · 企業認購</div>
+      <h3>企業 ESG 合作</h3>
+      <p>從大廳等候座椅到企業紀念禮品，Concredia.Lab 提供完整的 ESG 文件套件——材料溯源故事、減碳量計算報告、可納入 ESG 報告的正式佐證。讓企業的永續承諾，成為一塊真實的石頭。</p>
+    </div>
+    <div class="esg-card">
+      <div class="esg-tag">Certification · 認證</div>
+      <h3>材料認證體系</h3>
+      <p>建立可追溯的材料來源文件，從廢料收集、配方紀錄到成品測試，每一個環節都有憑有據。這不只是法規要求，是對每一件作品最誠實的承諾。</p>
+    </div>
+    <div class="esg-card">
+      <div class="esg-tag">Community · 社區賦能</div>
+      <h3>衛星工廠培力</h3>
+      <p>Ivor 老師作為技術核心（Hub），以技術授權或分潤模式，在全台各地協助有意願的社區、協會、社企建立衛星工廠（Satellite）——在地拆除、在地生產、全台銷售，讓循環在地扎根。</p>
+    </div>
+  </div>
+  <div class="esg-hub">
+    <div class="esg-hub-title">Hub &amp; Satellite 循環模式</div>
+    <div class="hub-flow">
+      <div class="hub-node">台北廢料</div>
+      <div class="hub-arr">→</div>
+      <div class="hub-node main">Concredia.Lab Hub<br><span style="font-size:0.72rem;opacity:0.7;">Ivor · 技術研發</span></div>
+      <div class="hub-arr">→</div>
+      <div class="hub-node">苗栗衛星工廠</div>
+      <div class="hub-arr">→</div>
+      <div class="hub-node">全台通路銷售</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases-section">
+  <div class="sec-eye">成功案例</div>
+  <h2 class="sec-title">支持者的故事</h2>
+  <p class="sec-sub">從個人收藏家到企業 ESG 合作，每一件 Concredia.Lab 作品都承載著真實的永續故事。</p>
+  <div class="cases-grid">
+    <div class="case-card">
+      <div class="case-logo"><span>建</span></div>
+      <h4>建築師事務所合作</h4>
+      <blockquote>「水泥音響成為辦公室最好的對話起點，每個來訪客戶都問這是什麼材料做的。它不只是音響，更是品牌宣言。」</blockquote>
+      <div class="case-meta">辦公空間陳設 · 台灣</div>
+    </div>
+    <div class="case-card">
+      <div class="case-logo"><span>社</span></div>
+      <h4>社區步道文化計劃</h4>
+      <blockquote>「以芒果家族故事、在地土石鑄入步道，廢料成為了社區認同的載體，這個計劃改變了我們看待廢棄物的方式。」</blockquote>
+      <div class="case-meta">場域記憶計劃 · 台灣</div>
+    </div>
+    <div class="case-card">
+      <div class="case-logo"><span>E</span></div>
+      <h4>企業 ESG 紀念禮品</h4>
+      <blockquote>「以舊廠房廢料製作的紀念磚，附減碳量報告，讓員工感受到轉型的誠意——不是口號，是一塊真實的石頭。」</blockquote>
+      <div class="case-meta">ESG 企業禮品 · 台灣</div>
+    </div>
+  </div>
+  <div class="award-strip">
+    <div class="award-badge"><div class="award-icon">🏆</div><div class="award-info"><strong>設計相關獎項</strong><span>待填入實際獎項</span></div></div>
+    <div class="award-badge"><div class="award-icon">🌱</div><div class="award-info"><strong>循環經濟補助計劃</strong><span>政府資源循環補助</span></div></div>
+    <div class="award-badge"><div class="award-icon">📰</div><div class="award-info"><strong>媒體報導</strong><span>永續設計專題</span></div></div>
+  </div>
+</section>
+
+<!-- SEO ARTICLES -->
+<section class="seo-section">
+  <div class="sec-eye">相關議題</div>
+  <h2 class="sec-title">我們關注的<br>永續設計議題</h2>
+  <div class="articles-grid">
+    <div class="art-card"><div class="art-tag">循環經濟</div><h4>Down-cycle vs. Up-cycle：同樣再生，天差地別</h4><p>廢棄混凝土的去向，決定了它是否真的有第二次生命，還是只是換個地方繼續被埋葬。</p></div>
+    <div class="art-card"><div class="art-tag">ESG 採購</div><h4>再生料超過 50% 即符合綠色採購標準</h4><p>Concredia.Lab 輕易超標，每件產品都可附正式文件，直接計入企業 ESG 報告。</p></div>
+    <div class="art-card"><div class="art-tag">EAC 技術</div><h4>什麼是 Exposed Aggregate Concrete？</h4><p>骨料裸露工法讓混凝土磨出地質記憶，是工業風設計最核心的技術語彙。</p></div>
+    <div class="art-card"><div class="art-tag">工業風設計</div><h4>為什麼混凝土傢俱不是太重就是不耐用？</h4><p>重量不是問題，是使用情境的設計——沙發也很重，但你不每天搬移它。</p></div>
+    <div class="art-card"><div class="art-tag">台灣拆除潮</div><h4>民國 60 年代建物正在大規模退場</h4><p>這一波拆除潮製造的廢料，如何成為下一代的設計素材而非垃圾？</p></div>
+    <div class="art-card"><div class="art-tag">地方創生</div><h4>Hub &amp; Satellite：技術授權讓再生設計全台在地化</h4><p>一個核心技術，多個在地工廠，讓台灣每個地方的廢料都能在當地重生。</p></div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners-section">
+  <div class="partner-title">合作夥伴 · 協力廠商 · 支持單位</div>
+  <div class="partner-grid">
+    <div class="partner-item">循環台灣基金會</div>
+    <div class="partner-item">台灣建材協會</div>
+    <div class="partner-item">水保署農村再生</div>
+    <div class="partner-item">台灣設計研究院</div>
+    <div class="partner-item">環境部資源循環署</div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section" id="faq">
+  <div class="faq-left">
+    <div class="sec-eye">FAQ</div>
+    <h2 class="sec-title">常見問題</h2>
+    <p class="sec-sub" style="color:var(--concrete-light);opacity:0.7;font-weight:300;">還有其他問題？歡迎直接聯絡我們。</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>混凝土再生產品耐用嗎？</h4><div class="faq-toggle"><span>+</span></div></div>
+      <div class="faq-ans">由土木博士級研究支撐，抗壓性能（一般混凝土可達 200 kg/cm²）遠超日常使用需求。不怕水、不怕刮，表面以 EAC 水磨工法處理，耐用度優於木材與一般塑膠。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>產品很重，移動不方便嗎？</h4><div class="faq-toggle"><span>+</span></div></div>
+      <div class="faq-ans">重量是材料本質，也是耐用性與穩固感的來源。設計邏輯是「定位使用」——就像沙發、書櫃、鋼琴，進場一次定位，不需頻繁搬移。Conbox 輕量小物則可宅配攜帶。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>水泥音響的音質如何？可以自己組裝嗎？</h4><div class="faq-toggle"><span>+</span></div></div>
+      <div class="faq-ans">混凝土的高密度與毛細孔結構提供天然音場隔離效果。提供殼體版（DIY 自組，可指定單體品牌）與完整組裝版。發燒友可自行更換線材與單體，殼體設計支援客製迴路規格。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>ESG 企業禮品合作怎麼進行？</h4><div class="faq-toggle"><span>+</span></div></div>
+      <div class="faq-ans">我們提供完整 ESG 禮品服務：材料溯源故事、減碳量計算報告、品牌客製化設計，以及可用於 ESG 報告的正式文件。超過 50% 再生廢料佔比符合政府綠色採購標準。請透過聯絡表單說明需求，2 個工作天內回覆。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>可以提供自己場址的廢料來製作嗎？</h4><div class="faq-toggle"><span>+</span></div></div>
+      <div class="faq-ans">可以，這正是故事系列的核心。提供舊廠房、特定建築或場域的廢棄物，我們進行材料評估後設計出承載這段記憶的作品。每件附完整材料履歷與故事說明。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)"><h4>寶妹真的在倉庫工作嗎？</h4><div class="faq-toggle"><span>+</span></div></div>
+      <div class="faq-ans">是的。寶妹（2020.07.01，法鬥 × 彰化和美鐵鍋工廠台灣土狗）是 Concredia.Lab 的首席士氣官，每件新作品脫模她第一個到場嗅聞確認，熱情持續精確三分鐘——恰好是水泥凝固的關鍵時刻。</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:0;" class="contact-section">
+  <div class="contact-left">
+    <div class="sec-eye">聯絡我們</div>
+    <h2 class="sec-title">讓我們一起<br>創造故事</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.8);">無論是購買諮詢、ESG 合作提案、技術授權，或你也想開四個半小時的車去旭海喝茶——我們都樂於對話。</p>
+    <div class="contact-items">
+      <div class="contact-item"><div class="contact-icon">✉</div><div class="contact-text"><strong>Email</strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="452d2029292a05262a2b263720212c246b292427">[email&#160;protected]</a></div></div>
+      <div class="contact-item"><div class="contact-icon">📱</div><div class="contact-text"><strong>LINE · IG · Threads</strong>請來信索取帳號</div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div class="contact-text"><strong>工作室地址</strong>台灣（預約制參觀）</div></div>
+      <div class="contact-item"><div class="contact-icon">⏰</div><div class="contact-text"><strong>回覆時間</strong>週一至週五，2 個工作天內</div></div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div class="sec-eye" style="color:var(--rust);">傳送訊息</div>
+    <h2 class="sec-title" style="font-size:1.75rem;">合作 · 詢問 · 訂購</h2>
+    <div style="margin-top:2rem;">
+      <div class="form-row">
+        <div class="form-group"><label>姓名</label><input type="text" placeholder="您的姓名"></div>
+        <div class="form-group"><label>公司 / 單位（選填）</label><input type="text" placeholder="公司名稱"></div>
+      </div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group">
+        <label>洽詢類別</label>
+        <select>
+          <option>產品購買詢問</option>
+          <option>ESG 企業禮品合作</option>
+          <option>客製化設計提案（場域記憶計劃）</option>
+          <option>水泥音響 — 殼體 / 完整版</option>
+          <option>技術授權 / 衛星工廠合作</option>
+          <option>寂寞公路 · 場地合作 / 展出邀請</option>
+          <option>Daka 台泥 / 阿里山公路合作洽詢</option>
+          <option>媒體 / 採訪合作</option>
+          <option>通路合作洽談</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div class="form-group"><label>訊息</label><textarea placeholder="請描述您的需求或想法..."></textarea></div>
+      <button class="submit-btn">送出訊息</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- 底部 CTA 條 -->
+<div style="background:var(--rust);padding:4rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+  <div>
+    <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:0.5rem;">現在就開始</div>
+    <h3 style="font-family:var(--font-display);font-size:1.6rem;color:white;font-weight:700;line-height:1.3;">每一件作品，都是對廢料問題<br>最直接的回應。</h3>
+  </div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;flex-shrink:0;">
+    <a href="contact.html" style="padding:0.9rem 1.8rem;background:white;color:var(--rust);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;text-decoration:none;">立即洽詢合作</a>
+    <a href="products.html" style="padding:0.9rem 1.8rem;border:1px solid rgba(255,255,255,0.5);color:white;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;text-decoration:none;">探索產品系列</a>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto-section">
+  <h2 class="manifesto-title">Realise · 讓價值落地實踐</h2>
+  <p class="manifesto-body">物質是不滅的。山上被挖掘的礦石，被運到城市蓋樓，再被拆除成堆無處安放的碎石——它從未消失，只是失去了被看見的理由。<br><br>Concredia.Lab 相信，每一塊廢棄的混凝土，都記錄著它所在的空間與時間。我們的工作，是讓這段記憶以新的形式延續——作為家具、作為音響、作為一張讓陌生人坐下來喝茶的桌子。<br><br>Concrete as a media. 混凝土是媒介，生活才是訊息。</p>
+  <div class="manifesto-tag">Concredia.Lab · Taiwan · Est. 2021</div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
+      <p>以土木博士研究為根，以設計為語言，<br>讓每一塊再生廢料都有自己的故事。<br><br>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
+    </div>
+    <div class="footer-col">
+      <h5>產品</h5>
+      <ul>
+        <li><a href="#">定錨家具系列</a></li>
+        <li><a href="#">水泥音響</a></li>
+        <li><a href="#">Concrete Taiwan · Conbox</a></li>
+        <li><a href="#">ESG 禮品</a></li>
+        <li><a href="#">客製化 / 場域記憶</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>品牌</h5>
+      <ul>
+        <li><a href="#">關於團隊</a></li>
+        <li><a href="#">材料哲學</a></li>
+        <li><a href="#">寂寞公路計劃</a></li>
+        <li><a href="#">ESG · Hub &amp; Satellite</a></li>
+        <li><a href="#">成功案例</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>資源</h5>
+      <ul>
+        <li><a href="#">最新動態</a></li>
+        <li><a href="#">相關議題文章</a></li>
+        <li><a href="#">常見問題</a></li>
+        <li><a href="#">合作夥伴</a></li>
+        <li><a href="#">聯絡我們</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Concredia.Lab · Dr. Ivor Lee. All rights reserved.</p>
+    <div class="social-links">
+      <a class="social-link" href="#">IG</a>
+      <a class="social-link" href="#">TH</a>
+      <a class="social-link" href="#">YT</a>
+      <a class="social-link" href="#">FB</a>
+    </div>
+  </div>
+  <div class="footer-easter">
+    <span class="footer-easter-text">🐾 本網站由寶妹親自監督品質。她對設計稿的熱情精確持續了三分鐘，然後她去睡午覺了。品質已確認無虞。</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// MUSIC PLAYER
+var mpAud=null,mpOn=false;
+function mpInit(){mpAud=document.getElementById('mpAudio');if(mpAud)mpAud.volume=0.4;}
+function mpToggle(){
+  if(!mpAud)mpInit();
+  if(!mpAud)return;
+  if(mpOn){mpAud.pause();document.getElementById('mpPlay').style.display='';document.getElementById('mpPause').style.display='none';mpOn=false;}
+  else{mpAud.play().then(function(){document.getElementById('mpPlay').style.display='none';document.getElementById('mpPause').style.display='';mpOn=true;}).catch(function(){});}
+}
+function mpVol(e){
+  if(!mpAud)return;
+  var r=e.currentTarget.getBoundingClientRect();
+  var v=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+  mpAud.volume=v;document.getElementById('mpVolBar').style.width=(v*100)+'%';
+}
+function mpClose(){
+  var p=document.getElementById('musicPlayer');if(p)p.style.display='none';
+  if(mpAud){mpAud.pause();mpOn=false;}
+}
+window.addEventListener('load',mpInit);
+
+function openLightbox(src,cap){
+  var lb=document.getElementById('lightbox');
+  if(!lb)return;
+  document.getElementById('lightbox-img').src=src;
+  document.getElementById('lightbox-cap').textContent=cap;
+  lb.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  var lb=document.getElementById('lightbox');
+  if(lb)lb.style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLightbox();closeMobileMenu();}});
+
+// ===== BACKGROUND MUSIC =====
+var bgMusic = null;
+var isPlaying = false;
+
+function initMusic(){
+  bgMusic = document.getElementById('bgMusic');
+  if(!bgMusic) return;
+  bgMusic.volume = 0.35;
+  document.getElementById('volumeFill').style.width = '35%';
+}
+
+function toggleMusic(){
+  if(!bgMusic) initMusic();
+  if(!bgMusic) return;
+  if(isPlaying){
+    bgMusic.pause();
+    document.getElementById('playIcon').style.display = '';
+    document.getElementById('pauseIcon').style.display = 'none';
+    isPlaying = false;
+  } else {
+    var playPromise = bgMusic.play();
+    if(playPromise !== undefined){
+      playPromise.then(function(){
+        document.getElementById('playIcon').style.display = 'none';
+        document.getElementById('pauseIcon').style.display = '';
+        isPlaying = true;
+      }).catch(function(e){
+        console.log('音樂播放需要用戶互動');
+      });
+    }
+  }
+}
+
+function adjustVolume(e){
+  if(!bgMusic) return;
+  var bar = e.currentTarget;
+  var rect = bar.getBoundingClientRect();
+  var ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  bgMusic.volume = ratio;
+  document.getElementById('volumeFill').style.width = (ratio*100) + '%';
+}
+
+function closePlayer(){
+  var player = document.getElementById('musicPlayer');
+  if(player) player.style.display = 'none';
+  if(bgMusic) bgMusic.pause();
+  isPlaying = false;
+}
+
+// 頁面載入後初始化
+window.addEventListener('load', initMusic);
+
+function toggleAcc(id){var el=document.getElementById(id);if(!el)return;el.classList.toggle('open');}
+function toggleFaq(el){const i=el.closest('.faq-item');document.querySelectorAll('.faq-item').forEach(x=>{if(x!==i)x.classList.remove('open');});i.classList.toggle('open');}
+function switchTab(tab,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  var s=document.getElementById('tab-standard');
+  var cu=document.getElementById('tab-custom');
+  if(s)s.style.display=tab==='standard'?'grid':'none';
+  if(cu)cu.style.display=tab==='custom'?'grid':'none';
+}
+// 舊版 switchTab 保留（會被下面的覆蓋）
+function _switchTab_old(tab,btn){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('tab-standard').style.display=tab==='standard'?'grid':'none';document.getElementById('tab-custom').style.display=tab==='custom'?'grid':'none';}
+const navEl=document.querySelector('nav');
+window.addEventListener('scroll',()=>{if(window.scrollY>80){navEl.classList.add('scrolled');}else{navEl.classList.remove('scrolled');}});
+//dumm
+<!-- 背景音樂播放器 -->
+<div class="music-player" id="musicPlayer">
+  <button class="mp-btn" onclick="mpToggle()" id="mpBtn">
+    <svg id="mpPlay" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+    <svg id="mpPause" viewBox="0 0 24 24" style="display:none"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
+  </button>
+  <div class="mp-label"><strong>Concredia.Lab</strong>背景音樂</div>
+  <div class="mp-vol" onclick="mpVol(event)" title="點擊調整音量">
+    <div class="mp-vol-bar" id="mpVolBar"></div>
+  </div>
+  <button class="mp-x" onclick="mpClose()">×</button>
+</div>
+<audio id="mpAudio" loop preload="none">
+  <source src="music/bgm.mp3" type="audio/mpeg">
+</audio>
+
+
+y
