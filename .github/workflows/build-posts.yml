@@ -1,0 +1,30 @@
+name: 自動轉換文章
+
+on:
+  push:
+    paths:
+      - '_posts/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 下載網站檔案
+        uses: actions/checkout@v4
+
+      - name: 安裝 Python 依賴
+        run: pip install python-frontmatter markdown
+
+      - name: 執行轉換腳本
+        run: python3 scripts/build_posts.py
+
+      - name: 推送回 GitHub
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "自動更新文章頁面"
+          git push
