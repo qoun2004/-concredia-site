@@ -242,7 +242,7 @@ section{padding:5.5rem 4rem;}
 .team-name-en{font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;}
 .team-bio{font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;}
 .team-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
-.chip{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;}
+.chip{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;}
 
 /* BAOMEI */
 .baomei-wrap{background:var(--concrete-dark);display:grid;grid-template-columns:320px 1fr;margin-top:2rem;}
@@ -358,7 +358,7 @@ section{padding:5.5rem 4rem;}
 .blog-thumb{aspect-ratio:16/9;background:var(--concrete-dark);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .blog-thumb img{width:100%;height:100%;object-fit:cover;}
 .blog-thumb-label{font-family:var(--font-display);font-size:1.8rem;color:rgba(212,207,200,0.28);font-weight:700;}
-.blog-cat{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);font-weight:500;margin:1rem 1.25rem 0.4rem;}
+.blog-cat{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);font-weight:500;margin:1rem 1.25rem 0.4rem;}
 .blog-card h3{font-size:0.97rem;font-weight:500;color:var(--concrete-dark);line-height:1.42;padding:0 1.25rem;margin-bottom:0.5rem;}
 .blog-card p{font-size:0.8rem;color:var(--concrete);line-height:1.65;padding:0 1.25rem;font-weight:300;}
 .blog-meta{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;margin-top:0.75rem;border-top:1px solid var(--concrete-light);}
@@ -725,6 +725,23 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 }
 .mp-x:hover{color:var(--warm-white);}
 
+
+/* ===== 全站字體加大覆蓋 ===== */
+body{font-size:17px !important;}
+.sec-eye{font-size:0.75rem !important;letter-spacing:0.2em !important;}
+.sec-sub{font-size:1rem !important;line-height:1.75 !important;}
+.nav-links a{font-size:0.86rem !important;}
+.blog-cat{font-size:0.72rem !important;}
+.blog-title{font-size:1.08rem !important;}
+.blog-excerpt{font-size:0.93rem !important;}
+.blog-date{font-size:0.82rem !important;}
+.chip{font-size:0.7rem !important;padding:0.32rem 0.75rem !important;}
+.footer-col ul li a{font-size:0.88rem !important;}
+.footer-bottom p{font-size:0.82rem !important;}
+.stat-label{font-size:0.78rem !important;}
+.acc-title{font-size:1.05rem !important;}
+p{line-height:1.85;}
+
 </style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -732,17 +749,15 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 
 <nav>
   <a href="#" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="impact.html">環境現況</a></li>
     <li><a href="esg-dashboard.html">ESG 數據</a></li>
-    <li><a href="#cta">支持方案</a></li>
-    <li><a href="#why">使命</a></li>
-    <li><a href="#about">關於團隊</a></li>
-    <li><a href="#material">材料哲學</a></li>
+    <li><a href="index.html#why">使命</a></li>
+    <li><a href="index.html#about">關於團隊</a></li>
     <li><a href="products.html">產品系列</a></li>
     <li><a href="story.html">品牌故事</a></li>
-    <li><a href="#blog">最新動態</a></li>
     <li><a href="gallery.html">作品影像集</a></li>
+    <li><a href="blog.html">最新動態</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="#contact" class="nav-cta">合作洽詢</a>
@@ -941,40 +956,6 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   </div>
   <div class="blog-grid">
 
-    <div class="blog-card">
-      <div class="blog-thumb" style="aspect-ratio:16/9;overflow:hidden;">
-        <img src="images/story-night.jpg" alt="test"
-          style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
-          onmouseover="this.style.transform='scale(1.04)'"
-          onmouseout="this.style.transform='scale(1)'">
-      </div>
-      <div class="blog-info">
-        <div class="blog-cat">event</div>
-        <h3 class="blog-title">test</h3>
-        <p class="blog-excerpt">test</p>
-        <div class="blog-foot">
-          <span class="blog-date">2026 年 5 月</span>
-          <a class="blog-read" style="color:var(--rust);text-decoration:none;" href="blog-test.html">閱讀全文 →</a>
-        </div>
-      </div>
-    </div>
-    <div class="blog-card">
-      <div class="blog-thumb" style="aspect-ratio:16/9;overflow:hidden;">
-        <img src="images/story-night.jpg" alt="test"
-          style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;"
-          onmouseover="this.style.transform='scale(1.04)'"
-          onmouseout="this.style.transform='scale(1)'">
-      </div>
-      <div class="blog-info">
-        <div class="blog-cat">倉庫日常</div>
-        <h3 class="blog-title">test</h3>
-        <p class="blog-excerpt">test</p>
-        <div class="blog-foot">
-          <span class="blog-date">2026 年 5 月</span>
-          <a class="blog-read" style="color:var(--rust);text-decoration:none;" href="blog-test-1.html">閱讀全文 →</a>
-        </div>
-      </div>
-    </div>
     <div class="blog-card">
       <div class="blog-thumb" style="aspect-ratio:16/9;overflow:hidden;">
         <img src="images/baomei.jpg" alt="這是一篇範例文章（可以刪掉）"
@@ -1323,7 +1304,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
     <div>
       <div class="sec-eye" style="color:var(--rust);">核心理念</div>
       <h2 style="font-family:var(--font-display);font-size:clamp(2.2rem,4vw,3.5rem);color:var(--concrete-dark);font-weight:700;line-height:1.2;margin-bottom:0;">
-        Ivor 的硬度<br>建凱的寬度<br>寶妹的溫度
+        Ivor 的硬度<br>建凱的寬度<br>寶妹的溫度<br>葳葳的力度
       </h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:0;padding-top:0.5rem;">
@@ -1396,7 +1377,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
           </div>
           <div style="display:flex;align-items:center;gap:0.75rem;padding:0.85rem 1.1rem;background:rgba(155,91,58,0.08);border-left:3px solid var(--rust);">
             <span style="font-size:1.2rem;">🔩</span>
-            <span style="font-size:0.88rem;color:rgba(212,207,200,0.6);">+ 骨料（力料）</span>
+            <span style="font-size:0.88rem;color:rgba(212,207,200,0.6);">+ 骨料（粒料）</span>
             <span style="color:var(--rust-light);font-size:1rem;margin:0 0.25rem;">→</span>
             <span style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;">混凝土 Concrete</span>
             <span style="font-size:0.72rem;color:var(--concrete-light);opacity:0.45;margin-left:auto;">+ 鋼筋 = Structural</span>
@@ -1434,7 +1415,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
             <div>
               <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;">
                 <span style="font-family:var(--font-display);font-size:0.78rem;color:var(--rust-light);opacity:0.5;font-weight:700;">01</span>
-                <span style="font-size:1rem;font-weight:600;color:var(--warm-white);">再生骨料（力料）</span>
+                <span style="font-size:1rem;font-weight:600;color:var(--warm-white);">再生骨料（粒料）</span>
               </div>
               <p style="font-size:0.83rem;color:var(--concrete-light);line-height:1.68;font-weight:300;opacity:0.82;">拆除廢料破碎篩分後作骨料。水磨後的顆粒感是 Concredia.Lab 獨特觸感的來源——每塊廢料都有自己的地質故事。</p>
             </div>
@@ -1499,40 +1480,52 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
     <div>
       <div class="sec-eye" style="color:var(--rust);">產品系列</div>
-      <h2 class="sec-title">精選作品</h2>
+      <h2 class="sec-title">三個系列，一種哲學</h2>
     </div>
     <a href="products.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);text-decoration:none;border:1px solid rgba(155,91,58,0.3);padding:0.6rem 1.2rem;transition:all 0.2s;" onmouseover="this.style.background='rgba(155,91,58,0.06)'" onmouseout="this.style.background='transparent'">查看全部產品 →</a>
   </div>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
-    <a href="products.html" style="display:block;text-decoration:none;overflow:hidden;background:var(--warm-white);transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
+
+    <!-- 旗艦：流構系列 -->
+    <a href="products.html#flow-structure" style="display:block;text-decoration:none;overflow:hidden;background:var(--concrete-dark);transition:transform 0.3s;position:relative;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
       <div style="aspect-ratio:4/3;overflow:hidden;">
-        <img src="images/material-maze.jpg" alt="旗艦作品" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="images/flow-structure-scenarios.jpg" alt="流構系列" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(42,39,36,0.9) 0%,transparent 55%);"></div>
       </div>
-      <div style="padding:1.25rem;">
-        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;">旗艦作品</div>
-        <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--concrete-dark);">定錨桌几</div>
+      <div style="padding:1.5rem;position:absolute;bottom:0;left:0;right:0;">
+        <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.3rem;">旗艦系列</div>
+        <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--warm-white);">流構系列 Flow Structure</div>
+        <div style="font-size:0.78rem;color:rgba(212,207,200,0.65);margin-top:0.2rem;">模組化 · 可調高度 · 漂流木桌板</div>
       </div>
     </a>
+
+    <!-- Ready-made：定錨桌几 -->
     <a href="products.html" style="display:block;text-decoration:none;overflow:hidden;background:var(--warm-white);transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
       <div style="aspect-ratio:4/3;overflow:hidden;">
-        <img src="images/product-lamp4.jpg" alt="漢字鏤空燈具" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="images/material-maze.jpg" alt="定錨桌几" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
       </div>
       <div style="padding:1.25rem;">
-        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;">燈具系列</div>
-        <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--concrete-dark);">漢字鏤空燈具</div>
+        <div style="font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;">Ready-made · 標準量產</div>
+        <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--concrete-dark);">定錨桌几</div>
+        <div style="font-size:0.78rem;color:var(--concrete);opacity:0.7;margin-top:0.2rem;">180 kg · EAC 水磨 · 再生骨料</div>
       </div>
     </a>
+
+    <!-- Custom-made：客製禮品 -->
     <a href="products.html" style="display:block;text-decoration:none;overflow:hidden;background:var(--warm-white);transition:transform 0.3s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
       <div style="aspect-ratio:4/3;overflow:hidden;">
-        <img src="images/product-colorful-table.jpg" alt="彩色骨料桌" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        <img src="images/product-colorful-table.jpg" alt="客製系列" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
       </div>
       <div style="padding:1.25rem;">
-        <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;">Ready-made</div>
-        <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--concrete-dark);">彩色骨料橢圓桌</div>
+        <div style="font-size:0.58rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.3rem;">Custom-made · 客製故事系列</div>
+        <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--concrete-dark);">企業 ESG 客製禮品</div>
+        <div style="font-size:0.78rem;color:var(--concrete);opacity:0.7;margin-top:0.2rem;">附材料溯源文件 · GRI 格式</div>
       </div>
     </a>
+
   </div>
 </section>
+
 
 <!-- LONELY HIGHWAY -->
 <section id="lonely-highway" style="padding:5rem 4rem;background:var(--concrete-dark);position:relative;overflow:hidden;">
@@ -1579,6 +1572,136 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 </section>
 
 <!-- FOOTER -->
+<!-- AI 助理 -->
+<div id="ai-chat-btn" onclick="toggleChat()" style="position:fixed;bottom:2rem;left:2rem;z-index:900;width:52px;height:52px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(155,91,58,0.45);transition:all 0.25s;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</div>
+
+<div id="ai-chat-panel" style="display:none;position:fixed;bottom:5.5rem;left:2rem;z-index:900;width:340px;background:#1E1C1A;border:1px solid rgba(155,91,58,0.4);border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.5);font-family:var(--font-body);">
+  <!-- 標題列 -->
+  <div style="background:var(--rust);padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:0.75rem;">
+      <div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1rem;">🐾</div>
+      <div>
+        <div style="font-size:0.85rem;font-weight:600;color:white;">Concredia.Lab 助理</div>
+        <div style="font-size:0.65rem;color:rgba(255,255,255,0.75);">關於產品、ESG、合作都可以問</div>
+      </div>
+    </div>
+    <button onclick="toggleChat()" style="background:none;border:none;color:white;font-size:1.3rem;cursor:pointer;line-height:1;opacity:0.75;">×</button>
+  </div>
+
+  <!-- 對話區 -->
+  <div id="chat-messages" style="height:300px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:0.75rem;">
+    <div style="background:rgba(212,207,200,0.08);border-radius:8px 8px 8px 2px;padding:0.75rem 1rem;max-width:88%;">
+      <div style="font-size:0.85rem;color:rgba(212,207,200,0.9);line-height:1.6;">你好！我是 Concredia.Lab 的 AI 助理 🐾<br>關於我們的產品、材料技術、ESG 合作或訂購方式，都可以直接問我！</div>
+    </div>
+  </div>
+
+  <!-- 快速問題 -->
+  <div id="quick-btns" style="padding:0.5rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem;">
+    <button onclick="quickAsk(this,'產品有哪些系列？')" style="font-size:0.68rem;padding:0.3rem 0.7rem;background:rgba(155,91,58,0.15);border:1px solid rgba(155,91,58,0.3);color:var(--rust-light);border-radius:20px;cursor:pointer;font-family:var(--font-body);">產品系列？</button>
+    <button onclick="quickAsk(this,'ESG 文件套件包含什麼？')" style="font-size:0.68rem;padding:0.3rem 0.7rem;background:rgba(155,91,58,0.15);border:1px solid rgba(155,91,58,0.3);color:var(--rust-light);border-radius:20px;cursor:pointer;font-family:var(--font-body);">ESG 文件？</button>
+    <button onclick="quickAsk(this,'如何下訂或合作？')" style="font-size:0.68rem;padding:0.3rem 0.7rem;background:rgba(155,91,58,0.15);border:1px solid rgba(155,91,58,0.3);color:var(--rust-light);border-radius:20px;cursor:pointer;font-family:var(--font-body);">如何合作？</button>
+    <button onclick="quickAsk(this,'再生料佔比是多少？')" style="font-size:0.68rem;padding:0.3rem 0.7rem;background:rgba(155,91,58,0.15);border:1px solid rgba(155,91,58,0.3);color:var(--rust-light);border-radius:20px;cursor:pointer;font-family:var(--font-body);">材料佔比？</button>
+  </div>
+
+  <!-- 輸入框 -->
+  <div style="padding:0.75rem 1rem;border-top:1px solid rgba(212,207,200,0.08);display:flex;gap:0.5rem;">
+    <input id="chat-input" type="text" placeholder="輸入你的問題..." onkeydown="if(event.key==='Enter')sendMsg()"
+      style="flex:1;background:rgba(212,207,200,0.08);border:1px solid rgba(212,207,200,0.15);border-radius:6px;padding:0.55rem 0.75rem;color:var(--warm-white);font-size:0.85rem;font-family:var(--font-body);outline:none;">
+    <button onclick="sendMsg()" style="background:var(--rust);border:none;border-radius:6px;padding:0.55rem 0.85rem;cursor:pointer;color:white;font-size:0.85rem;transition:background 0.2s;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">送出</button>
+  </div>
+</div>
+
+<script>
+var chatOpen = false;
+var chatHistory = [];
+
+var SYSTEM_PROMPT = `你是 Concredia.Lab 的 AI 助理，代表這個品牌回答問題。請用繁體中文回答，語氣親切專業，回答簡潔（3-5句為佳）。
+
+關於 Concredia.Lab 的核心資訊：
+- 品牌：Concredia.Lab，士敏文品工作室，創辦人 Dr. Ivor Lee（李俊憲），國立中央大學營建管理博士
+- 核心技術：EAC（Exposed Aggregate Concrete）骨料裸露工法，水磨#50到#5000
+- 材料：70%+ 再生廢料（碎磚、廢玻璃、爐石粉等）+ 30% 水泥，碳排削減 -62%
+- 產品系列：① 流構系列（Flow Structure，模組化家具）② Ready-made 標準量產 ③ Custom-made 客製故事系列
+- ESG 文件套件：材料溯源報告、碳足跡計算書、GRI 格式摘要、綠色採購符合聲明、品牌故事授權、2026碳費預備文件
+- 合作方式：ESG 禮品採購 / 辦公空間採購 / 長期永續夥伴，5個工作天提供文件套件
+- 聯絡：concredialab@gmail.com
+- 網站：concredialab.netlify.app
+- 掃一張桌子計畫：彰化竹塘鄉農會，70%廢料製成社區公共家具
+- 寶妹：法鬥×台灣土狗，首席士氣官，2020年加入
+
+如果問到價格，請說「請透過 Email 或聯絡頁面詢問報價，我們會在2個工作天內回覆」。
+如果問到不確定的事，請誠實說「這個問題建議直接聯絡我們確認」。`;
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('ai-chat-panel').style.display = chatOpen ? 'flex' : 'none';
+  document.getElementById('ai-chat-panel').style.flexDirection = 'column';
+  if (chatOpen) document.getElementById('chat-input').focus();
+}
+
+function addMsg(text, isUser) {
+  var msgs = document.getElementById('chat-messages');
+  var div = document.createElement('div');
+  div.style.cssText = isUser
+    ? 'background:rgba(155,91,58,0.2);border-radius:8px 8px 2px 8px;padding:0.75rem 1rem;max-width:88%;align-self:flex-end;'
+    : 'background:rgba(212,207,200,0.08);border-radius:8px 8px 8px 2px;padding:0.75rem 1rem;max-width:88%;';
+  div.innerHTML = '<div style="font-size:0.85rem;color:rgba(212,207,200,0.9);line-height:1.6;">' + text.replace(/\n/g,'<br>') + '</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function addTyping() {
+  var msgs = document.getElementById('chat-messages');
+  var div = document.createElement('div');
+  div.id = 'typing-indicator';
+  div.style.cssText = 'background:rgba(212,207,200,0.08);border-radius:8px 8px 8px 2px;padding:0.75rem 1rem;max-width:88%;';
+  div.innerHTML = '<div style="font-size:0.85rem;color:rgba(212,207,200,0.5);">思考中...</div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+async function sendMsg() {
+  var input = document.getElementById('chat-input');
+  var text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+
+  // 隱藏快速按鈕
+  document.getElementById('quick-btns').style.display = 'none';
+
+  addMsg(text, true);
+  chatHistory.push({ role: 'user', content: text });
+
+  var typing = addTyping();
+
+  try {
+    var res = await fetch('/.netlify/functions/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: chatHistory
+      })
+    });
+    var data = await res.json();
+    var reply = data.reply || '抱歉，我暫時無法回答，請直接聯絡 concredialab@gmail.com';
+    typing.remove();
+    addMsg(reply, false);
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch(e) {
+    typing.remove();
+    addMsg('抱歉，連線發生問題。請直接寄信到 concredialab@gmail.com 或填寫聯絡表單。', false);
+  }
+}
+
+function quickAsk(btn, question) {
+  document.getElementById('chat-input').value = question;
+  sendMsg();
+}
+</script>
+
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
