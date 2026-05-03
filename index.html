@@ -937,7 +937,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
       <div class="sec-eye">最新動態</div>
       <h2 class="sec-title">消息 · Maker 實錄 · 公路現場</h2>
     </div>
-    <a href="index.html#blog" class="btn-o">查看全部</a>
+    <a href="blog.html" class="btn-o">查看全部文章</a>
   </div>
   <div class="blog-grid">
     <div class="blog-card">
@@ -1619,8 +1619,24 @@ function mpInit(){mpAud=document.getElementById('mpAudio');if(mpAud)mpAud.volume
 function mpToggle(){
   if(!mpAud)mpInit();
   if(!mpAud)return;
-  if(mpOn){mpAud.pause();document.getElementById('mpPlay').style.display='';document.getElementById('mpPause').style.display='none';mpOn=false;}
-  else{mpAud.play().then(function(){document.getElementById('mpPlay').style.display='none';document.getElementById('mpPause').style.display='';mpOn=true;}).catch(function(){});}
+  if(mpOn){
+    mpAud.pause();
+    document.getElementById('mpPlay').style.display='block';
+    document.getElementById('mpPause').style.display='none';
+    mpOn=false;
+  } else {
+    var playPromise=mpAud.play();
+    if(playPromise!==undefined){
+      playPromise.then(function(){
+        document.getElementById('mpPlay').style.display='none';
+        document.getElementById('mpPause').style.display='block';
+        mpOn=true;
+      }).catch(function(err){
+        console.log('音樂播放需要 music/bgm.mp3 檔案：',err);
+        alert('請將 bgm.mp3 放入 music/ 資料夾後即可播放背景音樂。');
+      });
+    }
+  }
 }
 function mpVol(e){
   if(!mpAud)return;

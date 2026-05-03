@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最新動態 — Concredia.Lab</title>
+<meta name="description" content="Concredia.Lab 最新動態：寂寞公路計劃、Maker 實錄、倉庫日常、社區行動、媒體活動。">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --concrete:#8B8680;--concrete-light:#D4CFC8;--concrete-dark:#3A3632;
+  --cream:#F5F2ED;--warm-white:#FAF8F5;--charcoal:#2A2724;
+  --rust:#9B5B3A;--rust-light:#C47A54;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--charcoal);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;transition:all 0.3s;}
+nav.scrolled{background:rgba(250,248,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(58,54,50,0.08);box-shadow:0 2px 20px rgba(0,0,0,0.06);}
+.nav-logo{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--charcoal);text-decoration:none;}
+.nav-logo .dot{color:var(--rust);}
+.nav-logo .lab{font-size:0.55em;letter-spacing:0.2em;opacity:0.85;text-transform:uppercase;vertical-align:super;color:var(--rust-light);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.78rem;letter-spacing:0.06em;text-decoration:none;color:var(--concrete);transition:color 0.2s;}
+.nav-links a:hover{color:var(--rust);}
+.nav-cta{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.25rem;border:1px solid var(--rust);color:var(--rust);text-decoration:none;transition:all 0.2s;}
+.nav-cta:hover{background:var(--rust);color:white;}
+
+/* Hero */
+.blog-hero{padding:8rem 4rem 4rem;border-bottom:1px solid rgba(58,54,50,0.08);}
+.blog-hero-eye{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust);margin-bottom:0.75rem;}
+.blog-hero h1{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);color:var(--concrete-dark);font-weight:700;margin-bottom:1rem;}
+.blog-hero p{font-size:0.95rem;color:var(--concrete);max-width:560px;line-height:1.8;font-weight:300;}
+
+/* 分類 filter */
+.filter-bar{padding:1.5rem 4rem;display:flex;gap:0.75rem;flex-wrap:wrap;border-bottom:1px solid rgba(58,54,50,0.08);background:var(--warm-white);position:sticky;top:80px;z-index:50;}
+.filter-btn{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 1rem;border:1px solid rgba(58,54,50,0.2);color:var(--concrete);background:none;cursor:pointer;transition:all 0.2s;font-family:var(--font-body);}
+.filter-btn:hover,.filter-btn.active{background:var(--rust);color:white;border-color:var(--rust);}
+
+/* 文章 Grid */
+.blog-main{padding:3rem 4rem 5rem;}
+.blog-grid-all{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.article-card{background:var(--cream);overflow:hidden;transition:transform 0.25s;text-decoration:none;display:block;}
+.article-card:hover{transform:translateY(-4px);}
+.article-thumb{aspect-ratio:16/9;overflow:hidden;background:var(--concrete-dark);}
+.article-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.article-card:hover .article-thumb img{transform:scale(1.04);}
+.article-body{padding:1.5rem;}
+.article-cat{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.5rem;}
+.article-title{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--concrete-dark);line-height:1.4;margin-bottom:0.6rem;}
+.article-excerpt{font-size:0.82rem;color:var(--concrete);line-height:1.7;font-weight:300;margin-bottom:1rem;opacity:0.85;}
+.article-meta{font-size:0.7rem;color:var(--concrete);opacity:0.55;display:flex;justify-content:space-between;align-items:center;}
+.article-read{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--rust);font-weight:500;}
+.no-results{grid-column:1/-1;text-align:center;padding:4rem;color:var(--concrete);opacity:0.5;}
+
+/* Footer */
+footer{padding:3rem 4rem 2rem;border-top:1px solid rgba(58,54,50,0.08);display:flex;align-items:center;justify-content:space-between;}
+.f-logo{font-family:var(--font-display);font-size:1rem;color:var(--charcoal);}
+.f-note{font-size:0.72rem;color:var(--concrete);opacity:0.45;}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
+  <ul class="nav-links">
+    <li><a href="impact.html">環境現況</a></li>
+    <li><a href="products.html">產品系列</a></li>
+    <li><a href="gallery.html">作品影像集</a></li>
+    <li><a href="blog.html" style="color:var(--rust);">最新動態</a></li>
+    <li><a href="esg-dashboard.html">ESG 數據</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">合作洽詢</a>
+</nav>
+
+<!-- Hero -->
+<div class="blog-hero">
+  <div class="blog-hero-eye">最新動態</div>
+  <h1>Maker 實錄 · 公路現場 · 倉庫日常</h1>
+  <p>從工作室的深夜水磨，到旭海沙灘上的180公斤邂逅，記錄每一件作品背後的真實過程。</p>
+</div>
+
+<!-- 分類 Filter -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCat('all', this)">全部</button>
+  <button class="filter-btn" onclick="filterCat('寂寞公路計劃', this)">🛣️ 寂寞公路計劃</button>
+  <button class="filter-btn" onclick="filterCat('Maker 實錄', this)">⚙️ Maker 實錄</button>
+  <button class="filter-btn" onclick="filterCat('倉庫日常', this)">🐾 倉庫日常</button>
+  <button class="filter-btn" onclick="filterCat('社區行動', this)">🌱 社區行動</button>
+  <button class="filter-btn" onclick="filterCat('媒體 & 活動', this)">📣 媒體 & 活動</button>
+</div>
+
+<!-- 文章列表 -->
+<div class="blog-main">
+  <div class="blog-grid-all" id="articleGrid">
+
+    <a href="blog-highway.html" class="article-card" data-cat="寂寞公路計劃">
+      <div class="article-thumb">
+        <img src="images/story-night.jpg" alt="旭海180公斤的相遇">
+      </div>
+      <div class="article-body">
+        <div class="article-cat">寂寞公路計劃</div>
+        <div class="article-title">旭海 · 180 公斤的相遇——帶著水泥桌去見陌生人</div>
+        <div class="article-excerpt">屏東旭海的沙灘上，一張水泥桌、一壺茶、幾個不期而遇的旅人。這不是展覽，是 Concredia.Lab 最真實的品牌宣言。</div>
+        <div class="article-meta">
+          <span>2025 年 4 月</span>
+          <span class="article-read">閱讀全文 →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog-speaker.html" class="article-card" data-cat="Maker 實錄">
+      <div class="article-thumb">
+        <img src="images/ivor-working.jpg" alt="水泥音響誕生記">
+      </div>
+      <div class="article-body">
+        <div class="article-cat">Maker 實錄</div>
+        <div class="article-title">開模、灌漿、水磨——一顆水泥音響的三小時誕生記</div>
+        <div class="article-excerpt">從迷宮迴路設計到 EAC 水磨工序，透明化過程、保留核心配方。這是一件作品的誕生，也是一段廢料的重生。</div>
+        <div class="article-meta">
+          <span>2025 年 3 月</span>
+          <span class="article-read">閱讀全文 →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="blog-baomei.html" class="article-card" data-cat="倉庫日常">
+      <div class="article-thumb">
+        <img src="images/baomei.jpg" alt="寶妹" style="object-position:center 15%;">
+      </div>
+      <div class="article-body">
+        <div class="article-cat">倉庫日常</div>
+        <div class="article-title">寶妹對這張新桌子的熱情，只有三分鐘</div>
+        <div class="article-excerpt">三分鐘，恰好是水泥從流動走向凝固的關鍵時刻。寶妹每次的熱情很短暫，但這張桌子能陪你一輩子。</div>
+        <div class="article-meta">
+          <span>2025 年 2 月</span>
+          <span class="article-read">閱讀全文 →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 新文章會由 CMS 發布後手動加到這裡，或未來升級為自動 -->
+
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">Concredia<span style="color:var(--rust);">.</span>Lab</div>
+  <div class="f-note">© 2025 Concredia.Lab · 士敏文品工作室</div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll', function(){
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// 分類 Filter
+function filterCat(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  var cards = document.querySelectorAll('.article-card');
+  var visible = 0;
+  cards.forEach(function(card) {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = 'block';
+      visible++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  var noResults = document.getElementById('noResults');
+  if (visible === 0) {
+    if (!noResults) {
+      var div = document.createElement('div');
+      div.id = 'noResults';
+      div.className = 'no-results';
+      div.textContent = '這個分類還沒有文章，敬請期待。';
+      document.getElementById('articleGrid').appendChild(div);
+    }
+  } else {
+    if (noResults) noResults.remove();
+  }
+}
+</script>
+</body>
+</html>
