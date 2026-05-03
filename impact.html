@@ -773,6 +773,62 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   <div id="lightbox-cap" style="color:rgba(212,207,200,0.65);font-size:0.72rem;letter-spacing:0.12em;margin-top:1rem;text-transform:uppercase;"></div>
   <button onclick="closeLightbox()" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.7);font-size:2.2rem;cursor:pointer;line-height:1;">×</button>
 </div>
+
+<!-- 掃一張桌子計畫 -->
+<div style="background:var(--warm-white);padding:5rem 4rem;border-top:4px solid var(--rust);">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+    <div>
+      <div style="font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;"><span style="width:16px;height:1px;background:var(--rust);display:inline-block;"></span>社會實驗案例 · 彰化竹塘</div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);color:var(--concrete-dark);font-weight:700;line-height:1.15;margin-bottom:1.5rem;">掃一張桌子<br><span style="color:var(--rust);">從掃地，掃出一張公共家具</span></h2>
+      <p style="font-size:0.95rem;color:var(--concrete);line-height:1.85;font-weight:300;margin-bottom:1.25rem;">農村志工每週掃街，掃出的砂土、碎磚、碎玻璃，全部進了焚化爐——因為沒有人知道這些「無機廢料」還有其他出路。</p>
+      <p style="font-size:0.95rem;color:var(--concrete);line-height:1.85;font-weight:300;margin-bottom:1.25rem;"><strong>Concredia.Lab 的答案是：把它掃成一張桌子。</strong>以 70% 回收材 + 30% 水泥的配比，加上抗拉材綁紮，讓廢料成為社區的公共家具。</p>
+      <p style="font-size:0.95rem;color:var(--concrete);line-height:1.85;font-weight:300;margin-bottom:2rem;">這是彰化縣竹塘鄉農會的 115 年度計畫（即將執行），也是 Concredia.Lab <strong>Hub & Satellite 技術授權模式</strong>的第一個示範案例——竹塘模式，未來複製到全台。</p>
+      <a href="esg-dashboard.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.9rem 1.75rem;background:var(--rust);color:white;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">查看 ESG 數據儀表板 →</a>
+    </div>
+    <div>
+      <!-- 計畫數字 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(58,54,50,0.1);margin-bottom:1.5rem;">
+        <div style="padding:1.5rem;background:var(--cream);text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--rust);line-height:1;margin-bottom:0.3rem;">10+</div>
+          <div style="font-size:0.68rem;color:var(--concrete);opacity:0.7;letter-spacing:0.08em;">組公共桌椅（目標）</div>
+        </div>
+        <div style="padding:1.5rem;background:var(--cream);text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--rust);line-height:1;margin-bottom:0.3rem;">500 kg</div>
+          <div style="font-size:0.68rem;color:var(--concrete);opacity:0.7;letter-spacing:0.08em;">廢料減少進焚化（目標）</div>
+        </div>
+        <div style="padding:1.5rem;background:var(--cream);text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--rust);line-height:1;margin-bottom:0.3rem;">70%</div>
+          <div style="font-size:0.68rem;color:var(--concrete);opacity:0.7;letter-spacing:0.08em;">在地廢料佔比</div>
+        </div>
+        <div style="padding:1.5rem;background:var(--cream);text-align:center;">
+          <div style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--rust);line-height:1;margin-bottom:0.3rem;">5 場</div>
+          <div style="font-size:0.68rem;color:var(--concrete);opacity:0.7;letter-spacing:0.08em;">社區共創工作坊</div>
+        </div>
+      </div>
+
+      <!-- 流程 -->
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="padding:1.1rem 1.5rem;background:var(--cream);display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🧹</span>
+          <div><strong style="font-size:0.9rem;color:var(--concrete-dark);">掃街 + 廢料分類</strong><br><span style="font-size:0.8rem;color:var(--concrete);opacity:0.75;">碎石、陶器、玻璃、紅磚分流，以社區貨幣兌換農特產</span></div>
+        </div>
+        <div style="padding:1.1rem 1.5rem;background:var(--cream);display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🔬</span>
+          <div><strong style="font-size:0.9rem;color:var(--concrete-dark);">再生配比</strong><br><span style="font-size:0.8rem;color:var(--concrete);opacity:0.75;">70% 回收材 + 30% 水泥 + 抗拉材，確保結構安全</span></div>
+        </div>
+        <div style="padding:1.1rem 1.5rem;background:var(--cream);display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🪑</span>
+          <div><strong style="font-size:0.9rem;color:var(--concrete-dark);">社區共創完成家具</strong><br><span style="font-size:0.8rem;color:var(--concrete);opacity:0.75;">桌腳設計融入竹塘在地特色圖案，安置社區公共空間</span></div>
+        </div>
+        <div style="padding:1.1rem 1.5rem;background:rgba(155,91,58,0.08);border:1px solid rgba(155,91,58,0.3);display:flex;align-items:center;gap:1rem;">
+          <span style="font-size:1.5rem;flex-shrink:0;">🔄</span>
+          <div><strong style="font-size:0.9rem;color:var(--concrete-dark);">可複製到全台</strong><br><span style="font-size:0.8rem;color:var(--concrete);opacity:0.75;">竹塘是第一個示範鄉鎮，模式建立後可授權推廣</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">

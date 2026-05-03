@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESG 永續數據儀表板 — Concredia.Lab</title>
+<meta name="description" content="Concredia.Lab 每件作品的永續影響力數據：再生料佔比、碳排削減量、廢料去化量，可直接納入企業ESG報告。">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --concrete:#8B8680;--concrete-light:#D4CFC8;--concrete-dark:#3A3632;
+  --cream:#F5F2ED;--warm-white:#FAF8F5;--charcoal:#2A2724;
+  --rust:#9B5B3A;--rust-light:#C47A54;
+  --green:#1A7A4A;--green-light:#2ECC71;
+  --blue:#1A5276;--blue-light:#3498DB;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);background:#0D0B09;color:var(--warm-white);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;transition:all 0.3s;}
+nav.scrolled{background:rgba(13,11,9,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,207,200,0.08);}
+.nav-logo{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--warm-white);text-decoration:none;letter-spacing:0.02em;}
+.nav-logo .dot{color:var(--rust-light);}
+.nav-logo .lab{font-size:0.55em;letter-spacing:0.2em;opacity:0.85;text-transform:uppercase;vertical-align:super;color:var(--rust-light);}
+.nav-back{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.65);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;}
+.nav-back:hover{color:var(--rust-light);}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+
+/* HERO */
+.dash-hero{padding:8rem 4rem 4rem;border-bottom:1px solid rgba(212,207,200,0.08);position:relative;overflow:hidden;}
+.dash-hero::before{content:'ESG';position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-family:var(--font-display);font-size:18rem;font-weight:700;color:rgba(155,91,58,0.04);pointer-events:none;line-height:1;}
+.dash-eyebrow{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
+.dash-eyebrow::before{content:'';width:20px;height:1px;background:var(--rust-light);}
+.dash-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:1rem;}
+.dash-title em{color:var(--rust-light);font-style:italic;}
+.dash-desc{font-size:1rem;color:var(--concrete-light);line-height:1.8;max-width:620px;font-weight:300;opacity:0.85;}
+.cert-badges{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;}
+.cert-badge{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(46,204,113,0.4);color:#2ECC71;padding:0.3rem 0.75rem;background:rgba(46,204,113,0.06);}
+
+/* CALCULATOR */
+.calc-section{padding:4rem;background:#111009;border-bottom:1px solid rgba(212,207,200,0.08);}
+.calc-title{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--warm-white);margin-bottom:0.4rem;}
+.calc-sub{font-size:0.88rem;color:var(--concrete-light);opacity:0.75;margin-bottom:2.5rem;}
+
+.calc-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start;}
+
+/* 左側：選品 + 數量 */
+.calc-inputs{display:flex;flex-direction:column;gap:1.5rem;}
+.input-group label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-light);opacity:0.7;display:block;margin-bottom:0.5rem;}
+.product-select{width:100%;background:#1A1714;border:1px solid rgba(212,207,200,0.15);color:var(--warm-white);font-family:var(--font-body);font-size:0.9rem;padding:0.85rem 1rem;appearance:none;cursor:pointer;outline:none;transition:border-color 0.2s;}
+.product-select:focus{border-color:var(--rust-light);}
+.qty-control{display:flex;align-items:center;gap:0;}
+.qty-btn{width:44px;height:44px;background:#1A1714;border:1px solid rgba(212,207,200,0.15);color:var(--warm-white);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;flex-shrink:0;}
+.qty-btn:hover{background:rgba(155,91,58,0.2);border-color:var(--rust-light);}
+.qty-input{flex:1;height:44px;background:#1A1714;border:1px solid rgba(212,207,200,0.15);border-left:none;border-right:none;color:var(--warm-white);font-family:var(--font-mono);font-size:1.1rem;font-weight:600;text-align:center;outline:none;}
+.calc-btn{width:100%;padding:1rem;background:var(--rust);color:white;border:none;font-family:var(--font-body);font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background 0.2s;margin-top:0.5rem;}
+.calc-btn:hover{background:var(--rust-light);}
+
+/* 右側：結果儀表板 */
+.result-panel{background:#0D0B09;border:1px solid rgba(212,207,200,0.1);padding:2rem;}
+.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;padding-bottom:1rem;border-bottom:1px solid rgba(212,207,200,0.08);}
+.result-product-name{font-family:var(--font-display);font-size:1rem;color:var(--warm-white);font-weight:700;}
+.result-qty-label{font-size:0.65rem;letter-spacing:0.12em;color:var(--rust-light);text-transform:uppercase;}
+.result-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(212,207,200,0.06);}
+.metric-card{padding:1.5rem;background:#0D0B09;position:relative;overflow:hidden;}
+.metric-card::before{content:attr(data-icon);position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:3rem;opacity:0.08;pointer-events:none;}
+.metric-icon{font-size:1.4rem;margin-bottom:0.5rem;}
+.metric-label{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-light);opacity:0.6;margin-bottom:0.4rem;}
+.metric-value{font-family:var(--font-mono);font-size:1.8rem;font-weight:600;line-height:1;margin-bottom:0.25rem;transition:all 0.4s;}
+.metric-unit{font-size:0.72rem;color:var(--concrete-light);opacity:0.6;}
+.metric-card.green .metric-value{color:#2ECC71;}
+.metric-card.blue .metric-value{color:#5DADE2;}
+.metric-card.amber .metric-value{color:#F39C12;}
+.metric-card.rust .metric-value{color:var(--rust-light);}
+
+/* 等效換算 */
+.equivalents{margin-top:1px;background:#0D0B09;padding:1.25rem 1.5rem;border-top:1px solid rgba(212,207,200,0.06);}
+.equiv-title{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-light);opacity:0.55;margin-bottom:0.85rem;}
+.equiv-list{display:flex;flex-direction:column;gap:0.5rem;}
+.equiv-item{display:flex;align-items:center;gap:0.75rem;font-size:0.82rem;color:var(--concrete-light);opacity:0.8;}
+.equiv-item span:first-child{font-size:1.1rem;flex-shrink:0;}
+
+/* ESG 報告提示 */
+.report-hint{margin-top:1px;background:rgba(26,122,74,0.08);border:1px solid rgba(26,122,74,0.25);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.report-hint-icon{font-size:1.5rem;flex-shrink:0;}
+.report-hint-text{font-size:0.8rem;color:#2ECC71;line-height:1.55;}
+.report-hint-text strong{display:block;font-weight:500;margin-bottom:0.15rem;}
+
+/* PRODUCT CARDS */
+.products-section{padding:4rem;border-bottom:1px solid rgba(212,207,200,0.08);}
+.section-eyebrow{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.75rem;}
+.section-eyebrow::before{content:'';width:20px;height:1px;background:var(--rust-light);}
+.section-title{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--warm-white);margin-bottom:2.5rem;}
+.prod-esg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);}
+.prod-esg-card{background:#111009;padding:2rem;}
+.pec-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--warm-white);margin-bottom:0.25rem;}
+.pec-type{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.25rem;}
+.pec-bars{display:flex;flex-direction:column;gap:0.85rem;}
+.pec-bar-row{display:flex;flex-direction:column;gap:0.3rem;}
+.pec-bar-label{display:flex;justify-content:space-between;font-size:0.72rem;}
+.pec-bar-label span:first-child{color:var(--concrete-light);opacity:0.7;}
+.pec-bar-label span:last-child{font-family:var(--font-mono);font-weight:600;}
+.pec-bar-track{height:4px;background:rgba(212,207,200,0.1);border-radius:2px;overflow:hidden;}
+.pec-bar-fill{height:100%;border-radius:2px;transition:width 1s ease;}
+.pec-bar-fill.green{background:linear-gradient(90deg,#1A7A4A,#2ECC71);}
+.pec-bar-fill.blue{background:linear-gradient(90deg,#1A5276,#3498DB);}
+.pec-bar-fill.amber{background:linear-gradient(90deg,#B7770D,#F39C12);}
+.pec-divider{height:1px;background:rgba(212,207,200,0.06);margin:1.25rem 0;}
+.pec-weight{font-size:0.78rem;color:var(--concrete-light);opacity:0.65;}
+.pec-weight strong{color:var(--warm-white);font-weight:500;}
+.pec-doc{margin-top:1.25rem;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-light);display:flex;align-items:center;gap:0.4rem;opacity:0.75;}
+
+/* ANNUAL IMPACT */
+.annual-section{padding:4rem;background:#111009;}
+.annual-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(212,207,200,0.06);margin-top:2.5rem;}
+.annual-card{background:#111009;padding:2rem 1.75rem;border-top:3px solid;}
+.annual-card.g{border-color:#2ECC71;}
+.annual-card.b{border-color:#3498DB;}
+.annual-card.a{border-color:#F39C12;}
+.annual-card.r{border-color:var(--rust-light);}
+.annual-icon{font-size:2.2rem;margin-bottom:0.75rem;}
+.annual-num{font-family:var(--font-mono);font-size:2.5rem;font-weight:600;line-height:1;margin-bottom:0.3rem;}
+.annual-card.g .annual-num{color:#2ECC71;}
+.annual-card.b .annual-num{color:#5DADE2;}
+.annual-card.a .annual-num{color:#F39C12;}
+.annual-card.r .annual-num{color:var(--rust-light);}
+.annual-label{font-size:0.88rem;color:var(--warm-white);font-weight:500;margin-bottom:0.3rem;}
+.annual-sub{font-size:0.75rem;color:var(--concrete-light);opacity:0.6;line-height:1.5;}
+
+/* CTA */
+.dash-cta{padding:4rem;text-align:center;background:#0D0B09;border-top:1px solid rgba(212,207,200,0.08);}
+.dash-cta h2{font-family:var(--font-display);font-size:clamp(1.6rem,2.8vw,2.4rem);color:var(--warm-white);font-weight:700;margin-bottom:1rem;}
+.dash-cta p{font-size:0.92rem;color:var(--concrete-light);opacity:0.8;max-width:560px;margin:0 auto 2.5rem;line-height:1.8;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{padding:0.9rem 2rem;background:var(--rust);color:white;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;}
+.btn-primary:hover{background:var(--rust-light);}
+.btn-outline{padding:0.9rem 2rem;border:1px solid rgba(212,207,200,0.3);color:var(--warm-white);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
+.btn-outline:hover{border-color:var(--rust-light);color:var(--rust-light);}
+
+/* 數字動畫 */
+@keyframes countUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.metric-value.animate{animation:countUp 0.4s ease forwards;}
+
+/* FOOTER */
+footer{padding:2rem 4rem;border-top:1px solid rgba(212,207,200,0.08);display:flex;align-items:center;justify-content:space-between;}
+.f-logo{font-family:var(--font-display);font-size:1rem;color:var(--warm-white);}
+.f-note{font-size:0.68rem;color:var(--concrete-light);opacity:0.4;letter-spacing:0.06em;}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 24 24"><polyline points="19 12 5 12"/><polyline points="12 5 5 12 12 19"/></svg>
+    返回主頁
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="dash-hero">
+  <div class="dash-eyebrow">永續數據儀表板</div>
+  <h1 class="dash-title">ESG Dashboard<br><em>讓數字說話</em></h1>
+  <p class="dash-desc">每一件 Concredia.Lab 作品，都附有可查核的永續影響力數據。這些數字可直接引用於企業 ESG 報告、政府採購佐證文件，以及投資人說明書。</p>
+  <div class="cert-badges">
+    <span class="cert-badge">✓ 材料溯源可查</span>
+    <span class="cert-badge">✓ 符合政府綠色採購規範</span>
+    <span class="cert-badge">✓ 再生料佔比 &gt; 50%</span>
+    <span class="cert-badge">✓ 2026 碳費合規準備</span>
+  </div>
+</div>
+
+<!-- 互動計算器 -->
+<div class="calc-section">
+  <div class="calc-title">採購影響力計算機</div>
+  <div class="calc-sub">選擇產品與數量，即時計算你的 ESG 貢獻數據</div>
+
+  <div class="calc-grid">
+    <!-- 左側輸入 -->
+    <div class="calc-inputs">
+      <div class="input-group">
+        <label>選擇產品</label>
+        <select class="product-select" id="productSelect" onchange="calculate()">
+          <option value="table">定錨桌几（大型）</option>
+          <option value="bench">山脈紋路長凳</option>
+          <option value="speaker">Concrete Speaker 水泥音響</option>
+          <option value="lamp">漢字鏤空燈具</option>
+          <option value="conbox">Conbox 水盆器</option>
+          <option value="coaster">水磨杯墊（組）</option>
+          <option value="custom_brick">企業故事紀念磚（客製）</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>採購數量</label>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <input class="qty-input" type="number" id="qtyInput" value="1" min="1" max="9999" onchange="calculate()">
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">計算 ESG 影響力</button>
+
+      <div style="margin-top:1.5rem;padding:1.25rem;background:#1A1714;border-left:3px solid rgba(155,91,58,0.4);">
+        <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.5rem;">數據說明</div>
+        <p style="font-size:0.78rem;color:var(--concrete-light);line-height:1.65;opacity:0.8;">以上數據基於 Ivor 博士實驗室的配方研究與實測數值估算。各產品實際數據因客製配方而有差異，正式採購前提供完整材料溯源文件。</p>
+      </div>
+    </div>
+
+    <!-- 右側結果 -->
+    <div>
+      <div class="result-panel">
+        <div class="result-header">
+          <div>
+            <div class="result-product-name" id="resultProductName">定錨桌几（大型）</div>
+            <div class="result-qty-label" id="resultQtyLabel">× 1 件</div>
+          </div>
+          <div style="font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--concrete-light);opacity:0.4;">估算數據</div>
+        </div>
+
+        <div class="result-metrics">
+          <div class="metric-card green" data-icon="♻️">
+            <div class="metric-icon">♻️</div>
+            <div class="metric-label">廢料去化量</div>
+            <div class="metric-value green" id="wasteVal">—</div>
+            <div class="metric-unit">公斤（kg）</div>
+          </div>
+          <div class="metric-card blue" data-icon="📉">
+            <div class="metric-icon">📉</div>
+            <div class="metric-label">碳排削減</div>
+            <div class="metric-value blue" id="carbonVal">—</div>
+            <div class="metric-unit">kg CO₂e</div>
+          </div>
+          <div class="metric-card amber" data-icon="🪨">
+            <div class="metric-icon">🪨</div>
+            <div class="metric-label">節省原生砂石</div>
+            <div class="metric-value amber" id="sandVal">—</div>
+            <div class="metric-unit">公斤（kg）</div>
+          </div>
+          <div class="metric-card rust" data-icon="🌱">
+            <div class="metric-icon">🌱</div>
+            <div class="metric-label">再生料佔比</div>
+            <div class="metric-value rust" id="recycleVal">—</div>
+            <div class="metric-unit">% 再生材料</div>
+          </div>
+        </div>
+
+        <div class="equivalents">
+          <div class="equiv-title">等效換算</div>
+          <div class="equiv-list" id="equivList">
+            <div class="equiv-item"><span>🌳</span><span id="equiv1">—</span></div>
+            <div class="equiv-item"><span>🚗</span><span id="equiv2">—</span></div>
+            <div class="equiv-item"><span>💡</span><span id="equiv3">—</span></div>
+          </div>
+        </div>
+
+        <div class="report-hint">
+          <div class="report-hint-icon">📄</div>
+          <div class="report-hint-text">
+            <strong>可納入 ESG 報告</strong>
+            以上數據附材料溯源文件，符合 GRI 標準引用格式，可直接作為企業永續報告佐證。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 各產品靜態數據卡片 -->
+<div class="products-section">
+  <div class="section-eyebrow">產品永續數據</div>
+  <div class="section-title">每件作品的環境貢獻</div>
+
+  <div class="prod-esg-grid">
+
+    <!-- 定錨桌几 -->
+    <div class="prod-esg-card">
+      <div class="pec-name">定錨桌几（大型）</div>
+      <div class="pec-type">Ready-made · 家具</div>
+      <div class="pec-bars">
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>再生料佔比</span>
+            <span style="color:#2ECC71;">72%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill green" style="width:72%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>碳排削減</span>
+            <span style="color:#5DADE2;">62%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill blue" style="width:62%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>節省原生砂石</span>
+            <span style="color:#F39C12;">68%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill amber" style="width:68%;"></div></div>
+        </div>
+      </div>
+      <div class="pec-divider"></div>
+      <div class="pec-weight">每件去化廢料約 <strong>45–60 kg</strong>，碳足跡削減約 <strong>18 kg CO₂e</strong></div>
+      <div class="pec-doc">✓ 附材料溯源文件</div>
+    </div>
+
+    <!-- 水泥音響 -->
+    <div class="prod-esg-card">
+      <div class="pec-name">Concrete Speaker 水泥音響</div>
+      <div class="pec-type">Ready-made · 旗艦作品</div>
+      <div class="pec-bars">
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>再生料佔比</span>
+            <span style="color:#2ECC71;">65%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill green" style="width:65%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>碳排削減</span>
+            <span style="color:#5DADE2;">58%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill blue" style="width:58%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>節省原生砂石</span>
+            <span style="color:#F39C12;">60%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill amber" style="width:60%;"></div></div>
+        </div>
+      </div>
+      <div class="pec-divider"></div>
+      <div class="pec-weight">每件去化廢料約 <strong>12–18 kg</strong>，碳足跡削減約 <strong>7 kg CO₂e</strong></div>
+      <div class="pec-doc">✓ 附材料溯源文件 + 減碳量認證</div>
+    </div>
+
+    <!-- 企業紀念磚 -->
+    <div class="prod-esg-card">
+      <div class="pec-name">企業故事紀念磚</div>
+      <div class="pec-type">Custom-made · ESG 禮品</div>
+      <div class="pec-bars">
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>再生料佔比</span>
+            <span style="color:#2ECC71;">85%+</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill green" style="width:85%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>碳排削減</span>
+            <span style="color:#5DADE2;">65%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill blue" style="width:65%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>企業廢料佔比</span>
+            <span style="color:#F39C12;">100%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill amber" style="width:100%;"></div></div>
+        </div>
+      </div>
+      <div class="pec-divider"></div>
+      <div class="pec-weight">可使用企業原址廢料製作，去化量依客製規格而定</div>
+      <div class="pec-doc">✓ 附企業 ESG 文件套件（GRI 格式）</div>
+    </div>
+
+    <!-- Conbox -->
+    <div class="prod-esg-card">
+      <div class="pec-name">Conbox 水盆器</div>
+      <div class="pec-type">Ready-made · 生活小物</div>
+      <div class="pec-bars">
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>再生料佔比</span>
+            <span style="color:#2ECC71;">70%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill green" style="width:70%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>碳排削減</span>
+            <span style="color:#5DADE2;">55%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill blue" style="width:55%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>節省原生砂石</span>
+            <span style="color:#F39C12;">62%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill amber" style="width:62%;"></div></div>
+        </div>
+      </div>
+      <div class="pec-divider"></div>
+      <div class="pec-weight">每件去化廢料約 <strong>0.3–0.8 kg</strong>，適合大量採購作 ESG 禮品</div>
+      <div class="pec-doc">✓ 附材料溯源文件</div>
+    </div>
+
+    <!-- 長凳 -->
+    <div class="prod-esg-card">
+      <div class="pec-name">山脈紋路長凳</div>
+      <div class="pec-type">Ready-made · 家具</div>
+      <div class="pec-bars">
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>再生料佔比</span>
+            <span style="color:#2ECC71;">75%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill green" style="width:75%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>碳排削減</span>
+            <span style="color:#5DADE2;">62%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill blue" style="width:62%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>節省原生砂石</span>
+            <span style="color:#F39C12;">70%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill amber" style="width:70%;"></div></div>
+        </div>
+      </div>
+      <div class="pec-divider"></div>
+      <div class="pec-weight">每件去化廢料約 <strong>30–45 kg</strong>，碳足跡削減約 <strong>12 kg CO₂e</strong></div>
+      <div class="pec-doc">✓ 附材料溯源文件</div>
+    </div>
+
+    <!-- 燈具 -->
+    <div class="prod-esg-card">
+      <div class="pec-name">漢字鏤空燈具</div>
+      <div class="pec-type">Ready-made · 燈具</div>
+      <div class="pec-bars">
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>再生料佔比</span>
+            <span style="color:#2ECC71;">68%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill green" style="width:68%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>碳排削減</span>
+            <span style="color:#5DADE2;">58%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill blue" style="width:58%;"></div></div>
+        </div>
+        <div class="pec-bar-row">
+          <div class="pec-bar-label">
+            <span>節省原生砂石</span>
+            <span style="color:#F39C12;">64%</span>
+          </div>
+          <div class="pec-bar-track"><div class="pec-bar-fill amber" style="width:64%;"></div></div>
+        </div>
+      </div>
+      <div class="pec-divider"></div>
+      <div class="pec-weight">每件去化廢料約 <strong>3–6 kg</strong>，碳足跡削減約 <strong>2 kg CO₂e</strong></div>
+      <div class="pec-doc">✓ 附材料溯源文件</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 年度累積影響力 -->
+<div class="annual-section">
+  <div class="section-eyebrow">年度累積影響力</div>
+  <div class="section-title">Concredia.Lab 的整體貢獻</div>
+
+  <div class="annual-grid">
+    <div class="annual-card g">
+      <div class="annual-icon">♻️</div>
+      <div class="annual-num">2,400+</div>
+      <div class="annual-label">kg 廢料去化</div>
+      <div class="annual-sub">累積所有已完成作品的營建廢料去化總量</div>
+    </div>
+    <div class="annual-card b">
+      <div class="annual-icon">📉</div>
+      <div class="annual-num">820+</div>
+      <div class="annual-label">kg CO₂e 減少</div>
+      <div class="annual-sub">相較使用原生材料的碳排削減累積量</div>
+    </div>
+    <div class="annual-card a">
+      <div class="annual-icon">🪨</div>
+      <div class="annual-num">1,800+</div>
+      <div class="annual-label">kg 原生砂石節省</div>
+      <div class="annual-sub">透過再生骨料替代原生材料的節省量</div>
+    </div>
+    <div class="annual-card r">
+      <div class="annual-icon">📦</div>
+      <div class="annual-num">40+</div>
+      <div class="annual-label">件作品完成</div>
+      <div class="annual-sub">Ready-made + Custom-made 累積完成件數</div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5px;background:#111009;padding:1.75rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+    <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-light);opacity:0.5;">等效換算</div>
+    <div style="display:flex;gap:2.5rem;flex-wrap:wrap;">
+      <span style="font-size:0.85rem;color:var(--concrete-light);opacity:0.75;">🌳 相當於種植 <strong style="color:var(--warm-white);">37 棵樹</strong> 一年的碳吸收量</span>
+      <span style="font-size:0.85rem;color:var(--concrete-light);opacity:0.75;">🚗 相當於一輛車少開 <strong style="color:var(--warm-white);">4,800 公里</strong></span>
+      <span style="font-size:0.85rem;color:var(--concrete-light);opacity:0.75;">💡 相當於節省 <strong style="color:var(--warm-white);">820 度</strong> 電</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="dash-cta">
+  <h2>需要正式的 ESG 文件套件？</h2>
+  <p>提供採購數量與需求，我們在 5 個工作天內提供完整材料溯源文件、碳足跡計算書，格式符合 GRI 標準，可直接納入企業永續報告。</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-primary">申請 ESG 文件套件</a>
+    <a href="products.html" class="btn-outline">查看產品系列</a>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">Concredia<span style="color:var(--rust-light);">.</span>Lab</div>
+  <div class="f-note">數據基於實驗室研究估算值 · 正式採購提供經驗證文件 · © 2025 Concredia.Lab</div>
+</footer>
+
+<script>
+// 產品數據
+const products = {
+  table:        { name:'定錨桌几（大型）',      waste:52,  carbon:18, sand:42,  recycle:72 },
+  bench:        { name:'山脈紋路長凳',          waste:38,  carbon:12, sand:32,  recycle:75 },
+  speaker:      { name:'Concrete Speaker 水泥音響', waste:15, carbon:7, sand:11, recycle:65 },
+  lamp:         { name:'漢字鏤空燈具',          waste:4.5, carbon:2,  sand:3.5, recycle:68 },
+  conbox:       { name:'Conbox 水盆器',         waste:0.5, carbon:0.3,sand:0.4, recycle:70 },
+  coaster:      { name:'水磨杯墊（組×4）',      waste:1.2, carbon:0.6,sand:0.9, recycle:70 },
+  custom_brick: { name:'企業故事紀念磚（客製）', waste:8,   carbon:4,  sand:7,   recycle:85 },
+};
+
+function animateValue(el, val, decimals=0) {
+  el.classList.remove('animate');
+  void el.offsetWidth;
+  const formatted = decimals > 0 ? val.toFixed(decimals) : val.toLocaleString();
+  el.textContent = formatted;
+  el.classList.add('animate');
+}
+
+function calculate() {
+  const key = document.getElementById('productSelect').value;
+  const qty = Math.max(1, parseInt(document.getElementById('qtyInput').value) || 1);
+  const p = products[key];
+
+  document.getElementById('resultProductName').textContent = p.name;
+  document.getElementById('resultQtyLabel').textContent = '× ' + qty + ' 件';
+
+  const waste  = p.waste  * qty;
+  const carbon = p.carbon * qty;
+  const sand   = p.sand   * qty;
+
+  animateValue(document.getElementById('wasteVal'),  waste,  waste < 10 ? 1 : 0);
+  animateValue(document.getElementById('carbonVal'), carbon, carbon < 10 ? 1 : 0);
+  animateValue(document.getElementById('sandVal'),   sand,   sand < 10 ? 1 : 0);
+  document.getElementById('recycleVal').textContent = p.recycle;
+
+  // 等效換算
+  const trees = (carbon / 22).toFixed(1);
+  const km    = Math.round(carbon * 5.9);
+  const kwh   = Math.round(carbon);
+  document.getElementById('equiv1').textContent = `相當於種植 ${trees} 棵樹一年的碳吸收量`;
+  document.getElementById('equiv2').textContent = `相當於一輛車少開 ${km} 公里`;
+  document.getElementById('equiv3').textContent = `相當於節省 ${kwh} 度電`;
+}
+
+function changeQty(delta) {
+  const input = document.getElementById('qtyInput');
+  const newVal = Math.max(1, (parseInt(input.value) || 1) + delta);
+  input.value = newVal;
+  calculate();
+}
+
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// 初始計算
+calculate();
+</script>
+</body>
+</html>

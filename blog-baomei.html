@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concredia.Lab — 品牌故事 · 寂寞公路</title>
-<meta name="description" content="從 2,190 天的倉庫實驗到旭海沙灘，Concredia.Lab 帶著 180 公斤水泥桌走在台灣的寂寞公路上。">
+<title>寶妹對這張新桌子的熱情，只有三分鐘 — Concredia.Lab</title>
+<meta name="description" content="三分鐘，恰好是水泥從流動走向凝固的關鍵時刻。寶妹每次的熱情很短暫，但這張桌子能陪你一輩子。">
 <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -40,9 +40,8 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 
 /* HERO — full-bleed cinematic */
 .hero{
-  position:relative;min-height:100vh;display:flex;flex-direction:column;
-  justify-content:flex-end;overflow:hidden;
-  background:#1A1714;
+  position:relative;min-height:100vh;display:block;
+  overflow:hidden;background:#1A1714;
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
@@ -87,16 +86,20 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 /* 主內容容器 */
 .hero-content{
   position:relative;z-index:4;
-  padding:0 6rem 5.5rem 6rem;
+  padding:8rem 6rem 5.5rem 6rem;
   max-width:1280px;
   width:100%;
-  margin-top:auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  min-height:100vh;
+  box-sizing:border-box;
 }
 /* 頂部細節線 */
 .hero-topbar{
   position:absolute;top:0;left:0;right:0;z-index:3;
   display:flex;align-items:center;justify-content:space-between;
-  padding:7rem 6rem 0;
+  padding:5.5rem 6rem 0;
   pointer-events:none;
 }
 .hero-topbar-line{
@@ -109,10 +112,11 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 }
 /* 品牌核心語——超大主角字 */
 .hero-manifesto{
-  font-size:clamp(3.8rem,8.5vw,8.5rem);
+  font-size:clamp(3.5rem,8.5vw,9rem);
   line-height:1.0;
-  margin-bottom:2.5rem;
-  text-shadow:0 4px 32px rgba(0,0,0,0.7),0 2px 8px rgba(0,0,0,0.5);
+  margin-bottom:0;
+  text-shadow:0 4px 32px rgba(0,0,0,0.75),0 2px 8px rgba(0,0,0,0.5);
+  pointer-events:none;
 }
 .hero-manifesto .solid{
   font-family:'Playfair Display',Georgia,serif;
@@ -120,35 +124,36 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   color:#FAF8F5;
   display:block;
   letter-spacing:-0.02em;
+  line-height:0.92;
 }
 .hero-manifesto .accent{
   font-family:'Pinyon Script',cursive;
-  font-size:1.35em;
+  font-size:1.3em;
   color:var(--rust-light);
   display:block;
   letter-spacing:0.02em;
   line-height:0.95;
-  text-shadow:0 4px 40px rgba(155,91,58,0.6),0 2px 10px rgba(0,0,0,0.6);
+  text-shadow:0 4px 40px rgba(155,91,58,0.65),0 2px 10px rgba(0,0,0,0.7);
+  margin-top:0.05em;
 }
 /* 副標語 */
 .hero-sub{
   font-family:var(--font-body);
-  font-size:clamp(0.9rem,1.5vw,1.1rem);
-  color:rgba(255,248,240,0.92);
+  font-size:clamp(0.88rem,1.4vw,1.05rem);
+  color:rgba(255,248,240,0.9);
   font-weight:300;
   letter-spacing:0.04em;
-  max-width:640px;
-  line-height:1.8;
-  margin-bottom:3rem;
+  max-width:580px;
+  line-height:1.78;
+  margin-bottom:2rem;
   font-style:italic;
   border-left:3px solid var(--rust-light);
-  padding-left:1.25rem;
-  text-shadow:0 2px 12px rgba(0,0,0,0.8);
-  background:rgba(0,0,0,0.18);
-  padding:0.7rem 1.25rem;
+  padding:0.65rem 1.25rem;
+  text-shadow:0 2px 12px rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.22);
 }
 /* 按鈕列 */
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
 .btn-p{
   display:inline-block;padding:0.9rem 2.2rem;
   background:var(--warm-white);color:var(--concrete-dark);
@@ -165,9 +170,10 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 .btn-o:hover{border-color:rgba(212,207,200,0.9);color:#FAF8F5;}
 /* 底部統計 */
 .hero-stats{
-  display:flex;gap:3rem;
-  padding-top:2.5rem;
+  display:flex;gap:2.5rem;
+  padding-top:2rem;
   border-top:1px solid rgba(212,207,200,0.12);
+  flex-wrap:wrap;
 }
 .stat-num{
   font-family:var(--font-display);font-size:2rem;font-weight:700;
@@ -222,18 +228,18 @@ section{padding:5.5rem 4rem;}
 .whw-items li::before{content:'→';position:absolute;left:0;color:var(--rust-light);}
 
 /* ABOUT / TEAM */
-.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
+.team-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-top:3rem;}
 .team-card{background:var(--cream);border:1px solid var(--concrete-light);}
-.team-photo{aspect-ratio:4/5;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.team-photo{aspect-ratio:3/2;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .team-photo img{width:100%;height:100%;object-fit:cover;}
 .team-ph-text{font-family:var(--font-display);font-size:4.5rem;color:rgba(212,207,200,0.1);font-weight:700;}
 .team-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);}
 .team-ph-tag{position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);}
 .team-info{padding:1.75rem;}
 .team-role{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;}
-.team-name{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;}
+.team-name{font-family:var(--font-display);font-size:1.55rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;}
 .team-name-en{font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;}
-.team-bio{font-size:0.85rem;color:var(--concrete);line-height:1.75;font-weight:300;}
+.team-bio{font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;}
 .team-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
 .chip{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;}
 
@@ -488,15 +494,16 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   .mobile-menu a{font-size:1.35rem;font-family:var(--font-display);color:var(--warm-white);text-decoration:none;font-weight:700;letter-spacing:0.04em;}
   .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;color:var(--concrete-light);cursor:pointer;background:none;border:none;font-family:sans-serif;line-height:1;}
   .hero{min-height:100svh;}
-  .hero-content{padding:0 1.25rem 3.5rem !important;max-width:100% !important;}
-  .hero-manifesto{font-size:clamp(2.6rem,11vw,4rem) !important;margin-bottom:1.5rem !important;}
-  .hero-manifesto .accent{font-size:1.15em !important;}
-  .hero-sub{font-size:0.88rem !important;margin-bottom:1.75rem !important;max-width:100% !important;}
-  .hero-actions{flex-direction:column;gap:0.7rem !important;margin-bottom:2.5rem !important;}
+  .hero-manifesto{font-size:clamp(2.4rem,10vw,3.8rem) !important;margin-bottom:0 !important;}
+  .hero-manifesto .accent{font-size:1.1em !important;}
+  .hero > div[style*="position:absolute;inset:0"]{padding:0 1.25rem !important;}
+  .hero > div[style*="position:absolute;bottom:0"]{padding:0 1.25rem 3rem !important;}
+  .hero-sub{font-size:0.85rem !important;margin-bottom:1.5rem !important;max-width:100% !important;}
+  .hero-actions{flex-direction:column;gap:0.65rem !important;margin-bottom:0 !important;}
   .btn-p,.btn-o{padding:0.95rem 1.5rem !important;font-size:0.75rem !important;text-align:center;}
-  .hero-stats{gap:1.25rem !important;padding-top:1.5rem !important;flex-wrap:wrap;}
-  .stat-num{font-size:1.5rem !important;}
-  .stat-label{font-size:0.6rem !important;}
+  .hero-stats{gap:1rem !important;padding-top:1.5rem !important;flex-wrap:wrap;}
+  .stat-num{font-size:1.4rem !important;}
+  .stat-label{font-size:0.58rem !important;}
   .hero-side-label,.hero-year,.hero-tags,.hero-topbar{display:none !important;}
   section{padding:3rem 1.25rem !important;}
   .sec-title{font-size:clamp(1.65rem,6.5vw,2.1rem) !important;}
@@ -559,6 +566,13 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 
 /* mobile-menu 桌機預設完全隱藏 */
 .mobile-menu{display:none;}
+
+@media(max-width:768px){
+  #cta > div:last-child{grid-template-columns:1fr !important;}
+  #cta > div:first-child{padding:3.5rem 1.25rem !important;}
+  #cta > div:first-child > div > div:last-child{flex-direction:column;}
+}
+
 @media(max-width:768px){
   .mobile-menu{
     display:flex;position:fixed;inset:0;
@@ -569,7 +583,297 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   }
   .mobile-menu.open{transform:translateX(0);}
 }
+
+/* ===== ACCORDION / EXPAND SECTIONS ===== */
+.acc-section{border-bottom:1px solid rgba(212,207,200,0.1);position:relative;z-index:2;}
+.acc-header{
+  display:flex;align-items:center;gap:1.5rem;
+  padding:2rem 4rem;cursor:pointer;
+  transition:background 0.2s;
+  user-select:none;
+  position:relative;
+}
+.acc-header:hover{background:rgba(212,207,200,0.04);}
+.acc-icon-wrap{
+  width:52px;height:52px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;border-radius:4px;
+  background:rgba(155,91,58,0.12);
+  border:1px solid rgba(155,91,58,0.2);
+}
+.acc-headline{flex:1;}
+.acc-title{
+  font-family:var(--font-display);font-size:1.35rem;font-weight:700;
+  color:var(--warm-white);line-height:1.2;margin-bottom:0.2rem;
+}
+.acc-subtitle{font-size:0.82rem;color:var(--concrete-light);opacity:0.7;font-weight:300;}
+.acc-toggle{
+  width:36px;height:36px;border:1px solid rgba(212,207,200,0.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  border-radius:2px;transition:all 0.3s;
+}
+.acc-toggle svg{width:14px;height:14px;stroke:var(--concrete-light);transition:transform 0.35s;fill:none;stroke-width:2;stroke-linecap:round;}
+.acc-section.open .acc-toggle{background:rgba(155,91,58,0.15);border-color:var(--rust-light);}
+.acc-section.open .acc-toggle svg{transform:rotate(180deg);stroke:var(--rust-light);}
+.acc-body{
+  max-height:0;overflow:hidden;
+  transition:max-height 0.6s ease;
+}
+.acc-section.open .acc-body{max-height:8000px;}
+.acc-inner{padding:0 4rem 3.5rem;}
+
+/* 數字徽章 */
+.acc-badge{
+  font-family:var(--font-display);font-size:1.6rem;font-weight:700;
+  color:var(--rust-light);opacity:0.6;min-width:2.5rem;
+}
+
+@media(max-width:768px){
+  .acc-header{padding:1.5rem 1.25rem;gap:1rem;}
+  .acc-icon-wrap{width:42px;height:42px;font-size:1.4rem;}
+  .acc-title{font-size:1.1rem;}
+  .acc-inner{padding:0 1.25rem 3rem;}
+}
+
+
+/* ===== MUSIC PLAYER ===== */
+.music-player{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  display:flex;align-items:center;gap:0.85rem;
+  padding:0.9rem 1.25rem 0.9rem 1rem;
+  background:rgba(30,26,22,0.96);
+  border:1px solid rgba(155,91,58,0.45);
+  backdrop-filter:blur(16px);
+  border-radius:50px;
+  transition:all 0.3s;
+  box-shadow:0 8px 32px rgba(0,0,0,0.55),0 0 0 1px rgba(155,91,58,0.15);
+}
+.music-player:hover{border-color:rgba(196,122,84,0.7);box-shadow:0 8px 32px rgba(0,0,0,0.6),0 0 20px rgba(155,91,58,0.15);}
+.music-btn{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--rust);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background 0.2s;
+}
+.music-btn:hover{background:var(--rust-light);}
+.music-btn svg{width:14px;height:14px;fill:white;}
+.music-info{
+  font-family:var(--font-body);font-size:0.68rem;
+  letter-spacing:0.08em;color:var(--concrete-light);
+  white-space:nowrap;opacity:0.85;
+  max-width:160px;overflow:hidden;text-overflow:ellipsis;
+}
+.music-info strong{color:var(--warm-white);display:block;font-weight:500;font-size:0.72rem;}
+.music-volume{
+  width:60px;height:3px;background:rgba(212,207,200,0.2);
+  border-radius:2px;cursor:pointer;position:relative;overflow:hidden;
+}
+.music-volume-fill{
+  height:100%;background:var(--rust-light);border-radius:2px;
+  width:70%;transition:width 0.1s;
+}
+.music-close{
+  background:none;border:none;cursor:pointer;
+  color:rgba(212,207,200,0.4);font-size:1rem;line-height:1;
+  padding:0;transition:color 0.2s;
+}
+.music-close:hover{color:var(--warm-white);}
+@media(max-width:768px){
+  .music-player{bottom:1.25rem;right:1.25rem;padding:0.6rem 0.9rem;}
+  .music-info{display:none;}
+  .music-volume{display:none;}
+}
+
+
+/* ===== MUSIC PLAYER ===== */
+.music-player{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.75rem 1.1rem 0.75rem 0.9rem;
+  background:rgba(42,39,36,0.95);
+  border:1px solid rgba(155,91,58,0.35);
+  backdrop-filter:blur(12px);
+  border-radius:50px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.45);
+  transition:border-color 0.2s;
+}
+.music-player:hover{border-color:rgba(155,91,58,0.65);}
+.mp-btn{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--rust);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background 0.2s;padding:0;
+}
+.mp-btn:hover{background:var(--rust-light);}
+.mp-btn svg{width:13px;height:13px;fill:white;display:block;}
+.mp-label{
+  font-size:0.7rem;letter-spacing:0.06em;
+  color:rgba(212,207,200,0.8);white-space:nowrap;
+  line-height:1.3;
+}
+.mp-label strong{color:var(--warm-white);display:block;font-size:0.72rem;font-weight:500;}
+.mp-vol{
+  width:55px;height:3px;background:rgba(212,207,200,0.18);
+  border-radius:2px;cursor:pointer;flex-shrink:0;
+}
+.mp-vol-bar{height:100%;background:var(--rust-light);border-radius:2px;width:40%;pointer-events:none;}
+.mp-x{
+  background:none;border:none;cursor:pointer;
+  color:rgba(212,207,200,0.4);font-size:1.1rem;line-height:1;
+  padding:0 0 0 0.2rem;transition:color 0.2s;
+}
+.mp-x:hover{color:var(--warm-white);}
+
 </style>
+
+<style>
+/* 文章頁專用 CSS */
+.art-hero{
+  position:relative;min-height:60vh;display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--concrete-dark);
+}
+.art-hero-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;opacity:0.55;
+}
+.art-hero-scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,8,6,0.97) 0%,rgba(10,8,6,0.5) 50%,rgba(10,8,6,0.1) 100%);
+}
+.art-hero-content{
+  position:relative;z-index:2;padding:0 4rem 4rem;max-width:820px;
+}
+.art-category{
+  font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--rust-light);margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.art-category::before{content:'';width:16px;height:1px;background:var(--rust-light);}
+.art-title{
+  font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,3rem);
+  color:var(--warm-white);font-weight:700;line-height:1.15;margin-bottom:1rem;
+}
+.art-meta{
+  display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
+  font-size:0.75rem;color:rgba(212,207,200,0.55);letter-spacing:0.06em;
+}
+.art-meta-sep{opacity:0.3;}
+
+/* 文章主體 */
+.art-body{
+  max-width:740px;margin:0 auto;padding:4rem 2rem;
+}
+.art-lead{
+  font-size:1.15rem;color:var(--concrete-dark);line-height:1.85;
+  font-weight:300;margin-bottom:2.5rem;
+  border-left:3px solid var(--rust);padding-left:1.5rem;
+  font-style:italic;
+}
+.art-body h2{
+  font-family:var(--font-display);font-size:1.6rem;font-weight:700;
+  color:var(--concrete-dark);margin:2.5rem 0 1rem;
+}
+.art-body h3{
+  font-family:var(--font-display);font-size:1.2rem;font-weight:700;
+  color:var(--concrete-dark);margin:2rem 0 0.75rem;
+}
+.art-body p{
+  font-size:0.97rem;color:#3A3632;line-height:1.92;font-weight:300;margin-bottom:1.25rem;
+}
+.art-body strong{font-weight:600;color:var(--concrete-dark);}
+.art-body em{font-style:italic;color:var(--rust);}
+
+/* 圖片 */
+.art-img-full{
+  width:100%;margin:2rem 0;aspect-ratio:16/9;overflow:hidden;
+}
+.art-img-full img{width:100%;height:100%;object-fit:cover;}
+.art-img-caption{
+  font-size:0.72rem;color:var(--concrete);opacity:0.6;
+  letter-spacing:0.06em;margin-top:0.5rem;margin-bottom:2rem;
+}
+.art-img-2col{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin:2rem 0;
+}
+.art-img-2col div{aspect-ratio:4/3;overflow:hidden;}
+.art-img-2col div img{width:100%;height:100%;object-fit:cover;}
+
+/* 引言框 */
+.art-pullquote{
+  margin:2.5rem 0;padding:2rem 2.5rem;
+  background:var(--cream);border-left:4px solid var(--rust);
+  font-family:var(--font-display);font-size:1.2rem;
+  color:var(--concrete-dark);font-style:italic;line-height:1.65;
+}
+
+/* 數據卡片 */
+.art-data-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(58,54,50,0.1);margin:2rem 0;
+}
+.art-data-card{
+  padding:1.5rem;background:var(--warm-white);text-align:center;
+}
+.art-data-num{
+  font-family:var(--font-display);font-size:2rem;font-weight:700;
+  color:var(--rust);line-height:1;margin-bottom:0.3rem;
+}
+.art-data-label{font-size:0.72rem;color:var(--concrete);opacity:0.7;letter-spacing:0.08em;}
+
+/* 影片嵌入 */
+.art-video{
+  position:relative;width:100%;aspect-ratio:16/9;
+  margin:2rem 0;background:#000;overflow:hidden;
+}
+.art-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.art-video-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:rgba(58,54,50,0.08);border:2px dashed rgba(58,54,50,0.15);
+}
+
+/* 步驟列表 */
+.art-steps{margin:1.5rem 0;display:flex;flex-direction:column;gap:1px;}
+.art-step{
+  display:flex;gap:1.5rem;padding:1.25rem 1.5rem;
+  background:var(--cream);align-items:flex-start;
+}
+.art-step-num{
+  font-family:var(--font-display);font-size:1.4rem;font-weight:700;
+  color:var(--rust);opacity:0.5;flex-shrink:0;line-height:1;
+}
+.art-step-content h4{font-size:0.95rem;font-weight:600;color:var(--concrete-dark);margin-bottom:0.3rem;}
+.art-step-content p{font-size:0.85rem;color:var(--concrete);line-height:1.65;margin:0;}
+
+/* 標籤 */
+.art-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(58,54,50,0.1);}
+.art-tag{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(58,54,50,0.2);color:var(--concrete);padding:0.28rem 0.7rem;}
+
+/* 相關文章 */
+.art-related{padding:4rem;background:var(--cream);border-top:1px solid rgba(58,54,50,0.08);}
+.art-related h3{font-family:var(--font-display);font-size:1.2rem;color:var(--concrete-dark);margin-bottom:1.5rem;}
+.art-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.art-related-card{background:var(--warm-white);text-decoration:none;display:block;transition:transform 0.2s;}
+.art-related-card:hover{transform:translateY(-2px);}
+.art-related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+.art-related-info{padding:1rem 1.25rem 1.25rem;}
+.art-related-cat{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.4rem;}
+.art-related-title{font-family:var(--font-display);font-size:0.95rem;color:var(--concrete-dark);font-weight:700;line-height:1.35;}
+
+/* 返回按鈕 */
+.art-back{
+  padding:1.5rem 4rem;border-bottom:1px solid rgba(58,54,50,0.08);
+  display:flex;align-items:center;gap:0.75rem;
+}
+.art-back a{
+  display:flex;align-items:center;gap:0.5rem;
+  font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--concrete);text-decoration:none;transition:color 0.2s;
+}
+.art-back a:hover{color:var(--rust);}
+.art-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;}
+</style>
+
 </head>
 <body>
 <nav id="mainNav">
@@ -578,7 +882,6 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
     <li><a href="impact.html">環境現況</a></li>
     <li><a href="index.html#why">使命</a></li>
     <li><a href="index.html#about">關於團隊</a></li>
-    <li><a href="index.html#material">材料哲學</a></li>
     <li><a href="products.html">產品系列</a></li>
     <li><a href="story.html">品牌故事</a></li>
     <li><a href="gallery.html">作品影像集</a></li>
@@ -586,202 +889,149 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="contact.html" class="nav-cta">合作洽詢</a>
-  <button class="hamburger" id="hamburger" aria-label="選單" style="display:none;background:none;border:none;">
+  <button class="hamburger" id="hamburger" style="display:none;background:none;border:none;" aria-label="選單">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" id="mobileClose">×</button>
   <a href="impact.html" onclick="closeMobileMenu()">環境現況</a>
-  <a href="index.html#why" onclick="closeMobileMenu()">使命</a>
-  <a href="index.html#about" onclick="closeMobileMenu()">關於團隊</a>
-  <a href="index.html#material" onclick="closeMobileMenu()">材料哲學</a>
   <a href="products.html" onclick="closeMobileMenu()">產品系列</a>
-  <a href="story.html" onclick="closeMobileMenu()">品牌故事</a>
   <a href="gallery.html" onclick="closeMobileMenu()">作品影像集</a>
   <a href="index.html#blog" onclick="closeMobileMenu()">最新動態</a>
   <a href="contact.html" onclick="closeMobileMenu()" style="color:var(--rust-light);">合作洽詢</a>
 </div>
 
-<div style="padding-top:80px;min-height:100vh;">
-
-  <!-- HERO -->
-  <div style="position:relative;min-height:65vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--concrete-dark);">
-    <div style="position:absolute;inset:0;background-image:url('images/story-night.jpg');background-size:cover;background-position:center;opacity:0.45;"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,0.97) 0%,rgba(10,8,6,0.6) 40%,rgba(10,8,6,0.1) 100%);"></div>
-    <div style="position:relative;z-index:2;padding:0 4rem 4.5rem;max-width:900px;">
-      <div class="sec-eye" style="color:var(--rust-light);margin-bottom:1.25rem;"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>品牌故事 · The Lonely Highway</div>
-      <h1 style="font-family:var(--font-display);font-size:clamp(2.4rem,5.5vw,5rem);color:var(--warm-white);font-weight:700;line-height:1.05;margin-bottom:1.25rem;text-shadow:0 4px 32px rgba(0,0,0,0.7);">
-        每一顆水泥石子心裡，<br>都有一段<em style="color:var(--rust-light);font-style:italic;">寂寞公路</em>。
-      </h1>
-      <p style="font-size:1rem;color:rgba(212,207,200,0.82);font-weight:300;max-width:580px;line-height:1.8;text-shadow:0 2px 12px rgba(0,0,0,0.6);">帶著 180 公斤的水泥桌，開四個半小時的車去屏東旭海。在山海交界、收訊微弱的地方，讓水泥遇見人。</p>
-    </div>
-  </div>
-
-  <!-- BRAND ORIGIN PULL QUOTE -->
-  <!-- 孔固力庄 · 起源故事 -->
-<div style="background:var(--concrete-dark);padding:5rem 4rem;position:relative;overflow:hidden;">
-  <div style="position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-size:15rem;color:rgba(155,91,58,0.04);font-family:var(--font-display);font-weight:700;pointer-events:none;user-select:none;line-height:1;">孔</div>
-  <div style="max-width:760px;position:relative;z-index:1;">
-    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>孔固力庄</div>
-    <h2 class="sec-title" style="color:var(--warm-white);">一個村莊、一個博士、<br>一段六年的孤獨修煉</h2>
-    <p style="font-size:1rem;color:var(--concrete-light);line-height:1.88;font-weight:300;opacity:0.88;margin-bottom:1.5rem;">民國六十幾年，台灣掀起建築風潮。雲林縣斗南鎮田頭里的男子們，紛紛跑到鄰近工地當起水泥工人——這個村莊，因此得了一個外號：<strong style="color:var(--rust-light);">「孔固力庄」（Concrete Village）</strong>。</p>
-    <p style="font-size:1rem;color:var(--concrete-light);line-height:1.88;font-weight:300;opacity:0.88;margin-bottom:1.5rem;">來自那個村莊的男孩，後來念了土木系、拿到營建管理博士，在大葉大學當了休閒事業管理系主任，也做了二十年的社區營造。45 歲，他離開學術圈，創業輔導各地社區與文創產業。</p>
-    <p style="font-size:1rem;color:var(--concrete-light);line-height:1.88;font-weight:300;opacity:0.88;margin-bottom:1.5rem;">47 歲，他做了一個決定：回到「孔固力庄男孩」的身份，以水泥為材質，進行創作。這一年是 2016 年。</p>
-
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.06);margin:2.5rem 0;">
-      <div style="padding:1.75rem;background:var(--concrete-dark);">
-        <div style="font-family:var(--font-display);font-size:2rem;color:var(--rust-light);font-weight:700;line-height:1;margin-bottom:0.3rem;">2016</div>
-        <div style="font-size:0.82rem;color:var(--concrete-light);opacity:0.75;line-height:1.5;">開始以水泥為媒介進行創作，斜槓投入</div>
-      </div>
-      <div style="padding:1.75rem;background:var(--concrete-dark);">
-        <div style="font-family:var(--font-display);font-size:2rem;color:var(--rust-light);font-weight:700;line-height:1;margin-bottom:0.3rem;">2020</div>
-        <div style="font-size:0.82rem;color:var(--concrete-light);opacity:0.75;line-height:1.5;">徒步環島 52 天、1,420 公里，全心投入創作</div>
-      </div>
-      <div style="padding:1.75rem;background:var(--concrete-dark);">
-        <div style="font-family:var(--font-display);font-size:2rem;color:var(--rust-light);font-weight:700;line-height:1;margin-bottom:0.3rem;">6 年</div>
-        <div style="font-size:0.82rem;color:var(--concrete-light);opacity:0.75;line-height:1.5;">閉關倉庫，耗盡存款，每日早五點到晚七點</div>
-      </div>
-    </div>
-
-    <p style="font-size:0.95rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.85;font-style:italic;border-left:3px solid var(--rust);padding-left:1.25rem;">「我要做的不是為了快速紅起來，而是等到技術成熟到可以說話的那一天。六年後，我覺得差不多了。」<br><span style="font-size:0.8rem;opacity:0.65;font-style:normal;">— Dr. Ivor Lee</span></p>
-  </div>
+<div class="art-back" style="padding-top:6rem;">
+  <a href="index.html#blog">
+    <svg viewBox="0 0 24 24"><polyline points="19 12 5 12"/><polyline points="12 5 5 12 12 19"/></svg>
+    返回最新動態
+  </a>
 </div>
 
-<!-- 徒步環島 -->
-<div style="background:#111009;padding:4rem;display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:center;">
-  <div>
-    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>2020 · 徒步環島</div>
-    <h3 class="sec-title" style="color:var(--warm-white);font-size:clamp(1.5rem,2.5vw,2rem);">52 天 · 1,420 公里<br>台灣怎麼了？</h3>
-    <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.85;margin-bottom:1.25rem;">2020 年，Ivor 老師放下手邊所有工作，花 52 天徒步環島台灣 1,420 公里。途中反覆思考一個問題：城鄉差距越來越大，鄉村只剩觀光這條路？有沒有一種可能，是讓鄉村和部落留下有生產機制的事業體？</p>
-    <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.85;margin-bottom:1.25rem;">迴來之後，他關掉所有外部干擾，專注於一件事：<strong style="color:var(--warm-white);">廢料 + 混凝土技術，是否能成為那條路的答案。</strong></p>
-    <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.85;">EAC 工法、再生配方、完整 SOP——這些不是偶然，是 2020 年之後五年積累的系統性回答。</p>
-  </div>
-  <div style="text-align:center;">
-    <div style="background:rgba(155,91,58,0.08);border:1px solid rgba(155,91,58,0.3);padding:2rem;">
-      <div style="font-size:3rem;margin-bottom:0.75rem;">🚶</div>
-      <div style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--rust-light);line-height:1;margin-bottom:0.4rem;">1,420</div>
-      <div style="font-size:0.7rem;color:var(--concrete-light);letter-spacing:0.12em;text-transform:uppercase;opacity:0.65;margin-bottom:1.25rem;">公里 · 徒步環島</div>
-      <div style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--rust-light);line-height:1;margin-bottom:0.4rem;">52</div>
-      <div style="font-size:0.7rem;color:var(--concrete-light);letter-spacing:0.12em;text-transform:uppercase;opacity:0.65;">天</div>
+<div class="art-hero">
+  <img class="art-hero-img" src="images/baomei.jpg" alt="寶妹 Bao Mei" style="object-position:center 15%;">
+  <div class="art-hero-scrim"></div>
+  <div class="art-hero-content">
+    <div class="art-category">倉庫日常</div>
+    <h1 class="art-title">寶妹對這張新桌子的熱情，<br>只有三分鐘</h1>
+    <div class="art-meta">
+      <span>建凱 Kasper</span>
+      <span class="art-meta-sep">·</span>
+      <span>2025 年 2 月</span>
+      <span class="art-meta-sep">·</span>
+      <span>閱讀時間約 2 分鐘</span>
     </div>
   </div>
 </div>
 
-<div style="background:#1A1714;padding:5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
-    <div>
-      <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>品牌起源</div>
-      <h2 class="sec-title" style="color:var(--warm-white);">2,190 天的<br>倉庫實驗</h2>
-      <p style="font-size:0.95rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;margin-bottom:1.5rem;">Ivor 老師花了整整六年，在倉庫裡進行材料科學的孤獨研究。每一個脫模的瞬間，都是一個假設的驗證——這塊廢料能成為什麼？它的地質記憶能以什麼形式重現？</p>
-      <p style="font-size:0.95rem;color:var(--concrete-light);line-height:1.85;font-weight:300;opacity:0.88;">這不是創業，這是一個土木博士對自己最深問題的誠實回答：混凝土除了蓋房子，還能是什麼？</p>
+<div class="art-body">
+
+  <p class="art-lead">三分鐘，恰好是水泥從流動走向凝固的關鍵時刻。寶妹每次的熱情很短暫，但這張桌子能陪你一輩子。</p>
+
+  <p>那天 Ivor 老師剛把新的 Stand-bar 高腳桌推進倉庫。寶妹衝過去，聞了聞桌腳，然後轉身去睡覺了。</p>
+
+  <p>整個過程，三分鐘。</p>
+
+  <div class="art-img-full">
+    <img src="images/studio-baomei-table.jpg" alt="寶妹坐鎮家具前">
+  </div>
+  <div class="art-img-caption">寶妹在新家具前例行巡邏。她的鑑賞標準至今成謎。</div>
+
+  <h2>寶妹的品質標準</h2>
+
+  <p>在 Concredia.Lab，寶妹是首席士氣官。她的工作職責包括：</p>
+  <p>• 陌生訪客抵達時提供三分鐘的熱情歡迎<br>
+  • 老師深夜打磨時提供精神支持（睡在腳邊）<br>
+  • 新作品完成時進行嗅覺品管<br>
+  • 倉庫安全巡邏（每天兩次，每次三分鐘）</p>
+
+  <div class="art-img-2col">
+    <div><img src="images/studio-baomei-table2.jpg" alt="寶妹工作室"></div>
+    <div><img src="images/studio-night.jpg" alt="工作室夜間" style="object-position:center 30%;"></div>
+  </div>
+  <div class="art-img-caption">左：寶妹的日常巡邏路線。右：她偶爾也出席夜間場。</div>
+
+  <div class="art-pullquote">
+    「她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。我想這不是巧合。」
+    <br><br>— 建凱
+  </div>
+
+  <h2>為什麼寶妹是品牌成員</h2>
+
+  <p>有人問我們為什麼要把一隻狗放進「關於團隊」的頁面。</p>
+
+  <p>因為<strong>她是真實的</strong>。這個實驗室裡最真實的存在，是那個不管你做出什麼作品、都會在三分鐘後轉身離開的生物。</p>
+
+  <p>她提醒我們：好的設計不需要靠誇張來留住人，它用重量、質感、時間說話。就像水泥本身。</p>
+
+  <p>寶妹的血統是法國鬥牛犬和彰化和美鐵鍋工廠台灣土狗的混血——美學與工業、精緻與粗獷，這不就是 Concredia.Lab 最精準的品牌隱喻嗎？</p>
+
+  <div class="art-data-grid">
+    <div class="art-data-card">
+      <div class="art-data-num">3 min</div>
+      <div class="art-data-label">對陌生人的熱情時長</div>
     </div>
-    <div style="position:relative;">
-      <img src="images/brand-origin.jpg" alt="Concredia Lab 2017 發光招牌" style="width:100%;border-radius:2px;opacity:0.85;">
-      <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(26,23,20,0.8),transparent);padding:1.5rem;border-radius:0 0 2px 2px;">
-        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);">Est. 2017 · Concredia.Lab</div>
-      </div>
+    <div class="art-data-card">
+      <div class="art-data-num">2020</div>
+      <div class="art-data-label">加入實驗室的年份</div>
+    </div>
+    <div class="art-data-card">
+      <div class="art-data-num">∞</div>
+      <div class="art-data-label">陪伴 Ivor 老師的時間</div>
     </div>
   </div>
 
-  <!-- LONELY HIGHWAY STORY -->
-  <div style="background:var(--concrete-dark);padding:5rem 4rem;">
-    <div style="max-width:760px;margin:0 auto;">
-      <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>寂寞公路計劃</div>
-      <h2 class="sec-title" style="color:var(--warm-white);">Travel with Concredia goods.</h2>
-      <div style="font-family:var(--font-display);font-size:1.15rem;color:var(--cream);line-height:1.65;font-style:italic;padding:1.5rem 1.5rem 1.5rem 1.75rem;border-left:3px solid var(--rust);margin:2rem 0;">
-        「在那個山海交界、收訊微弱的地方，水泥不再是建築法規裡的條文，而是大地的延伸。」
-      </div>
-      <p style="font-size:0.97rem;color:var(--concrete-light);line-height:1.9;font-weight:300;opacity:0.88;margin-bottom:1.25rem;">Ivor 老師常說，他最喜歡帶著那張 180 公斤的桌角，開四個半小時的車去屏東旭海。在沙灘上展開桌子，邀請路過的陌生人坐下，泡一壺茶。</p>
-      <p style="font-size:0.97rem;color:var(--concrete-light);line-height:1.9;font-weight:300;opacity:0.88;margin-bottom:1.25rem;">冷硬的水泥與壯闊的山海地景之間的極端反差，正是我們最真實的品牌語言。未來，「寂寞公路計劃」將帶著 Stand-bar 高腳桌走入台灣各個山海地景，以 IMC 策略，把每一次相遇變成 IG、Threads、YouTube 上最有溫度的內容。</p>
-      <p style="font-size:0.97rem;color:var(--concrete-light);line-height:1.9;font-weight:300;opacity:0.88;">美學 + 文化 + 在地 + 環境 + 口語化。這五個詞，是我們每次打包上路前的檢核清單。</p>
-    </div>
-  </div>
-
-  <!-- TIMELINE -->
-  <div style="background:#1A1714;padding:5rem 4rem;">
-    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>品牌大事記</div>
-    <h2 class="sec-title" style="color:var(--warm-white);margin-bottom:3rem;">從倉庫到公路</h2>
-    <div style="display:flex;flex-direction:column;max-width:720px;">
-      <div style="display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid rgba(212,207,200,0.1);"><div style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;">2016</div><div><h4 style="font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;">白米社區的起點</h4><p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.78;">輔導宜蘭蘇澳白米社區社造計劃，提出以水泥為特色創作的可能，開始研發 SOP。</p></div></div>
-      <div style="display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid rgba(212,207,200,0.1);"><div style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;">2017</div><div><h4 style="font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;">Concredia.Lab 誕生</h4><p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.78;">品牌正式命名，打造第一塊發光招牌。混凝土從建材變成了媒介。</p></div></div>
-      <div style="display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid rgba(212,207,200,0.1);"><div style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;">2019</div><div><h4 style="font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;">首件水泥音響誕生</h4><p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.78;">完成第一代迷宮式迴路水泥音響，確立「混凝土作為生活媒介」的品牌核心方向。</p></div></div>
-      <div style="display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid rgba(212,207,200,0.1);"><div style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;">2020</div><div><h4 style="font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;">寶妹加入 · 實驗室有了溫度</h4><p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.78;">7 月 1 日，那個全球動盪、最需要定錨的時刻，寶妹來到 Ivor 老師身邊。</p></div></div>
-      <div style="display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid rgba(212,207,200,0.1);"><div style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;">2023</div><div><h4 style="font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;">ESG 市場切入</h4><p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.78;">完成首批企業 ESG 紀念禮品合作案，提供材料溯源與減碳量認證文件。</p></div></div>
-      <div style="display:flex;gap:2rem;padding:1.75rem 0;border-bottom:1px solid rgba(212,207,200,0.1);"><div style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;">2025</div><div><h4 style="font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;">品牌重啟 · 建凱加入</h4><p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.78;">以 IMC 整合策略重新整備品牌，寂寞公路計劃啟動，開始系統化傳播 Concredia.Lab 的故事。</p></div></div>
-      <div style="display:flex;gap:2rem;padding:1.75rem 0;"><div style="font-family:var(--font-display);font-size:1rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;">Next</div><div><h4 style="font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;">衛星工廠 · Hub &amp; Satellite</h4><p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;font-weight:300;opacity:0.78;">技術授權模式啟動，讓在地拆除、在地生產、全台銷售的循環成真。</p></div></div>
-    </div>
-  </div>
-
-  <!-- BAOMEI CHAPTER -->
-  <div style="background:var(--concrete-dark);padding:5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
-    <div style="text-align:center;">
-      <img src="images/baomei.jpg" alt="寶妹 Bao Mei" style="width:260px;height:260px;object-fit:cover;object-position:center 15%;border-radius:50%;border:3px solid rgba(212,207,200,0.15);margin-bottom:1.5rem;">
-      <div style="font-family:var(--font-display);font-size:1.35rem;color:var(--warm-white);font-weight:700;">寶妹 Bao Mei</div>
-      <div style="font-size:0.68rem;letter-spacing:0.15em;color:var(--rust-light);margin-top:0.35rem;">2020.07.01 · Chief Quality Inspector</div>
-    </div>
-    <div>
-      <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>實驗室的溫度</div>
-      <h2 class="sec-title" style="color:var(--warm-white);">鐵鋼意志下的<br>溫柔靈魂</h2>
-      <p style="font-size:0.95rem;color:var(--concrete-light);line-height:1.88;font-weight:300;opacity:0.9;margin-bottom:1.25rem;">寶妹的血統，是這個品牌精神最完美的化身。母系：法國鬥牛犬，帶來對美學與生活質感的敏銳直覺；父系：彰化和美鐵鍋工廠台灣土狗，帶來工業的剛強、耐火的韌性，以及這塊土地最純粹的守護力。</p>
-      <p style="font-size:0.95rem;color:var(--concrete-light);line-height:1.88;font-weight:300;opacity:0.9;margin-bottom:1.5rem;">她對陌生人的熱情只有三分鐘——恰好是水泥從流動走向凝固的關鍵時刻。老師出門時，她守著實驗室；老師回來時，她是那個讓他知道回家意義的理由。</p>
-      <div style="font-family:var(--font-display);font-size:1rem;color:var(--cream);font-style:italic;padding:1.25rem 1.25rem 1.25rem 1.5rem;border-left:2px solid var(--rust);line-height:1.65;">
-        「爸爸守護著和美的鐵鍋，我守護著 Ivor 的水泥。我們這一家，一輩子都在跟重量與溫度打交道。」
-      </div>
-    </div>
-  </div>
-
-  <!-- MANIFESTO -->
-  <div style="background:var(--rust);padding:5rem 4rem;text-align:center;">
-    <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,2.8vw,2.2rem);color:white;font-weight:700;margin-bottom:1.5rem;line-height:1.3;">Realise · 讓價值落地實踐</h2>
-    <p style="font-size:0.97rem;color:rgba(255,255,255,0.85);line-height:1.92;font-weight:300;max-width:680px;margin:0 auto 2rem;">物質是不滅的。山上被挖掘的礦石，被運到城市蓋樓，再被拆除成堆無處安放的碎石——它從未消失，只是失去了被看見的理由。<br><br>Concredia.Lab 相信，每一塊廢棄的混凝土，都記錄著它所在的空間與時間。我們的工作，是讓這段記憶以新的形式延續——作為家具、作為音響、作為一張讓陌生人坐下來喝茶的桌子。<br><br><em>Concrete as a media. 混凝土是媒介，生活才是訊息。</em></p>
-    <a href="contact.html" class="btn-p" style="background:white;color:var(--rust);">開始合作對話 →</a>
+  <div class="art-tags">
+    <span class="art-tag">寶妹</span>
+    <span class="art-tag">倉庫日常</span>
+    <span class="art-tag">品牌故事</span>
+    <span class="art-tag">法鬥</span>
+    <span class="art-tag">首席士氣官</span>
   </div>
 </div>
 
-<div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:500;align-items:center;justify-content:center;flex-direction:column;" onclick="closeLightbox()">
-  <img id="lightbox-img" src="" alt="" style="max-width:92vw;max-height:88vh;object-fit:contain;border-radius:2px;">
-  <div id="lightbox-cap" style="color:rgba(212,207,200,0.65);font-size:0.72rem;letter-spacing:0.12em;margin-top:1rem;text-transform:uppercase;font-family:var(--font-body);"></div>
-  <button onclick="closeLightbox()" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:rgba(255,255,255,0.7);font-size:2.2rem;cursor:pointer;line-height:1;transition:color 0.2s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">×</button>
+<div class="art-related">
+  <h3>你可能也想看</h3>
+  <div class="art-related-grid">
+    <a href="blog-highway.html" class="art-related-card">
+      <img src="images/story-night.jpg" alt="旭海">
+      <div class="art-related-info">
+        <div class="art-related-cat">寂寞公路計劃</div>
+        <div class="art-related-title">旭海 · 180 公斤的相遇——帶著水泥桌去見陌生人</div>
+      </div>
+    </a>
+    <a href="blog-speaker.html" class="art-related-card">
+      <img src="images/ivor-working.jpg" alt="水泥音響">
+      <div class="art-related-info">
+        <div class="art-related-cat">Maker 實錄</div>
+        <div class="art-related-title">開模、灌漿、水磨——一顆水泥音響的三小時誕生記</div>
+      </div>
+    </a>
+  </div>
 </div>
+
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
-      <p>以土木博士研究為根，以設計為語言，<br>讓每一塊再生廢料都有自己的故事。<br><br>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
+      <p>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
     </div>
-    <div class="footer-col"><h5>產品</h5><ul>
-      <li><a href="products.html#standard">定錨家具 / 水泥音響</a></li>
-      <li><a href="products.html#standard">Conbox 系列</a></li>
-      <li><a href="products.html#custom">ESG 企業禮品</a></li>
-      <li><a href="products.html#custom">客製化設計</a></li>
-    </ul></div>
-    <div class="footer-col"><h5>品牌</h5><ul>
-      <li><a href="index.html#about">關於團隊</a></li>
-      <li><a href="story.html">寂寞公路計劃</a></li>
-      <li><a href="impact.html">ESG · SDGs</a></li>
+    <div class="footer-col"><h5>快速連結</h5><ul>
+      <li><a href="products.html">產品系列</a></li>
       <li><a href="gallery.html">作品影像集</a></li>
-    </ul></div>
-    <div class="footer-col"><h5>資源</h5><ul>
-      <li><a href="index.html#blog">最新動態</a></li>
-      <li><a href="index.html#faq">常見問題</a></li>
+      <li><a href="esg-dashboard.html">ESG 數據</a></li>
       <li><a href="contact.html">聯絡我們</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
     <p>© 2025 Concredia.Lab · Dr. Ivor Lee. All rights reserved.</p>
-    <div class="social-links">
-      <a class="social-link" href="#">IG</a>
-      <a class="social-link" href="#">TH</a>
-      <a class="social-link" href="#">YT</a>
-    </div>
   </div>
-  <div class="footer-easter">
-    <span class="footer-easter-text">🐾 本網站由寶妹親自監督品質。她的熱情精確持續了三分鐘。</span>
-  </div>
+  <div class="footer-easter"><span class="footer-easter-text">🐾 寶妹監製</span></div>
 </footer>
 <script>
 const navEl=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>{if(window.scrollY>80){navEl.classList.add('scrolled');}else{navEl.classList.remove('scrolled');}});
+window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',window.scrollY>80);});
 const burger=document.getElementById('hamburger');
 const mMenu=document.getElementById('mobileMenu');
 const mClose=document.getElementById('mobileClose');
@@ -789,11 +1039,8 @@ function openMobileMenu(){if(mMenu)mMenu.classList.add('open');document.body.sty
 function closeMobileMenu(){if(mMenu)mMenu.classList.remove('open');document.body.style.overflow='';}
 if(burger)burger.addEventListener('click',openMobileMenu);
 if(mClose)mClose.addEventListener('click',closeMobileMenu);
-function checkMobile(){if(window.innerWidth<=768){if(burger)burger.style.display='flex';}else{if(burger)burger.style.display='none';closeMobileMenu();}}
+function checkMobile(){burger.style.display=window.innerWidth<=768?'flex':'none';}
 checkMobile();window.addEventListener('resize',checkMobile);
-function openLightbox(src,cap){const lb=document.getElementById('lightbox');if(!lb)return;document.getElementById('lightbox-img').src=src;document.getElementById('lightbox-cap').textContent=cap;lb.style.display='flex';document.body.style.overflow='hidden';}
-function closeLightbox(){const lb=document.getElementById('lightbox');if(lb)lb.style.display='none';document.body.style.overflow='';}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLightbox();closeMobileMenu();}});
 </script>
 </body>
 </html>
