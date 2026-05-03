@@ -742,6 +742,11 @@ body{font-size:17px !important;}
 .acc-title{font-size:1.05rem !important;}
 p{line-height:1.85;}
 
+
+@keyframes pulse-badge{
+  0%,100%{box-shadow:0 0 0 0 rgba(155,91,58,0.5);}
+  50%{box-shadow:0 0 0 8px rgba(155,91,58,0);}
+}
 </style>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -761,7 +766,7 @@ p{line-height:1.85;}
     <li><a href="fundraise.html" style="color:var(--rust-light);">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">合作洽詢</a>
+  <a href="contact.html" class="nav-cta">合作洽詢</a>
   <!-- 漢堡選單（手機用） -->
   <button class="hamburger" id="hamburger" aria-label="選單" style="display:none;background:none;border:none;">
     <span></span><span></span><span></span>
@@ -819,6 +824,15 @@ p{line-height:1.85;}
       <span class="accent">as a Media.</span>
     </h1>
   </div>
+  <!-- 募資懸浮條 -->
+  <div style="position:absolute;top:58%;left:50%;transform:translateX(-50%);z-index:8;text-align:center;">
+    <a href="fundraise.html" style="display:inline-flex;align-items:center;gap:0.75rem;background:var(--rust);backdrop-filter:blur(8px);color:white;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.65rem 1.75rem;text-decoration:none;border:1px solid rgba(255,255,255,0.25);animation:pulse-badge 2.5s infinite;box-shadow:0 4px 20px rgba(155,91,58,0.5);">
+      <span style="font-size:1.1rem;">🚀</span>
+      即將群眾募資 · NT$500 起 · 搶先登記早鳥
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
 
   <!-- 副標語：右側固定 -->
   <div style="position:absolute;top:0;right:0;width:38%;bottom:0;z-index:5;display:flex;align-items:center;justify-content:flex-end;padding:80px 5rem 220px 2rem;pointer-events:none;">
@@ -841,6 +855,9 @@ p{line-height:1.85;}
         </div>
       </div>
       <div style="text-align:right;padding-bottom:0.25rem;">
+        <a href="fundraise.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--rust);color:white;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 0.85rem;text-decoration:none;margin-bottom:1rem;transition:background 0.2s;animation:pulse-badge 2s infinite;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">
+          🚀 即將募資 · 搶先登記
+        </a><br>
         <p style="font-size:clamp(0.85rem,1.1vw,0.98rem);color:rgba(255,248,240,0.9);font-weight:300;line-height:1.9;font-style:italic;text-shadow:0 2px 14px rgba(0,0,0,0.9);border-right:3px solid var(--rust-light);padding-right:1.25rem;margin:0;display:inline-block;text-align:right;">
           混凝土不只是材料，<br>它是承載生活風格、文化底蘊、<br>創意表達與實用機能的媒介。<br>
           <em style="font-size:0.83em;opacity:0.62;">"Concrete as a media with lifestyle,<br>culture, creative, usage."</em>
@@ -869,7 +886,7 @@ p{line-height:1.85;}
     <span class="mi">ESG 企業禮品</span><span class="md">◆</span>
     <span class="mi">寶妹坐鎮 · 品質把關</span><span class="md">◆</span>
     <span class="mi">再生建材 · 台灣製造</span><span class="md">◆</span>
-  </div>
+  <span class="mi">即將募資 · 嘖嘖 × FlyingV</span><span class="md">◆</span><span class="mi">支持 Concredia.Lab，一起當廢料的第二章作者</span><span class="md">◆</span><span class="mi">早鳥優惠 NT$500 起 · 水磨杯墊 · 水泥音響 · 旗艦畫作</span><span class="md">◆</span><span class="mi">🚀 即將募資 · 嘖嘖 × FlyingV</span><span class="md">◆</span><span class="mi">支持 Concredia.Lab，一起當廢料的第二章作者</span><span class="md">◆</span><span class="mi">早鳥 NT$500 起 · 搶先登記</span><span class="md">◆</span></div>
 </div>
 
 
@@ -943,6 +960,42 @@ p{line-height:1.85;}
       <a href="contact.html" style="display:inline-block;padding:0.82rem 1.75rem;background:var(--rust);color:white;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">預約投資人會談</a>
     </div>
 
+  </div>
+</section>
+
+<!-- 募資 Banner（顯眼位置） -->
+<section style="padding:4rem;background:var(--concrete-dark);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(155,91,58,0.15) 0%,transparent 60%);pointer-events:none;"></div>
+  <div style="position:absolute;right:-2rem;top:50%;transform:translateY(-50%);font-size:12rem;color:rgba(155,91,58,0.06);font-family:var(--font-display);font-weight:700;pointer-events:none;user-select:none;line-height:1;">🚀</div>
+
+  <div style="position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust-light);border:1px solid rgba(155,91,58,0.4);padding:0.28rem 0.85rem;margin-bottom:1rem;">
+        🚀 即將發起 · 嘖嘖 × FlyingV · Coming Soon
+      </div>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.6rem,2.8vw,2.4rem);color:var(--warm-white);font-weight:700;line-height:1.2;margin-bottom:0.75rem;">
+        支持 Concredia.Lab，<br>
+        <em style="color:var(--rust-light);font-style:italic;">一起當廢料的第二章作者</em>
+      </h2>
+      <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.75;opacity:0.85;max-width:580px;">
+        每一件作品都由城市廢料製成，你的支持讓它有機會成為你生活的定錨。水磨杯墊 NT$500 起，早鳥優惠 9 折。
+      </p>
+      <div style="display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;">
+        <span style="font-size:0.68rem;padding:0.25rem 0.7rem;background:rgba(155,91,58,0.15);color:var(--rust-light);border:1px solid rgba(155,91,58,0.25);">💳 信用卡</span>
+        <span style="font-size:0.68rem;padding:0.25rem 0.7rem;background:rgba(155,91,58,0.15);color:var(--rust-light);border:1px solid rgba(155,91,58,0.25);">🏦 ATM 轉帳</span>
+        <span style="font-size:0.68rem;padding:0.25rem 0.7rem;background:rgba(155,91,58,0.15);color:var(--rust-light);border:1px solid rgba(155,91,58,0.25);">🏪 超商繳費</span>
+        <span style="font-size:0.68rem;padding:0.25rem 0.7rem;background:rgba(155,91,58,0.15);color:var(--rust-light);border:1px solid rgba(155,91,58,0.25);">💬 LINE Pay</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;flex-shrink:0;">
+      <a href="fundraise.html" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:1.1rem 2.5rem;background:var(--rust);color:white;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.2s;animation:pulse-badge 2.5s infinite;box-shadow:0 4px 20px rgba(155,91,58,0.4);white-space:nowrap;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">
+        🚀 查看所有方案
+      </a>
+      <a href="fundraise.html#notify" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;padding:1.1rem 2.5rem;border:1px solid rgba(212,207,200,0.3);color:var(--concrete-light);font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+        ✉️ 訂閱早鳥通知
+      </a>
+      <div style="text-align:center;font-size:0.65rem;color:var(--concrete-light);opacity:0.4;letter-spacing:0.06em;">NT$500 起 · 早鳥 9 折</div>
+    </div>
   </div>
 </section>
 
@@ -1559,23 +1612,6 @@ p{line-height:1.85;}
   </div>
 </section>
 
-<!-- 募資 Banner -->
-<section style="padding:3rem 4rem;background:linear-gradient(135deg,#1A1714 0%,#2A2724 100%);border-top:1px solid rgba(155,91,58,0.2);">
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
-    <div style="display:flex;align-items:center;gap:1.5rem;">
-      <div style="font-size:2.5rem;">🚀</div>
-      <div>
-        <div style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.4rem;">即將發起 · 群眾募資</div>
-        <div style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--warm-white);margin-bottom:0.35rem;">嘖嘖 × FlyingV 即將上線</div>
-        <div style="font-size:0.88rem;color:var(--concrete-light);opacity:0.75;">水磨杯墊 NT$500 起 · Ugly Speaker 醜音箱 · 旗艦畫作 + 音響套組</div>
-      </div>
-    </div>
-    <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
-      <a href="fundraise.html" style="padding:0.85rem 1.75rem;background:var(--rust);color:white;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;white-space:nowrap;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">查看所有方案 →</a>
-      <a href="fundraise.html#notify" style="padding:0.85rem 1.75rem;border:1px solid rgba(212,207,200,0.25);color:var(--concrete-light);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">訂閱早鳥通知</a>
-    </div>
-  </div>
-</section>
 
 <!-- MANIFESTO -->
 <section id="manifesto" style="padding:7rem 4rem;background:var(--concrete-dark);text-align:center;position:relative;overflow:hidden;">
@@ -1586,7 +1622,16 @@ p{line-height:1.85;}
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
       <a href="products.html" class="btn-p">探索產品系列</a>
       <a href="contact.html" class="btn-o">合作洽詢</a>
+      <a href="fundraise.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.9rem 2rem;background:var(--rust);color:white;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background 0.2s;animation:pulse-badge 2.5s infinite;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">🚀 支持我們的募資計畫</a>
     </div>
+  </div>
+  <div style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(212,207,200,0.08);text-align:center;">
+    <p style="font-family:var(--font-display);font-size:1.15rem;color:var(--rust-light);font-style:italic;letter-spacing:0.04em;">
+      「支持 Concredia.Lab，一起當廢料的第二章作者。」
+    </p>
+    <p style="font-size:0.78rem;color:var(--concrete-light);opacity:0.5;margin-top:0.5rem;letter-spacing:0.08em;">
+      NT$500 起 · 信用卡 / ATM / 超商 / LINE Pay · 早鳥優惠 9 折
+    </p>
   </div>
 </section>
 
