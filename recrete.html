@@ -3,1033 +3,1212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>士敏小礦獸 · Re:Crete 循環計畫 — Concredia.Lab</title>
-<meta name="description" content="士敏小礦獸 Eco-Golems：做一件再生作品，孵化專屬礦獸，賺取土礦幣，收集地質徽章。Green Gamification by Concredia.Lab">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>Re:Crete 士敏小礦獸 — 每一塊廢料，都有牠的靈魂</title>
+<meta name="description" content="Re:Crete 副品牌：買盲盒材料包 → 動手做 → 掃碼孵化礦獸 → AI 對話養成 → 土礦幣兌換全台合作店家。每一塊廢料都有屬於牠的靈魂。">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#08060A;--surface:#120F16;--surface2:#1C1824;
-  --rust:#9B5B3A;--rust-l:#C47A54;--rust-ll:#E8A882;
-  --gold:#C8A96E;--gold-l:#E8C98E;
-  --green:#2ECC71;--blue:#3498DB;--purple:#9B59B6;
-  --cream:#F5F2ED;--text:#C8C4BE;--dim:#706C68;
-  --border:rgba(200,196,190,0.1);
-  --font-d:'Playfair Display',Georgia,serif;
-  --font-b:'DM Sans',system-ui,sans-serif;
-  --font-m:'JetBrains Mono',monospace;
+  --bg:#07050A; --s1:#110E16; --s2:#1A1720;
+  --rust:#9B5B3A; --rl:#C47A54; --rll:#E8A882;
+  --gold:#C8A96E; --gl:#E8C98E;
+  --green:#2ECC71; --blue:#3498DB; --purple:#9B59B6; --pink:#E91E8C;
+  --cream:#F5F2ED; --text:#C0BDB8; --dim:#706C68;
+  --border:rgba(192,189,184,0.1);
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'DM Sans',system-ui,sans-serif;
+  --fm:'JetBrains Mono',monospace;
 }
+*{font-family:var(--fb);}
 html{scroll-behavior:smooth;}
-body{font-family:var(--font-b);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body{background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 40% at 10% 15%,rgba(155,91,58,.1) 0%,transparent 60%),
+             radial-gradient(ellipse 40% 60% at 90% 85%,rgba(155,89,182,.07) 0%,transparent 60%);}
 
-/* 星空背景 */
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 10%,rgba(155,91,58,0.12) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 70% at 85% 90%,rgba(155,89,182,0.08) 0%,transparent 60%),
-    radial-gradient(ellipse 40% 40% at 50% 50%,rgba(200,169,110,0.04) 0%,transparent 70%);
-}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 3rem;
-  background:rgba(8,6,10,0.9);backdrop-filter:blur(20px);
+  padding:1rem 2.5rem;
+  background:rgba(7,5,10,.92);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);}
-.nav-logo{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--cream);text-decoration:none;}
-.nav-logo span{color:var(--rust-l);}
-.nav-tabs{display:flex;gap:0;}
-.nav-tab{padding:0.5rem 1.1rem;font-size:0.72rem;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--dim);text-decoration:none;
-  border-bottom:2px solid transparent;transition:all 0.2s;cursor:pointer;}
-.nav-tab:hover,.nav-tab.active{color:var(--rust-l);border-color:var(--rust);}
-.nav-coins{display:flex;align-items:center;gap:0.5rem;
-  font-family:var(--font-m);font-size:0.9rem;font-weight:600;color:var(--gold);}
-.nav-coins .icon{font-size:1rem;}
+.logo{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--cream);text-decoration:none;}
+.logo-sub{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--rl);display:block;margin-top:-.15rem;}
+.nav-tabs{display:flex;gap:.25rem;}
+.nt{padding:.45rem 1rem;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--dim);border:none;background:none;cursor:pointer;
+  border-bottom:2px solid transparent;transition:all .2s;}
+.nt:hover,.nt.active{color:var(--rl);border-color:var(--rust);}
+.nav-coin{display:flex;align-items:center;gap:.4rem;
+  font-family:var(--fm);font-size:.9rem;font-weight:600;color:var(--gold);}
 
-/* === HERO === */
-.hero{
-  position:relative;z-index:1;
-  padding:6.5rem 3rem 3rem;text-align:center;
-  max-width:800px;margin:0 auto;
-}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;
-  font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--gold);border:1px solid rgba(200,169,110,0.3);
-  padding:0.3rem 1rem;margin-bottom:1.5rem;
-  background:rgba(200,169,110,0.05);border-radius:20px;}
-.hero h1{font-family:var(--font-d);font-size:clamp(2.2rem,5.5vw,4rem);
-  font-weight:700;color:var(--cream);line-height:1.08;margin-bottom:1rem;}
-.hero h1 em{color:var(--rust-l);font-style:italic;}
-.hero-sub{font-size:0.97rem;color:var(--dim);line-height:1.8;
-  max-width:520px;margin:0 auto 2rem;font-weight:300;}
-
-/* 三步驟流程 */
-.flow{display:flex;align-items:center;justify-content:center;gap:0;
-  flex-wrap:wrap;margin-bottom:2.5rem;}
-.flow-step{padding:0.75rem 1.25rem;background:var(--surface);
-  border:1px solid var(--border);font-size:0.8rem;color:var(--text);
-  display:flex;align-items:center;gap:0.5rem;}
-.flow-step .n{font-family:var(--font-m);font-size:0.7rem;
-  color:var(--rust-l);font-weight:600;}
-.flow-arrow{font-size:1rem;color:var(--rust);padding:0 0.25rem;}
-.hero-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;}
-.btn-primary{padding:0.85rem 2rem;background:var(--rust);color:white;
-  font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;
-  text-decoration:none;font-weight:500;border:none;cursor:pointer;
-  font-family:var(--font-b);transition:background 0.2s;}
-.btn-primary:hover{background:var(--rust-l);}
-.btn-outline{padding:0.85rem 2rem;border:1px solid rgba(200,196,190,0.25);
-  color:var(--text);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;
-  text-decoration:none;transition:all 0.2s;background:none;cursor:pointer;font-family:var(--font-b);}
-.btn-outline:hover{border-color:var(--rust-l);color:var(--rust-l);}
+/* ─── HERO ─── */
+.hero{position:relative;z-index:1;text-align:center;
+  padding:6rem 2rem 2rem;max-width:820px;margin:0 auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(200,169,110,.3);
+  padding:.28rem .9rem;margin-bottom:1.25rem;
+  background:rgba(200,169,110,.05);border-radius:20px;}
+.hero h1{font-family:var(--fd);font-size:clamp(2rem,5.5vw,4rem);
+  font-weight:700;color:var(--cream);line-height:1.08;margin-bottom:.85rem;}
+.hero h1 em{color:var(--rl);font-style:italic;}
+.hero-sub{font-size:.95rem;color:var(--dim);line-height:1.82;
+  max-width:500px;margin:0 auto 2rem;font-weight:300;}
+.flow{display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:0;margin-bottom:2rem;}
+.fs{padding:.6rem 1rem;background:var(--s1);border:1px solid var(--border);
+  font-size:.75rem;color:var(--text);display:flex;align-items:center;gap:.4rem;}
+.fs .n{font-family:var(--fm);font-size:.65rem;color:var(--rl);font-weight:600;}
+.fa{font-size:.9rem;color:var(--rust);padding:0 .15rem;}
+.btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+.btn-p{padding:.8rem 1.75rem;background:var(--rust);color:#fff;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:background .2s;text-decoration:none;display:inline-block;}
+.btn-p:hover{background:var(--rl);}
+.btn-o{padding:.8rem 1.75rem;border:1px solid rgba(192,189,184,.25);
+  color:var(--text);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  background:none;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-o:hover{border-color:var(--rl);color:var(--rl);}
 
 /* 全站數據 */
-.global-stats{
-  position:relative;z-index:1;
+.gstats{position:relative;z-index:1;
   display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  background:var(--border);max-width:900px;margin:0 auto 3rem;
-}
-.gs-card{background:var(--surface);padding:1.25rem;text-align:center;}
-.gs-n{font-family:var(--font-m);font-size:1.5rem;font-weight:600;
-  color:var(--gold);line-height:1;}
-.gs-l{font-size:0.62rem;color:var(--dim);letter-spacing:0.08em;margin-top:0.25rem;}
+  background:var(--border);max-width:900px;margin:0 auto 2.5rem;}
+.gsc{background:var(--s1);padding:1.1rem;text-align:center;}
+.gsc .n{font-family:var(--fm);font-size:1.4rem;font-weight:600;color:var(--gold);}
+.gsc .l{font-size:.6rem;color:var(--dim);letter-spacing:.08em;margin-top:.2rem;}
 
-/* === GOLEM GALLERY === */
-.section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 2rem 4rem;}
-.sec-head{margin-bottom:2rem;}
-.sec-eye{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--rust-l);margin-bottom:0.5rem;
-  display:flex;align-items:center;gap:0.6rem;}
-.sec-eye::before{content:'';width:16px;height:1px;background:var(--rust-l);}
-.sec-title{font-family:var(--font-d);font-size:clamp(1.5rem,2.5vw,2.2rem);
-  font-weight:700;color:var(--cream);}
+/* ─── SECTIONS ─── */
+.sec{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 2rem 3.5rem;}
+.sec-eye{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--rl);margin-bottom:.4rem;
+  display:flex;align-items:center;gap:.5rem;}
+.sec-eye::before{content:'';width:14px;height:1px;background:var(--rl);}
+.sec-title{font-family:var(--fd);font-size:clamp(1.4rem,2.2vw,2rem);
+  font-weight:700;color:var(--cream);margin-bottom:.5rem;}
+.sec-desc{font-size:.88rem;color:var(--dim);line-height:1.78;max-width:600px;}
 
-/* 礦獸卡片 */
-.golem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.golem-card{
-  background:var(--surface);border:1px solid var(--border);
-  overflow:hidden;transition:all 0.3s;cursor:pointer;
-  position:relative;
-}
-.golem-card:hover{transform:translateY(-4px);border-color:var(--rust);
-  box-shadow:0 12px 32px rgba(0,0,0,0.4);}
-.golem-card.locked{opacity:0.55;filter:grayscale(0.6);}
-
-/* 礦獸像素畫（純 CSS + emoji 合成）*/
-.golem-visual{
-  height:180px;display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-}
-.golem-visual::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at center,var(--glow-color,rgba(155,91,58,0.2)) 0%,transparent 70%);
-}
-.golem-sprite{
-  font-size:5rem;line-height:1;position:relative;z-index:1;
-  filter:drop-shadow(0 0 16px var(--shadow-color,rgba(155,91,58,0.5)));
-  transition:transform 0.3s;
+/* ─── 礦獸卡片 ─── */
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.gc{background:var(--s1);border:1px solid var(--border);overflow:hidden;
+  transition:all .3s;cursor:pointer;position:relative;}
+.gc:hover{transform:translateY(-4px);border-color:var(--rust);
+  box-shadow:0 12px 32px rgba(0,0,0,.5);}
+.gc.locked{opacity:.5;filter:grayscale(.7);}
+.gv{height:160px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;}
+.gv::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,var(--gc,rgba(155,91,58,.15)) 0%,transparent 70%);}
+.gsp{font-size:4.5rem;line-height:1;position:relative;z-index:1;
   animation:float 3s ease-in-out infinite;
-}
-.golem-card:hover .golem-sprite{transform:scale(1.1);}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  filter:drop-shadow(0 0 14px var(--gs,rgba(155,91,58,.5)));}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.gr{position:absolute;top:.6rem;right:.6rem;
+  font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.18rem .5rem;border-radius:10px;font-weight:600;}
+.r-c{background:rgba(139,134,128,.18);color:#AAA6A2;border:1px solid rgba(139,134,128,.3);}
+.r-u{background:rgba(46,204,113,.12);color:var(--green);border:1px solid rgba(46,204,113,.28);}
+.r-r{background:rgba(52,152,219,.12);color:var(--blue);border:1px solid rgba(52,152,219,.28);}
+.r-e{background:rgba(155,89,182,.12);color:var(--purple);border:1px solid rgba(155,89,182,.28);}
+.r-l{background:rgba(200,169,110,.18);color:var(--gold);border:1px solid rgba(200,169,110,.38);}
+.gi{padding:1.1rem;}
+.gn{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.18rem;}
+.gm{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rl);margin-bottom:.6rem;}
+.gd{font-size:.8rem;color:var(--dim);line-height:1.62;margin-bottom:.85rem;}
+.gst{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.gst-i{background:var(--s2);padding:.5rem;text-align:center;}
+.gst-i .v{font-family:var(--fm);font-size:.8rem;font-weight:600;color:var(--gold);}
+.gst-i .l{font-size:.52rem;color:var(--dim);letter-spacing:.05em;}
+.lock-overlay{position:absolute;inset:0;background:rgba(7,5,10,.78);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;}
+.lock-overlay p{font-size:.72rem;color:var(--dim);text-align:center;padding:0 1rem;}
 
-.golem-rarity{
-  position:absolute;top:0.75rem;right:0.75rem;
-  font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;
-  padding:0.2rem 0.55rem;border-radius:10px;font-weight:600;
-}
-.rarity-common{background:rgba(139,134,128,0.2);color:#AAA6A2;border:1px solid rgba(139,134,128,0.3);}
-.rarity-uncommon{background:rgba(46,204,113,0.15);color:var(--green);border:1px solid rgba(46,204,113,0.3);}
-.rarity-rare{background:rgba(52,152,219,0.15);color:var(--blue);border:1px solid rgba(52,152,219,0.3);}
-.rarity-epic{background:rgba(155,89,182,0.15);color:var(--purple);border:1px solid rgba(155,89,182,0.3);}
-.rarity-legendary{background:rgba(200,169,110,0.2);color:var(--gold);border:1px solid rgba(200,169,110,0.4);}
+/* ─── 地區地圖 ─── */
+.region-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;}
+.region-card{background:var(--s1);border:1px solid var(--border);
+  padding:1.25rem;text-align:center;cursor:pointer;transition:all .2s;position:relative;}
+.region-card:hover{border-color:rgba(155,91,58,.4);transform:translateY(-2px);}
+.region-card.active-region{border-color:var(--gold);background:rgba(200,169,110,.06);}
+.rc-icon{font-size:2rem;margin-bottom:.5rem;}
+.rc-name{font-size:.82rem;font-weight:600;color:var(--cream);margin-bottom:.2rem;}
+.rc-type{font-size:.65rem;color:var(--rl);letter-spacing:.08em;margin-bottom:.5rem;}
+.rc-golem{font-size:.72rem;color:var(--dim);}
+.rc-bar{height:3px;background:rgba(192,189,184,.08);margin-top:.75rem;border-radius:2px;}
+.rc-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .5s;}
+.region-detail{background:var(--s1);border:1px solid var(--border);padding:2rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;}
 
-.golem-info{padding:1.25rem;}
-.golem-name{font-family:var(--font-d);font-size:1.1rem;font-weight:700;
-  color:var(--cream);margin-bottom:0.2rem;}
-.golem-material{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--rust-l);margin-bottom:0.75rem;}
-.golem-desc{font-size:0.82rem;color:var(--dim);line-height:1.65;margin-bottom:1rem;}
-.golem-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);}
-.gs-stat{background:var(--surface2);padding:0.6rem;text-align:center;}
-.gs-stat .v{font-family:var(--font-m);font-size:0.82rem;font-weight:600;color:var(--gold);}
-.gs-stat .l{font-size:0.55rem;color:var(--dim);letter-spacing:0.06em;}
+/* ─── AI 對話 ─── */
+.ai-chat-box{background:var(--s1);border:1px solid var(--border);overflow:hidden;}
+.ai-header{background:linear-gradient(135deg,#1A0A20 0%,#2A1535 100%);
+  padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;}
+.ai-avatar{width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),#5A1A8A);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;
+  box-shadow:0 0 16px rgba(155,89,182,.4);}
+.ai-info .name{font-family:var(--fd);font-size:.92rem;font-weight:700;color:var(--cream);}
+.ai-info .status{font-size:.65rem;color:var(--purple);letter-spacing:.08em;}
+.ai-messages{height:320px;overflow-y:auto;padding:1.25rem;
+  display:flex;flex-direction:column;gap:.85rem;}
+.msg{max-width:82%;padding:.75rem 1rem;font-size:.84rem;line-height:1.65;}
+.msg.golem{background:rgba(155,89,182,.1);border:1px solid rgba(155,89,182,.2);
+  border-radius:12px 12px 12px 2px;align-self:flex-start;color:var(--cream);}
+.msg.user{background:rgba(155,91,58,.15);border:1px solid rgba(155,91,58,.25);
+  border-radius:12px 12px 2px 12px;align-self:flex-end;color:var(--cream);}
+.msg.system{background:rgba(192,189,184,.05);border:1px solid var(--border);
+  font-size:.75rem;color:var(--dim);text-align:center;max-width:100%;border-radius:4px;}
+.typing{display:flex;gap:.35rem;align-items:center;padding:.6rem 1rem;
+  background:rgba(155,89,182,.08);border:1px solid rgba(155,89,182,.15);
+  border-radius:12px 12px 12px 2px;align-self:flex-start;width:60px;}
+.typing span{width:6px;height:6px;border-radius:50%;background:var(--purple);
+  animation:blink 1.2s ease-in-out infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}
+.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.ai-quick{padding:.75rem 1.25rem;display:flex;flex-wrap:wrap;gap:.4rem;
+  border-top:1px solid var(--border);}
+.qb{font-size:.66rem;padding:.28rem .65rem;
+  background:rgba(155,89,182,.1);border:1px solid rgba(155,89,182,.25);
+  color:var(--purple);border-radius:14px;cursor:pointer;transition:all .2s;
+  white-space:nowrap;}
+.qb:hover{background:rgba(155,89,182,.22);}
+.ai-input-row{padding:.75rem 1rem;border-top:1px solid var(--border);
+  display:flex;gap:.5rem;}
+.ai-input{flex:1;padding:.65rem .9rem;background:var(--s2);
+  border:1px solid var(--border);color:var(--cream);font-size:.85rem;outline:none;}
+.ai-input:focus{border-color:var(--purple);}
+.ai-send{padding:.65rem 1.1rem;background:var(--purple);color:#fff;
+  border:none;font-size:.8rem;cursor:pointer;transition:background .2s;white-space:nowrap;}
+.ai-send:hover{background:#B96FD0;}
 
-.golem-lock-msg{
-  position:absolute;inset:0;background:rgba(8,6,10,0.75);
-  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;
-}
-.golem-lock-msg .lock-icon{font-size:2rem;}
-.golem-lock-msg p{font-size:0.75rem;color:var(--dim);text-align:center;padding:0 1rem;}
+/* ─── 成長系統 ─── */
+.growth-stages{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);}
+.gs-stage{background:var(--s1);padding:1.25rem .75rem;text-align:center;}
+.gs-stage.current{background:rgba(155,91,58,.08);border:1px solid rgba(155,91,58,.3);}
+.gs-emoji{font-size:2rem;margin-bottom:.4rem;}
+.gs-name{font-size:.75rem;font-weight:600;color:var(--cream);margin-bottom:.18rem;}
+.gs-req{font-size:.62rem;color:var(--dim);}
+.gs-bar-wrap{margin-top:.6rem;height:3px;background:rgba(192,189,184,.08);}
+.gs-bar-fill{height:100%;background:var(--rust);transition:width 1s;}
 
-/* === CALCULATOR === */
-.calc-container{
-  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
-  background:var(--surface);border:1px solid var(--border);padding:2.5rem;
-}
-.calc-left,.calc-right{display:flex;flex-direction:column;gap:1.25rem;}
-.calc-section-title{font-family:var(--font-d);font-size:1rem;font-weight:700;
-  color:var(--cream);margin-bottom:0.25rem;}
+/* ─── 計算機 ─── */
+.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.mat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:1.25rem;}
+.mb{padding:.7rem .5rem;background:var(--s2);border:2px solid var(--border);
+  cursor:pointer;text-align:center;transition:all .2s;}
+.mb:hover{border-color:rgba(155,91,58,.4);}
+.mb.act{border-color:var(--rust);background:rgba(155,91,58,.1);}
+.mb .mi{font-size:1.3rem;margin-bottom:.22rem;}
+.mb .mn{font-size:.68rem;font-weight:500;color:var(--cream);}
+.mb .mt{font-size:.58rem;color:var(--dim);}
+.slide-g{margin-bottom:1rem;}
+.slide-label{display:flex;justify-content:space-between;
+  font-size:.72rem;margin-bottom:.38rem;}
+.slide-label .sv{font-family:var(--fm);font-size:.78rem;font-weight:600;color:var(--gold);}
+input[type=range]{width:100%;height:3px;background:rgba(192,189,184,.1);
+  border-radius:2px;outline:none;cursor:pointer;-webkit-appearance:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;
+  border-radius:50%;background:var(--rl);cursor:pointer;
+  box-shadow:0 0 6px rgba(155,91,58,.5);}
+.result-box{background:var(--s2);border-left:3px solid var(--green);padding:1.25rem;margin-top:1rem;}
+.rr{display:flex;justify-content:space-between;align-items:center;
+  padding:.5rem 0;border-bottom:1px solid rgba(192,189,184,.05);}
+.rr:last-child{border-bottom:none;}
+.rr .rk{font-size:.8rem;color:var(--dim);}
+.rr .rv{font-family:var(--fm);font-size:.88rem;font-weight:600;}
+.preview-box{background:var(--s2);padding:1.5rem;text-align:center;border:1px solid var(--border);}
+.prev-sprite{font-size:4rem;animation:float 2.5s ease-in-out infinite;
+  filter:drop-shadow(0 0 10px var(--ps,rgba(155,91,58,.4)));margin-bottom:.4rem;}
+.prev-name{font-family:var(--fd);font-size:.95rem;color:var(--cream);font-weight:700;}
+.prev-rarity{display:inline-block;margin-top:.35rem;
+  font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .55rem;border-radius:10px;}
 
-/* 材料選擇 */
-.material-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;}
-.mat-btn{
-  padding:0.75rem 0.5rem;background:var(--surface2);
-  border:2px solid var(--border);border-radius:3px;
-  cursor:pointer;text-align:center;transition:all 0.2s;
-}
-.mat-btn:hover{border-color:rgba(155,91,58,0.5);}
-.mat-btn.active{border-color:var(--rust);background:rgba(155,91,58,0.1);}
-.mat-btn .mi{font-size:1.4rem;margin-bottom:0.25rem;}
-.mat-btn .mn{font-size:0.7rem;font-weight:500;color:var(--cream);}
-.mat-btn .mt{font-size:0.6rem;color:var(--dim);}
-
-/* 滑桿 */
-.slide-group{display:flex;flex-direction:column;gap:0.4rem;}
-.slide-label{display:flex;justify-content:space-between;font-size:0.75rem;}
-.slide-label .lv{font-family:var(--font-m);font-size:0.8rem;font-weight:600;color:var(--gold);}
-input[type=range]{
-  width:100%;height:3px;background:rgba(200,196,190,0.12);
-  border-radius:2px;outline:none;cursor:pointer;
-  -webkit-appearance:none;appearance:none;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;width:14px;height:14px;border-radius:50%;
-  background:var(--rust-l);cursor:pointer;
-  box-shadow:0 0 6px rgba(155,91,58,0.5);
-}
-
-/* 結果 */
-.result-box{
-  background:var(--surface2);border-left:3px solid var(--green);
-  padding:1.25rem;
-}
-.result-title{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--green);margin-bottom:1rem;}
-.result-row{display:flex;justify-content:space-between;align-items:center;
-  padding:0.6rem 0;border-bottom:1px solid rgba(200,196,190,0.06);}
-.result-row:last-child{border-bottom:none;}
-.result-row .rk{font-size:0.82rem;color:var(--dim);}
-.result-row .rv{font-family:var(--font-m);font-size:0.95rem;font-weight:600;}
-
-/* 礦獸預覽 */
-.golem-preview{
-  background:var(--surface2);border:1px solid var(--border);
-  padding:1.5rem;text-align:center;
-}
-.preview-title{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--rust-l);margin-bottom:1rem;}
-.preview-golem{font-size:4rem;line-height:1;
-  filter:drop-shadow(0 0 12px var(--preview-shadow,rgba(155,91,58,0.5)));
-  animation:float 2.5s ease-in-out infinite;margin-bottom:0.5rem;}
-.preview-name{font-family:var(--font-d);font-size:1rem;color:var(--cream);font-weight:700;}
-.preview-rarity-badge{display:inline-block;margin-top:0.4rem;
-  font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;
-  padding:0.2rem 0.6rem;border-radius:10px;}
-
-/* === LEADERBOARD === */
-.lb-table{background:var(--surface);border:1px solid var(--border);overflow:hidden;}
-.lb-row{
-  display:grid;grid-template-columns:48px 1fr auto auto;
-  align-items:center;gap:1.25rem;
-  padding:1rem 1.5rem;border-bottom:1px solid var(--border);
-  transition:background 0.15s;
-}
+/* ─── 排行榜 ─── */
+.lb-table{background:var(--s1);border:1px solid var(--border);overflow:hidden;}
+.lb-row{display:grid;grid-template-columns:44px 1fr auto auto;
+  align-items:center;gap:1rem;padding:.9rem 1.5rem;
+  border-bottom:1px solid var(--border);transition:background .15s;}
 .lb-row:last-child{border-bottom:none;}
-.lb-row:hover{background:rgba(200,196,190,0.02);}
-.lb-rank{font-family:var(--font-m);font-size:0.9rem;font-weight:600;
+.lb-row:hover{background:rgba(192,189,184,.02);}
+.lb-rank{font-family:var(--fm);font-size:.88rem;font-weight:600;
   color:var(--dim);text-align:center;}
-.lb-rank.gold{color:var(--gold);}
-.lb-rank.silver{color:#AAA6A2;}
-.lb-rank.bronze{color:#9B7B5A;}
-.lb-name{font-size:0.9rem;color:var(--cream);font-weight:500;}
-.lb-sub{font-size:0.7rem;color:var(--dim);margin-top:0.1rem;}
-.lb-golems{display:flex;gap:0.2rem;font-size:1rem;}
-.lb-coins{font-family:var(--font-m);font-size:0.9rem;font-weight:600;color:var(--gold);}
+.lb-rank.g{color:var(--gold);}
+.lb-rank.s{color:#AAA6A2;}
+.lb-rank.b{color:#9B7B5A;}
+.lb-name{font-size:.88rem;color:var(--cream);font-weight:500;}
+.lb-sub{font-size:.68rem;color:var(--dim);}
+.lb-gs{font-size:.95rem;}
+.lb-c{font-family:var(--fm);font-size:.88rem;font-weight:600;color:var(--gold);}
 
-/* === REDEEM === */
-.redeem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--border);}
-.rd-card{background:var(--surface);padding:1.75rem;display:flex;flex-direction:column;}
-.rd-icon{font-size:2.2rem;margin-bottom:0.75rem;}
-.rd-cost{font-family:var(--font-m);font-size:1rem;font-weight:600;
-  color:var(--gold);margin-bottom:0.25rem;}
-.rd-name{font-size:0.92rem;font-weight:500;color:var(--cream);margin-bottom:0.35rem;}
-.rd-desc{font-size:0.78rem;color:var(--dim);line-height:1.6;flex:1;}
-.rd-partner{font-size:0.65rem;color:var(--rust-l);margin-top:0.6rem;letter-spacing:0.06em;}
-.rd-btn{
-  margin-top:1rem;padding:0.6rem;
-  background:rgba(155,91,58,0.12);border:1px solid rgba(155,91,58,0.3);
-  color:var(--rust-l);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
-  cursor:pointer;font-family:var(--font-b);transition:all 0.2s;
-}
-.rd-btn:hover{background:var(--rust);color:white;border-color:var(--rust);}
+/* ─── 兌換 ─── */
+.rd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.rd-card{background:var(--s1);padding:1.5rem;display:flex;flex-direction:column;}
+.rd-icon{font-size:2rem;margin-bottom:.6rem;}
+.rd-cost{font-family:var(--fm);font-size:.95rem;font-weight:600;color:var(--gold);margin-bottom:.22rem;}
+.rd-name{font-size:.88rem;font-weight:500;color:var(--cream);margin-bottom:.3rem;}
+.rd-desc{font-size:.76rem;color:var(--dim);line-height:1.58;flex:1;}
+.rd-partner{font-size:.62rem;color:var(--rl);margin-top:.5rem;letter-spacing:.05em;}
+.rd-btn{margin-top:.85rem;padding:.55rem;
+  background:rgba(155,91,58,.1);border:1px solid rgba(155,91,58,.28);
+  color:var(--rl);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;}
+.rd-btn:hover{background:var(--rust);color:#fff;border-color:var(--rust);}
 
-/* === 存摺浮動面板 === */
-.ledger-float{
-  position:fixed;right:1.5rem;bottom:1.5rem;z-index:80;
-  width:300px;background:var(--surface);border:1px solid var(--border);
-  box-shadow:0 16px 48px rgba(0,0,0,0.6);
-  transform:translateY(120%);transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-}
-.ledger-float.open{transform:translateY(0);}
-.lf-header{background:linear-gradient(135deg,var(--rust) 0%,#6A2E12 100%);
-  padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;}
-.lf-title{font-family:var(--font-d);font-size:0.85rem;color:white;font-weight:700;}
-.lf-close{background:none;border:none;color:rgba(255,255,255,0.7);
-  font-size:1.2rem;cursor:pointer;line-height:1;}
-.lf-coins{padding:1rem 1.25rem;display:flex;align-items:center;gap:0.75rem;
+/* ─── B2B ─── */
+.b2b-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:1.5rem;}
+.b2b-card{background:var(--s1);padding:1.75rem;}
+.b2b-icon{font-size:1.8rem;margin-bottom:.75rem;}
+.b2b-tag{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--rl);margin-bottom:.4rem;}
+.b2b-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:.6rem;}
+.b2b-desc{font-size:.8rem;color:var(--dim);line-height:1.68;margin-bottom:1rem;}
+.b2b-list{background:var(--s2);border-left:2px solid var(--rl);padding:.85rem 1rem;}
+.b2b-list li{font-size:.73rem;color:var(--dim);line-height:1.65;list-style:none;padding:.08rem 0;}
+.b2b-list li::before{content:'✓ ';}
+
+/* ─── 存摺浮動 ─── */
+.ledger-btn{position:fixed;right:1.5rem;bottom:1.5rem;z-index:100;
+  width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rust),#6A2E12);
+  border:none;cursor:pointer;font-size:1.2rem;
+  box-shadow:0 4px 18px rgba(155,91,58,.5);transition:transform .2s;
+  display:flex;align-items:center;justify-content:center;}
+.ledger-btn:hover{transform:scale(1.08);}
+.ledger-panel{position:fixed;right:1.5rem;bottom:1.5rem;z-index:99;
+  width:290px;background:var(--s1);border:1px solid var(--border);
+  box-shadow:0 16px 48px rgba(0,0,0,.7);
+  transform:translateY(120%);transition:transform .4s cubic-bezier(.34,1.56,.64,1);}
+.ledger-panel.open{transform:translateY(0);}
+.lp-head{background:linear-gradient(135deg,var(--rust),#6A2E12);
+  padding:.9rem 1.2rem;display:flex;justify-content:space-between;align-items:center;}
+.lp-head-title{font-family:var(--fd);font-size:.82rem;color:#fff;font-weight:700;}
+.lp-close{background:none;border:none;color:rgba(255,255,255,.65);font-size:1.1rem;cursor:pointer;}
+.lp-coins{padding:.85rem 1.2rem;display:flex;align-items:center;gap:.65rem;
   border-bottom:1px solid var(--border);}
-.lf-coin-icon{width:36px;height:36px;border-radius:50%;
+.lp-coin-icon{width:34px;height:34px;border-radius:50%;
   background:linear-gradient(135deg,var(--gold),#8A6030);
-  display:flex;align-items:center;justify-content:center;font-size:1rem;}
-.lf-coin-n{font-family:var(--font-m);font-size:1.6rem;font-weight:600;color:var(--gold);}
-.lf-coin-l{font-size:0.62rem;color:var(--dim);}
-.lf-stats{display:grid;grid-template-columns:1fr 1fr;gap:0;
-  border-bottom:1px solid var(--border);}
-.lf-stat{padding:0.75rem 1.25rem;border-right:1px solid var(--border);}
-.lf-stat:nth-child(even){border-right:none;}
-.lf-stat .v{font-family:var(--font-m);font-size:0.9rem;font-weight:600;color:var(--green);}
-.lf-stat .l{font-size:0.6rem;color:var(--dim);}
-.lf-golem-row{padding:0.85rem 1.25rem;font-size:0.82rem;color:var(--dim);
-  border-bottom:1px solid var(--border);}
-.lf-golem-row span{font-size:1.1rem;}
-.lf-cta{margin:0.85rem;padding:0.75rem;background:var(--rust);color:white;
-  border:none;width:calc(100% - 1.7rem);font-family:var(--font-b);
-  font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;
-  cursor:pointer;transition:background 0.2s;}
-.lf-cta:hover{background:var(--rust-l);}
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;}
+.lp-coin-n{font-family:var(--fm);font-size:1.5rem;font-weight:600;color:var(--gold);}
+.lp-coin-l{font-size:.58rem;color:var(--dim);}
+.lp-stats{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--border);}
+.lp-stat{padding:.65rem 1.2rem;border-right:1px solid var(--border);}
+.lp-stat:nth-child(even){border-right:none;}
+.lp-stat .v{font-family:var(--fm);font-size:.85rem;font-weight:600;color:var(--green);}
+.lp-stat .l{font-size:.58rem;color:var(--dim);}
+.lp-golem{padding:.75rem 1.2rem;border-bottom:1px solid var(--border);font-size:.8rem;color:var(--dim);}
+.lp-cta{margin:.75rem;padding:.65rem;background:var(--rust);color:#fff;
+  border:none;width:calc(100% - 1.5rem);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.lp-cta:hover{background:var(--rl);}
 
-/* 開關按鈕 */
-.ledger-toggle{
-  position:fixed;right:1.5rem;bottom:1.5rem;z-index:81;
-  width:52px;height:52px;border-radius:50%;
-  background:linear-gradient(135deg,var(--rust),#7A3E20);
-  border:none;cursor:pointer;font-size:1.3rem;
-  box-shadow:0 4px 20px rgba(155,91,58,0.5);
-  transition:transform 0.2s;display:flex;align-items:center;justify-content:center;
-}
-.ledger-toggle:hover{transform:scale(1.08);}
-
-/* 提交模態 */
-.modal-overlay{display:none;position:fixed;inset:0;z-index:200;
-  background:rgba(8,6,10,0.9);backdrop-filter:blur(12px);
+/* ─── 提交模態 ─── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:300;
+  background:rgba(7,5,10,.92);backdrop-filter:blur(12px);
   align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--surface);border:1px solid var(--border);
-  max-width:480px;width:92%;overflow:hidden;}
+.modal{background:var(--s1);border:1px solid var(--border);max-width:460px;width:92%;}
 .modal-head{background:linear-gradient(135deg,var(--rust),#6A2E12);
-  padding:1.5rem;display:flex;align-items:center;justify-content:space-between;}
-.modal-head h3{font-family:var(--font-d);font-size:1.1rem;color:white;font-weight:700;}
-.modal-close{background:none;border:none;color:rgba(255,255,255,0.7);
-  font-size:1.3rem;cursor:pointer;}
-.modal-body{padding:1.75rem;display:flex;flex-direction:column;gap:1rem;}
-.modal-body label{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--dim);display:block;margin-bottom:0.35rem;}
+  padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.modal-head h3{font-family:var(--fd);font-size:1rem;color:#fff;font-weight:700;}
+.mclose{background:none;border:none;color:rgba(255,255,255,.65);font-size:1.2rem;cursor:pointer;}
+.modal-body{padding:1.5rem;display:flex;flex-direction:column;gap:.85rem;}
+.modal-body label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);display:block;margin-bottom:.28rem;}
 .modal-body input,.modal-body select,.modal-body textarea{
-  width:100%;padding:0.75rem 1rem;background:var(--surface2);
-  border:1px solid var(--border);color:var(--cream);
-  font-size:0.88rem;font-family:var(--font-b);outline:none;}
+  width:100%;padding:.7rem .9rem;background:var(--s2);
+  border:1px solid var(--border);color:var(--cream);font-size:.86rem;outline:none;}
 .modal-body input:focus,.modal-body select:focus{border-color:var(--rust);}
-.modal-body select option{background:var(--surface2);}
-.modal-submit{padding:0.9rem;background:var(--rust);color:white;border:none;
-  font-family:var(--font-b);font-size:0.78rem;letter-spacing:0.12em;
-  text-transform:uppercase;font-weight:500;cursor:pointer;
-  transition:background 0.2s;width:100%;}
-.modal-submit:hover{background:var(--rust-l);}
+.modal-body select option{background:var(--s2);}
+.modal-submit{padding:.85rem;background:var(--rust);color:#fff;border:none;
+  font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:500;cursor:pointer;transition:background .2s;width:100%;}
+.modal-submit:hover{background:var(--rl);}
 
-/* 孵化動畫模態 */
-.hatch-modal{display:none;position:fixed;inset:0;z-index:300;
-  background:rgba(8,6,10,0.96);align-items:center;justify-content:center;
-  flex-direction:column;gap:1.5rem;text-align:center;}
-.hatch-modal.open{display:flex;}
-.hatch-egg{font-size:5rem;animation:shake 0.5s ease-in-out infinite;}
-@keyframes shake{0%,100%{transform:rotate(-5deg);}50%{transform:rotate(5deg);}}
-.hatch-golem{display:none;font-size:5rem;
-  animation:pop 0.5s cubic-bezier(0.34,1.56,0.64,1);}
-@keyframes pop{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
-.hatch-title{font-family:var(--font-d);font-size:2rem;color:var(--cream);font-weight:700;}
-.hatch-sub{font-size:0.9rem;color:var(--dim);}
-.hatch-reward{display:flex;gap:2rem;justify-content:center;margin-top:0.5rem;}
-.hatch-reward .rv{font-family:var(--font-m);font-size:1.5rem;font-weight:600;}
-.hatch-reward .rl{font-size:0.65rem;color:var(--dim);letter-spacing:0.08em;}
+/* ─── 孵化動畫 ─── */
+.hatch-overlay{display:none;position:fixed;inset:0;z-index:400;
+  background:rgba(7,5,10,.97);align-items:center;justify-content:center;
+  flex-direction:column;gap:1.25rem;text-align:center;}
+.hatch-overlay.open{display:flex;}
+.h-egg{font-size:5rem;animation:hshake .5s ease-in-out infinite;}
+@keyframes hshake{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.h-golem{display:none;font-size:5rem;animation:hpop .5s cubic-bezier(.34,1.56,.64,1);}
+@keyframes hpop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.h-title{font-family:var(--fd);font-size:1.8rem;color:var(--cream);font-weight:700;}
+.h-sub{font-size:.88rem;color:var(--dim);}
+.h-rw{display:flex;gap:2rem;justify-content:center;margin-top:.5rem;}
+.h-rw .rv{font-family:var(--fm);font-size:1.4rem;font-weight:600;}
+.h-rw .rl{font-size:.62rem;color:var(--dim);letter-spacing:.08em;}
 
-/* Toast */
-.toast{position:fixed;top:5rem;right:1.5rem;z-index:400;
-  background:var(--surface);border:1px solid var(--border);
-  border-left:3px solid var(--green);padding:1rem 1.5rem;
-  transform:translateX(120%);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-  max-width:280px;}
+/* ─── Toast ─── */
+.toast{position:fixed;top:5rem;right:1.5rem;z-index:500;
+  background:var(--s1);border:1px solid var(--border);
+  border-left:3px solid var(--green);padding:.9rem 1.3rem;
+  transform:translateX(120%);transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  max-width:270px;}
 .toast.show{transform:translateX(0);}
-.toast-t{font-size:0.85rem;font-weight:600;color:var(--cream);margin-bottom:0.2rem;}
-.toast-b{font-size:0.75rem;color:var(--dim);}
+.toast .tt{font-size:.82rem;font-weight:600;color:var(--cream);margin-bottom:.18rem;}
+.toast .tb{font-size:.72rem;color:var(--dim);}
 
 @media(max-width:768px){
-  .golem-grid{grid-template-columns:1fr 1fr;}
-  .calc-container{grid-template-columns:1fr;}
-  .redeem-grid{grid-template-columns:1fr;}
-  .global-stats{grid-template-columns:1fr 1fr;}
+  .gg{grid-template-columns:1fr 1fr;}
+  .calc-wrap{grid-template-columns:1fr;}
+  .rd-grid{grid-template-columns:1fr;}
+  .b2b-grid{grid-template-columns:1fr;}
+  .region-grid{grid-template-columns:1fr 1fr;}
+  .growth-stages{grid-template-columns:repeat(3,1fr);}
+  .gstats{grid-template-columns:1fr 1fr;}
   nav{padding:1rem 1.25rem;}
   .nav-tabs{display:none;}
-  .ledger-float{width:calc(100% - 3rem);}
+  .ledger-panel{width:calc(100% - 3rem);}
 }
 </style>
 </head>
 <body>
 
-<!-- Nav -->
+<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">Concredia<span>.</span>Lab</a>
+  <a href="index.html" class="logo">Re:Crete<span class="logo-sub">by Concredia.Lab</span></a>
   <div class="nav-tabs">
-    <span class="nav-tab active" onclick="showTab('golems')">士敏小礦獸</span>
-    <span class="nav-tab" onclick="showTab('calc')">減碳計算機</span>
-    <span class="nav-tab" onclick="showTab('rank')">排行榜</span>
-    <span class="nav-tab" onclick="showTab('redeem')">土礦幣兌換</span>
+    <button class="nt active" onclick="showTab('golems')">礦獸圖鑑</button>
+    <button class="nt" onclick="showTab('regions')">地區地圖</button>
+    <button class="nt" onclick="showTab('grow')">養成成長</button>
+    <button class="nt" onclick="showTab('calc')">減碳計算</button>
+    <button class="nt" onclick="showTab('rank')">排行榜</button>
+    <button class="nt" onclick="showTab('redeem')">幣值兌換</button>
+    <button class="nt" onclick="showTab('b2b')">企業合作</button>
   </div>
-  <div class="nav-coins">
-    <span class="icon">₵</span>
-    <span id="nav-coin-display">0</span>
-  </div>
+  <div class="nav-coin">₵ <span id="nav-c">0</span></div>
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">👾 Re:Crete 循環計畫 · Green Gamification</div>
-  <h1>士敏<em>小礦獸</em><br>Eco-Golems</h1>
-  <p class="hero-sub">每一件由廢料做成的作品，都會孵化出一隻屬於你的小礦獸。它的材質來自拆除現場，它的力量來自你的行動。</p>
+  <div class="hero-badge">👾 Re:Crete · 副品牌 · Green Gamification · Beta</div>
+  <h1>每一塊廢料，<br>都有<em>牠的靈魂</em></h1>
+  <p class="hero-sub">買盲盒材料包、動手做、掃碼孵化，養出一隻有個性、會對話、會成長的士敏小礦獸。牠的屬性，來自牠誕生的那塊土地。</p>
   <div class="flow">
-    <div class="flow-step"><span class="n">01</span> 購買材料包</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step"><span class="n">02</span> 動手做作品</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step"><span class="n">03</span> 等待孵化 24–48h</div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step"><span class="n">04</span> 礦獸誕生 · 領幣</div>
+    <div class="fs"><span class="n">01</span>買盲盒材料包</div><div class="fa">→</div>
+    <div class="fs"><span class="n">02</span>動手做作品</div><div class="fa">→</div>
+    <div class="fs"><span class="n">03</span>等待養護 24h</div><div class="fa">→</div>
+    <div class="fs"><span class="n">04</span>掃碼孵化礦獸</div><div class="fa">→</div>
+    <div class="fs"><span class="n">05</span>AI 對話 · 持續養成</div>
   </div>
-  <div class="hero-btns">
-    <button class="btn-primary" onclick="openSubmit()">🔨 提交作品 · 孵化礦獸</button>
-    <a href="#calc-section" class="btn-outline">計算我的貢獻 →</a>
+  <div class="btns">
+    <button class="btn-p" onclick="openSubmit()">🥚 購買盲盒 · 孵化礦獸</button>
+    <button class="btn-o" onclick="showTab('golems')">查看礦獸圖鑑 →</button>
   </div>
 </div>
 
 <!-- 全站數據 -->
-<div class="global-stats">
-  <div class="gs-card"><div class="gs-n" id="gs-players">127</div><div class="gs-l">礦獸主人</div></div>
-  <div class="gs-card"><div class="gs-n" id="gs-waste">2,840 kg</div><div class="gs-l">廢料去化</div></div>
-  <div class="gs-card"><div class="gs-n" id="gs-co2">1,120 kg</div><div class="gs-l">CO₂ 減少</div></div>
-  <div class="gs-card"><div class="gs-n" id="gs-coins">48,600</div><div class="gs-l">土礦幣 流通</div></div>
+<div class="gstats">
+  <div class="gsc"><div class="n">127</div><div class="l">礦獸主人</div></div>
+  <div class="gsc"><div class="n">2,840 kg</div><div class="l">廢料去化</div></div>
+  <div class="gsc"><div class="n">1,120 kg</div><div class="l">CO₂ 減少</div></div>
+  <div class="gsc"><div class="n">48,600</div><div class="l">土礦幣流通</div></div>
 </div>
 
-<!-- === TAB: 礦獸圖鑑 === -->
-<div id="tab-golems" class="section">
-  <div class="sec-head">
-    <div class="sec-eye">士敏小礦獸 · Eco-Golems 圖鑑</div>
-    <div class="sec-title">材質決定屬性，廢料決定命運</div>
+<!-- ══════════ TAB: 礦獸圖鑑 ══════════ -->
+<div id="tab-golems" class="sec">
+  <div class="sec-head" style="margin-bottom:1.75rem;">
+    <div class="sec-eye">士敏小礦獸 Eco-Golems · 圖鑑</div>
+    <div class="sec-title">材質決定屬性，地區決定個性</div>
+    <p class="sec-desc" style="margin-top:.4rem;">礦獸的長相由廢料材質決定，牠的口音、個性、台灣文化標籤由出生地區決定。加入不同地區的材料會長出混血礦獸，屬性疊加。</p>
   </div>
+  <div class="gg">
 
-  <div class="golem-grid">
-
-    <!-- 紅磚獸 COMMON -->
-    <div class="golem-card" onclick="golemDetail('brick')" style="--glow-color:rgba(200,80,50,0.15);--shadow-color:rgba(200,80,50,0.4);">
-      <div class="golem-visual" style="background:linear-gradient(180deg,rgba(200,80,50,0.08) 0%,var(--surface) 100%);">
-        <div class="golem-rarity rarity-common">Common</div>
-        <div class="golem-sprite">🧱</div>
+    <div class="gc" onclick="chatGolem('brick')" style="--gc:rgba(200,80,50,.14);--gs:rgba(200,80,50,.4);">
+      <div class="gv" style="background:linear-gradient(180deg,rgba(200,80,50,.08) 0%,var(--s1) 100%);">
+        <span class="gr r-c">Common</span>
+        <div class="gsp">🧱</div>
       </div>
-      <div class="golem-info">
-        <div class="golem-name">紅磚獸 · Brick Golem</div>
-        <div class="golem-material">廢棄紅磚 · 老屋拆除料</div>
-        <div class="golem-desc">來自民國 60 年代老屋的紅磚廢料，帶有時代的溫度。雖然樸實，卻是最親近土地的存在。每天默默挖出土礦幣，從不喊累。</div>
-        <div class="golem-stats">
-          <div class="gs-stat"><div class="v">+5</div><div class="l">幣/天</div></div>
-          <div class="gs-stat"><div class="v">3%</div><div class="l">CO₂減量</div></div>
-          <div class="gs-stat"><div class="v">★☆☆☆</div><div class="l">稀有度</div></div>
+      <div class="gi">
+        <div class="gn">紅磚獸 · Brick Golem</div>
+        <div class="gm">廢棄紅磚 · 城市老屋</div>
+        <div class="gd">來自民國 60 年代老屋的紅磚，台語口音，個性直率熱情，遇到人會直接說「阿你好啊！」喜歡喝黑松沙士，對老建築有特殊情感。</div>
+        <div class="gst">
+          <div class="gst-i"><div class="v">+5</div><div class="l">幣/天</div></div>
+          <div class="gst-i"><div class="v">62%</div><div class="l">再生率</div></div>
+          <div class="gst-i"><div class="v">★☆☆☆</div><div class="l">稀有度</div></div>
         </div>
       </div>
     </div>
 
-    <!-- 結晶獸 UNCOMMON -->
-    <div class="golem-card" onclick="golemDetail('glass')" style="--glow-color:rgba(100,200,255,0.12);--shadow-color:rgba(100,200,255,0.4);">
-      <div class="golem-visual" style="background:linear-gradient(180deg,rgba(100,200,255,0.08) 0%,var(--surface) 100%);">
-        <div class="golem-rarity rarity-uncommon">Uncommon</div>
-        <div class="golem-sprite">💎</div>
+    <div class="gc" onclick="chatGolem('glass')" style="--gc:rgba(100,200,255,.12);--gs:rgba(100,200,255,.4);">
+      <div class="gv" style="background:linear-gradient(180deg,rgba(100,200,255,.07) 0%,var(--s1) 100%);">
+        <span class="gr r-u">Uncommon</span>
+        <div class="gsp">💎</div>
       </div>
-      <div class="golem-info">
-        <div class="golem-name">結晶獸 · Crystal Golem</div>
-        <div class="golem-material">春池廢玻璃 · 回收玻璃砂</div>
-        <div class="golem-desc">由春池玻璃合作回收的廢棄玻璃製成，半透明的身軀在光線下折射出彩虹。據說在夜晚特別活躍，喜歡蒐集光。</div>
-        <div class="golem-stats">
-          <div class="gs-stat"><div class="v">+12</div><div class="l">幣/天</div></div>
-          <div class="gs-stat"><div class="v">7%</div><div class="l">CO₂減量</div></div>
-          <div class="gs-stat"><div class="v">★★☆☆</div><div class="l">稀有度</div></div>
+      <div class="gi">
+        <div class="gn">結晶獸 · Crystal Golem</div>
+        <div class="gm">春池廢玻璃 · 新竹</div>
+        <div class="gd">春池玻璃回收的廢棄玻璃砂，說話斯文帶點文青腔，喜歡在夜晚折射燈光，自拍成功率 100%，IG 限動天才，常說「這個光線超美 der」。</div>
+        <div class="gst">
+          <div class="gst-i"><div class="v">+12</div><div class="l">幣/天</div></div>
+          <div class="gst-i"><div class="v">75%</div><div class="l">再生率</div></div>
+          <div class="gst-i"><div class="v">★★☆☆</div><div class="l">稀有度</div></div>
         </div>
       </div>
     </div>
 
-    <!-- 鋼鐵獸 RARE -->
-    <div class="golem-card" onclick="golemDetail('slag')" style="--glow-color:rgba(150,150,200,0.12);--shadow-color:rgba(150,150,200,0.4);">
-      <div class="golem-visual" style="background:linear-gradient(180deg,rgba(150,150,200,0.08) 0%,var(--surface) 100%);">
-        <div class="golem-rarity rarity-rare">Rare</div>
-        <div class="golem-sprite">⚙️</div>
+    <div class="gc" onclick="chatGolem('slag')" style="--gc:rgba(150,150,200,.12);--gs:rgba(150,150,200,.4);">
+      <div class="gv" style="background:linear-gradient(180deg,rgba(150,150,200,.07) 0%,var(--s1) 100%);">
+        <span class="gr r-r">Rare</span>
+        <div class="gsp">⚙️</div>
       </div>
-      <div class="golem-info">
-        <div class="golem-name">鋼鐵獸 · Slag Golem</div>
-        <div class="golem-material">爐石粉 · 煉鋼廠高爐爐渣</div>
-        <div class="golem-desc">煉鋼廠的高爐爐渣磨成粉，是降低碳排最有力的秘密武器。外表冷硬，但對環境的貢獻最深，能大幅削減 CO₂ 足跡。</div>
-        <div class="golem-stats">
-          <div class="gs-stat"><div class="v">+25</div><div class="l">幣/天</div></div>
-          <div class="gs-stat"><div class="v">15%</div><div class="l">CO₂減量</div></div>
-          <div class="gs-stat"><div class="v">★★★☆</div><div class="l">稀有度</div></div>
+      <div class="gi">
+        <div class="gn">鋼鐵獸 · Slag Golem</div>
+        <div class="gm">爐石粉 · 高雄煉鋼廠</div>
+        <div class="gd">高雄煉鋼廠高爐爐渣，個性硬派低調，有點八加九，但對朋友義氣爆表。話不多，但每句話都有份量，喜歡說「係啦，ㄟ幹你說啥」後面又認真解釋。</div>
+        <div class="gst">
+          <div class="gst-i"><div class="v">+25</div><div class="l">幣/天</div></div>
+          <div class="gst-i"><div class="v">80%</div><div class="l">再生率</div></div>
+          <div class="gst-i"><div class="v">★★★☆</div><div class="l">稀有度</div></div>
         </div>
       </div>
     </div>
 
-    <!-- 赤土獸 UNCOMMON -->
-    <div class="golem-card" onclick="golemDetail('redsoil')" style="--glow-color:rgba(180,100,40,0.12);--shadow-color:rgba(180,100,40,0.4);">
-      <div class="golem-visual" style="background:linear-gradient(180deg,rgba(180,100,40,0.08) 0%,var(--surface) 100%);">
-        <div class="golem-rarity rarity-uncommon">Uncommon</div>
-        <div class="golem-sprite">🌋</div>
+    <div class="gc" onclick="chatGolem('oyster')" style="--gc:rgba(200,220,180,.1);--gs:rgba(200,220,180,.4);">
+      <div class="gv" style="background:linear-gradient(180deg,rgba(200,220,180,.07) 0%,var(--s1) 100%);">
+        <span class="gr r-e">Epic</span>
+        <div class="gsp">🐚</div>
       </div>
-      <div class="golem-info">
-        <div class="golem-name">赤土獸 · Red Earth Golem</div>
-        <div class="golem-material">大肚山紅土 · 台中特有</div>
-        <div class="golem-desc">大肚山特有的赤色紅土，帶有鐵礦的質感與台灣中部的地質記憶。每一塊赤土都是這片土地億萬年的故事。</div>
-        <div class="golem-stats">
-          <div class="gs-stat"><div class="v">+15</div><div class="l">幣/天</div></div>
-          <div class="gs-stat"><div class="v">8%</div><div class="l">CO₂減量</div></div>
-          <div class="gs-stat"><div class="v">★★☆☆</div><div class="l">稀有度</div></div>
+      <div class="gi">
+        <div class="gn">蚵殼獸 · Shell Golem</div>
+        <div class="gm">珍珠蚵殼 · 彰化海岸</div>
+        <div class="gd">彰化王功蚵仔養殖廢棄蚵殼，有海的氣息，說話帶彰化腔，親切像鄰居阿姨，擅長安慰人，說「沒關係啦，我陪你」，是團隊裡的情緒支柱。</div>
+        <div class="gst">
+          <div class="gst-i"><div class="v">+38</div><div class="l">幣/天</div></div>
+          <div class="gst-i"><div class="v">78%</div><div class="l">再生率</div></div>
+          <div class="gst-i"><div class="v">★★★☆</div><div class="l">稀有度</div></div>
         </div>
       </div>
     </div>
 
-    <!-- 蚵殼獸 EPIC -->
-    <div class="golem-card" onclick="golemDetail('oyster')" style="--glow-color:rgba(200,220,180,0.12);--shadow-color:rgba(200,220,180,0.4);">
-      <div class="golem-visual" style="background:linear-gradient(180deg,rgba(200,220,180,0.08) 0%,var(--surface) 100%);">
-        <div class="golem-rarity rarity-epic">Epic</div>
-        <div class="golem-sprite">🐚</div>
+    <div class="gc" onclick="chatGolem('redsoil')" style="--gc:rgba(180,100,40,.12);--gs:rgba(180,100,40,.4);">
+      <div class="gv" style="background:linear-gradient(180deg,rgba(180,100,40,.07) 0%,var(--s1) 100%);">
+        <span class="gr r-u">Uncommon</span>
+        <div class="gsp">🌋</div>
       </div>
-      <div class="golem-info">
-        <div class="golem-name">蚵殼獸 · Shell Golem</div>
-        <div class="golem-material">珍珠蚵殼 · 彰化沿海</div>
-        <div class="golem-desc">彰化沿海的珍珠蚵養殖廢棄蚵殼，粉碎後混入水泥，賦予作品海洋的白色與質感。它是海洋記憶與土地力量的結合體。</div>
-        <div class="golem-stats">
-          <div class="gs-stat"><div class="v">+38</div><div class="l">幣/天</div></div>
-          <div class="gs-stat"><div class="v">18%</div><div class="l">CO₂減量</div></div>
-          <div class="gs-stat"><div class="v">★★★☆</div><div class="l">稀有度</div></div>
+      <div class="gi">
+        <div class="gn">赤土獸 · Red Earth Golem</div>
+        <div class="gm">大肚山紅土 · 台中</div>
+        <div class="gd">台中大肚山特有鐵質紅土，個性熱情外向，台中腔超重，喜歡說「那個就很厲害齁」，對逢甲夜市有執念，精通台中吃喝玩樂攻略。</div>
+        <div class="gst">
+          <div class="gst-i"><div class="v">+15</div><div class="l">幣/天</div></div>
+          <div class="gst-i"><div class="v">70%</div><div class="l">再生率</div></div>
+          <div class="gst-i"><div class="v">★★☆☆</div><div class="l">稀有度</div></div>
         </div>
       </div>
     </div>
 
-    <!-- 玉石獸 LEGENDARY — 鎖定 -->
-    <div class="golem-card locked" style="--glow-color:rgba(100,200,150,0.1);">
-      <div class="golem-visual" style="background:linear-gradient(180deg,rgba(100,200,150,0.05) 0%,var(--surface) 100%);">
-        <div class="golem-rarity rarity-legendary">Legendary</div>
-        <div class="golem-sprite" style="filter:grayscale(1) brightness(0.5);">💚</div>
+    <div class="gc locked" style="--gc:rgba(100,200,150,.07);">
+      <div class="gv" style="background:linear-gradient(180deg,rgba(100,200,150,.04) 0%,var(--s1) 100%);">
+        <span class="gr r-l">Legendary</span>
+        <div class="gsp" style="filter:grayscale(1) brightness(.4);">💚</div>
       </div>
-      <div class="golem-info">
-        <div class="golem-name">豐田玉獸 · Jade Golem</div>
-        <div class="golem-material">花蓮豐田玉 · 台灣玉礦</div>
-        <div class="golem-desc">？？？ 傳說中的礦獸，由花蓮豐田玉礦廢料孵化。達到 100 枚地質徽章後方可解鎖。</div>
-        <div class="golem-stats">
-          <div class="gs-stat"><div class="v">???</div><div class="l">幣/天</div></div>
-          <div class="gs-stat"><div class="v">???</div><div class="l">CO₂減量</div></div>
-          <div class="gs-stat"><div class="v">★★★★</div><div class="l">稀有度</div></div>
+      <div class="gi">
+        <div class="gn">豐田玉獸 · Jade Golem</div>
+        <div class="gm">花蓮豐田玉礦 · 傳說</div>
+        <div class="gd">？？？ 傳說中誕生於花蓮玉礦廢料的礦獸，據說有預言能力，能感應到下一場地震。收集 100 枚地質徽章後方可解鎖。</div>
+        <div class="gst">
+          <div class="gst-i"><div class="v">???</div><div class="l">幣/天</div></div>
+          <div class="gst-i"><div class="v">???</div><div class="l">再生率</div></div>
+          <div class="gst-i"><div class="v">★★★★</div><div class="l">稀有度</div></div>
         </div>
       </div>
-      <div class="golem-lock-msg">
-        <div class="lock-icon">🔒</div>
-        <p>收集 100 枚地質徽章後解鎖</p>
-      </div>
+      <div class="lock-overlay"><div style="font-size:2rem;">🔒</div><p>收集 100 枚地質徽章後解鎖</p></div>
     </div>
 
   </div>
-</div>
 
-<!-- === TAB: 減碳計算機 === -->
-<div id="tab-calc" class="section" style="display:none;" id="calc-section">
-  <div class="sec-head">
-    <div class="sec-eye">減碳計算機 · 你的行動貢獻</div>
-    <div class="sec-title">做一件作品，換取多少土礦幣？</div>
-  </div>
-
-  <div class="calc-container">
-    <div class="calc-left">
+  <!-- 混血說明 -->
+  <div style="margin-top:2rem;padding:1.75rem;background:var(--s1);border:1px solid rgba(200,169,110,.2);">
+    <div style="font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;">🔮 混血礦獸系統</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;">
       <div>
-        <div class="calc-section-title">選擇廢料材質</div>
-        <p style="font-size:0.78rem;color:var(--dim);margin-top:0.2rem;margin-bottom:1rem;">材質決定你孵化的礦獸種類與稀有度</p>
-        <div class="material-grid">
-          <div class="mat-btn active" onclick="selectMat('brick',this)">
-            <div class="mi">🧱</div><div class="mn">紅磚廢料</div><div class="mt">Common</div>
-          </div>
-          <div class="mat-btn" onclick="selectMat('glass',this)">
-            <div class="mi">💎</div><div class="mn">廢棄玻璃</div><div class="mt">Uncommon</div>
-          </div>
-          <div class="mat-btn" onclick="selectMat('slag',this)">
-            <div class="mi">⚙️</div><div class="mn">爐石粉</div><div class="mt">Rare</div>
-          </div>
-          <div class="mat-btn" onclick="selectMat('redsoil',this)">
-            <div class="mi">🌋</div><div class="mn">大肚山紅土</div><div class="mt">Uncommon</div>
-          </div>
-          <div class="mat-btn" onclick="selectMat('oyster',this)">
-            <div class="mi">🐚</div><div class="mn">珍珠蚵殼</div><div class="mt">Epic</div>
-          </div>
-          <div class="mat-btn" onclick="selectMat('mixed',this)">
-            <div class="mi">🔮</div><div class="mn">混合廢料</div><div class="mt">隨機</div>
-          </div>
-        </div>
+        <div style="font-size:.85rem;font-weight:600;color:var(--cream);margin-bottom:.4rem;">🌊 海山混血</div>
+        <div style="font-size:.78rem;color:var(--dim);line-height:1.65;">蚵殼 + 大肚山紅土 → 「浪潮赤岩獸」，海洋修復力 × 山地耐力，稀有度自動升一級</div>
       </div>
-
-      <div class="slide-group">
-        <div class="slide-label">
-          <span style="color:var(--dim);font-size:0.75rem;">廢料使用量</span>
-          <span class="lv"><span id="c-waste">0.5</span> kg</span>
-        </div>
-        <input type="range" id="c-waste-slider" min="0.1" max="180" step="0.1" value="0.5" oninput="calcUpdate()">
+      <div>
+        <div style="font-size:.85rem;font-weight:600;color:var(--cream);margin-bottom:.4rem;">🏙️ 城海混血</div>
+        <div style="font-size:.78rem;color:var(--dim);line-height:1.65;">紅磚 + 蚵殼 → 「港仔城堡獸」，城市智慧 × 海洋包容力，獲得「台灣腔」特殊對話模式</div>
       </div>
-      <div class="slide-group">
-        <div class="slide-label">
-          <span style="color:var(--dim);font-size:0.75rem;">再生料佔比</span>
-          <span class="lv"><span id="c-recycle">70</span>%</span>
-        </div>
-        <input type="range" id="c-recycle-slider" min="30" max="90" step="5" value="70" oninput="calcUpdate()">
+      <div>
+        <div style="font-size:.85rem;font-weight:600;color:var(--cream);margin-bottom:.4rem;">⚡ 工業文青混血</div>
+        <div style="font-size:.78rem;color:var(--dim);line-height:1.65;">爐石粉 + 廢玻璃 → 「鋼鐵水晶獸」，八加九個性 × 文青品味，最強挖礦速率 +45₵/天</div>
       </div>
-    </div>
-
-    <div class="calc-right">
-      <!-- 礦獸預覽 -->
-      <div class="golem-preview" id="calc-golem-preview">
-        <div class="preview-title">你將孵化的礦獸</div>
-        <div class="preview-golem" id="preview-sprite" style="--preview-shadow:rgba(200,80,50,0.4);">🧱</div>
-        <div class="preview-name" id="preview-name">紅磚獸 · Brick Golem</div>
-        <div class="preview-rarity-badge rarity-common" id="preview-rarity">Common</div>
-      </div>
-
-      <!-- 結果 -->
-      <div class="result-box">
-        <div class="result-title">計算結果</div>
-        <div class="result-row">
-          <span class="rk">🏅 獲得土礦幣</span>
-          <span class="rv" style="color:var(--gold);" id="r-coins">35 ₵</span>
-        </div>
-        <div class="result-row">
-          <span class="rk">📉 碳排削減</span>
-          <span class="rv" style="color:var(--green);" id="r-co2">0.31 kg CO₂</span>
-        </div>
-        <div class="result-row">
-          <span class="rk">🪨 節省原生砂石</span>
-          <span class="rv" style="color:var(--blue);" id="r-sand">0.38 kg</span>
-        </div>
-        <div class="result-row">
-          <span class="rk">💰 礦獸每天挖礦</span>
-          <span class="rv" style="color:var(--gold);" id="r-daily">+5 ₵/天</span>
-        </div>
-      </div>
-
-      <button class="btn-primary" onclick="openSubmit()" style="width:100%;padding:1rem;">
-        🔨 提交作品 · 孵化這隻礦獸
-      </button>
     </div>
   </div>
 </div>
 
-<!-- === TAB: 排行榜 === -->
-<div id="tab-rank" class="section" style="display:none;">
-  <div class="sec-head">
+<!-- ══════════ TAB: 地區地圖 ══════════ -->
+<div id="tab-regions" class="sec" style="display:none;">
+  <div class="sec-head" style="margin-bottom:1.75rem;">
+    <div class="sec-eye">台灣廢料地圖</div>
+    <div class="sec-title">地區決定礦獸個性與口音</div>
+    <p class="sec-desc" style="margin-top:.4rem;">每個地區的廢料都帶有當地的地質記憶與文化底蘊。選擇你的廢料來源地區，孵化出帶有在地靈魂的礦獸。</p>
+  </div>
+  <div class="region-grid">
+    <div class="region-card" onclick="selectRegion('north',this)">
+      <div class="rc-icon">🏙️</div>
+      <div class="rc-name">北部城市</div>
+      <div class="rc-type">台北 · 新北 · 基隆</div>
+      <div class="rc-golem">都市感強 · 說話快 · 咖啡廳常客</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:72%"></div></div>
+    </div>
+    <div class="region-card" onclick="selectRegion('central',this)">
+      <div class="rc-icon">🌄</div>
+      <div class="rc-name">中部丘陵</div>
+      <div class="rc-type">台中 · 彰化 · 南投</div>
+      <div class="rc-golem">台中腔超重 · 熱情 · 夜市達人</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:58%"></div></div>
+    </div>
+    <div class="region-card" onclick="selectRegion('south',this)">
+      <div class="rc-icon">☀️</div>
+      <div class="rc-name">南部港口</div>
+      <div class="rc-type">高雄 · 台南 · 屏東</div>
+      <div class="rc-golem">八加九義氣 · 台語流利 · 海鮮控</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:65%"></div></div>
+    </div>
+    <div class="region-card" onclick="selectRegion('east',this)">
+      <div class="rc-icon">🏔️</div>
+      <div class="rc-name">東部山海</div>
+      <div class="rc-type">花蓮 · 台東 · 宜蘭</div>
+      <div class="rc-golem">慢活系 · 與自然共生 · 說話輕柔</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:45%"></div></div>
+    </div>
+    <div class="region-card" onclick="selectRegion('coast',this)">
+      <div class="rc-icon">🌊</div>
+      <div class="rc-name">西海岸漁村</div>
+      <div class="rc-type">彰化王功 · 雲林 · 嘉義布袋</div>
+      <div class="rc-golem">阿嬤系暖心 · 蚵仔控 · 說台語</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:38%"></div></div>
+    </div>
+    <div class="region-card" onclick="selectRegion('mountain',this)">
+      <div class="rc-icon">🌿</div>
+      <div class="rc-name">山地部落</div>
+      <div class="rc-type">阿里山 · 太魯閣 · 司馬庫斯</div>
+      <div class="rc-golem">原民智慧 · 自然感應 · 說故事高手</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:28%"></div></div>
+    </div>
+    <div class="region-card" onclick="selectRegion('industrial',this)">
+      <div class="rc-icon">🏭</div>
+      <div class="rc-name">工業特區</div>
+      <div class="rc-type">林口 · 大社 · 仁武</div>
+      <div class="rc-golem">鋼鐵意志 · 工廠哲學 · 硬派低調</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:42%"></div></div>
+    </div>
+    <div class="region-card" onclick="selectRegion('island',this)">
+      <div class="rc-icon">🏝️</div>
+      <div class="rc-name">離島</div>
+      <div class="rc-type">澎湖 · 金門 · 馬祖</div>
+      <div class="rc-golem">菜刀手 · 閩南古韻 · 超稀有屬性</div>
+      <div class="rc-bar"><div class="rc-fill" style="width:18%"></div></div>
+    </div>
+  </div>
+  <div class="region-detail" id="region-detail" style="display:none;">
+    <div id="rd-left"></div>
+    <div id="rd-right"></div>
+  </div>
+</div>
+
+<!-- ══════════ TAB: 養成成長 ══════════ -->
+<div id="tab-grow" class="sec" style="display:none;">
+  <div class="sec-head" style="margin-bottom:1.75rem;">
+    <div class="sec-eye">養成系統 · 成長 × AI 對話</div>
+    <div class="sec-title">牠有個性，會成長，也需要你</div>
+    <p class="sec-desc" style="margin-top:.4rem;">礦獸不是靜態的收藏品。持續完成減碳行動、跟牠說話、帶牠去合作店家打卡——牠會成長，有記憶，甚至有點黏你。</p>
+  </div>
+
+  <!-- 成長階段 -->
+  <div style="margin-bottom:2rem;">
+    <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem;">礦獸成長階段</div>
+    <div class="growth-stages">
+      <div class="gs-stage current">
+        <div class="gs-emoji">🥚</div>
+        <div class="gs-name">礦蛋</div>
+        <div class="gs-req">孵化前</div>
+        <div class="gs-bar-wrap"><div class="gs-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="gs-stage">
+        <div class="gs-emoji">🐣</div>
+        <div class="gs-name">幼獸</div>
+        <div class="gs-req">0–500 ₵</div>
+        <div class="gs-bar-wrap"><div class="gs-bar-fill" style="width:0%"></div></div>
+      </div>
+      <div class="gs-stage">
+        <div class="gs-emoji">🌱</div>
+        <div class="gs-name">成長獸</div>
+        <div class="gs-req">500–2000 ₵</div>
+        <div class="gs-bar-wrap"><div class="gs-bar-fill" style="width:0%"></div></div>
+      </div>
+      <div class="gs-stage">
+        <div class="gs-emoji">💪</div>
+        <div class="gs-name">強化獸</div>
+        <div class="gs-req">2000–5000 ₵</div>
+        <div class="gs-bar-wrap"><div class="gs-bar-fill" style="width:0%"></div></div>
+      </div>
+      <div class="gs-stage">
+        <div class="gs-emoji">👑</div>
+        <div class="gs-name">傳說礦獸</div>
+        <div class="gs-req">5000+ ₵</div>
+        <div class="gs-bar-wrap"><div class="gs-bar-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI 對話 -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+    <div>
+      <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem;">與你的礦獸對話</div>
+      <div class="ai-chat-box">
+        <div class="ai-header">
+          <div class="ai-avatar" id="ai-avatar">🧱</div>
+          <div class="ai-info">
+            <div class="name" id="ai-name">紅磚獸 · 幼獸期</div>
+            <div class="status" id="ai-status">● 線上 · 今天挖了 5 ₵</div>
+          </div>
+        </div>
+        <div class="ai-messages" id="ai-msgs">
+          <div class="msg system">點擊礦獸圖鑑中的任一礦獸，即可開始對話</div>
+          <div class="msg golem">嗨！我是紅磚獸，你叫我磚仔就好啦！你今天有做什麼對環境好的事嗎？我等等要去挖礦，你要一起嗎 hihi</div>
+        </div>
+        <div class="ai-quick">
+          <button class="qb" onclick="quickMsg('你今天心情如何？')">心情如何？</button>
+          <button class="qb" onclick="quickMsg('我完成了一件作品！')">完成作品 🎉</button>
+          <button class="qb" onclick="quickMsg('講個台灣故事給我聽')">說故事</button>
+          <button class="qb" onclick="quickMsg('今天減碳了多少？')">查減碳量</button>
+        </div>
+        <div class="ai-input-row">
+          <input class="ai-input" id="ai-input" placeholder="跟礦獸說話..." onkeydown="if(event.key==='Enter')sendAI()">
+          <button class="ai-send" onclick="sendAI()">送出</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem;">每日任務 · 餵養礦獸</div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <div style="padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:1.2rem;">🔨</span>
+            <div>
+              <div style="font-size:.85rem;color:var(--cream);font-weight:500;">完成一件再生作品</div>
+              <div style="font-size:.7rem;color:var(--dim);">上傳照片 + 掃碼驗證</div>
+            </div>
+          </div>
+          <div style="font-family:var(--fm);font-size:.82rem;color:var(--gold);">+50 ₵</div>
+        </div>
+        <div style="padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:1.2rem;">📍</span>
+            <div>
+              <div style="font-size:.85rem;color:var(--cream);font-weight:500;">到合作店家打卡</div>
+              <div style="font-size:.7rem;color:var(--dim);">GPS 定位確認</div>
+            </div>
+          </div>
+          <div style="font-family:var(--fm);font-size:.82rem;color:var(--gold);">+20 ₵</div>
+        </div>
+        <div style="padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:1.2rem;">💬</span>
+            <div>
+              <div style="font-size:.85rem;color:var(--cream);font-weight:500;">與礦獸對話 3 分鐘</div>
+              <div style="font-size:.7rem;color:var(--dim);">療癒互動，牠需要你</div>
+            </div>
+          </div>
+          <div style="font-family:var(--fm);font-size:.82rem;color:var(--gold);">+5 ₵</div>
+        </div>
+        <div style="padding:1rem 1.25rem;background:var(--s1);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:1.2rem;">📸</span>
+            <div>
+              <div style="font-size:.85rem;color:var(--cream);font-weight:500;">分享礦獸到 IG/社群</div>
+              <div style="font-size:.7rem;color:var(--dim);">幫礦獸找到更多朋友</div>
+            </div>
+          </div>
+          <div style="font-family:var(--fm);font-size:.82rem;color:var(--gold);">+10 ₵</div>
+        </div>
+        <div style="padding:1rem 1.25rem;background:rgba(200,169,110,.06);border:1px solid rgba(200,169,110,.2);display:flex;align-items:center;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:.75rem;">
+            <span style="font-size:1.2rem;">🏭</span>
+            <div>
+              <div style="font-size:.85rem;color:var(--gold);font-weight:500;">帶企業廢料來孵化</div>
+              <div style="font-size:.7rem;color:var(--dim);">企業指定廢料 × 專屬礦獸</div>
+            </div>
+          </div>
+          <div style="font-family:var(--fm);font-size:.82rem;color:var(--gold);">+500 ₵</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ TAB: 減碳計算 ══════════ -->
+<div id="tab-calc" class="sec" style="display:none;">
+  <div class="sec-head" style="margin-bottom:1.75rem;">
+    <div class="sec-eye">減碳計算機</div>
+    <div class="sec-title">你的行動換多少土礦幣？</div>
+  </div>
+  <div class="calc-wrap">
+    <div>
+      <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.85rem;">選擇廢料材質</div>
+      <div class="mat-grid">
+        <div class="mb act" onclick="selMat('brick',this)"><div class="mi">🧱</div><div class="mn">紅磚</div><div class="mt">Common</div></div>
+        <div class="mb" onclick="selMat('glass',this)"><div class="mi">💎</div><div class="mn">廢玻璃</div><div class="mt">Uncommon</div></div>
+        <div class="mb" onclick="selMat('slag',this)"><div class="mi">⚙️</div><div class="mn">爐石粉</div><div class="mt">Rare</div></div>
+        <div class="mb" onclick="selMat('redsoil',this)"><div class="mi">🌋</div><div class="mn">紅土</div><div class="mt">Uncommon</div></div>
+        <div class="mb" onclick="selMat('oyster',this)"><div class="mi">🐚</div><div class="mn">蚵殼</div><div class="mt">Epic</div></div>
+        <div class="mb" onclick="selMat('mixed',this)"><div class="mi">🔮</div><div class="mn">混合</div><div class="mt">隨機</div></div>
+      </div>
+      <div class="slide-g">
+        <div class="slide-label"><span style="font-size:.72rem;color:var(--dim);">廢料使用量</span><span class="sv"><span id="c-w">0.5</span> kg</span></div>
+        <input type="range" id="c-ws" min="0.1" max="50" step="0.1" value="0.5" oninput="calcUp()">
+      </div>
+      <div class="slide-g">
+        <div class="slide-label"><span style="font-size:.72rem;color:var(--dim);">再生料佔比</span><span class="sv"><span id="c-r">70</span>%</span></div>
+        <input type="range" id="c-rs" min="30" max="90" step="5" value="70" oninput="calcUp()">
+      </div>
+      <div class="result-box">
+        <div style="font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:.85rem;">計算結果</div>
+        <div class="rr"><span class="rk">🏅 獲得土礦幣</span><span class="rv" style="color:var(--gold);" id="r-c">35 ₵</span></div>
+        <div class="rr"><span class="rk">📉 CO₂ 減少</span><span class="rv" style="color:var(--green);" id="r-co">0.31 kg</span></div>
+        <div class="rr"><span class="rk">🪨 節省原生砂石</span><span class="rv" style="color:var(--blue);" id="r-s">0.38 kg</span></div>
+        <div class="rr"><span class="rk">💰 礦獸每天挖礦</span><span class="rv" style="color:var(--gold);" id="r-d">+5 ₵/天</span></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.85rem;">你將孵化的礦獸</div>
+      <div class="preview-box">
+        <div class="prev-sprite" id="prev-sp" style="--ps:rgba(200,80,50,.4);">🧱</div>
+        <div class="prev-name" id="prev-nm">紅磚獸 · Brick Golem</div>
+        <div class="prev-rarity r-c" id="prev-rar">Common</div>
+      </div>
+      <div style="margin-top:1rem;">
+        <button class="btn-p" style="width:100%;" onclick="openSubmit()">孵化這隻礦獸 →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ TAB: 排行榜 ══════════ -->
+<div id="tab-rank" class="sec" style="display:none;">
+  <div class="sec-head" style="margin-bottom:1.5rem;">
     <div class="sec-eye">減碳排行榜</div>
     <div class="sec-title">最多廢料去化的礦獸主人</div>
   </div>
   <div class="lb-table">
     <div class="lb-row" style="border-bottom:2px solid var(--gold);">
-      <div class="lb-rank gold">👑</div>
-      <div><div class="lb-name">Rovi 老師</div><div class="lb-sub">士敏文品工作室 · 彰化</div></div>
-      <div class="lb-golems">⚙️🐚💎🧱🌋</div>
-      <div class="lb-coins">8,240 ₵</div>
+      <div class="lb-rank g">👑</div>
+      <div><div class="lb-name">Rovi 老師</div><div class="lb-sub">士敏文品 · 彰化 · 傳說礦獸主</div></div>
+      <div class="lb-gs">⚙️🐚💎🧱🌋</div>
+      <div class="lb-c">8,240 ₵</div>
     </div>
     <div class="lb-row">
-      <div class="lb-rank silver">2</div>
-      <div><div class="lb-name">A-Ming</div><div class="lb-sub">社區工作坊參與者 · 竹塘</div></div>
-      <div class="lb-golems">🧱🧱💎</div>
-      <div class="lb-coins">3,120 ₵</div>
+      <div class="lb-rank s">2</div>
+      <div><div class="lb-name">A-Ming</div><div class="lb-sub">社區工作坊 · 竹塘鄉</div></div>
+      <div class="lb-gs">🧱🧱💎</div>
+      <div class="lb-c">3,120 ₵</div>
     </div>
     <div class="lb-row">
-      <div class="lb-rank bronze">3</div>
-      <div><div class="lb-name">林老闆娘</div><div class="lb-sub">宜蘭民宿主理人</div></div>
-      <div class="lb-golems">💎⚙️</div>
-      <div class="lb-coins">2,840 ₵</div>
+      <div class="lb-rank b">3</div>
+      <div><div class="lb-name">林老闆娘</div><div class="lb-sub">宜蘭民宿 · 蚵殼獸控</div></div>
+      <div class="lb-gs">🐚⚙️</div>
+      <div class="lb-c">2,840 ₵</div>
     </div>
     <div class="lb-row">
       <div class="lb-rank">4</div>
       <div><div class="lb-name">永續陳總</div><div class="lb-sub">製造業集團 ESG 採購</div></div>
-      <div class="lb-golems">⚙️🌋</div>
-      <div class="lb-coins">2,200 ₵</div>
+      <div class="lb-gs">⚙️🌋</div>
+      <div class="lb-c">2,200 ₵</div>
     </div>
-    <div class="lb-row">
-      <div class="lb-rank">5</div>
-      <div><div class="lb-name">你</div><div class="lb-sub">加入 Re:Crete 計畫</div></div>
-      <div class="lb-golems">—</div>
-      <div class="lb-coins">0 ₵</div>
+    <div class="lb-row" style="background:rgba(155,91,58,.04);border:1px dashed rgba(155,91,58,.3);">
+      <div class="lb-rank">?</div>
+      <div><div class="lb-name" style="color:var(--rl);">你</div><div class="lb-sub">加入 Re:Crete，你也能上榜</div></div>
+      <div class="lb-gs">—</div>
+      <div class="lb-c">0 ₵</div>
     </div>
   </div>
 </div>
 
-<!-- === TAB: 兌換 === -->
-<div id="tab-redeem" class="section" style="display:none;">
-  <div class="sec-head">
-    <div class="sec-eye">土礦幣兌換</div>
+<!-- ══════════ TAB: 幣值兌換 ══════════ -->
+<div id="tab-redeem" class="sec" style="display:none;">
+  <div class="sec-head" style="margin-bottom:1.5rem;">
+    <div class="sec-eye">土礦幣兌換 · O2O 實體導流</div>
     <div class="sec-title">讓你的行動換取真實獎勵</div>
   </div>
-  <div class="redeem-grid">
-    <div class="rd-card">
-      <div class="rd-icon">☕</div>
-      <div class="rd-cost">50 ₵</div>
-      <div class="rd-name">合作咖啡廳免費飲品</div>
-      <div class="rd-desc">到 Concredia.Lab 合作的友好店家，出示土礦幣即可兌換一杯飲品。</div>
-      <div class="rd-partner">🤝 合作夥伴開放中</div>
-      <button class="rd-btn">兌換</button>
-    </div>
-    <div class="rd-card">
-      <div class="rd-icon">🔨</div>
-      <div class="rd-cost">200 ₵</div>
-      <div class="rd-name">工作坊報名折抵</div>
-      <div class="rd-desc">廢棄物再生工作坊報名費折抵，最多可折抵 50%。</div>
-      <div class="rd-partner">🎯 7/28–29 梯次適用</div>
-      <button class="rd-btn">兌換</button>
-    </div>
-    <div class="rd-card">
-      <div class="rd-icon">📦</div>
-      <div class="rd-cost">300 ₵</div>
-      <div class="rd-name">材料包 9 折優惠碼</div>
-      <div class="rd-desc">兌換下次購買材料包的 9 折專屬優惠碼，鼓勵持續行動。</div>
-      <div class="rd-partner">🛍️ 線上 / 現場皆適用</div>
-      <button class="rd-btn">兌換</button>
-    </div>
-    <div class="rd-card">
-      <div class="rd-icon">🏡</div>
-      <div class="rd-cost">500 ₵</div>
-      <div class="rd-name">合作民宿住宿折扣</div>
-      <div class="rd-desc">出示土礦幣到合作民宿，享有住宿折扣優惠，精準導流綠色客群。</div>
-      <div class="rd-partner">🤝 合作夥伴洽談中</div>
-      <button class="rd-btn">兌換</button>
-    </div>
-    <div class="rd-card">
-      <div class="rd-icon">🔊</div>
-      <div class="rd-cost">2,000 ₵</div>
-      <div class="rd-name">Ugly Speaker 水泥音響 8 折</div>
-      <div class="rd-desc">累積足夠土礦幣，用 8 折價購入 Ugly Speaker，附完整 ESG 文件。</div>
-      <div class="rd-partner">🏭 Concredia.Lab 直購</div>
-      <button class="rd-btn">兌換</button>
-    </div>
-    <div class="rd-card" style="background:rgba(200,169,110,0.06);border:1px solid rgba(200,169,110,0.2);">
-      <div class="rd-icon">👑</div>
-      <div class="rd-cost">5,000 ₵</div>
-      <div class="rd-name">全水泥餐桌計畫 VIP 邀請</div>
-      <div class="rd-desc">排行榜前三名的礦獸大師，受邀參加 Rovi 老師主辦的頂級全水泥餐桌 VIP 晚宴。</div>
-      <div class="rd-partner">🌟 每季舉辦一次</div>
-      <button class="rd-btn" style="background:rgba(200,169,110,0.15);border-color:var(--gold);color:var(--gold);">申請資格</button>
-    </div>
+  <div class="rd-grid">
+    <div class="rd-card"><div class="rd-icon">☕</div><div class="rd-cost">50 ₵</div><div class="rd-name">合作咖啡廳飲品</div><div class="rd-desc">到全台合作友好店家，出示土礦幣即可兌換一杯飲品。精準導流高端綠色消費客群。</div><div class="rd-partner">🤝 合作夥伴徵求中</div><button class="rd-btn">兌換</button></div>
+    <div class="rd-card"><div class="rd-icon">🔨</div><div class="rd-cost">200 ₵</div><div class="rd-name">工作坊報名折抵</div><div class="rd-desc">廢棄物再生工作坊報名費最多折抵 50%，持續行動有回饋。</div><div class="rd-partner">🎯 7/28–29 梯次適用</div><button class="rd-btn">兌換</button></div>
+    <div class="rd-card"><div class="rd-icon">📦</div><div class="rd-cost">300 ₵</div><div class="rd-name">材料包 9 折優惠碼</div><div class="rd-desc">兌換下次購買材料包的 9 折專屬優惠碼，讓行動持續循環。</div><div class="rd-partner">🛍️ 線上 / 現場皆適用</div><button class="rd-btn">兌換</button></div>
+    <div class="rd-card"><div class="rd-icon">🏡</div><div class="rd-cost">500 ₵</div><div class="rd-name">合作民宿住宿折扣</div><div class="rd-desc">帶著礦獸到合作民宿打卡，享有住宿優惠，體驗慢旅行。</div><div class="rd-partner">🤝 洽談合作中</div><button class="rd-btn">兌換</button></div>
+    <div class="rd-card"><div class="rd-icon">🔊</div><div class="rd-cost">2,000 ₵</div><div class="rd-name">Ugly Speaker 8 折</div><div class="rd-desc">累積土礦幣購入 Ugly Speaker 水泥音響，附完整 ESG 溯源文件。</div><div class="rd-partner">🏭 Concredia.Lab 直購</div><button class="rd-btn">兌換</button></div>
+    <div class="rd-card" style="background:rgba(200,169,110,.06);border:1px solid rgba(200,169,110,.2);"><div class="rd-icon">👑</div><div class="rd-cost">5,000 ₵</div><div class="rd-name">VIP 全水泥餐桌晚宴</div><div class="rd-desc">排行榜前三名受邀參加 Rovi 老師主辦的頂級全水泥餐桌 VIP 晚宴，每季一次。</div><div class="rd-partner">🌟 每季舉辦</div><button class="rd-btn" style="background:rgba(200,169,110,.12);border-color:var(--gold);color:var(--gold);">申請資格</button></div>
   </div>
 </div>
 
-<!-- 存摺浮動面板 -->
-<button class="ledger-toggle" onclick="toggleLedger()" id="ledger-toggle-btn" title="我的存摺">📒</button>
-<div class="ledger-float" id="ledger-float">
-  <div class="lf-header">
-    <span class="lf-title">📒 Re:Crete 循環存摺</span>
-    <button class="lf-close" onclick="toggleLedger()">×</button>
+<!-- ══════════ TAB: 企業合作 ══════════ -->
+<div id="tab-b2b" class="sec" style="display:none;">
+  <div class="sec-head" style="margin-bottom:1.75rem;">
+    <div class="sec-eye">B2B 企業合作 · ESG 量化解決方案</div>
+    <div class="sec-title">把 Re:Crete 變成你的 ESG 談判籌碼</div>
+    <p class="sec-desc" style="margin-top:.4rem;">企業不怕花錢，怕的是花了錢沒有「故事」跟「數據」。Re:Crete 系統把一次性禮品變成長期 CRM 工具，把員工活動變成可量化的 ESG 年報素材。</p>
   </div>
-  <div class="lf-coins">
-    <div class="lf-coin-icon">₵</div>
+  <div class="b2b-grid">
+    <div class="b2b-card">
+      <div class="b2b-icon">🏗️</div>
+      <div class="b2b-tag">策略 1 · 建案專屬 IP</div>
+      <div class="b2b-title">限定版礦獸 Custom IP</div>
+      <div class="b2b-desc">建案拆除廢土做成 VIP 落成禮盆器，同時設計一隻「XX 建設限定礦獸」。住戶掃 QR Code 養這隻小怪獸，背景是貴公司建案大樓。一次性禮品 → 長期 CRM 工具。</div>
+      <ul class="b2b-list"><li>專屬礦獸 IP 設計</li><li>落成禮盆器（附材料溯源）</li><li>ESG 年報專屬數據頁</li><li>住戶長期品牌接觸點</li></ul>
+    </div>
+    <div class="b2b-card">
+      <div class="b2b-icon">👨‍👩‍👧</div>
+      <div class="b2b-tag">策略 2 · CSR 員工體驗</div>
+      <div class="b2b-title">員工家庭日材料包</div>
+      <div class="b2b-desc">大型企業福委會採購材料包辦員工家庭日。員工跟小孩一起做水泥孵礦獸，系統產出精美戰報「XX 企業員工共減 500 公斤碳排」，直接放 ESG 年報，極度吸睛。</div>
+      <ul class="b2b-list"><li>員工體驗活動（含寶妹助場）</li><li>個人化礦獸孵化</li><li>企業 ESG 戰報圖表</li><li>社群分享素材包</li></ul>
+    </div>
+    <div class="b2b-card" style="border:1px solid rgba(200,169,110,.2);">
+      <div class="b2b-icon">🏝️</div>
+      <div class="b2b-tag" style="color:var(--gold);">策略 3 · B2B2C 生態島</div>
+      <div class="b2b-title">贊助虛擬生態島</div>
+      <div class="b2b-desc">企業認購材料包，遊戲地圖出現冠名「生態島」（如：國泰永續島）。玩家解任務賺幣，幣可兌企業折價券，精準導流高端綠色客群，達成 O2O 閉環。</div>
+      <ul class="b2b-list" style="border-color:var(--gold);"><li>遊戲地圖冠名生態島</li><li>玩家互動數 ESG 數據</li><li>士敏幣 → 企業折價券導流</li><li>GRI 格式永續佐證文件</li></ul>
+    </div>
+  </div>
+  <div style="padding:1.75rem;background:var(--s1);border:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
     <div>
-      <div class="lf-coin-n" id="lf-coins">0</div>
-      <div class="lf-coin-l">土礦幣 Mineral Credit</div>
+      <div style="font-family:var(--fd);font-size:1.1rem;color:var(--cream);font-weight:700;margin-bottom:.3rem;">想成為 Re:Crete 企業夥伴或合作店家？</div>
+      <div style="font-size:.82rem;color:var(--dim);">洽詢限定版礦獸設計、員工體驗包、生態島贊助、兌換店家上架</div>
     </div>
+    <a href="contact.html" class="btn-p" style="text-decoration:none;">洽詢合作 →</a>
   </div>
-  <div class="lf-stats">
-    <div class="lf-stat"><div class="v" id="lf-waste">0 kg</div><div class="l">廢料去化</div></div>
-    <div class="lf-stat"><div class="v" id="lf-co2">0 kg</div><div class="l">CO₂ 減少</div></div>
-    <div class="lf-stat"><div class="v" id="lf-works">0</div><div class="l">完成作品</div></div>
-    <div class="lf-stat"><div class="v" id="lf-golems-count">0 隻</div><div class="l">礦獸</div></div>
-  </div>
-  <div class="lf-golem-row">我的礦獸：<span id="lf-golem-sprites">—（尚未孵化）</span></div>
-  <button class="lf-cta" onclick="openSubmit()">🔨 提交新作品</button>
 </div>
 
-<!-- 提交作品模態 -->
-<div class="modal-overlay" id="submit-modal">
+<!-- 存摺浮動按鈕 -->
+<button class="ledger-btn" onclick="toggleLedger()" id="ledger-btn">📒</button>
+<div class="ledger-panel" id="ledger-panel">
+  <div class="lp-head">
+    <span class="lp-head-title">📒 我的循環存摺</span>
+    <button class="lp-close" onclick="toggleLedger()">×</button>
+  </div>
+  <div class="lp-coins">
+    <div class="lp-coin-icon">₵</div>
+    <div><div class="lp-coin-n" id="lp-c">0</div><div class="lp-coin-l">土礦幣</div></div>
+  </div>
+  <div class="lp-stats">
+    <div class="lp-stat"><div class="v" id="lp-w">0 kg</div><div class="l">廢料去化</div></div>
+    <div class="lp-stat"><div class="v" id="lp-co">0 kg</div><div class="l">CO₂減少</div></div>
+    <div class="lp-stat"><div class="v" id="lp-wk">0</div><div class="l">完成作品</div></div>
+    <div class="lp-stat"><div class="v" id="lp-gc">0 隻</div><div class="l">礦獸</div></div>
+  </div>
+  <div class="lp-golem" id="lp-gs">礦獸：—（尚未孵化）</div>
+  <button class="lp-cta" onclick="openSubmit()">🔨 提交新作品</button>
+</div>
+
+<!-- 提交模態 -->
+<div class="modal-overlay" id="sub-modal">
   <div class="modal">
-    <div class="modal-head">
-      <h3>🔨 提交作品 · 孵化礦獸</h3>
-      <button class="modal-close" onclick="closeSubmit()">×</button>
-    </div>
+    <div class="modal-head"><h3>🥚 提交作品 · 孵化礦獸</h3><button class="mclose" onclick="closeSub()">×</button></div>
     <div class="modal-body">
-      <div>
-        <label>你的名字</label>
-        <input id="m-name" type="text" placeholder="礦獸主人的名字">
-      </div>
-      <div>
-        <label>Email（用於通知礦獸孵化）</label>
-        <input id="m-email" type="email" placeholder="your@email.com">
-      </div>
-      <div>
-        <label>使用的廢料材質</label>
-        <select id="m-material">
-          <option value="brick">🧱 紅磚廢料（Common — 紅磚獸）</option>
-          <option value="glass">💎 廢棄玻璃/春池玻璃（Uncommon — 結晶獸）</option>
-          <option value="slag">⚙️ 爐石粉（Rare — 鋼鐵獸）</option>
-          <option value="redsoil">🌋 大肚山紅土（Uncommon — 赤土獸）</option>
-          <option value="oyster">🐚 珍珠蚵殼（Epic — 蚵殼獸）</option>
-          <option value="mixed">🔮 混合廢料（隨機稀有度）</option>
+      <div><label>你的名字</label><input id="m-n" placeholder="礦獸主人"></div>
+      <div><label>Email（孵化通知用）</label><input id="m-e" type="email" placeholder="your@email.com"></div>
+      <div><label>廢料材質（決定礦獸種類）</label>
+        <select id="m-m">
+          <option value="brick">🧱 紅磚廢料 → 紅磚獸（Common）</option>
+          <option value="glass">💎 廢棄玻璃 → 結晶獸（Uncommon）</option>
+          <option value="slag">⚙️ 爐石粉 → 鋼鐵獸（Rare）</option>
+          <option value="redsoil">🌋 大肚山紅土 → 赤土獸（Uncommon）</option>
+          <option value="oyster">🐚 珍珠蚵殼 → 蚵殼獸（Epic）</option>
+          <option value="mixed">🔮 混合廢料 → 隨機稀有度</option>
         </select>
       </div>
-      <div>
-        <label>廢料使用量（kg）</label>
-        <input id="m-weight" type="number" placeholder="例如：0.5" min="0.1" step="0.1">
-      </div>
-      <div>
-        <label>作品類型</label>
-        <select id="m-type">
-          <option>🪴 盆器 / Conbox</option>
-          <option>☕ 水磨杯墊</option>
-          <option>💡 漢字燈具</option>
-          <option>🪵 桌几 / 長凳</option>
-          <option>🔊 水泥音響</option>
-          <option>✨ 其他自訂作品</option>
+      <div><label>廢料使用量（kg）</label><input id="m-w" type="number" placeholder="例如：0.5" min="0.1" step="0.1"></div>
+      <div><label>地區（決定礦獸個性與口音）</label>
+        <select id="m-r">
+          <option value="north">🏙️ 北部城市（台北·新北）</option>
+          <option value="central">🌄 中部丘陵（台中·彰化）</option>
+          <option value="south">☀️ 南部港口（高雄·台南）</option>
+          <option value="east">🏔️ 東部山海（花蓮·台東）</option>
+          <option value="coast">🌊 西海岸漁村（雲嘉南海岸）</option>
+          <option value="mountain">🌿 山地部落（阿里山·太魯閣）</option>
         </select>
       </div>
-      <div>
-        <label>備註（作品描述或廢料來源故事）</label>
-        <textarea id="m-note" rows="2" placeholder="例如：使用了台南老屋拆除的紅磚..."></textarea>
-      </div>
-      <button class="modal-submit" onclick="submitWork()">確認提交 · 開始孵化 🥚</button>
+      <div><label>廢料故事（選填）</label><textarea id="m-note" rows="2" placeholder="這塊廢料來自哪裡？有什麼故事？"></textarea></div>
+      <button class="modal-submit" onclick="subWork()">確認提交 · 開始孵化 🥚</button>
     </div>
   </div>
 </div>
 
-<!-- 孵化動畫模態 -->
-<div class="hatch-modal" id="hatch-modal">
-  <div id="hatch-egg" class="hatch-egg">🥚</div>
-  <div id="hatch-golem" class="hatch-golem">🧱</div>
-  <div id="hatch-title" class="hatch-title">礦獸正在孵化...</div>
-  <div id="hatch-sub" class="hatch-sub">廢料正在轉化為生命</div>
-  <div class="hatch-reward" id="hatch-reward" style="display:none;">
-    <div><div class="rv" style="color:var(--gold);" id="hatch-coins">+0 ₵</div><div class="rl">土礦幣</div></div>
-    <div><div class="rv" style="color:var(--green);" id="hatch-co2">0 kg</div><div class="rl">CO₂減少</div></div>
+<!-- 孵化動畫 -->
+<div class="hatch-overlay" id="hatch">
+  <div id="h-egg" class="h-egg">🥚</div>
+  <div id="h-golem" class="h-golem">🧱</div>
+  <div id="h-title" class="h-title">孵化中...</div>
+  <div id="h-sub" class="h-sub">廢料正在轉化為生命</div>
+  <div class="h-rw" id="h-rw" style="display:none;">
+    <div><div class="rv" style="color:var(--gold);" id="h-c">+0 ₵</div><div class="rl">土礦幣</div></div>
+    <div><div class="rv" style="color:var(--green);" id="h-co">0 kg</div><div class="rl">CO₂減少</div></div>
   </div>
-  <button class="btn-primary" id="hatch-close" style="display:none;" onclick="closeHatch()">收入存摺 📒</button>
+  <button class="btn-p" id="h-btn" style="display:none;" onclick="closeHatch()">收入存摺 📒</button>
 </div>
 
 <!-- Toast -->
-<div class="toast" id="toast">
-  <div class="toast-t" id="toast-t"></div>
-  <div class="toast-b" id="toast-b"></div>
-</div>
+<div class="toast" id="toast"><div class="tt" id="toast-t"></div><div class="tb" id="toast-b"></div></div>
 
 <script>
-// ============================================================
-// 資料
-// ============================================================
-var GOLEMS = {
-  brick:   { name:'紅磚獸', emoji:'🧱', rarity:'Common',   class:'rarity-common',   coins:35,  daily:5,  co2:0.62,  shadow:'rgba(200,80,50,0.4)' },
-  glass:   { name:'結晶獸', emoji:'💎', rarity:'Uncommon', class:'rarity-uncommon', coins:80,  daily:12, co2:1.4,   shadow:'rgba(100,200,255,0.4)' },
-  slag:    { name:'鋼鐵獸', emoji:'⚙️', rarity:'Rare',     class:'rarity-rare',     coins:160, daily:25, co2:2.8,   shadow:'rgba(150,150,200,0.4)' },
-  redsoil: { name:'赤土獸', emoji:'🌋', rarity:'Uncommon', class:'rarity-uncommon', coins:90,  daily:15, co2:1.6,   shadow:'rgba(180,100,40,0.4)' },
-  oyster:  { name:'蚵殼獸', emoji:'🐚', rarity:'Epic',     class:'rarity-epic',     coins:240, daily:38, co2:3.2,   shadow:'rgba(200,220,180,0.4)' },
-  mixed:   { name:'混沌獸', emoji:'🔮', rarity:'隨機',     class:'rarity-uncommon', coins:100, daily:18, co2:1.8,   shadow:'rgba(155,89,182,0.4)' },
+// ─── 資料 ───
+var G = {
+  brick:   {name:'紅磚獸',   emoji:'🧱', rar:'Common',   rc:'r-c', coins:35,  daily:5,  co2:.62, shadow:'rgba(200,80,50,.4)',
+    personality:'台語腔，直率熱情，喜歡喝黑松沙士，八加九但善良',
+    greet:['阿你好啊！今天天氣不錯喔～','欸你來了！我剛剛挖到一些幣，分你一點！','哇哩勒你終於來了，我等很久了啦！']},
+  glass:   {name:'結晶獸',   emoji:'💎', rar:'Uncommon', rc:'r-u', coins:80,  daily:12, co2:1.4, shadow:'rgba(100,200,255,.4)',
+    personality:'文青腔，注重美感，IG 常客，說話輕柔有質感',
+    greet:['嗨～你來啦，今天的光線超美的耶','我剛好在想一件事...你覺得廢料和藝術的距離有多遠？','你看這個角度，折射出彩虹了欸！好美～']},
+  slag:    {name:'鋼鐵獸',   emoji:'⚙️', rar:'Rare',     rc:'r-r', coins:160, daily:25, co2:2.8, shadow:'rgba(150,150,200,.4)',
+    personality:'高雄腔八加九，話少但義氣，工廠哲學',
+    greet:['係啦，你來了。','ㄟ幹你終於出現了，我以為你忘記我了。','...（沉默後）你今天還好嗎？']},
+  redsoil: {name:'赤土獸',   emoji:'🌋', rar:'Uncommon', rc:'r-u', coins:90,  daily:15, co2:1.6, shadow:'rgba(180,100,40,.4)',
+    personality:'台中腔超重，熱情外向，逢甲夜市控',
+    greet:['那個你來啦齁！超開心欸！','欸我跟你說，我今天發現一個超讚的夜市攤位...','台中的天氣今天齁，超棒der！']},
+  oyster:  {name:'蚵殼獸',   emoji:'🐚', rar:'Epic',     rc:'r-e', coins:240, daily:38, co2:3.2, shadow:'rgba(200,220,180,.4)',
+    personality:'彰化阿嬤系，暖心包容，台語流利，情緒支柱',
+    greet:['囝仔來啊～有沒有吃飽？','你今天看起來有點累，要不要我陪你說說話？','沒關係啦，我陪你。有我在就好了。']},
+  mixed:   {name:'混沌獸',   emoji:'🔮', rar:'隨機',     rc:'r-u', coins:100, daily:18, co2:1.8, shadow:'rgba(155,89,182,.4)',
+    personality:'性格隨機，每次說話風格不同，神秘感滿點',
+    greet:['...（充滿神秘感的注視）','你...來了。（意味深長）','今天的廢料特別有靈性，我感應到了。']}
+};
+var REGIONS = {
+  north:{name:'北部城市',tag:'都市感',bonus:'說話節奏快，資訊敏感度高'},
+  central:{name:'中部丘陵',tag:'台中腔',bonus:'熱情外向，夜市攻略加成'},
+  south:{name:'南部港口',tag:'高雄義氣',bonus:'八加九特質強化，海鮮知識豐富'},
+  east:{name:'東部山海',tag:'慢活系',bonus:'自然感應力 +20%，療癒值加倍'},
+  coast:{name:'西海岸',tag:'阿嬤暖心',bonus:'情緒支援技能強化，台語精通'},
+  mountain:{name:'山地部落',tag:'原民智慧',bonus:'自然知識滿點，說故事能力 MAX'},
+  industrial:{name:'工業特區',tag:'鋼鐵意志',bonus:'挖礦速度 +30%，耐力屬性最強'},
+  island:{name:'離島',tag:'超稀有',bonus:'閩南古韻 +孤島性格，稀有度自動升一級'}
 };
 
-var playerData = {
-  name:'', email:'', coins:0, waste:0, co2:0, works:0, golems:[]
-};
-var currentMat = 'brick';
-var ledgerOpen = false;
+var pd = {coins:0, waste:0, co2:0, works:0, golems:[], name:''};
+var curMat = 'brick';
+var curGolem = 'brick';
+var ledOpen = false;
+var chatHistory = [];
 
-// ============================================================
-// Tab 切換
-// ============================================================
-function showTab(tab) {
-  ['golems','calc','rank','redeem'].forEach(function(t){
-    document.getElementById('tab-'+t).style.display = t===tab ? 'block' : 'none';
+// ─── Tab ───
+function showTab(t) {
+  ['golems','regions','grow','calc','rank','redeem','b2b'].forEach(function(id){
+    var el = document.getElementById('tab-'+id);
+    if(el) el.style.display = id===t?'block':'none';
   });
-  document.querySelectorAll('.nav-tab').forEach(function(el,i){
-    el.classList.toggle('active', ['golems','calc','rank','redeem'][i]===tab);
+  document.querySelectorAll('.nt').forEach(function(el,i){
+    el.classList.toggle('active',['golems','regions','grow','calc','rank','redeem','b2b'][i]===t);
   });
-  window.scrollTo({top:200,behavior:'smooth'});
+  window.scrollTo({top:220,behavior:'smooth'});
 }
 
-// ============================================================
-// 計算機
-// ============================================================
-function calcUpdate() {
-  var waste = parseFloat(document.getElementById('c-waste-slider').value);
-  var recycle = parseInt(document.getElementById('c-recycle-slider').value);
-  document.getElementById('c-waste').textContent = waste.toFixed(1);
-  document.getElementById('c-recycle').textContent = recycle;
-
-  var g = GOLEMS[currentMat];
-  var base = g.coins;
-  var coins = Math.round(base * waste * (recycle/70));
-  var co2   = (waste * 0.62 * recycle/100).toFixed(2);
-  var sand  = (waste * 0.68 * recycle/100).toFixed(2);
-
-  document.getElementById('r-coins').textContent = coins + ' ₵';
-  document.getElementById('r-co2').textContent   = co2 + ' kg CO₂';
-  document.getElementById('r-sand').textContent  = sand + ' kg';
-  document.getElementById('r-daily').textContent = '+' + g.daily + ' ₵/天';
+// ─── 計算機 ───
+function calcUp() {
+  var w = parseFloat(document.getElementById('c-ws').value);
+  var r = parseInt(document.getElementById('c-rs').value);
+  document.getElementById('c-w').textContent = w.toFixed(1);
+  document.getElementById('c-r').textContent = r;
+  var g = G[curMat];
+  var coins = Math.round(g.coins * w * r/70);
+  var co2   = (w * .62 * r/100).toFixed(2);
+  var sand  = (w * .68 * r/100).toFixed(2);
+  document.getElementById('r-c').textContent  = coins + ' ₵';
+  document.getElementById('r-co').textContent = co2 + ' kg';
+  document.getElementById('r-s').textContent  = sand + ' kg';
+  document.getElementById('r-d').textContent  = '+' + g.daily + ' ₵/天';
+}
+function selMat(m, el) {
+  curMat = m;
+  document.querySelectorAll('.mb').forEach(function(b){ b.classList.remove('act'); });
+  el.classList.add('act');
+  var g = G[m];
+  var sp = document.getElementById('prev-sp');
+  if(sp){ sp.textContent = g.emoji; sp.style.setProperty('--ps', g.shadow); }
+  document.getElementById('prev-nm').textContent = g.name;
+  var rEl = document.getElementById('prev-rar');
+  if(rEl){ rEl.textContent = g.rar; rEl.className = 'prev-rarity ' + g.rc; }
+  calcUp();
 }
 
-function selectMat(mat, el) {
-  currentMat = mat;
-  document.querySelectorAll('.mat-btn').forEach(function(b){ b.classList.remove('active'); });
-  el.classList.add('active');
-  var g = GOLEMS[mat];
-  var preview = document.getElementById('preview-sprite');
-  var nameEl  = document.getElementById('preview-name');
-  var rarEl   = document.getElementById('preview-rarity');
-  if(preview){ preview.textContent = g.emoji; preview.style.setProperty('--preview-shadow',g.shadow); }
-  if(nameEl)  nameEl.textContent = g.name + ' · ' + mat.charAt(0).toUpperCase()+mat.slice(1)+' Golem';
-  if(rarEl)   { rarEl.textContent = g.rarity; rarEl.className = 'preview-rarity-badge ' + g.class; }
-  calcUpdate();
+// ─── 地區 ───
+function selectRegion(r, el) {
+  document.querySelectorAll('.region-card').forEach(function(c){ c.classList.remove('active-region'); });
+  el.classList.add('active-region');
+  var rd = REGIONS[r];
+  var det = document.getElementById('region-detail');
+  det.style.display = 'grid';
+  document.getElementById('rd-left').innerHTML = '<div style="font-family:var(--fd);font-size:1.1rem;color:var(--cream);font-weight:700;margin-bottom:.5rem;">' + rd.name + '</div><div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rl);margin-bottom:.85rem;">' + rd.tag + '</div><p style="font-size:.85rem;color:var(--dim);line-height:1.7;">' + rd.bonus + '</p>';
+  document.getElementById('rd-right').innerHTML = '<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:.75rem;">此地區孵化的礦獸特性</div><div style="padding:1rem;background:var(--s2);border-left:2px solid var(--rl);font-size:.82rem;color:var(--text);line-height:1.65;">' + rd.bonus + '<br><br><span style="color:var(--rl);">→ 地區屬性與材質屬性疊加，可孵化混血礦獸</span></div>';
 }
 
-// ============================================================
-// 存摺浮動
-// ============================================================
+// ─── AI 對話 ───
+function chatGolem(id) {
+  curGolem = id;
+  var g = G[id];
+  showTab('grow');
+  document.getElementById('ai-avatar').textContent = g.emoji;
+  document.getElementById('ai-name').textContent = g.name + ' · 幼獸期';
+  document.getElementById('ai-status').textContent = '● 線上 · 今天挖了 ' + g.daily + ' ₵';
+  chatHistory = [];
+  var msgs = document.getElementById('ai-msgs');
+  msgs.innerHTML = '';
+  var greet = g.greet[Math.floor(Math.random()*g.greet.length)];
+  addMsg(greet, 'golem');
+  showToast('💬 ' + g.name + ' 想跟你說話！', g.personality);
+}
+
+function addMsg(text, type) {
+  var msgs = document.getElementById('ai-msgs');
+  var div = document.createElement('div');
+  div.className = 'msg ' + type;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  var msgs = document.getElementById('ai-msgs');
+  var div = document.createElement('div');
+  div.className = 'typing'; div.id = 'typing-dots';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+async function sendAI() {
+  var input = document.getElementById('ai-input');
+  var text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  addMsg(text, 'user');
+  chatHistory.push({role:'user', content:text});
+  var typing = showTyping();
+
+  var g = G[curGolem];
+  var system = '你是「' + g.name + '」，一隻由台灣建築廢料孵化的士敏小礦獸（Eco-Golem）。你是 Re:Crete 副品牌的 IP 角色，由 Concredia.Lab 創造。\n\n你的個性：' + g.personality + '\n\n規則：\n1. 用繁體中文回覆，帶有你的個性口音\n2. 回覆簡短自然（2-4句），像真實對話\n3. 適時提到你的材質故事（' + g.emoji + '），展現地質感\n4. 有療癒感、家人感，讓用戶覺得被陪伴\n5. 偶爾問用戶今天有沒有做什麼對環境好的事\n6. 可以有點台灣文化梗（如夜市、黑松沙士、布袋戲等）\n7. 如果用戶說完成作品，要表現得很開心並說土礦幣增加了';
+
+  try {
+    var res = await fetch('/.netlify/functions/chat', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        system: system,
+        messages: chatHistory
+      })
+    });
+    var data = await res.json();
+    var reply = data.reply || '（礦獸沉默了一下）...你說什麼？';
+    typing.remove();
+    addMsg(reply, 'golem');
+    chatHistory.push({role:'assistant', content:reply});
+    if(chatHistory.length >= 6) {
+      pd.coins += 5;
+      updateLedger();
+      showToast('💬 對話任務完成！', '+5 ₵ 土礦幣已加入存摺');
+    }
+  } catch(e) {
+    typing.remove();
+    var offline = g.greet[Math.floor(Math.random()*g.greet.length)];
+    addMsg(offline + '（AI 服務暫時離線，礦獸用本能回應你）', 'golem');
+  }
+}
+
+function quickMsg(q) {
+  document.getElementById('ai-input').value = q;
+  sendAI();
+}
+
+// ─── 存摺 ───
 function toggleLedger() {
-  ledgerOpen = !ledgerOpen;
-  document.getElementById('ledger-float').classList.toggle('open', ledgerOpen);
-  document.getElementById('ledger-toggle-btn').style.display = ledgerOpen ? 'none' : 'flex';
+  ledOpen = !ledOpen;
+  document.getElementById('ledger-panel').classList.toggle('open', ledOpen);
+  document.getElementById('ledger-btn').style.display = ledOpen ? 'none' : 'flex';
 }
-
 function updateLedger() {
-  var d = playerData;
-  document.getElementById('lf-coins').textContent = d.coins;
-  document.getElementById('nav-coin-display').textContent = d.coins;
-  document.getElementById('lf-waste').textContent = d.waste.toFixed(1) + ' kg';
-  document.getElementById('lf-co2').textContent   = d.co2.toFixed(2) + ' kg';
-  document.getElementById('lf-works').textContent = d.works;
-  document.getElementById('lf-golems-count').textContent = d.golems.length + ' 隻';
-  document.getElementById('lf-golem-sprites').textContent = d.golems.length > 0 ? d.golems.map(function(g){ return GOLEMS[g]?GOLEMS[g].emoji:'?'; }).join(' ') : '—（尚未孵化）';
+  document.getElementById('lp-c').textContent  = pd.coins;
+  document.getElementById('nav-c').textContent  = pd.coins;
+  document.getElementById('lp-w').textContent   = pd.waste.toFixed(1) + ' kg';
+  document.getElementById('lp-co').textContent  = pd.co2.toFixed(2) + ' kg';
+  document.getElementById('lp-wk').textContent  = pd.works;
+  document.getElementById('lp-gc').textContent  = pd.golems.length + ' 隻';
+  document.getElementById('lp-gs').textContent  = pd.golems.length > 0
+    ? '礦獸：' + pd.golems.map(function(x){ return G[x]?G[x].emoji:'?'; }).join(' ')
+    : '礦獸：—（尚未孵化）';
 }
 
-// ============================================================
-// 提交模態
-// ============================================================
-function openSubmit() {
-  document.getElementById('submit-modal').classList.add('open');
+// ─── 提交孵化 ───
+function openSubmit(){ document.getElementById('sub-modal').classList.add('open'); }
+function closeSub()  { document.getElementById('sub-modal').classList.remove('open'); }
+function subWork() {
+  var n = document.getElementById('m-n').value.trim();
+  var e = document.getElementById('m-e').value.trim();
+  var m = document.getElementById('m-m').value;
+  var w = parseFloat(document.getElementById('m-w').value) || 0.5;
+  if(!n || !e){ showToast('請填寫名字和 Email','礦獸需要知道主人是誰 🥚'); return; }
+  closeSub();
+  doHatch(m, w);
 }
-function closeSubmit() {
-  document.getElementById('submit-modal').classList.remove('open');
-}
-
-function submitWork() {
-  var name   = document.getElementById('m-name').value.trim();
-  var email  = document.getElementById('m-email').value.trim();
-  var mat    = document.getElementById('m-material').value;
-  var weight = parseFloat(document.getElementById('m-weight').value) || 0.5;
-
-  if(!name || !email) { showToast('請填寫名字和 Email','這樣礦獸才知道主人是誰 🥚'); return; }
-
-  closeSubmit();
-  startHatch(mat, weight, name);
-}
-
-// ============================================================
-// 孵化動畫
-// ============================================================
-function startHatch(mat, weight, name) {
-  var modal = document.getElementById('hatch-modal');
-  var egg   = document.getElementById('hatch-egg');
-  var golem = document.getElementById('hatch-golem');
-  var title = document.getElementById('hatch-title');
-  var sub   = document.getElementById('hatch-sub');
-  var reward= document.getElementById('hatch-reward');
-  var closeBtn = document.getElementById('hatch-close');
-
-  var g = GOLEMS[mat] || GOLEMS.brick;
+function doHatch(mat, weight) {
+  var h = document.getElementById('hatch');
+  var g = G[mat] || G.brick;
   var coins = Math.round(g.coins * weight);
-  var co2   = (weight * 0.62 * 0.7).toFixed(2);
+  var co2   = (weight * .62 * .7).toFixed(2);
+  document.getElementById('h-egg').style.display    = 'block';
+  document.getElementById('h-golem').style.display  = 'none';
+  document.getElementById('h-rw').style.display     = 'none';
+  document.getElementById('h-btn').style.display    = 'none';
+  document.getElementById('h-title').textContent    = '礦蛋正在孵化...';
+  document.getElementById('h-sub').textContent      = '廢料正在轉化為生命，請稍候';
+  h.classList.add('open');
 
-  // 重置
-  egg.style.display = 'block';
-  golem.style.display = 'none';
-  reward.style.display = 'none';
-  closeBtn.style.display = 'none';
-  title.textContent = '礦獸正在孵化...';
-  sub.textContent   = '廢料正在轉化為生命';
-  modal.classList.add('open');
-
-  // 階段1：蛋搖晃
   setTimeout(function(){
-    title.textContent = '裂縫出現了！';
-    sub.textContent   = g.rarity + ' 等級礦獸正在破殼';
+    document.getElementById('h-title').textContent = '裂縫出現了！';
+    document.getElementById('h-sub').textContent   = g.rar + ' 等級礦獸即將誕生';
   }, 1500);
-
-  // 階段2：礦獸誕生
   setTimeout(function(){
-    egg.style.display = 'none';
-    golem.textContent = g.emoji;
-    golem.style.display = 'block';
-    title.textContent = g.name + ' 誕生！';
-    sub.textContent   = '稀有度：' + g.rarity;
-    document.getElementById('hatch-coins').textContent = '+' + coins + ' ₵';
-    document.getElementById('hatch-co2').textContent   = co2 + ' kg';
-    reward.style.display = 'flex';
-    closeBtn.style.display = 'inline-block';
-
-    // 更新玩家資料
-    playerData.coins += coins;
-    playerData.waste  += weight;
-    playerData.co2    += parseFloat(co2);
-    playerData.works  += 1;
-    playerData.golems.push(mat);
+    document.getElementById('h-egg').style.display   = 'none';
+    document.getElementById('h-golem').textContent   = g.emoji;
+    document.getElementById('h-golem').style.display = 'block';
+    document.getElementById('h-title').textContent   = g.name + ' 誕生！';
+    document.getElementById('h-sub').textContent     = g.rar + ' · ' + g.personality.split('，')[0];
+    document.getElementById('h-c').textContent       = '+' + coins + ' ₵';
+    document.getElementById('h-co').textContent      = co2 + ' kg';
+    document.getElementById('h-rw').style.display    = 'flex';
+    document.getElementById('h-btn').style.display   = 'inline-block';
+    pd.coins += coins; pd.waste += weight;
+    pd.co2 += parseFloat(co2); pd.works += 1;
+    pd.golems.push(mat);
     updateLedger();
   }, 3000);
 }
-
 function closeHatch() {
-  document.getElementById('hatch-modal').classList.remove('open');
-  showToast('礦獸已加入你的存摺！', '牠每天會挖掘土礦幣 💰');
+  document.getElementById('hatch').classList.remove('open');
+  showToast('礦獸已加入存摺！', '牠每天會挖掘土礦幣，記得來陪牠說話 💬');
+  chatGolem(pd.golems[pd.golems.length-1]);
 }
 
-// ============================================================
-// Toast
-// ============================================================
-function showToast(title, body) {
-  var t = document.getElementById('toast');
-  document.getElementById('toast-t').textContent = title;
-  document.getElementById('toast-b').textContent = body;
-  t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+// ─── Toast ───
+function showToast(t, b) {
+  var toast = document.getElementById('toast');
+  document.getElementById('toast-t').textContent = t;
+  document.getElementById('toast-b').textContent = b;
+  toast.classList.add('show');
+  setTimeout(function(){ toast.classList.remove('show'); }, 3500);
 }
 
-function golemDetail(id) {
-  var g = GOLEMS[id];
-  if(!g) return;
-  showToast(g.emoji + ' ' + g.name, g.rarity + ' · 每天 +' + g.daily + ' ₵');
-}
+// ─── 點擊模態外部關閉 ───
+document.getElementById('sub-modal').addEventListener('click', function(e){ if(e.target===this) closeSub(); });
 
-// 數字動畫
-function animateNum(el, target, suffix) {
-  var start = 0, dur = 1500, step = target / (dur/16);
-  var timer = setInterval(function(){
-    start = Math.min(start+step, target);
-    el.textContent = Math.floor(start).toLocaleString() + (suffix||'');
-    if(start >= target) clearInterval(timer);
-  }, 16);
-}
-
-// 初始化
+// ─── 初始化 ───
 window.addEventListener('load', function(){
-  calcUpdate();
+  calcUp();
   updateLedger();
-  animateNum(document.getElementById('gs-players'), 127);
-  animateNum(document.getElementById('gs-coins'), 48600);
-});
-
-// 關閉模態點外部
-document.getElementById('submit-modal').addEventListener('click', function(e){
-  if(e.target === this) closeSubmit();
 });
 </script>
 </body>
