@@ -1,0 +1,22 @@
+{
+  "name": "Conga Taiwan · 採礦台灣",
+  "short_name": "Conga Taiwan",
+  "description": "世界首款無機資源ESG電子寵物遊戲。挖礦、養獸、學永續。",
+  "start_url": "/recrete.html",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "background_color": "#1A1208",
+  "theme_color": "#C4862A",
+  "lang": "zh-TW",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='80' fill='%231A1208'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='340'>🧱</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "education"],
+  "screenshots": [],
+  "related_applications": []
+}

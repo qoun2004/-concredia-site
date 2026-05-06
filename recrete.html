@@ -44,12 +44,106 @@ body{
 /* GAME WRAP */
 .gw{width:100%;max-width:480px;flex:1;overflow:hidden;position:relative;display:flex;flex-direction:column;}
 
-/* SCENE */
-.scene{position:relative;flex:1;overflow:hidden;min-height:0;
-  background:linear-gradient(180deg,#0A1520 0%,#0F2010 40%,#1A2808 70%,var(--earth) 100%);}
-.scene::before{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;
-  background:linear-gradient(180deg,transparent 0%,rgba(44,31,14,.8) 50%,var(--clay) 100%);
-  border-top:2px solid rgba(196,134,42,.15);}
+/* SCENE — 2.5D 斜角視角 */
+.scene{position:relative;flex:1;overflow:hidden;min-height:0;background:#0A0F1A;}
+
+/* 天空層 */
+.sky-layer{position:absolute;inset:0;
+  background:linear-gradient(180deg,#050A14 0%,#0A1428 35%,#0F1E38 60%,#0A1208 100%);}
+
+/* 2.5D 地板：用 perspective 做等距斜角 */
+.iso-world{
+  position:absolute;inset:0;
+  perspective:600px;perspective-origin:50% 30%;
+  overflow:hidden;
+}
+/* 地板主體 */
+.iso-floor{
+  position:absolute;bottom:0;left:-20%;right:-20%;height:55%;
+  background:
+    linear-gradient(180deg,transparent 0%,rgba(44,31,14,.95) 30%,#2C1F0E 100%);
+  transform:rotateX(55deg) translateZ(0);
+  transform-origin:bottom center;
+  border-top:3px solid rgba(196,134,42,.35);
+  box-shadow:0 -20px 60px rgba(0,0,0,.8);
+}
+/* 地板磚格線 */
+.iso-floor::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(196,134,42,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(196,134,42,.08) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+/* 地板前緣高光 */
+.iso-floor::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,rgba(232,184,75,.5),rgba(232,184,75,.8),rgba(232,184,75,.5),transparent);
+}
+
+/* 左牆 */
+.iso-wall-l{
+  position:absolute;bottom:0;left:-20%;width:35%;height:42%;
+  background:linear-gradient(135deg,#1A1208 0%,#251A0C 50%,#1A1208 100%);
+  transform:rotateX(55deg) rotateY(-35deg) translateZ(0);
+  transform-origin:bottom right;
+  border-right:2px solid rgba(196,134,42,.2);
+  opacity:.65;
+}
+/* 右牆 */
+.iso-wall-r{
+  position:absolute;bottom:0;right:-20%;width:35%;height:42%;
+  background:linear-gradient(225deg,#1A1208 0%,#251A0C 50%,#1A1208 100%);
+  transform:rotateX(55deg) rotateY(35deg) translateZ(0);
+  transform-origin:bottom left;
+  border-left:2px solid rgba(196,134,42,.2);
+  opacity:.65;
+}
+
+/* 遠景霧氣 */
+.fog-layer{
+  position:absolute;bottom:40%;left:0;right:0;height:25%;
+  background:linear-gradient(180deg,transparent 0%,rgba(10,15,26,.6) 50%,transparent 100%);
+  pointer-events:none;
+}
+
+/* 環境光 */
+.ambient-light{
+  position:absolute;bottom:30%;left:50%;transform:translateX(-50%);
+  width:180px;height:80px;
+  background:radial-gradient(ellipse,rgba(196,134,42,.18) 0%,transparent 70%);
+  pointer-events:none;filter:blur(8px);
+}
+
+/* 場景物件 — 2.5D 風格（投影 + 縮放模擬高度）*/
+.sobj{
+  position:absolute;
+  cursor:pointer;transition:transform .2s;
+  filter:drop-shadow(2px 4px 6px rgba(0,0,0,.7));
+  /* 讓物件往下偏移模擬站在地板上 */
+}
+.sobj:hover{transform:scale(1.18) translateY(-4px);}
+.sobj .shadow{
+  position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+  width:70%;height:8px;
+  background:radial-gradient(ellipse,rgba(0,0,0,.5) 0%,transparent 70%);
+}
+
+/* 寵物 — 2.5D 站立姿態 */
+.pet-wrap{
+  position:absolute;
+  bottom:32%;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.2rem;
+  z-index:30;cursor:pointer;
+}
+/* 寵物陰影投影 */
+.pet-shadow{
+  width:60px;height:14px;
+  background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);
+  margin-bottom:-6px;
+  animation:shadowpulse 2.8s ease-in-out infinite;
+}
+@keyframes shadowpulse{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.82)}}
 
 /* STARS */
 .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;
@@ -64,17 +158,26 @@ body{
   color:var(--dim);cursor:pointer;backdrop-filter:blur(4px);transition:all .2s;}
 .zt.active{background:rgba(196,134,42,.18);border-color:var(--amber);color:var(--gold);}
 
-/* PET */
-.pet-wrap{position:absolute;bottom:28%;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.2rem;z-index:20;cursor:pointer;}
-.pet-sp{font-size:4.5rem;line-height:1;animation:pf 2.8s ease-in-out infinite;
-  filter:drop-shadow(0 4px 12px rgba(0,0,0,.6));transition:transform .1s;}
-.pet-sp:active{transform:scale(.88);}
-@keyframes pf{0%,100%{transform:translateY(0) rotate(0deg)}
-  25%{transform:translateY(-6px) rotate(-1.5deg)}75%{transform:translateY(-3px) rotate(1.5deg)}}
+/* PET — 2.5D */
+.pet-wrap{position:absolute;bottom:32%;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.15rem;z-index:30;cursor:pointer;}
+.pet-sp{font-size:5rem;line-height:1;
+  animation:pf25d 2.8s ease-in-out infinite;
+  filter:drop-shadow(0 6px 0 rgba(0,0,0,.5)) drop-shadow(2px 2px 8px rgba(0,0,0,.6));
+  transform-origin:bottom center;transition:filter .15s;}
+.pet-sp:active{transform:scale(.86);}
+@keyframes pf25d{
+  0%,100%{transform:translateY(0) scaleY(1)}
+  25%{transform:translateY(-7px) scaleY(1.03)}
+  75%{transform:translateY(-4px) scaleY(1.01)}
+}
+.pet-shadow{width:64px;height:14px;margin-bottom:-5px;
+  background:radial-gradient(ellipse,rgba(0,0,0,.55) 0%,transparent 70%);
+  animation:sh25d 2.8s ease-in-out infinite;}
+@keyframes sh25d{0%,100%{transform:scaleX(1);opacity:.55}25%{transform:scaleX(.75);opacity:.3}75%{transform:scaleX(.85);opacity:.4}}
 .pet-tag{font-size:.62rem;font-family:var(--fn);font-weight:700;color:var(--pale);
-  background:rgba(10,8,5,.82);border:1px solid rgba(196,134,42,.35);
-  padding:.12rem .45rem;letter-spacing:.04em;}
+  background:rgba(8,6,4,.88);border:1px solid rgba(196,134,42,.4);
+  padding:.12rem .5rem;letter-spacing:.04em;box-shadow:0 2px 8px rgba(0,0,0,.5);}
 .pet-lv{font-size:.52rem;font-family:var(--fm);color:var(--amber);letter-spacing:.08em;}
 
 /* SPEECH */
@@ -297,6 +400,12 @@ body{
 ::-webkit-scrollbar{width:2px;}
 ::-webkit-scrollbar-thumb{background:rgba(196,134,42,.28);border-radius:2px;}
 </style>
+<meta name="theme-color" content="#1A1208">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Conga Taiwan">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1208'/><text y='.9em' font-size='80'>🧱</text></svg>">
+<link rel="manifest" href="/conga-manifest.json">
 </head>
 <body>
 
@@ -314,22 +423,38 @@ body{
     <button class="evbtn" onclick="resolveEvent()">出動 →</button>
   </div>
 
-  <!-- 場景 -->
+  <!-- 場景 — 2.5D -->
   <div class="scene" id="scene" onclick="tapScene(event)">
-    <div id="stars"></div>
-    <div class="ztabs">
+    <!-- 天空 -->
+    <div class="sky-layer"></div>
+    <!-- 星星 -->
+    <div id="stars" style="position:absolute;inset:0;pointer-events:none;z-index:1;"></div>
+    <!-- 霧氣 -->
+    <div class="fog-layer" style="z-index:2;"></div>
+    <!-- 等距世界 -->
+    <div class="iso-world" style="z-index:3;">
+      <div class="iso-wall-l"></div>
+      <div class="iso-wall-r"></div>
+      <div class="iso-floor"></div>
+      <div class="ambient-light"></div>
+    </div>
+    <!-- 區域切換（固定在上方） -->
+    <div class="ztabs" style="z-index:20;">
       <button class="zt active" onclick="setZone('city',this)">🏙️城市</button>
       <button class="zt" onclick="setZone('rural',this)">🌾農村</button>
       <button class="zt" onclick="setZone('coast',this)">🌊海岸</button>
       <button class="zt" onclick="setZone('industry',this)">🏭工業</button>
     </div>
-    <div class="pet-wrap" onclick="tapPet(event)">
-      <div class="pet-sp" id="psp">🧱</div>
+    <div class="pet-wrap" onclick="tapPet(event)" style="z-index:30;">
+      <div class="pet-sp" id="psp" style="font-size:5rem;">🧱</div>
+      <div class="pet-shadow"></div>
       <div class="pet-tag" id="pnm">磚仔</div>
       <div class="pet-lv" id="plv">Lv.1 紅磚獸</div>
     </div>
     <div class="speech" id="speech"></div>
     <div id="sobjs"></div>
+    <!-- 2.5D 環境粒子 Canvas -->
+    <canvas id="envCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;"></canvas>
   </div>
 
   <!-- 狀態列 -->
@@ -546,7 +671,7 @@ var miningActive=false,speechTm=null,evTm=null,curEv=null;
 
 // ══ 初始化 ══
 window.addEventListener('load',function(){
-  initStars();renderInv();renderQ();updateUI();initChatMsgs();setZoneObjs('city');
+  initStars();initEnvCanvas();renderInv();renderQ();updateUI();initChatMsgs();setZoneObjs('city');
   setTimeout(function(){document.getElementById('hatch').classList.add('open');hatchAnim();},600);
   setInterval(function(){if(!G.started)return;G.pet.fo=Math.max(0,G.pet.fo-.4);G.pet.mp=Math.max(0,G.pet.mp-.18);updateUI();if(G.pet.fo<20)showT('⚠️礦獸餓了！','給牠食物補充飽腹值');},5000);
   setInterval(function(){if(G.started&&Math.random()>.62)petSay();},18000);
@@ -555,6 +680,53 @@ window.addEventListener('load',function(){
 });
 
 function initStars(){var c=document.getElementById('stars');for(var i=0;i<38;i++){var s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.setProperty('--d',(2+Math.random()*3)+'s');s.style.setProperty('--dl',(-Math.random()*3)+'s');c.appendChild(s);}}
+
+// 2.5D 環境粒子（灰塵、閃光）
+function initEnvCanvas(){
+  var canvas=document.getElementById('envCanvas');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var particles=[];
+  function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  // 產生粒子
+  for(var i=0;i<28;i++){
+    particles.push({
+      x:Math.random()*100,y:60+Math.random()*35,
+      size:Math.random()*2+.5,
+      opacity:Math.random()*.4+.1,
+      speed:Math.random()*.3+.1,
+      drift:Math.random()*.4-.2,
+      type:Math.random()>.7?'spark':'dust',
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(function(p){
+      var px=p.x/100*canvas.width,py=p.y/100*canvas.height;
+      ctx.save();
+      if(p.type==='spark'){
+        // 金色閃光
+        ctx.globalAlpha=p.opacity*(.5+.5*Math.sin(Date.now()/600+p.x));
+        ctx.fillStyle='rgba(232,184,75,1)';
+        ctx.shadowBlur=6;ctx.shadowColor='rgba(232,184,75,.8)';
+        ctx.beginPath();ctx.arc(px,py,p.size,0,Math.PI*2);ctx.fill();
+      } else {
+        // 灰塵
+        ctx.globalAlpha=p.opacity*.6;
+        ctx.fillStyle='rgba(196,134,42,.5)';
+        ctx.beginPath();ctx.arc(px,py,p.size*.7,0,Math.PI*2);ctx.fill();
+      }
+      ctx.restore();
+      // 移動
+      p.x+=p.drift*.03;p.y-=p.speed*.04;
+      if(p.y<45){p.y=98;p.x=Math.random()*100;}
+      if(p.x<0)p.x=100;if(p.x>100)p.x=0;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
 
 // ══ UI ══
 function updateUI(){
@@ -577,12 +749,19 @@ function updateUI(){
 
 // ══ 場景 ══
 function setZoneObjs(zone){
-  var c=document.getElementById('sobjs');c.innerHTML='';
+  var container=document.getElementById('sobjs');container.innerHTML='';
   (SOBJS[zone]||SOBJS.city).forEach(function(o){
-    var el=document.createElement('div');el.className='sobj';
-    el.textContent=o.e;el.style.left=o.x+'%';el.style.bottom=o.y+'%';
-    el.onclick=function(ev){ev.stopPropagation();tapObj(o.e);};
-    c.appendChild(el);
+    var wrap=document.createElement('div');wrap.className='sobj';
+    wrap.style.left=o.x+'%';wrap.style.bottom=o.y+'%';
+    wrap.style.zIndex=Math.floor(100-o.y); // 越下面越前景
+    wrap.style.fontSize=(1.6+Math.random()*.4)+'rem'; // 大小微差
+    // 主體
+    var span=document.createElement('span');span.textContent=o.e;
+    // 2.5D 陰影
+    var shadow=document.createElement('div');shadow.className='shadow';
+    wrap.appendChild(span);wrap.appendChild(shadow);
+    wrap.onclick=function(ev){ev.stopPropagation();tapObj(o.e);};
+    container.appendChild(wrap);
   });
 }
 function setZone(z,el){
@@ -592,11 +771,19 @@ function setZone(z,el){
   updateQP('q4',G.zonesVisited.size,true);renderQ();
   document.querySelectorAll('.zt').forEach(function(b){b.classList.remove('active');});
   el.classList.add('active');setZoneObjs(z);
-  var bgs={city:'linear-gradient(180deg,#0A1520 0%,#0F2010 40%,#1A2808 70%,#2C1F0E 100%)',
-    rural:'linear-gradient(180deg,#0D1A08 0%,#152808 40%,#1F3A0A 70%,#2A2C10 100%)',
-    coast:'linear-gradient(180deg,#06101A 0%,#0A1828 40%,#0F2218 70%,#1A2C20 100%)',
-    industry:'linear-gradient(180deg,#100808 0%,#1A0E0A 40%,#200A08 70%,#2C1808 100%)'};
-  document.getElementById('scene').style.background=bgs[z]||bgs.city;
+  // 2.5D：只改天空層顏色
+  var skyColors={
+    city:'linear-gradient(180deg,#050A14 0%,#0A1428 35%,#0F1E38 55%,#0A1208 100%)',
+    rural:'linear-gradient(180deg,#060E04 0%,#0C1A08 35%,#122210 55%,#0A1208 100%)',
+    coast:'linear-gradient(180deg,#040A14 0%,#061224 35%,#0A1A30 55%,#061410 100%)',
+    industry:'linear-gradient(180deg,#100408 0%,#1A080A 35%,#220C0C 55%,#180A08 100%)',
+  };
+  var skyEl=document.querySelector('.sky-layer');
+  if(skyEl) skyEl.style.background=skyColors[z]||skyColors.city;
+  // 地板顏色也跟著變
+  var floorEl=document.querySelector('.iso-floor');
+  var floorColors={city:'#2C1F0E',rural:'#1A2808',coast:'#1A2018',industry:'#1C0F0A'};
+  if(floorEl) floorEl.style.background='linear-gradient(180deg,transparent 0%,rgba(44,31,14,.95) 30%,'+(floorColors[z]||floorColors.city)+' 100%)';
   petSay(['切換到新區域了，有不同廢料！','這裡的廢料跟之前不一樣耶！'][Math.floor(Math.random()*2)]);
 }
 function tapScene(ev){if(ev.target.id==='scene'||ev.target.id==='stars')petSay();}
@@ -742,6 +929,27 @@ function resolveEvent(){
 function spawnDiga(x,y,text){var el=document.createElement('div');el.className='diga';el.textContent=text;el.style.left=(x-18)+'px';el.style.top=(y-28)+'px';el.style.position='fixed';document.body.appendChild(el);setTimeout(function(){el.remove();},900);}
 var toastTm;
 function showT(t,b){clearTimeout(toastTm);document.getElementById('ttt').textContent=t;document.getElementById('ttb').textContent=b;var toast=document.getElementById('toast');toast.classList.add('show');toastTm=setTimeout(function(){toast.classList.remove('show');},3500);}
+
+
+// ══ PWA + iOS ══
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/conga-sw.js').catch(function(){});
+}
+var deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();deferredPrompt=e;
+});
+function checkInstall(){
+  if(!G.started)return;
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase());
+  var isStandalone=window.navigator.standalone;
+  if(isIOS&&!isStandalone){
+    showT('📱 加入主畫面','Safari → 分享鍵 → 加入主畫面，即可像App使用！');
+  } else if(deferredPrompt){
+    showT('📱 安裝到桌面','可以把Conga Taiwan安裝到手機桌面！');
+  }
+}
+setTimeout(checkInstall,28000);
 </script>
 </body>
 </html>
