@@ -765,7 +765,7 @@ p{line-height:1.85;}
     <li><a href="fundraise.html" style="color:var(--rust,#9B5B3A);">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="contact.html" class="nav-cta">合作洽詢</a>
+  <a href="partners.html" class="nav-cta">合作夥伴</a>
   <!-- 漢堡選單（手機用） -->
   <button class="hamburger" id="hamburger" aria-label="選單" style="display:none;background:none;border:none;">
     <span></span><span></span><span></span>
@@ -818,10 +818,16 @@ p{line-height:1.85;}
 
   <!-- 主標語：垂直正中，完全獨立 -->
   <div style="position:absolute;top:0;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;padding:80px 6rem 0;pointer-events:none;">
-    <h1 class="hero-manifesto">
-      <span class="solid">Concrete</span>
-      <span class="accent">as a Media.</span>
-    </h1>
+    <div>
+      <h1 class="hero-manifesto">
+        <span class="solid">Concrete</span>
+        <span class="accent">as a Media.</span>
+      </h1>
+      <div style="margin-top:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+        <span style="width:32px;height:2px;background:var(--rust-light);flex-shrink:0;"></span>
+        <p style="font-size:clamp(0.9rem,1.4vw,1.15rem);color:var(--rust-light);font-family:var(--font-display);font-style:italic;letter-spacing:0.04em;line-height:1.4;text-shadow:0 2px 12px rgba(0,0,0,.8);">為台灣的營建廢棄物，找一個出路</p>
+      </div>
+    </div>
   </div>
   <!-- 募資懸浮條 -->
   <div style="position:absolute;top:58%;left:50%;transform:translateX(-50%);z-index:8;text-align:center;">
@@ -835,7 +841,11 @@ p{line-height:1.85;}
 
   <!-- 副標語：右側固定 -->
   <div style="position:absolute;top:0;right:0;width:38%;bottom:0;z-index:5;display:flex;align-items:center;justify-content:flex-end;padding:80px 5rem 220px 2rem;pointer-events:none;">
-    
+    <div style="text-align:right;">
+      <p style="font-family:var(--font-display);font-size:clamp(0.9rem,1.2vw,1.05rem);color:rgba(232,168,130,0.85);font-style:italic;line-height:1.85;text-shadow:0 2px 14px rgba(0,0,0,.9);border-right:2px solid rgba(155,91,58,0.5);padding-right:1.25rem;">
+        廢棄物，是被<br>錯置的資源
+      </p>
+    </div>
   </div>
 
   <!-- 底部：按鈕 + 數據（左側區域） -->
@@ -1444,7 +1454,36 @@ p{line-height:1.85;}
     </div>
 
   </div>
+</section><!-- 合作夥伴預覽 -->
+<section style="padding:4rem 4rem;background:var(--cream);">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="sec-eye">合作夥伴 · 友好單位</div>
+      <h2 class="sec-title">一起為廢料找出路</h2>
+    </div>
+    <a href="partners.html" style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);text-decoration:none;border:1px solid rgba(155,91,58,0.3);padding:0.6rem 1.2rem;transition:all 0.2s;" onmouseover="this.style.background='rgba(155,91,58,0.06)'" onmouseout="this.style.background='transparent'">查看所有夥伴 →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(58,54,50,0.08);">
+    <div style="background:white;padding:1.75rem;display:flex;flex-direction:column;">
+      <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);margin-bottom:0.5rem;">🌾 社區合作</div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.5rem;">彰化縣竹塘鄉農會</div>
+      <p style="font-size:0.8rem;color:var(--concrete);line-height:1.68;font-weight:300;flex:1;">「掃一張桌子」計畫的核心夥伴，Hub & Satellite 在地生產的第一個示範場域。</p>
+    </div>
+    <div style="background:white;padding:1.75rem;display:flex;flex-direction:column;">
+      <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust);margin-bottom:0.5rem;">🏗️ 材料供應</div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.5rem;">斗六盛記預拌混凝土廠</div>
+      <p style="font-size:0.8rem;color:var(--concrete);line-height:1.68;font-weight:300;flex:1;">在地預拌混凝土廠合作，支持在地再生材料循環體系，由成大蔡志達博士介紹聯繫。</p>
+    </div>
+    <div style="background:rgba(155,91,58,0.04);border:1px dashed rgba(155,91,58,0.25);padding:1.75rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:0.75rem;">🤝</div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.5rem;">成為合作夥伴</div>
+      <p style="font-size:0.8rem;color:var(--concrete);line-height:1.65;font-weight:300;margin-bottom:1rem;">企業、社區、農會、學校、友好店家，一起為廢料找出路。</p>
+      <a href="partners.html" style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);text-decoration:none;">了解合作方式 →</a>
+    </div>
+  </div>
 </section>
+
+
 
 <!-- TESTIMONIALS 顧客反饋 -->
 <section id="testimonials" style="padding:5rem 4rem;background:var(--concrete-dark);position:relative;overflow:hidden;">
