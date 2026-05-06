@@ -754,13 +754,15 @@ p{line-height:1.85;}
 
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="impact.html">環境現況</a></li>
-    <li><a href="esg-dashboard.html">ESG 數據</a></li>
     <li><a href="products.html">產品系列</a></li>
-    <li><a href="story.html">品牌故事</a></li>
-    <li><a href="gallery.html">作品影像集</a></li>
+    <li><a href="gallery.html">作品集</a></li>
+    <li><a href="story.html">關於團隊</a></li>
     <li><a href="blog.html">最新動態</a></li>
+    <li><a href="esg-dashboard.html">ESG</a></li>
+    <li><a href="recrete.html" style="color:var(--gold,#C8A96E);">👾 康加台灣</a></li>
+    <li><a href="fundraise.html" style="color:var(--rust,#9B5B3A);">募資</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="contact.html" class="nav-cta">合作洽詢</a>
@@ -903,6 +905,27 @@ p{line-height:1.85;}
       </div>
     </div>
 
+    <div class="tier-card">
+      <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete);opacity:0.6;margin-bottom:0.5rem;">畫作收藏</div>
+      <div class="tier-price">NT$ 50,000</div>
+      <div class="tier-name">50號畫作（光影刻痕系列）</div>
+      <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0;">
+        <div class="tier-item">✂️ Rovi 老師保麗龍板手割畫作 × 1（50號）</div>
+        <div class="tier-item">📄 作品故事卡 + 材料說明</div>
+        <div class="tier-item">🏷️ 限量編號 + 親簽</div>
+        <div class="tier-item">📸 製作過程影像紀錄</div>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.5rem;">
+        <button onclick="openPayment('tier-50000', '50號畫作（光影刻痕系列）', 50000)"
+          style="width:100%;padding:0.85rem;background:var(--rust);color:white;border:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:var(--font-body);font-weight:500;transition:background 0.2s;"
+          onmouseover="this.style.background='var(--rust-light)'"
+          onmouseout="this.style.background='var(--rust)'">
+          立即支持 NT$ 50,000 →
+        </button>
+        <div style="font-size:0.65rem;color:var(--concrete);opacity:0.55;text-align:center;letter-spacing:0.06em;">信用卡 · ATM 轉帳 · 超商繳費</div>
+      </div>
+    </div>
+
     <div class="tier-card" style="border-color:rgba(155,91,58,0.5);">
       <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.5rem;">旗艦收藏</div>
       <div class="tier-price" style="font-size:1.8rem;">NT$ 100,000</div>
@@ -927,6 +950,29 @@ p{line-height:1.85;}
 
   </div>
 </div>
+
+<!-- Conga Taiwan 遊戲連動 -->
+<section style="padding:3rem 4rem;background:#08060A;border-top:2px solid rgba(200,169,110,0.2);">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;max-width:900px;margin:0 auto 1.25rem;">
+    <div style="display:flex;align-items:center;gap:1.25rem;">
+      <div style="font-size:2.5rem;">👾</div>
+      <div>
+        <div style="font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#C8A96E;margin-bottom:0.3rem;">Conga Taiwan · 士敏小礦獸</div>
+        <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:#F5F2ED;">每個支持方案都能孵化一隻礦獸</div>
+        <p style="font-size:0.78rem;color:rgba(200,196,190,0.6);line-height:1.6;margin-top:0.2rem;">支持後收到材料包→動手做→拍照上傳→孵化礦獸。方案越高，礦獸越稀有，康加幣挖礦速度更快。</p>
+      </div>
+    </div>
+    <a href="recrete.html" style="padding:0.7rem 1.4rem;background:#C8A96E;color:#08060A;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:700;white-space:nowrap;">了解礦獸 →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(200,169,110,0.08);max-width:900px;margin:0 auto;">
+    <div style="padding:0.65rem;text-align:center;background:#0A0806;"><div style="font-size:1.1rem;">🧱</div><div style="font-size:0.58rem;color:#C8A96E;">500起</div><div style="font-size:0.5rem;color:#706860;">Common</div></div>
+    <div style="padding:0.65rem;text-align:center;background:#0A0806;"><div style="font-size:1.1rem;">🪴</div><div style="font-size:0.58rem;color:#C8A96E;">1,500</div><div style="font-size:0.5rem;color:#706860;">Common+</div></div>
+    <div style="padding:0.65rem;text-align:center;background:#0A0806;"><div style="font-size:1.1rem;">🔊</div><div style="font-size:0.58rem;color:#2ECC71;">3,000</div><div style="font-size:0.5rem;color:#2ECC71;">Uncommon</div></div>
+    <div style="padding:0.65rem;text-align:center;background:#0A0806;"><div style="font-size:1.1rem;">🗺️</div><div style="font-size:0.58rem;color:#3498DB;">6,000</div><div style="font-size:0.5rem;color:#3498DB;">Rare</div></div>
+    <div style="padding:0.65rem;text-align:center;background:#0A0806;"><div style="font-size:1.1rem;">🐚</div><div style="font-size:0.58rem;color:#9B59B6;">10,000</div><div style="font-size:0.5rem;color:#9B59B6;">Epic</div></div>
+    <div style="padding:0.65rem;text-align:center;background:rgba(200,169,110,0.06);border:1px solid rgba(200,169,110,0.2);"><div style="font-size:1.1rem;">💚</div><div style="font-size:0.58rem;color:#C8A96E;">50K+</div><div style="font-size:0.5rem;color:#C8A96E;">Legendary</div></div>
+  </div>
+</section>
 
 <!-- 通知我 -->
 <div id="notify" style="padding:5rem 4rem;background:var(--concrete-dark);text-align:center;">
