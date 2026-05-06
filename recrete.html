@@ -199,15 +199,23 @@ body{
 
 /* DIG ANIM */
 .diga{position:fixed;pointer-events:none;z-index:99;
-  font-size:1.2rem;font-family:var(--fm);font-weight:700;
-  color:var(--gold);text-shadow:0 0 8px rgba(232,184,75,.8);
-  animation:fup .8s ease-out forwards;}
-@keyframes fup{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-55px)}}
+  font-size:1.1rem;font-family:var(--fm);font-weight:700;
+  color:var(--gold);text-shadow:0 0 10px rgba(232,184,75,.9);
+  animation:fup .9s cubic-bezier(.25,.46,.45,.94) forwards;}
+@keyframes fup{
+  0%{opacity:1;transform:translateY(0) scale(1.2)}
+  30%{opacity:1;transform:translateY(-15px) scale(1)}
+  100%{opacity:0;transform:translateY(-65px) scale(.8)}
+}
 
 /* STATUS BAR */
-.sbar{width:100%;flex-shrink:0;background:rgba(26,18,8,.92);
+.sbar{
+  width:100%;flex-shrink:0;
+  background:linear-gradient(180deg,rgba(20,12,5,.92) 0%,rgba(26,18,8,.97) 100%);
   border-top:2px solid var(--copper);padding:.5rem .85rem;
-  display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;}
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;
+  box-shadow:0 -4px 20px rgba(0,0,0,.5);
+}
 .sr{display:flex;flex-direction:column;gap:.15rem;}
 .sl{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);}
 .sbw{height:6px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden;}
@@ -425,36 +433,69 @@ body{
 
   <!-- 場景 — 2.5D -->
   <div class="scene" id="scene" onclick="tapScene(event)">
-    <!-- 天空 -->
-    <div class="sky-layer"></div>
-    <!-- 星星 -->
+
+    <!-- 星空（最遠層）-->
     <div id="stars" style="position:absolute;inset:0;pointer-events:none;z-index:1;"></div>
+
+    <!-- 月亮 -->
+    <div id="sky-orb" style="position:absolute;top:10%;right:16%;z-index:2;pointer-events:none;
+      width:34px;height:34px;border-radius:50%;
+      background:radial-gradient(circle,#FFFDE0 0%,#FFF5A0 45%,rgba(255,245,100,0) 70%);
+      box-shadow:0 0 18px 6px rgba(255,245,120,.22),0 0 55px 18px rgba(255,245,120,.07);
+      animation:moon-glow 4s ease-in-out infinite;"></div>
+
+    <!-- 雲層 -->
+    <div id="clouds" style="position:absolute;top:0;left:0;right:0;height:40%;z-index:2;pointer-events:none;overflow:hidden;"></div>
+
+    <!-- 視差遠景山脈 -->
+    <div id="pfar" style="position:absolute;bottom:26%;left:0;right:0;height:20%;z-index:3;pointer-events:none;overflow:hidden;"></div>
+
+    <!-- 視差中景 -->
+    <div id="pmid" style="position:absolute;bottom:23%;left:0;right:0;height:16%;z-index:4;pointer-events:none;overflow:hidden;"></div>
+
     <!-- 霧氣 -->
-    <div class="fog-layer" style="z-index:2;"></div>
-    <!-- 等距世界 -->
-    <div class="iso-world" style="z-index:3;">
-      <div class="iso-wall-l"></div>
-      <div class="iso-wall-r"></div>
-      <div class="iso-floor"></div>
-      <div class="ambient-light"></div>
-    </div>
-    <!-- 區域切換（固定在上方） -->
+    <div style="position:absolute;bottom:22%;left:0;right:0;height:10%;z-index:5;pointer-events:none;
+      background:linear-gradient(180deg,transparent 0%,rgba(15,24,15,.2) 50%,rgba(15,24,15,.45) 100%);
+      animation:fogdrift 9s ease-in-out infinite;"></div>
+
+    <!-- Canvas 粒子層 -->
+    <canvas id="envCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6;"></canvas>
+
+    <!-- 地面質感 -->
+    <div id="ground-layer" style="position:absolute;bottom:0;left:0;right:0;height:25%;z-index:7;
+      background:repeating-linear-gradient(90deg,rgba(196,134,42,.025) 0px,transparent 1px,transparent 60px,rgba(196,134,42,.015) 61px),
+                linear-gradient(180deg,var(--clay) 0%,#141008 100%);"></div>
+
+    <!-- 場景互動物件 -->
+    <div id="sobjs" style="z-index:10;"></div>
+
+    <!-- 區域切換 -->
     <div class="ztabs" style="z-index:20;">
       <button class="zt active" onclick="setZone('city',this)">🏙️城市</button>
       <button class="zt" onclick="setZone('rural',this)">🌾農村</button>
       <button class="zt" onclick="setZone('coast',this)">🌊海岸</button>
       <button class="zt" onclick="setZone('industry',this)">🏭工業</button>
     </div>
+
+    <!-- 寵物 -->
     <div class="pet-wrap" onclick="tapPet(event)" style="z-index:30;">
-      <div class="pet-sp" id="psp" style="font-size:5rem;">🧱</div>
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+        <div id="pet-aura" style="position:absolute;width:80px;height:80px;border-radius:50%;
+          background:radial-gradient(ellipse,var(--pet-glow,rgba(232,184,75,.18)) 0%,transparent 70%);
+          top:50%;left:50%;transform:translate(-50%,-50%);
+          animation:aura-pulse 2.8s ease-in-out infinite;pointer-events:none;"></div>
+        <div id="pet-crown" style="display:none;position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+          font-size:.9rem;animation:crown-bounce .9s ease-in-out infinite;">👑</div>
+        <div class="pet-sp" id="psp" style="font-size:5rem;position:relative;z-index:1;">🧱</div>
+      </div>
       <div class="pet-shadow"></div>
       <div class="pet-tag" id="pnm">磚仔</div>
       <div class="pet-lv" id="plv">Lv.1 紅磚獸</div>
     </div>
+
+    <!-- 對話泡泡 -->
     <div class="speech" id="speech"></div>
-    <div id="sobjs"></div>
-    <!-- 2.5D 環境粒子 Canvas -->
-    <canvas id="envCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;"></canvas>
+
   </div>
 
   <!-- 狀態列 -->
@@ -671,7 +712,7 @@ var miningActive=false,speechTm=null,evTm=null,curEv=null;
 
 // ══ 初始化 ══
 window.addEventListener('load',function(){
-  initStars();initEnvCanvas();renderInv();renderQ();updateUI();initChatMsgs();setZoneObjs('city');
+  initStars();initCanvas();renderInv();renderQ();updateUI();initChatMsgs();buildMountains('city');buildClouds('city');buildDecos('city');updateZoneVisuals('city');
   setTimeout(function(){document.getElementById('hatch').classList.add('open');hatchAnim();},600);
   setInterval(function(){if(!G.started)return;G.pet.fo=Math.max(0,G.pet.fo-.4);G.pet.mp=Math.max(0,G.pet.mp-.18);updateUI();if(G.pet.fo<20)showT('⚠️礦獸餓了！','給牠食物補充飽腹值');},5000);
   setInterval(function(){if(G.started&&Math.random()>.62)petSay();},18000);
@@ -727,6 +768,251 @@ function initEnvCanvas(){
   }
   draw();
 }
+// ══ 視覺增強：視差、粒子、場景 ══
+
+// Canvas 粒子系統
+var canvas, ctx, particles=[], animFrame;
+function initCanvas(){
+  canvas=document.getElementById('envCanvas');
+  if(!canvas)return;
+  ctx=canvas.getContext('2d');
+  resizeCanvas();
+  window.addEventListener('resize',resizeCanvas);
+  animParticles();
+}
+function resizeCanvas(){
+  if(!canvas)return;
+  canvas.width=canvas.offsetWidth;
+  canvas.height=canvas.offsetHeight;
+}
+
+// 區域別粒子顏色
+var ZONE_PARTICLES={
+  city:  [{c:'rgba(232,184,75,',a:.7},{c:'rgba(255,200,100,',a:.5},{c:'rgba(200,140,60,',a:.4}],
+  rural: [{c:'rgba(80,200,100,', a:.6},{c:'rgba(120,220,80,', a:.5},{c:'rgba(60,180,80,', a:.4}],
+  coast: [{c:'rgba(80,160,220,', a:.6},{c:'rgba(120,200,255,',a:.5},{c:'rgba(60,140,200,',a:.4}],
+  industry:[{c:'rgba(200,100,60,',a:.5},{c:'rgba(180,80,40,', a:.4},{c:'rgba(140,120,100,',a:.4}],
+};
+function spawnParticle(){
+  if(!canvas)return;
+  var cols=ZONE_PARTICLES[G.curMZ]||ZONE_PARTICLES.city;
+  var col=cols[Math.floor(Math.random()*cols.length)];
+  particles.push({
+    x:20+Math.random()*(canvas.width-40),
+    y:canvas.height*(0.22+Math.random()*0.35),
+    vx:(Math.random()-.5)*.4,
+    vy:-(0.3+Math.random()*.5),
+    size:1.5+Math.random()*2,
+    alpha:col.a,
+    color:col.c,
+    life:1,decay:.008+Math.random()*.006,
+  });
+}
+function animParticles(){
+  if(!canvas||!ctx){animFrame=requestAnimationFrame(animParticles);return;}
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  // 螢火蟲粒子
+  if(Math.random()>.7) spawnParticle();
+  particles=particles.filter(function(p){
+    p.x+=p.vx; p.y+=p.vy; p.life-=p.decay;
+    if(p.life<=0)return false;
+    ctx.save();
+    ctx.globalAlpha=p.life*p.alpha;
+    ctx.fillStyle=p.color+p.alpha+')';
+    ctx.shadowColor=p.color+'0.8)';
+    ctx.shadowBlur=6;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+    return true;
+  });
+  animFrame=requestAnimationFrame(animParticles);
+}
+
+// 月亮動畫
+var moonGlowCSS='@keyframes moon-glow{0%,100%{box-shadow:0 0 18px 6px rgba(255,245,120,.22),0 0 55px 18px rgba(255,245,120,.07)}50%{box-shadow:0 0 25px 10px rgba(255,245,120,.35),0 0 80px 25px rgba(255,245,120,.12)}}';
+var moonStyle=document.createElement('style');moonStyle.textContent=moonGlowCSS;document.head.appendChild(moonStyle);
+
+// 加入 CSS keyframes
+var extraCSS=document.createElement('style');
+extraCSS.textContent=`
+@keyframes fogdrift{0%,100%{opacity:.6;transform:translateX(0)}50%{opacity:.35;transform:translateX(14px)}}
+@keyframes aura-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6}50%{transform:translate(-50%,-50%) scale(1.35);opacity:.2}}
+@keyframes crown-bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
+`;
+document.head.appendChild(extraCSS);
+
+// 視差遠景山脈（SVG 繪製）
+function buildMountains(zone){
+  var colors={
+    city:   {fill:'#0A1206',stroke:'rgba(26,40,16,.8)'},
+    rural:  {fill:'#081204',stroke:'rgba(20,36,10,.8)'},
+    coast:  {fill:'#06090E',stroke:'rgba(14,22,32,.8)'},
+    industry:{fill:'#0E0806',stroke:'rgba(28,16,12,.8)'},
+  };
+  var col=colors[zone]||colors.city;
+  var farEl=document.getElementById('pfar');
+  var midEl=document.getElementById('pmid');
+  if(!farEl||!midEl)return;
+
+  // 遠山
+  var pts1=['0,100','5,55','10,70','16,40','22,62','28,28','34,50','40,15','46,40','52,10','58,36','64,18','70,44','76,22','82,48','88,28','94,55','100,38','100,100'];
+  farEl.innerHTML='<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polygon points="'+pts1.join(' ')+'" fill="'+col.fill+'"/></svg>';
+
+  // 中景山
+  var pts2=['0,100','6,62','12,78','18,44','24,68','30,32','36,52','42,22','48,45','54,18','60,42','66,26','72,50','78,30','84,54','90,36','96,58','100,42','100,100'];
+  midEl.innerHTML='<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polygon points="'+pts2.join(' ')+'" fill="'+col.fill+'" opacity=".85"/></svg>';
+}
+
+// 雲朵
+function buildClouds(zone){
+  var c=document.getElementById('clouds');if(!c)return;c.innerHTML='';
+  var colors={city:'rgba(200,210,230,.12)',rural:'rgba(180,220,180,.1)',coast:'rgba(180,200,240,.15)',industry:'rgba(180,160,150,.08)'};
+  var col=colors[zone]||colors.city;
+  for(var i=0;i<4;i++){
+    var cl=document.createElement('div');
+    var y=5+Math.random()*25;
+    var size=60+Math.random()*80;
+    var dur=80+Math.random()*60;
+    var delay=-Math.random()*dur;
+    cl.style.cssText='position:absolute;top:'+y+'%;width:'+size+'px;height:'+(size*.35)+'px;'
+      +'background:'+col+';border-radius:50%;'
+      +'animation:clouds '+dur+'s linear infinite '+delay+'s;'
+      +'filter:blur(8px);';
+    cl.style.setProperty('--cd',dur+'s');
+    cl.style.setProperty('--cdl',delay+'s');
+    c.appendChild(cl);
+  }
+  // clouds keyframe
+  if(!document.getElementById('cloud-kf')){
+    var s=document.createElement('style');s.id='cloud-kf';
+    s.textContent='@keyframes clouds{from{transform:translateX(110vw)}to{transform:translateX(-200px)}}';
+    document.head.appendChild(s);
+  }
+}
+
+// 場景裝飾物（每個區域不同）
+var ZONE_DECOS={
+  city:[
+    {e:'🏚️',x:'12%',y:'28%',s:2.2,i:true,drop:'🧱'},
+    {e:'🌳',x:'22%',y:'28%',s:1.8,i:false},
+    {e:'🔩',x:'74%',y:'30%',s:1.4,i:true,drop:'🔩'},
+    {e:'🧱',x:'82%',y:'28%',s:1.6,i:true,drop:'🧱'},
+    {e:'💡',x:'48%',y:'50%',s:1.0,i:false},
+    {e:'🌙',x:'88%',y:'55%',s:1.2,i:false},
+  ],
+  rural:[
+    {e:'🌾',x:'10%',y:'28%',s:2.0,i:false},
+    {e:'🏡',x:'20%',y:'29%',s:2.0,i:false},
+    {e:'🐚',x:'72%',y:'29%',s:1.6,i:true,drop:'🐚'},
+    {e:'🌻',x:'80%',y:'28%',s:1.8,i:false},
+    {e:'🌱',x:'85%',y:'30%',s:1.2,i:true,drop:'🌱'},
+    {e:'🐛',x:'45%',y:'52%',s:1.0,i:false},
+  ],
+  coast:[
+    {e:'⛵',x:'15%',y:'32%',s:2.0,i:false},
+    {e:'🐚',x:'25%',y:'29%',s:1.6,i:true,drop:'🐚'},
+    {e:'🌊',x:'70%',y:'30%',s:2.0,i:false},
+    {e:'💎',x:'80%',y:'28%',s:1.4,i:true,drop:'💎'},
+    {e:'🐟',x:'46%',y:'52%',s:1.1,i:false},
+    {e:'🦀',x:'86%',y:'29%',s:1.3,i:false},
+  ],
+  industry:[
+    {e:'🏭',x:'12%',y:'28%',s:2.4,i:false},
+    {e:'⚙️',x:'75%',y:'29%',s:1.6,i:true,drop:'⚙️'},
+    {e:'🔥',x:'82%',y:'29%',s:1.4,i:true,drop:'🔥'},
+    {e:'🚛',x:'22%',y:'30%',s:1.8,i:false},
+    {e:'⛓️',x:'46%',y:'52%',s:1.0,i:false},
+  ],
+};
+function buildDecos(zone){
+  var c=document.getElementById('sobjs');if(!c)return;c.innerHTML='';
+  var decos=ZONE_DECOS[zone]||ZONE_DECOS.city;
+  decos.forEach(function(d){
+    var el=document.createElement('div');
+    el.style.cssText='position:absolute;left:'+d.x+';bottom:'+d.y+';font-size:'+d.s+'rem;'
+      +'z-index:10;pointer-events:'+(d.i?'auto':'none')+';'
+      +'filter:drop-shadow(0 3px 8px rgba(0,0,0,.65));'
+      +'transition:transform .2s,filter .2s;';
+    el.textContent=d.e;
+    if(d.i){
+      el.style.cursor='pointer';
+      el.onmouseover=function(){this.style.transform='scale(1.18) translateY(-4px)';this.style.filter='drop-shadow(0 5px 12px rgba(232,184,75,.45)) brightness(1.25)';};
+      el.onmouseout=function(){this.style.transform='';this.style.filter='drop-shadow(0 3px 8px rgba(0,0,0,.65))';};
+      el.onclick=(function(drop,elem){return function(ev){ev.stopPropagation();tapDeco(drop,elem);};})(d.drop,el);
+    }
+    // 輕微浮動動畫
+    if(!d.i){
+      var dur=3+Math.random()*2;
+      var delay=-Math.random()*dur;
+      el.style.animation='pf '+dur+'s ease-in-out infinite '+delay+'s';
+    }
+    c.appendChild(el);
+  });
+}
+function tapDeco(drop,el){
+  if(drop&&G.started){
+    // 採集動畫
+    el.style.transform='scale(.7)';
+    el.style.opacity='.3';
+    setTimeout(function(){el.style.transform='';el.style.opacity='1';},900);
+    G.inv[drop]=(G.inv[drop]||0)+1;
+    if(MATS[drop])MATS[drop].q=G.inv[drop];
+    G.coins+=6;G.pet.hp=Math.max(0,G.pet.hp-3);
+    updateUI();renderInv();
+    updateQP('q2',Object.keys(G.inv).length,true);
+    updateQP('q5',Object.keys(G.inv).length,true);
+    renderQ();
+    // 彈出文字
+    var pop=document.createElement('div');
+    pop.className='diga';pop.textContent='+6₵ '+drop;
+    pop.style.left='50%';pop.style.top='40%';pop.style.transform='translateX(-50%)';
+    document.querySelector('.gw').appendChild(pop);
+    setTimeout(function(){pop.remove();},950);
+    showT('✨ 採集 '+drop+'！',(MATS[drop]?MATS[drop].n:'材料')+' 收入背包');
+    petSay('耶！挖到'+drop+'了！');
+    spawnDigBurst(el);
+  }
+}
+function spawnDigBurst(el){
+  // 生成多個塵埃粒子
+  var rect=el.getBoundingClientRect();
+  for(var i=0;i<6;i++){
+    var dust=document.createElement('div');
+    var angle=Math.random()*Math.PI*2;
+    var dist=20+Math.random()*30;
+    dust.style.cssText='position:fixed;pointer-events:none;z-index:300;'
+      +'width:4px;height:4px;border-radius:50%;background:var(--gold);'
+      +'left:'+rect.left+'px;top:'+rect.top+'px;'
+      +'animation:dustfly .6s ease-out forwards '+(i*.06)+'s;'
+      +'--dx:'+(Math.cos(angle)*dist)+'px;'
+      +'--dy:'+(Math.sin(angle)*dist-20)+'px;';
+    document.body.appendChild(dust);
+    setTimeout(function(){if(dust.parentNode)dust.parentNode.removeChild(dust);},800);
+  }
+}
+
+// 根據區域更新天體和背景色
+var ZONE_CONFIGS={
+  city:   {bg:'linear-gradient(180deg,#040210 0%,#080A20 22%,#0A1008 55%,#161A08 80%,#1E1E0A 100%)',moon:true,moonColor:'#FFFDE0'},
+  rural:  {bg:'linear-gradient(180deg,#020A04 0%,#040E06 22%,#061208 55%,#0A1808 80%,#101A08 100%)',moon:true,moonColor:'#F0FFC0'},
+  coast:  {bg:'linear-gradient(180deg,#020410 0%,#040818 22%,#050C18 55%,#080E18 80%,#0A1018 100%)',moon:true,moonColor:'#D0E8FF'},
+  industry:{bg:'linear-gradient(180deg,#0C0402 0%,#160604 22%,#180804 55%,#1A0A04 80%,#180E06 100%)',moon:false,moonColor:''},
+};
+function updateZoneVisuals(zone){
+  var cfg=ZONE_CONFIGS[zone]||ZONE_CONFIGS.city;
+  document.getElementById('scene').style.background=cfg.bg;
+  var orb=document.getElementById('sky-orb');
+  if(orb)orb.style.display=cfg.moon?'block':'none';
+  // 寵物發光顏色
+  var glows={city:'rgba(232,184,75,.2)',rural:'rgba(80,200,100,.2)',coast:'rgba(80,180,230,.2)',industry:'rgba(200,100,60,.2)'};
+  var aura=document.getElementById('pet-aura');
+  if(aura)aura.style.background='radial-gradient(ellipse,'+glows[zone]+' 0%,transparent 70%)';
+  // 地面顏色
+  var grounds={city:'var(--clay)',rural:'#1A2808',coast:'#0A1A28',industry:'#1A0E08'};
+  var gl=document.getElementById('ground-layer');
+  if(gl)gl.style.background='repeating-linear-gradient(90deg,rgba(196,134,42,.025) 0px,transparent 1px,transparent 60px,rgba(196,134,42,.015) 61px),linear-gradient(180deg,'+grounds[zone]+' 0%,#0A0806 100%)';
+}
+
 
 // ══ UI ══
 function updateUI(){
@@ -765,26 +1051,17 @@ function setZoneObjs(zone){
   });
 }
 function setZone(z,el){
-  G.pet.zonesVisited=G.pet.zonesVisited||new Set();
+  G.curMZ=z;
   G.zonesVisited=G.zonesVisited||new Set(['city']);
   G.zonesVisited.add(z);
   updateQP('q4',G.zonesVisited.size,true);renderQ();
   document.querySelectorAll('.zt').forEach(function(b){b.classList.remove('active');});
-  el.classList.add('active');setZoneObjs(z);
-  // 2.5D：只改天空層顏色
-  var skyColors={
-    city:'linear-gradient(180deg,#050A14 0%,#0A1428 35%,#0F1E38 55%,#0A1208 100%)',
-    rural:'linear-gradient(180deg,#060E04 0%,#0C1A08 35%,#122210 55%,#0A1208 100%)',
-    coast:'linear-gradient(180deg,#040A14 0%,#061224 35%,#0A1A30 55%,#061410 100%)',
-    industry:'linear-gradient(180deg,#100408 0%,#1A080A 35%,#220C0C 55%,#180A08 100%)',
-  };
-  var skyEl=document.querySelector('.sky-layer');
-  if(skyEl) skyEl.style.background=skyColors[z]||skyColors.city;
-  // 地板顏色也跟著變
-  var floorEl=document.querySelector('.iso-floor');
-  var floorColors={city:'#2C1F0E',rural:'#1A2808',coast:'#1A2018',industry:'#1C0F0A'};
-  if(floorEl) floorEl.style.background='linear-gradient(180deg,transparent 0%,rgba(44,31,14,.95) 30%,'+(floorColors[z]||floorColors.city)+' 100%)';
-  petSay(['切換到新區域了，有不同廢料！','這裡的廢料跟之前不一樣耶！'][Math.floor(Math.random()*2)]);
+  el.classList.add('active');
+  updateZoneVisuals(z);
+  buildMountains(z);
+  buildClouds(z);
+  buildDecos(z);
+  petSay(['切換到新區域！','這裡廢料不一樣耶！'][Math.floor(Math.random()*2)]);
 }
 function tapScene(ev){if(ev.target.id==='scene'||ev.target.id==='stars')petSay();}
 function tapObj(e){var m=MATS[e];if(m){showT('📌 '+e+' '+m.n,m.e.slice(0,35)+'...');petSay('那個'+e+'你知道嗎？'+m.e.slice(0,38));}}
