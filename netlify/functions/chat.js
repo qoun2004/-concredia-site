@@ -14,7 +14,7 @@ exports.handler = async (event) => {
 
 // ── Airtable 代理
 async function handleAirtable(event) {
-  const token  = process.env.AIRTABLE_TOKEN;
+  const token  = process.env.AIRTABLE_TOKEN || '';
   const baseId = process.env.AIRTABLE_BASE_ID || 'app7TEyzrUHAXOscY';
   const table  = process.env.AIRTABLE_TABLE   || 'Concredia.Lab';
 

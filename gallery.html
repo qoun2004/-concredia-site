@@ -11,9 +11,12 @@
 :root{
   --dark:#1A1208;--mid:#2C1F0E;--rust:#9B5B3A;--rustL:#C47A54;--rustLL:#E8A882;
   --cream:#F5F2ED;--warm:#FAF8F5;--cl:#D4C8A8;--cm:#8A8480;--cll:#E8E4E0;
+  --green:#2A7A4A;
   --fd:'Playfair Display',Georgia,serif;--fb:'DM Sans',system-ui,sans-serif;
 }
 body{font-family:var(--fb);background:var(--cream);color:var(--dark);overflow-x:hidden;}
+
+/* NAV */
 nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(26,18,8,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(155,91,58,.15);transition:padding .3s;}
 nav#mainNav.scrolled{padding:.65rem 2.5rem;}
 .nav-logo{font-family:var(--fd);font-size:1.25rem;color:var(--warm);text-decoration:none;font-weight:700;}
@@ -23,76 +26,113 @@ nav#mainNav.scrolled{padding:.65rem 2.5rem;}
 .nav-links a:hover{color:var(--warm);}
 .nav-cta{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;padding:0;border:none;background:transparent;color:rgba(212,207,200,.75);text-decoration:none;}
 .nav-cta:hover{color:var(--warm);}
-.hero{padding:7.5rem 4rem 3.5rem;background:var(--dark);border-bottom:1px solid rgba(155,91,58,.2);}
+
+/* HERO */
+.hero{padding:7.5rem 4rem 3rem;background:var(--dark);border-bottom:1px solid rgba(155,91,58,.2);}
 .hero-eye{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rustL);margin-bottom:.7rem;}
 .hero h1{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--warm);font-weight:700;line-height:1.1;margin-bottom:.75rem;}
 .hero h1 em{color:var(--rustL);font-style:italic;}
-.hero-sub{font-size:.92rem;color:var(--cl);opacity:.82;max-width:540px;line-height:1.85;font-weight:300;}
-.filter-bar{position:sticky;top:60px;z-index:50;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;padding:.9rem 4rem;background:rgba(26,18,8,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(155,91,58,.12);}
-.filter-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cm);margin-right:.25rem;}
-.filter-btn{padding:.32rem .85rem;border:1px solid rgba(155,91,58,.3);color:var(--cl);font-size:.7rem;letter-spacing:.06em;background:transparent;cursor:pointer;transition:all .18s;white-space:nowrap;font-family:var(--fb);}
+.hero-sub{font-size:.9rem;color:var(--cl);opacity:.8;max-width:520px;line-height:1.85;font-weight:300;}
+
+/* 篩選列 */
+.filter-bar{position:sticky;top:60px;z-index:50;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;padding:.85rem 4rem;background:rgba(26,18,8,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(155,91,58,.12);}
+.filter-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cm);margin-right:.2rem;}
+.filter-btn{padding:.3rem .82rem;border:1px solid rgba(155,91,58,.3);color:var(--cl);font-size:.7rem;letter-spacing:.06em;background:transparent;cursor:pointer;transition:all .18s;font-family:var(--fb);}
 .filter-btn:hover{border-color:var(--rustL);color:var(--rustL);}
 .filter-btn.active{background:var(--rust);border-color:var(--rust);color:white;}
 .filter-count{margin-left:auto;font-size:.7rem;color:var(--cm);}
-#status-bar{padding:.65rem 4rem;background:rgba(155,91,58,.06);font-size:.78rem;color:var(--cm);border-bottom:1px solid rgba(155,91,58,.08);display:flex;align-items:center;gap:.6rem;min-height:38px;}
-#status-bar .spin{width:14px;height:14px;border:2px solid rgba(155,91,58,.25);border-top-color:var(--rust);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
-@keyframes spin{to{transform:rotate(360deg)}}
-.err-banner{padding:1rem 4rem;background:rgba(200,60,40,.08);border-bottom:1px solid rgba(200,60,40,.2);font-size:.8rem;color:#C83C28;display:none;}
-.err-banner.show{display:block;}
-.err-banner code{font-family:monospace;background:rgba(200,60,40,.1);padding:.1rem .3rem;}
-.err-banner a{color:#C83C28;}
-#product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5px;background:rgba(155,91,58,.08);}
+
+/* 產品 GRID */
+#product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.5px;background:rgba(155,91,58,.08);min-height:400px;}
+
+/* 產品卡片 */
 .product-card{background:var(--warm);display:flex;flex-direction:column;cursor:pointer;transition:transform .22s,box-shadow .22s;position:relative;overflow:hidden;}
-.product-card:hover{transform:translateY(-3px);z-index:2;box-shadow:0 12px 40px rgba(26,18,8,.18);}
+.product-card:hover{transform:translateY(-4px);z-index:2;box-shadow:0 16px 48px rgba(26,18,8,.2);}
 .card-img-wrap{aspect-ratio:4/3;overflow:hidden;background:var(--cll);position:relative;}
-.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease,opacity .3s;opacity:0;}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .35s;opacity:0;}
 .card-img-wrap img.loaded{opacity:1;}
-.card-img-wrap img:hover{transform:scale(1.04);}
-.card-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;color:rgba(155,91,58,.2);background:linear-gradient(135deg,var(--cll) 0%,rgba(212,207,200,.5) 100%);}
-.card-series-badge{position:absolute;top:.75rem;left:.75rem;padding:.2rem .6rem;background:var(--dark);color:var(--rustLL);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;font-family:var(--fb);}
-.card-stock-dot{position:absolute;top:.75rem;right:.75rem;width:8px;height:8px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.5);}
-.stock-available{background:#2A7A4A;}.stock-order{background:#E8951A;}.stock-sold{background:#8A8480;}
-.card-body{padding:1.25rem 1.25rem .75rem;}
-.card-sku{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cm);margin-bottom:.3rem;}
-.card-name{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.4rem;line-height:1.2;}
-.card-material{font-size:.75rem;color:var(--cm);line-height:1.55;margin-bottom:.55rem;}
-.card-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
-.card-tag{padding:.15rem .5rem;border:1px solid rgba(155,91,58,.25);font-size:.6rem;letter-spacing:.06em;color:var(--rust);}
-.card-footer{margin-top:auto;padding:.75rem 1.25rem;border-top:1px solid rgba(155,91,58,.08);display:flex;justify-content:space-between;align-items:center;}
-.card-spec{font-size:.68rem;color:var(--cm);}
-.card-cta{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);background:none;border:none;cursor:pointer;font-family:var(--fb);padding:0;transition:color .2s;}
-.card-cta:hover{color:var(--rustL);}
-.skeleton{background:var(--cll);animation:shimmer 1.4s infinite;}
-@keyframes shimmer{0%{background:var(--cll);}50%{background:rgba(212,207,200,.4);}100%{background:var(--cll);}}
-.skel-img{aspect-ratio:4/3;}.skel-line{height:12px;margin:.5rem 1.25rem;border-radius:2px;background:rgba(212,207,200,.5);}
-.skel-line.w60{width:60%;}.skel-line.w80{width:80%;}.skel-line.w45{width:45%;}
-.empty-state{grid-column:1/-1;padding:5rem 2rem;text-align:center;color:var(--cm);}
-.empty-state h3{font-family:var(--fd);font-size:1.5rem;color:var(--dark);margin-bottom:.75rem;}
-#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(26,18,8,.96);display:none;align-items:center;justify-content:center;padding:2rem;}
-#lightbox.open{display:flex;animation:fadeIn .2s ease;}
+.card-img-wrap:hover img{transform:scale(1.05);}
+.no-photo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:rgba(155,91,58,.25);}
+.no-photo span{font-size:2.5rem;}.no-photo small{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cm);}
+.series-badge{position:absolute;top:.75rem;left:.75rem;padding:.18rem .55rem;background:rgba(26,18,8,.85);color:var(--rustLL);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(4px);}
+.stock-dot{position:absolute;top:.75rem;right:.75rem;width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.6);}
+.s-available{background:#27AE60;}.s-order{background:#E8951A;}.s-sold{background:#8A8480;}
+.card-body{padding:1.2rem 1.2rem .7rem;flex:1;}
+.card-sku{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cm);margin-bottom:.28rem;}
+.card-name{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:.45rem;line-height:1.2;}
+.card-meta{font-size:.75rem;color:var(--cm);line-height:1.6;margin-bottom:.5rem;}
+.card-tags{display:flex;flex-wrap:wrap;gap:.28rem;}
+.card-tag{padding:.14rem .48rem;border:1px solid rgba(155,91,58,.22);font-size:.58rem;letter-spacing:.05em;color:var(--rust);}
+.card-footer{padding:.7rem 1.2rem;border-top:1px solid rgba(155,91,58,.08);display:flex;justify-content:space-between;align-items:center;}
+.card-spec{font-size:.66rem;color:var(--cm);}
+.card-open{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);background:none;border:none;cursor:pointer;font-family:var(--fb);padding:0;transition:color .2s;}
+.card-open:hover{color:var(--rustL);}
+
+/* 空態 */
+.empty{grid-column:1/-1;padding:5rem 2rem;text-align:center;color:var(--cm);}
+.empty h3{font-family:var(--fd);font-size:1.4rem;color:var(--dark);margin-bottom:.6rem;}
+
+/* ── 燈箱 ── */
+#lb{position:fixed;inset:0;z-index:9999;background:rgba(26,18,8,.97);display:none;align-items:stretch;overflow:hidden;}
+#lb.open{display:flex;animation:fadeIn .22s ease;}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.lb-inner{display:grid;grid-template-columns:1fr 360px;gap:2rem;max-width:1100px;width:100%;max-height:90vh;}
-.lb-img-wrap{background:var(--dark);display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:400px;}
-.lb-img-wrap img{max-width:100%;max-height:80vh;object-fit:contain;}
-.lb-info{overflow-y:auto;padding:.5rem 0;display:flex;flex-direction:column;gap:1rem;}
-.lb-close{position:fixed;top:1.5rem;right:2rem;background:none;border:none;color:var(--cl);font-size:1.8rem;cursor:pointer;z-index:10000;line-height:1;transition:color .2s;}
-.lb-close:hover{color:white;}
-.lb-sku{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rustL);}
-.lb-name{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:var(--warm);line-height:1.15;}
-.lb-section-title{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cm);margin-top:.25rem;margin-bottom:.3rem;}
-.lb-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(155,91,58,.1);}
-.lb-row:last-child{border-bottom:none;}
-.lb-key{font-size:.78rem;color:var(--cm);flex-shrink:0;width:80px;}
-.lb-val{font-size:.82rem;color:var(--cl);text-align:right;line-height:1.5;}
-.lb-contact{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;background:var(--rust);color:white;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s;}
-.lb-contact:hover{background:var(--rustL);}
-.lb-thumbs{display:flex;gap:.4rem;flex-wrap:wrap;}
-.lb-thumb{width:52px;height:40px;object-fit:cover;opacity:.55;cursor:pointer;transition:opacity .15s;border:1px solid transparent;}
+
+/* 燈箱：左側圖片區 */
+.lb-left{flex:1;display:flex;flex-direction:column;background:#0E0A06;min-width:0;}
+.lb-main-img{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:2rem;}
+.lb-main-img img{max-width:100%;max-height:calc(100vh - 140px);object-fit:contain;transition:opacity .25s;}
+.lb-thumbs{display:flex;gap:.5rem;padding:.75rem 1.5rem;border-top:1px solid rgba(155,91,58,.12);overflow-x:auto;flex-shrink:0;}
+.lb-thumb{width:60px;height:46px;object-fit:cover;opacity:.5;cursor:pointer;transition:opacity .15s;border:1px solid transparent;flex-shrink:0;}
 .lb-thumb:hover,.lb-thumb.active{opacity:1;border-color:var(--rust);}
+.lb-no-photo{flex:1;display:flex;align-items:center;justify-content:center;color:rgba(155,91,58,.2);font-size:4rem;}
+
+/* 燈箱：右側資訊區 */
+.lb-right{width:380px;flex-shrink:0;background:var(--mid);overflow-y:auto;display:flex;flex-direction:column;border-left:1px solid rgba(155,91,58,.15);}
+.lb-header{padding:1.5rem 1.75rem 1rem;border-bottom:1px solid rgba(155,91,58,.12);}
+.lb-series{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rustL);margin-bottom:.3rem;}
+.lb-name{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--warm);line-height:1.15;margin-bottom:.4rem;}
+.lb-sku{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cm);}
+
+/* 燈箱：資料區塊 */
+.lb-section{padding:1rem 1.75rem;border-bottom:1px solid rgba(155,91,58,.1);}
+.lb-section:last-of-type{border-bottom:none;}
+.lb-section-title{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rustL);margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem;}
+.lb-section-title::after{content:'';flex:1;height:1px;background:rgba(155,91,58,.15);}
+.lb-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.42rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.lb-row:last-child{border-bottom:none;}
+.lb-key{font-size:.75rem;color:var(--cm);flex-shrink:0;width:72px;padding-top:.05rem;}
+.lb-val{font-size:.8rem;color:var(--cl);text-align:right;line-height:1.55;max-width:220px;}
+
+/* 庫存狀態 badge */
+.stock-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.25rem .65rem;font-size:.68rem;font-weight:500;}
+.stock-badge::before{content:'';width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.sb-available{background:rgba(39,174,96,.12);color:#27AE60;}.sb-available::before{background:#27AE60;}
+.sb-order{background:rgba(232,149,26,.12);color:#E8951A;}.sb-order::before{background:#E8951A;}
+.sb-sold{background:rgba(138,132,128,.12);color:#8A8480;}.sb-sold::before{background:#8A8480;}
+
+/* 燈箱底部 CTA */
+.lb-footer{padding:1.25rem 1.75rem;margin-top:auto;background:rgba(155,91,58,.06);border-top:1px solid rgba(155,91,58,.12);}
+.lb-cta{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem;background:var(--rust);color:white;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s;font-family:var(--fb);}
+.lb-cta:hover{background:var(--rustL);}
+
+/* 燈箱關閉 */
+.lb-close{position:fixed;top:1.25rem;right:1.5rem;background:rgba(26,18,8,.6);border:1px solid rgba(155,91,58,.3);color:var(--cl);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10000;font-size:1rem;transition:all .2s;backdrop-filter:blur(4px);}
+.lb-close:hover{background:var(--rust);border-color:var(--rust);color:white;}
+
+/* FOOTER */
 footer{padding:1.75rem 4rem;background:var(--dark);display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(155,91,58,.1);}
-footer a{font-family:var(--fd);color:var(--warm);text-decoration:none;}
-footer a span{color:var(--rust);}
+footer a{font-family:var(--fd);color:var(--warm);text-decoration:none;}footer a span{color:var(--rust);}
 footer small{font-size:.7rem;color:var(--cm);}
+
+/* 手機 RWD */
+@media(max-width:768px){
+  .hero{padding:6rem 1.5rem 2.5rem;}
+  .filter-bar{padding:.75rem 1.5rem;}
+  #product-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+  .lb-right{width:100%;}.lb-left{display:none;}
+  #lb{flex-direction:column;}
+  .nav-links{display:none;}
+}
 </style>
 </head>
 <body>
@@ -115,43 +155,32 @@ footer small{font-size:.7rem;color:var(--cm);}
 </nav>
 
 <div class="hero">
-  <div class="hero-eye">作品影像集 · Gallery · Powered by Airtable</div>
+  <div class="hero-eye">作品影像集 · Gallery</div>
   <h1>每一件都是 <em>1/1</em>，<br>每一件都有鋼筋</h1>
-  <p class="hero-sub">流構系列 · 標準系列 · 客製系列 · 畫作系列<br>再生廢料佔比 60–70%，每件附材料溯源文件</p>
+  <p class="hero-sub">流構系列 · 標準系列 · 客製系列 · 畫作系列<br>再生廢料佔比 60–70%，每件附材料溯源文件，點擊查看完整資訊</p>
 </div>
 
 <div class="filter-bar">
   <span class="filter-label">篩選：</span>
-  <button class="filter-btn active" data-filter="all">全部</button>
-  <button class="filter-btn" data-filter="流構系列">流構系列</button>
-  <button class="filter-btn" data-filter="標準系列">標準系列</button>
-  <button class="filter-btn" data-filter="客製系列">客製系列</button>
-  <button class="filter-btn" data-filter="畫作系列">畫作系列</button>
-  <button class="filter-btn" data-filter="有庫存">有現貨</button>
-  <span class="filter-count" id="filter-count"></span>
+  <button class="filter-btn active" data-f="all">全部</button>
+  <button class="filter-btn" data-f="流構系列">流構系列</button>
+  <button class="filter-btn" data-f="標準系列">標準系列</button>
+  <button class="filter-btn" data-f="客製系列">客製系列</button>
+  <button class="filter-btn" data-f="畫作系列">畫作系列</button>
+  <button class="filter-btn" data-f="available">有現貨</button>
+  <span class="filter-count" id="count"></span>
 </div>
 
-<div id="status-bar">
-  <div class="spin"></div>
-  <span id="status-text">正在從 Airtable 載入作品資料⋯</span>
-</div>
-<div class="err-banner" id="err-banner"></div>
+<div id="product-grid"></div>
 
-<div id="product-grid">
-  <div class="skeleton"><div class="skel-img"></div><div class="skel-line w80"></div><div class="skel-line w60"></div><div class="skel-line w45"></div></div>
-  <div class="skeleton"><div class="skel-img"></div><div class="skel-line w80"></div><div class="skel-line w60"></div><div class="skel-line w45"></div></div>
-  <div class="skeleton"><div class="skel-img"></div><div class="skel-line w80"></div><div class="skel-line w60"></div><div class="skel-line w45"></div></div>
-  <div class="skeleton"><div class="skel-img"></div><div class="skel-line w80"></div><div class="skel-line w60"></div><div class="skel-line w45"></div></div>
-  <div class="skeleton"><div class="skel-img"></div><div class="skel-line w80"></div><div class="skel-line w60"></div><div class="skel-line w45"></div></div>
-  <div class="skeleton"><div class="skel-img"></div><div class="skel-line w80"></div><div class="skel-line w60"></div><div class="skel-line w45"></div></div>
-</div>
-
-<div id="lightbox">
-  <button class="lb-close" onclick="closeLightbox()">✕</button>
-  <div class="lb-inner">
-    <div class="lb-img-wrap"><img id="lb-main-img" src="" alt=""></div>
-    <div class="lb-info" id="lb-info"></div>
+<!-- 燈箱 -->
+<div id="lb">
+  <button class="lb-close" onclick="closeLb()" title="關閉">✕</button>
+  <div class="lb-left" id="lb-left">
+    <div class="lb-main-img" id="lb-main-img"></div>
+    <div class="lb-thumbs" id="lb-thumbs"></div>
   </div>
+  <div class="lb-right" id="lb-right"></div>
 </div>
 
 <footer>
@@ -160,250 +189,194 @@ footer small{font-size:.7rem;color:var(--cm);}
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════
-   ⚙️  設定區 — 只需修改這裡
-   ═══════════════════════════════════════════ */
-const CONFIG = {
-  AIRTABLE_TOKEN: '',  // Token 已移至 Netlify 環境變數（AIRTABLE_TOKEN）
-  BASE_ID:        'app7TEyzrUHAXOscY',
-  TABLE_NAME:     'Concredia.Lab',
-  FIELDS: {
-    sku:      'SKU產品編號',
-    name:     '作品名稱',
-    category: '類別',
-    material: '材料',
-    method:   '工法',
-    func:     '功能',
-    suitable: '適合',
-    spec:     '規格公分（長Ｘ寬Ｘ高）',
-    weight:   '重量（克）',
-    stock:    '庫存',
-    images:   'AI圖',
-  },
-  USE_PROXY: true,
-  PROXY_URL: '/.netlify/functions/airtable',
-};
+// ── 讀取 SSG 產生的 JSON（部署時由 scripts/fetch-airtable.js 產生）
+let ALL = [];
+let CURRENT_FILTER = 'all';
 
-let allProducts = [];
-let currentFilter = 'all';
+// 庫存文字
+const STOCK_TEXT   = { available:'有現貨', order:'可預訂', sold:'已售出', unknown:'洽詢' };
+const STOCK_BADGE  = { available:'sb-available', order:'sb-order', sold:'sb-sold', unknown:'sb-sold' };
+const STOCK_DOT    = { available:'s-available',  order:'s-order',  sold:'s-sold', unknown:'' };
 
-/* 抓資料 */
-async function fetchAirtable() {
-  const fieldValues = Object.values(CONFIG.FIELDS);
-  let records = [], offset = null;
-  do {
-    const params = new URLSearchParams();
-    fieldValues.forEach(f => params.append('fields[]', f));
-    params.set('pageSize', '100');
-    if (offset) params.set('offset', offset);
-
-    const url = CONFIG.USE_PROXY
-      ? `${CONFIG.PROXY_URL}?${params}`
-      : `https://api.airtable.com/v0/${CONFIG.BASE_ID}/${encodeURIComponent(CONFIG.TABLE_NAME)}?${params}`;
-    const headers = CONFIG.USE_PROXY ? {} : { Authorization: `Bearer ${CONFIG.AIRTABLE_TOKEN}` };
-
-    const res = await fetch(url, { headers });
-    if (!res.ok) throw new Error(`HTTP ${res.status} — ${(await res.text()).slice(0,200)}`);
-    const json = await res.json();
-    records = records.concat(json.records || []);
-    offset  = json.offset || null;
-  } while (offset);
-  return records;
-}
-
-/* 解析 record */
-function parse(record) {
-  const f = record.fields, F = CONFIG.FIELDS;
-  const imgs = (f[F.images] || []).map(a => ({
-    url:   a.url, thumb: a.thumbnails?.large?.url || a.url, name: a.filename
-  }));
-  const stockRaw = (f[F.stock] || '').toString().trim();
-  const stockStatus = /有|available/i.test(stockRaw) ? 'available'
-    : /訂|order|預/i.test(stockRaw) ? 'order'
-    : /無|sold|out/i.test(stockRaw) ? 'sold' : 'unknown';
-  return {
-    id: record.id,
-    sku:       f[F.sku]      || '—',
-    name:      f[F.name]     || '未命名作品',
-    category:  f[F.category] || '',
-    material:  f[F.material] || '',
-    method:    f[F.method]   || '',
-    func:      f[F.func]     || '',
-    suitable:  f[F.suitable] || '',
-    spec:      f[F.spec]     || '',
-    weight:    f[F.weight]   || '',
-    stockRaw, stockStatus, images: imgs,
-    mainImg: imgs[0]?.thumb || '',
-  };
-}
-
-function getSeries(p) {
-  if (/FL/i.test(p.sku) || /流構/i.test(p.category)) return '流構系列';
-  if (/RM/i.test(p.sku) || /標準/i.test(p.category)) return '標準系列';
-  if (/CM/i.test(p.sku) || /客製/i.test(p.category)) return '客製系列';
-  if (/AW/i.test(p.sku) || /畫作/i.test(p.category)) return '畫作系列';
-  return p.category || '其他';
-}
-
-function renderGrid(products, filter) {
+// ── 載入資料
+async function loadData() {
   const grid = document.getElementById('product-grid');
-  let filtered = products;
-  if (filter === '有庫存') filtered = products.filter(p => p.stockStatus === 'available');
-  else if (filter !== 'all') filtered = products.filter(p => getSeries(p) === filter);
+  try {
+    const res  = await fetch('/_data/products.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
 
-  document.getElementById('filter-count').textContent = `${filtered.length} / ${products.length} 件`;
+    if (json.error || !json.products?.length) {
+      grid.innerHTML = `<div class="empty">
+        <h3>作品資料載入中</h3>
+        <p style="font-size:.85rem;margin-top:.5rem;">Airtable 資料同步後即會顯示</p>
+      </div>`;
+      return;
+    }
 
-  if (!filtered.length) {
-    grid.innerHTML = `<div class="empty-state"><h3>沒有符合條件的作品</h3><p>試試其他篩選條件</p></div>`;
+    ALL = json.products;
+    render(ALL, CURRENT_FILTER);
+
+  } catch(e) {
+    console.error(e);
+    grid.innerHTML = `<div class="empty"><h3>暫時無法載入</h3><p>${e.message}</p></div>`;
+  }
+}
+
+// ── 渲染 Grid
+function render(products, filter) {
+  const grid = document.getElementById('product-grid');
+  let list = products;
+  if (filter === 'available') list = products.filter(p => p.stockStatus === 'available');
+  else if (filter !== 'all') list = products.filter(p => p.series === filter);
+
+  document.getElementById('count').textContent = `${list.length} / ${products.length} 件`;
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty"><h3>沒有符合的作品</h3></div>`;
     return;
   }
 
-  const dotClass = { available:'stock-available', order:'stock-order', sold:'stock-sold', unknown:'' };
-  const dotTip   = { available:'有現貨', order:'可預訂', sold:'已售出', unknown:'' };
-
-  grid.innerHTML = filtered.map(p => {
-    const series = getSeries(p);
+  grid.innerHTML = list.map(p => {
     const imgHTML = p.mainImg
-      ? `<img src="${p.mainImg}" alt="${p.name}" loading="lazy" onload="this.classList.add('loaded')">`
-      : `<div class="card-img-placeholder">🧱</div>`;
-    const dotHTML = dotClass[p.stockStatus]
-      ? `<div class="card-stock-dot ${dotClass[p.stockStatus]}" title="${dotTip[p.stockStatus]}"></div>` : '';
-    const tags = [p.method, p.func].filter(Boolean)
-      .map(t => `<span class="card-tag">${t}</span>`).join('');
-    return `<div class="product-card" data-series="${series}" data-stock="${p.stockStatus}" onclick="openLightbox('${p.id}')">
-      <div class="card-img-wrap">${imgHTML}<div class="card-series-badge">${series}</div>${dotHTML}</div>
+      ? `<img src="${p.mainImg}" alt="${esc(p.name)}" loading="lazy" onload="this.classList.add('loaded')">`
+      : `<div class="no-photo"><span>🧱</span><small>拍攝中</small></div>`;
+    const dotClass = STOCK_DOT[p.stockStatus] || '';
+    const dotHTML  = dotClass ? `<div class="stock-dot ${dotClass}" title="${STOCK_TEXT[p.stockStatus]}"></div>` : '';
+    const tags     = [p.method, p.func].filter(Boolean).map(t => `<span class="card-tag">${esc(t)}</span>`).join('');
+    return `
+    <div class="product-card" onclick="openLb('${p.id}')">
+      <div class="card-img-wrap">
+        ${imgHTML}
+        <div class="series-badge">${esc(p.series)}</div>
+        ${dotHTML}
+      </div>
       <div class="card-body">
-        <div class="card-sku">${p.sku}</div>
-        <div class="card-name">${p.name}</div>
-        <div class="card-material">${p.material || '—'}</div>
+        <div class="card-sku">${esc(p.sku)}</div>
+        <div class="card-name">${esc(p.name)}</div>
+        <div class="card-meta">${esc(p.material) || '—'}</div>
         ${tags ? `<div class="card-tags">${tags}</div>` : ''}
       </div>
       <div class="card-footer">
-        <div class="card-spec">${p.spec || '規格洽詢'}</div>
-        <button class="card-cta">查看詳情 →</button>
+        <div class="card-spec">${esc(p.spec) || '規格洽詢'}</div>
+        <button class="card-open">查看詳情 →</button>
       </div>
     </div>`;
   }).join('');
 }
 
-function openLightbox(id) {
-  const p = allProducts.find(x => x.id === id);
+// ── 燈箱
+function openLb(id) {
+  const p = ALL.find(x => x.id === id);
   if (!p) return;
-  const stockText = {available:'🟢 有現貨', order:'🟡 可預訂', sold:'⚫ 已售出', unknown:'—'};
-  const series = getSeries(p);
-  document.getElementById('lb-main-img').src = p.mainImg || '';
-  document.getElementById('lb-main-img').alt = p.name;
-  const thumbs = p.images.length > 1
-    ? `<div class="lb-thumbs">${p.images.map((img,i) =>
-        `<img class="lb-thumb ${i===0?'active':''}" src="${img.thumb}" onclick="switchImg('${img.url}',this)" loading="lazy">`
-      ).join('')}</div>` : '';
-  document.getElementById('lb-info').innerHTML = `
-    <div><div class="lb-sku">${p.sku} · ${series}</div><div class="lb-name">${p.name}</div></div>
-    ${thumbs}
-    <div>
-      <div class="lb-section-title">材料 & 工法</div>
-      ${p.material ? `<div class="lb-row"><span class="lb-key">材料</span><span class="lb-val">${p.material}</span></div>` : ''}
-      ${p.method   ? `<div class="lb-row"><span class="lb-key">工法</span><span class="lb-val">${p.method}</span></div>` : ''}
-      ${p.func     ? `<div class="lb-row"><span class="lb-key">功能</span><span class="lb-val">${p.func}</span></div>` : ''}
+
+  // 主圖
+  const mainWrap = document.getElementById('lb-main-img');
+  if (p.images.length) {
+    mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull || p.mainImg}" alt="${esc(p.name)}">`;
+  } else {
+    mainWrap.innerHTML = `<div class="lb-no-photo">🧱</div>`;
+  }
+
+  // 縮圖
+  const thumbsWrap = document.getElementById('lb-thumbs');
+  if (p.images.length > 1) {
+    thumbsWrap.style.display = 'flex';
+    thumbsWrap.innerHTML = p.images.map((img, i) =>
+      `<img class="lb-thumb ${i===0?'active':''}" src="${img.thumb_sm}"
+            onclick="switchImg('${img.thumb_xl||img.url}',this)" loading="lazy">`
+    ).join('');
+  } else {
+    thumbsWrap.style.display = 'none';
+  }
+
+  // 右側資訊
+  const stockBadge  = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
+  const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>
+    `<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`
+  ).join('');
+
+  document.getElementById('lb-right').innerHTML = `
+    <div class="lb-header">
+      <div class="lb-series">${esc(p.series)}</div>
+      <div class="lb-name">${esc(p.name)}</div>
+      <div class="lb-sku">${esc(p.sku)}</div>
     </div>
-    <div>
-      <div class="lb-section-title">規格 & 庫存</div>
-      ${p.spec     ? `<div class="lb-row"><span class="lb-key">規格</span><span class="lb-val">${p.spec}</span></div>` : ''}
-      ${p.weight   ? `<div class="lb-row"><span class="lb-key">重量</span><span class="lb-val">${p.weight} g</span></div>` : ''}
-      ${p.suitable ? `<div class="lb-row"><span class="lb-key">適合</span><span class="lb-val">${p.suitable}</span></div>` : ''}
-      <div class="lb-row"><span class="lb-key">庫存</span><span class="lb-val">${stockText[p.stockStatus]}</span></div>
+
+    <div class="lb-section">
+      <div class="lb-section-title">規格</div>
+      ${infoRows([
+        ['尺寸', p.spec],
+        ['重量', p.weight ? p.weight + ' g' : ''],
+        ['工法', p.method],
+        ['材料', p.material],
+      ])}
     </div>
-    <a class="lb-contact" href="contact.html?ref=${encodeURIComponent(p.sku)}">詢問這件作品 →</a>`;
-  document.getElementById('lightbox').classList.add('open');
+
+    <div class="lb-section">
+      <div class="lb-section-title">用途</div>
+      ${infoRows([
+        ['功能', p.func],
+        ['適合', p.suitable],
+        ['系列', p.series],
+      ])}
+    </div>
+
+    <div class="lb-section">
+      <div class="lb-section-title">庫存</div>
+      <div style="padding:.5rem 0;">${stockBadge}</div>
+    </div>
+
+    <div class="lb-footer">
+      <a class="lb-cta" href="contact.html?ref=${encodeURIComponent(p.sku)}">
+        詢問這件作品 →
+      </a>
+    </div>`;
+
+  document.getElementById('lb').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function switchImg(url, el) {
-  document.getElementById('lb-main-img').src = url;
+  const img = document.getElementById('lb-img');
+  if (img) { img.style.opacity = '0'; img.src = url; img.onload = ()=>{ img.style.opacity='1'; }; }
   document.querySelectorAll('.lb-thumb').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
 }
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
+
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if (e.key==='Escape') closeLightbox(); });
-document.getElementById('lightbox').addEventListener('click', function(e){ if(e.target===this) closeLightbox(); });
 
+// ESC + 點背景關閉
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLb(); });
+document.getElementById('lb').addEventListener('click', function(e){
+  if(e.target===this) closeLb();
+});
+
+// ── 篩選
 document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
+  btn.addEventListener('click', function(){
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     this.classList.add('active');
-    currentFilter = this.dataset.filter;
-    renderGrid(allProducts, currentFilter);
+    CURRENT_FILTER = this.dataset.f;
+    render(ALL, CURRENT_FILTER);
   });
 });
 
-async function init() {
-  const statusText = document.getElementById('status-text');
-  const statusBar  = document.getElementById('status-bar');
-  const errBanner  = document.getElementById('err-banner');
-
-  if (CONFIG.AIRTABLE_TOKEN === 'YOUR_AIRTABLE_TOKEN_HERE') {
-    statusBar.innerHTML = '⚠️ 尚未填入 Airtable Token，請查看下方說明';
-    errBanner.innerHTML = `
-      <strong>設定步驟：</strong><br>
-      1. 到 <a href="https://airtable.com/create/tokens" target="_blank">airtable.com/create/tokens</a> 建立 Personal Access Token<br>
-      2. 設定 <code>data.records:read</code> 權限，選擇 Base <code>patXN0zJGsTou2VbY</code><br>
-      3. 複製 token，貼到此頁面 &lt;script&gt; 區的 <code>AIRTABLE_TOKEN</code> 欄位<br>
-      <br>
-      <strong>建議（更安全）：</strong>使用 Netlify 環境變數 + Function 代理，token 不暴露在前端。<br>
-      在 Netlify → Site Settings → Environment Variables 設定 <code>AIRTABLE_TOKEN</code>，
-      建立 <code>netlify/functions/airtable.js</code>（範本已附在頁面原始碼底部），
-      然後將 <code>CONFIG.USE_PROXY = true</code>。`;
-    errBanner.classList.add('show');
-    document.getElementById('product-grid').innerHTML = `<div class="empty-state"><h3>請設定 Airtable Token</h3><p>查看上方橘色說明區</p></div>`;
-    return;
-  }
-
-  try {
-    const records = await fetchAirtable();
-    allProducts = records.map(parse);
-    statusBar.style.display = 'none';
-    renderGrid(allProducts, currentFilter);
-  } catch (err) {
-    console.error(err);
-    statusBar.innerHTML = `❌ ${err.message}`;
-    errBanner.innerHTML = `<strong>載入失敗：</strong>${err.message}<br>
-      常見原因：Token 錯誤、欄位名稱不符、CORS（改用 Netlify Function 代理）`;
-    errBanner.classList.add('show');
-    document.getElementById('product-grid').innerHTML = `<div class="empty-state"><h3>載入失敗</h3><p>${err.message}</p></div>`;
-  }
-}
-
+// ── Nav scroll
 window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
 });
 
-init();
+// ── XSS 防護
+function esc(str) {
+  return String(str||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// 啟動
+loadData();
 </script>
-<!--
-Netlify Function 代理（安全方案）
-建立 netlify/functions/airtable.js：
-
-exports.handler = async (event) => {
-  const params = new URLSearchParams(event.queryStringParameters || {});
-  const url = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${encodeURIComponent(process.env.AIRTABLE_TABLE)}?${params}`;
-  const res = await fetch(url, { headers: { Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}` } });
-  const data = await res.json();
-  return {
-    statusCode: 200,
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-    body: JSON.stringify(data)
-  };
-};
-
-Netlify 環境變數設定：
-  AIRTABLE_TOKEN    = 你的token
-  AIRTABLE_BASE_ID  = app7TEyzrUHAXOscY
-  AIRTABLE_TABLE    = Concredia.Lab
-
-然後：CONFIG.USE_PROXY = true
--->
 </body>
 </html>

@@ -1,8 +1,18 @@
 [build]
+  command   = "node scripts/fetch-airtable.js"
   functions = "netlify/functions"
+  publish   = "."
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [[headers]]
-  for = "/.netlify/functions/*"
+  for = "/*"
   [headers.values]
-    Access-Control-Allow-Origin = "*"
-    Access-Control-Allow-Methods = "GET, OPTIONS"
+    X-Frame-Options    = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/_data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"

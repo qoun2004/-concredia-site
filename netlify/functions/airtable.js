@@ -1,7 +1,7 @@
 // Concredia.Lab · Airtable 代理 Function
 // Token 存在 Netlify 環境變數，不暴露於前端
 exports.handler = async (event) => {
-  const token   = process.env.AIRTABLE_TOKEN;
+  const token   = process.env.AIRTABLE_TOKEN || '';
   const baseId  = process.env.AIRTABLE_BASE_ID  || 'app7TEyzrUHAXOscY';
   const table   = process.env.AIRTABLE_TABLE     || 'Concredia.Lab';
 
