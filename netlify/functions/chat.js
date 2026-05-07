@@ -1,78 +1,117 @@
-exports.handler = async function(event, context) {
-  // 只允許 POST
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+// Concredia.Lab · AI 助理 + Airtable 代理 Function
+
+exports.handler = async (event) => {
+  const path = event.path || '';
+
+  // ── 路由：Airtable 代理 (/airtable)
+  if (path.endsWith('/airtable') || event.queryStringParameters?.airtable) {
+    return handleAirtable(event);
   }
 
-  // CORS
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json',
-  };
+  // ── 路由：AI 助理 (POST /chat)
+  return handleChat(event);
+};
 
-  if (event.httpMethod === 'OPTIONS') {
-    return { statusCode: 200, headers, body: '' };
+// ── Airtable 代理
+async function handleAirtable(event) {
+  const token  = process.env.AIRTABLE_TOKEN;
+  const baseId = process.env.AIRTABLE_BASE_ID || 'app7TEyzrUHAXOscY';
+  const table  = process.env.AIRTABLE_TABLE   || 'Concredia.Lab';
+
+  if (!token) {
+    return { statusCode:500, body: JSON.stringify({ error:'AIRTABLE_TOKEN 未設定' }) };
   }
+
+  const params = new URLSearchParams(event.queryStringParameters || {});
+  params.delete('airtable');
+  const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}?${params}`;
 
   try {
-    const { messages } = JSON.parse(event.body);
+    const res  = await fetch(url, { headers:{ Authorization:`Bearer ${token}` } });
+    const data = await res.json();
+    return {
+      statusCode: res.status,
+      headers:{ 'Content-Type':'application/json','Access-Control-Allow-Origin':'*' },
+      body: JSON.stringify(data),
+    };
+  } catch(err) {
+    return { statusCode:500, body:JSON.stringify({ error:err.message }) };
+  }
+}
 
-    const SYSTEM_PROMPT = `你是 Concredia.Lab 的 AI 助理，代表這個品牌回答問題。請用繁體中文回答，語氣親切專業，回答簡潔（3-5句為佳）。
+// ── AI 助理
+async function handleChat(event) {
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+      body: ''
+    };
+  }
 
-關於 Concredia.Lab 的核心資訊：
-- 品牌：Concredia.Lab，士敏文品工作室，創辦人 Dr. Rovi Lee（李俊憲），國立中央大學營建管理博士，來自「孔固力庄」
-- 副品牌：Conga Taiwan 康加台灣，士敏小礦獸電子寵物遊戲，Slogan：每一塊廢料，都有牠的靈魂
-- 貨幣：康加幣（Conga Coin）
-- 核心技術：EAC（Exposed Aggregate Concrete）骨料裸露工法，水磨 #50 到 #5000，讓廢料的地質記憶重現
-- 材料：70%+ 再生廢料（碎磚、廢玻璃、爐石粉、再生骨料等）+ 30% 水泥，碳排削減 -62%，每件附材料溯源文件
-- 產品系列：① 流構系列 Flow Structure（模組化家具，可調高度，漂流木桌板）② Ready-made 標準量產（定錨桌几、水泥音響、燈具、Conbox 等）③ Custom-made 客製故事系列（企業 ESG 禮品、紀念磚等）
-- ESG 文件套件：材料溯源報告、碳足跡計算書（GRI 格式）、綠色採購符合聲明、品牌故事授權、2026 碳費預備文件，5個工作天提供
-- 企業合作：ESG 禮品採購 / 辦公商業空間採購 / 長期永續夥伴（企業提供廢料→轉化作品→回饋 ESG 文件）
-- 掃一張桌子：彰化竹塘鄉農會社區計畫，70% 在地廢料製成公共桌椅，Hub & Satellite 技術授權模式
-- 聯絡：concredialab@gmail.com
-- 網站：concredialab.netlify.app
-- 團隊：Rovi 老師（研發）、建凱 Kasper（品牌）、葳葳 Vivian（企業發展）、寶妹（首席士氣官）
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type':'application/json','Access-Control-Allow-Origin':'*' },
+      body: JSON.stringify({ reply:'AI 助理目前維護中，請直接 Email 聯繫 concredialab@gmail.com' })
+    };
+  }
 
-如果問到價格，請說「價格依規格而定，歡迎來信 concredialab@gmail.com 或填寫聯絡表單，我們會在2個工作天內回覆報價」。
-如果問到不確定的細節，請誠實說「這個問題建議直接聯絡我們確認，Email: concredialab@gmail.com」。
-不要編造產品規格或價格數字。`;
+  let userMessage = '你好';
+  try {
+    const body = JSON.parse(event.body || '{}');
+    userMessage = body.message || '你好';
+  } catch(e) {}
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const systemPrompt = `你是 Concredia.Lab 士敏文品工作室的 AI 助理，代表品牌創辦人 Rovi Lee（李俊憲）博士回答問題。
+
+品牌核心：
+- 用台灣的營建廢棄物（再生磚、廢玻璃、爐石粉、蚵殼）製作水泥家具、音響、藝術作品
+- EAC 骨料裸露工法，台灣自主研發，9年研發
+- 再生廢料佔比 60-70%，每件附材料溯源文件
+- 副品牌：Conga Taiwan 康加台灣，士敏小礦獸遊戲
+- 核心理念：「廢棄物是被錯置的資源」「為台灣的營建廢棄物找一個出路」
+
+回答風格：
+- 親切、有溫度，帶有台灣職人精神
+- 重點簡潔，不超過 150 字
+- 如需要對接洽詢，引導到 concredialab@gmail.com
+- 繁體中文回答`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 400,
-        system: SYSTEM_PROMPT,
-        messages: messages,
-      }),
+        max_tokens: 300,
+        system: systemPrompt,
+        messages: [{ role:'user', content: userMessage }]
+      })
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error?.message || 'API 錯誤');
-    }
+    const data = await res.json();
+    const reply = data.content?.[0]?.text || '抱歉，我現在無法回應，請直接 Email 聯繫。';
 
     return {
       statusCode: 200,
-      headers,
-      body: JSON.stringify({
-        reply: data.content[0].text,
-      }),
+      headers: { 'Content-Type':'application/json','Access-Control-Allow-Origin':'*' },
+      body: JSON.stringify({ reply })
     };
-  } catch (error) {
+  } catch(err) {
     return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({
-        reply: '抱歉，暫時無法回應。請直接聯絡 concredialab@gmail.com',
-      }),
+      statusCode: 200,
+      headers: { 'Content-Type':'application/json','Access-Control-Allow-Origin':'*' },
+      body: JSON.stringify({ reply:'目前服務暫時中斷，請直接 Email 聯繫 concredialab@gmail.com' })
     };
   }
-};
+}
