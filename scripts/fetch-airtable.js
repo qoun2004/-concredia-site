@@ -14,10 +14,9 @@ const fs    = require('fs');
 const path  = require('path');
 
 // ── 設定 ──────────────────────────────────────────
-const TOKEN    = process.env.AIRTABLE_TOKEN
-              || '';
+const TOKEN    = process.env.AIRTABLE_TOKEN;  // 從 Netlify 環境變數讀取
 const BASE_ID  = process.env.AIRTABLE_BASE_ID  || 'app7TEyzrUHAXOscY';
-const TABLE    = process.env.AIRTABLE_TABLE    || 'Concredia.Lab';
+const TABLE    = process.env.AIRTABLE_TABLE    || 'tblxnasqPBb1Su6PA';  // Table ID，更穩定
 const OUT_DIR  = path.join(__dirname, '..', '_data');
 const OUT_FILE = path.join(OUT_DIR, 'products.json');
 
@@ -65,7 +64,10 @@ async function fetchAll() {
     if (offset) params.set('offset', offset);
 
     const url = `https://api.airtable.com/v0/${BASE_ID}/${encodeURIComponent(TABLE)}?${params}`;
-    console.log(`  抓取中${offset ? '（分頁）' : ''}... ${url.slice(0, 80)}`);
+    console.log(`  BASE_ID:  ${BASE_ID}`);
+    console.log(`  TABLE:    ${TABLE}`);
+    console.log(`  TOKEN:    ${TOKEN ? TOKEN.slice(0,12) + '...' + TOKEN.slice(-4) : '(空)'}`);
+    console.log(`  URL:      ${url.slice(0, 100)}`);
 
     const { status, data } = await httpsGet(url, {
       Authorization: `Bearer ${TOKEN}`,

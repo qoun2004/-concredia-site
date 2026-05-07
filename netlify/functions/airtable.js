@@ -3,7 +3,7 @@
 exports.handler = async (event) => {
   const token   = process.env.AIRTABLE_TOKEN || '';
   const baseId  = process.env.AIRTABLE_BASE_ID  || 'app7TEyzrUHAXOscY';
-  const table   = process.env.AIRTABLE_TABLE     || 'Concredia.Lab';
+  const table   = process.env.AIRTABLE_TABLE     || 'tblxnasqPBb1Su6PA';
 
   if (!token) {
     return {
