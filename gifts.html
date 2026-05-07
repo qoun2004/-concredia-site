@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>節慶禮品 · 企業禮贈品 — Concredia.Lab</title>
+<meta name="description" content="情人節、母親節、父親節、中秋、過年、雙11、ESG企業禮品、綠色採購。台灣最硬的禮物——水泥職人手作，每件唯一，可客製刻字。">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --concrete-dark:#1A1208;
+  --concrete:#3D2B10;
+  --rust:#9B5B3A;
+  --rust-light:#C47A54;
+  --rust-ll:#E8A882;
+  --cream:#F5F2ED;
+  --warm-white:#FAF8F5;
+  --concrete-light:#D4C8A8;
+  --concrete-mid:#8A8480;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-script:'Pinyon Script',cursive;
+  --font-body:'DM Sans',system-ui,sans-serif;
+}
+body{font-family:var(--font-body);background:var(--cream);color:var(--concrete-dark);}
+
+/* NAV */
+nav#mainNav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:rgba(26,18,8,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(155,91,58,0.15);
+  transition:all 0.3s;
+}
+nav#mainNav.scrolled{padding:0.7rem 2.5rem;background:rgba(26,18,8,0.98);}
+.nav-logo{font-family:var(--font-display);font-size:1.25rem;color:var(--warm-white);text-decoration:none;font-weight:700;letter-spacing:0.02em;}
+.nav-logo .dot{color:var(--rust);}
+.nav-logo .lab{font-weight:300;opacity:0.7;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(212,207,200,0.75);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--warm-white);}
+.nav-cta{padding:0.5rem 1.1rem;border:1px solid rgba(155,91,58,0.5);color:var(--rust-light);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
+.nav-cta:hover{background:var(--rust);color:white;border-color:var(--rust);}
+
+/* HERO 節慶 */
+.gift-hero{
+  padding:8rem 4rem 5rem;
+  background:var(--concrete-dark);
+  position:relative;overflow:hidden;
+  text-align:center;
+}
+.gift-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(155,91,58,0.12) 0%,transparent 70%);
+}
+.gift-hero-eye{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.25rem;}
+.gift-hero h1{
+  font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.5rem);
+  font-weight:700;color:var(--warm-white);line-height:1.1;margin-bottom:1rem;
+}
+.gift-hero h1 em{font-family:var(--font-script);font-size:1.3em;color:var(--rust-light);font-style:italic;}
+.gift-hero-sub{font-size:0.95rem;color:var(--concrete-light);opacity:0.82;max-width:580px;margin:0 auto 2.5rem;line-height:1.85;font-weight:300;}
+
+/* 節慶快捷導航 */
+.festival-nav{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;
+  padding:1.5rem 4rem;background:rgba(155,91,58,0.06);
+  border-bottom:1px solid rgba(155,91,58,0.12);
+  position:sticky;top:60px;z-index:10;
+  background:rgba(26,18,8,0.95);backdrop-filter:blur(8px);
+}
+.fnav-btn{
+  padding:0.4rem 1rem;border:1px solid rgba(155,91,58,0.35);
+  color:var(--concrete-light);font-size:0.72rem;letter-spacing:0.06em;
+  text-decoration:none;transition:all 0.2s;white-space:nowrap;
+}
+.fnav-btn:hover,.fnav-btn.active{background:var(--rust);border-color:var(--rust);color:white;}
+
+/* 通用 section 標題 */
+.sec-eye{display:flex;align-items:center;gap:0.6rem;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:0.6rem;}
+.sec-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;margin-bottom:0;}
+
+/* 節慶卡片區 */
+.festival-section{padding:5rem 4rem;scroll-margin-top:120px;}
+.festival-section:nth-child(even){background:var(--concrete-dark);}
+.festival-section:nth-child(even) .sec-eye{color:var(--rust-light);}
+.festival-section:nth-child(even) .sec-title{color:var(--warm-white);}
+.festival-section:nth-child(even) p{color:var(--concrete-light);}
+
+.gift-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.gift-card{
+  background:var(--warm-white);
+  border-top:3px solid var(--rust);
+  padding:1.75rem;
+  transition:transform 0.2s;
+  position:relative;overflow:hidden;
+}
+.festival-section:nth-child(even) .gift-card{background:#1C1510;}
+.gift-card:hover{transform:translateY(-4px);}
+.gift-card-icon{font-size:2rem;margin-bottom:0.75rem;}
+.gift-card-tag{
+  display:inline-block;padding:0.22rem 0.65rem;
+  background:rgba(155,91,58,0.1);border:1px solid rgba(155,91,58,0.3);
+  color:var(--rust);font-size:0.62rem;letter-spacing:0.1em;
+  margin-bottom:0.75rem;
+}
+.festival-section:nth-child(even) .gift-card-tag{background:rgba(155,91,58,0.2);color:var(--rust-light);}
+.gift-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.5rem;}
+.festival-section:nth-child(even) .gift-card h3{color:var(--warm-white);}
+.gift-card-slogan{
+  font-family:var(--font-display);font-size:0.88rem;font-style:italic;
+  color:var(--rust);margin-bottom:0.65rem;line-height:1.5;
+}
+.festival-section:nth-child(even) .gift-card-slogan{color:var(--rust-light);}
+.gift-card p{font-size:0.82rem;color:var(--concrete-mid);line-height:1.72;font-weight:300;}
+.festival-section:nth-child(even) .gift-card p{color:rgba(212,207,200,0.7);}
+
+/* 廣告詞大字 */
+.big-quote{
+  padding:3.5rem 4rem;
+  text-align:center;
+  background:var(--concrete-dark);
+  border-top:1px solid rgba(155,91,58,0.15);
+  border-bottom:1px solid rgba(155,91,58,0.15);
+}
+.big-quote blockquote{
+  font-family:var(--font-display);
+  font-size:clamp(1.5rem,3vw,2.8rem);
+  color:var(--warm-white);font-style:italic;
+  font-weight:700;line-height:1.25;
+  max-width:800px;margin:0 auto;
+}
+.big-quote blockquote em{color:var(--rust-light);}
+.big-quote cite{display:block;font-size:0.75rem;color:var(--concrete-mid);margin-top:1rem;letter-spacing:0.1em;font-style:normal;}
+
+/* 企業禮品區 */
+.corp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(155,91,58,0.1);margin-top:2.5rem;}
+.corp-cell{padding:2rem 2.5rem;background:var(--concrete-dark);}
+.corp-cell:nth-child(even){background:#1C1510;}
+.corp-no{font-family:var(--font-display);font-size:3rem;color:rgba(155,91,58,0.12);font-weight:700;line-height:1;margin-bottom:0.3rem;}
+.corp-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.5rem;}
+.corp-title{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--warm-white);margin-bottom:0.6rem;}
+.corp-slogan{font-family:var(--font-display);font-size:0.9rem;color:var(--rust-light);font-style:italic;margin-bottom:0.65rem;line-height:1.55;}
+.corp-desc{font-size:0.83rem;color:var(--concrete-light);opacity:0.8;line-height:1.75;font-weight:300;}
+
+/* 購物節 banner */
+.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(155,91,58,0.1);margin-top:2rem;}
+.shop-cell{
+  padding:1.5rem;text-align:center;
+  background:var(--warm-white);
+  transition:background 0.2s;
+}
+.shop-cell:hover{background:rgba(155,91,58,0.06);}
+.shop-date{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--rust);margin-bottom:0.2rem;}
+.shop-name{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--concrete-mid);margin-bottom:0.65rem;}
+.shop-line{font-size:0.82rem;color:var(--concrete-dark);font-style:italic;font-family:var(--font-display);line-height:1.5;}
+
+/* CTA 區 */
+.cta-banner{
+  padding:4.5rem 4rem;
+  background:var(--rust);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,transparent 60%);
+}
+.cta-banner h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);color:white;font-weight:700;margin-bottom:0.75rem;}
+.cta-banner p{font-size:0.92rem;color:rgba(255,255,255,0.85);max-width:500px;margin:0 auto 2rem;line-height:1.8;}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.btn-white{padding:0.85rem 2.2rem;background:white;color:var(--rust);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.2s;}
+.btn-white:hover{background:var(--cream);}
+.btn-outline-white{padding:0.85rem 2.2rem;border:1px solid rgba(255,255,255,0.5);color:white;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
+.btn-outline-white:hover{background:rgba(255,255,255,0.1);}
+
+/* 個人化刻字 */
+.engrave-section{
+  padding:5rem 4rem;
+  background:var(--concrete-dark);
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+.engrave-visual{
+  padding:2.5rem;background:rgba(155,91,58,0.06);
+  border:1px solid rgba(155,91,58,0.15);
+  text-align:center;
+  font-family:var(--font-script);font-size:3.5rem;
+  color:var(--rust-light);line-height:1.6;
+}
+.engrave-visual small{display:block;font-family:var(--font-body);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-mid);margin-top:1rem;}
+
+/* FOOTER */
+footer{padding:2rem 4rem;border-top:1px solid rgba(58,54,50,0.08);display:flex;align-items:center;justify-content:space-between;background:var(--concrete-dark);}
+footer a{font-family:var(--font-display);font-size:1rem;color:var(--warm-white);text-decoration:none;}
+footer a span{color:var(--rust);}
+footer small{font-size:0.72rem;color:var(--concrete-mid);}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
+    <ul class="nav-links">
+    <li><a href="impact.html">環境現況</a></li>
+    <li><a href="story.html">品牌故事</a></li>
+    <li><a href="blog.html">最新動態</a></li>
+    <li><a href="products.html">產品系列</a></li>
+    <li><a href="gifts.html" style="color:var(--rust-light);">🎁 節慶禮品</a></li>
+    <li><a href="gallery.html">作品集</a></li>
+    <li><a href="esg-dashboard.html">ESG</a></li>
+    <li><a href="recrete.html" style="color:var(--gold,#C8A96E);">👾 康加台灣</a></li>
+    <li><a href="fundraise.html" style="color:var(--rust,#9B5B3A);">募資計畫</a></li>
+    <li><a href="contact.html">聯絡</a></li>
+  </ul>
+  <a href="partners.html" class="nav-cta">合作夥伴</a>
+</nav>
+
+<!-- HERO -->
+<div class="gift-hero">
+  <div class="gift-hero-eye">節慶禮品 · 企業禮贈品 · 綠色採購</div>
+  <h1>世界上最重的禮物，<br>也是最難<em>扔掉</em>的那一件</h1>
+  <p class="gift-hero-sub">
+    水泥做的，有鋼筋的，用廢料做的。<br>
+    你送出去的不只是一件家具——是你想留下的那句話，刻進去，比你活得更久。
+  </p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;">
+    <span style="padding:0.35rem 1rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.72rem;letter-spacing:0.08em;">#可客製刻字</span>
+    <span style="padding:0.35rem 1rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.72rem;letter-spacing:0.08em;">#每件唯一 1/1</span>
+    <span style="padding:0.35rem 1rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.72rem;letter-spacing:0.08em;">#Taiwan No.1</span>
+    <span style="padding:0.35rem 1rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.72rem;letter-spacing:0.08em;">#ESG綠色採購</span>
+    <span style="padding:0.35rem 1rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.72rem;letter-spacing:0.08em;">#廢料升級轉化</span>
+  </div>
+</div>
+
+<!-- 快速跳轉 -->
+<div class="festival-nav">
+  <a href="#personal" class="fnav-btn active">💝 個人節慶</a>
+  <a href="#valentine" class="fnav-btn">情人節</a>
+  <a href="#parents" class="fnav-btn">父母親節</a>
+  <a href="#chinese" class="fnav-btn">🏮 華人節慶</a>
+  <a href="#shopping" class="fnav-btn">🛒 購物節</a>
+  <a href="#corporate" class="fnav-btn">🏢 企業禮贈品</a>
+  <a href="#esg" class="fnav-btn">🌿 ESG 綠色採購</a>
+  <a href="#engrave" class="fnav-btn">✍️ 客製刻字</a>
+</div>
+
+<!-- ═══ 個人情感節慶 ═══ -->
+<section id="personal" class="festival-section" style="background:var(--concrete-dark);">
+  <div class="sec-eye" style="color:var(--rust-light);">Personal Gifts · 個人情感禮品</div>
+  <h2 class="sec-title" style="color:var(--warm-white);">給某個人的話，<br>刻進最硬的材料裡</h2>
+  <p style="color:var(--concrete-light);opacity:0.8;max-width:580px;margin-top:0.75rem;line-height:1.85;font-weight:300;">水泥不會褪色、不會腐爛、不會被遺忘。你對某個人說不出口的話，讓它刻在這裡。</p>
+</section>
+
+<!-- 情人節 -->
+<section id="valentine" class="festival-section">
+  <div class="sec-eye">💝 Valentine's Day · 情人節</div>
+  <h2 class="sec-title">這個情人節，<br>送出世界最重的愛</h2>
+  <p style="margin-top:0.75rem;max-width:540px;font-size:0.92rem;color:var(--concrete-mid);line-height:1.82;font-weight:300;">玫瑰七天凋謝，巧克力吃完就沒了。水泥家具壓死都不會壞。</p>
+  <div class="gift-cards">
+    <div class="gift-card">
+      <div class="gift-card-icon">💎</div>
+      <div class="gift-card-tag">情人節限定</div>
+      <h3>定錨杯墊組 · 雙杯配對</h3>
+      <p class="gift-card-slogan">「你的重量，剛好填滿我這個坑。」</p>
+      <p>兩件同款，各刻一字——你的，和他/她的。每天放上杯子的瞬間，都是一次記起。</p>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">🌊</div>
+      <div class="gift-card-tag">客製刻字</div>
+      <h3>流構小茶几 · 客製款</h3>
+      <p class="gift-card-slogan">「蓋房子的規格，只為你一個人。」</p>
+      <p>附材料故事卡——告訴對方這塊石子來自哪裡，這件作品為什麼只有一個。</p>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">✂️</div>
+      <div class="gift-card-tag">限量畫作</div>
+      <h3>光影刻痕畫作 · 限定</h3>
+      <p class="gift-card-slogan">「愛一個人就像刻保麗龍——你要的不是，才是你要的。」</p>
+      <p>你選一個意象，Rovi 老師手工割製，親簽限量。全世界獨一張。</p>
+    </div>
+  </div>
+</section>
+
+<div class="big-quote">
+  <blockquote>「玫瑰七天凋謝，巧克力吃完就沒了。<br><em>水泥壓死都不會壞。</em>」</blockquote>
+  <cite>— Concredia.Lab · 情人節廣告詞</cite>
+</div>
+
+<!-- 父母親節 -->
+<section id="parents" class="festival-section" style="background:var(--concrete-dark);">
+  <div class="sec-eye" style="color:var(--rust-light);">👨‍👩‍👧 Mother's Day · Father's Day · 父母親節</div>
+  <h2 class="sec-title" style="color:var(--warm-white);">給他們一個<br>不會忘記的重量</h2>
+  <p style="color:var(--concrete-light);opacity:0.8;max-width:540px;margin-top:0.75rem;font-size:0.92rem;line-height:1.82;font-weight:300;">把你想說的話刻進去。他們每次喝茶，每次放東西，都會摸到那幾個字。</p>
+  <div class="gift-cards">
+    <div class="gift-card">
+      <div class="gift-card-icon">🍵</div>
+      <div class="gift-card-tag">母親節首選</div>
+      <h3>水泥茶盤 · 媽媽款</h3>
+      <p class="gift-card-slogan">「謝謝妳，把我養成這樣不怕重的人。」</p>
+      <p>刻上媽媽最常說的那句話，或是你一直想跟她說卻說不出口的字。</p>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">🧱</div>
+      <div class="gift-card-tag">父親節首選</div>
+      <h3>定錨桌面鎮紙 · 爸爸款</h3>
+      <p class="gift-card-slogan">「你教我蓋房子的方式，我用來做這張桌子。」</p>
+      <p>工地廢料，鋼筋，養護——父親節的禮物，就該這麼硬。</p>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">🏡</div>
+      <div class="gift-card-tag">雙親禮</div>
+      <h3>家用擺件組 · 永恆款</h3>
+      <p class="gift-card-slogan">「這個家，因為有你們，才有重量。」</p>
+      <p>一對搭配，放在他們家的茶几上，說你從來都記得家。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 華人傳統節慶 ═══ -->
+<section id="chinese" class="festival-section">
+  <div class="sec-eye">🏮 Traditional Chinese Festivals · 華人傳統節慶</div>
+  <h2 class="sec-title">台灣地氣，傳統底蘊，<br>最本土的禮物</h2>
+  <p style="max-width:540px;margin-top:0.75rem;font-size:0.92rem;color:var(--concrete-mid);line-height:1.82;font-weight:300;">廢料取自台灣各地——彰化蚵殼、花蓮玉礦、高雄爐石。每件作品裡，都有這片土地的記憶。</p>
+  <div class="gift-cards">
+    <div class="gift-card">
+      <div class="gift-card-icon">🧧</div>
+      <div class="gift-card-tag">農曆新年</div>
+      <h3>過年禮盆 · 年節款</h3>
+      <p class="gift-card-slogan">「這一年，用最硬的方式把祝福刻下來。」</p>
+      <p>刻上家族姓氏、生肖或一個字——土、金、福。送長輩，送至親，送一個會留下來的新年。</p>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">🥮</div>
+      <div class="gift-card-tag">中秋節</div>
+      <h3>月光茶几 · 中秋款</h3>
+      <p class="gift-card-slogan">「月餅吃完了，這張桌子還在。」</p>
+      <p>中秋送禮，送一件可以傳下去的東西。月圓形、廢玻璃骨料，光線折射像月光。</p>
+    </div>
+    <div class="gift-card">
+      <div class="gift-card-icon">🏮</div>
+      <div class="gift-card-tag">元宵 / 端午</div>
+      <h3>節慶擺件 · 文化限定</h3>
+      <p class="gift-card-slogan">「廟宇的圖騰，刻進你家的桌子裡。」</p>
+      <p>結合台灣傳統宗教圖案、地方文化符號，與 Rovi 老師合創一件帶有台灣靈魂的作品。</p>
+    </div>
+  </div>
+</section>
+
+<div class="big-quote">
+  <blockquote>「台灣地氣，世界最硬的桌子。<br><em>你來自哪裡，就用那個地方的材料。</em>」</blockquote>
+  <cite>— Concredia.Lab · 台灣本土 DNA</cite>
+</div>
+
+<!-- ═══ 電商購物節 ═══ -->
+<section id="shopping" class="festival-section" style="background:var(--concrete-dark);">
+  <div class="sec-eye" style="color:var(--rust-light);">🛒 Shopping Festivals · 電商購物節</div>
+  <h2 class="sec-title" style="color:var(--warm-white);">不是什麼都要打折，<br>有些東西買貴才對</h2>
+  <p style="color:var(--concrete-light);opacity:0.8;max-width:540px;margin-top:0.75rem;font-size:0.92rem;line-height:1.82;font-weight:300;">購物節快閃聯名方案：限定款刻字、盲盒材料包、士敏小礦獸啟動碼。庫存不多，過了就沒有。</p>
+
+  <div class="shop-grid" style="margin-top:2rem;">
+    <div class="shop-cell">
+      <div class="shop-date">2/14</div>
+      <div class="shop-name">情人節</div>
+      <div class="shop-line">「最重的愛，送最特別的人」<br>雙件刻字特惠</div>
+    </div>
+    <div class="shop-cell">
+      <div class="shop-date">3/8</div>
+      <div class="shop-name">婦女節</div>
+      <div class="shop-line">「不需要玫瑰，需要一張好桌子」<br>女性限定款</div>
+    </div>
+    <div class="shop-cell">
+      <div class="shop-date">5/11</div>
+      <div class="shop-name">母親節</div>
+      <div class="shop-line">「謝謝妳，把我養成這樣不怕重的人」<br>媽媽刻字款</div>
+    </div>
+    <div class="shop-cell">
+      <div class="shop-date">6/8</div>
+      <div class="shop-name">父親節</div>
+      <div class="shop-line">「你教我蓋房子，我做這張桌子」<br>爸爸專屬款</div>
+    </div>
+    <div class="shop-cell">
+      <div class="shop-date">7/7</div>
+      <div class="shop-name">七夕情人節</div>
+      <div class="shop-line">「牛郎織女都只有一年一次，<br>這張桌子每天都在」</div>
+    </div>
+    <div class="shop-cell">
+      <div class="shop-date">9/15</div>
+      <div class="shop-name">中秋</div>
+      <div class="shop-line">「月餅吃完了，這件還在」<br>月光骨料限定</div>
+    </div>
+    <div class="shop-cell">
+      <div class="shop-date" style="font-size:1rem;">11/11</div>
+      <div class="shop-name">雙十一</div>
+      <div class="shop-line">「買一堆不如買一件對的」<br>盲盒礦獸材料包</div>
+    </div>
+    <div class="shop-cell">
+      <div class="shop-date" style="font-size:1rem;">12/12</div>
+      <div class="shop-name">雙十二 · 聖誕</div>
+      <div class="shop-line">「聖誕老人送不起，但你送得起」<br>年終限定方案</div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:rgba(155,91,58,0.08);border-left:3px solid var(--rust);">
+    <p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.75;">
+      ⚡ <strong style="color:var(--warm-white);">購物節限定策略</strong>：每個購物節推出限量（20–50件）節日版刻字，訂購即附專屬材料故事卡 + 士敏小礦獸啟動碼。不打折，只限量——因為這種東西沒有第二件。
+    </p>
+  </div>
+</section>
+
+<!-- ═══ 企業禮贈品 ═══ -->
+<section id="corporate" class="festival-section">
+  <div class="sec-eye">🏢 Corporate Gifts · 企業禮贈品</div>
+  <h2 class="sec-title">不是紙袋裡的那種禮物，<br>是放在會議桌上的那一件</h2>
+  <p style="max-width:540px;margin-top:0.75rem;font-size:0.92rem;color:var(--concrete-mid);line-height:1.82;font-weight:300;">企業尾牙、週年慶、開幕落成、獎勵旅遊——送一件說得出故事的東西。</p>
+
+  <div class="corp-grid">
+    <div class="corp-cell">
+      <div class="corp-no">01</div>
+      <div class="corp-label">企業尾牙 / 年終禮品</div>
+      <div class="corp-title">員工感謝禮 · 水泥杯墊組</div>
+      <div class="corp-slogan">「謝謝你，今年撐住了。」</div>
+      <div class="corp-desc">刻上公司名稱、部門、或一句今年最難忘的話。每位員工各不同——因為每個人都值得唯一的那一件。可客製 10 件起，附品牌材料故事卡。</div>
+    </div>
+    <div class="corp-cell">
+      <div class="corp-no">02</div>
+      <div class="corp-label">開幕 / 搬遷 / 週年</div>
+      <div class="corp-title">落成紀念禮盆 · 定制款</div>
+      <div class="corp-slogan">「這棟建築的廢料，做成了這件禮物。」</div>
+      <div class="corp-desc">以建案廢料或企業象徵性材料製作。刻上公司成立年份、樓層平面輪廓或標誌性元素。附材料溯源文件，可納入 ESG 年報。</div>
+    </div>
+    <div class="corp-cell">
+      <div class="corp-no">03</div>
+      <div class="corp-label">VIP 客戶禮 / 獎勵方案</div>
+      <div class="corp-title">旗艦流構邊桌 · 頂規款</div>
+      <div class="corp-slogan">「給值得一件好東西的人。」</div>
+      <div class="corp-desc">漂流木搭配再生混凝土，每件刻客戶姓名或雙方品牌標記。交付附精裝材料故事冊，適合頂規 VIP 禮遇，單件即可訂製。</div>
+    </div>
+    <div class="corp-cell">
+      <div class="corp-no">04</div>
+      <div class="corp-label">展覽 / 記者會 / 論壇</div>
+      <div class="corp-title">活動限定盲盒材料包</div>
+      <div class="corp-slogan">「帶一塊台灣廢料回家，孵一隻礦獸。」</div>
+      <div class="corp-desc">活動伴手禮升級版：材料包 + 士敏小礦獸啟動碼 + 品牌故事卡。參與者帶回家自己動手做，掃碼孵化康加台灣數位寵物。門檻低、話題性高、記憶點強。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ESG 綠色採購 ═══ -->
+<section id="esg" class="festival-section" style="background:var(--concrete-dark);">
+  <div class="sec-eye" style="color:var(--rust-light);">🌿 ESG Green Procurement · 綠色採購</div>
+  <h2 class="sec-title" style="color:var(--warm-white);">採購這件禮物，<br>就已經是一個 ESG 行動</h2>
+  <p style="color:var(--concrete-light);opacity:0.8;max-width:580px;margin-top:0.75rem;font-size:0.92rem;line-height:1.82;font-weight:300;">每件作品附材料溯源文件，含廢料去化量、再生料佔比（60–70%）、SDG 對應細項，可直接引用於企業永續報告書。</p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(155,91,58,0.1);margin-top:2rem;">
+    <div style="padding:2rem;background:#1A1714;">
+      <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#27AE60;margin-bottom:0.5rem;">SDG 12.5 · 廢棄物減量</div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--warm-white);margin-bottom:0.5rem;">採購即是減廢行動</div>
+      <p style="font-size:0.82rem;color:var(--concrete-light);opacity:0.75;line-height:1.72;font-weight:300;">每件採購紀錄包含：廢料去化量（kg）、再生料佔比（%）、取用地點。<br><br><strong style="color:#27AE60;">例：30 件杯墊組 = 去化廢料 12kg</strong></p>
+    </div>
+    <div style="padding:2rem;background:#1C1510;border-left:1px solid rgba(155,91,58,0.1);border-right:1px solid rgba(155,91,58,0.1);">
+      <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#3498DB;margin-bottom:0.5rem;">SDG 8.9 · 地方文化產業</div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--warm-white);margin-bottom:0.5rem;">採購就是支持在地職人</div>
+      <p style="font-size:0.82rem;color:var(--concrete-light);opacity:0.75;line-height:1.72;font-weight:300;">每一筆採購，都直接支撐台灣獨立職人工作室的運作，以及後續的社區合創計畫。<br><br><strong style="color:#3498DB;">每件附產地與工法說明</strong></p>
+    </div>
+    <div style="padding:2rem;background:#1A1714;">
+      <div style="font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:#E8A030;margin-bottom:0.5rem;">GRI 格式 · ESG 文件套件</div>
+      <div style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--warm-white);margin-bottom:0.5rem;">可直接引用的數據</div>
+      <p style="font-size:0.82rem;color:var(--concrete-light);opacity:0.75;line-height:1.72;font-weight:300;">採購完成後提供：材料溯源證書（PDF）、廢料去化量計算表、ESG 年報引用段落草稿。<br><br><strong style="color:#E8A030;">最低 10 件起提供</strong></p>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1.5rem 2rem;background:rgba(42,122,74,0.08);border:1px solid rgba(42,122,74,0.25);">
+    <p style="font-size:0.85rem;color:var(--concrete-light);line-height:1.75;">
+      🌱 <strong style="color:#3DAA6A;">綠色採購標章適用</strong>：Concredia.Lab 作品使用 60–70% 再生廢棄物作為骨料，符合行政院環保署「綠色採購」精神，可作為企業公務採購永續主張佐證。詳細文件規格請來信洽詢。
+    </p>
+  </div>
+</section>
+
+<!-- ═══ 客製刻字 CTA ═══ -->
+<section id="engrave" class="engrave-section">
+  <div>
+    <div class="sec-eye" style="color:var(--rust-light);">✍️ Custom Engraving · 客製刻字</div>
+    <h2 class="sec-title" style="color:var(--warm-white);margin-bottom:1rem;">你想留下什麼，<br>告訴我，刻進去</h2>
+    <p style="font-size:0.92rem;color:var(--concrete-light);line-height:1.85;opacity:0.85;margin-bottom:1.75rem;font-weight:300;">
+      給某人的愛意。紀念著什麼。或是一段詩句、一個日期、一個字——<br>
+      水泥記性很好，而且比你活得更久。<br><br>
+      廟宇圖騰、家族姓氏、原民紋路、地方產業符號、婚禮誓詞——<br>
+      任何有意義的文字或圖像，都可以成為一件作品的靈魂。
+    </p>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+      <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+        <span style="width:3px;min-height:22px;background:var(--rust-light);flex-shrink:0;margin-top:2px;"></span>
+        <span style="font-size:0.88rem;color:var(--concrete-light);font-weight:300;">文字刻字：中文、英文、日文、阿拉伯文皆可</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+        <span style="width:3px;min-height:22px;background:var(--rust-light);flex-shrink:0;margin-top:2px;"></span>
+        <span style="font-size:0.88rem;color:var(--concrete-light);font-weight:300;">圖像刻入：LOGO、紋飾、手繪圖稿</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+        <span style="width:3px;min-height:22px;background:var(--rust-light);flex-shrink:0;margin-top:2px;"></span>
+        <span style="font-size:0.88rem;color:var(--concrete-light);font-weight:300;">指定材料：告訴我你來自哪裡，用那個地方的廢料</span>
+      </div>
+    </div>
+    <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.2rem;background:var(--rust);color:white;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">
+      開始聊你想要的那件 →
+    </a>
+  </div>
+  <div class="engrave-visual">
+    給妳的愛意<br>
+    <span style="font-size:2.5rem;color:rgba(155,91,58,0.5);">2025.02.14</span><br>
+    謝謝妳讓我<br>有重量
+    <small>← 這裡可以刻上你想說的話</small>
+  </div>
+</section>
+
+<!-- 最終 CTA -->
+<div class="cta-banner">
+  <h2>準備好送出世界最重的禮物了嗎？</h2>
+  <p>不管是情人節、父母親節、公司採購、還是你只是想送某個人一件永遠不會壞的東西——找我們聊。</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-white">告訴我你想刻什麼 →</a>
+    <a href="products.html" class="btn-outline-white">瀏覽產品系列</a>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html">Concredia<span>.</span>Lab</a>
+  <small>© 2025 Concredia.Lab · 士敏文品工作室 · 為台灣的廢棄物，找一個出路</small>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);
+});
+// 導航 active state
+const fnBtns = document.querySelectorAll('.fnav-btn');
+const sections = document.querySelectorAll('.festival-section,[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop-160) cur=s.id;
+  });
+  fnBtns.forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('href')==='#'+cur);
+  });
+});
+</script>
+</body>
+</html>
