@@ -4,18 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Conga Taiwan 康加台灣 · 採礦台灣 · 每一塊廢料，都有牠的靈魂</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 :root{
-  --soil:#1A1208;--earth:#2C1F0E;--clay:#3D2B10;
-  --copper:#8B5E2A;--amber:#C4862A;--gold:#E8B84B;--pale:#F5D680;
-  --green:#2A6B3C;--green-l:#3DAA5A;--teal:#1B8A7A;
-  --red:#B5341A;--rust:#A0420E;--sky:#2A4A8A;--sky-l:#4A7AC4;
-  --cream:#F2EDD8;--parchment:#E8DFC0;
-  --text:#F2EDD8;--dim:#A09070;--dimmer:#6A5A40;
-  --hp:#E83030;--food:#E8A030;--mp:#3090E8;
-  --fn:'Noto Serif TC',serif;--fb:'Noto Sans TC',sans-serif;--fm:'JetBrains Mono',monospace;
+  /* ── 水泥灰階（主色 60%）*/
+  --c0:#F4F4F2;   /* 最淺水泥白 */
+  --c1:#E0DFDB;   /* 淺水泥灰 */
+  --c2:#C4C2BC;   /* 中淺灰 */
+  --c3:#8C8A84;   /* 中灰 */
+  --c4:#5A5855;   /* 深灰 */
+  --c5:#2F2F2D;   /* 炭灰 */
+  --c6:#1A1A18;   /* 近黑 */
+
+  /* ── 輔色（30%）警示橘×螢光綠 */
+  --accent:#E85D04;      /* 警示橘（主 CTA）*/
+  --accent-h:#FF7A1A;    /* hover */
+  --neon:#39FF14;        /* 螢光電網綠（特殊標記）*/
+  --neon-dim:#22CC0A;    /* 深一點 */
+
+  /* ── 語意色 */
+  --green:#27AE60;
+  --blue:#2A5A9A;
+  --gold:#C8A030;
+
+  /* ── 字體 */
+  --fd:'Inter Tight',system-ui,sans-serif;   /* 標題：工業感無襯線 */
+  --fb:'Noto Sans TC',system-ui,sans-serif;  /* 內文 */
+  --fs:var(--fs);        /* 引言 */
+
+  /* ── 間距 */
+  --r4:4px; --r8:8px; --r12:12px;
+
+  /* ── 過渡 */
+  --t:.22s ease;
 }
 html,body{width:100%;height:100%;overflow:hidden;}
 body{
@@ -61,7 +86,7 @@ body{
 .iso-floor{
   position:absolute;bottom:0;left:-20%;right:-20%;height:55%;
   background:
-    linear-gradient(180deg,transparent 0%,rgba(44,31,14,.95) 30%,#2C1F0E 100%);
+    linear-gradient(180deg,transparent 0%,rgba(44,31,14,.95) 30%,var(--c6) 100%);
   transform:rotateX(55deg) translateZ(0);
   transform-origin:bottom center;
   border-top:3px solid rgba(196,134,42,.35);
@@ -84,7 +109,7 @@ body{
 /* 左牆 */
 .iso-wall-l{
   position:absolute;bottom:0;left:-20%;width:35%;height:42%;
-  background:linear-gradient(135deg,#1A1208 0%,#251A0C 50%,#1A1208 100%);
+  background:linear-gradient(135deg,var(--c6) 0%,#251A0C 50%,var(--c6) 100%);
   transform:rotateX(55deg) rotateY(-35deg) translateZ(0);
   transform-origin:bottom right;
   border-right:2px solid rgba(196,134,42,.2);
@@ -93,7 +118,7 @@ body{
 /* 右牆 */
 .iso-wall-r{
   position:absolute;bottom:0;right:-20%;width:35%;height:42%;
-  background:linear-gradient(225deg,#1A1208 0%,#251A0C 50%,#1A1208 100%);
+  background:linear-gradient(225deg,var(--c6) 0%,#251A0C 50%,var(--c6) 100%);
   transform:rotateX(55deg) rotateY(35deg) translateZ(0);
   transform-origin:bottom left;
   border-left:2px solid rgba(196,134,42,.2);
@@ -256,7 +281,7 @@ body{
 .mz:hover{border-color:var(--amber);}
 .mz.on{border-color:var(--gold);box-shadow:0 0 10px rgba(232,184,75,.18);}
 .mzi{font-size:1.8rem;margin-bottom:.3rem;}
-.mzn{font-size:.78rem;font-weight:600;color:var(--cream);margin-bottom:.15rem;}
+.mzn{font-size:.78rem;font-weight:600;color:var(--c1);margin-bottom:.15rem;}
 .mzd{font-size:.62rem;color:var(--dim);line-height:1.45;}
 .mzdr{margin-top:.5rem;display:flex;flex-wrap:wrap;gap:.2rem;justify-content:center;}
 .dt{font-size:.52rem;padding:.1rem .35rem;background:rgba(196,134,42,.1);
@@ -272,7 +297,7 @@ body{
 .etip{background:rgba(27,138,122,.06);border:1px solid rgba(27,138,122,.18);
   padding:.65rem;margin-bottom:.75rem;}
 .etip-l{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;}
-.etip-t{font-size:.72rem;color:var(--cream);line-height:1.58;}
+.etip-t{font-size:.72rem;color:var(--c1);line-height:1.58;}
 .mbtn{width:100%;padding:.8rem;background:var(--copper);color:var(--soil);
   border:none;font-family:var(--fn);font-size:.85rem;font-weight:700;
   cursor:pointer;letter-spacing:.06em;transition:all .2s;position:relative;overflow:hidden;}
@@ -293,7 +318,7 @@ body{
   font-family:var(--fm);font-size:.55rem;color:var(--gold);font-weight:600;}
 .is .en{font-size:.5rem;color:var(--dim);text-align:center;padding:0 .1rem;}
 .iinfo{background:rgba(44,31,14,.85);border:1px solid rgba(196,134,42,.25);
-  padding:.85rem;margin-top:.65rem;font-size:.75rem;line-height:1.62;color:var(--cream);display:none;}
+  padding:.85rem;margin-top:.65rem;font-size:.75rem;line-height:1.62;color:var(--c1);display:none;}
 .iinfo.show{display:block;}
 .iinfo h4{font-family:var(--fn);color:var(--gold);margin-bottom:.35rem;}
 .itag{display:inline-block;font-size:.55rem;padding:.1rem .35rem;
@@ -305,7 +330,7 @@ body{
 .qc.done{border-color:var(--green);}
 .qc.boss{border-color:var(--red);background:rgba(181,52,26,.07);}
 .qch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.35rem;}
-.qct{font-size:.82rem;font-weight:600;color:var(--cream);}
+.qct{font-size:.82rem;font-weight:600;color:var(--c1);}
 .qtag{font-size:.52rem;padding:.1rem .38rem;border-radius:2px;letter-spacing:.06em;}
 .qtag.daily{background:rgba(52,144,232,.13);border:1px solid rgba(52,144,232,.28);color:var(--sky-l);}
 .qtag.team{background:rgba(160,48,232,.12);border:1px solid rgba(160,48,232,.28);color:#B070E8;}
@@ -327,9 +352,9 @@ body{
   background:rgba(10,8,5,.5);border:1px solid rgba(196,134,42,.12);}
 .cm{max-width:82%;padding:.5rem .75rem;font-size:.78rem;line-height:1.55;}
 .cm.pet{background:rgba(44,31,14,.9);border:1px solid rgba(196,134,42,.22);
-  border-radius:9px 9px 9px 2px;align-self:flex-start;color:var(--cream);}
+  border-radius:9px 9px 9px 2px;align-self:flex-start;color:var(--c1);}
 .cm.user{background:rgba(42,74,138,.22);border:1px solid rgba(74,122,196,.28);
-  border-radius:9px 9px 2px 9px;align-self:flex-end;color:var(--cream);}
+  border-radius:9px 9px 2px 9px;align-self:flex-end;color:var(--c1);}
 .cm.sys{background:rgba(255,255,255,.04);font-size:.65rem;color:var(--dim);
   text-align:center;max-width:100%;border-radius:3px;}
 .tdots{display:flex;gap:.28rem;align-items:center;padding:.45rem .65rem;
@@ -347,7 +372,7 @@ body{
 .qrb:hover{background:rgba(196,134,42,.22);}
 .cinrow{display:flex;gap:.38rem;}
 .cin{flex:1;padding:.58rem .75rem;background:rgba(44,31,14,.7);
-  border:1px solid rgba(196,134,42,.22);color:var(--cream);font-size:.8rem;font-family:var(--fb);outline:none;}
+  border:1px solid rgba(196,134,42,.22);color:var(--c1);font-size:.8rem;font-family:var(--fb);outline:none;}
 .cin:focus{border-color:var(--amber);}
 .csend{padding:.58rem .9rem;background:var(--copper);color:var(--soil);
   border:none;font-size:.75rem;font-family:var(--fn);font-weight:700;cursor:pointer;transition:background .2s;}
@@ -361,7 +386,7 @@ body{
 .lbr.g{color:var(--gold);}
 .lbr.s{color:#C0C0C0;}
 .lbr.b{color:#CD7F32;}
-.lbna{font-size:.82rem;color:var(--cream);font-weight:500;}
+.lbna{font-size:.82rem;color:var(--c1);font-weight:500;}
 .lbsu{font-size:.6rem;color:var(--dim);}
 .lbsc{font-family:var(--fm);font-size:.8rem;color:var(--gold);margin-left:auto;}
 
@@ -407,8 +432,58 @@ body{
 
 ::-webkit-scrollbar{width:2px;}
 ::-webkit-scrollbar-thumb{background:rgba(196,134,42,.28);border-radius:2px;}
+
+/* 水泥噴砂紋理（純 CSS 粒子感）*/
+.cement-bg{
+  background-color:var(--c0);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+.cement-dark-bg{
+  background-color:var(--c6);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+
+/* ══ Conga Taiwan：賽博龐克工業風 ═════════════════════ */
+body{background:var(--c6)!important;color:var(--c1)!important;}
+.game-logo{font-family:var(--fd)!important;font-weight:900!important;letter-spacing:-.03em!important;color:var(--c0)!important;}
+.game-logo small{color:var(--neon)!important;letter-spacing:.15em;}
+
+/* 玩家面板：8px 圓角 glassmorphism */
+.panel{border-radius:var(--r8)!important;border-color:rgba(57,255,20,.12)!important;}
+.panel .ph{border-bottom-color:rgba(57,255,20,.1)!important;}
+.pt{font-family:var(--fd)!important;font-weight:700!important;}
+
+/* 礦獸名稱 */
+.gname{font-family:var(--fd)!important;font-weight:900!important;letter-spacing:-.02em;}
+
+/* 按鈕：螢光綠 CTA */
+.g-btn,.btn-primary{
+  background:var(--neon-dim)!important;
+  color:var(--c6)!important;
+  border-radius:var(--r4)!important;
+  font-family:var(--fd)!important;
+  font-weight:900!important;
+  border:none!important;
+  transition:all var(--t)!important;
+}
+.g-btn:hover,.btn-primary:hover{
+  background:var(--neon)!important;
+  transform:translateY(-2px)!important;
+  box-shadow:0 8px 24px rgba(57,255,20,.35)!important;
+}
+
+/* 狀態列：螢光感 */
+.sbar-fill.hp-fill{background:var(--neon-dim)!important;}
+.sbar-fill.mood-fill{background:var(--accent)!important;}
+
+/* amber 幣色 */
+.amber,.coin{color:var(--gold)!important;}
+
 </style>
-<meta name="theme-color" content="#1A1208">
+<meta name="theme-color" content="var(--c6)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Conga Taiwan">
@@ -628,7 +703,7 @@ body{
       </div>
       <div style="margin-top:1rem;padding:.85rem;background:rgba(27,138,122,.06);border:1px solid rgba(27,138,122,.18);">
         <div style="font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem;">🌏 全台廢料去化</div>
-        <div style="font-size:.72rem;color:var(--cream);line-height:1.65;">
+        <div style="font-size:.72rem;color:var(--c1);line-height:1.65;">
           北部城市廢料：<span style="color:var(--gold);font-family:var(--fm);">1,240 kg</span><br>
           中部農村廢料：<span style="color:var(--gold);font-family:var(--fm);">880 kg</span><br>
           南部海岸廢料：<span style="color:var(--gold);font-family:var(--fm);">720 kg</span>
@@ -639,10 +714,10 @@ body{
       <div style="margin-top:1rem;padding:1rem;background:rgba(44,31,14,.7);border:1px solid rgba(196,134,42,.18);">
         <div style="font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;">⚡ 進階機制（即將推出）</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:.72rem;color:var(--dim);line-height:1.6;">
-          <div><strong style="color:var(--cream);">💍 組隊 × 婚姻</strong><br>不同礦獸可以組成家庭，生出混血後代，屬性疊加更強。沙 + 紅磚 + 水泥即可結合。</div>
-          <div><strong style="color:var(--cream);">⭐ 星座 × 血型</strong><br>孵化時間決定星座，材料比例決定血型。不同星座有不同每日任務加成。</div>
-          <div><strong style="color:var(--cream);">🏝️ 企業生態島</strong><br>贊助企業可在遊戲地圖上擁有冠名生態島，玩家在島上完成任務可兌換實體優惠。</div>
-          <div><strong style="color:var(--cream);">📱 RFID × AR</strong><br>實體作品嵌入 RFID 晶片，手機靠近即可看到礦獸的 3D AR 展示。</div>
+          <div><strong style="color:var(--c1);">💍 組隊 × 婚姻</strong><br>不同礦獸可以組成家庭，生出混血後代，屬性疊加更強。沙 + 紅磚 + 水泥即可結合。</div>
+          <div><strong style="color:var(--c1);">⭐ 星座 × 血型</strong><br>孵化時間決定星座，材料比例決定血型。不同星座有不同每日任務加成。</div>
+          <div><strong style="color:var(--c1);">🏝️ 企業生態島</strong><br>贊助企業可在遊戲地圖上擁有冠名生態島，玩家在島上完成任務可兌換實體優惠。</div>
+          <div><strong style="color:var(--c1);">📱 RFID × AR</strong><br>實體作品嵌入 RFID 晶片，手機靠近即可看到礦獸的 3D AR 展示。</div>
         </div>
       </div>
     </div>

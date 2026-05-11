@@ -5,16 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>作品集 · 影像集 — Concredia.Lab</title>
 <meta name="description" content="Concredia.Lab 全系列作品：流構系列、標準系列、客製系列、畫作系列。每件附材料溯源文件，再生廢料佔比 60–70%。">
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --dark:#1A1208;--mid:#2C1F0E;--rust:#9B5B3A;--rustL:#C47A54;--rustLL:#E8A882;
-  --cream:#F5F2ED;--warm:#FAF8F5;--cl:#D4C8A8;--cm:#8A8480;--cll:#E8E4E0;
-  --green:#2A7A4A;
-  --fd:'Playfair Display',Georgia,serif;--fb:'DM Sans',system-ui,sans-serif;
+  /* ── 水泥灰階（主色 60%）*/
+  --c0:#F4F4F2;   /* 最淺水泥白 */
+  --c1:#E0DFDB;   /* 淺水泥灰 */
+  --c2:#C4C2BC;   /* 中淺灰 */
+  --c3:#8C8A84;   /* 中灰 */
+  --c4:#5A5855;   /* 深灰 */
+  --c5:#2F2F2D;   /* 炭灰 */
+  --c6:#1A1A18;   /* 近黑 */
+
+  /* ── 輔色（30%）警示橘×螢光綠 */
+  --accent:#E85D04;      /* 警示橘（主 CTA）*/
+  --accent-h:#FF7A1A;    /* hover */
+  --neon:#39FF14;        /* 螢光電網綠（特殊標記）*/
+  --neon-dim:#22CC0A;    /* 深一點 */
+
+  /* ── 語意色 */
+  --green:#27AE60;
+  --blue:#2A5A9A;
+  --gold:#C8A030;
+
+  /* ── 字體 */
+  --fd:'Inter Tight',system-ui,sans-serif;   /* 標題：工業感無襯線 */
+  --fb:'Noto Sans TC',system-ui,sans-serif;  /* 內文 */
+  --fs:var(--fs);        /* 引言 */
+
+  /* ── 間距 */
+  --r4:4px; --r8:8px; --r12:12px;
+
+  /* ── 過渡 */
+  --t:.22s ease;
 }
-body{font-family:var(--fb);background:var(--cream);color:var(--dark);overflow-x:hidden;}
+body{font-family:var(--fb);background:var(--c1);color:var(--dark);overflow-x:hidden;}
 
 /* NAV */
 nav#mainNav{position:fixed;top:0;left:0;right:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(26,18,8,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(155,91,58,.15);transition:padding .3s;}
@@ -29,16 +58,16 @@ nav#mainNav.scrolled{padding:.65rem 2.5rem;}
 
 /* HERO */
 .hero{padding:7.5rem 4rem 3rem;background:var(--dark);border-bottom:1px solid rgba(155,91,58,.2);}
-.hero-eye{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rustL);margin-bottom:.7rem;}
+.hero-eye{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-h);margin-bottom:.7rem;}
 .hero h1{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,3.8rem);color:var(--warm);font-weight:700;line-height:1.1;margin-bottom:.75rem;}
-.hero h1 em{color:var(--rustL);font-style:italic;}
+.hero h1 em{color:var(--accent-h);font-style:italic;}
 .hero-sub{font-size:.9rem;color:var(--cl);opacity:.8;max-width:520px;line-height:1.85;font-weight:300;}
 
 /* 篩選列 */
 .filter-bar{position:sticky;top:60px;z-index:50;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;padding:.85rem 4rem;background:rgba(26,18,8,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(155,91,58,.12);}
 .filter-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cm);margin-right:.2rem;}
 .filter-btn{padding:.3rem .82rem;border:1px solid rgba(155,91,58,.3);color:var(--cl);font-size:.7rem;letter-spacing:.06em;background:transparent;cursor:pointer;transition:all .18s;font-family:var(--fb);}
-.filter-btn:hover{border-color:var(--rustL);color:var(--rustL);}
+.filter-btn:hover{border-color:var(--accent-h);color:var(--accent-h);}
 .filter-btn.active{background:var(--rust);border-color:var(--rust);color:white;}
 .filter-count{margin-left:auto;font-size:.7rem;color:var(--cm);}
 
@@ -54,7 +83,7 @@ nav#mainNav.scrolled{padding:.65rem 2.5rem;}
 .card-img-wrap:hover img{transform:scale(1.05);}
 .no-photo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:rgba(155,91,58,.25);}
 .no-photo span{font-size:2.5rem;}.no-photo small{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cm);}
-.series-badge{position:absolute;top:.75rem;left:.75rem;padding:.18rem .55rem;background:rgba(26,18,8,.85);color:var(--rustLL);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(4px);}
+.series-badge{position:absolute;top:.75rem;left:.75rem;padding:.18rem .55rem;background:rgba(26,18,8,.85);color:var(--c2);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(4px);}
 .stock-dot{position:absolute;top:.75rem;right:.75rem;width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.6);}
 .s-available{background:#27AE60;}.s-order{background:#E8951A;}.s-sold{background:#8A8480;}
 .card-body{padding:1.2rem 1.2rem .7rem;flex:1;}
@@ -66,7 +95,7 @@ nav#mainNav.scrolled{padding:.65rem 2.5rem;}
 .card-footer{padding:.7rem 1.2rem;border-top:1px solid rgba(155,91,58,.08);display:flex;justify-content:space-between;align-items:center;}
 .card-spec{font-size:.66rem;color:var(--cm);}
 .card-open{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);background:none;border:none;cursor:pointer;font-family:var(--fb);padding:0;transition:color .2s;}
-.card-open:hover{color:var(--rustL);}
+.card-open:hover{color:var(--accent-h);}
 
 /* 空態 */
 .empty{grid-column:1/-1;padding:5rem 2rem;text-align:center;color:var(--cm);}
@@ -89,14 +118,14 @@ nav#mainNav.scrolled{padding:.65rem 2.5rem;}
 /* 燈箱：右側資訊區 */
 .lb-right{width:380px;flex-shrink:0;background:var(--mid);overflow-y:auto;display:flex;flex-direction:column;border-left:1px solid rgba(155,91,58,.15);}
 .lb-header{padding:1.5rem 1.75rem 1rem;border-bottom:1px solid rgba(155,91,58,.12);}
-.lb-series{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rustL);margin-bottom:.3rem;}
+.lb-series{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-h);margin-bottom:.3rem;}
 .lb-name{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--warm);line-height:1.15;margin-bottom:.4rem;}
 .lb-sku{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cm);}
 
 /* 燈箱：資料區塊 */
 .lb-section{padding:1rem 1.75rem;border-bottom:1px solid rgba(155,91,58,.1);}
 .lb-section:last-of-type{border-bottom:none;}
-.lb-section-title{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rustL);margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem;}
+.lb-section-title{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-h);margin-bottom:.65rem;display:flex;align-items:center;gap:.5rem;}
 .lb-section-title::after{content:'';flex:1;height:1px;background:rgba(155,91,58,.15);}
 .lb-row{display:flex;justify-content:space-between;align-items:flex-start;padding:.42rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
 .lb-row:last-child{border-bottom:none;}
@@ -113,7 +142,7 @@ nav#mainNav.scrolled{padding:.65rem 2.5rem;}
 /* 燈箱底部 CTA */
 .lb-footer{padding:1.25rem 1.75rem;margin-top:auto;background:rgba(155,91,58,.06);border-top:1px solid rgba(155,91,58,.12);}
 .lb-cta{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem;background:var(--rust);color:white;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s;font-family:var(--fb);}
-.lb-cta:hover{background:var(--rustL);}
+.lb-cta:hover{background:var(--accent-h);}
 
 /* 燈箱關閉 */
 .lb-close{position:fixed;top:1.25rem;right:1.5rem;background:rgba(26,18,8,.6);border:1px solid rgba(155,91,58,.3);color:var(--cl);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10000;font-size:1rem;transition:all .2s;backdrop-filter:blur(4px);}
@@ -133,6 +162,69 @@ footer small{font-size:.7rem;color:var(--cm);}
   #lb{flex-direction:column;}
   .nav-links{display:none;}
 }
+
+/* 水泥噴砂紋理（純 CSS 粒子感）*/
+.cement-bg{
+  background-color:var(--c0);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+.cement-dark-bg{
+  background-color:var(--c6);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+
+/* ══ 卡片 Glassmorphism + Neo-Brutalism ═══════════════ */
+.product-card,.gift-card,.corp-cell{
+  border-radius:var(--r8)!important;
+  transition:transform var(--t),box-shadow var(--t)!important;
+}
+.product-card:hover,.gift-card:hover{
+  transform:translateY(-5px)!important;
+  box-shadow:0 20px 60px rgba(0,0,0,.18)!important;
+}
+.product-card img:hover,.card-img-wrap img{
+  transition:transform .5s ease,opacity .3s!important;
+}
+.product-card:hover .card-img-wrap img{transform:scale(1.06)!important;}
+
+/* 系列 badge：橘底 */
+.series-badge,.card-series-badge{
+  background:var(--accent)!important;
+  color:white!important;
+  border-radius:var(--r4)!important;
+  font-family:var(--fd)!important;
+  font-weight:700!important;
+}
+/* 卡片 CTA 橘色 */
+.card-cta,.card-open{color:var(--accent)!important;}
+.card-cta:hover,.card-open:hover{color:var(--accent-h)!important;}
+
+/* 燈箱：深炭背景 */
+#lb,#lightbox{background:rgba(20,20,18,.97)!important;}
+.lb-right,.lb-info{background:var(--c5)!important;}
+.lb-cta,.lb-contact{
+  background:var(--accent)!important;
+  border-radius:var(--r4)!important;
+  font-family:var(--fd)!important;
+  font-weight:700!important;
+}
+.lb-cta:hover,.lb-contact:hover{background:var(--accent-h)!important;}
+.lb-name{font-family:var(--fd)!important;font-weight:900!important;}
+
+/* 篩選按鈕 */
+.filter-btn{
+  border-color:rgba(232,93,4,.3)!important;
+  border-radius:var(--r4)!important;
+  font-family:var(--fd)!important;
+  font-weight:600!important;
+  transition:all var(--t)!important;
+}
+.filter-btn:hover{border-color:var(--accent)!important;color:var(--accent)!important;}
+.filter-btn.active{background:var(--accent)!important;border-color:var(--accent)!important;}
+
 </style>
 </head>
 <body>
@@ -144,11 +236,11 @@ footer small{font-size:.7rem;color:var(--cm);}
     <li><a href="story.html">品牌故事</a></li>
     <li><a href="blog.html">最新動態</a></li>
     <li><a href="products.html">產品系列</a></li>
-    <li><a href="gifts.html" style="color:#E8A882;">🎁 節慶禮品</a></li>
+    <li><a href="gifts.html" style="color:var(--c2);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
     <li><a href="esg-dashboard.html">ESG</a></li>
     <li><a href="recrete.html" style="color:#C8A96E;">👾 康加台灣</a></li>
-    <li><a href="fundraise.html" style="color:#9B5B3A;">募資計畫</a></li>
+    <li><a href="fundraise.html" style="color:var(--accent);">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="partners.html" class="nav-cta">合作夥伴</a>
@@ -160,13 +252,10 @@ footer small{font-size:.7rem;color:var(--cm);}
   <p class="hero-sub">流構系列 · 標準系列 · 客製系列 · 畫作系列<br>再生廢料佔比 60–70%，每件附材料溯源文件，點擊查看完整資訊</p>
 </div>
 
-<div class="filter-bar">
+<div class="filter-bar" id="filter-bar">
   <span class="filter-label">篩選：</span>
   <button class="filter-btn active" data-f="all">全部</button>
-  <button class="filter-btn" data-f="流構系列">流構系列</button>
-  <button class="filter-btn" data-f="標準系列">標準系列</button>
-  <button class="filter-btn" data-f="客製系列">客製系列</button>
-  <button class="filter-btn" data-f="畫作系列">畫作系列</button>
+  <!-- 系列按鈕由 JS 根據資料動態產生 -->
   <button class="filter-btn" data-f="available">有現貨</button>
   <span class="filter-count" id="count"></span>
 </div>
@@ -215,12 +304,61 @@ async function loadData() {
     }
 
     ALL = json.products;
+    buildFilterBar(ALL);  // 根據資料動態產生系列按鈕
     render(ALL, CURRENT_FILTER);
 
   } catch(e) {
     console.error(e);
     grid.innerHTML = `<div class="empty"><h3>暫時無法載入</h3><p>${e.message}</p></div>`;
   }
+}
+
+// ── 動態產生篩選按鈕
+function buildFilterBar(products) {
+  const bar = document.getElementById('filter-bar');
+  
+  // 取得所有實際存在的系列（照固定順序）
+  const ORDER = ['流構系列','標準系列','客製系列','畫作系列'];
+  const existing = ORDER.filter(s => products.some(p => p.series === s));
+  // 若有不在清單裡的系列也加進來
+  products.forEach(p => {
+    if (p.series && !ORDER.includes(p.series) && !existing.includes(p.series))
+      existing.push(p.series);
+  });
+
+  // 移除舊的系列按鈕（保留「全部」和「有現貨」）
+  bar.querySelectorAll('[data-series]').forEach(b => b.remove());
+
+  // 在「全部」後面插入系列按鈕
+  const allBtn    = bar.querySelector('[data-f="all"]');
+  const stockBtn  = bar.querySelector('[data-f="available"]');
+  
+  existing.forEach(series => {
+    const count = products.filter(p => p.series === series).length;
+    const btn   = document.createElement('button');
+    btn.className   = 'filter-btn';
+    btn.dataset.f   = series;
+    btn.dataset.series = series;
+    btn.textContent = `${series}（${count}）`;
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      CURRENT_FILTER = this.dataset.f;
+      render(ALL, CURRENT_FILTER);
+    });
+    bar.insertBefore(btn, stockBtn);
+  });
+  
+  // 重新綁定所有按鈕事件
+  bar.querySelectorAll('.filter-btn').forEach(btn => {
+    if (btn.dataset.series) return; // 已綁定
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      CURRENT_FILTER = this.dataset.f;
+      render(ALL, CURRENT_FILTER);
+    });
+  });
 }
 
 // ── 渲染 Grid
@@ -355,15 +493,7 @@ document.getElementById('lb').addEventListener('click', function(e){
   if(e.target===this) closeLb();
 });
 
-// ── 篩選
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    CURRENT_FILTER = this.dataset.f;
-    render(ALL, CURRENT_FILTER);
-  });
-});
+// ── 篩選事件由 buildFilterBar() 動態綁定
 
 // ── Nav scroll
 window.addEventListener('scroll', () => {

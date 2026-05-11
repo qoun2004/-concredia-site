@@ -33,6 +33,7 @@ const FIELDS = {
   weight:   '重量（克）',
   stock:    '庫存',
   images:   'AI圖',
+  series:   '系列',     // 新增：流構系列/標準系列/客製系列/畫作系列
 };
 // ──────────────────────────────────────────────────
 
@@ -111,19 +112,21 @@ function parseRecord(record) {
     /訂|order|預/i.test(stockRaw)            ? 'order'     :
     /無|sold|out/i.test(stockRaw)            ? 'sold'      : 'unknown';
 
-  // 系列判斷
+  // 系列判斷：優先用 Airtable「系列」欄位，沒有才用 SKU 推斷
   const sku = (f[F.sku] || '').toString();
   const cat = (f[F.category] || '').toString();
-  const series =
-    /FL/i.test(sku) || /流構/i.test(cat) ? '流構系列' :
-    /RM/i.test(sku) || /標準/i.test(cat) ? '標準系列' :
-    /CM/i.test(sku) || /客製/i.test(cat) ? '客製系列' :
-    /AW/i.test(sku) || /畫作/i.test(cat) ? '畫作系列' :
-    cat || '其他';
+  const seriesField = (f[F.series] || '').toString().trim();
+  const series = seriesField ||
+    (/FL/i.test(sku) || /流構/i.test(cat) ? '流構系列' :
+     /RM/i.test(sku) || /標準/i.test(cat) ? '標準系列' :
+     /CM/i.test(sku) || /客製/i.test(cat) ? '客製系列' :
+     /AW/i.test(sku) || /畫作/i.test(cat) ? '畫作系列' :
+     cat || '其他');
 
   return {
     id:          record.id,
     sku:         f[F.sku]      || '',
+    series,       // 直接從欄位讀，或由 SKU 推斷
     name:        f[F.name]     || '未命名作品',
     series,
     category:    f[F.category] || '',

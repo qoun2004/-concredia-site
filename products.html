@@ -5,44 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Concredia.Lab — 產品系列</title>
 <meta name="description" content="水泥音響、定錨桌几、Conbox 系列、ESG 企業禮品、客製化場域記憶計劃。">
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --concrete:#8B8680;--concrete-light:#D4CFC8;--concrete-dark:#3A3632;
-  --cream:#F5F2ED;--warm-white:#FAF8F5;--charcoal:#2A2724;
-  --rust:#9B5B3A;--rust-light:#C47A54;--moss:#4A5E3E;
-  --amber:#E8951A;
-  --font-display:'Playfair Display',Georgia,serif;
-  --font-body:'DM Sans',system-ui,sans-serif;
+  /* ── 水泥灰階（主色 60%）*/
+  --c0:#F4F4F2;   /* 最淺水泥白 */
+  --c1:#E0DFDB;   /* 淺水泥灰 */
+  --c2:#C4C2BC;   /* 中淺灰 */
+  --c3:#8C8A84;   /* 中灰 */
+  --c4:#5A5855;   /* 深灰 */
+  --c5:#2F2F2D;   /* 炭灰 */
+  --c6:#1A1A18;   /* 近黑 */
+
+  /* ── 輔色（30%）警示橘×螢光綠 */
+  --accent:#E85D04;      /* 警示橘（主 CTA）*/
+  --accent-h:#FF7A1A;    /* hover */
+  --neon:#39FF14;        /* 螢光電網綠（特殊標記）*/
+  --neon-dim:#22CC0A;    /* 深一點 */
+
+  /* ── 語意色 */
+  --green:#27AE60;
+  --blue:#2A5A9A;
+  --gold:#C8A030;
+
+  /* ── 字體 */
+  --fd:'Inter Tight',system-ui,sans-serif;   /* 標題：工業感無襯線 */
+  --fb:'Noto Sans TC',system-ui,sans-serif;  /* 內文 */
+  --fs:var(--fs);        /* 引言 */
+
+  /* ── 間距 */
+  --r4:4px; --r8:8px; --r12:12px;
+
+  /* ── 過渡 */
+  --t:.22s ease;
 }
 html{scroll-behavior:smooth;}
-body{font-family:var(--font-body);background:var(--warm-white);color:var(--charcoal);overflow-x:hidden;font-size:17px;}
+body{font-family:var(--fb);background:var(--c0);color:var(--c5);overflow-x:hidden;font-size:17px;}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 4rem;background:transparent;transition:all 0.4s;}
 nav.scrolled{background:rgba(250,248,245,0.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(139,134,128,0.15);padding:0.9rem 4rem;}
-.nav-logo{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#FAF8F5;letter-spacing:0.02em;text-decoration:none;transition:color 0.4s;}
-nav.scrolled .nav-logo{color:var(--concrete-dark);}
-.nav-logo .dot{color:var(--rust-light);}
+.nav-logo{font-family:var(--fd);font-size:1.25rem;font-weight:700;color:var(--c0);letter-spacing:0.02em;text-decoration:none;transition:color 0.4s;}
+nav.scrolled .nav-logo{color:var(--c5);}
+.nav-logo .dot{color:var(--accent-h);}
 nav.scrolled .nav-logo .dot{color:var(--rust);}
-.nav-logo .lab{font-family:var(--font-body);font-size:0.62rem;letter-spacing:0.18em;color:rgba(212,207,200,0.5);vertical-align:super;font-weight:500;margin-left:1px;transition:color 0.4s;}
-nav.scrolled .nav-logo .lab{color:var(--concrete);}
+.nav-logo .lab{font-family:var(--fb);font-size:0.62rem;letter-spacing:0.18em;color:rgba(212,207,200,0.5);vertical-align:super;font-weight:500;margin-left:1px;transition:color 0.4s;}
+nav.scrolled .nav-logo .lab{color:var(--c3);}
 .nav-links{display:flex;gap:2.5rem;list-style:none;}
 .nav-links a{font-size:0.82rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,248,240,0.92);text-decoration:none;font-weight:500;transition:color 0.2s;text-shadow:0 1px 8px rgba(0,0,0,0.8);}
-nav.scrolled .nav-links a{color:var(--concrete-dark);}
-.nav-links a:hover{color:#FAF8F5;}
+nav.scrolled .nav-links a{color:var(--c5);}
+.nav-links a:hover{color:var(--c0);}
 nav.scrolled .nav-links a:hover{color:var(--rust);}
 .nav-cta{font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:400;padding:0;border:none;background:transparent;color:rgba(212,207,200,0.75);text-decoration:none;transition:all 0.3s;}
-nav.scrolled .nav-cta{border:1.5px solid var(--concrete-dark);color:var(--concrete-dark);}
-.nav-cta:hover{border-color:#FAF8F5;color:#FAF8F5;}
-nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-white);}
+nav.scrolled .nav-cta{border:1.5px solid var(--c5);color:var(--c5);}
+.nav-cta:hover{border-color:var(--c0);color:var(--c0);}
+nav.scrolled .nav-cta:hover{background:var(--c5);color:var(--c0);}
 
 /* HERO — full-bleed cinematic */
 .hero{
   position:relative;min-height:100vh;display:flex;flex-direction:column;
   justify-content:flex-end;overflow:hidden;
-  background:#1A1714;
+  background:var(--c6);
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
@@ -72,7 +99,7 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   position:absolute;left:3rem;top:50%;transform:translateY(-50%) rotate(-90deg);
   transform-origin:center center;
   z-index:3;
-  font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.28em;
+  font-family:var(--fb);font-size:0.6rem;letter-spacing:0.28em;
   text-transform:uppercase;color:rgba(212,207,200,0.35);
   white-space:nowrap;
 }
@@ -81,7 +108,7 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   position:absolute;right:3rem;top:50%;transform:translateY(-50%) rotate(90deg);
   transform-origin:center center;
   z-index:3;
-  font-family:var(--font-display);font-size:0.75rem;letter-spacing:0.15em;
+  font-family:var(--fd);font-size:0.75rem;letter-spacing:0.15em;
   color:rgba(212,207,200,0.22);
 }
 /* 主內容容器 */
@@ -115,16 +142,16 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   text-shadow:0 4px 32px rgba(0,0,0,0.7),0 2px 8px rgba(0,0,0,0.5);
 }
 .hero-manifesto .solid{
-  font-family:'Playfair Display',Georgia,serif;
+  font-family:var(--fd);
   font-weight:700;
-  color:#FAF8F5;
+  color:var(--c0);
   display:block;
   letter-spacing:-0.02em;
 }
 .hero-manifesto .accent{
-  font-family:'Pinyon Script',cursive;
+  font-family:var(--fs);
   font-size:1.35em;
-  color:var(--rust-light);
+  color:var(--accent-h);
   display:block;
   letter-spacing:0.02em;
   line-height:0.95;
@@ -132,7 +159,7 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 }
 /* 副標語 */
 .hero-sub{
-  font-family:var(--font-body);
+  font-family:var(--fb);
   font-size:clamp(0.9rem,1.5vw,1.1rem);
   color:rgba(255,248,240,0.92);
   font-weight:300;
@@ -141,7 +168,7 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   line-height:1.8;
   margin-bottom:3rem;
   font-style:italic;
-  border-left:3px solid var(--rust-light);
+  border-left:3px solid var(--accent-h);
   padding-left:1.25rem;
   text-shadow:0 2px 12px rgba(0,0,0,0.8);
   background:rgba(0,0,0,0.18);
@@ -151,18 +178,18 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;}
 .btn-p{
   display:inline-block;padding:0.9rem 2.2rem;
-  background:var(--warm-white);color:var(--concrete-dark);
+  background:var(--c0);color:var(--c5);
   font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
   font-weight:500;text-decoration:none;transition:all 0.25s;
 }
-.btn-p:hover{background:var(--rust);color:var(--warm-white);}
+.btn-p:hover{background:var(--rust);color:var(--c0);}
 .btn-o{
   display:inline-block;padding:0.9rem 2.2rem;
   border:1px solid rgba(212,207,200,0.4);color:rgba(212,207,200,0.85);
   font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
   font-weight:500;text-decoration:none;transition:all 0.25s;
 }
-.btn-o:hover{border-color:rgba(212,207,200,0.9);color:#FAF8F5;}
+.btn-o:hover{border-color:rgba(212,207,200,0.9);color:var(--c0);}
 /* 底部統計 */
 .hero-stats{
   display:flex;gap:3rem;
@@ -170,8 +197,8 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   border-top:1px solid rgba(212,207,200,0.12);
 }
 .stat-num{
-  font-family:var(--font-display);font-size:2rem;font-weight:700;
-  color:#FAF8F5;
+  font-family:var(--fd);font-size:2rem;font-weight:700;
+  color:var(--c0);
 }
 .stat-label{
   font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
@@ -191,15 +218,15 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
   transition:all 0.2s;
   backdrop-filter:blur(4px);
 }
-.hero-tag:hover{color:var(--rust-light);border-color:var(--rust-light);}
+.hero-tag:hover{color:var(--accent-h);border-color:var(--accent-h);}
 
 .eyebrow{font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
 .eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--rust);}
 
 /* MARQUEE */
-.marquee-bar{background:var(--concrete-dark);padding:0.9rem 0;overflow:hidden;}
+.marquee-bar{background:var(--c5);padding:0.9rem 0;overflow:hidden;}
 .marquee-track{display:flex;gap:3rem;animation:marquee 26s linear infinite;white-space:nowrap;}
-.mi{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--concrete-light);opacity:0.65;flex-shrink:0;}
+.mi{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--c2);opacity:0.65;flex-shrink:0;}
 .md{color:var(--rust);opacity:1;}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
@@ -207,225 +234,225 @@ nav.scrolled .nav-cta:hover{background:var(--concrete-dark);color:var(--warm-whi
 section{padding:5.5rem 4rem;}
 .sec-eye{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:0.7rem;}
 .sec-eye::before{content:'';display:inline-block;width:22px;height:1px;background:var(--rust);}
-.sec-title{font-family:var(--font-display);font-size:clamp(2.1rem,3.5vw,2.9rem);font-weight:700;color:var(--concrete-dark);line-height:1.15;margin-bottom:1.25rem;}
-.sec-sub{font-size:0.97rem;color:var(--concrete);line-height:1.75;font-weight:300;max-width:560px;}
+.sec-title{font-family:var(--fd);font-size:clamp(2.1rem,3.5vw,2.9rem);font-weight:700;color:var(--c5);line-height:1.15;margin-bottom:1.25rem;}
+.sec-sub{font-size:0.97rem;color:var(--c3);line-height:1.75;font-weight:300;max-width:560px;}
 
 /* WHY-HOW-WHAT */
-.whw-section{background:var(--concrete-dark);}
+.whw-section{background:var(--c5);}
 .whw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.08);margin-top:3rem;}
-.whw-card{background:var(--concrete-dark);padding:2.5rem;}
-.whw-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);font-weight:500;margin-bottom:1rem;}
-.whw-head{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--warm-white);margin-bottom:1rem;}
-.whw-body{font-size:0.87rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;}
+.whw-card{background:var(--c5);padding:2.5rem;}
+.whw-tag{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-h);font-weight:500;margin-bottom:1rem;}
+.whw-head{font-family:var(--fd);font-size:1.5rem;font-weight:700;color:var(--c0);margin-bottom:1rem;}
+.whw-body{font-size:0.87rem;color:var(--c2);line-height:1.75;font-weight:300;opacity:0.85;}
 .whw-items{list-style:none;margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;}
-.whw-items li{font-size:0.82rem;color:var(--concrete-light);padding-left:1rem;position:relative;opacity:0.8;}
-.whw-items li::before{content:'→';position:absolute;left:0;color:var(--rust-light);}
+.whw-items li{font-size:0.82rem;color:var(--c2);padding-left:1rem;position:relative;opacity:0.8;}
+.whw-items li::before{content:'→';position:absolute;left:0;color:var(--accent-h);}
 
 /* ABOUT / TEAM */
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;}
-.team-card{background:var(--cream);border:1px solid var(--concrete-light);}
-.team-photo{aspect-ratio:4/5;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.team-card{background:var(--c1);border:1px solid var(--c2);}
+.team-photo{aspect-ratio:4/5;background:var(--c5);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .team-photo img{width:100%;height:100%;object-fit:cover;}
-.team-ph-text{font-family:var(--font-display);font-size:4.5rem;color:rgba(212,207,200,0.1);font-weight:700;}
+.team-ph-text{font-family:var(--fd);font-size:4.5rem;color:rgba(212,207,200,0.1);font-weight:700;}
 .team-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(58,54,50,0.85) 0%,transparent 55%);}
-.team-ph-tag{position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--warm-white);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);}
+.team-ph-tag{position:absolute;top:1.25rem;left:1.25rem;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c0);border:1px solid rgba(255,255,255,0.25);padding:0.28rem 0.65rem;background:rgba(58,54,50,0.45);}
 .team-info{padding:1.75rem;}
 .team-role{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.4rem;}
-.team-name{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.2rem;}
-.team-name-en{font-size:0.82rem;color:var(--concrete);font-weight:300;margin-bottom:0.9rem;}
-.team-bio{font-size:0.85rem;color:var(--concrete);line-height:1.75;font-weight:300;}
+.team-name{font-family:var(--fd);font-size:1.35rem;font-weight:700;color:var(--c5);margin-bottom:0.2rem;}
+.team-name-en{font-size:0.82rem;color:var(--c3);font-weight:300;margin-bottom:0.9rem;}
+.team-bio{font-size:0.85rem;color:var(--c3);line-height:1.75;font-weight:300;}
 .team-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1rem;}
-.chip{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--concrete-light);color:var(--concrete);padding:0.28rem 0.6rem;}
+.chip{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--c2);color:var(--c3);padding:0.28rem 0.6rem;}
 
 /* BAOMEI */
-.baomei-wrap{background:var(--concrete-dark);display:grid;grid-template-columns:320px 1fr;margin-top:2rem;}
+.baomei-wrap{background:var(--c5);display:grid;grid-template-columns:320px 1fr;margin-top:2rem;}
 .baomei-illo{display:flex;align-items:center;justify-content:center;padding:2.5rem;border-right:1px solid rgba(212,207,200,0.08);}
 .baomei-illo svg{width:260px;height:auto;}
 .baomei-content{padding:2.75rem;}
-.bm-eye{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.5rem;}
-.bm-name{font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--warm-white);margin-bottom:0.2rem;}
-.bm-title{font-size:0.75rem;letter-spacing:0.08em;color:var(--concrete-light);opacity:0.6;margin-bottom:0.3rem;}
-.bm-birth{font-size:0.72rem;color:var(--rust-light);opacity:0.8;margin-bottom:1.25rem;font-weight:300;}
-.bm-bio{font-size:0.9rem;color:var(--concrete-light);line-height:1.82;font-weight:300;opacity:0.9;}
-.bm-quote{margin-top:1.75rem;padding-left:1rem;border-left:2px solid var(--rust);font-family:var(--font-display);font-size:1rem;color:var(--cream);font-style:italic;line-height:1.65;}
-.bm-origin{margin-top:1.25rem;font-size:0.78rem;color:var(--concrete-light);opacity:0.55;font-style:italic;}
+.bm-eye{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-h);margin-bottom:0.5rem;}
+.bm-name{font-family:var(--fd);font-size:1.75rem;font-weight:700;color:var(--c0);margin-bottom:0.2rem;}
+.bm-title{font-size:0.75rem;letter-spacing:0.08em;color:var(--c2);opacity:0.6;margin-bottom:0.3rem;}
+.bm-birth{font-size:0.72rem;color:var(--accent-h);opacity:0.8;margin-bottom:1.25rem;font-weight:300;}
+.bm-bio{font-size:0.9rem;color:var(--c2);line-height:1.82;font-weight:300;opacity:0.9;}
+.bm-quote{margin-top:1.75rem;padding-left:1rem;border-left:2px solid var(--rust);font-family:var(--fd);font-size:1rem;color:var(--c1);font-style:italic;line-height:1.65;}
+.bm-origin{margin-top:1.25rem;font-size:0.78rem;color:var(--c2);opacity:0.55;font-style:italic;}
 
 /* VALUES */
 .values-list{display:flex;flex-direction:column;gap:1.5rem;margin-top:2.5rem;}
-.vi{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.5rem;border-bottom:1px solid var(--concrete-light);}
-.vn{font-family:var(--font-display);font-size:1.1rem;color:var(--rust);font-weight:700;min-width:2rem;}
-.vc h4{font-size:0.92rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.3rem;}
-.vc p{font-size:0.85rem;color:var(--concrete);line-height:1.65;font-weight:300;}
+.vi{display:flex;gap:1.25rem;align-items:flex-start;padding-bottom:1.5rem;border-bottom:1px solid var(--c2);}
+.vn{font-family:var(--fd);font-size:1.1rem;color:var(--rust);font-weight:700;min-width:2rem;}
+.vc h4{font-size:0.92rem;font-weight:500;color:var(--c5);margin-bottom:0.3rem;}
+.vc p{font-size:0.85rem;color:var(--c3);line-height:1.65;font-weight:300;}
 
 /* MATERIAL PHILOSOPHY */
-.material-section{background:var(--concrete-dark);}
+.material-section{background:var(--c5);}
 .mat-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:2rem;}
 .mat-formula{background:rgba(212,207,200,0.06);border:1px solid rgba(212,207,200,0.12);padding:2rem;margin-bottom:3rem;}
-.mat-formula-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.25rem;}
+.mat-formula-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-h);margin-bottom:1.25rem;}
 .formula-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;flex-wrap:wrap;}
-.formula-item{font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);font-weight:700;}
-.formula-arrow{color:var(--rust-light);font-size:1rem;opacity:0.8;}
-.formula-result{font-family:var(--font-display);font-size:1.1rem;color:var(--rust-light);font-weight:700;border-bottom:1px solid var(--rust);padding-bottom:2px;}
-.formula-note{font-size:0.78rem;color:var(--concrete-light);opacity:0.6;margin-left:auto;}
+.formula-item{font-family:var(--fd);font-size:1.1rem;color:var(--c0);font-weight:700;}
+.formula-arrow{color:var(--accent-h);font-size:1rem;opacity:0.8;}
+.formula-result{font-family:var(--fd);font-size:1.1rem;color:var(--accent-h);font-weight:700;border-bottom:1px solid var(--rust);padding-bottom:2px;}
+.formula-note{font-size:0.78rem;color:var(--c2);opacity:0.6;margin-left:auto;}
 .mat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(212,207,200,0.08);}
-.mat-card{background:var(--concrete-dark);padding:2.25rem;}
+.mat-card{background:var(--c5);padding:2.25rem;}
 .mat-card:hover{background:rgba(212,207,200,0.05);}
-.mat-n{font-family:var(--font-display);font-size:1.8rem;color:var(--rust-light);opacity:0.55;margin-bottom:0.9rem;}
-.mat-card h3{font-family:var(--font-display);font-size:1.15rem;color:var(--warm-white);margin-bottom:0.7rem;font-weight:700;}
-.mat-card p{font-size:0.85rem;color:var(--concrete-light);line-height:1.7;opacity:0.85;font-weight:300;}
+.mat-n{font-family:var(--fd);font-size:1.8rem;color:var(--accent-h);opacity:0.55;margin-bottom:0.9rem;}
+.mat-card h3{font-family:var(--fd);font-size:1.15rem;color:var(--c0);margin-bottom:0.7rem;font-weight:700;}
+.mat-card p{font-size:0.85rem;color:var(--c2);line-height:1.7;opacity:0.85;font-weight:300;}
 .mat-data{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;padding-top:3rem;border-top:1px solid rgba(212,207,200,0.12);}
-.dn{font-family:var(--font-display);font-size:2.1rem;font-weight:700;color:var(--rust-light);}
-.dl{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--concrete-light);opacity:0.55;margin-top:0.3rem;}
-.eac-badge{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid var(--rust-light);padding:0.5rem 1rem;margin-top:2.5rem;}
-.eac-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust-light);}
-.eac-text{font-family:var(--font-display);font-size:0.88rem;color:var(--warm-white);font-style:italic;}
+.dn{font-family:var(--fd);font-size:2.1rem;font-weight:700;color:var(--accent-h);}
+.dl{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--c2);opacity:0.55;margin-top:0.3rem;}
+.eac-badge{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid var(--accent-h);padding:0.5rem 1rem;margin-top:2.5rem;}
+.eac-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-h);}
+.eac-text{font-family:var(--fd);font-size:0.88rem;color:var(--c0);font-style:italic;}
 
 /* CYCLE */
-.cycle-section{background:var(--cream);}
-.cycle-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--concrete-light);margin-top:3rem;}
-.cycle-card{padding:2.5rem;background:var(--cream);}
-.cycle-card.dark{background:var(--concrete-dark);}
+.cycle-section{background:var(--c1);}
+.cycle-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--c2);margin-top:3rem;}
+.cycle-card{padding:2.5rem;background:var(--c1);}
+.cycle-card.dark{background:var(--c5);}
 .cycle-label{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;margin-bottom:0.75rem;}
-.cycle-card .cycle-label{color:var(--concrete);}
-.cycle-card.dark .cycle-label{color:var(--rust-light);}
-.cycle-head{font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin-bottom:0.75rem;}
-.cycle-card .cycle-head{color:var(--concrete-dark);}
-.cycle-card.dark .cycle-head{color:var(--warm-white);}
+.cycle-card .cycle-label{color:var(--c3);}
+.cycle-card.dark .cycle-label{color:var(--accent-h);}
+.cycle-head{font-family:var(--fd);font-size:1.4rem;font-weight:700;margin-bottom:0.75rem;}
+.cycle-card .cycle-head{color:var(--c5);}
+.cycle-card.dark .cycle-head{color:var(--c0);}
 .cycle-body{font-size:0.85rem;line-height:1.72;font-weight:300;}
-.cycle-card .cycle-body{color:var(--concrete);}
-.cycle-card.dark .cycle-body{color:var(--concrete-light);opacity:0.85;}
+.cycle-card .cycle-body{color:var(--c3);}
+.cycle-card.dark .cycle-body{color:var(--c2);opacity:0.85;}
 
 /* PRODUCTS */
-.products-section{background:var(--warm-white);}
-.prod-tabs{display:flex;margin:2.5rem 0;border-bottom:1px solid var(--concrete-light);}
-.tab-btn{padding:0.7rem 1.4rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;cursor:pointer;border:none;background:none;color:var(--concrete);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;font-family:var(--font-body);}
-.tab-btn.active{color:var(--concrete-dark);border-bottom-color:var(--concrete-dark);}
-.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--concrete-light);}
-.prod-card{background:var(--warm-white);transition:background 0.2s;}
-.prod-card:hover{background:var(--cream);}
-.prod-img{aspect-ratio:1;background:var(--concrete-dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.products-section{background:var(--c0);}
+.prod-tabs{display:flex;margin:2.5rem 0;border-bottom:1px solid var(--c2);}
+.tab-btn{padding:0.7rem 1.4rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;cursor:pointer;border:none;background:none;color:var(--c3);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;font-family:var(--fb);}
+.tab-btn.active{color:var(--c5);border-bottom-color:var(--c5);}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--c2);}
+.prod-card{background:var(--c0);transition:background 0.2s;}
+.prod-card:hover{background:var(--c1);}
+.prod-img{aspect-ratio:1;background:var(--c5);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
 .prod-img img{width:100%;height:100%;object-fit:cover;}
-.prod-img-label{font-family:var(--font-display);font-size:2.8rem;color:rgba(212,207,200,0.18);font-weight:700;}
+.prod-img-label{font-family:var(--fd);font-size:2.8rem;color:rgba(212,207,200,0.18);font-weight:700;}
 .prod-badge{position:absolute;top:1rem;left:1rem;background:var(--rust);color:white;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.28rem 0.58rem;z-index:2;}
 .prod-info{padding:1.25rem;}
-.prod-info h4{font-size:0.9rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.35rem;}
-.prod-info p{font-size:0.77rem;color:var(--concrete);line-height:1.6;font-weight:300;}
+.prod-info h4{font-size:0.9rem;font-weight:500;color:var(--c5);margin-bottom:0.35rem;}
+.prod-info p{font-size:0.77rem;color:var(--c3);line-height:1.6;font-weight:300;}
 .prod-mat{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--moss);margin-top:0.5rem;}
-.prod-spec{font-size:0.73rem;color:var(--concrete);margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--concrete-light);line-height:1.6;}
+.prod-spec{font-size:0.73rem;color:var(--c3);margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--c2);line-height:1.6;}
 
 /* PYRAMID */
-.pyramid-section{background:var(--concrete-dark);padding:5.5rem 4rem;}
+.pyramid-section{background:var(--c5);padding:5.5rem 4rem;}
 .pyramid-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
 .pyramid-svg{width:100%;max-width:320px;margin:0 auto;display:block;}
 .pyramid-levels{display:flex;flex-direction:column;gap:1rem;}
 .pyramid-level{display:flex;gap:1.5rem;align-items:flex-start;padding:1.25rem;border:1px solid rgba(212,207,200,0.12);}
-.pyramid-level-num{font-family:var(--font-display);font-size:1.2rem;color:var(--rust-light);font-weight:700;min-width:1.5rem;opacity:0.7;}
-.pyramid-level h4{font-size:0.9rem;color:var(--warm-white);font-weight:500;margin-bottom:0.25rem;}
-.pyramid-level p{font-size:0.82rem;color:var(--concrete-light);font-weight:300;opacity:0.8;}
-.pyramid-level .wt{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust-light);margin-top:0.3rem;}
+.pyramid-level-num{font-family:var(--fd);font-size:1.2rem;color:var(--accent-h);font-weight:700;min-width:1.5rem;opacity:0.7;}
+.pyramid-level h4{font-size:0.9rem;color:var(--c0);font-weight:500;margin-bottom:0.25rem;}
+.pyramid-level p{font-size:0.82rem;color:var(--c2);font-weight:300;opacity:0.8;}
+.pyramid-level .wt{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-h);margin-top:0.3rem;}
 
 /* HIGHWAY STORY */
-.highway-section{background:var(--concrete-dark);position:relative;overflow:hidden;}
+.highway-section{background:var(--c5);position:relative;overflow:hidden;}
 .hw-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 8% 85%,rgba(155,91,58,0.2) 0%,transparent 50%);}
 .hw-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;min-height:78vh;}
 .hw-left{padding:5.5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
 .hw-right{padding:5.5rem 4rem;border-left:1px solid rgba(212,207,200,0.09);display:flex;flex-direction:column;justify-content:center;}
-.hw-eye{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust-light);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.7rem;}
-.hw-eye::before{content:'';display:inline-block;width:22px;height:1px;background:var(--rust-light);}
-.hw-title{font-family:var(--font-display);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:700;color:var(--warm-white);line-height:1.1;margin-bottom:1.5rem;}
-.hw-title em{font-style:italic;color:var(--rust-light);}
-.hw-pull{font-family:var(--font-display);font-size:1.1rem;color:var(--cream);line-height:1.62;font-style:italic;padding:1.5rem;border-left:3px solid var(--rust);margin-bottom:2rem;}
-.hw-lead{font-size:0.97rem;color:var(--concrete-light);line-height:1.88;font-weight:300;opacity:0.92;margin-bottom:1.5rem;}
-.hw-body{font-size:0.88rem;color:var(--concrete-light);line-height:1.9;font-weight:300;opacity:0.78;}
+.hw-eye{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-h);font-weight:500;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.7rem;}
+.hw-eye::before{content:'';display:inline-block;width:22px;height:1px;background:var(--accent-h);}
+.hw-title{font-family:var(--fd);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:700;color:var(--c0);line-height:1.1;margin-bottom:1.5rem;}
+.hw-title em{font-style:italic;color:var(--accent-h);}
+.hw-pull{font-family:var(--fd);font-size:1.1rem;color:var(--c1);line-height:1.62;font-style:italic;padding:1.5rem;border-left:3px solid var(--rust);margin-bottom:2rem;}
+.hw-lead{font-size:0.97rem;color:var(--c2);line-height:1.88;font-weight:300;opacity:0.92;margin-bottom:1.5rem;}
+.hw-body{font-size:0.88rem;color:var(--c2);line-height:1.9;font-weight:300;opacity:0.78;}
 .hw-timeline{display:flex;flex-direction:column;}
 .hwi{display:flex;gap:2rem;padding:1.5rem 0;border-bottom:1px solid rgba(212,207,200,0.1);}
-.hwy{font-family:var(--font-display);font-size:0.98rem;color:var(--rust-light);font-weight:700;min-width:3.5rem;padding-top:0.1rem;}
-.hwc h4{font-size:0.92rem;font-weight:500;color:var(--warm-white);margin-bottom:0.28rem;}
-.hwc p{font-size:0.82rem;color:var(--concrete-light);line-height:1.62;font-weight:300;opacity:0.78;}
+.hwy{font-family:var(--fd);font-size:0.98rem;color:var(--accent-h);font-weight:700;min-width:3.5rem;padding-top:0.1rem;}
+.hwc h4{font-size:0.92rem;font-weight:500;color:var(--c0);margin-bottom:0.28rem;}
+.hwc p{font-size:0.82rem;color:var(--c2);line-height:1.62;font-weight:300;opacity:0.78;}
 
 /* BLOG */
-.blog-section{background:var(--cream);}
+.blog-section{background:var(--c1);}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
-.blog-card{background:var(--warm-white);cursor:pointer;transition:transform 0.2s;}
+.blog-card{background:var(--c0);cursor:pointer;transition:transform 0.2s;}
 .blog-card:hover{transform:translateY(-4px);}
-.blog-thumb{aspect-ratio:16/9;background:var(--concrete-dark);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.blog-thumb{aspect-ratio:16/9;background:var(--c5);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .blog-thumb img{width:100%;height:100%;object-fit:cover;}
-.blog-thumb-label{font-family:var(--font-display);font-size:1.8rem;color:rgba(212,207,200,0.28);font-weight:700;}
+.blog-thumb-label{font-family:var(--fd);font-size:1.8rem;color:rgba(212,207,200,0.28);font-weight:700;}
 .blog-cat{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);font-weight:500;margin:1rem 1.25rem 0.4rem;}
-.blog-card h3{font-size:0.97rem;font-weight:500;color:var(--concrete-dark);line-height:1.42;padding:0 1.25rem;margin-bottom:0.5rem;}
-.blog-card p{font-size:0.8rem;color:var(--concrete);line-height:1.65;padding:0 1.25rem;font-weight:300;}
-.blog-meta{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;margin-top:0.75rem;border-top:1px solid var(--concrete-light);}
-.blog-date{font-size:0.68rem;color:var(--concrete);opacity:0.58;}
+.blog-card h3{font-size:0.97rem;font-weight:500;color:var(--c5);line-height:1.42;padding:0 1.25rem;margin-bottom:0.5rem;}
+.blog-card p{font-size:0.8rem;color:var(--c3);line-height:1.65;padding:0 1.25rem;font-weight:300;}
+.blog-meta{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;margin-top:0.75rem;border-top:1px solid var(--c2);}
+.blog-date{font-size:0.68rem;color:var(--c3);opacity:0.58;}
 .blog-read{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust);font-weight:500;}
 
 /* IMC / STRATEGY */
-.imc-section{background:var(--warm-white);}
-.imc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--concrete-light);margin-top:3rem;}
-.imc-card{background:var(--warm-white);padding:2rem;}
+.imc-section{background:var(--c0);}
+.imc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--c2);margin-top:3rem;}
+.imc-card{background:var(--c0);padding:2rem;}
 .imc-formula{font-size:0.72rem;color:var(--rust);letter-spacing:0.05em;margin-bottom:0.75rem;font-style:italic;}
-.imc-card h4{font-size:0.95rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.5rem;}
-.imc-card p{font-size:0.82rem;color:var(--concrete);line-height:1.68;font-weight:300;}
+.imc-card h4{font-size:0.95rem;font-weight:500;color:var(--c5);margin-bottom:0.5rem;}
+.imc-card p{font-size:0.82rem;color:var(--c3);line-height:1.68;font-weight:300;}
 
 /* CASES */
-.cases-section{background:var(--cream);}
+.cases-section{background:var(--c1);}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
-.case-card{border:1px solid var(--concrete-light);padding:2rem;transition:border-color 0.2s;}
-.case-card:hover{border-color:var(--concrete);}
-.case-logo{width:44px;height:44px;background:var(--concrete-light);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;}
-.case-logo span{font-family:var(--font-display);font-size:1rem;color:var(--concrete-dark);font-weight:700;}
-.case-card h4{font-size:0.92rem;font-weight:500;color:var(--concrete-dark);margin-bottom:0.45rem;}
-.case-card blockquote{font-size:0.83rem;color:var(--concrete);line-height:1.68;font-style:italic;font-weight:300;}
+.case-card{border:1px solid var(--c2);padding:2rem;transition:border-color 0.2s;}
+.case-card:hover{border-color:var(--c3);}
+.case-logo{width:44px;height:44px;background:var(--c2);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;}
+.case-logo span{font-family:var(--fd);font-size:1rem;color:var(--c5);font-weight:700;}
+.case-card h4{font-size:0.92rem;font-weight:500;color:var(--c5);margin-bottom:0.45rem;}
+.case-card blockquote{font-size:0.83rem;color:var(--c3);line-height:1.68;font-style:italic;font-weight:300;}
 .case-meta{font-size:0.68rem;color:var(--rust);margin-top:1rem;}
 .award-strip{display:flex;gap:1.5rem;margin-top:3rem;flex-wrap:wrap;}
-.award-badge{display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1.1rem;border:1px solid var(--concrete-light);}
+.award-badge{display:flex;align-items:center;gap:0.7rem;padding:0.7rem 1.1rem;border:1px solid var(--c2);}
 .award-icon{font-size:1.1rem;}
 .award-info{font-size:0.75rem;}
-.award-info strong{display:block;color:var(--concrete-dark);font-weight:500;}
-.award-info span{color:var(--concrete);font-weight:300;}
+.award-info strong{display:block;color:var(--c5);font-weight:500;}
+.award-info span{color:var(--c3);font-weight:300;}
 
 /* PARTNERS */
-.partners-section{padding:3.5rem 4rem;background:var(--warm-white);}
-.partner-title{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--concrete);text-align:center;margin-bottom:2.25rem;}
+.partners-section{padding:3.5rem 4rem;background:var(--c0);}
+.partner-title{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--c3);text-align:center;margin-bottom:2.25rem;}
 .partner-grid{display:flex;justify-content:center;align-items:center;gap:3rem;flex-wrap:wrap;}
-.partner-item{font-family:var(--font-display);font-size:0.97rem;color:var(--concrete);font-weight:700;opacity:0.45;transition:opacity 0.2s;}
+.partner-item{font-family:var(--fd);font-size:0.97rem;color:var(--c3);font-weight:700;opacity:0.45;transition:opacity 0.2s;}
 .partner-item:hover{opacity:0.9;}
 
 /* ESG */
-.esg-section{background:var(--concrete-dark);}
+.esg-section{background:var(--c5);}
 .esg-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(212,207,200,0.08);margin-top:3rem;}
-.esg-card{padding:2.5rem;background:var(--concrete-dark);}
+.esg-card{padding:2.5rem;background:var(--c5);}
 .esg-card.accent{background:rgba(155,91,58,0.12);}
-.esg-tag{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.75rem;}
-.esg-card h3{font-family:var(--font-display);font-size:1.2rem;color:var(--warm-white);margin-bottom:0.75rem;font-weight:700;}
-.esg-card p{font-size:0.85rem;color:var(--concrete-light);line-height:1.75;font-weight:300;opacity:0.85;}
+.esg-tag{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-h);margin-bottom:0.75rem;}
+.esg-card h3{font-family:var(--fd);font-size:1.2rem;color:var(--c0);margin-bottom:0.75rem;font-weight:700;}
+.esg-card p{font-size:0.85rem;color:var(--c2);line-height:1.75;font-weight:300;opacity:0.85;}
 .esg-hub{margin-top:3rem;padding:2rem;border:1px solid rgba(212,207,200,0.15);}
-.esg-hub-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1.25rem;}
+.esg-hub-title{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-h);margin-bottom:1.25rem;}
 .hub-flow{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
-.hub-node{padding:0.7rem 1.2rem;border:1px solid rgba(212,207,200,0.2);font-size:0.82rem;color:var(--concrete-light);text-align:center;}
-.hub-node.main{border-color:var(--rust-light);color:var(--rust-light);font-weight:500;}
-.hub-arr{color:var(--rust-light);opacity:0.6;font-size:1.1rem;}
+.hub-node{padding:0.7rem 1.2rem;border:1px solid rgba(212,207,200,0.2);font-size:0.82rem;color:var(--c2);text-align:center;}
+.hub-node.main{border-color:var(--accent-h);color:var(--accent-h);font-weight:500;}
+.hub-arr{color:var(--accent-h);opacity:0.6;font-size:1.1rem;}
 
 /* SEO ARTICLES */
-.seo-section{background:var(--cream);}
+.seo-section{background:var(--c1);}
 .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
-.art-card{border:1px solid var(--concrete-light);padding:1.75rem;transition:border-color 0.2s;cursor:pointer;}
-.art-card:hover{border-color:var(--concrete);}
+.art-card{border:1px solid var(--c2);padding:1.75rem;transition:border-color 0.2s;cursor:pointer;}
+.art-card:hover{border-color:var(--c3);}
 .art-tag{font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);font-weight:500;margin-bottom:0.7rem;}
-.art-card h4{font-size:0.9rem;font-weight:500;color:var(--concrete-dark);line-height:1.42;margin-bottom:0.45rem;}
-.art-card p{font-size:0.78rem;color:var(--concrete);line-height:1.65;font-weight:300;}
+.art-card h4{font-size:0.9rem;font-weight:500;color:var(--c5);line-height:1.42;margin-bottom:0.45rem;}
+.art-card p{font-size:0.78rem;color:var(--c3);line-height:1.65;font-weight:300;}
 
 /* FAQ */
-.faq-section{display:grid;grid-template-columns:1fr 2fr;gap:5rem;background:var(--concrete-dark);padding:5.5rem 4rem;}
-.faq-left .sec-eye{color:var(--rust-light);}
-.faq-left .sec-eye::before{background:var(--rust-light);}
-.faq-left .sec-title{color:var(--warm-white);}
+.faq-section{display:grid;grid-template-columns:1fr 2fr;gap:5rem;background:var(--c5);padding:5.5rem 4rem;}
+.faq-left .sec-eye{color:var(--accent-h);}
+.faq-left .sec-eye::before{background:var(--accent-h);}
+.faq-left .sec-title{color:var(--c0);}
 .faq-list{display:flex;flex-direction:column;}
 .faq-item{border-top:1px solid rgba(212,207,200,0.13);}
 .faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;cursor:pointer;}
-.faq-q h4{font-size:0.92rem;font-weight:500;color:var(--warm-white);}
+.faq-q h4{font-size:0.92rem;font-weight:500;color:var(--c0);}
 .faq-toggle{width:22px;height:22px;border:1px solid rgba(212,207,200,0.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.faq-toggle span{color:var(--concrete-light);font-size:1rem;line-height:1;transition:transform 0.3s;display:block;}
-.faq-ans{font-size:0.85rem;color:var(--concrete-light);line-height:1.75;font-weight:300;padding-bottom:1.4rem;display:none;opacity:0.82;}
+.faq-toggle span{color:var(--c2);font-size:1rem;line-height:1;transition:transform 0.3s;display:block;}
+.faq-ans{font-size:0.85rem;color:var(--c2);line-height:1.75;font-weight:300;padding-bottom:1.4rem;display:none;opacity:0.82;}
 .faq-item.open .faq-ans{display:block;}
 .faq-item.open .faq-toggle span{transform:rotate(45deg);}
 
@@ -440,38 +467,38 @@ section{padding:5.5rem 4rem;}
 .contact-icon{width:34px;height:34px;border:1px solid rgba(255,255,255,0.28);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.85rem;}
 .contact-text{font-size:0.85rem;color:rgba(255,255,255,0.82);line-height:1.5;}
 .contact-text strong{color:white;display:block;font-weight:500;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.18rem;}
-.contact-right{padding:5.5rem 4rem;background:var(--cream);}
+.contact-right{padding:5.5rem 4rem;background:var(--c1);}
 .form-group{margin-bottom:1.4rem;}
-.form-group label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--concrete);display:block;margin-bottom:0.5rem;font-weight:500;}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.82rem;border:1px solid var(--concrete-light);background:var(--warm-white);font-family:var(--font-body);font-size:0.88rem;color:var(--charcoal);outline:none;transition:border-color 0.2s;border-radius:0;}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--concrete);}
+.form-group label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--c3);display:block;margin-bottom:0.5rem;font-weight:500;}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:0.82rem;border:1px solid var(--c2);background:var(--c0);font-family:var(--fb);font-size:0.88rem;color:var(--c5);outline:none;transition:border-color 0.2s;border-radius:0;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--c3);}
 .form-group textarea{height:115px;resize:vertical;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.submit-btn{width:100%;padding:0.95rem;background:var(--concrete-dark);color:var(--warm-white);border:none;font-family:var(--font-body);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background 0.25s;}
+.submit-btn{width:100%;padding:0.95rem;background:var(--c5);color:var(--c0);border:none;font-family:var(--fb);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background 0.25s;}
 .submit-btn:hover{background:var(--rust);}
 
 /* FOOTER */
-footer{background:var(--charcoal);padding:4rem 4rem 0;}
+footer{background:var(--c5);padding:4rem 4rem 0;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-.footer-brand .logo{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--warm-white);margin-bottom:0.75rem;}
-.footer-brand .logo .dot{color:var(--rust-light);}
-.footer-brand .logo .lab{font-family:var(--font-body);font-size:0.58rem;letter-spacing:0.15em;color:var(--concrete-light);opacity:0.6;vertical-align:super;}
-.footer-brand p{font-size:0.8rem;color:var(--concrete-light);line-height:1.65;opacity:0.65;font-weight:300;}
-.footer-col h5{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-light);opacity:0.45;margin-bottom:1rem;font-weight:500;}
+.footer-brand .logo{font-family:var(--fd);font-size:1.25rem;font-weight:700;color:var(--c0);margin-bottom:0.75rem;}
+.footer-brand .logo .dot{color:var(--accent-h);}
+.footer-brand .logo .lab{font-family:var(--fb);font-size:0.58rem;letter-spacing:0.15em;color:var(--c2);opacity:0.6;vertical-align:super;}
+.footer-brand p{font-size:0.8rem;color:var(--c2);line-height:1.65;opacity:0.65;font-weight:300;}
+.footer-col h5{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--c2);opacity:0.45;margin-bottom:1rem;font-weight:500;}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
-.footer-col a{font-size:0.82rem;color:var(--concrete-light);text-decoration:none;opacity:0.65;transition:opacity 0.2s;}
+.footer-col a{font-size:0.82rem;color:var(--c2);text-decoration:none;opacity:0.65;transition:opacity 0.2s;}
 .footer-col a:hover{opacity:1;}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:2rem 0;border-top:1px solid rgba(212,207,200,0.09);}
-.footer-bottom p{font-size:0.72rem;color:var(--concrete-light);opacity:0.38;}
+.footer-bottom p{font-size:0.72rem;color:var(--c2);opacity:0.38;}
 .social-links{display:flex;gap:1rem;}
-.social-link{width:30px;height:30px;border:1px solid rgba(212,207,200,0.18);display:flex;align-items:center;justify-content:center;font-size:0.68rem;color:var(--concrete-light);opacity:0.55;text-decoration:none;transition:opacity 0.2s;}
+.social-link{width:30px;height:30px;border:1px solid rgba(212,207,200,0.18);display:flex;align-items:center;justify-content:center;font-size:0.68rem;color:var(--c2);opacity:0.55;text-decoration:none;transition:opacity 0.2s;}
 .social-link:hover{opacity:1;}
 .footer-easter{border-top:1px solid rgba(212,207,200,0.06);padding:1.2rem 0;display:flex;align-items:center;gap:0.9rem;}
-.footer-easter-text{font-size:0.7rem;color:var(--concrete-light);opacity:0.28;font-style:italic;}
+.footer-easter-text{font-size:0.7rem;color:var(--c2);opacity:0.28;font-style:italic;}
 
 /* MANIFESTO */
 .manifesto-section{background:var(--rust);padding:5rem 4rem;text-align:center;}
-.manifesto-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);color:white;font-weight:700;margin-bottom:1.5rem;line-height:1.3;}
+.manifesto-title{font-family:var(--fd);font-size:clamp(1.8rem,3vw,2.4rem);color:white;font-weight:700;margin-bottom:1.5rem;line-height:1.3;}
 .manifesto-body{font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.9;font-weight:300;max-width:680px;margin:0 auto;}
 .manifesto-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:2rem;}
 
@@ -481,12 +508,12 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   nav{padding:0.9rem 1.25rem !important;}
   .nav-links,.nav-cta{display:none !important;}
   .hamburger{display:flex !important;flex-direction:column;gap:5px;cursor:pointer;z-index:200;}
-  .hamburger span{display:block;width:26px;height:2px;background:#FAF8F5;border-radius:2px;transition:all 0.3s;}
-  nav.scrolled .hamburger span{background:var(--concrete-dark);}
+  .hamburger span{display:block;width:26px;height:2px;background:var(--c0);border-radius:2px;transition:all 0.3s;}
+  nav.scrolled .hamburger span{background:var(--c5);}
   .mobile-menu{position:fixed;inset:0;background:rgba(42,39,36,0.98);z-index:150;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;transform:translateX(100%);transition:transform 0.35s ease;backdrop-filter:blur(10px);}
   .mobile-menu.open{transform:translateX(0);}
-  .mobile-menu a{font-size:1.35rem;font-family:var(--font-display);color:var(--warm-white);text-decoration:none;font-weight:700;letter-spacing:0.04em;}
-  .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;color:var(--concrete-light);cursor:pointer;background:none;border:none;font-family:sans-serif;line-height:1;}
+  .mobile-menu a{font-size:1.35rem;font-family:var(--fd);color:var(--c0);text-decoration:none;font-weight:700;letter-spacing:0.04em;}
+  .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.8rem;color:var(--c2);cursor:pointer;background:none;border:none;font-family:sans-serif;line-height:1;}
   .hero{min-height:100svh;}
   .hero-content{padding:0 1.25rem 3.5rem !important;max-width:100% !important;}
   .hero-manifesto{font-size:clamp(2.6rem,11vw,4rem) !important;margin-bottom:1.5rem !important;}
@@ -569,6 +596,69 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   }
   .mobile-menu.open{transform:translateX(0);}
 }
+
+/* 水泥噴砂紋理（純 CSS 粒子感）*/
+.cement-bg{
+  background-color:var(--c0);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+.cement-dark-bg{
+  background-color:var(--c6);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+}
+
+
+/* ══ 卡片 Glassmorphism + Neo-Brutalism ═══════════════ */
+.product-card,.gift-card,.corp-cell{
+  border-radius:var(--r8)!important;
+  transition:transform var(--t),box-shadow var(--t)!important;
+}
+.product-card:hover,.gift-card:hover{
+  transform:translateY(-5px)!important;
+  box-shadow:0 20px 60px rgba(0,0,0,.18)!important;
+}
+.product-card img:hover,.card-img-wrap img{
+  transition:transform .5s ease,opacity .3s!important;
+}
+.product-card:hover .card-img-wrap img{transform:scale(1.06)!important;}
+
+/* 系列 badge：橘底 */
+.series-badge,.card-series-badge{
+  background:var(--accent)!important;
+  color:white!important;
+  border-radius:var(--r4)!important;
+  font-family:var(--fd)!important;
+  font-weight:700!important;
+}
+/* 卡片 CTA 橘色 */
+.card-cta,.card-open{color:var(--accent)!important;}
+.card-cta:hover,.card-open:hover{color:var(--accent-h)!important;}
+
+/* 燈箱：深炭背景 */
+#lb,#lightbox{background:rgba(20,20,18,.97)!important;}
+.lb-right,.lb-info{background:var(--c5)!important;}
+.lb-cta,.lb-contact{
+  background:var(--accent)!important;
+  border-radius:var(--r4)!important;
+  font-family:var(--fd)!important;
+  font-weight:700!important;
+}
+.lb-cta:hover,.lb-contact:hover{background:var(--accent-h)!important;}
+.lb-name{font-family:var(--fd)!important;font-weight:900!important;}
+
+/* 篩選按鈕 */
+.filter-btn{
+  border-color:rgba(232,93,4,.3)!important;
+  border-radius:var(--r4)!important;
+  font-family:var(--fd)!important;
+  font-weight:600!important;
+  transition:all var(--t)!important;
+}
+.filter-btn:hover{border-color:var(--accent)!important;color:var(--accent)!important;}
+.filter-btn.active{background:var(--accent)!important;border-color:var(--accent)!important;}
+
 </style>
 </head>
 <body>
@@ -579,11 +669,11 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
     <li><a href="story.html">品牌故事</a></li>
     <li><a href="blog.html">最新動態</a></li>
     <li><a href="products.html">產品系列</a></li>
-    <li><a href="gifts.html" style="color:var(--rust-light);">🎁 節慶禮品</a></li>
+    <li><a href="gifts.html" style="color:var(--accent-h);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
     <li><a href="esg-dashboard.html">ESG</a></li>
     <li><a href="recrete.html" style="color:var(--gold,#C8A96E);">👾 康加台灣</a></li>
-    <li><a href="fundraise.html" style="color:var(--rust,#9B5B3A);">募資計畫</a></li>
+    <li><a href="fundraise.html" style="color:var(--rust,var(--accent));">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="partners.html" class="nav-cta" style="border:none;padding:0;background:transparent;color:rgba(212,207,200,0.75);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;">合作夥伴</a>
@@ -601,38 +691,38 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   <a href="index.html#story" onclick="closeMobileMenu()">品牌故事</a>
   <a href="gallery.html" onclick="closeMobileMenu()">作品影像集</a>
   <a href="index.html#blog" onclick="closeMobileMenu()">最新動態</a>
-  <a href="contact.html" onclick="closeMobileMenu()" style="color:var(--rust-light);">合作洽詢</a>
+  <a href="contact.html" onclick="closeMobileMenu()" style="color:var(--accent-h);">合作洽詢</a>
 </div>
 
-<div style="padding-top:80px;min-height:100vh;background:var(--warm-white);">
-  <div style="padding:5rem 4rem 3rem;background:var(--concrete-dark);border-bottom:1px solid rgba(212,207,200,0.08);">
-    <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>產品系列</div>
-    <h1 class="sec-title" style="color:var(--warm-white);font-size:clamp(2.2rem,4vw,3.5rem);">以廢料為媒介的<br>當代設計作品</h1>
-    <p class="sec-sub" style="color:var(--concrete-light);opacity:0.85;max-width:560px;">每一件 Concredia.Lab 作品，都附材料溯源文件與減碳量計算報告，可直接納入企業 ESG 報告。</p>
+<div style="padding-top:80px;min-height:100vh;background:var(--c0);">
+  <div style="padding:5rem 4rem 3rem;background:var(--c5);border-bottom:1px solid rgba(212,207,200,0.08);">
+    <div class="sec-eye" style="color:var(--accent-h);"><span style="width:20px;height:1px;background:var(--accent-h);display:inline-block;margin-right:0.7rem;"></span>產品系列</div>
+    <h1 class="sec-title" style="color:var(--c0);font-size:clamp(2.2rem,4vw,3.5rem);">以廢料為媒介的<br>當代設計作品</h1>
+    <p class="sec-sub" style="color:var(--c2);opacity:0.85;max-width:560px;">每一件 Concredia.Lab 作品，都附材料溯源文件與減碳量計算報告，可直接納入企業 ESG 報告。</p>
 
     <!-- 品牌強標語 -->
     <div style="margin-top:1.75rem;padding:1.5rem 2rem;background:rgba(155,91,58,0.08);border-left:4px solid var(--rust);max-width:620px;">
-      <p style="font-family:var(--font-display);font-size:1.1rem;color:var(--warm-white);font-style:italic;line-height:1.8;">蓋房子的規格，做你的桌子。<br>每一件都有鋼筋，每一件都是 1/1。</p>
+      <p style="font-family:var(--fd);font-size:1.1rem;color:var(--c0);font-style:italic;line-height:1.8;">蓋房子的規格，做你的桌子。<br>每一件都有鋼筋，每一件都是 1/1。</p>
     </div>
 
     <!-- 標籤雲 -->
     <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem;">
-      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.68rem;letter-spacing:0.08em;">#台灣職人精神</span>
-      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.68rem;letter-spacing:0.08em;">#每件都有鋼筋</span>
-      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.68rem;letter-spacing:0.08em;">#世界最硬的桌子</span>
-      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.68rem;letter-spacing:0.08em;">#Taiwan No.1</span>
-      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.68rem;letter-spacing:0.08em;">#廢料升級轉化</span>
-      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.68rem;letter-spacing:0.08em;">#客製刻字</span>
-      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust-light);font-size:0.68rem;letter-spacing:0.08em;">#ESG材料溯源文件</span>
+      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--accent-h);font-size:0.68rem;letter-spacing:0.08em;">#台灣職人精神</span>
+      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--accent-h);font-size:0.68rem;letter-spacing:0.08em;">#每件都有鋼筋</span>
+      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--accent-h);font-size:0.68rem;letter-spacing:0.08em;">#世界最硬的桌子</span>
+      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--accent-h);font-size:0.68rem;letter-spacing:0.08em;">#Taiwan No.1</span>
+      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--accent-h);font-size:0.68rem;letter-spacing:0.08em;">#廢料升級轉化</span>
+      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--accent-h);font-size:0.68rem;letter-spacing:0.08em;">#客製刻字</span>
+      <span style="padding:0.3rem 0.8rem;border:1px solid rgba(155,91,58,0.4);color:var(--accent-h);font-size:0.68rem;letter-spacing:0.08em;">#ESG材料溯源文件</span>
     </div>
   </div>
 
   <!-- 流構系列 FLOW STRUCTURE -->
-<div id="flow-structure" style="background:var(--warm-white);padding:5rem 4rem;border-bottom:1px solid rgba(58,54,50,0.08);">
+<div id="flow-structure" style="background:var(--c0);padding:5rem 4rem;border-bottom:1px solid rgba(58,54,50,0.08);">
   <div style="text-align:center;margin-bottom:3rem;">
     <div style="font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust);margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;gap:0.6rem;"><span style="width:20px;height:1px;background:var(--rust);display:inline-block;"></span>旗艦系列<span style="width:20px;height:1px;background:var(--rust);display:inline-block;"></span></div>
-    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);color:var(--concrete-dark);font-weight:700;margin-bottom:0.75rem;">流構系列<span style="color:var(--rust);"> Flow Structure</span></h2>
-    <p style="font-size:0.95rem;color:var(--concrete);max-width:680px;margin:0 auto;line-height:1.8;font-weight:300;">一組可變換高度與功能的結構系統。透過連接榫的長短調整與桌板、木料的更換，在高腳椅、桌子與長桌之間轉換，滿足不同使用情境。混凝土結構提供穩定骨架，漂流木則承載時間的痕跡與自然的記憶。</p>
+    <h2 style="font-family:var(--fd);font-size:clamp(2rem,3.5vw,3rem);color:var(--c5);font-weight:700;margin-bottom:0.75rem;">流構系列<span style="color:var(--rust);"> Flow Structure</span></h2>
+    <p style="font-size:0.95rem;color:var(--c3);max-width:680px;margin:0 auto;line-height:1.8;font-weight:300;">一組可變換高度與功能的結構系統。透過連接榫的長短調整與桌板、木料的更換，在高腳椅、桌子與長桌之間轉換，滿足不同使用情境。混凝土結構提供穩定骨架，漂流木則承載時間的痕跡與自然的記憶。</p>
   </div>
 
   <!-- 系統說明圖 -->
@@ -647,23 +737,23 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 
   <!-- 三種型態 -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(58,54,50,0.1);margin-bottom:2.5rem;">
-    <div style="padding:2rem 1.75rem;background:var(--cream);text-align:center;">
+    <div style="padding:2rem 1.75rem;background:var(--c1);text-align:center;">
       <div style="font-size:2rem;margin-bottom:0.75rem;">🪑</div>
-      <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.3rem;">① 高腳椅 / 高腳桌椅</div>
-      <div style="font-size:0.75rem;color:var(--concrete);opacity:0.7;margin-bottom:0.5rem;">連接榫：短　總高：約 65 cm</div>
-      <div style="font-size:0.82rem;color:var(--concrete);line-height:1.6;">個人使用、短暫停留的輕巧模式</div>
+      <div style="font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--c5);margin-bottom:0.3rem;">① 高腳椅 / 高腳桌椅</div>
+      <div style="font-size:0.75rem;color:var(--c3);opacity:0.7;margin-bottom:0.5rem;">連接榫：短　總高：約 65 cm</div>
+      <div style="font-size:0.82rem;color:var(--c3);line-height:1.6;">個人使用、短暫停留的輕巧模式</div>
     </div>
-    <div style="padding:2rem 1.75rem;background:var(--cream);text-align:center;">
+    <div style="padding:2rem 1.75rem;background:var(--c1);text-align:center;">
       <div style="font-size:2rem;margin-bottom:0.75rem;">🪵</div>
-      <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.3rem;">② 標準桌</div>
-      <div style="font-size:0.75rem;color:var(--concrete);opacity:0.7;margin-bottom:0.5rem;">連接榫：長　總高：約 75 cm</div>
-      <div style="font-size:0.82rem;color:var(--concrete);line-height:1.6;">雙人對坐、工作、閱讀的標準模式</div>
+      <div style="font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--c5);margin-bottom:0.3rem;">② 標準桌</div>
+      <div style="font-size:0.75rem;color:var(--c3);opacity:0.7;margin-bottom:0.5rem;">連接榫：長　總高：約 75 cm</div>
+      <div style="font-size:0.82rem;color:var(--c3);line-height:1.6;">雙人對坐、工作、閱讀的標準模式</div>
     </div>
-    <div style="padding:2rem 1.75rem;background:var(--cream);text-align:center;">
+    <div style="padding:2rem 1.75rem;background:var(--c1);text-align:center;">
       <div style="font-size:2rem;margin-bottom:0.75rem;">🍽️</div>
-      <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--concrete-dark);margin-bottom:0.3rem;">③ 長桌組合</div>
-      <div style="font-size:0.75rem;color:var(--concrete);opacity:0.7;margin-bottom:0.5rem;">桌板延伸 + 長凳搭配</div>
-      <div style="font-size:0.82rem;color:var(--concrete);line-height:1.6;">多人共享、聚會分享、展覽活動</div>
+      <div style="font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--c5);margin-bottom:0.3rem;">③ 長桌組合</div>
+      <div style="font-size:0.75rem;color:var(--c3);opacity:0.7;margin-bottom:0.5rem;">桌板延伸 + 長凳搭配</div>
+      <div style="font-size:0.82rem;color:var(--c3);line-height:1.6;">多人共享、聚會分享、展覽活動</div>
     </div>
   </div>
 
@@ -671,45 +761,45 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
     <div style="padding:1.5rem;background:rgba(155,91,58,0.06);border-left:3px solid var(--rust);">
       <div style="font-size:1.4rem;margin-bottom:0.5rem;">🔧</div>
-      <div style="font-size:0.85rem;font-weight:600;color:var(--concrete-dark);margin-bottom:0.3rem;">模組化結構</div>
-      <div style="font-size:0.78rem;color:var(--concrete);opacity:0.75;line-height:1.55;">可依需求調整高度與功能，一組頂多用途</div>
+      <div style="font-size:0.85rem;font-weight:600;color:var(--c5);margin-bottom:0.3rem;">模組化結構</div>
+      <div style="font-size:0.78rem;color:var(--c3);opacity:0.75;line-height:1.55;">可依需求調整高度與功能，一組頂多用途</div>
     </div>
     <div style="padding:1.5rem;background:rgba(155,91,58,0.06);border-left:3px solid var(--rust);">
       <div style="font-size:1.4rem;margin-bottom:0.5rem;">🏗️</div>
-      <div style="font-size:0.85rem;font-weight:600;color:var(--concrete-dark);margin-bottom:0.3rem;">結構穩定</div>
-      <div style="font-size:0.78rem;color:var(--concrete);opacity:0.75;line-height:1.55;">混凝土骨架內含鋼筋，每件均通過結構設計</div>
+      <div style="font-size:0.85rem;font-weight:600;color:var(--c5);margin-bottom:0.3rem;">結構穩定</div>
+      <div style="font-size:0.78rem;color:var(--c3);opacity:0.75;line-height:1.55;">混凝土骨架內含鋼筋，每件均通過結構設計</div>
     </div>
     <div style="padding:1.5rem;background:rgba(155,91,58,0.06);border-left:3px solid var(--rust);">
       <div style="font-size:1.4rem;margin-bottom:0.5rem;">🌊</div>
-      <div style="font-size:0.85rem;font-weight:600;color:var(--concrete-dark);margin-bottom:0.3rem;">自然材料</div>
-      <div style="font-size:0.78rem;color:var(--concrete);opacity:0.75;line-height:1.55;">漂流木桌板，每塊木頭有獨特的紋路與故事</div>
+      <div style="font-size:0.85rem;font-weight:600;color:var(--c5);margin-bottom:0.3rem;">自然材料</div>
+      <div style="font-size:0.78rem;color:var(--c3);opacity:0.75;line-height:1.55;">漂流木桌板，每塊木頭有獨特的紋路與故事</div>
     </div>
     <div style="padding:1.5rem;background:rgba(155,91,58,0.06);border-left:3px solid var(--rust);">
       <div style="font-size:1.4rem;margin-bottom:0.5rem;">♻️</div>
-      <div style="font-size:0.85rem;font-weight:600;color:var(--concrete-dark);margin-bottom:0.3rem;">永續再生</div>
-      <div style="font-size:0.78rem;color:var(--concrete);opacity:0.75;line-height:1.55;">廢棄材料重新被使用，手工製作少量生產</div>
+      <div style="font-size:0.85rem;font-weight:600;color:var(--c5);margin-bottom:0.3rem;">永續再生</div>
+      <div style="font-size:0.78rem;color:var(--c3);opacity:0.75;line-height:1.55;">廢棄材料重新被使用，手工製作少量生產</div>
     </div>
   </div>
 
   <!-- CTA -->
   <div style="text-align:center;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(58,54,50,0.08);">
-    <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.5rem;background:var(--rust);color:white;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;margin-right:1rem;" onmouseover="this.style.background='var(--rust-light)'" onmouseout="this.style.background='var(--rust)'">詢問流構系列</a>
+    <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.5rem;background:var(--rust);color:white;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;margin-right:1rem;" onmouseover="this.style.background='var(--accent-h)'" onmouseout="this.style.background='var(--rust)'">詢問流構系列</a>
     <a href="esg-dashboard.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.5rem;border:1px solid rgba(155,91,58,0.4);color:var(--rust);font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(155,91,58,0.06)'" onmouseout="this.style.background='transparent'">查看永續數據</a>
   </div>
 </div>
 
 <!-- TABS -->
-<div style="background:var(--warm-white);padding:0 4rem;border-bottom:1px solid var(--concrete-light);position:sticky;top:80px;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+<div style="background:var(--c0);padding:0 4rem;border-bottom:1px solid var(--c2);position:sticky;top:80px;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
   <div style="display:flex;">
-    <button id="tab-btn-std" onclick="switchTab('standard')" style="padding:1.1rem 2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;cursor:pointer;border:none;background:none;color:var(--rust);border-bottom:3px solid var(--rust);margin-bottom:-1px;font-family:var(--font-body);transition:all 0.2s;">READY-MADE · 標準量產</button>
-    <button id="tab-btn-cust" onclick="switchTab('custom')" style="padding:1.1rem 2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;cursor:pointer;border:none;background:none;color:var(--concrete);border-bottom:3px solid transparent;margin-bottom:-1px;font-family:var(--font-body);transition:all 0.2s;">CUSTOM-MADE · 客製故事系列</button>
+    <button id="tab-btn-std" onclick="switchTab('standard')" style="padding:1.1rem 2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;cursor:pointer;border:none;background:none;color:var(--rust);border-bottom:3px solid var(--rust);margin-bottom:-1px;font-family:var(--fb);transition:all 0.2s;">READY-MADE · 標準量產</button>
+    <button id="tab-btn-cust" onclick="switchTab('custom')" style="padding:1.1rem 2rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;cursor:pointer;border:none;background:none;color:var(--c3);border-bottom:3px solid transparent;margin-bottom:-1px;font-family:var(--fb);transition:all 0.2s;">CUSTOM-MADE · 客製故事系列</button>
   </div>
 </div>
 
 <!-- READY-MADE 內容 -->
 <div id="panel-standard" style="display:block;">
 <!-- READY-MADE -->
-  <section id="standard" style="padding:5rem 4rem;background:var(--warm-white);">
+  <section id="standard" style="padding:5rem 4rem;background:var(--c0);">
     <div class="sec-eye">Ready-made · 標準量產</div>
     <h2 class="sec-title">標準系列</h2>
     <div class="prod-grid">
@@ -746,7 +836,7 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 <!-- CUSTOM-MADE 內容 -->
 <div id="panel-custom" style="display:none;">
 <!-- CUSTOM-MADE -->
-  <section id="custom" style="padding:5rem 4rem;background:var(--cream);">
+  <section id="custom" style="padding:5rem 4rem;background:var(--c1);">
     <div class="sec-eye">Custom-made · 客製故事系列</div>
     <h2 class="sec-title">客製系列</h2>
     <p class="sec-sub">具文化意涵、達到金額門檻方承接。每件附設計圖、材料履歷與減碳量計算。</p>
@@ -770,9 +860,9 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 
 
   <!-- CTA -->
-  <section style="padding:5rem 4rem;background:var(--concrete-dark);text-align:center;">
-    <h2 class="sec-title" style="color:var(--warm-white);margin-bottom:1rem;">找不到你想要的？</h2>
-    <p class="sec-sub" style="color:var(--concrete-light);opacity:0.8;margin:0 auto 2.5rem;">每一件 Concredia.Lab 的作品都可以是獨一無二的。告訴我們你的故事，我們來把它鑄進石頭裡。</p>
+  <section style="padding:5rem 4rem;background:var(--c5);text-align:center;">
+    <h2 class="sec-title" style="color:var(--c0);margin-bottom:1rem;">找不到你想要的？</h2>
+    <p class="sec-sub" style="color:var(--c2);opacity:0.8;margin:0 auto 2.5rem;">每一件 Concredia.Lab 的作品都可以是獨一無二的。告訴我們你的故事，我們來把它鑄進石頭裡。</p>
     <a href="contact.html" class="btn-p">洽詢客製化 →</a>
       <a href="esg-dashboard.html" style="display:inline-block;margin-left:1rem;padding:0.9rem 1.75rem;border:1px solid rgba(46,204,113,0.4);color:#2ECC71;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(46,204,113,0.08)'" onmouseout="this.style.background='transparent'">ESG 數據儀表板 →</a>
   </section>
@@ -785,51 +875,51 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 </div>
 
 <!-- 材料包 -->
-<div style="padding:5rem 4rem;background:var(--concrete-dark);">
-  <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>自己動手做</div>
-  <h2 class="sec-title" style="color:var(--warm-white);margin-bottom:2.5rem;">材料包系列</h2>
+<div style="padding:5rem 4rem;background:var(--c5);">
+  <div class="sec-eye" style="color:var(--accent-h);"><span style="width:20px;height:1px;background:var(--accent-h);display:inline-block;margin-right:0.7rem;"></span>自己動手做</div>
+  <h2 class="sec-title" style="color:var(--c0);margin-bottom:2.5rem;">材料包系列</h2>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
     <div style="display:flex;flex-direction:column;gap:1.5px;">
 
-      <div style="padding:2rem;background:#1C1A18;border-top:3px solid var(--rust-light);">
+      <div style="padding:2rem;background:#1C1A18;border-top:3px solid var(--accent-h);">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-          <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--warm-white);">🎨 小型材料包</div>
-          <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust-light);border:1px solid rgba(155,91,58,0.35);padding:0.2rem 0.6rem;">5 kg 以下</div>
+          <div style="font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--c0);">🎨 小型材料包</div>
+          <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-h);border:1px solid rgba(155,91,58,0.35);padding:0.2rem 0.6rem;">5 kg 以下</div>
         </div>
-        <div style="font-size:0.88rem;color:var(--concrete-light);line-height:1.7;opacity:0.85;margin-bottom:0.75rem;">適合個人創作者、學校工作坊。小尺寸方便操作，可製作盆器、杯墊、小型裝飾品。</div>
-        <div style="font-size:0.78rem;color:var(--rust-light);">包含：水泥（灰/白）· 回收砂 · 蚵粉 · 回收粒料 · 色粉</div>
+        <div style="font-size:0.88rem;color:var(--c2);line-height:1.7;opacity:0.85;margin-bottom:0.75rem;">適合個人創作者、學校工作坊。小尺寸方便操作，可製作盆器、杯墊、小型裝飾品。</div>
+        <div style="font-size:0.78rem;color:var(--accent-h);">包含：水泥（灰/白）· 回收砂 · 蚵粉 · 回收粒料 · 色粉</div>
       </div>
 
       <div style="padding:2rem;background:#1C1A18;border-top:3px solid var(--rust);">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
-          <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--warm-white);">🏗️ 大型材料包</div>
-          <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rust-light);border:1px solid rgba(155,91,58,0.35);padding:0.2rem 0.6rem;">20 kg / 包</div>
+          <div style="font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--c0);">🏗️ 大型材料包</div>
+          <div style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-h);border:1px solid rgba(155,91,58,0.35);padding:0.2rem 0.6rem;">20 kg / 包</div>
         </div>
-        <div style="font-size:0.88rem;color:var(--concrete-light);line-height:1.7;opacity:0.85;margin-bottom:0.75rem;">適合社區工作坊、水保署合作計畫、企業 ESG 活動。可製作中型家具、社區公共座具。</div>
-        <div style="font-size:0.78rem;color:var(--rust-light);">包含：水泥（灰/白）· 回收砂 · 蚵粉 · 回收粒料 · 裝飾色石 · 色粉</div>
+        <div style="font-size:0.88rem;color:var(--c2);line-height:1.7;opacity:0.85;margin-bottom:0.75rem;">適合社區工作坊、水保署合作計畫、企業 ESG 活動。可製作中型家具、社區公共座具。</div>
+        <div style="font-size:0.78rem;color:var(--accent-h);">包含：水泥（灰/白）· 回收砂 · 蚵粉 · 回收粒料 · 裝飾色石 · 色粉</div>
       </div>
 
     </div>
     <div>
       <div style="padding:2rem;background:rgba(155,91,58,0.08);border:1px solid rgba(155,91,58,0.3);">
-        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust-light);margin-bottom:1rem;">材料包內容物</div>
+        <div style="font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-h);margin-bottom:1rem;">材料包內容物</div>
         <div style="display:flex;flex-direction:column;gap:0.6rem;">
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--concrete-light);">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--c2);">
             <span style="font-size:1.2rem;">🪨</span>水泥（灰色 / 白色）</div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--concrete-light);">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--c2);">
             <span style="font-size:1.2rem;">🏖️</span>回收砂</div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--concrete-light);">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--c2);">
             <span style="font-size:1.2rem;">🐚</span>蚵粉（海洋回收）</div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--concrete-light);">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--c2);">
             <span style="font-size:1.2rem;">🔄</span>回收粒料</div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--concrete-light);">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--c2);">
             <span style="font-size:1.2rem;">💎</span>裝飾色石（大型包）</div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--concrete-light);">
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;color:var(--c2);">
             <span style="font-size:1.2rem;">🎨</span>色粉</div>
         </div>
         <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid rgba(212,207,200,0.08);">
-          <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust-light);text-decoration:none;">洽詢材料包 →</a>
+          <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-h);text-decoration:none;">洽詢材料包 →</a>
         </div>
       </div>
     </div>
@@ -837,24 +927,24 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 </div>
 
 <!-- 認證說明 -->
-<div style="padding:4rem 4rem;background:var(--warm-white);">
+<div style="padding:4rem 4rem;background:var(--c0);">
   <div class="sec-eye" style="color:var(--rust);">品質與認證</div>
   <h2 class="sec-title" style="margin-bottom:2.5rem;">現階段定位與未來規劃</h2>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
     <div>
-      <div style="font-size:0.85rem;font-weight:600;color:var(--concrete-dark);margin-bottom:1rem;">📍 現階段（裝置用家具 · 街道家具）</div>
-      <p style="font-size:0.9rem;color:var(--concrete);line-height:1.8;font-weight:300;margin-bottom:1rem;">目前定位於裝置藝術、街道家具，尚未達到量產規模。每件作品均有鋼筋/抗拉材作為結構支撐，確保安全性，由 Rovi 博士親自把關配方與製程。</p>
-      <div style="padding:1rem 1.25rem;background:var(--cream);border-left:3px solid rgba(155,91,58,0.3);">
-        <div style="font-size:0.82rem;color:var(--concrete);line-height:1.7;">✓ 內含鋼筋 / 抗拉材，結構安全<br>✓ 博士級配方研發把關<br>✓ 每件附材料溯源文件</div>
+      <div style="font-size:0.85rem;font-weight:600;color:var(--c5);margin-bottom:1rem;">📍 現階段（裝置用家具 · 街道家具）</div>
+      <p style="font-size:0.9rem;color:var(--c3);line-height:1.8;font-weight:300;margin-bottom:1rem;">目前定位於裝置藝術、街道家具，尚未達到量產規模。每件作品均有鋼筋/抗拉材作為結構支撐，確保安全性，由 Rovi 博士親自把關配方與製程。</p>
+      <div style="padding:1rem 1.25rem;background:var(--c1);border-left:3px solid rgba(155,91,58,0.3);">
+        <div style="font-size:0.82rem;color:var(--c3);line-height:1.7;">✓ 內含鋼筋 / 抗拉材，結構安全<br>✓ 博士級配方研發把關<br>✓ 每件附材料溯源文件</div>
       </div>
     </div>
     <div>
-      <div style="font-size:0.85rem;font-weight:600;color:var(--concrete-dark);margin-bottom:1rem;">🎯 長期目標（量產後認證路徑）</div>
+      <div style="font-size:0.85rem;font-weight:600;color:var(--c5);margin-bottom:1rem;">🎯 長期目標（量產後認證路徑）</div>
       <div style="display:flex;flex-direction:column;gap:0.5rem;">
-        <div style="padding:0.75rem 1rem;background:var(--cream);font-size:0.82rem;color:var(--concrete-dark);">CNS 15340 辦公桌穩定性、強度及耐久性試驗</div>
-        <div style="padding:0.75rem 1rem;background:var(--cream);font-size:0.82rem;color:var(--concrete-dark);">CNS 10894 家具性能試驗方法</div>
-        <div style="padding:0.75rem 1rem;background:var(--cream);font-size:0.82rem;color:var(--concrete-dark);">表面有害物質（八大重金屬）檢測</div>
-        <div style="padding:0.75rem 1rem;background:rgba(155,91,58,0.06);border-left:3px solid var(--rust);font-size:0.82rem;color:var(--concrete-dark);">🏆 國際設計獎（紅點等）—— 規模成熟後申請</div>
+        <div style="padding:0.75rem 1rem;background:var(--c1);font-size:0.82rem;color:var(--c5);">CNS 15340 辦公桌穩定性、強度及耐久性試驗</div>
+        <div style="padding:0.75rem 1rem;background:var(--c1);font-size:0.82rem;color:var(--c5);">CNS 10894 家具性能試驗方法</div>
+        <div style="padding:0.75rem 1rem;background:var(--c1);font-size:0.82rem;color:var(--c5);">表面有害物質（八大重金屬）檢測</div>
+        <div style="padding:0.75rem 1rem;background:rgba(155,91,58,0.06);border-left:3px solid var(--rust);font-size:0.82rem;color:var(--c5);">🏆 國際設計獎（紅點等）—— 規模成熟後申請</div>
       </div>
     </div>
   </div>
@@ -862,42 +952,42 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
 
 
 <!-- 畫作藝術創作系列 -->
-<div style="padding:5rem 4rem;background:var(--concrete-dark);">
+<div style="padding:5rem 4rem;background:var(--c5);">
   <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
     <div>
-      <div class="sec-eye" style="color:var(--rust-light);"><span style="width:20px;height:1px;background:var(--rust-light);display:inline-block;margin-right:0.7rem;"></span>藝術創作</div>
-      <h2 class="sec-title" style="color:var(--warm-white);">畫作系列 · 光影刻痕</h2>
+      <div class="sec-eye" style="color:var(--accent-h);"><span style="width:20px;height:1px;background:var(--accent-h);display:inline-block;margin-right:0.7rem;"></span>藝術創作</div>
+      <h2 class="sec-title" style="color:var(--c0);">畫作系列 · 光影刻痕</h2>
     </div>
-    <a href="contact.html" style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust-light);text-decoration:none;border:1px solid rgba(155,91,58,0.3);padding:0.6rem 1.2rem;">詢問收藏 →</a>
+    <a href="contact.html" style="font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-h);text-decoration:none;border:1px solid rgba(155,91,58,0.3);padding:0.6rem 1.2rem;">詢問收藏 →</a>
   </div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
     <div>
-      <p style="font-size:0.97rem;color:var(--concrete-light);line-height:1.9;font-weight:300;margin-bottom:1.5rem;">以保麗龍板為媒材，用刀具手工割出光影層次，每一幅作品都是單一的——不可複製、無法量產。水墨意境，台灣地景，用最低科技記錄最深的凝視。</p>
+      <p style="font-size:0.97rem;color:var(--c2);line-height:1.9;font-weight:300;margin-bottom:1.5rem;">以保麗龍板為媒材，用刀具手工割出光影層次，每一幅作品都是單一的——不可複製、無法量產。水墨意境，台灣地景，用最低科技記錄最深的凝視。</p>
 
       <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:1.5rem;">
         <div style="padding:0.85rem 1.25rem;background:#1C1A18;display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.85rem;color:var(--cream);">✂️ 媒材</span>
-          <span style="font-size:0.82rem;color:var(--concrete-light);">保麗龍板（2–4 cm 厚）</span>
+          <span style="font-size:0.85rem;color:var(--c1);">✂️ 媒材</span>
+          <span style="font-size:0.82rem;color:var(--c2);">保麗龍板（2–4 cm 厚）</span>
         </div>
         <div style="padding:0.85rem 1.25rem;background:#1C1A18;display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.85rem;color:var(--cream);">⏱️ 製作時間</span>
-          <span style="font-size:0.82rem;color:var(--concrete-light);">1 幅約 1–7 小時（視複雜度）</span>
+          <span style="font-size:0.85rem;color:var(--c1);">⏱️ 製作時間</span>
+          <span style="font-size:0.82rem;color:var(--c2);">1 幅約 1–7 小時（視複雜度）</span>
         </div>
         <div style="padding:0.85rem 1.25rem;background:#1C1A18;display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.85rem;color:var(--cream);">📐 尺寸</span>
-          <span style="font-size:0.82rem;color:var(--concrete-light);">小件 A4 起 / 大件 50 號畫布尺寸</span>
+          <span style="font-size:0.85rem;color:var(--c1);">📐 尺寸</span>
+          <span style="font-size:0.82rem;color:var(--c2);">小件 A4 起 / 大件 50 號畫布尺寸</span>
         </div>
         <div style="padding:0.85rem 1.25rem;background:#1C1A18;display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:0.85rem;color:var(--cream);">🎨 特性</span>
-          <span style="font-size:0.82rem;color:var(--concrete-light);">純手工 · 限量 · 每件皆有編號</span>
+          <span style="font-size:0.85rem;color:var(--c1);">🎨 特性</span>
+          <span style="font-size:0.82rem;color:var(--c2);">純手工 · 限量 · 每件皆有編號</span>
         </div>
         <div style="padding:0.85rem 1.25rem;background:rgba(155,91,58,0.06);border-left:3px solid var(--rust);">
-          <span style="font-size:0.82rem;color:var(--concrete-light);">未來規劃：導入雷射切割機，可實現更細緻線條（8–20 cm 厚），甚至成為建築窗框裝飾材</span>
+          <span style="font-size:0.82rem;color:var(--c2);">未來規劃：導入雷射切割機，可實現更細緻線條（8–20 cm 厚），甚至成為建築窗框裝飾材</span>
         </div>
       </div>
 
-      <p style="font-size:0.82rem;color:var(--concrete-light);opacity:0.65;line-height:1.7;border-top:1px solid rgba(212,207,200,0.08);padding-top:1rem;">
+      <p style="font-size:0.82rem;color:var(--c2);opacity:0.65;line-height:1.7;border-top:1px solid rgba(212,207,200,0.08);padding-top:1rem;">
         每一幅作品都可作為獨立的藝術收藏，也可作為企業空間的裝置藝術。大型畫作搭配水泥音響是我們的旗艦募資方案（NT$50,000 / NT$100,000）。
       </p>
     </div>
@@ -906,14 +996,14 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
       <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#1C1A18 0%,#2A2724 100%);display:flex;align-items:center;justify-content:center;">
         <div style="text-align:center;padding:2rem;">
           <div style="font-size:3rem;margin-bottom:1rem;">✂️</div>
-          <div style="font-family:var(--font-display);font-size:1rem;color:var(--warm-white);font-style:italic;margin-bottom:0.5rem;">「你要的不是，才是你要的」</div>
-          <div style="font-size:0.72rem;color:var(--concrete-light);opacity:0.6;">割除的部分是模板，留下的才是作品</div>
+          <div style="font-family:var(--fd);font-size:1rem;color:var(--c0);font-style:italic;margin-bottom:0.5rem;">「你要的不是，才是你要的」</div>
+          <div style="font-size:0.72rem;color:var(--c2);opacity:0.6;">割除的部分是模板，留下的才是作品</div>
         </div>
       </div>
       <div style="padding:1.25rem 1.5rem;background:#1C1A18;">
-        <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust-light);margin-bottom:0.5rem;">收藏與合作</div>
-        <p style="font-size:0.82rem;color:var(--concrete-light);line-height:1.65;">大型畫作（50號）目前以收藏詢問為主。企業空間裝置、展覽合作、募資旗艦方案，請聯繫我們。</p>
-        <a href="fundraise.html" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rust-light);text-decoration:none;">查看募資方案 →</a>
+        <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-h);margin-bottom:0.5rem;">收藏與合作</div>
+        <p style="font-size:0.82rem;color:var(--c2);line-height:1.65;">大型畫作（50號）目前以收藏詢問為主。企業空間裝置、展覽合作、募資旗艦方案，請聯繫我們。</p>
+        <a href="fundraise.html" style="display:inline-flex;align-items:center;gap:0.4rem;margin-top:0.75rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-h);text-decoration:none;">查看募資方案 →</a>
       </div>
     </div>
   </div>
@@ -924,11 +1014,11 @@ footer{background:var(--charcoal);padding:4rem 4rem 0;}
   <div style="max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;">
     <div>
       <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.75rem;">結構說明</div>
-      <p style="font-size:0.85rem;color:var(--concrete);line-height:1.78;font-weight:300;">Concredia.Lab 的作品均為<strong style="color:var(--concrete-dark);">非建築結構用途</strong>——我們不承接法令規範下的建築結構工程。我們的創作本身<strong style="color:var(--concrete-dark);">有結構設計</strong>（含鋼筋抗拉材），但定位為生活家具、裝置藝術與街道家具。</p>
+      <p style="font-size:0.85rem;color:var(--c3);line-height:1.78;font-weight:300;">Concredia.Lab 的作品均為<strong style="color:var(--c5);">非建築結構用途</strong>——我們不承接法令規範下的建築結構工程。我們的創作本身<strong style="color:var(--c5);">有結構設計</strong>（含鋼筋抗拉材），但定位為生活家具、裝置藝術與街道家具。</p>
     </div>
     <div>
       <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.75rem;">B2B 定價策略</div>
-      <p style="font-size:0.85rem;color:var(--concrete);line-height:1.78;font-weight:300;">我們主要面向企業整套解決方案（B2B），不在網站上標示單品價格。規格、數量、ESG 文件套件等方案詳情，請直接<a href="contact.html" style="color:var(--rust);">聯繫洽詢</a>。</p>
+      <p style="font-size:0.85rem;color:var(--c3);line-height:1.78;font-weight:300;">我們主要面向企業整套解決方案（B2B），不在網站上標示單品價格。規格、數量、ESG 文件套件等方案詳情，請直接<a href="contact.html" style="color:var(--rust);">聯繫洽詢</a>。</p>
     </div>
   </div>
 </div>
@@ -997,7 +1087,7 @@ function switchTab(tab){
     btnStd.style.color = 'var(--rust)';
     btnStd.style.borderBottomColor = 'var(--rust)';
     btnStd.style.fontWeight = '600';
-    btnCust.style.color = 'var(--concrete)';
+    btnCust.style.color = 'var(--c3)';
     btnCust.style.borderBottomColor = 'transparent';
     btnCust.style.fontWeight = '500';
   } else {
@@ -1006,7 +1096,7 @@ function switchTab(tab){
     btnCust.style.color = 'var(--rust)';
     btnCust.style.borderBottomColor = 'var(--rust)';
     btnCust.style.fontWeight = '600';
-    btnStd.style.color = 'var(--concrete)';
+    btnStd.style.color = 'var(--c3)';
     btnStd.style.borderBottomColor = 'transparent';
     btnStd.style.fontWeight = '500';
   }
