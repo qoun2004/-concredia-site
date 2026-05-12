@@ -6,7 +6,9 @@
 :root{
   --w:#FFFFFF;--g50:#F7F7F5;--g100:#EFEFEC;--g200:#DDDDD8;
   --g400:#9B9B95;--g700:#3D3D3A;--bk:#111111;
-  --fire:#E85D04;--fire-h:#FF7A28;
+  --fire:#E85D04;  /* 警示橘 */
+  --rust:#E85D04;   /* 向後相容別名 */
+  --rust-light:#FF7A28;--fire-h:#FF7A28;
   --neon:#39FF14;--neon-d:#22CC0A;
   --green:#27AE60;--gold:#C8A030;--blue:#2A5A9A;
   --fd:'Inter Tight',system-ui,sans-serif;
@@ -294,3 +296,37 @@ footer small{font-size:.72rem;color:var(--g400);}
   .page-hero,.gift-hero{padding:6rem 2rem 3rem;}
   footer{padding:2.5rem 1.5rem;}
 }
+
+/* ── Mobile Nav ────────────────────────────────────── */
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--w);}
+.mobile-toggle span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0;transition:all var(--ease);}
+nav.scrolled .mobile-toggle{color:var(--bk);}
+.mobile-menu{position:fixed;inset:0;background:var(--bk);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform var(--ease);opacity:0;pointer-events:none;}
+.mobile-menu.open{transform:translateX(0);opacity:1;pointer-events:auto;}
+.mobile-menu a{font-family:var(--fd);font-size:1.5rem;font-weight:900;color:var(--w);text-decoration:none;letter-spacing:-.03em;transition:color var(--ease);}
+.mobile-menu a:hover{color:var(--fire);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--w);font-size:1.8rem;cursor:pointer;line-height:1;}
+
+/* ── 區塊補強 ────────────────────────────────────────── */
+/* 舊 inline style 背景色統一覆蓋 */
+[style*="background:var(--bk)"]{background:var(--bk)!important;}
+
+/* sec-eye / sec-tag 統一：深色區用橘色 */
+.strip--black .sec-eye,.strip--black .sec-tag{color:var(--fire);}
+
+/* 深色區段 p 文字 */
+.strip--black p,.strip--black .sec-body,.strip--black .sec-sub{color:var(--g400);}
+
+/* 去掉所有 inline border 顯示問題 */
+[style*="border:1px solid rgba(155"]{border-color:var(--g200)!important;}
+[style*="border:1px solid rgba(58,54"]{border-color:var(--g200)!important;}
+[style*="border-left:3px solid"]{border-left-color:var(--fire)!important;}
+[style*="border-left:4px solid"]{border-left-color:var(--fire)!important;}
+[style*="border-top:3px solid"]{border-top-color:var(--fire)!important;}
+
+/* 所有 button 統一 font */
+button,input[type="submit"]{font-family:var(--fd);}
+
+/* 超連結顏色 */
+a{text-decoration:none;}
+a:hover{color:var(--fire);}

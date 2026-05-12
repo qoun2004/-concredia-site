@@ -6,7 +6,7 @@
 <title>Conga Taiwan 康加台灣 · 採礦台灣 · 每一塊廢料，都有牠的靈魂</title>
 
 
-<meta name="theme-color" content="var(--c6)">
+<meta name="theme-color" content="var(--bk)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Conga Taiwan">
@@ -228,7 +228,7 @@
       </div>
       <div style="margin-top:1rem;padding:.85rem;background:rgba(27,138,122,.06);border:1px solid rgba(27,138,122,.18);">
         <div style="font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem;">🌏 全台廢料去化</div>
-        <div style="font-size:.72rem;color:var(--c1);line-height:1.65;">
+        <div style="font-size:.72rem;color:var(--g100);line-height:1.65;">
           北部城市廢料：<span style="color:var(--gold);font-family:var(--fm);">1,240 kg</span><br>
           中部農村廢料：<span style="color:var(--gold);font-family:var(--fm);">880 kg</span><br>
           南部海岸廢料：<span style="color:var(--gold);font-family:var(--fm);">720 kg</span>
@@ -239,10 +239,10 @@
       <div style="margin-top:1rem;padding:1rem;background:rgba(44,31,14,.7);border:1px solid rgba(196,134,42,.18);">
         <div style="font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;">⚡ 進階機制（即將推出）</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;font-size:.72rem;color:var(--dim);line-height:1.6;">
-          <div><strong style="color:var(--c1);">💍 組隊 × 婚姻</strong><br>不同礦獸可以組成家庭，生出混血後代，屬性疊加更強。沙 + 紅磚 + 水泥即可結合。</div>
-          <div><strong style="color:var(--c1);">⭐ 星座 × 血型</strong><br>孵化時間決定星座，材料比例決定血型。不同星座有不同每日任務加成。</div>
-          <div><strong style="color:var(--c1);">🏝️ 企業生態島</strong><br>贊助企業可在遊戲地圖上擁有冠名生態島，玩家在島上完成任務可兌換實體優惠。</div>
-          <div><strong style="color:var(--c1);">📱 RFID × AR</strong><br>實體作品嵌入 RFID 晶片，手機靠近即可看到礦獸的 3D AR 展示。</div>
+          <div><strong style="color:var(--g100);">💍 組隊 × 婚姻</strong><br>不同礦獸可以組成家庭，生出混血後代，屬性疊加更強。沙 + 紅磚 + 水泥即可結合。</div>
+          <div><strong style="color:var(--g100);">⭐ 星座 × 血型</strong><br>孵化時間決定星座，材料比例決定血型。不同星座有不同每日任務加成。</div>
+          <div><strong style="color:var(--g100);">🏝️ 企業生態島</strong><br>贊助企業可在遊戲地圖上擁有冠名生態島，玩家在島上完成任務可兌換實體優惠。</div>
+          <div><strong style="color:var(--g100);">📱 RFID × AR</strong><br>實體作品嵌入 RFID 晶片，手機靠近即可看到礦獸的 3D AR 展示。</div>
         </div>
       </div>
     </div>
@@ -838,6 +838,11 @@ function checkInstall(){
   }
 }
 setTimeout(checkInstall,28000);
+
+window.addEventListener('scroll',function(){
+  const nav = document.getElementById('mainNav') || document.querySelector('nav');
+  if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+});
 </script>
 </body>
 </html>

@@ -23,17 +23,17 @@
   --g200:   #DDDDD8;   /* 淡分隔 */
   --g400:   #9B9B95;   /* 次要文字 */
   --g700:   #3D3D3A;   /* 主文字 */
-  --black:  #111111;   /* 標題、CTA */
+  --black:  var(--bk);   /* 標題、CTA */
 
   /* ── Accent */
-  --fire:   #E85D04;   /* 警示橘 CTA */
-  --fire-h: #FF7A28;
+  --fire:   var(--fire);   /* 警示橘 CTA */
+  --fire-h: var(--fire-h);
   --neon:   #39FF14;   /* 螢光綠（Conga 專用）*/
 
   /* ── Type */
-  --fd:'Inter Tight',system-ui,sans-serif;
-  --fb:'Noto Sans TC',system-ui,sans-serif;
-  --fs:'Noto Serif TC',Georgia,serif;
+  --fd:var(--fd),system-ui,sans-serif;
+  --fb:var(--fb),system-ui,sans-serif;
+  --fs:var(--fs),Georgia,serif;
 
   /* ── Motion */
   --ease:.22s cubic-bezier(.4,0,.2,1);
@@ -277,17 +277,17 @@ footer small{font-size:.72rem;color:var(--g400);}
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
+  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
               <ul class="nav-links">
     <li><a href="impact.html">環境現況</a></li>
     <li><a href="story.html">品牌故事</a></li>
     <li><a href="blog.html">最新動態</a></li>
     <li><a href="products.html">產品系列</a></li>
-    <li><a href="gifts.html" style="color:var(--accent-h);">🎁 節慶禮品</a></li>
+    <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
     <li><a href="esg-dashboard.html">ESG</a></li>
-    <li><a href="recrete.html" style="color:var(--gold,#C8A96E);">👾 康加台灣</a></li>
-    <li><a href="fundraise.html" style="color:var(--rust,var(--accent));">募資計畫</a></li>
+    <li><a href="recrete.html" style="color:var(--gold);">👾 康加台灣</a></li>
+    <li><a href="fundraise.html" style="color:var(--fire);">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="partners.html" class="nav-cta" style="border:none;padding:0;background:transparent;color:rgba(212,207,200,0.75);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;">合作夥伴</a>
