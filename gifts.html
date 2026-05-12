@@ -6,280 +6,9 @@
 <title>節慶禮品 · 企業禮贈品 — Concredia.Lab</title>
 <meta name="description" content="情人節、母親節、父親節、中秋、過年、雙11、ESG企業禮品、綠色採購。台灣最硬的禮物——水泥職人手作，每件唯一，可客製刻字。">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  /* ── 水泥灰階（主色 60%）*/
-  --c0:#F4F4F2;   /* 最淺水泥白 */
-  --c1:#E0DFDB;   /* 淺水泥灰 */
-  --c2:#C4C2BC;   /* 中淺灰 */
-  --c3:#8C8A84;   /* 中灰 */
-  --c4:#5A5855;   /* 深灰 */
-  --c5:#2F2F2D;   /* 炭灰 */
-  --c6:#1A1A18;   /* 近黑 */
-
-  /* ── 輔色（30%）警示橘×螢光綠 */
-  --accent:#E85D04;      /* 警示橘（主 CTA）*/
-  --accent-h:#FF7A1A;    /* hover */
-  --neon:#39FF14;        /* 螢光電網綠（特殊標記）*/
-  --neon-dim:#22CC0A;    /* 深一點 */
-
-  /* ── 語意色 */
-  --green:#27AE60;
-  --blue:#2A5A9A;
-  --gold:#C8A030;
-
-  /* ── 字體 */
-  --fd:'Inter Tight',system-ui,sans-serif;   /* 標題：工業感無襯線 */
-  --fb:'Noto Sans TC',system-ui,sans-serif;  /* 內文 */
-  --fs:var(--fs);        /* 引言 */
-
-  /* ── 間距 */
-  --r4:4px; --r8:8px; --r12:12px;
-
-  /* ── 過渡 */
-  --t:.22s ease;
-}
-body{font-family:var(--fb);background:var(--c1);color:var(--c5);}
-
-/* NAV */
-nav#mainNav{
-  position:fixed;top:0;left:0;right:0;z-index:999;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2.5rem;
-  background:rgba(26,18,8,0.92);backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(155,91,58,0.15);
-  transition:all 0.3s;
-}
-nav#mainNav.scrolled{padding:0.7rem 2.5rem;background:rgba(26,18,8,0.98);}
-.nav-logo{font-family:var(--fd);font-size:1.25rem;color:var(--c0);text-decoration:none;font-weight:700;letter-spacing:0.02em;}
-.nav-logo .dot{color:var(--rust);}
-.nav-logo .lab{font-weight:300;opacity:0.7;}
-.nav-links{display:flex;gap:1.5rem;list-style:none;}
-.nav-links a{font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(212,207,200,0.75);text-decoration:none;transition:color 0.2s;}
-.nav-links a:hover{color:var(--c0);}
-.nav-cta{padding:0.5rem 1.1rem;border:1px solid rgba(155,91,58,0.5);color:var(--accent-h);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
-.nav-cta:hover{background:var(--rust);color:white;border-color:var(--rust);}
-
-/* HERO 節慶 */
-.gift-hero{
-  padding:8rem 4rem 5rem;
-  background:var(--c5);
-  position:relative;overflow:hidden;
-  text-align:center;
-}
-.gift-hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(155,91,58,0.12) 0%,transparent 70%);
-}
-.gift-hero-eye{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent-h);margin-bottom:1.25rem;}
-.gift-hero h1{
-  font-family:var(--fd);font-size:clamp(2.5rem,5vw,4.5rem);
-  font-weight:700;color:var(--c0);line-height:1.1;margin-bottom:1rem;
-}
-.gift-hero h1 em{font-family:var(--fs);font-size:1.3em;color:var(--accent-h);font-style:italic;}
-.gift-hero-sub{font-size:0.95rem;color:var(--c2);opacity:0.82;max-width:580px;margin:0 auto 2.5rem;line-height:1.85;font-weight:300;}
-
-/* 節慶快捷導航 */
-.festival-nav{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem;
-  padding:1.5rem 4rem;background:rgba(155,91,58,0.06);
-  border-bottom:1px solid rgba(155,91,58,0.12);
-  position:sticky;top:60px;z-index:10;
-  background:rgba(26,18,8,0.95);backdrop-filter:blur(8px);
-}
-.fnav-btn{
-  padding:0.4rem 1rem;border:1px solid rgba(155,91,58,0.35);
-  color:var(--c2);font-size:0.72rem;letter-spacing:0.06em;
-  text-decoration:none;transition:all 0.2s;white-space:nowrap;
-}
-.fnav-btn:hover,.fnav-btn.active{background:var(--rust);border-color:var(--rust);color:white;}
-
-/* 通用 section 標題 */
-.sec-eye{display:flex;align-items:center;gap:0.6rem;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rust);margin-bottom:0.6rem;}
-.sec-title{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.15;margin-bottom:0;}
-
-/* 節慶卡片區 */
-.festival-section{padding:5rem 4rem;scroll-margin-top:120px;}
-.festival-section:nth-child(even){background:var(--c5);}
-.festival-section:nth-child(even) .sec-eye{color:var(--accent-h);}
-.festival-section:nth-child(even) .sec-title{color:var(--c0);}
-.festival-section:nth-child(even) p{color:var(--c2);}
-
-.gift-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
-.gift-card{
-  background:var(--c0);
-  border-top:3px solid var(--rust);
-  padding:1.75rem;
-  transition:transform 0.2s;
-  position:relative;overflow:hidden;
-}
-.festival-section:nth-child(even) .gift-card{background:var(--c6);}
-.gift-card:hover{transform:translateY(-4px);}
-.gift-card-icon{font-size:2rem;margin-bottom:0.75rem;}
-.gift-card-tag{
-  display:inline-block;padding:0.22rem 0.65rem;
-  background:rgba(155,91,58,0.1);border:1px solid rgba(155,91,58,0.3);
-  color:var(--rust);font-size:0.62rem;letter-spacing:0.1em;
-  margin-bottom:0.75rem;
-}
-.festival-section:nth-child(even) .gift-card-tag{background:rgba(155,91,58,0.2);color:var(--accent-h);}
-.gift-card h3{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--c5);margin-bottom:0.5rem;}
-.festival-section:nth-child(even) .gift-card h3{color:var(--c0);}
-.gift-card-slogan{
-  font-family:var(--fd);font-size:0.88rem;font-style:italic;
-  color:var(--rust);margin-bottom:0.65rem;line-height:1.5;
-}
-.festival-section:nth-child(even) .gift-card-slogan{color:var(--accent-h);}
-.gift-card p{font-size:0.82rem;color:var(--concrete-mid);line-height:1.72;font-weight:300;}
-.festival-section:nth-child(even) .gift-card p{color:rgba(212,207,200,0.7);}
-
-/* 廣告詞大字 */
-.big-quote{
-  padding:3.5rem 4rem;
-  text-align:center;
-  background:var(--c5);
-  border-top:1px solid rgba(155,91,58,0.15);
-  border-bottom:1px solid rgba(155,91,58,0.15);
-}
-.big-quote blockquote{
-  font-family:var(--fd);
-  font-size:clamp(1.5rem,3vw,2.8rem);
-  color:var(--c0);font-style:italic;
-  font-weight:700;line-height:1.25;
-  max-width:800px;margin:0 auto;
-}
-.big-quote blockquote em{color:var(--accent-h);}
-.big-quote cite{display:block;font-size:0.75rem;color:var(--concrete-mid);margin-top:1rem;letter-spacing:0.1em;font-style:normal;}
-
-/* 企業禮品區 */
-.corp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(155,91,58,0.1);margin-top:2.5rem;}
-.corp-cell{padding:2rem 2.5rem;background:var(--c5);}
-.corp-cell:nth-child(even){background:var(--c6);}
-.corp-no{font-family:var(--fd);font-size:3rem;color:rgba(155,91,58,0.12);font-weight:700;line-height:1;margin-bottom:0.3rem;}
-.corp-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-h);margin-bottom:0.5rem;}
-.corp-title{font-family:var(--fd);font-size:1.2rem;font-weight:700;color:var(--c0);margin-bottom:0.6rem;}
-.corp-slogan{font-family:var(--fd);font-size:0.9rem;color:var(--accent-h);font-style:italic;margin-bottom:0.65rem;line-height:1.55;}
-.corp-desc{font-size:0.83rem;color:var(--c2);opacity:0.8;line-height:1.75;font-weight:300;}
-
-/* 購物節 banner */
-.shop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(155,91,58,0.1);margin-top:2rem;}
-.shop-cell{
-  padding:1.5rem;text-align:center;
-  background:var(--c0);
-  transition:background 0.2s;
-}
-.shop-cell:hover{background:rgba(155,91,58,0.06);}
-.shop-date{font-family:var(--fd);font-size:1.4rem;font-weight:700;color:var(--rust);margin-bottom:0.2rem;}
-.shop-name{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--concrete-mid);margin-bottom:0.65rem;}
-.shop-line{font-size:0.82rem;color:var(--c5);font-style:italic;font-family:var(--fd);line-height:1.5;}
-
-/* CTA 區 */
-.cta-banner{
-  padding:4.5rem 4rem;
-  background:var(--rust);
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-.cta-banner::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,transparent 60%);
-}
-.cta-banner h2{font-family:var(--fd);font-size:clamp(1.8rem,3vw,2.8rem);color:white;font-weight:700;margin-bottom:0.75rem;}
-.cta-banner p{font-size:0.92rem;color:rgba(255,255,255,0.85);max-width:500px;margin:0 auto 2rem;line-height:1.8;}
-.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
-.btn-white{padding:0.85rem 2.2rem;background:white;color:var(--rust);font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.2s;}
-.btn-white:hover{background:var(--c1);}
-.btn-outline-white{padding:0.85rem 2.2rem;border:1px solid rgba(255,255,255,0.5);color:white;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
-.btn-outline-white:hover{background:rgba(255,255,255,0.1);}
-
-/* 個人化刻字 */
-.engrave-section{
-  padding:5rem 4rem;
-  background:var(--c5);
-  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
-}
-.engrave-visual{
-  padding:2.5rem;background:rgba(155,91,58,0.06);
-  border:1px solid rgba(155,91,58,0.15);
-  text-align:center;
-  font-family:var(--fs);font-size:3.5rem;
-  color:var(--accent-h);line-height:1.6;
-}
-.engrave-visual small{display:block;font-family:var(--fb);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--concrete-mid);margin-top:1rem;}
-
-/* FOOTER */
-footer{padding:2rem 4rem;border-top:1px solid rgba(58,54,50,0.08);display:flex;align-items:center;justify-content:space-between;background:var(--c5);}
-footer a{font-family:var(--fd);font-size:1rem;color:var(--c0);text-decoration:none;}
-footer a span{color:var(--rust);}
-footer small{font-size:0.72rem;color:var(--concrete-mid);}
-
-/* 水泥噴砂紋理（純 CSS 粒子感）*/
-.cement-bg{
-  background-color:var(--c0);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
-}
-.cement-dark-bg{
-  background-color:var(--c6);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-}
-
-
-/* ══ 卡片 Glassmorphism + Neo-Brutalism ═══════════════ */
-.product-card,.gift-card,.corp-cell{
-  border-radius:var(--r8)!important;
-  transition:transform var(--t),box-shadow var(--t)!important;
-}
-.product-card:hover,.gift-card:hover{
-  transform:translateY(-5px)!important;
-  box-shadow:0 20px 60px rgba(0,0,0,.18)!important;
-}
-.product-card img:hover,.card-img-wrap img{
-  transition:transform .5s ease,opacity .3s!important;
-}
-.product-card:hover .card-img-wrap img{transform:scale(1.06)!important;}
-
-/* 系列 badge：橘底 */
-.series-badge,.card-series-badge{
-  background:var(--accent)!important;
-  color:white!important;
-  border-radius:var(--r4)!important;
-  font-family:var(--fd)!important;
-  font-weight:700!important;
-}
-/* 卡片 CTA 橘色 */
-.card-cta,.card-open{color:var(--accent)!important;}
-.card-cta:hover,.card-open:hover{color:var(--accent-h)!important;}
-
-/* 燈箱：深炭背景 */
-#lb,#lightbox{background:rgba(20,20,18,.97)!important;}
-.lb-right,.lb-info{background:var(--c5)!important;}
-.lb-cta,.lb-contact{
-  background:var(--accent)!important;
-  border-radius:var(--r4)!important;
-  font-family:var(--fd)!important;
-  font-weight:700!important;
-}
-.lb-cta:hover,.lb-contact:hover{background:var(--accent-h)!important;}
-.lb-name{font-family:var(--fd)!important;font-weight:900!important;}
-
-/* 篩選按鈕 */
-.filter-btn{
-  border-color:rgba(232,93,4,.3)!important;
-  border-radius:var(--r4)!important;
-  font-family:var(--fd)!important;
-  font-weight:600!important;
-  transition:all var(--t)!important;
-}
-.filter-btn:hover{border-color:var(--accent)!important;color:var(--accent)!important;}
-.filter-btn.active{background:var(--accent)!important;border-color:var(--accent)!important;}
-
-</style>
+<link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
@@ -301,6 +30,11 @@ footer small{font-size:0.72rem;color:var(--concrete-mid);}
 </nav>
 
 <!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-eye">Gifts · 節慶禮品</div>
+  <h1>世界上最重<br>的禮物，<br>最難<em>扔掉</em>。</h1>
+  <p class="page-hero-sub">情人節 · 父母親節 · 中秋 · 過年 · ESG 企業禮贈品 · 綠色採購</p>
+</div>
 <div class="gift-hero">
   <div class="gift-hero-eye">節慶禮品 · 企業禮贈品 · 綠色採購</div>
   <h1>世界上最重的禮物，<br>也是最難<em>扔掉</em>的那一件</h1>
@@ -340,7 +74,7 @@ footer small{font-size:0.72rem;color:var(--concrete-mid);}
 <section id="valentine" class="festival-section">
   <div class="sec-eye">💝 Valentine's Day · 情人節</div>
   <h2 class="sec-title">這個情人節，<br>送出世界最重的愛</h2>
-  <p style="margin-top:0.75rem;max-width:540px;font-size:0.92rem;color:var(--concrete-mid);line-height:1.82;font-weight:300;">玫瑰七天凋謝，巧克力吃完就沒了。水泥家具壓死都不會壞。</p>
+  <p style="margin-top:0.75rem;max-width:540px;font-size:0.92rem;color:var(--g400);line-height:1.82;font-weight:300;">玫瑰七天凋謝，巧克力吃完就沒了。水泥家具壓死都不會壞。</p>
   <div class="gift-cards">
     <div class="gift-card">
       <div class="gift-card-icon">💎</div>
@@ -405,7 +139,7 @@ footer small{font-size:0.72rem;color:var(--concrete-mid);}
 <section id="chinese" class="festival-section">
   <div class="sec-eye">🏮 Traditional Chinese Festivals · 華人傳統節慶</div>
   <h2 class="sec-title">台灣地氣，傳統底蘊，<br>最本土的禮物</h2>
-  <p style="max-width:540px;margin-top:0.75rem;font-size:0.92rem;color:var(--concrete-mid);line-height:1.82;font-weight:300;">廢料取自台灣各地——彰化蚵殼、花蓮玉礦、高雄爐石。每件作品裡，都有這片土地的記憶。</p>
+  <p style="max-width:540px;margin-top:0.75rem;font-size:0.92rem;color:var(--g400);line-height:1.82;font-weight:300;">廢料取自台灣各地——彰化蚵殼、花蓮玉礦、高雄爐石。每件作品裡，都有這片土地的記憶。</p>
   <div class="gift-cards">
     <div class="gift-card">
       <div class="gift-card-icon">🧧</div>
@@ -485,7 +219,7 @@ footer small{font-size:0.72rem;color:var(--concrete-mid);}
     </div>
   </div>
 
-  <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:rgba(155,91,58,0.08);border-left:3px solid var(--rust);">
+  <div style="margin-top:1.5rem;padding:1.25rem 1.5rem;background:rgba(155,91,58,0.08);border-left:3px solid var(--fire);">
     <p style="font-size:0.82rem;color:var(--c2);line-height:1.75;">
       ⚡ <strong style="color:var(--c0);">購物節限定策略</strong>：每個購物節推出限量（20–50件）節日版刻字，訂購即附專屬材料故事卡 + 士敏小礦獸啟動碼。不打折，只限量——因為這種東西沒有第二件。
     </p>
@@ -496,7 +230,7 @@ footer small{font-size:0.72rem;color:var(--concrete-mid);}
 <section id="corporate" class="festival-section">
   <div class="sec-eye">🏢 Corporate Gifts · 企業禮贈品</div>
   <h2 class="sec-title">不是紙袋裡的那種禮物，<br>是放在會議桌上的那一件</h2>
-  <p style="max-width:540px;margin-top:0.75rem;font-size:0.92rem;color:var(--concrete-mid);line-height:1.82;font-weight:300;">企業尾牙、週年慶、開幕落成、獎勵旅遊——送一件說得出故事的東西。</p>
+  <p style="max-width:540px;margin-top:0.75rem;font-size:0.92rem;color:var(--g400);line-height:1.82;font-weight:300;">企業尾牙、週年慶、開幕落成、獎勵旅遊——送一件說得出故事的東西。</p>
 
   <div class="corp-grid">
     <div class="corp-cell">
@@ -586,7 +320,7 @@ footer small{font-size:0.72rem;color:var(--concrete-mid);}
         <span style="font-size:0.88rem;color:var(--c2);font-weight:300;">指定材料：告訴我你來自哪裡，用那個地方的廢料</span>
       </div>
     </div>
-    <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.2rem;background:var(--rust);color:white;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--accent-h)'" onmouseout="this.style.background='var(--rust)'">
+    <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.6rem;padding:1rem 2.2rem;background:var(--fire);color:white;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background 0.2s;" onmouseover="this.style.background='var(--accent-h)'" onmouseout="this.style.background='var(--fire)'">
       開始聊你想要的那件 →
     </a>
   </div>

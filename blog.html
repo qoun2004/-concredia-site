@@ -6,100 +6,9 @@
 <title>最新動態 — Concredia.Lab</title>
 <meta name="description" content="Concredia.Lab 最新動態：寂寞公路計劃、永續日誌、倉庫日常、社區行動、媒體活動。">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  /* ── 水泥灰階（主色 60%）*/
-  --c0:#F4F4F2;   /* 最淺水泥白 */
-  --c1:#E0DFDB;   /* 淺水泥灰 */
-  --c2:#C4C2BC;   /* 中淺灰 */
-  --c3:#8C8A84;   /* 中灰 */
-  --c4:#5A5855;   /* 深灰 */
-  --c5:#2F2F2D;   /* 炭灰 */
-  --c6:#1A1A18;   /* 近黑 */
-
-  /* ── 輔色（30%）警示橘×螢光綠 */
-  --accent:#E85D04;      /* 警示橘（主 CTA）*/
-  --accent-h:#FF7A1A;    /* hover */
-  --neon:#39FF14;        /* 螢光電網綠（特殊標記）*/
-  --neon-dim:#22CC0A;    /* 深一點 */
-
-  /* ── 語意色 */
-  --green:#27AE60;
-  --blue:#2A5A9A;
-  --gold:#C8A030;
-
-  /* ── 字體 */
-  --fd:'Inter Tight',system-ui,sans-serif;   /* 標題：工業感無襯線 */
-  --fb:'Noto Sans TC',system-ui,sans-serif;  /* 內文 */
-  --fs:var(--fs);        /* 引言 */
-
-  /* ── 間距 */
-  --r4:4px; --r8:8px; --r12:12px;
-
-  /* ── 過渡 */
-  --t:.22s ease;
-}
-body{font-family:var(--fb);background:var(--c0);color:var(--c5);}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 4rem;transition:all 0.3s;}
-nav.scrolled{background:rgba(250,248,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(58,54,50,0.08);box-shadow:0 2px 20px rgba(0,0,0,0.06);}
-.nav-logo{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--c5);text-decoration:none;}
-.nav-logo .dot{color:var(--rust);}
-.nav-logo .lab{font-size:0.55em;letter-spacing:0.2em;opacity:0.85;text-transform:uppercase;vertical-align:super;color:var(--accent-h);}
-.nav-links{display:flex;gap:2rem;list-style:none;}
-.nav-links a{font-size:0.78rem;letter-spacing:0.06em;text-decoration:none;color:var(--c3);transition:color 0.2s;}
-.nav-links a:hover{color:var(--rust);}
-.nav-cta{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 1.25rem;border:1px solid var(--rust);color:var(--rust);text-decoration:none;transition:all 0.2s;}
-.nav-cta:hover{background:var(--rust);color:white;}
-
-/* Hero */
-.blog-hero{padding:8rem 4rem 4rem;border-bottom:1px solid rgba(58,54,50,0.08);}
-.blog-hero-eye{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rust);margin-bottom:0.75rem;}
-.blog-hero h1{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);color:var(--c5);font-weight:700;margin-bottom:1rem;}
-.blog-hero p{font-size:0.95rem;color:var(--c3);max-width:560px;line-height:1.8;font-weight:300;}
-
-/* 分類 filter */
-.filter-bar{padding:1.5rem 4rem;display:flex;gap:0.75rem;flex-wrap:wrap;border-bottom:1px solid rgba(58,54,50,0.08);background:var(--c0);position:sticky;top:80px;z-index:50;}
-.filter-btn{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 1rem;border:1px solid rgba(58,54,50,0.2);color:var(--c3);background:none;cursor:pointer;transition:all 0.2s;font-family:var(--fb);}
-.filter-btn:hover,.filter-btn.active{background:var(--rust);color:white;border-color:var(--rust);}
-
-/* 文章 Grid */
-.blog-main{padding:3rem 4rem 5rem;}
-.blog-grid-all{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
-.article-card{background:var(--c1);overflow:hidden;transition:transform 0.25s;text-decoration:none;display:block;}
-.article-card:hover{transform:translateY(-4px);}
-.article-thumb{aspect-ratio:16/9;overflow:hidden;background:var(--c5);}
-.article-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
-.article-card:hover .article-thumb img{transform:scale(1.04);}
-.article-body{padding:1.5rem;}
-.article-cat{font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.5rem;}
-.article-title{font-family:var(--fd);font-size:1.05rem;font-weight:700;color:var(--c5);line-height:1.4;margin-bottom:0.6rem;}
-.article-excerpt{font-size:0.82rem;color:var(--c3);line-height:1.7;font-weight:300;margin-bottom:1rem;opacity:0.85;}
-.article-meta{font-size:0.7rem;color:var(--c3);opacity:0.55;display:flex;justify-content:space-between;align-items:center;}
-.article-read{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--rust);font-weight:500;}
-.no-results{grid-column:1/-1;text-align:center;padding:4rem;color:var(--c3);opacity:0.5;}
-
-/* Footer */
-footer{padding:3rem 4rem 2rem;border-top:1px solid rgba(58,54,50,0.08);display:flex;align-items:center;justify-content:space-between;}
-.f-logo{font-family:var(--fd);font-size:1rem;color:var(--c5);}
-.f-note{font-size:0.72rem;color:var(--c3);opacity:0.45;}
-
-/* 水泥噴砂紋理（純 CSS 粒子感）*/
-.cement-bg{
-  background-color:var(--c0);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
-}
-.cement-dark-bg{
-  background-color:var(--c6);
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-}
-
-</style>
+<link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
@@ -162,7 +71,7 @@ footer{padding:3rem 4rem 2rem;border-top:1px solid rgba(58,54,50,0.08);display:f
 </div>
 
 <footer>
-  <div class="f-logo">Concredia<span style="color:var(--rust);">.</span>Lab</div>
+  <div class="f-logo">Concredia<span style="color:var(--fire);">.</span>Lab</div>
   <div class="f-note">© 2025 Concredia.Lab · 士敏文品工作室</div>
 </footer>
 
