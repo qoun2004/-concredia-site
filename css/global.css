@@ -330,3 +330,76 @@ button,input[type="submit"]{font-family:var(--fd);}
 /* 超連結顏色 */
 a{text-decoration:none;}
 a:hover{color:var(--fire);}
+/* ══════════════════════════════════════════════════════════
+   Footer 連結顏色修正
+   將這段 CSS 加到 css/global.css 的最末尾
+   ══════════════════════════════════════════════════════════ */
+
+/* Footer 連結：覆蓋瀏覽器預設藍色 */
+footer a,
+footer a:link,
+footer a:visited {
+  color: rgba(212, 207, 200, 0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--fire, #9B5B3A);
+  text-decoration: none;
+}
+
+/* Footer logo 連結保持品牌色 */
+footer .logo a,
+footer > a:first-child {
+  color: rgba(212, 207, 200, 0.9);
+}
+
+/* Footer 社群連結 */
+footer .social-link,
+footer .social-link:link,
+footer .social-link:visited {
+  color: rgba(212, 207, 200, 0.5);
+  border: 1px solid rgba(212, 207, 200, 0.2);
+  padding: 0.3rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+footer .social-link:hover {
+  color: var(--fire, #9B5B3A);
+  border-color: var(--fire, #9B5B3A);
+}
+
+/* Footer footer-col 標題 */
+footer .footer-col h5 {
+  color: rgba(212, 207, 200, 0.4);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Footer nav 連結列表 */
+footer .footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+footer .footer-col ul li a,
+footer .footer-col ul li a:link,
+footer .footer-col ul li a:visited {
+  color: rgba(212, 207, 200, 0.55);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer .footer-col ul li a:hover {
+  color: rgba(212, 207, 200, 0.9);
+}
