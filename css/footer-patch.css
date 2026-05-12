@@ -1,0 +1,105 @@
+/* ═══════════════════════════════════════════════
+   footer-patch.css
+   用途：修正所有頁面 footer 連結的藍色問題
+   使用：在每個 HTML 的 <head> 加入這行：
+   <link rel="stylesheet" href="css/footer-patch.css">
+   ═══════════════════════════════════════════════ */
+
+/* 覆蓋瀏覽器預設藍色連結 */
+footer a,
+footer a:link,
+footer a:visited {
+  color: rgba(212, 207, 200, 0.6) !important;
+  text-decoration: none !important;
+}
+
+footer a:hover {
+  color: rgba(212, 207, 200, 1) !important;
+  text-decoration: none !important;
+}
+
+/* footer-grid 欄位標題 */
+.footer-col h5 {
+  color: rgba(212, 207, 200, 0.35);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* footer-col 連結列表 */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-col ul li a,
+.footer-col ul li a:link,
+.footer-col ul li a:visited {
+  color: rgba(212, 207, 200, 0.55) !important;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: rgba(212, 207, 200, 0.95) !important;
+}
+
+/* 社群連結 */
+.social-link,
+.social-link:link,
+.social-link:visited {
+  color: rgba(212, 207, 200, 0.45) !important;
+  border: 1px solid rgba(212, 207, 200, 0.2) !important;
+  padding: 0.28rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.social-link:hover {
+  color: rgba(212, 207, 200, 0.9) !important;
+  border-color: rgba(212, 207, 200, 0.5) !important;
+}
+
+/* footer-bottom 版權文字 */
+.footer-bottom p {
+  font-size: 0.75rem;
+  color: rgba(212, 207, 200, 0.3);
+}
+
+/* footer-brand logo */
+.footer-brand .logo {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: rgba(212, 207, 200, 0.9);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+
+.footer-brand p {
+  font-size: 0.82rem;
+  color: rgba(212, 207, 200, 0.45);
+  line-height: 1.75;
+}
+
+/* footer-easter */
+.footer-easter {
+  border-top: 1px solid rgba(212, 207, 200, 0.06);
+  padding-top: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.footer-easter-text {
+  font-size: 0.72rem;
+  color: rgba(212, 207, 200, 0.25);
+}
