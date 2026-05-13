@@ -1034,3 +1034,189 @@ footer:has(.footer-grid) {
   .festival-nav { padding: 0 1rem; }
   .result-metrics { grid-template-columns: 1fr 1fr; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   v4 補丁：對比度修正、blog hero、全站一致性
+   ═══════════════════════════════════════════════════════ */
+
+/* ── 深色區段所有文字確保可讀性 ─────────────────── */
+/* 去掉 opacity 造成深底淡字消失的問題 */
+.strip--black p,
+[style*="background:var(--bk)"] p,
+[style*="background:#0D0C0B"] p,
+[style*="background:#111"] p,
+[style*="background:#111009"] p {
+  opacity: 1 !important;
+}
+
+/* ── Blog Hero ───────────────────────────────────── */
+.blog-hero {
+  padding: 9rem 6rem 5rem;
+  background: var(--bk);
+}
+.blog-hero-eye {
+  font-family: var(--fd);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.blog-hero-eye::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--fire);
+}
+.blog-hero h1 {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  letter-spacing: -0.04em;
+  color: var(--w);
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+}
+.blog-hero p {
+  font-size: 1rem;
+  color: rgba(212,207,200,0.55);
+  max-width: 560px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ── Blog Grid ───────────────────────────────────── */
+.blog-main {
+  background: var(--w);
+  min-height: 60vh;
+  padding: 5rem 6rem;
+}
+.blog-grid-all {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 2px solid var(--bk);
+}
+.article-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-right: 1px solid var(--g200);
+  border-bottom: 1px solid var(--g200);
+  transition: background 0.2s;
+}
+.article-card:nth-child(3n) { border-right: none; }
+.article-card:hover { background: var(--g50); }
+.article-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--g100);
+  flex-shrink: 0;
+}
+.article-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.article-card:hover .article-thumb img { transform: scale(1.04); }
+.article-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.article-cat {
+  font-family: var(--fd);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin-bottom: 0.6rem;
+}
+.article-title {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--bk);
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+.article-card:hover .article-title { color: var(--fire); }
+.article-excerpt {
+  font-size: 0.82rem;
+  color: var(--g400);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  color: var(--g400);
+  font-family: var(--fd);
+  border-top: 1px solid var(--g200);
+  padding-top: 0.85rem;
+  margin-top: auto;
+}
+.article-read {
+  color: var(--fire);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.no-results {
+  grid-column: 1 / -1;
+  padding: 5rem;
+  text-align: center;
+  color: var(--g400);
+  font-size: 0.95rem;
+}
+
+/* ── index.html 白底區域 text 顏色確保可讀 ────── */
+.strip--white .card-title { color: #111111; }
+.strip--white p, .strip--white .sec-body { color: var(--g400); }
+.strip--grey .card-title { color: #111111; }
+.strip--grey p, .strip--grey .sec-body { color: var(--g400); }
+
+/* ── gifts 頁深色區卡片標題 ──────────────────────── */
+[style*="background:var(--bk)"] .gift-card h3,
+[style*="background:var(--bk)"] .gift-card-slogan {
+  color: var(--w) !important;
+}
+[style*="background:var(--bk)"] .gift-card p {
+  color: rgba(212,207,200,0.7) !important;
+}
+[style*="background:var(--bk)"] .gift-card-tag {
+  background: rgba(232,93,4,0.15);
+  color: var(--fire-h);
+}
+
+/* ── 購物節格線文字顏色 ──────────────────────────── */
+.shop-date { color: var(--w) !important; }
+.shop-name { color: rgba(212,207,200,0.5) !important; }
+.shop-line { color: rgba(212,207,200,0.75) !important; }
+
+/* RWD */
+@media (max-width: 1024px) {
+  .blog-main { padding: 4rem; }
+  .blog-grid-all { grid-template-columns: repeat(2, 1fr); }
+  .article-card:nth-child(3n) { border-right: 1px solid var(--g200); }
+  .article-card:nth-child(2n) { border-right: none; }
+}
+@media (max-width: 768px) {
+  .blog-hero { padding: 6rem 1.5rem 3rem; }
+  .blog-main { padding: 2rem 1.5rem; }
+  .blog-grid-all { grid-template-columns: 1fr; }
+  .article-card { border-right: none !important; }
+}
