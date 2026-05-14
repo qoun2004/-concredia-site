@@ -277,25 +277,32 @@ footer small{font-size:.72rem;color:var(--g400);}
   footer{flex-direction:column;gap:1rem;text-align:center;padding:3rem 2rem;}
   .nav-links{display:none;}
 }
+
+/* ── 募資計畫 CTA 按鈕 ── */
+.nav-fundraise{
+  display:inline-block;padding:.42rem 1.1rem;
+  background:var(--fire);color:#fff!important;
+  font-family:var(--fd);font-size:.68rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none!important;border-radius:2px;
+  transition:background .2s,transform .15s;white-space:nowrap;flex-shrink:0;
+}
+.nav-fundraise:hover{background:var(--fire-h)!important;transform:translateY(-1px);}
 </style>
 <body>
 
 <nav>
   <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
-              <ul class="nav-links">
-    <li><a href="impact.html">環境現況</a></li>
+  <ul class="nav-links">
     <li><a href="story.html">品牌故事</a></li>
-    <li><a href="blog.html">最新動態</a></li>
     <li><a href="products.html">產品系列</a></li>
     <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
-    <li><a href="esg-dashboard.html">ESG</a></li>
-    <li><a href="recrete.html" style="color:var(--gold);">👾 康加台灣</a></li>
-    <li><a href="fundraise.html" style="color:var(--fire);">募資計畫</a></li>
+    <li><a href="sustainability.html">永續 · ESG</a></li>
+    <li><a href="blog.html">最新動態</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="partners.html" class="nav-cta" style="border:none;padding:0;background:transparent;color:rgba(212,207,200,0.75);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;">合作夥伴</a>
-  <!-- 漢堡選單（手機用） -->
+  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
   <button class="hamburger" id="hamburger" aria-label="選單" style="display:none;background:none;border:none;">
     <span></span><span></span><span></span>
   </button>
