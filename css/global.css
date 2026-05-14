@@ -1220,3 +1220,104 @@ footer:has(.footer-grid) {
   .blog-grid-all { grid-template-columns: 1fr; }
   .article-card { border-right: none !important; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   v5：新版 nav 樣式補丁
+   ═══════════════════════════════════════════════════════ */
+
+/* 募資計畫 CTA 按鈕（nav 右側）*/
+.nav-fundraise {
+  display: inline-block;
+  padding: 0.42rem 1.1rem;
+  background: var(--fire);
+  color: #fff !important;
+  font-family: var(--fd);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-fundraise:hover {
+  background: var(--fire-h) !important;
+  transform: translateY(-1px);
+}
+nav.scrolled .nav-fundraise {
+  background: var(--fire);
+}
+
+/* hamburger 按鈕（手機版，預設隱藏） */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(212,207,200,0.8);
+  transition: all 0.2s;
+}
+nav.scrolled .hamburger span { background: var(--g700); }
+
+/* ── sustainability.html 專屬 Tab 切換 ─────────── */
+.sustain-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--bk);
+  border-bottom: 1px solid rgba(212,207,200,0.08);
+  position: sticky;
+  top: 64px;
+  z-index: 50;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sustain-tabs::-webkit-scrollbar { display: none; }
+.stab {
+  flex-shrink: 0;
+  padding: 1rem 1.75rem;
+  font-family: var(--fd);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(212,207,200,0.45);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.stab:hover { color: rgba(212,207,200,0.85); }
+.stab.active { color: var(--fire-h); border-bottom-color: var(--fire); }
+
+/* tab 切換內容區 */
+.stab-panel { display: none; }
+.stab-panel.active { display: block; }
+
+/* ── impact 頁 4欄數字（小螢幕自適應）─────────── */
+@media (max-width: 900px) {
+  .impact-4col { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 500px) {
+  .impact-4col { grid-template-columns: 1fr !important; }
+}
+
+/* ── 手機版 nav ─────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-fundraise { font-size: 0.6rem; padding: 0.38rem 0.8rem; }
+}
