@@ -16,7 +16,7 @@
 <body>
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
-            <ul class="nav-links">
+  <ul class="nav-links">
     <li><a href="impact.html">環境現況</a></li>
     <li><a href="story.html">品牌故事</a></li>
     <li><a href="blog.html">最新動態</a></li>
@@ -28,11 +28,28 @@
     <li><a href="fundraise.html" style="color:var(--fire);">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="partners.html" class="nav-cta" style="border:none;padding:0;background:transparent;color:rgba(212,207,200,0.75);font-size:0.78rem;letter-spacing:0.06em;text-transform:uppercase;">合作夥伴</a>
-  <button class="hamburger" id="hamburger" style="display:none;background:none;border:none;" aria-label="選單">
+  <a href="partners.html" class="nav-cta">合作夥伴</a>
+  <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- 手機全螢幕選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="impact.html">環境現況</a>
+  <a href="story.html">品牌故事</a>
+  <a href="blog.html">最新動態</a>
+  <a href="products.html">產品系列</a>
+  <a href="gifts.html">🎁 節慶禮品</a>
+  <a href="gallery.html">作品集</a>
+  <a href="esg-dashboard.html">ESG</a>
+  <a href="recrete.html">👾 康加台灣</a>
+  <a href="fundraise.html">募資計畫</a>
+  <a href="partners.html">合作夥伴</a>
+  <a href="contact.html">聯絡我們</a>
+  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
+</div>
 <div class="art-back" style="padding-top:6rem;">
   <a href="index.html#blog">
     <svg viewBox="0 0 24 24"><polyline points="19 12 5 12"/><polyline points="12 5 5 12 12 19"/></svg>
@@ -211,6 +228,31 @@ if(burger)burger.addEventListener('click',openMobileMenu);
 if(mClose)mClose.addEventListener('click',closeMobileMenu);
 function checkMobile(){burger.style.display=window.innerWidth<=768?'flex':'none';}
 checkMobile();window.addEventListener('resize',checkMobile);
+</script>
+
+<script>
+(function(){
+  var ham  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  var nav  = document.getElementById('mainNav') || document.querySelector('nav');
+  if(!ham || !menu) return;
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  window.addEventListener('scroll', function(){
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+})();
 </script>
 </body>
 </html>

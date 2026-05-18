@@ -18,22 +18,22 @@
 :root{
   /* ── Monochrome System */
   --white:  #FFFFFF;
-  --g50:    #F7F7F5;
-  --g100:   #EFEFEC;
-  --g200:   #DDDDD8;
-  --g400:   #9B9B95;
-  --g700:   #3D3D3A;
-  --black:  #111111;
+  --g50:    #F7F7F5;   /* 極淺背景 */
+  --g100:   #EFEFEC;   /* 區塊底色 */
+  --g200:   #DDDDD8;   /* 淡分隔 */
+  --g400:   #9B9B95;   /* 次要文字 */
+  --g700:   #3D3D3A;   /* 主文字 */
+  --black:  var(--bk);   /* 標題、CTA */
 
   /* ── Accent */
-  --fire:   #E85D04;
-  --fire-h: #FF7A28;
-  --neon:   #39FF14;
+  --fire:   var(--fire);   /* 警示橘 CTA */
+  --fire-h: var(--fire-h);
+  --neon:   #39FF14;   /* 螢光綠（Conga 專用）*/
 
   /* ── Type */
-  --fd:'Inter Tight',system-ui,sans-serif;
-  --fb:'Noto Sans TC',system-ui,sans-serif;
-  --fs:'Noto Serif TC',Georgia,serif;
+  --fd:var(--fd),system-ui,sans-serif;
+  --fb:var(--fb),system-ui,sans-serif;
+  --fs:var(--fs),Georgia,serif;
 
   /* ── Motion */
   --ease:.22s cubic-bezier(.4,0,.2,1);
@@ -213,10 +213,6 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
   letter-spacing:-.02em;color:var(--black);margin-bottom:.75rem;
 }
 .card-text{font-size:.88rem;color:var(--g400);line-height:1.75;}
-/* 灰底區域卡片：黑色連結文字修正 */
-.strip--grey .card-title { color: var(--black); }
-.strip--grey a .card-title { color: var(--black); }
-.strip--grey a:hover .card-title { color: var(--fire); }
 
 /* ─── 數字大字 ───────────────────────────────────── */
 .stat-num{
@@ -277,39 +273,45 @@ footer small{font-size:.72rem;color:var(--g400);}
   footer{flex-direction:column;gap:1rem;text-align:center;padding:3rem 2rem;}
   .nav-links{display:none;}
 }
-
-/* ── 募資計畫 CTA 按鈕 ── */
-.nav-fundraise{
-  display:inline-block;padding:.42rem 1.1rem;
-  background:var(--fire);color:#fff!important;
-  font-family:var(--fd);font-size:.68rem;font-weight:700;
-  letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none!important;border-radius:2px;
-  transition:background .2s,transform .15s;white-space:nowrap;flex-shrink:0;
-}
-.nav-fundraise:hover{background:var(--fire-h)!important;transform:translateY(-1px);}
 </style>
 <body>
 
-<nav>
+<nav id="mainNav">
   <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
   <ul class="nav-links">
+    <li><a href="impact.html">環境現況</a></li>
     <li><a href="story.html">品牌故事</a></li>
+    <li><a href="blog.html">最新動態</a></li>
     <li><a href="products.html">產品系列</a></li>
     <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
-    <li><a href="sustainability.html">永續 · ESG</a></li>
-    <li><a href="blog.html">最新動態</a></li>
+    <li><a href="esg-dashboard.html">ESG</a></li>
+    <li><a href="recrete.html" style="color:var(--gold);">👾 康加台灣</a></li>
+    <li><a href="fundraise.html" style="color:var(--fire);">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
-  <button class="hamburger" id="hamburger" aria-label="選單" style="display:none;background:none;border:none;">
+  <a href="partners.html" class="nav-cta">合作夥伴</a>
+  <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<!-- HERO -->
-<div class="hero" id="top">
-  <div class="hero-bg"></div>
+
+<!-- 手機全螢幕選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="impact.html">環境現況</a>
+  <a href="story.html">品牌故事</a>
+  <a href="blog.html">最新動態</a>
+  <a href="products.html">產品系列</a>
+  <a href="gifts.html">🎁 節慶禮品</a>
+  <a href="gallery.html">作品集</a>
+  <a href="esg-dashboard.html">ESG</a>
+  <a href="recrete.html">👾 康加台灣</a>
+  <a href="fundraise.html">募資計畫</a>
+  <a href="partners.html">合作夥伴</a>
+  <a href="contact.html">聯絡我們</a>
+  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
+</div>
   <div class="hero-scrim"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Concredia.Lab · 士敏文品工作室</div>
@@ -486,25 +488,25 @@ footer small{font-size:.72rem;color:var(--g400);}
     <a href="gifts.html" class="btn-ul">查看所有節慶方案 →</a>
   </div>
   <div class="grid4">
-    <div style="padding:1.5rem;background:var(--white);border-top:3px solid var(--g200);">
-      <div style="font-size:1.5rem;margin-bottom:.75rem;">💝</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--black);margin-bottom:.4rem;">情人節・父母親節</div>
-      <div style="font-size:.8rem;color:var(--g400);line-height:1.6;">玫瑰七天凋謝，水泥壓死不會壞</div>
+    <div style="padding:1.5rem;background:var(--white);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">💝</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">情人節・父母親節</div>
+      <div style="font-size:.8rem;color:var(--g400);">玫瑰七天凋謝，水泥壓死不會壞</div>
     </div>
-    <div style="padding:1.5rem;background:var(--white);border-top:3px solid var(--g200);">
-      <div style="font-size:1.5rem;margin-bottom:.75rem;">🏮</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--black);margin-bottom:.4rem;">農曆新年・中秋</div>
-      <div style="font-size:.8rem;color:var(--g400);line-height:1.6;">月餅吃完了，這件還在</div>
+    <div style="padding:1.5rem;background:var(--white);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">🏮</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">農曆新年・中秋</div>
+      <div style="font-size:.8rem;color:var(--g400);">月餅吃完了，這件還在</div>
     </div>
-    <div style="padding:1.5rem;background:var(--white);border-top:3px solid var(--g200);">
-      <div style="font-size:1.5rem;margin-bottom:.75rem;">🛒</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--black);margin-bottom:.4rem;">雙11・雙12</div>
-      <div style="font-size:.8rem;color:var(--g400);line-height:1.6;">買一堆不如買一件對的</div>
+    <div style="padding:1.5rem;background:var(--white);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">🛒</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">雙11・雙12</div>
+      <div style="font-size:.8rem;color:var(--g400);">買一堆不如買一件對的</div>
     </div>
-    <div style="padding:1.5rem;background:var(--fire);border-top:3px solid var(--fire);">
-      <div style="font-size:1.5rem;margin-bottom:.75rem;">🏢</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:.4rem;">企業禮贈品</div>
-      <div style="font-size:.8rem;color:rgba(255,255,255,.8);line-height:1.6;">尾牙・週年・開幕・VIP</div>
+    <div style="padding:1.5rem;background:var(--fire);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">🏢</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:.3rem;">企業禮贈品</div>
+      <div style="font-size:.8rem;color:rgba(255,255,255,.75);">尾牙・週年・開幕・VIP</div>
     </div>
   </div>
 </div>
@@ -529,10 +531,6 @@ footer small{font-size:.72rem;color:var(--g400);}
       <div class="card-text" style="margin-bottom:1.5rem;">企業・社區・農會・學校・友好店家，一起為廢料找出路。</div>
       <a href="partners.html" class="btn-ul">了解合作方式 →</a>
     </div>
-  </div>
-  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--g200);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-    <div style="font-size:0.82rem;color:var(--g400);">現有夥伴：彰化縣竹塘鄉農會・斗六盛記預拌混凝土廠・成功大學永續材料中心</div>
-    <a href="partners.html" class="btn-ul">查看所有合作夥伴 →</a>
   </div>
 </div>
 
@@ -563,10 +561,31 @@ footer small{font-size:.72rem;color:var(--g400);}
   <small>© 2025 Concredia.Lab · 士敏文品工作室<br>為台灣的廢棄物，找一個出路</small>
 </footer>
 
+
 <script>
-window.addEventListener('scroll',()=>{
-  document.querySelector('nav').classList.toggle('scrolled',window.scrollY>60);
-});
+(function(){
+  var ham  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  var nav  = document.getElementById('mainNav') || document.querySelector('nav');
+  if(!ham || !menu) return;
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  window.addEventListener('scroll', function(){
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+})();
 </script>
+
 </body>
 </html>

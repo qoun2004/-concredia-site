@@ -15,21 +15,42 @@
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
   <ul class="nav-links">
+    <li><a href="impact.html">環境現況</a></li>
     <li><a href="story.html">品牌故事</a></li>
+    <li><a href="blog.html">最新動態</a></li>
     <li><a href="products.html">產品系列</a></li>
     <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
-    <li><a href="sustainability.html">永續 · ESG</a></li>
-    <li><a href="blog.html">最新動態</a></li>
+    <li><a href="esg-dashboard.html">ESG</a></li>
+    <li><a href="recrete.html" style="color:var(--gold);">👾 康加台灣</a></li>
+    <li><a href="fundraise.html" style="color:var(--fire);">募資計畫</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
-  <button class="hamburger" id="hamburger" aria-label="選單">
+  <a href="partners.html" class="nav-cta">合作夥伴</a>
+  <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- 手機全螢幕選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="impact.html">環境現況</a>
+  <a href="story.html">品牌故事</a>
+  <a href="blog.html">最新動態</a>
+  <a href="products.html">產品系列</a>
+  <a href="gifts.html">🎁 節慶禮品</a>
+  <a href="gallery.html">作品集</a>
+  <a href="esg-dashboard.html">ESG</a>
+  <a href="recrete.html">👾 康加台灣</a>
+  <a href="fundraise.html">募資計畫</a>
+  <a href="partners.html">合作夥伴</a>
+  <a href="contact.html">聯絡我們</a>
+  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
+</div>
+  <h1>世界上最重<br>的禮物，<br>最難<em>扔掉</em>。</h1>
+  <p class="page-hero-sub">情人節 · 父母親節 · 中秋 · 過年 · ESG 企業禮贈品 · 綠色採購</p>
+</div>
 <div class="gift-hero">
   <div class="gift-hero-eye">節慶禮品 · 企業禮贈品 · 綠色採購</div>
   <h1>世界上最重的禮物，<br>也是最難<em>扔掉</em>的那一件</h1>
@@ -338,58 +359,35 @@
 </div>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
-      <p>以土木博士研究為根，以設計為語言，<br>讓每一塊再生廢料都有自己的故事。<br><br>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
-    </div>
-    <div class="footer-col"><h5>產品</h5><ul>
-      <li><a href="products.html">定錨家具 / 水泥音響</a></li>
-      <li><a href="products.html">Conbox 系列</a></li>
-      <li><a href="gifts.html">ESG 企業禮品</a></li>
-      <li><a href="products.html">客製化設計</a></li>
-    </ul></div>
-    <div class="footer-col"><h5>品牌</h5><ul>
-      <li><a href="story.html">關於團隊</a></li>
-      <li><a href="story.html">寂寞公路計劃</a></li>
-      <li><a href="esg-dashboard.html">ESG · SDGs</a></li>
-      <li><a href="gallery.html">作品影像集</a></li>
-    </ul></div>
-    <div class="footer-col"><h5>資源</h5><ul>
-      <li><a href="blog.html">最新動態</a></li>
-      <li><a href="index.html#faq">常見問題</a></li>
-      <li><a href="contact.html">聯絡我們</a></li>
-    </ul></div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 Concredia.Lab · Dr. Rovi Lee. All rights reserved.</p>
-    <div class="social-links">
-      <a class="social-link" href="#">IG</a>
-      <a class="social-link" href="#">TH</a>
-      <a class="social-link" href="#">YT</a>
-    </div>
-  </div>
-  <div class="footer-easter">
-    <span class="footer-easter-text">🐾 本網站由寶妹親自監督品質。</span>
-  </div>
+  <a href="index.html">Concredia<span>.</span>Lab</a>
+  <small>© 2025 Concredia.Lab · 士敏文品工作室 · 為台灣的廢棄物，找一個出路</small>
 </footer>
 
+
 <script>
-window.addEventListener('scroll',function(){
-  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);
-});
-// 導航 active state
-const fnBtns = document.querySelectorAll('.fnav-btn');
-const sections = document.querySelectorAll('.festival-section,[id]');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{
-    if(window.scrollY >= s.offsetTop-160) cur=s.id;
+(function(){
+  var ham  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  var nav  = document.getElementById('mainNav') || document.querySelector('nav');
+  if(!ham || !menu) return;
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.style.overflow = open ? 'hidden' : '';
   });
-  fnBtns.forEach(b=>{
-    b.classList.toggle('active', b.getAttribute('href')==='#'+cur);
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   });
-});
+  window.addEventListener('scroll', function(){
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+})();
 </script>
+
 </body>
 </html>
