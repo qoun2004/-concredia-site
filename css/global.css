@@ -497,3 +497,39 @@ button,input[type="submit"]{font-family:var(--fd);}
 /* 超連結顏色 */
 a{text-decoration:none;}
 a:hover{color:var(--fire);}
+
+/* ═══════════════════════════════════════════════════════
+   v7：募資計畫 CTA 按鈕 + 全站 nav 統一補丁
+   ═══════════════════════════════════════════════════════ */
+
+/* 募資計畫橘色按鈕 */
+.nav-fundraise {
+  display: inline-block;
+  padding: 0.42rem 1.1rem;
+  background: var(--fire) !important;
+  color: #fff !important;
+  font-family: var(--fd);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  border-radius: 2px;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-fundraise:hover {
+  background: var(--fire-h) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+nav.scrolled .nav-fundraise,
+nav#mainNav.scrolled .nav-fundraise {
+  background: var(--fire) !important;
+}
+
+/* 手機選單裡的募資計畫特殊色 */
+.mobile-menu a.fundraise-link {
+  color: var(--fire) !important;
+}

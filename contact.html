@@ -157,10 +157,25 @@
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
-  <button class="hamburger" id="hamburger" aria-label="選單">
+  <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- 手機全螢幕選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="story.html">品牌故事</a>
+  <a href="products.html">產品系列</a>
+  <a href="gifts.html">🎁 節慶禮品</a>
+  <a href="gallery.html">作品集</a>
+  <a href="sustainability.html">永續 · ESG</a>
+  <a href="blog.html">最新動態</a>
+  <a href="partners.html">合作夥伴</a>
+  <a href="contact.html">聯絡我們</a>
+  <a href="fundraise.html" class="fundraise-link">募資計畫 →</a>
+  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
+</div>
 
 <div class="contact-wrap">
   <div class="contact-section">
@@ -373,6 +388,31 @@ function handleSubmit(btn) {
 }
 const navEl = document.getElementById('mainNav');
 window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', window.scrollY > 80); });
+</script>
+
+<script>
+(function(){
+  var ham  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  var nav  = document.getElementById('mainNav');
+  if(!ham || !menu) return;
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  window.addEventListener('scroll', function(){
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+})();
 </script>
 </body>
 </html>
