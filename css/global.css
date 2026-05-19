@@ -533,3 +533,192 @@ nav#mainNav.scrolled .nav-fundraise {
 .mobile-menu a.fundraise-link {
   color: var(--fire) !important;
 }
+
+/* ── Footer 連結顏色強制覆蓋 ─────────────────────── */
+footer a,
+footer a:link,
+footer a:visited {
+  color: rgba(212,207,200,0.55) !important;
+  text-decoration: none !important;
+}
+footer a:hover {
+  color: rgba(212,207,200,0.95) !important;
+}
+footer .footer-col h5 {
+  color: rgba(212,207,200,0.3);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: var(--fd);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+footer .footer-col ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+footer .footer-brand .logo {
+  font-family: var(--fd);
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: rgba(212,207,200,0.9);
+  margin-bottom: 1rem;
+}
+footer .footer-brand .logo .dot { color: var(--fire); }
+footer .footer-brand .logo .lab { font-weight: 300; opacity: 0.6; }
+footer .footer-brand p {
+  font-size: 0.8rem;
+  color: rgba(212,207,200,0.4);
+  line-height: 1.8;
+}
+footer .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(212,207,200,0.08);
+  width: 100%;
+}
+footer .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+footer .footer-bottom p {
+  font-size: 0.72rem;
+  color: rgba(212,207,200,0.25);
+}
+footer .social-links { display: flex; gap: 0.5rem; }
+footer .social-link,
+footer .social-link:link,
+footer .social-link:visited {
+  font-size: 0.68rem;
+  color: rgba(212,207,200,0.4) !important;
+  border: 1px solid rgba(212,207,200,0.15);
+  padding: 0.25rem 0.55rem;
+  transition: all 0.2s;
+}
+footer .social-link:hover {
+  color: rgba(212,207,200,0.85) !important;
+  border-color: rgba(212,207,200,0.4) !important;
+}
+footer .footer-easter {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(212,207,200,0.05);
+}
+footer .footer-easter-text {
+  font-size: 0.68rem;
+  color: rgba(212,207,200,0.2);
+}
+/* footer 容器需要 column 方向 */
+footer:has(.footer-grid) {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  padding: 5rem 6rem 3rem !important;
+  background: var(--bk) !important;
+}
+@media (max-width: 1024px) {
+  footer .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  footer:has(.footer-grid) { padding: 4rem 3rem 2.5rem !important; }
+}
+@media (max-width: 768px) {
+  footer .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  footer:has(.footer-grid) { padding: 3rem 1.5rem 2rem !important; }
+}
+
+/* ── Sustainability / ESG Dashboard 樣式 ─────────── */
+.dash-hero { padding: 9rem 6rem 5rem; background: var(--bk); }
+.dash-eyebrow { font-family:var(--fd);font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--fire);margin-bottom:1.25rem; }
+.dash-title { font-family:var(--fd);font-weight:900;font-size:clamp(3rem,7vw,8rem);letter-spacing:-.05em;color:var(--w);line-height:.9;margin-bottom:1.5rem; }
+.dash-title em { font-style:italic;color:var(--fire);font-family:var(--fs); }
+.dash-desc { font-size:1rem;color:rgba(212,207,200,.6);max-width:620px;line-height:1.8;margin-bottom:2rem;font-weight:300; }
+.cert-badges { display:flex;flex-wrap:wrap;gap:.5rem; }
+.cert-badge { padding:.32rem .85rem;border:1px solid rgba(155,91,58,.35);color:var(--fire-h);font-size:.7rem;font-family:var(--fd);font-weight:600;letter-spacing:.06em; }
+
+/* 年度累積 */
+.annual-section { padding:6rem;background:var(--bk); }
+.annual-section .section-eyebrow { color:var(--fire);font-family:var(--fd);font-size:.62rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.75rem;display:block; }
+.annual-section .section-title { font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;letter-spacing:-.04em;color:var(--w);margin-bottom:2rem; }
+.annual-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(255,255,255,.04);margin-bottom:0; }
+.annual-card { padding:2.5rem 2rem;background:#0D0C0B; }
+.annual-icon { font-size:1.75rem;margin-bottom:1rem; }
+.annual-num { font-family:var(--fd);font-size:clamp(2rem,3.5vw,3.5rem);font-weight:900;letter-spacing:-.05em;line-height:1;margin-bottom:.4rem; }
+.annual-card.g .annual-num { color:#2ECC71; }
+.annual-card.b .annual-num { color:#5DADE2; }
+.annual-card.a .annual-num { color:#F39C12; }
+.annual-card.r .annual-num { color:var(--fire); }
+.annual-label { font-family:var(--fd);font-size:.78rem;font-weight:700;color:rgba(212,207,200,.7);margin-bottom:.5rem; }
+.annual-sub { font-size:.75rem;color:rgba(212,207,200,.35);line-height:1.6; }
+
+/* 計算機 */
+.calc-section { padding:6rem;background:#0D0C0B; }
+.calc-title { font-family:var(--fd);font-size:1.5rem;font-weight:900;letter-spacing:-.03em;color:var(--w);margin-bottom:.4rem; }
+.calc-sub { font-size:.9rem;color:rgba(212,207,200,.55);margin-bottom:2.5rem; }
+.calc-grid { display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;align-items:start; }
+.calc-inputs { display:flex;flex-direction:column;gap:1.25rem; }
+.input-group { display:flex;flex-direction:column;gap:.45rem; }
+.input-group label { font-family:var(--fd);font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(212,207,200,.45); }
+.product-select,.qty-input { background:rgba(255,255,255,.05);border:1.5px solid rgba(212,207,200,.12);color:var(--w);font-family:var(--fd);font-size:.9rem;padding:.75rem 1rem;outline:none;width:100%;transition:border-color .2s;-webkit-appearance:none;appearance:none; }
+.product-select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23E85D04' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;padding-right:2.5rem;cursor:pointer; }
+.product-select option { background:#1A1917;color:var(--w); }
+.qty-control { display:flex;align-items:stretch;border:1.5px solid rgba(212,207,200,.12); }
+.qty-btn { width:44px;background:rgba(255,255,255,.05);border:none;color:var(--w);font-size:1.2rem;cursor:pointer;transition:background .2s;font-family:var(--fd);line-height:1; }
+.qty-btn:hover { background:rgba(232,93,4,.2); }
+.qty-input { border:none;border-left:1.5px solid rgba(212,207,200,.12);border-right:1.5px solid rgba(212,207,200,.12);text-align:center;width:80px;flex:1; }
+.calc-btn { padding:.9rem 2rem;background:var(--fire);color:var(--w);border:none;font-family:var(--fd);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s; }
+.calc-btn:hover { background:var(--fire-h); }
+.result-panel { background:#161412;border:1px solid rgba(212,207,200,.08); }
+.result-header { padding:1.5rem 2rem;border-bottom:1px solid rgba(212,207,200,.06);display:flex;justify-content:space-between;align-items:flex-start; }
+.result-product-name { font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--w);margin-bottom:.2rem; }
+.result-qty-label { font-size:.78rem;color:rgba(212,207,200,.4);font-family:var(--fd); }
+.result-metrics { display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(255,255,255,.04); }
+.metric-card { padding:1.5rem;background:#161412;display:flex;flex-direction:column;gap:.35rem; }
+.metric-icon { font-size:1.5rem;margin-bottom:.25rem; }
+.metric-label { font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(212,207,200,.4);font-family:var(--fd);font-weight:700; }
+.metric-value { font-family:var(--fd);font-size:2.5rem;font-weight:900;letter-spacing:-.04em;line-height:1; }
+.metric-value.green { color:#2ECC71; }
+.metric-value.blue  { color:#5DADE2; }
+.metric-value.amber { color:#F39C12; }
+.metric-value.rust  { color:var(--fire); }
+.metric-unit { font-size:.72rem;color:rgba(212,207,200,.35);font-family:var(--fd); }
+@keyframes metricPop { from{transform:scale(.9);opacity:.5} to{transform:scale(1);opacity:1} }
+.metric-value.animate { animation:metricPop .3s ease both; }
+.equivalents { padding:1.25rem 1.5rem;border-top:1px solid rgba(212,207,200,.06); }
+.equiv-title { font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,207,200,.3);font-family:var(--fd);font-weight:700;margin-bottom:.75rem; }
+.equiv-list { display:flex;flex-direction:column;gap:.45rem; }
+.equiv-item { display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:rgba(212,207,200,.6);line-height:1.5; }
+.report-hint { padding:1.25rem 1.5rem;background:rgba(39,174,96,.06);border-top:1px solid rgba(39,174,96,.15);display:flex;gap:.75rem;align-items:flex-start; }
+.report-hint-icon { font-size:1.2rem;flex-shrink:0;margin-top:1px; }
+.report-hint-text { font-size:.78rem;color:rgba(212,207,200,.55);line-height:1.65; }
+.report-hint-text strong { color:#2ECC71;display:block;margin-bottom:.25rem; }
+
+/* Tab 切換 */
+.sustain-tabs { display:flex;gap:0;background:var(--bk);border-bottom:1px solid rgba(212,207,200,.08);position:sticky;top:64px;z-index:50;overflow-x:auto;scrollbar-width:none; }
+.sustain-tabs::-webkit-scrollbar { display:none; }
+.stab { flex-shrink:0;padding:1rem 1.75rem;font-family:var(--fd);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(212,207,200,.45);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;background:none;border-top:none;border-left:none;border-right:none; }
+.stab:hover { color:rgba(212,207,200,.85); }
+.stab.active { color:var(--fire-h);border-bottom-color:var(--fire); }
+.stab-panel { display:none; }
+.stab-panel.active { display:block; }
+
+/* RWD */
+@media(max-width:1024px) {
+  .calc-grid { grid-template-columns:1fr; }
+  .annual-grid { grid-template-columns:repeat(2,1fr); }
+  .calc-section,.annual-section { padding:4rem; }
+  .dash-hero { padding:7rem 4rem 4rem; }
+}
+@media(max-width:768px) {
+  .annual-grid { grid-template-columns:1fr 1fr; }
+  .calc-section,.annual-section { padding:3rem 1.5rem; }
+  .dash-hero { padding:6rem 1.5rem 3rem; }
+  .result-metrics { grid-template-columns:1fr 1fr; }
+}

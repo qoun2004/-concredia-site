@@ -17,18 +17,30 @@
     <li><a href="products.html">產品系列</a></li>
     <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
-    <li><a href="sustainability.html" style="color:var(--fire-h);">永續 · ESG</a></li>
+    <li><a href="sustainability.html">永續 · ESG</a></li>
     <li><a href="blog.html">最新動態</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
   <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
-  <button class="hamburger" id="hamburger" aria-label="選單">
+  <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
-<div class="page-hero">
+<!-- 手機全螢幕選單 -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="story.html">品牌故事</a>
+  <a href="products.html">產品系列</a>
+  <a href="gifts.html">🎁 節慶禮品</a>
+  <a href="gallery.html">作品集</a>
+  <a href="sustainability.html">永續 · ESG</a>
+  <a href="blog.html">最新動態</a>
+  <a href="partners.html">合作夥伴</a>
+  <a href="contact.html">聯絡我們</a>
+  <a href="fundraise.html" class="fundraise-link">募資計畫 →</a>
+  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
+</div><div class="page-hero">
   <div class="page-hero-eye">Sustainability · 永續 · ESG</div>
   <h1>廢棄物，<br>是被錯置<br><em>的資源。</em></h1>
   <p class="page-hero-sub">環境現況 · SDGs 直接對應 · ESG 數據儀表板 · 採購影響力計算機</p>
@@ -372,7 +384,6 @@
     <div class="footer-col"><h5>資源</h5><ul>
       <li><a href="blog.html">最新動態</a></li>
       <li><a href="contact.html">聯絡我們</a></li>
-      <li><a href="recrete.html">👾 康加台灣</a></li>
       <li><a href="fundraise.html">募資計畫</a></li>
     </ul></div>
   </div>
@@ -385,7 +396,7 @@
     </div>
   </div>
   <div class="footer-easter">
-    <span class="footer-easter-text">🐾 本網站由寶妹親自監督品質。她的熱情精確持續了三分鐘。</span>
+    <span class="footer-easter-text">🐾 本網站由寶妹親自監督品質。</span>
   </div>
 </footer>
 
@@ -490,6 +501,31 @@ const annSection = document.querySelector('.annual-section');
 if (annSection) esgObs.observe(annSection);
 
 calculate();
+</script>
+
+<script>
+(function(){
+  var ham  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  var nav  = document.getElementById('mainNav');
+  if(!ham || !menu) return;
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  window.addEventListener('scroll', function(){
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+})();
 </script>
 </body>
 </html>
