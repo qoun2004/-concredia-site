@@ -5,282 +5,188 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>作品集 · 影像集 — Concredia.Lab</title>
 <meta name="description" content="Concredia.Lab 全系列作品：流構系列、標準系列、客製系列、畫作系列。每件附材料溯源文件，再生廢料佔比 60–70%。">
-
-
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
-
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></a>
   <ul class="nav-links">
-    <li><a href="impact.html">環境現況</a></li>
     <li><a href="story.html">品牌故事</a></li>
-    <li><a href="blog.html">最新動態</a></li>
     <li><a href="products.html">產品系列</a></li>
     <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
-    <li><a href="esg-dashboard.html">ESG</a></li>
-    <li><a href="recrete.html" style="color:var(--gold);">👾 康加台灣</a></li>
-    <li><a href="fundraise.html" style="color:var(--fire);">募資計畫</a></li>
+    <li><a href="sustainability.html">永續 · ESG</a></li>
+    <li><a href="blog.html">最新動態</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="partners.html" class="nav-cta">合作夥伴</a>
-  <button class="hamburger" id="hamburger" aria-label="開啟選單">
+  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
+  <button class="hamburger" id="hamburger" aria-label="選單">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- 手機全螢幕選單 -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">首頁</a>
-  <a href="impact.html">環境現況</a>
-  <a href="story.html">品牌故事</a>
-  <a href="blog.html">最新動態</a>
-  <a href="products.html">產品系列</a>
-  <a href="gifts.html">🎁 節慶禮品</a>
-  <a href="gallery.html">作品集</a>
-  <a href="esg-dashboard.html">ESG</a>
-  <a href="recrete.html">👾 康加台灣</a>
-  <a href="fundraise.html">募資計畫</a>
-  <a href="partners.html">合作夥伴</a>
-  <a href="contact.html">聯絡我們</a>
-  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
-</div>
 <div class="hero">
-  <div class="hero-eye">作品影像集 · Gallery</div>
-  <h1>每一件都是 <em>1/1</em>，<br>每一件都有鋼筋</h1>
-  <p class="hero-sub">流構系列 · 標準系列 · 客製系列 · 畫作系列<br>再生廢料佔比 60–70%，每件附材料溯源文件，點擊查看完整資訊</p>
+<div class="hero-eye">作品影像集 · Gallery</div>
+<h1>每一件都是 <em>1/1</em>，<br>每一件都有鋼筋</h1>
+<p class="hero-sub">流構系列 · 標準系列 · 客製系列 · 畫作系列<br>再生廢料佔比 60–70%，每件附材料溯源文件，點擊查看完整資訊</p>
 </div>
 
 <div class="filter-bar" id="filter-bar">
-  <span class="filter-label">篩選：</span>
-  <button class="filter-btn active" data-f="all">全部</button>
-  <!-- 系列按鈕由 JS 根據資料動態產生 -->
-  <button class="filter-btn" data-f="available">有現貨</button>
-  <span class="filter-count" id="count"></span>
+<span class="filter-label">篩選：</span>
+<button class="filter-btn active" data-f="all">全部</button>
+<button class="filter-btn" data-f="available">有現貨</button>
+<span class="filter-count" id="count"></span>
 </div>
 
 <div id="product-grid"></div>
 
 <!-- 燈箱 -->
 <div id="lb">
-  <button class="lb-close" onclick="closeLb()" title="關閉">✕</button>
-  <div class="lb-left" id="lb-left">
-    <div class="lb-main-img" id="lb-main-img"></div>
-    <div class="lb-thumbs" id="lb-thumbs"></div>
-  </div>
-  <div class="lb-right" id="lb-right"></div>
+<button class="lb-close" onclick="closeLb()" title="關閉">✕</button>
+<div class="lb-left" id="lb-left">
+<div class="lb-main-img" id="lb-main-img"></div>
+<div class="lb-thumbs" id="lb-thumbs"></div>
+</div>
+<div class="lb-right" id="lb-right"></div>
 </div>
 
 <footer>
-  <a href="index.html">Concredia<span>.</span>Lab</a>
-  <small>© 2025 Concredia.Lab · 士敏文品工作室 · 為台灣的廢棄物，找一個出路</small>
+<a href="index.html">Concredia<span>.</span>Lab</a>
+<small>© 2025 Concredia.Lab · 士敏文品工作室 · 為台灣的廢棄物，找一個出路</small>
 </footer>
 
 <script>
-// ── 讀取 SSG 產生的 JSON（部署時由 scripts/fetch-airtable.js 產生）
+// ── 靜態備用作品（Airtable 未同步時顯示）
+const STATIC_PRODUCTS = [
+  { id:'s1', sku:'CL-F001', name:'流構桌几 · 大型', series:'流構系列', stockStatus:'available', material:'漂流木 × 再生混凝土', method:'EAC 骨料裸露工法', func:'主桌 / 工作台', suitable:'企業空間 / 藝廊', spec:'W180 × D80 × H75 cm', weight:null, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s2', sku:'CL-F002', name:'流構茶几 · 小型', series:'流構系列', stockStatus:'available', material:'漂流木 × 再生混凝土', method:'EAC 骨料裸露工法', func:'茶几 / 邊几', suitable:'客廳 / 辦公室', spec:'W60 × D60 × H40 cm', weight:null, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s3', sku:'CL-S001', name:'定錨桌几 · 大型', series:'標準系列', stockStatus:'available', material:'再生混凝土（廢磚 + 爐石粉）', method:'鋼模澆鑄 + 水磨', func:'桌几', suitable:'家用 / 企業採購', spec:'W120 × D60 × H45 cm', weight:38000, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s4', sku:'CL-S002', name:'定錨茶几 · 標準', series:'標準系列', stockStatus:'available', material:'再生混凝土（廢玻璃 + 爐石粉）', method:'鋼模澆鑄 + 水磨 #50–#5000', func:'茶几', suitable:'家用 / 辦公', spec:'W80 × D50 × H40 cm', weight:22000, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s5', sku:'CL-S003', name:'水泥杯墊組', series:'標準系列', stockStatus:'available', material:'再生混凝土', method:'EAC 工法', func:'杯墊', suitable:'生活小物 / 送禮', spec:'Ø10 cm（4入組）', weight:800, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s6', sku:'CL-SP001', name:'水泥音響 · Conbox', series:'標準系列', stockStatus:'order', material:'再生混凝土 + 竹炭粉', method:'精密澆鑄 + 水磨', func:'被動式音響共鳴箱', suitable:'桌面音響 / 禮品', spec:'W20 × D12 × H15 cm', weight:4500, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s7', sku:'CL-C001', name:'場域記憶 · 建案落成禮', series:'客製系列', stockStatus:'order', material:'建案廢料（就地取材）', method:'EAC + 客製刻字', func:'場域記念品 / 裝置', suitable:'建案開幕 / VIP 禮', spec:'依需求定制', weight:null, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s8', sku:'CL-C002', name:'刻字燈具 · 訂製款', series:'客製系列', stockStatus:'order', material:'再生混凝土 + 燈座五金', method:'EAC 工法 + 刻字', func:'燈具 / 裝置', suitable:'空間設計 / 婚禮', spec:'依需求定制', weight:null, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s9', sku:'CL-A001', name:'畫作 · 山脈系列 #1', series:'畫作系列', stockStatus:'available', material:'保麗龍板 + 手工割製', method:'手工割刻', func:'壁掛裝飾 / 藝術品', suitable:'家居 / 收藏', spec:'W60 × H40 cm', weight:500, mainImg:'', images:[], mainImgFull:'' },
+  { id:'s10', sku:'CL-A002', name:'畫作 · 海岸線 #3', series:'畫作系列', stockStatus:'sold', material:'保麗龍板 + 手工割製', method:'手工割刻 · 親簽限量', func:'壁掛裝飾 / 藝術品', suitable:'家居 / 收藏', spec:'W80 × H50 cm', weight:650, mainImg:'', images:[], mainImgFull:'' }
+];
+
 let ALL = [];
 let CURRENT_FILTER = 'all';
+const STOCK_TEXT = { available:'有現貨', order:'可預訂', sold:'已售出', unknown:'洽詢' };
+const STOCK_BADGE = { available:'sb-available', order:'sb-order', sold:'sb-sold', unknown:'sb-sold' };
+const STOCK_DOT = { available:'s-available', order:'s-order', sold:'s-sold', unknown:'' };
 
-// 庫存文字
-const STOCK_TEXT   = { available:'有現貨', order:'可預訂', sold:'已售出', unknown:'洽詢' };
-const STOCK_BADGE  = { available:'sb-available', order:'sb-order', sold:'sb-sold', unknown:'sb-sold' };
-const STOCK_DOT    = { available:'s-available',  order:'s-order',  sold:'s-sold', unknown:'' };
-
-// ── 載入資料
 async function loadData() {
-  const grid = document.getElementById('product-grid');
   try {
-    const res  = await fetch('/_data/products.json');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await fetch('/_data/products.json');
+    if (!res.ok) throw new Error('no data');
     const json = await res.json();
-
-    if (json.error || !json.products?.length) {
-      grid.innerHTML = `<div class="empty">
-        <h3>作品資料載入中</h3>
-        <p style="font-size:.85rem;margin-top:.5rem;">Airtable 資料同步後即會顯示</p>
-      </div>`;
-      return;
-    }
-
+    if (json.error || !json.products?.length) throw new Error('empty');
     ALL = json.products;
-    buildFilterBar(ALL);  // 根據資料動態產生系列按鈕
-    render(ALL, CURRENT_FILTER);
-
   } catch(e) {
-    console.error(e);
-    grid.innerHTML = `<div class="empty"><h3>暫時無法載入</h3><p>${e.message}</p></div>`;
+    ALL = STATIC_PRODUCTS;
   }
+  buildFilterBar(ALL);
+  render(ALL, CURRENT_FILTER);
 }
 
-// ── 動態產生篩選按鈕
 function buildFilterBar(products) {
   const bar = document.getElementById('filter-bar');
-  
-  // 取得所有實際存在的系列（照固定順序）
   const ORDER = ['流構系列','標準系列','客製系列','畫作系列'];
   const existing = ORDER.filter(s => products.some(p => p.series === s));
-  // 若有不在清單裡的系列也加進來
-  products.forEach(p => {
-    if (p.series && !ORDER.includes(p.series) && !existing.includes(p.series))
-      existing.push(p.series);
-  });
-
-  // 移除舊的系列按鈕（保留「全部」和「有現貨」）
+  products.forEach(p => { if (p.series && !ORDER.includes(p.series) && !existing.includes(p.series)) existing.push(p.series); });
   bar.querySelectorAll('[data-series]').forEach(b => b.remove());
-
-  // 在「全部」後面插入系列按鈕
-  const allBtn    = bar.querySelector('[data-f="all"]');
-  const stockBtn  = bar.querySelector('[data-f="available"]');
-  
+  const stockBtn = bar.querySelector('[data-f="available"]');
   existing.forEach(series => {
     const count = products.filter(p => p.series === series).length;
-    const btn   = document.createElement('button');
-    btn.className   = 'filter-btn';
-    btn.dataset.f   = series;
-    btn.dataset.series = series;
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn'; btn.dataset.f = series; btn.dataset.series = series;
     btn.textContent = `${series}（${count}）`;
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      CURRENT_FILTER = this.dataset.f;
-      render(ALL, CURRENT_FILTER);
-    });
+    btn.addEventListener('click', function(){ document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); CURRENT_FILTER=this.dataset.f; render(ALL,CURRENT_FILTER); });
     bar.insertBefore(btn, stockBtn);
   });
-  
-  // 重新綁定所有按鈕事件
   bar.querySelectorAll('.filter-btn').forEach(btn => {
-    if (btn.dataset.series) return; // 已綁定
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      CURRENT_FILTER = this.dataset.f;
-      render(ALL, CURRENT_FILTER);
-    });
+    if (btn.dataset.series) return;
+    btn.addEventListener('click', function(){ document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active'); CURRENT_FILTER=this.dataset.f; render(ALL,CURRENT_FILTER); });
   });
 }
 
-// ── 渲染 Grid
 function render(products, filter) {
   const grid = document.getElementById('product-grid');
   let list = products;
   if (filter === 'available') list = products.filter(p => p.stockStatus === 'available');
   else if (filter !== 'all') list = products.filter(p => p.series === filter);
-
   document.getElementById('count').textContent = `${list.length} / ${products.length} 件`;
-
-  if (!list.length) {
-    grid.innerHTML = `<div class="empty"><h3>沒有符合的作品</h3></div>`;
-    return;
-  }
-
+  if (!list.length) { grid.innerHTML = `<div class="empty"><h3>沒有符合的作品</h3></div>`; return; }
   grid.innerHTML = list.map(p => {
     const imgHTML = p.mainImg
       ? `<img src="${p.mainImg}" alt="${esc(p.name)}" loading="lazy" onload="this.classList.add('loaded')">`
       : `<div class="no-photo"><span>🧱</span><small>拍攝中</small></div>`;
     const dotClass = STOCK_DOT[p.stockStatus] || '';
-    const dotHTML  = dotClass ? `<div class="stock-dot ${dotClass}" title="${STOCK_TEXT[p.stockStatus]}"></div>` : '';
-    const tags     = [p.method, p.func].filter(Boolean).map(t => `<span class="card-tag">${esc(t)}</span>`).join('');
-    return `
-    <div class="product-card" onclick="openLb('${p.id}')">
-      <div class="card-img-wrap">
-        ${imgHTML}
-        <div class="series-badge">${esc(p.series)}</div>
-        ${dotHTML}
-      </div>
-      <div class="card-body">
-        <div class="card-sku">${esc(p.sku)}</div>
-        <div class="card-name">${esc(p.name)}</div>
-        <div class="card-meta">${esc(p.material) || '—'}</div>
-        ${tags ? `<div class="card-tags">${tags}</div>` : ''}
-      </div>
-      <div class="card-footer">
-        <div class="card-spec">${esc(p.spec) || '規格洽詢'}</div>
-        <button class="card-open">查看詳情 →</button>
-      </div>
-    </div>`;
+    const dotHTML = dotClass ? `<div class="stock-dot ${dotClass}" title="${STOCK_TEXT[p.stockStatus]}"></div>` : '';
+    const tags = [p.method, p.func].filter(Boolean).map(t => `<span class="card-tag">${esc(t)}</span>`).join('');
+    return `<div class="product-card" onclick="openLb('${p.id}')">
+  <div class="card-img-wrap">${imgHTML}<div class="series-badge">${esc(p.series)}</div>${dotHTML}</div>
+  <div class="card-body">
+    <div class="card-sku">${esc(p.sku)}</div>
+    <div class="card-name">${esc(p.name)}</div>
+    <div class="card-meta">${esc(p.material)||'—'}</div>
+    ${tags?`<div class="card-tags">${tags}</div>`:''}
+  </div>
+  <div class="card-footer">
+    <div class="card-spec">${esc(p.spec)||'規格洽詢'}</div>
+    <button class="card-open">查看詳情 →</button>
+  </div>
+</div>`;
   }).join('');
 }
 
-// ── 燈箱
 function openLb(id) {
   const p = ALL.find(x => x.id === id);
   if (!p) return;
-
-  // 主圖
   const mainWrap = document.getElementById('lb-main-img');
   if (p.images.length) {
-    mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull || p.mainImg}" alt="${esc(p.name)}">`;
+    mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull||p.mainImg}" alt="${esc(p.name)}">`;
   } else {
-    mainWrap.innerHTML = `<div class="lb-no-photo">🧱</div>`;
+    mainWrap.innerHTML = `<div class="lb-no-photo">🧱<br><small style="font-size:.75rem;color:rgba(212,207,200,0.5);margin-top:.5rem;display:block;">照片拍攝中</small></div>`;
   }
-
-  // 縮圖
   const thumbsWrap = document.getElementById('lb-thumbs');
   if (p.images.length > 1) {
     thumbsWrap.style.display = 'flex';
-    thumbsWrap.innerHTML = p.images.map((img, i) =>
-      `<img class="lb-thumb ${i===0?'active':''}" src="${img.thumb_sm}"
-            onclick="switchImg('${img.thumb_xl||img.url}',this)" loading="lazy">`
-    ).join('');
-  } else {
-    thumbsWrap.style.display = 'none';
-  }
-
-  // 右側資訊
-  const stockBadge  = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
-  const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>
-    `<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`
-  ).join('');
-
+    thumbsWrap.innerHTML = p.images.map((img,i) => `<img class="lb-thumb ${i===0?'active':''}" src="${img.thumb_sm}" onclick="switchImg('${img.thumb_xl||img.url}',this)" loading="lazy">`).join('');
+  } else { thumbsWrap.style.display = 'none'; }
+  const stockBadge = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
+  const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>`<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`).join('');
   document.getElementById('lb-right').innerHTML = `
-    <div class="lb-header">
-      <div class="lb-series">${esc(p.series)}</div>
-      <div class="lb-name">${esc(p.name)}</div>
-      <div class="lb-sku">${esc(p.sku)}</div>
-    </div>
-
-    <div class="lb-section">
-      <div class="lb-section-title">規格</div>
-      ${infoRows([
-        ['尺寸', p.spec],
-        ['重量', p.weight ? p.weight + ' g' : ''],
-        ['工法', p.method],
-        ['材料', p.material],
-      ])}
-    </div>
-
-    <div class="lb-section">
-      <div class="lb-section-title">用途</div>
-      ${infoRows([
-        ['功能', p.func],
-        ['適合', p.suitable],
-        ['系列', p.series],
-      ])}
-    </div>
-
-    <div class="lb-section">
-      <div class="lb-section-title">庫存</div>
-      <div style="padding:.5rem 0;">${stockBadge}</div>
-    </div>
-
-    <div class="lb-footer">
-      <a class="lb-cta" href="contact.html?ref=${encodeURIComponent(p.sku)}">
-        詢問這件作品 →
-      </a>
-    </div>`;
-
+<div class="lb-header">
+  <div class="lb-series">${esc(p.series)}</div>
+  <div class="lb-name">${esc(p.name)}</div>
+  <div class="lb-sku">${esc(p.sku)}</div>
+</div>
+<div class="lb-section">
+  <div class="lb-section-title">規格</div>
+  ${infoRows([['尺寸',p.spec],['重量',p.weight?p.weight+' g':''],['工法',p.method],['材料',p.material]])}
+</div>
+<div class="lb-section">
+  <div class="lb-section-title">用途</div>
+  ${infoRows([['功能',p.func],['適合',p.suitable],['系列',p.series]])}
+</div>
+<div class="lb-section">
+  <div class="lb-section-title">庫存狀態</div>
+  <div style="padding:.5rem 0;">${stockBadge}</div>
+</div>
+<div class="lb-footer">
+  <a class="lb-cta" href="contact.html?ref=${encodeURIComponent(p.sku)}">詢問這件作品 →</a>
+</div>`;
   document.getElementById('lb').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function switchImg(url, el) {
   const img = document.getElementById('lb-img');
-  if (img) { img.style.opacity = '0'; img.src = url; img.onload = ()=>{ img.style.opacity='1'; }; }
-  document.querySelectorAll('.lb-thumb').forEach(t => t.classList.remove('active'));
+  if (img) { img.style.opacity='0'; img.src=url; img.onload=()=>{img.style.opacity='1';}; }
+  document.querySelectorAll('.lb-thumb').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
 }
 
@@ -289,51 +195,11 @@ function closeLb() {
   document.body.style.overflow = '';
 }
 
-// ESC + 點背景關閉
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeLb(); });
-document.getElementById('lb').addEventListener('click', function(e){
-  if(e.target===this) closeLb();
-});
-
-// ── 篩選事件由 buildFilterBar() 動態綁定
-
-// ── Nav scroll
-window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
-});
-
-// ── XSS 防護
-function esc(str) {
-  return String(str||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-// 啟動
+document.getElementById('lb').addEventListener('click', function(e){ if(e.target===this) closeLb(); });
+window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>60); });
+function esc(str) { return String(str||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 loadData();
-</script>
-
-<script>
-(function(){
-  var ham  = document.getElementById('hamburger');
-  var menu = document.getElementById('mobileMenu');
-  var nav  = document.getElementById('mainNav') || document.querySelector('nav');
-  if(!ham || !menu) return;
-  ham.addEventListener('click', function(){
-    var open = menu.classList.toggle('open');
-    ham.classList.toggle('open', open);
-    ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      menu.classList.remove('open');
-      ham.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-  window.addEventListener('scroll', function(){
-    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
-})();
 </script>
 </body>
 </html>
