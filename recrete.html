@@ -18,7 +18,6 @@
 <body>
 
 <div class="topbar">
-  <a href="index.html" style="font-family:var(--fd,'Inter Tight',sans-serif);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:.3rem;" title="返回主站">← 主站</a>
   <div class="game-logo">Conga Taiwan<small>康加台灣 · 每一塊廢料，都有牠的靈魂</small></div>
   <div class="coin-disp"><div class="ci">₵</div><span id="cc">0</span></div>
   <button class="top-btn" onclick="op('hatch')">+ 孵化</button>
@@ -845,5 +844,66 @@ window.addEventListener('scroll',function(){
   if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 </script>
+
+<!-- 世界觀說明區塊 -->
+<div style="background:#0A0A0F;padding:5rem 4rem;border-top:1px solid rgba(100,80,200,0.2);">
+  <div style="max-width:900px;margin:0 auto;">
+
+    <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:#8B7FE8;margin-bottom:1rem;font-family:'Inter Tight',sans-serif;font-weight:700;">Game Universe · 遊戲世界觀</div>
+    <h2 style="font-family:'Inter Tight',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,3rem);letter-spacing:-0.04em;color:white;margin-bottom:0.75rem;line-height:1.1;">Resources Revive<br><span style="color:#8B7FE8;">Resources Re-invite</span></h2>
+    <p style="font-size:0.95rem;color:rgba(200,195,240,0.6);line-height:1.85;max-width:680px;margin-bottom:3rem;font-weight:300;">康加台灣的世界由兩個平行宇宙構成。現階段開放的是「無機宇宙」——一個由台灣廢棄建材、廢金屬、廢玻璃構成的礦物世界。透過宇宙中的蟲洞，玩家可以感受到來自「有機宇宙」的能量痕跡，那是後期將開放的有機廢棄物領域。</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:rgba(100,80,200,0.1);margin-bottom:3rem;">
+
+      <div style="padding:2rem;background:#0F0F1A;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">🌑</div>
+        <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:#8B7FE8;margin-bottom:0.5rem;font-family:'Inter Tight',sans-serif;font-weight:700;">現已開放 · Phase 1</div>
+        <div style="font-family:'Inter Tight',sans-serif;font-size:1rem;font-weight:700;color:white;margin-bottom:0.6rem;">無機宇宙</div>
+        <p style="font-size:0.82rem;color:rgba(200,195,240,0.55);line-height:1.75;">由台灣各地的廢棄建材骨料構成的礦物世界。士敏小礦獸在這裡誕生、成長、進化。玩家透過真實的資源回收行為，在遊戲中累積能量與礦獸。宇宙中設有 Gate——台灣各地的實體收集站，是虛實串聯的核心節點。</p>
+      </div>
+
+      <div style="padding:2rem;background:#0F0F1A;opacity:0.6;">
+        <div style="font-size:2rem;margin-bottom:0.75rem;">🌿</div>
+        <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(100,200,100,0.6);margin-bottom:0.5rem;font-family:'Inter Tight',sans-serif;font-weight:700;">即將開放 · Phase 2</div>
+        <div style="font-family:'Inter Tight',sans-serif;font-size:1rem;font-weight:700;color:white;margin-bottom:0.6rem;">有機宇宙</div>
+        <p style="font-size:0.82rem;color:rgba(200,195,240,0.45);line-height:1.75;">與環境部合作的有機廢棄物教育體系。廢棄食材、廢棄植物材料構成的平行世界。無機宇宙的玩家可透過蟲洞先行感受能量，待 Phase 2 開放後完整解鎖。</p>
+      </div>
+
+    </div>
+
+    <!-- 竹塘 Gate 收集站 -->
+    <div style="padding:2.5rem;background:#0F0F1A;border:1px solid rgba(100,80,200,0.2);margin-bottom:2rem;">
+      <div style="display:flex;align-items:flex-start;gap:1.5rem;flex-wrap:wrap;">
+        <div style="flex-shrink:0;">
+          <div style="width:56px;height:56px;border-radius:50%;background:rgba(100,80,200,0.15);border:1px solid rgba(100,80,200,0.3);display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🚪</div>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:#8B7FE8;margin-bottom:0.5rem;font-family:'Inter Tight',sans-serif;font-weight:700;">第一個實體 Gate</div>
+          <div style="font-family:'Inter Tight',sans-serif;font-size:1.05rem;font-weight:700;color:white;margin-bottom:0.5rem;">彰化縣竹塘鄉農會</div>
+          <p style="font-size:0.82rem;color:rgba(200,195,240,0.55);line-height:1.75;margin-bottom:1rem;">「掃一張桌子」計畫的示範場域，也是康加台灣無機宇宙在現實世界的第一個 Gate。玩家帶著家中的廢棄物來到這裡，掃描 QR 碼，完成現實中的資源回收——遊戲中的士敏小礦獸也同時獲得進化能量。</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+            <span style="padding:0.25rem 0.75rem;background:rgba(100,80,200,0.12);color:#8B7FE8;font-size:0.68rem;font-family:'Inter Tight',sans-serif;border:1px solid rgba(100,80,200,0.25);">📍 彰化縣竹塘鄉</span>
+            <span style="padding:0.25rem 0.75rem;background:rgba(100,80,200,0.12);color:#8B7FE8;font-size:0.68rem;font-family:'Inter Tight',sans-serif;border:1px solid rgba(100,80,200,0.25);">♻️ 廢料收集 + 換點</span>
+            <span style="padding:0.25rem 0.75rem;background:rgba(100,80,200,0.12);color:#8B7FE8;font-size:0.68rem;font-family:'Inter Tight',sans-serif;border:1px solid rgba(100,80,200,0.25);">🧱 掃一張桌子示範點</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources Revive 核心概念 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+      <div style="padding:1.75rem;background:#0F0F1A;border-top:2px solid #8B7FE8;">
+        <div style="font-family:'Inter Tight',sans-serif;font-size:0.85rem;font-weight:700;color:#8B7FE8;margin-bottom:0.5rem;">Resources Revive</div>
+        <p style="font-size:0.82rem;color:rgba(200,195,240,0.55);line-height:1.75;">讓廢棄資源重新獲得生命力。每一件從士敏文品工作室誕生的作品，都是「Resources Revive」的具體實踐——廢料不是終點，而是下一個循環的起點。</p>
+      </div>
+      <div style="padding:1.75rem;background:#0F0F1A;border-top:2px solid rgba(100,200,100,0.5);">
+        <div style="font-family:'Inter Tight',sans-serif;font-size:0.85rem;font-weight:700;color:rgba(100,200,100,0.8);margin-bottom:0.5rem;">Resources Re-invite</div>
+        <p style="font-size:0.82rem;color:rgba(200,195,240,0.55);line-height:1.75;">邀請人們重新參與資源的流動。透過遊戲化機制，讓資源回收從「義務」變成「選擇」——玩家主動帶著廢料來到 Gate，因為他們想要，不是因為他們應該。</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
