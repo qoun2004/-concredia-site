@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投資人資訊 — Concredia.Lab 士敏文品</title>
+<meta name="description" content="士敏文品天使投資人資訊頁。互動式財務試算器、技術壁壘說明、市場規模分析。">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<style>
+/* ── 試算器專屬樣式 ── */
+.calc-wrap { background:#0D0C0B; padding:5rem 4rem; }
+.slider-group { display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.75rem; }
+.slider-label { display:flex;justify-content:space-between;align-items:center; }
+.slider-name { font-family:var(--fd);font-size:0.72rem;font-weight:600;letter-spacing:0.06em;color:rgba(212,207,200,0.65); }
+.slider-val { font-family:var(--fd);font-size:0.88rem;font-weight:700;color:var(--fire-h); }
+input[type=range] {
+  -webkit-appearance:none;width:100%;height:4px;
+  background:rgba(212,207,200,0.1);border-radius:2px;outline:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--fire);cursor:pointer;transition:background 0.2s;
+}
+input[type=range]::-webkit-slider-thumb:hover { background:var(--fire-h); }
+.result-big { font-family:var(--fd);font-size:clamp(2rem,5vw,4rem);font-weight:900;letter-spacing:-0.05em;line-height:1; }
+.result-label { font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(212,207,200,0.35);font-family:var(--fd);font-weight:700;margin-top:0.4rem; }
+.result-card { padding:2rem;background:#161412;border-top:2px solid; }
+.tab-btn { padding:0.65rem 1.5rem;font-family:var(--fd);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border:none;transition:all 0.2s; }
+.tab-btn.active { background:var(--fire);color:white; }
+.tab-btn:not(.active) { background:rgba(212,207,200,0.06);color:rgba(212,207,200,0.45); }
+.tab-panel { display:none; }
+.tab-panel.active { display:block; }
+@media(max-width:768px){
+  .calc-wrap { padding:3rem 1.5rem; }
+  .inv-grid { grid-template-columns:1fr !important; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span><span class="nav-logo-sub">士敏文品</span></a>
+  <ul class="nav-links">
+    <li><a href="story.html">品牌故事</a></li>
+    <li><a href="products.html">產品系列</a></li>
+    <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
+    <li><a href="gallery.html">作品集</a></li>
+    <li><a href="sustainability.html">永續 · ESG</a></li>
+    <li><a href="blog.html">最新動態</a></li>
+    <li><a href="contact.html">聯絡</a></li>
+  </ul>
+  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
+  <button class="hamburger" id="hamburger" aria-label="開啟選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="story.html">品牌故事</a>
+  <a href="products.html">產品系列</a>
+  <a href="gifts.html">🎁 節慶禮品</a>
+  <a href="gallery.html">作品集</a>
+  <a href="sustainability.html">永續 · ESG</a>
+  <a href="blog.html">最新動態</a>
+  <a href="partners.html">合作夥伴</a>
+  <a href="contact.html">聯絡我們</a>
+  <a href="fundraise.html" class="fundraise-link">募資計畫 →</a>
+  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品</div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-eye">Investor · 投資人資訊</div>
+  <h1>你投資的，<br>是一種<br><em>不可逆的改變</em></h1>
+  <p class="page-hero-sub">技術壁壘 · 市場規模 · 互動財務試算 · 天使投資人詢問</p>
+</div>
+
+<!-- 快速摘要 4 格 -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(212,207,200,0.05);">
+  <div style="padding:2rem;background:#161412;text-align:center;">
+    <div style="font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--fire);letter-spacing:-0.05em;">9 年</div>
+    <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-top:0.4rem;">EAC 工法研發</div>
+  </div>
+  <div style="padding:2rem;background:#161412;text-align:center;">
+    <div style="font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--fire);letter-spacing:-0.05em;">70%</div>
+    <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-top:0.4rem;">再生廢料佔比</div>
+  </div>
+  <div style="padding:2rem;background:#161412;text-align:center;">
+    <div style="font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--fire);letter-spacing:-0.05em;">B2B+B2C</div>
+    <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-top:0.4rem;">雙軌收入模式</div>
+  </div>
+  <div style="padding:2rem;background:#161412;text-align:center;">
+    <div style="font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--fire);letter-spacing:-0.05em;">2026</div>
+    <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-top:0.4rem;">碳費元年 · 順風期</div>
+  </div>
+</div>
+
+<!-- Tab 切換：三個市場 -->
+<div style="background:var(--bk);padding:5rem 4rem;">
+  <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--fire);font-family:var(--fd);font-weight:700;margin-bottom:0.6rem;">Business Model · 商業模式</div>
+  <h2 style="font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;letter-spacing:-0.04em;color:var(--w);margin-bottom:2.5rem;">三條收入線，互相支撐</h2>
+
+  <div style="display:flex;gap:0;margin-bottom:2.5rem;flex-wrap:wrap;">
+    <button class="tab-btn active" onclick="switchTab('b2b',this)">🏢 B2B 企業採購</button>
+    <button class="tab-btn" onclick="switchTab('b2c',this)">🎁 B2C 個人消費</button>
+    <button class="tab-btn" onclick="switchTab('license',this)">🏭 授權 · Hub & Satellite</button>
+  </div>
+
+  <div id="tab-b2b" class="tab-panel active">
+    <div class="inv-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h3 style="font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--w);margin-bottom:1rem;">企業 ESG 採購 · 節慶禮品</h3>
+        <p style="font-size:0.85rem;color:rgba(212,207,200,0.6);line-height:1.85;margin-bottom:1.5rem;">2026 年碳費上路，企業必須提出 ESG 行動方案。採購士敏文品作品，等於同時獲得：實體禮品 + 材料溯源文件 + 減碳數據 + GRI 格式摘要。每件可直接引用於永續報告書。</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">最小起訂量</span>
+            <span style="color:var(--w);font-weight:600;">20 件</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">平均客單價（企業）</span>
+            <span style="color:var(--fire-h);font-weight:600;">NT$ 3,000–8,000 / 件</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">目標市場</span>
+            <span style="color:var(--w);font-weight:600;">上市櫃企業 ESG 部門</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">毛利率估算</span>
+            <span style="color:#2ECC71;font-weight:600;">45–60%</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:2rem;background:#161412;border-left:3px solid var(--fire);">
+        <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire);margin-bottom:0.75rem;font-family:var(--fd);">市場規模</div>
+        <p style="font-size:0.82rem;color:rgba(212,207,200,0.6);line-height:1.8;">台灣上市櫃企業約 1,700 家，每家平均 ESG 預算逐年增加。僅需 0.1% 市場滲透（約 1.7 家 × 平均訂單 50 件 × NT$5,000），年營收即達 4.25 億以上。</p>
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(155,91,58,0.1);border:1px solid rgba(155,91,58,0.2);">
+          <div style="font-size:0.75rem;color:rgba(212,207,200,0.7);line-height:1.7;">政策加持：2026 碳費上路 + 政府綠色採購規範 + SDG 永續採購趨勢</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-b2c" class="tab-panel">
+    <div class="inv-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h3 style="font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--w);margin-bottom:1rem;">個人消費 · 節慶禮品 · 康加台灣</h3>
+        <p style="font-size:0.85rem;color:rgba(212,207,200,0.6);line-height:1.85;margin-bottom:1.5rem;">情人節、父母親節、中秋、過年——每個節日都是切入點。透過康加台灣遊戲生態系，建立長期用戶黏著度，讓個人消費者從「買一件」變成「玩家 + 回購者」。</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">個人平均客單價</span>
+            <span style="color:var(--fire-h);font-weight:600;">NT$ 800–3,500</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">目標客群</span>
+            <span style="color:var(--w);font-weight:600;">25–45 歲 有意識消費者</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">遊戲連動效益</span>
+            <span style="color:#2ECC71;font-weight:600;">提升回購率 × 社群擴散</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">毛利率估算</span>
+            <span style="color:#2ECC71;font-weight:600;">50–65%</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:2rem;background:#161412;border-left:3px solid var(--fire);">
+        <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire);margin-bottom:0.75rem;font-family:var(--fd);">差異化優勢</div>
+        <p style="font-size:0.82rem;color:rgba(212,207,200,0.6);line-height:1.8;">市場上沒有第二個「有鋼筋 + 再生廢料 + NFC晶片 + 減碳證書」的禮品。每件都是 1/1，骨料紋路唯一不可複製，天然對抗仿製。</p>
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(155,91,58,0.1);border:1px solid rgba(155,91,58,0.2);">
+          <div style="font-size:0.75rem;color:rgba(212,207,200,0.7);line-height:1.7;">康加台灣：購買實體作品 → 獲得士敏小礦獸啟動碼 → 進入遊戲生態 → 持續互動 → 再次消費</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-license" class="tab-panel">
+    <div class="inv-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+      <div>
+        <h3 style="font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--w);margin-bottom:1rem;">工法授權 · Hub & Satellite 衛星工廠</h3>
+        <p style="font-size:0.85rem;color:rgba(212,207,200,0.6);line-height:1.85;margin-bottom:1.5rem;">將 EAC 工法 SOP 授權給各地社區、農會或個人工作室，讓他們就地生產，產品回到士敏文品平台銷售。授權費 + 抽成 = 輕資產高毛利的擴展模式。</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">授權費（預估）</span>
+            <span style="color:var(--fire-h);font-weight:600;">NT$ 50,000–150,000 / 站</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">銷售抽成</span>
+            <span style="color:var(--fire-h);font-weight:600;">15–25%</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">第一個示範點</span>
+            <span style="color:var(--w);font-weight:600;">彰化縣竹塘鄉農會</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.75rem 1rem;background:#161412;font-size:0.82rem;">
+            <span style="color:rgba(212,207,200,0.6);">毛利率估算</span>
+            <span style="color:#2ECC71;font-weight:600;">70–80%（授權為主）</span>
+          </div>
+        </div>
+      </div>
+      <div style="padding:2rem;background:#161412;border-left:3px solid var(--fire);">
+        <div style="font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire);margin-bottom:0.75rem;font-family:var(--fd);">擴展潛力</div>
+        <p style="font-size:0.82rem;color:rgba(212,207,200,0.6);line-height:1.8;">台灣 368 個鄉鎮，每個都有廢棄建材。未來若授權 30 個衛星工廠，每站年產 200 件，單站抽成 NT$200 × 30 站 = 年抽成收入即達規模。</p>
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(39,174,96,0.08);border:1px solid rgba(39,174,96,0.2);">
+          <div style="font-size:0.75rem;color:rgba(212,207,200,0.7);line-height:1.7;">輕資產模式：士敏文品負責品牌、平台、技術；衛星工廠負責生產、人力、在地材料。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 互動式財務試算器 ══ -->
+<div class="calc-wrap">
+  <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--fire);font-family:var(--fd);font-weight:700;margin-bottom:0.6rem;">Interactive Calculator · 互動財務試算</div>
+  <h2 style="font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;letter-spacing:-0.04em;color:var(--w);margin-bottom:0.5rem;">自己拉，自己算</h2>
+  <p style="font-size:0.85rem;color:rgba(212,207,200,0.5);margin-bottom:3rem;">調整下方各項假設數字，即時看到年度潛在營收與投資回報估算。所有數字均為保守估算，僅供參考。</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;" class="inv-grid">
+
+    <!-- 左側滑桿 -->
+    <div>
+      <!-- 標籤切換 -->
+      <div style="display:flex;gap:0;margin-bottom:2.5rem;">
+        <button class="tab-btn active" id="ct-b2b" onclick="switchCalc('b2b')">🏢 B2B</button>
+        <button class="tab-btn" id="ct-b2c" onclick="switchCalc('b2c')">🎁 B2C</button>
+        <button class="tab-btn" id="ct-lic" onclick="switchCalc('license')">🏭 授權</button>
+      </div>
+
+      <!-- B2B 滑桿 -->
+      <div id="sliders-b2b">
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">合作企業數（家）</span>
+            <span class="slider-val" id="v-companies">20</span>
+          </div>
+          <input type="range" id="s-companies" min="1" max="200" value="20" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>1</span><span>200</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">每家平均採購件數</span>
+            <span class="slider-val" id="v-items">30</span>
+          </div>
+          <input type="range" id="s-items" min="10" max="200" value="30" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>10</span><span>200</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">每件平均售價（NT$）</span>
+            <span class="slider-val" id="v-price">3500</span>
+          </div>
+          <input type="range" id="s-price" min="500" max="10000" step="500" value="3500" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>500</span><span>10,000</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">毛利率（%）</span>
+            <span class="slider-val" id="v-margin">50</span>
+          </div>
+          <input type="range" id="s-margin" min="20" max="80" value="50" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>20%</span><span>80%</span></div>
+        </div>
+      </div>
+
+      <!-- B2C 滑桿 -->
+      <div id="sliders-b2c" style="display:none;">
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">月活躍用戶 / 粉絲（人）</span>
+            <span class="slider-val" id="v-users">1000</span>
+          </div>
+          <input type="range" id="s-users" min="100" max="50000" step="100" value="1000" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>100</span><span>50,000</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">年轉換購買率（%）</span>
+            <span class="slider-val" id="v-cvr">5</span>
+          </div>
+          <input type="range" id="s-cvr" min="1" max="30" value="5" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>1%</span><span>30%</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">平均客單價（NT$）</span>
+            <span class="slider-val" id="v-aov">1800</span>
+          </div>
+          <input type="range" id="s-aov" min="500" max="5000" step="100" value="1800" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>500</span><span>5,000</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">毛利率（%）</span>
+            <span class="slider-val" id="v-margin2">55</span>
+          </div>
+          <input type="range" id="s-margin2" min="20" max="80" value="55" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>20%</span><span>80%</span></div>
+        </div>
+      </div>
+
+      <!-- 授權滑桿 -->
+      <div id="sliders-license" style="display:none;">
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">衛星工廠數量（站）</span>
+            <span class="slider-val" id="v-stations">5</span>
+          </div>
+          <input type="range" id="s-stations" min="1" max="50" value="5" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>1</span><span>50</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">每站年產能（件）</span>
+            <span class="slider-val" id="v-capacity">120</span>
+          </div>
+          <input type="range" id="s-capacity" min="50" max="500" step="10" value="120" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>50</span><span>500</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">平均售價（NT$）</span>
+            <span class="slider-val" id="v-lprice">2500</span>
+          </div>
+          <input type="range" id="s-lprice" min="500" max="8000" step="500" value="2500" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>500</span><span>8,000</span></div>
+        </div>
+        <div class="slider-group">
+          <div class="slider-label">
+            <span class="slider-name">平台抽成比例（%）</span>
+            <span class="slider-val" id="v-lrate">20</span>
+          </div>
+          <input type="range" id="s-lrate" min="10" max="35" value="20" oninput="updateCalc()">
+          <div style="display:flex;justify-content:space-between;font-size:0.6rem;color:rgba(212,207,200,0.25)"><span>10%</span><span>35%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右側結果 -->
+    <div style="display:flex;flex-direction:column;gap:1.5px;">
+
+      <div class="result-card" style="border-color:var(--fire);">
+        <div class="result-label">年度潛在營收</div>
+        <div class="result-big" style="color:var(--fire-h);" id="r-revenue">NT$ 2,100,000</div>
+      </div>
+
+      <div class="result-card" style="border-color:#2ECC71;">
+        <div class="result-label">年度毛利（估）</div>
+        <div class="result-big" style="color:#2ECC71;" id="r-profit">NT$ 1,050,000</div>
+      </div>
+
+      <div class="result-card" style="border-color:#5DADE2;">
+        <div class="result-label">每位客戶 / 用戶貢獻毛利</div>
+        <div class="result-big" style="color:#5DADE2;" id="r-per">NT$ 52,500</div>
+      </div>
+
+      <div style="padding:1.5rem;background:#161412;border-top:2px solid rgba(212,207,200,0.1);">
+        <div style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.3);font-family:var(--fd);margin-bottom:0.75rem;">等效換算</div>
+        <div id="r-equiv" style="font-size:0.82rem;color:rgba(212,207,200,0.55);line-height:1.75;"></div>
+      </div>
+
+      <div style="padding:1.25rem 1.5rem;background:rgba(155,91,58,0.08);border:1px solid rgba(155,91,58,0.2);">
+        <div style="font-size:0.68rem;color:rgba(212,207,200,0.4);line-height:1.65;">⚠️ 以上為保守估算，僅供參考。實際數字受市場時機、執行力、競爭環境等多重因素影響。正式財務模型請洽詢團隊。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 技術壁壘 -->
+<div style="background:var(--g100);padding:5rem 4rem;">
+  <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--fire);font-family:var(--fd);font-weight:700;margin-bottom:0.6rem;">Competitive Moat · 競爭護城河</div>
+  <h2 style="font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:900;letter-spacing:-0.04em;color:var(--bk);margin-bottom:2.5rem;">為什麼別人做不到？</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+    <div style="padding:2rem;background:white;border-top:3px solid var(--fire);">
+      <div style="font-size:1.5rem;margin-bottom:0.75rem;">🔬</div>
+      <div style="font-family:var(--fd);font-size:0.95rem;font-weight:700;color:var(--bk);margin-bottom:0.5rem;">9 年技術積累</div>
+      <p style="font-size:0.8rem;color:var(--g400);line-height:1.75;">EAC 骨料裸露工法、PS 板模板系統、配方比例——每一個都是多年試誤的結果。配方不公開，複製門檻極高。</p>
+    </div>
+    <div style="padding:2rem;background:white;border-top:3px solid var(--fire);">
+      <div style="font-size:1.5rem;margin-bottom:0.75rem;">📡</div>
+      <div style="font-family:var(--fd);font-size:0.95rem;font-weight:700;color:var(--bk);margin-bottom:0.5rem;">數位 + 實體整合</div>
+      <p style="font-size:0.8rem;color:var(--g400);line-height:1.75;">NFC 晶片嵌入作品 + 康加台灣遊戲生態 + ESG 文件套件，三層整合是市場上獨一無二的組合。</p>
+    </div>
+    <div style="padding:2rem;background:white;border-top:3px solid var(--fire);">
+      <div style="font-size:1.5rem;margin-bottom:0.75rem;">🤝</div>
+      <div style="font-family:var(--fd);font-size:0.95rem;font-weight:700;color:var(--bk);margin-bottom:0.5rem;">社區根基</div>
+      <p style="font-size:0.8rem;color:var(--g400);line-height:1.75;">竹塘農會 20 年信任基礎，在地廢料採集網絡，Hub & Satellite 模式第一個實證場域正在進行。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 投資人詢問表單 -->
+<div style="background:var(--bk);padding:5rem 4rem;">
+  <div style="max-width:600px;margin:0 auto;text-align:center;">
+    <div style="font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--fire);font-family:var(--fd);font-weight:700;margin-bottom:0.6rem;">Contact · 聯繫我們</div>
+    <h2 style="font-family:var(--fd);font-size:clamp(1.4rem,2vw,1.8rem);font-weight:900;letter-spacing:-0.04em;color:var(--w);margin-bottom:0.75rem;">準備好深入討論了嗎？</h2>
+    <p style="font-size:0.85rem;color:rgba(212,207,200,0.5);margin-bottom:3rem;line-height:1.75;">填寫以下表單，我們會在 2 個工作天內與你聯繫，並提供完整的投資人簡報與財務模型。</p>
+
+    <div style="display:flex;flex-direction:column;gap:1rem;text-align:left;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div>
+          <label style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.4);font-family:var(--fd);display:block;margin-bottom:0.4rem;">姓名 *</label>
+          <input id="inv2-name" type="text" placeholder="您的姓名" style="width:100%;padding:0.75rem 1rem;background:rgba(212,207,200,0.06);border:1px solid rgba(212,207,200,0.12);color:var(--w);font-family:var(--fb);font-size:0.88rem;outline:none;box-sizing:border-box;">
+        </div>
+        <div>
+          <label style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.4);font-family:var(--fd);display:block;margin-bottom:0.4rem;">Email *</label>
+          <input id="inv2-email" type="email" placeholder="your@email.com" style="width:100%;padding:0.75rem 1rem;background:rgba(212,207,200,0.06);border:1px solid rgba(212,207,200,0.12);color:var(--w);font-family:var(--fb);font-size:0.88rem;outline:none;box-sizing:border-box;">
+        </div>
+      </div>
+      <div>
+        <label style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.4);font-family:var(--fd);display:block;margin-bottom:0.4rem;">投資人背景</label>
+        <select id="inv2-type" style="width:100%;padding:0.75rem 1rem;background:rgba(212,207,200,0.06);border:1px solid rgba(212,207,200,0.12);color:var(--w);font-family:var(--fb);font-size:0.88rem;outline:none;-webkit-appearance:none;box-sizing:border-box;">
+          <option value="">請選擇</option>
+          <option>個人天使投資人</option>
+          <option>創投 / VC</option>
+          <option>企業策略投資</option>
+          <option>社會影響力投資 / Impact</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,207,200,0.4);font-family:var(--fd);display:block;margin-bottom:0.4rem;">最感興趣的面向</label>
+        <textarea id="inv2-msg" placeholder="例如：技術壁壘、市場規模、Hub & Satellite 擴展模式、ESG 政策趨勢…" rows="3" style="width:100%;padding:0.75rem 1rem;background:rgba(212,207,200,0.06);border:1px solid rgba(212,207,200,0.12);color:var(--w);font-family:var(--fb);font-size:0.88rem;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+      </div>
+      <button onclick="submitInv2()" style="padding:0.9rem;background:var(--fire);color:white;border:none;font-family:var(--fd);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--fire-h)'" onmouseout="this.style.background='var(--fire)'">送出詢問，獲取完整簡報 →</button>
+      <p id="inv2-ok" style="font-size:0.78rem;color:#2ECC71;display:none;text-align:center;">✓ 已收到！我們會在 2 個工作天內與你聯繫。</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
+      <div style="font-size:0.68rem;letter-spacing:0.12em;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-bottom:0.75rem;">士敏文品</div>
+      <p>以土木博士研究為根，以設計為語言，讓每一塊再生廢料都有自己的故事。</p>
+    </div>
+    <div class="footer-col"><h5>產品</h5><ul>
+      <li><a href="products.html">產品系列</a></li>
+      <li><a href="gifts.html">ESG 企業禮品</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>品牌</h5><ul>
+      <li><a href="story.html">品牌故事</a></li>
+      <li><a href="sustainability.html">永續 · ESG</a></li>
+      <li><a href="partners.html">合作夥伴</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>投資人</h5><ul>
+      <li><a href="fundraise.html">募資計畫</a></li>
+      <li><a href="investor.html">投資人資訊</a></li>
+      <li><a href="contact.html">聯絡我們</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Concredia.Lab · Dr. Rovi Lee. All rights reserved.</p>
+    <div class="social-links">
+      <a class="social-link" href="#">IG</a>
+      <a class="social-link" href="#">TH</a>
+      <a class="social-link" href="#">YT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll + hamburger
+const navEl = document.getElementById('mainNav');
+window.addEventListener('scroll', () => navEl.classList.toggle('scrolled', window.scrollY > 60));
+(function(){
+  var ham = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  if(!ham||!menu) return;
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', function(){
+    menu.classList.remove('open');
+    ham.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+})();
+
+// 商業模式 Tab
+function switchTab(id, btn) {
+  document.querySelectorAll('#tab-b2b,#tab-b2c,#tab-license').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// 試算器 Tab
+var currentCalc = 'b2b';
+function switchCalc(type) {
+  currentCalc = type;
+  document.querySelectorAll('[id^="sliders-"]').forEach(el => el.style.display = 'none');
+  document.getElementById('sliders-' + type).style.display = 'block';
+  document.querySelectorAll('[id^="ct-"]').forEach(b => b.classList.remove('active'));
+  document.getElementById('ct-' + (type === 'license' ? 'lic' : type)).classList.add('active');
+  updateCalc();
+}
+
+function fmt(n) {
+  if (n >= 100000000) return 'NT$ ' + (n/100000000).toFixed(1) + ' 億';
+  if (n >= 10000000)  return 'NT$ ' + (n/10000000).toFixed(1) + ' 千萬';
+  if (n >= 1000000)   return 'NT$ ' + (n/1000000).toFixed(2) + ' 百萬';
+  if (n >= 10000)     return 'NT$ ' + Math.round(n/1000) + ',000';
+  return 'NT$ ' + n.toLocaleString();
+}
+
+function updateCalc() {
+  var revenue, profit, perUnit, units;
+
+  if (currentCalc === 'b2b') {
+    var companies = +document.getElementById('s-companies').value;
+    var items     = +document.getElementById('s-items').value;
+    var price     = +document.getElementById('s-price').value;
+    var margin    = +document.getElementById('s-margin').value;
+    document.getElementById('v-companies').textContent = companies;
+    document.getElementById('v-items').textContent = items;
+    document.getElementById('v-price').textContent = price.toLocaleString();
+    document.getElementById('v-margin').textContent = margin;
+    revenue  = companies * items * price;
+    profit   = revenue * margin / 100;
+    perUnit  = items * price * margin / 100;
+    units    = companies;
+  } else if (currentCalc === 'b2c') {
+    var users  = +document.getElementById('s-users').value;
+    var cvr    = +document.getElementById('s-cvr').value;
+    var aov    = +document.getElementById('s-aov').value;
+    var margin2= +document.getElementById('s-margin2').value;
+    document.getElementById('v-users').textContent = users.toLocaleString();
+    document.getElementById('v-cvr').textContent = cvr;
+    document.getElementById('v-aov').textContent = aov.toLocaleString();
+    document.getElementById('v-margin2').textContent = margin2;
+    var buyers = Math.round(users * cvr / 100);
+    revenue = buyers * aov;
+    profit  = revenue * margin2 / 100;
+    perUnit = aov * margin2 / 100;
+    units   = users;
+  } else {
+    var stations = +document.getElementById('s-stations').value;
+    var capacity = +document.getElementById('s-capacity').value;
+    var lprice   = +document.getElementById('s-lprice').value;
+    var lrate    = +document.getElementById('s-lrate').value;
+    document.getElementById('v-stations').textContent = stations;
+    document.getElementById('v-capacity').textContent = capacity;
+    document.getElementById('v-lprice').textContent = lprice.toLocaleString();
+    document.getElementById('v-lrate').textContent = lrate;
+    var totalSales = stations * capacity * lprice;
+    revenue = totalSales * lrate / 100;
+    profit  = revenue * 0.8;
+    perUnit = capacity * lprice * lrate / 100;
+    units   = stations;
+  }
+
+  document.getElementById('r-revenue').textContent = fmt(revenue);
+  document.getElementById('r-profit').textContent  = fmt(profit);
+  document.getElementById('r-per').textContent     = fmt(perUnit);
+
+  // 等效換算
+  var equivs = [];
+  if (profit >= 1000000)  equivs.push('🏠 可在台灣租 ' + Math.round(profit/25000) + ' 個月的工作室空間');
+  if (revenue >= 500000)  equivs.push('🧱 等同於生產約 ' + Math.round(revenue/3000) + ' 件水泥作品的營收');
+  if (profit >= 500000)   equivs.push('♻️ 可去化廢料約 ' + Math.round(profit/500 * 52) + ' 公斤');
+  if (equivs.length === 0) equivs.push('📊 繼續調整上方數字看更多估算');
+  document.getElementById('r-equiv').innerHTML = equivs.map(e => '<div style="margin-bottom:0.4rem;">' + e + '</div>').join('');
+}
+
+// 表單送出
+function submitInv2() {
+  var name  = document.getElementById('inv2-name').value.trim();
+  var email = document.getElementById('inv2-email').value.trim();
+  if (!name || !email) { alert('請填寫姓名與 Email'); return; }
+  var ok = document.getElementById('inv2-ok');
+  ok.style.display = 'block';
+  setTimeout(function(){ ok.style.display = 'none'; }, 5000);
+}
+
+// 初始化
+updateCalc();
+</script>
+</body>
+</html>
