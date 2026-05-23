@@ -1,1 +1,653 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concredia.Lab — Concrete as a Medium for Life</title>
+<meta name="description" content="Concredia.Lab transforms Taiwan's construction waste into concrete furniture, speakers, and art installations through the EAC Exposed Aggregate Craft. 60–70% recycled materials. SDG 11.6 / 12.5 compliant.">
+<meta name="keywords" content="Concredia Lab,Rovi Lee,recycled concrete,construction waste,concrete speakers,ESG corporate gifts,industrial design furniture,EAC,Exposed Aggregate Concrete,sustainable design,circular economy,Taiwan craftsmanship">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/global.css">
+<style>
+/* Concredia.Lab — Minimal Industrial UI
+   Design language: borderless · generous whitespace · bold type · zero ornament */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  /* ── Monochrome System */
+  --white:  #FFFFFF;
+  --g50:    #F7F7F5;   /* lightest bg */
+  --g100:   #EFEFEC;   /* block bg */
+  --g200:   #DDDDD8;   /* divider */
+  --g400:   #9B9B95;   /* secondary text */
+  --g700:   #3D3D3A;   /* primary text */
+  --black:  var(--bk);   /* heading, CTA */
+
+  /* ── Accent */
+  --fire:   var(--fire);   /* accent orange */
+  --fire-h: var(--fire-h);
+  --neon:   #39FF14;   /* neon green (Conga only) */
+
+  /* ── Type */
+  --fd:var(--fd),system-ui,sans-serif;
+  --fb:var(--fb),system-ui,sans-serif;
+  --fs:var(--fs),Georgia,serif;
+
+  /* ── Motion */
+  --ease:.22s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{
+  font-family:var(--fb);
+  background:var(--white);
+  color:var(--black);
+  overflow-x:hidden;
+  font-size:16px;
+  line-height:1.8;
+}
+
+/* ─── NAV ─────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 4rem;
+  background:transparent;
+  transition:background var(--ease),padding var(--ease);
+}
+nav.scrolled{
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--g200);
+  padding:.85rem 4rem;
+}
+.nav-logo{
+  font-family:var(--fd);font-size:1.1rem;font-weight:900;
+  color:var(--white);text-decoration:none;letter-spacing:-.03em;
+  transition:color var(--ease);
+}
+nav.scrolled .nav-logo{color:var(--black);}
+.nav-logo .dot{color:var(--fire);}
+.nav-logo .lab{font-weight:300;opacity:.6;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--fd);font-weight:600;
+  color:rgba(255,255,255,.75);text-decoration:none;
+  transition:color var(--ease);
+}
+nav.scrolled .nav-links a{color:var(--g400);}
+.nav-links a:hover{color:var(--fire)!important;}
+.nav-cta{
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  font-family:var(--fd);font-weight:600;
+  color:rgba(255,255,255,.75)!important;text-decoration:none;
+  border:none;background:transparent;padding:0;cursor:pointer;
+  transition:color var(--ease);
+}
+nav.scrolled .nav-cta{color:var(--g400)!important;}
+.nav-cta:hover{color:var(--fire)!important;}
+
+/* ─── HERO ─────────────────────────────────────── */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;background:var(--black);
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url('images/hero-bg.jpg') center/cover no-repeat;
+  filter:brightness(.38);
+  transition:transform 12s ease;
+}
+.hero:hover .hero-bg{transform:scale(1.03);}
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 60%);
+}
+.hero-content{
+  position:relative;z-index:4;
+  padding:0 6rem 7rem;
+  max-width:1280px;width:100%;
+}
+.hero-eyebrow{
+  font-family:var(--fd);font-size:.65rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.hero-eyebrow::before{
+  content:'';display:block;width:28px;height:2px;background:var(--fire);
+}
+.hero-manifesto{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(4rem,9vw,11rem);
+  line-height:.92;letter-spacing:-.04em;
+  color:var(--white);margin-bottom:2rem;
+}
+.hero-manifesto em{
+  font-style:italic;color:var(--fire);
+  font-family:var(--fs);font-weight:400;
+}
+.hero-sub{
+  font-size:1rem;color:rgba(255,255,255,.6);
+  font-weight:300;max-width:560px;line-height:1.75;
+  margin-bottom:2.5rem;
+}
+.hero-cta-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.btn-fire{
+  display:inline-block;padding:.85rem 2.4rem;
+  background:var(--fire);color:var(--white);
+  font-family:var(--fd);font-size:.78rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background var(--ease),transform var(--ease);
+}
+.btn-fire:hover{background:var(--fire-h);transform:translateY(-2px);}
+.btn-ghost{
+  font-family:var(--fd);font-size:.72rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;
+  transition:color var(--ease),border-color var(--ease);
+}
+.btn-ghost:hover{color:var(--white);border-color:var(--white);}
+
+/* ─── MARQUEE ──────────────────────────────────── */
+.marquee-bar{background:var(--black);padding:.85rem 0;overflow:hidden;}
+.marquee-track{
+  display:flex;gap:4rem;
+  animation:marquee 30s linear infinite;white-space:nowrap;
+}
+.mi{
+  font-family:var(--fd);font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--g400);flex-shrink:0;
+}
+.md{color:var(--fire);}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ─── Section headings ────────────────────────── */
+.sec-tag{
+  font-family:var(--fd);font-size:.62rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;
+  color:var(--fire);margin-bottom:1.25rem;
+}
+.sec-h{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(2.5rem,5vw,5.5rem);
+  line-height:.95;letter-spacing:-.04em;
+  color:var(--black);margin-bottom:1.5rem;
+}
+.sec-h em{font-style:italic;color:var(--fire);font-family:var(--fs);}
+.sec-body{
+  font-size:.95rem;color:var(--g400);
+  line-height:1.85;font-weight:300;max-width:560px;
+}
+
+/* ─── Full-width strip ────────────────────────────────── */
+.strip{padding:6rem 6rem;}
+.strip--white{background:var(--white);}
+.strip--grey{background:var(--g50);}
+.strip--black{background:var(--black);}
+.strip--fire{background:var(--fire);}
+
+/* ─── Split layout ──────────────────────────────── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.split--reverse{direction:rtl;}.split--reverse>*{direction:ltr;}
+
+/* ─── Three-column grid ───────────────────────────────────── */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+
+/* ─── Cards: borderless ──────────────────────────── */
+.card{padding:2.5rem 0;border-top:2px solid var(--black);}
+.card-num{
+  font-family:var(--fd);font-weight:900;font-size:3.5rem;
+  letter-spacing:-.04em;color:var(--g200);line-height:1;
+  margin-bottom:.5rem;
+}
+.card-title{
+  font-family:var(--fd);font-weight:900;font-size:1.2rem;
+  letter-spacing:-.02em;color:var(--black);margin-bottom:.75rem;
+}
+.card-text{font-size:.88rem;color:var(--g400);line-height:1.75;}
+
+/* ─── Large stat numbers ───────────────────────────────────── */
+.stat-num{
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(3rem,6vw,7rem);
+  letter-spacing:-.04em;line-height:1;color:var(--black);
+}
+.stat-label{font-size:.8rem;color:var(--g400);letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-top:.5rem;}
+
+/* ─── Buttons ─────────────────────────────────────── */
+.btn-black{
+  display:inline-block;padding:.85rem 2.4rem;
+  background:var(--black);color:var(--white);
+  font-family:var(--fd);font-size:.75rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background var(--ease);
+}
+.btn-black:hover{background:var(--g700);}
+.btn-ul{
+  font-family:var(--fd);font-size:.75rem;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--black);text-decoration:none;
+  border-bottom:1.5px solid var(--black);padding-bottom:2px;
+  display:inline-block;transition:color var(--ease),border-color var(--ease);
+}
+.btn-ul:hover{color:var(--fire);border-color:var(--fire);}
+
+/* ─── Team cards ──────────────────────────────────── */
+.team-card{padding:2rem 0;border-top:1px solid var(--g200);}
+.team-card-name{font-family:var(--fd);font-weight:900;font-size:1.4rem;letter-spacing:-.03em;margin-bottom:.25rem;}
+.team-card-role{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--fire);margin-bottom:.75rem;}
+.team-card-bio{font-size:.88rem;color:var(--g400);line-height:1.75;}
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer{
+  padding:4rem 6rem;background:var(--black);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.footer-logo{font-family:var(--fd);font-size:1.1rem;font-weight:900;color:var(--white);text-decoration:none;letter-spacing:-.03em;}
+.footer-logo .dot{color:var(--fire);}
+footer small{font-size:.72rem;color:var(--g400);}
+
+/* ─── Transitions ──────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .6s var(--ease) both;}
+
+/* ─── RWD ───────────────────────────────────────── */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}
+  nav.scrolled{padding:.75rem 1.5rem;}
+  .hero-content{padding:0 2rem 5rem;}
+  .strip{padding:4rem 2rem;}
+  .split{grid-template-columns:1fr;gap:2.5rem;}
+  .grid3,.grid4{grid-template-columns:1fr;gap:1.5rem;}
+  .hero-manifesto{font-size:clamp(2.8rem,12vw,5rem);}
+  .sec-h{font-size:clamp(2rem,8vw,3.5rem);}
+  footer{flex-direction:column;gap:1rem;text-align:center;padding:3rem 2rem;}
+  .nav-links{display:none;}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://concredia.tw/#organization",
+      "name": "Concredia.Lab Shimin Wenpin",
+      "alternateName": ["Shimin Wenpin", "Concredia.Lab Studio", "Concredia Lab"],
+      "url": "https://concredia.tw",
+      "description": "Concredia.Lab transforms Taiwan's construction waste into concrete furniture, speakers, and art installations through EAC Exposed Aggregate Craft. 60–70% recycled materials, SDG 11.6/12.5 compliant.",
+      "address": {"@type": "PostalAddress", "addressLocality": "Chiayi County", "addressCountry": "TW"},
+      "founder": [{"@type": "Person", "name": "Rovi Lee", "alternateName": ["Rovi Lee", "Ivor Lee"], "jobTitle": "Founder · PhD in Civil Engineering · EAC Process Developer"}],
+      "knowsAbout": ["EAC Exposed Aggregate Craft","Recycled Concrete Design","Construction Waste Upcycling","ESG Corporate Gifts","SDGs Circular Design","Urban Mining","Concrete Speakers","Conga Taiwan"]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://concredia.tw",
+      "name": "Concredia.Lab Shimin Wenpin",
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Concredia.Lab Shimin Wenpin">
+<meta property="og:title" content="Concredia.Lab — Concrete as a Medium for Life">
+<meta property="og:url" content="https://concredia.tw/en/">
+<meta property="og:image" content="https://concredia.tw/images/og-cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Concredia.Lab — Concrete as a Medium for Life">
+<body>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span><span class="nav-logo-sub">Shimin Wenpin</span></a>
+  <a href="/" class="lang-toggle" title="Switch to Traditional Chinese">繁中</a>
+  <ul class="nav-links">
+    <li><a href="../story.html">Our Story</a></li>
+    <li><a href="../products.html">Collections</a></li>
+    <li><a href="../gifts.html" style="color:var(--fire-h);">🎁 Seasonal Gifts</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="../sustainability.html">Sustainability · ESG</a></li>
+    <li><a href="../blog.html">Journal</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+  </ul>
+  <a href="../fundraise.html" class="nav-fundraise">Fundraise →</a>
+  <button class="hamburger" id="hamburger" aria-label="Open Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile full-screen menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html">Home</a>
+  <a href="../story.html">Our Story</a>
+  <a href="../products.html">Collections</a>
+  <a href="../gifts.html">🎁 Seasonal Gifts</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../sustainability.html">Sustainability · ESG</a>
+  <a href="../blog.html">Journal</a>
+  <a href="../partners.html">Partners</a>
+  <a href="../contact.html">Contact Us</a>
+  <a href="../fundraise.html" class="fundraise-link">Fundraise →</a>
+  <div class="mobile-menu-footer">Concredia.Lab · Shimin Wenpin Studio</div>
+</div>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-bg"></div>
+
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">CONCREDIA.LAB · Shimin Wenpin Studio</div>
+    <h1 class="hero-manifesto">
+      Concrete<br><em>as a Media.</em>
+    </h1>
+    <p class="hero-sub">Giving Taiwan's construction waste a second life.<br>Built to bridge-grade standards. Every piece reinforced with steel. Every piece 1/1.</p>
+    <div class="hero-cta-row">
+      <a href="../products.html" class="btn-fire">Explore Collections →</a>
+      <a href="../story.html" class="btn-ghost">Our Story</a>
+      <a href="../contact.html" class="btn-ghost">Partner With Us</a>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="mi">The gentlest hands in Taiwan, crafting the hardest works</span><span class="md"> ◆ </span>
+    <span class="mi">Bridge-grade precision, table-scale intimacy</span><span class="md"> ◆ </span>
+    <span class="mi">Every piece reinforced. Every piece unrepeatable.</span><span class="md"> ◆ </span>
+    <span class="mi">Waste is a resource placed in the wrong location</span><span class="md"> ◆ </span>
+    <span class="mi">Taiwan No.1 Concrete Craft</span><span class="md"> ◆ </span>
+    <span class="mi">What do you want to leave behind? Engrave it.</span><span class="md"> ◆ </span>
+    <span class="mi">Up-cycle — elevation, not mere recycling</span><span class="md"> ◆ </span>
+    <span class="mi">Finding a way forward for Taiwan's construction waste</span><span class="md"> ◆ </span>
+    <span class="mi">The gentlest hands in Taiwan, crafting the hardest works</span><span class="md"> ◆ </span>
+    <span class="mi">Bridge-grade precision, table-scale intimacy</span><span class="md"> ◆ </span>
+    <span class="mi">Every piece reinforced. Every piece unrepeatable.</span><span class="md"> ◆ </span>
+    <span class="mi">Waste is a resource placed in the wrong location</span><span class="md"> ◆ </span>
+    <span class="mi">Taiwan No.1 Concrete Craft</span><span class="md"> ◆ </span>
+    <span class="mi">What do you want to leave behind? Engrave it.</span><span class="md"> ◆ </span>
+  </div>
+</div>
+
+<!-- Section 1: Brand Manifesto -->
+<div class="strip strip--white">
+  <div class="split">
+    <div>
+      <div class="sec-tag">Craftsman · Artisan Spirit</div>
+      <h2 class="sec-h">The gentlest hands in Taiwan,<br>crafting the most <em>enduring</em> works.</h2>
+    </div>
+    <div>
+      <p class="sec-body" style="margin-bottom:2rem;">A civil engineering PhD, making furniture. Bridge-grade precision, applied to a table. Steel reinforcement, formwork, curing, grinding — every step as rigorous as a building.</p>
+      <p class="sec-body" style="margin-bottom:2.5rem;">Waste is not worthless — it is a resource misplaced. We transform Taiwan's construction debris into furniture, speakers, and art installations.</p>
+      <a href="../story.html" class="btn-ul">Discover Our Story →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2: Key Numbers -->
+<div class="strip strip--black">
+  <div class="grid4">
+    <div>
+      <div class="stat-num" style="color:var(--white);">70<span style="font-size:.45em;color:var(--fire);">%+</span></div>
+      <div class="stat-label" style="color:var(--g400);">Recycled Material Ratio</div>
+    </div>
+    <div>
+      <div class="stat-num" style="color:var(--white);">9<span style="font-size:.45em;color:var(--fire);"> yr</span></div>
+      <div class="stat-label" style="color:var(--g400);">Years of EAC R&D</div>
+    </div>
+    <div>
+      <div class="stat-num" style="color:var(--white);">1/1</div>
+      <div class="stat-label" style="color:var(--g400);">Every Piece Unrepeatable</div>
+    </div>
+    <div>
+      <div class="stat-num" style="color:var(--white);">SDG<span style="font-size:.4em;color:var(--fire);"> 11.6</span></div>
+      <div class="stat-label" style="color:var(--g400);">Waste Management Alignment</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 3: Four Collections -->
+<div class="strip strip--grey">
+  <div style="margin-bottom:4rem;">
+    <div class="sec-tag">Products · Four Collections</div>
+    <h2 class="sec-h" style="max-width:700px;">Four collections,<br>one <em>philosophy</em>.</h2>
+  </div>
+  <div class="grid4">
+    <a href="products.html#flow-structure" style="text-decoration:none;">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-title">Flow Structure Series</div>
+        <div class="card-text">Driftwood × Recycled Concrete. Modular, height-adjustable. The definitive statement piece for corporate interiors.</div>
+      </div>
+    </a>
+    <a href="products.html#ready-made" style="text-decoration:none;">
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-title">Standard Series</div>
+        <div class="card-text">Anchor tables, coffee tables, coasters. Ready stock, available for immediate procurement.</div>
+      </div>
+    </a>
+    <a href="products.html#custom-made" style="text-decoration:none;">
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-title">Bespoke Series</div>
+        <div class="card-text">Lighting, installations, building inauguration gifts. Complete material provenance documentation, ESG report-ready.</div>
+      </div>
+    </a>
+    <a href="products.html#artwork" style="text-decoration:none;">
+      <div class="card">
+        <div class="card-num">04</div>
+        <div class="card-title">Artwork Series</div>
+        <div class="card-text">Hand-cut polystyrene board. Ink-wash aesthetics, strictly limited, each signed by the artist.</div>
+      </div>
+    </a>
+  </div>
+  <div style="margin-top:3rem;">
+    <a href="../products.html" class="btn-black">View All Works →</a>
+  </div>
+</div>
+
+<!-- Section 4: Custom Engraving -->
+<div class="strip strip--white">
+  <div class="split split--reverse">
+    <div style="padding:3rem;background:var(--g50);">
+      <div style="font-family:var(--fs);font-size:3rem;color:var(--g200);line-height:1.4;letter-spacing:-.02em;">
+        Words for someone you love<br>A memory worth keeping<br>
+        <span style="color:var(--fire);">Or a line of poetry</span>
+      </div>
+      <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g400);margin-top:2rem;font-family:var(--fd);font-weight:700;">← Tell me. I'll engrave it.</div>
+    </div>
+    <div>
+      <div class="sec-tag">Custom Engraving · Carved in Stone</div>
+      <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">Concrete remembers.<br>And it will outlive<br>every one of us.</h2>
+      <p class="sec-body" style="margin-bottom:1.75rem;">Words, totems, temple motifs, family crests, wedding vows — anything that carries meaning can be engraved into stone.</p>
+      <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.5rem;">
+        <div style="font-size:.88rem;color:var(--g700);">── Chinese · English · Japanese · Any language</div>
+        <div style="font-size:.88rem;color:var(--g700);">── Logos · Motifs · Hand-drawn artwork</div>
+        <div style="font-size:.88rem;color:var(--g700);">── Local waste · Temple iconography · Indigenous patterns</div>
+      </div>
+      <a href="../contact.html" class="btn-fire">Tell Us What You Envision →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Section 5: ESG Corporate -->
+<div class="strip strip--black">
+  <div style="margin-bottom:4rem;">
+    <div class="sec-tag" style="color:var(--fire);">ESG · Corporate Partnership</div>
+    <h2 class="sec-h" style="color:var(--white);max-width:800px;">The moment you acquire this,<br>you have made an <em>ESG statement</em>.</h2>
+  </div>
+  <div class="grid3">
+    <div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">Green Procurement</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">Office Procurement ×<br>ESG Documentation Kit</div>
+      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">Each piece includes a material provenance certificate, SDG 12.5 compliant, citable in annual sustainability reports.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">Employee Engagement</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">Craft Flow<br>CSR Experience Package</div>
+      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">In-house workshops. Employees create. ESG carbon reduction reports delivered same day.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">Brand Integration</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">Conga Taiwan<br>Ecosystem Island Sponsorship</div>
+      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">Named territory on the game map. Player interactions quantified for ESG reporting.</p>
+    </div>
+  </div>
+  <div style="margin-top:3.5rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
+    <div style="font-family:var(--fd);font-size:1rem;color:rgba(255,255,255,.5);">Any industry. Every size. Your ESG story begins here.</div>
+    <a href="../contact.html" class="btn-fire">Inquire About Corporate Packages →</a>
+  </div>
+</div>
+
+<!-- Section 6: Seasonal Gifts -->
+<div class="strip strip--grey">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <div class="sec-tag">Gifts · Seasonal Offerings</div>
+      <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">The heaviest gift in the world.<br>The one you can't bring yourself to <em>discard</em>.</h2>
+    </div>
+    <a href="../gifts.html" class="btn-ul">View All Seasonal Offerings →</a>
+  </div>
+  <div class="grid4">
+    <div style="padding:1.5rem;background:var(--white);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">💝</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">Valentine's · Parents' Day</div>
+      <div style="font-size:.8rem;color:var(--g400);">Roses fade in seven days. Concrete endures forever.</div>
+    </div>
+    <div style="padding:1.5rem;background:var(--white);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">🏮</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">Lunar New Year · Mid-Autumn</div>
+      <div style="font-size:.8rem;color:var(--g400);">The mooncakes are gone. This remains.</div>
+    </div>
+    <div style="padding:1.5rem;background:var(--white);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">🛒</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">Singles' Day · 12.12</div>
+      <div style="font-size:.8rem;color:var(--g400);">One right thing outweighs a thousand impulse buys.</div>
+    </div>
+    <div style="padding:1.5rem;background:var(--fire);">
+      <div style="font-size:1.5rem;margin-bottom:.5rem;">🏢</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:.3rem;">Corporate Gifts</div>
+      <div style="font-size:.8rem;color:rgba(255,255,255,.75);">Year-end Banquet · Anniversary · Opening · VIP</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 7: Partners -->
+<div class="strip strip--white">
+  <div style="margin-bottom:3rem;">
+    <div class="sec-tag">Partners · Collaborators</div>
+    <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">Together, we give waste<br>a <em>way forward</em>.</h2>
+  </div>
+  <div class="grid3">
+    <div class="card">
+      <div class="card-title">Zhutang Township Farmers' Association, Changhua</div>
+      <div class="card-text">"Sweep a Table" Initiative. 70% locally-sourced waste materials, 500kg waste transformed. The first Hub & Satellite model demonstration site.</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Douliu Shengji Ready-Mix Concrete Plant</div>
+      <div class="card-text">Local recycled material supply chain. Introduced by Dr. Tsai Chih-ta, NCKU Sustainable Materials Center. Supporting the establishment of a local circular economy.</div>
+    </div>
+    <div class="card" style="border-top-color:var(--fire);">
+      <div class="card-title" style="color:var(--fire);">Become a Partner</div>
+      <div class="card-text" style="margin-bottom:1.5rem;">Corporations · Communities · Cooperatives · Schools · Friendly businesses — let's find a way forward for waste, together.</div>
+      <a href="../partners.html" class="btn-ul">Learn About Partnership →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Section 8: Final CTA -->
+<div class="strip strip--fire">
+  <div style="max-width:800px;">
+    <div class="sec-tag" style="color:rgba(255,255,255,.6);">Contact · Reach Us</div>
+    <h2 style="font-family:var(--fd);font-weight:900;font-size:clamp(2.5rem,5vw,6rem);letter-spacing:-.04em;line-height:.95;color:var(--white);margin-bottom:2rem;">
+      Tell us<br>what you want engraved.
+    </h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.75);line-height:1.8;max-width:500px;margin-bottom:2.5rem;font-weight:300;">Whether it's a gift for someone you love, a corporate procurement, an ESG initiative, or simply something that will never decay — let's talk.</p>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+      <a href="../contact.html" style="display:inline-block;padding:.85rem 2.4rem;background:var(--white);color:var(--fire);font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background var(--ease);" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'">Contact Us →</a>
+      <a href="mailto:concredialab@gmail.com" style="display:inline-block;padding:.85rem 2.4rem;border:1.5px solid rgba(255,255,255,.5);color:var(--white);font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">concredialab@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
+      <div style="font-size:0.68rem;letter-spacing:0.12em;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-bottom:0.75rem;">Shimin Wenpin</div>
+      <p>Rooted in doctoral research in civil engineering,<br>speaking the language of design.<br>Every shard of recycled waste has its own story.<br><br>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
+    </div>
+    <div class="footer-col"><h5>Products</h5><ul>
+      <li><a href="../products.html">Anchor Furniture / Concrete Speakers</a></li>
+      <li><a href="../products.html">Conbox Series</a></li>
+      <li><a href="../gifts.html">ESG Corporate Gifts</a></li>
+      <li><a href="../products.html">Bespoke Design</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Brand</h5><ul>
+      <li><a href="../story.html">About the Team</a></li>
+      <li><a href="../story.html">The Lonely Highway Project</a></li>
+      <li><a href="../sustainability.html">Sustainability · ESG</a></li>
+      <li><a href="../gallery.html">Image Gallery</a></li>
+      <li><a href="../partners.html">Partners</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Resources</h5><ul>
+      <li><a href="../blog.html">Journal</a></li>
+      <li><a href="../contact.html">Contact Us</a></li>
+      <li><a href="../fundraise.html">Fundraise</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Concredia.Lab · Dr. Rovi Lee. All rights reserved.</p>
+    <div class="social-links">
+      <a class="social-link" href="#">IG</a>
+      <a class="social-link" href="#">TH</a>
+      <a class="social-link" href="#">YT</a>
+    </div>
+  </div>
+  <div class="footer-easter">
+    <span class="footer-easter-text">🐾 Quality control supervised by Baomei. Her enthusiasm lasted exactly three minutes.</span>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  var ham  = document.getElementById('hamburger');
+  var menu = document.getElementById('mobileMenu');
+  var nav  = document.getElementById('mainNav') || document.querySelector('nav');
+  if(!ham || !menu) return;
+  ham.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    ham.setAttribute('aria-label', open ? 'Close Menu' : 'Open Menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.classList.remove('open');
+      ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+  window.addEventListener('scroll', function(){
+    if(nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+})();
+</script>
+
+</body>
+</html>
