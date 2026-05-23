@@ -1,34 +1,32 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concredia.Lab 士敏文品 — Concrete as a Medium for Life</title>
-<meta name="description" content="士敏文品（Concredia.Lab）以 EAC 骨料裸露工法，將台灣營建廢棄物升級轉化為水泥家具、音響與藝術裝置。再生廢料佔比 60–70%，每件附材料溯源文件，直接對應 SDG 11.6 / 12.5。">
-<meta name="keywords" content="Concredia Lab,Rovi Lee,再生建材,營建廢棄物,水泥音響,ESG企業禮品,工業風家具,EAC,Exposed Aggregate Concrete,永續設計,循環經濟,寂寞公路">
+<title>Concredia.Lab — Concrete as a Medium for Life</title>
+<meta name="description" content="Concredia.Lab transforms Taiwan's construction waste into concrete furniture, speakers, and art installations through the EAC Exposed Aggregate Craft. 60–70% recycled materials. SDG 11.6 / 12.5 compliant.">
+<meta name="keywords" content="Concredia Lab,Rovi Lee,recycled concrete,construction waste,concrete speakers,ESG corporate gifts,industrial design furniture,EAC,Exposed Aggregate Concrete,sustainable design,circular economy,Taiwan craftsmanship">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="../css/global.css">
 <style>
-/* ══════════════════════════════════════════════
-   Concredia.Lab — Minimal Industrial UI
-   設計語言：去邊框 · 大留白 · 極粗字 · 無裝飾
-   ══════════════════════════════════════════════ */
+/* Concredia.Lab — Minimal Industrial UI
+   Design language: borderless · generous whitespace · bold type · zero ornament */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   /* ── Monochrome System */
   --white:  #FFFFFF;
-  --g50:    #F7F7F5;   /* 極淺背景 */
-  --g100:   #EFEFEC;   /* 區塊底色 */
-  --g200:   #DDDDD8;   /* 淡分隔 */
-  --g400:   #9B9B95;   /* 次要文字 */
-  --g700:   #3D3D3A;   /* 主文字 */
-  --black:  var(--bk);   /* 標題、CTA */
+  --g50:    #F7F7F5;   /* lightest bg */
+  --g100:   #EFEFEC;   /* block bg */
+  --g200:   #DDDDD8;   /* divider */
+  --g400:   #9B9B95;   /* secondary text */
+  --g700:   #3D3D3A;   /* primary text */
+  --black:  var(--bk);   /* heading, CTA */
 
   /* ── Accent */
-  --fire:   var(--fire);   /* 警示橘 CTA */
+  --fire:   var(--fire);   /* accent orange */
   --fire-h: var(--fire-h);
-  --neon:   #39FF14;   /* 螢光綠（Conga 專用）*/
+  --neon:   #39FF14;   /* neon green (Conga only) */
 
   /* ── Type */
   --fd:var(--fd),system-ui,sans-serif;
@@ -168,7 +166,7 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 .md{color:var(--fire);}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ─── 通用 section 標題 ────────────────────────── */
+/* ─── Section headings ────────────────────────── */
 .sec-tag{
   font-family:var(--fd);font-size:.62rem;font-weight:700;
   letter-spacing:.25em;text-transform:uppercase;
@@ -186,22 +184,22 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
   line-height:1.85;font-weight:300;max-width:560px;
 }
 
-/* ─── 橫幅 strip ────────────────────────────────── */
+/* ─── Full-width strip ────────────────────────────────── */
 .strip{padding:6rem 6rem;}
 .strip--white{background:var(--white);}
 .strip--grey{background:var(--g50);}
 .strip--black{background:var(--black);}
 .strip--fire{background:var(--fire);}
 
-/* ─── 大左右分欄 ──────────────────────────────── */
+/* ─── Split layout ──────────────────────────────── */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .split--reverse{direction:rtl;}.split--reverse>*{direction:ltr;}
 
-/* ─── 三欄網格 ───────────────────────────────────── */
+/* ─── Three-column grid ───────────────────────────────────── */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
 
-/* ─── 卡片：無邊框設計 ──────────────────────────── */
+/* ─── Cards: borderless ──────────────────────────── */
 .card{padding:2.5rem 0;border-top:2px solid var(--black);}
 .card-num{
   font-family:var(--fd);font-weight:900;font-size:3.5rem;
@@ -214,7 +212,7 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 }
 .card-text{font-size:.88rem;color:var(--g400);line-height:1.75;}
 
-/* ─── 數字大字 ───────────────────────────────────── */
+/* ─── Large stat numbers ───────────────────────────────────── */
 .stat-num{
   font-family:var(--fd);font-weight:900;
   font-size:clamp(3rem,6vw,7rem);
@@ -222,7 +220,7 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 }
 .stat-label{font-size:.8rem;color:var(--g400);letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-top:.5rem;}
 
-/* ─── 按鈕 ─────────────────────────────────────── */
+/* ─── Buttons ─────────────────────────────────────── */
 .btn-black{
   display:inline-block;padding:.85rem 2.4rem;
   background:var(--black);color:var(--white);
@@ -241,7 +239,7 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 }
 .btn-ul:hover{color:var(--fire);border-color:var(--fire);}
 
-/* ─── TEAM 卡片 ──────────────────────────────────── */
+/* ─── Team cards ──────────────────────────────────── */
 .team-card{padding:2rem 0;border-top:1px solid var(--g200);}
 .team-card-name{font-family:var(--fd);font-weight:900;font-size:1.4rem;letter-spacing:-.03em;margin-bottom:.25rem;}
 .team-card-role{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--fire);margin-bottom:.75rem;}
@@ -256,7 +254,7 @@ footer{
 .footer-logo .dot{color:var(--fire);}
 footer small{font-size:.72rem;color:var(--g400);}
 
-/* ─── 過渡動畫 ──────────────────────────────────── */
+/* ─── Transitions ──────────────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp .6s var(--ease) both;}
 
@@ -281,64 +279,64 @@ footer small{font-size:.72rem;color:var(--g400);}
     {
       "@type": "Organization",
       "@id": "https://concredia.tw/#organization",
-      "name": "Concredia.Lab 士敏文品",
-      "alternateName": ["士敏文品", "士敏文品工作室", "Concredia Lab"],
+      "name": "Concredia.Lab Shimin Wenpin",
+      "alternateName": ["Shimin Wenpin", "Concredia.Lab Studio", "Concredia Lab"],
       "url": "https://concredia.tw",
-      "description": "士敏文品以 EAC 骨料裸露工法，將台灣營建廢棄物升級轉化為水泥家具、音響與藝術裝置。再生廢料佔比 60–70%，每件附材料溯源文件，直接對應 SDG 11.6 / 12.5。",
-      "address": {"@type": "PostalAddress", "addressLocality": "嘉義縣", "addressCountry": "TW"},
-      "founder": [{"@type": "Person", "name": "李俊憲", "alternateName": ["Rovi Lee", "Ivor Lee"], "jobTitle": "創辦人 · 土木博士 · EAC 工法研發者"}],
-      "knowsAbout": ["EAC骨料裸露工法","再生混凝土設計","營建廢棄物升級再生","ESG企業禮品","SDGs循環設計","城市採礦","水泥音響","康加台灣"]
+      "description": "Concredia.Lab transforms Taiwan's construction waste into concrete furniture, speakers, and art installations through EAC Exposed Aggregate Craft. 60–70% recycled materials, SDG 11.6/12.5 compliant.",
+      "address": {"@type": "PostalAddress", "addressLocality": "Chiayi County", "addressCountry": "TW"},
+      "founder": [{"@type": "Person", "name": "Rovi Lee", "alternateName": ["Rovi Lee", "Ivor Lee"], "jobTitle": "Founder · PhD in Civil Engineering · EAC Process Developer"}],
+      "knowsAbout": ["EAC Exposed Aggregate Craft","Recycled Concrete Design","Construction Waste Upcycling","ESG Corporate Gifts","SDGs Circular Design","Urban Mining","Concrete Speakers","Conga Taiwan"]
     },
     {
       "@type": "WebSite",
       "url": "https://concredia.tw",
-      "name": "Concredia.Lab 士敏文品",
-      "inLanguage": "zh-TW"
+      "name": "Concredia.Lab Shimin Wenpin",
+      "inLanguage": "en"
     }
   ]
 }
 </script>
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Concredia.Lab 士敏文品">
-<meta property="og:title" content="Concredia.Lab 士敏文品 — Concrete as a Medium for Life">
-<meta property="og:url" content="https://concredia.tw/">
+<meta property="og:site_name" content="Concredia.Lab Shimin Wenpin">
+<meta property="og:title" content="Concredia.Lab — Concrete as a Medium for Life">
+<meta property="og:url" content="https://concredia.tw/en/">
 <meta property="og:image" content="https://concredia.tw/images/og-cover.jpg">
-<meta property="og:locale" content="zh_TW">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Concredia.Lab 士敏文品 — Concrete as a Medium for Life">
+<meta name="twitter:title" content="Concredia.Lab — Concrete as a Medium for Life">
 <body>
 
 <nav id="mainNav">
-  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span><span class="nav-logo-sub">士敏文品</span></a>
-  <a href="/en/" class="lang-toggle" title="Switch to English">EN</a>
+  <a href="../index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span><span class="nav-logo-sub">Shimin Wenpin</span></a>
+  <a href="/" class="lang-toggle" title="Switch to Traditional Chinese">繁中</a>
   <ul class="nav-links">
-    <li><a href="story.html">品牌故事</a></li>
-    <li><a href="products.html">產品系列</a></li>
-    <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
-    <li><a href="gallery.html">作品集</a></li>
-    <li><a href="sustainability.html">永續 · ESG</a></li>
-    <li><a href="blog.html">最新動態</a></li>
-    <li><a href="contact.html">聯絡</a></li>
+    <li><a href="../story.html">Our Story</a></li>
+    <li><a href="../products.html">Collections</a></li>
+    <li><a href="../gifts.html" style="color:var(--fire-h);">🎁 Seasonal Gifts</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="../sustainability.html">Sustainability · ESG</a></li>
+    <li><a href="../blog.html">Journal</a></li>
+    <li><a href="../contact.html">Contact</a></li>
   </ul>
-  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
-  <button class="hamburger" id="hamburger" aria-label="開啟選單">
+  <a href="../fundraise.html" class="nav-fundraise">Fundraise →</a>
+  <button class="hamburger" id="hamburger" aria-label="Open Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- 手機全螢幕選單 -->
+<!-- Mobile full-screen menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">首頁</a>
-  <a href="story.html">品牌故事</a>
-  <a href="products.html">產品系列</a>
-  <a href="gifts.html">🎁 節慶禮品</a>
-  <a href="gallery.html">作品集</a>
-  <a href="sustainability.html">永續 · ESG</a>
-  <a href="blog.html">最新動態</a>
-  <a href="partners.html">合作夥伴</a>
-  <a href="contact.html">聯絡我們</a>
-  <a href="fundraise.html" class="fundraise-link">募資計畫 →</a>
-  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
+  <a href="../index.html">Home</a>
+  <a href="../story.html">Our Story</a>
+  <a href="../products.html">Collections</a>
+  <a href="../gifts.html">🎁 Seasonal Gifts</a>
+  <a href="../gallery.html">Gallery</a>
+  <a href="../sustainability.html">Sustainability · ESG</a>
+  <a href="../blog.html">Journal</a>
+  <a href="../partners.html">Partners</a>
+  <a href="../contact.html">Contact Us</a>
+  <a href="../fundraise.html" class="fundraise-link">Fundraise →</a>
+  <div class="mobile-menu-footer">Concredia.Lab · Shimin Wenpin Studio</div>
 </div>
 </div>
 
@@ -348,15 +346,15 @@ footer small{font-size:.72rem;color:var(--g400);}
 
   <div class="hero-scrim"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Concredia.Lab · 士敏文品工作室CONCREDIA.LAB · 士敏文品</div>
+    <div class="hero-eyebrow">CONCREDIA.LAB · Shimin Wenpin Studio</div>
     <h1 class="hero-manifesto">
       Concrete<br><em>as a Media.</em>
     </h1>
-    <p class="hero-sub">為台灣的營建廢棄物，找一個出路。<br>蓋房子的規格，做你的桌子。每一件都有鋼筋，每一件都是 1/1。</p>
+    <p class="hero-sub">Giving Taiwan's construction waste a second life.<br>Built to bridge-grade standards. Every piece reinforced with steel. Every piece 1/1.</p>
     <div class="hero-cta-row">
-      <a href="products.html" class="btn-fire">查看作品系列 →</a>
-      <a href="story.html" class="btn-ghost">品牌故事</a>
-      <a href="contact.html" class="btn-ghost">合作洽詢</a>
+      <a href="../products.html" class="btn-fire">Explore Collections →</a>
+      <a href="../story.html" class="btn-ghost">Our Story</a>
+      <a href="../contact.html" class="btn-ghost">Partner With Us</a>
     </div>
   </div>
 </div>
@@ -367,220 +365,220 @@ footer small{font-size:.72rem;color:var(--g400);}
 <!-- MARQUEE -->
 <div class="marquee-bar">
   <div class="marquee-track">
-    <span class="mi">台灣最溫柔的人，做出最堅硬的作品</span><span class="md"> ◆ </span>
-    <span class="mi">蓋房子的規格，做你的桌子</span><span class="md"> ◆ </span>
-    <span class="mi">每一件都有鋼筋，每一件都是 1/1</span><span class="md"> ◆ </span>
-    <span class="mi">廢棄物是被錯置的資源</span><span class="md"> ◆ </span>
-    <span class="mi">Taiwan No.1 水泥職人工藝</span><span class="md"> ◆ </span>
-    <span class="mi">你想留下什麼？刻進去吧</span><span class="md"> ◆ </span>
-    <span class="mi">Up-cycle — 升級轉化，而非降級再生</span><span class="md"> ◆ </span>
-    <span class="mi">為台灣的廢棄物，找一個出路</span><span class="md"> ◆ </span>
-    <span class="mi">台灣最溫柔的人，做出最堅硬的作品</span><span class="md"> ◆ </span>
-    <span class="mi">蓋房子的規格，做你的桌子</span><span class="md"> ◆ </span>
-    <span class="mi">每一件都有鋼筋，每一件都是 1/1</span><span class="md"> ◆ </span>
-    <span class="mi">廢棄物是被錯置的資源</span><span class="md"> ◆ </span>
-    <span class="mi">Taiwan No.1 水泥職人工藝</span><span class="md"> ◆ </span>
-    <span class="mi">你想留下什麼？刻進去吧</span><span class="md"> ◆ </span>
+    <span class="mi">The gentlest hands in Taiwan, crafting the hardest works</span><span class="md"> ◆ </span>
+    <span class="mi">Bridge-grade precision, table-scale intimacy</span><span class="md"> ◆ </span>
+    <span class="mi">Every piece reinforced. Every piece unrepeatable.</span><span class="md"> ◆ </span>
+    <span class="mi">Waste is a resource placed in the wrong location</span><span class="md"> ◆ </span>
+    <span class="mi">Taiwan No.1 Concrete Craft</span><span class="md"> ◆ </span>
+    <span class="mi">What do you want to leave behind? Engrave it.</span><span class="md"> ◆ </span>
+    <span class="mi">Up-cycle — elevation, not mere recycling</span><span class="md"> ◆ </span>
+    <span class="mi">Finding a way forward for Taiwan's construction waste</span><span class="md"> ◆ </span>
+    <span class="mi">The gentlest hands in Taiwan, crafting the hardest works</span><span class="md"> ◆ </span>
+    <span class="mi">Bridge-grade precision, table-scale intimacy</span><span class="md"> ◆ </span>
+    <span class="mi">Every piece reinforced. Every piece unrepeatable.</span><span class="md"> ◆ </span>
+    <span class="mi">Waste is a resource placed in the wrong location</span><span class="md"> ◆ </span>
+    <span class="mi">Taiwan No.1 Concrete Craft</span><span class="md"> ◆ </span>
+    <span class="mi">What do you want to leave behind? Engrave it.</span><span class="md"> ◆ </span>
   </div>
 </div>
 
-<!-- ══ SECTION 1：品牌宣言 ══════════════════════════ -->
+<!-- Section 1: Brand Manifesto -->
 <div class="strip strip--white">
   <div class="split">
     <div>
-      <div class="sec-tag">Craftsman · 職人精神</div>
-      <h2 class="sec-h">台灣最溫柔的人，<br>做出最<em>堅硬</em>的作品。</h2>
+      <div class="sec-tag">Craftsman · Artisan Spirit</div>
+      <h2 class="sec-h">The gentlest hands in Taiwan,<br>crafting the most <em>enduring</em> works.</h2>
     </div>
     <div>
-      <p class="sec-body" style="margin-bottom:2rem;">土木博士，做家具。蓋橋的精密，做一張桌子。鋼筋、模板、養護、水磨——每一道工序，都和一棟建築一樣認真。</p>
-      <p class="sec-body" style="margin-bottom:2.5rem;">廢棄物不是廢物，是放錯地方的資源。我們把台灣的營建廢棄物，升級轉化為家具、音響與藝術裝置。</p>
-      <a href="story.html" class="btn-ul">了解品牌故事 →</a>
+      <p class="sec-body" style="margin-bottom:2rem;">A civil engineering PhD, making furniture. Bridge-grade precision, applied to a table. Steel reinforcement, formwork, curing, grinding — every step as rigorous as a building.</p>
+      <p class="sec-body" style="margin-bottom:2.5rem;">Waste is not worthless — it is a resource misplaced. We transform Taiwan's construction debris into furniture, speakers, and art installations.</p>
+      <a href="../story.html" class="btn-ul">Discover Our Story →</a>
     </div>
   </div>
 </div>
 
-<!-- ══ SECTION 2：關鍵數字 ══════════════════════════ -->
+<!-- Section 2: Key Numbers -->
 <div class="strip strip--black">
   <div class="grid4">
     <div>
       <div class="stat-num" style="color:var(--white);">70<span style="font-size:.45em;color:var(--fire);">%+</span></div>
-      <div class="stat-label" style="color:var(--g400);">再生廢料佔比</div>
+      <div class="stat-label" style="color:var(--g400);">Recycled Material Ratio</div>
     </div>
     <div>
       <div class="stat-num" style="color:var(--white);">9<span style="font-size:.45em;color:var(--fire);"> yr</span></div>
-      <div class="stat-label" style="color:var(--g400);">EAC 工法研發</div>
+      <div class="stat-label" style="color:var(--g400);">Years of EAC R&D</div>
     </div>
     <div>
       <div class="stat-num" style="color:var(--white);">1/1</div>
-      <div class="stat-label" style="color:var(--g400);">每件唯一不複製</div>
+      <div class="stat-label" style="color:var(--g400);">Every Piece Unrepeatable</div>
     </div>
     <div>
       <div class="stat-num" style="color:var(--white);">SDG<span style="font-size:.4em;color:var(--fire);"> 11.6</span></div>
-      <div class="stat-label" style="color:var(--g400);">直接對應廢棄物管理</div>
+      <div class="stat-label" style="color:var(--g400);">Waste Management Alignment</div>
     </div>
   </div>
 </div>
 
-<!-- ══ SECTION 3：四大產品系列 ══════════════════════ -->
+<!-- Section 3: Four Collections -->
 <div class="strip strip--grey">
   <div style="margin-bottom:4rem;">
-    <div class="sec-tag">Products · 四大系列</div>
-    <h2 class="sec-h" style="max-width:700px;">四個系列，<br>一種<em>哲學</em>。</h2>
+    <div class="sec-tag">Products · Four Collections</div>
+    <h2 class="sec-h" style="max-width:700px;">Four collections,<br>one <em>philosophy</em>.</h2>
   </div>
   <div class="grid4">
     <a href="products.html#flow-structure" style="text-decoration:none;">
       <div class="card">
         <div class="card-num">01</div>
-        <div class="card-title">流構系列</div>
-        <div class="card-text">漂流木 × 再生混凝土。模組化，可調高度。企業空間形象裝置首選。</div>
+        <div class="card-title">Flow Structure Series</div>
+        <div class="card-text">Driftwood × Recycled Concrete. Modular, height-adjustable. The definitive statement piece for corporate interiors.</div>
       </div>
     </a>
     <a href="products.html#ready-made" style="text-decoration:none;">
       <div class="card">
         <div class="card-num">02</div>
-        <div class="card-title">標準系列</div>
-        <div class="card-text">定錨桌几、茶几、杯墊。現貨供應，適合快速採購。</div>
+        <div class="card-title">Standard Series</div>
+        <div class="card-text">Anchor tables, coffee tables, coasters. Ready stock, available for immediate procurement.</div>
       </div>
     </a>
     <a href="products.html#custom-made" style="text-decoration:none;">
       <div class="card">
         <div class="card-num">03</div>
-        <div class="card-title">客製系列</div>
-        <div class="card-text">燈具、裝置、建案落成禮。附材料溯源文件套件，直入 ESG 年報。</div>
+        <div class="card-title">Bespoke Series</div>
+        <div class="card-text">Lighting, installations, building inauguration gifts. Complete material provenance documentation, ESG report-ready.</div>
       </div>
     </a>
     <a href="products.html#artwork" style="text-decoration:none;">
       <div class="card">
         <div class="card-num">04</div>
-        <div class="card-title">畫作系列</div>
-        <div class="card-text">保麗龍板手工割製。水墨感，限量唯一，每件親簽。</div>
+        <div class="card-title">Artwork Series</div>
+        <div class="card-text">Hand-cut polystyrene board. Ink-wash aesthetics, strictly limited, each signed by the artist.</div>
       </div>
     </a>
   </div>
   <div style="margin-top:3rem;">
-    <a href="products.html" class="btn-black">查看所有作品 →</a>
+    <a href="../products.html" class="btn-black">View All Works →</a>
   </div>
 </div>
 
-<!-- ══ SECTION 4：你想刻什麼 ══════════════════════ -->
+<!-- Section 4: Custom Engraving -->
 <div class="strip strip--white">
   <div class="split split--reverse">
     <div style="padding:3rem;background:var(--g50);">
       <div style="font-family:var(--fs);font-size:3rem;color:var(--g200);line-height:1.4;letter-spacing:-.02em;">
-        給某人的愛意<br>紀念著什麼<br>
-        <span style="color:var(--fire);">或是一段詩句</span>
+        Words for someone you love<br>A memory worth keeping<br>
+        <span style="color:var(--fire);">Or a line of poetry</span>
       </div>
-      <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g400);margin-top:2rem;font-family:var(--fd);font-weight:700;">← 告訴我，我來刻</div>
+      <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g400);margin-top:2rem;font-family:var(--fd);font-weight:700;">← Tell me. I'll engrave it.</div>
     </div>
     <div>
-      <div class="sec-tag">Custom Engraving · 客製刻字</div>
-      <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">水泥會記住，<br>而且比你<br>活得更久。</h2>
-      <p class="sec-body" style="margin-bottom:1.75rem;">文字、圖騰、廟宇紋路、家族符號、婚禮誓詞——任何有意義的東西，都可以刻進去。</p>
+      <div class="sec-tag">Custom Engraving · Carved in Stone</div>
+      <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">Concrete remembers.<br>And it will outlive<br>every one of us.</h2>
+      <p class="sec-body" style="margin-bottom:1.75rem;">Words, totems, temple motifs, family crests, wedding vows — anything that carries meaning can be engraved into stone.</p>
       <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:2.5rem;">
-        <div style="font-size:.88rem;color:var(--g700);">── 中文・英文・日文・任意語言</div>
-        <div style="font-size:.88rem;color:var(--g700);">── LOGO・紋飾・手繪圖稿</div>
-        <div style="font-size:.88rem;color:var(--g700);">── 在地廢料・廟宇圖騰・原民紋路</div>
+        <div style="font-size:.88rem;color:var(--g700);">── Chinese · English · Japanese · Any language</div>
+        <div style="font-size:.88rem;color:var(--g700);">── Logos · Motifs · Hand-drawn artwork</div>
+        <div style="font-size:.88rem;color:var(--g700);">── Local waste · Temple iconography · Indigenous patterns</div>
       </div>
-      <a href="contact.html" class="btn-fire">開始聊你想要的那件 →</a>
+      <a href="../contact.html" class="btn-fire">Tell Us What You Envision →</a>
     </div>
   </div>
 </div>
 
-<!-- ══ SECTION 5：ESG 企業合作 ══════════════════════ -->
+<!-- Section 5: ESG Corporate -->
 <div class="strip strip--black">
   <div style="margin-bottom:4rem;">
-    <div class="sec-tag" style="color:var(--fire);">ESG · 企業合作方案</div>
-    <h2 class="sec-h" style="color:var(--white);max-width:800px;">採購這件禮物，<br>就已經是一個 <em>ESG 行動</em>。</h2>
+    <div class="sec-tag" style="color:var(--fire);">ESG · Corporate Partnership</div>
+    <h2 class="sec-h" style="color:var(--white);max-width:800px;">The moment you acquire this,<br>you have made an <em>ESG statement</em>.</h2>
   </div>
   <div class="grid3">
     <div>
-      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">綠色採購</div>
-      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">辦公室採購 ×<br>ESG 文件套件</div>
-      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">每件附材料溯源證書，符合 SDG 12.5，直接引用於年報。</p>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">Green Procurement</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">Office Procurement ×<br>ESG Documentation Kit</div>
+      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">Each piece includes a material provenance certificate, SDG 12.5 compliant, citable in annual sustainability reports.</p>
     </div>
     <div>
-      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">員工體驗</div>
-      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">工藝心流<br>CSR 活動包</div>
-      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">工作坊進企業，員工手作，ESG 減碳戰報即日產出。</p>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">Employee Engagement</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">Craft Flow<br>CSR Experience Package</div>
+      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">In-house workshops. Employees create. ESG carbon reduction reports delivered same day.</p>
     </div>
     <div>
-      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">品牌導流</div>
-      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">康加台灣<br>生態島贊助</div>
-      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">遊戲地圖冠名，玩家互動數量化進 ESG 報告。</p>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);margin-bottom:1rem;">Brand Integration</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:1.5rem;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem;">Conga Taiwan<br>Ecosystem Island Sponsorship</div>
+      <p style="font-size:.88rem;color:var(--g400);line-height:1.75;">Named territory on the game map. Player interactions quantified for ESG reporting.</p>
     </div>
   </div>
   <div style="margin-top:3.5rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
-    <div style="font-family:var(--fd);font-size:1rem;color:rgba(255,255,255,.5);">六種企業，都是我們的對象 — 不限產業</div>
-    <a href="contact.html" class="btn-fire">洽詢企業方案 →</a>
+    <div style="font-family:var(--fd);font-size:1rem;color:rgba(255,255,255,.5);">Any industry. Every size. Your ESG story begins here.</div>
+    <a href="../contact.html" class="btn-fire">Inquire About Corporate Packages →</a>
   </div>
 </div>
 
-<!-- ══ SECTION 6：節慶禮品入口 ══════════════════════ -->
+<!-- Section 6: Seasonal Gifts -->
 <div class="strip strip--grey">
   <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;">
     <div>
-      <div class="sec-tag">Gifts · 節慶禮品</div>
-      <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">世界上最重的禮物，<br>最難<em>扔掉</em>的那一件。</h2>
+      <div class="sec-tag">Gifts · Seasonal Offerings</div>
+      <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">The heaviest gift in the world.<br>The one you can't bring yourself to <em>discard</em>.</h2>
     </div>
-    <a href="gifts.html" class="btn-ul">查看所有節慶方案 →</a>
+    <a href="../gifts.html" class="btn-ul">View All Seasonal Offerings →</a>
   </div>
   <div class="grid4">
     <div style="padding:1.5rem;background:var(--white);">
       <div style="font-size:1.5rem;margin-bottom:.5rem;">💝</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">情人節・父母親節</div>
-      <div style="font-size:.8rem;color:var(--g400);">玫瑰七天凋謝，水泥壓死不會壞</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">Valentine's · Parents' Day</div>
+      <div style="font-size:.8rem;color:var(--g400);">Roses fade in seven days. Concrete endures forever.</div>
     </div>
     <div style="padding:1.5rem;background:var(--white);">
       <div style="font-size:1.5rem;margin-bottom:.5rem;">🏮</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">農曆新年・中秋</div>
-      <div style="font-size:.8rem;color:var(--g400);">月餅吃完了，這件還在</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">Lunar New Year · Mid-Autumn</div>
+      <div style="font-size:.8rem;color:var(--g400);">The mooncakes are gone. This remains.</div>
     </div>
     <div style="padding:1.5rem;background:var(--white);">
       <div style="font-size:1.5rem;margin-bottom:.5rem;">🛒</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">雙11・雙12</div>
-      <div style="font-size:.8rem;color:var(--g400);">買一堆不如買一件對的</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">Singles' Day · 12.12</div>
+      <div style="font-size:.8rem;color:var(--g400);">One right thing outweighs a thousand impulse buys.</div>
     </div>
     <div style="padding:1.5rem;background:var(--fire);">
       <div style="font-size:1.5rem;margin-bottom:.5rem;">🏢</div>
-      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:.3rem;">企業禮贈品</div>
-      <div style="font-size:.8rem;color:rgba(255,255,255,.75);">尾牙・週年・開幕・VIP</div>
+      <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:.3rem;">Corporate Gifts</div>
+      <div style="font-size:.8rem;color:rgba(255,255,255,.75);">Year-end Banquet · Anniversary · Opening · VIP</div>
     </div>
   </div>
 </div>
 
-<!-- ══ SECTION 7：合作夥伴 ══════════════════════ -->
+<!-- Section 7: Partners -->
 <div class="strip strip--white">
   <div style="margin-bottom:3rem;">
-    <div class="sec-tag">Partners · 合作夥伴</div>
-    <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">一起為廢料<br><em>找出路</em>。</h2>
+    <div class="sec-tag">Partners · Collaborators</div>
+    <h2 class="sec-h" style="font-size:clamp(2rem,4vw,4rem);">Together, we give waste<br>a <em>way forward</em>.</h2>
   </div>
   <div class="grid3">
     <div class="card">
-      <div class="card-title">彰化縣竹塘鄉農會</div>
-      <div class="card-text">「掃一張桌子」計畫。在地廢料佔比 70%，500 kg 廢料去化。Hub & Satellite 模式第一個示範場域。</div>
+      <div class="card-title">Zhutang Township Farmers' Association, Changhua</div>
+      <div class="card-text">"Sweep a Table" Initiative. 70% locally-sourced waste materials, 500kg waste transformed. The first Hub & Satellite model demonstration site.</div>
     </div>
     <div class="card">
-      <div class="card-title">斗六盛記預拌混凝土廠</div>
-      <div class="card-text">在地再生材料循環鏈。成大永續材料中心蔡志達博士聯繫，支持在地循環體系建立。</div>
+      <div class="card-title">Douliu Shengji Ready-Mix Concrete Plant</div>
+      <div class="card-text">Local recycled material supply chain. Introduced by Dr. Tsai Chih-ta, NCKU Sustainable Materials Center. Supporting the establishment of a local circular economy.</div>
     </div>
     <div class="card" style="border-top-color:var(--fire);">
-      <div class="card-title" style="color:var(--fire);">成為合作夥伴</div>
-      <div class="card-text" style="margin-bottom:1.5rem;">企業・社區・農會・學校・友好店家，一起為廢料找出路。</div>
-      <a href="partners.html" class="btn-ul">了解合作方式 →</a>
+      <div class="card-title" style="color:var(--fire);">Become a Partner</div>
+      <div class="card-text" style="margin-bottom:1.5rem;">Corporations · Communities · Cooperatives · Schools · Friendly businesses — let's find a way forward for waste, together.</div>
+      <a href="../partners.html" class="btn-ul">Learn About Partnership →</a>
     </div>
   </div>
 </div>
 
-<!-- ══ SECTION 8：最終 CTA ══════════════════════ -->
+<!-- Section 8: Final CTA -->
 <div class="strip strip--fire">
   <div style="max-width:800px;">
-    <div class="sec-tag" style="color:rgba(255,255,255,.6);">Contact · 聯絡我們</div>
+    <div class="sec-tag" style="color:rgba(255,255,255,.6);">Contact · Reach Us</div>
     <h2 style="font-family:var(--fd);font-weight:900;font-size:clamp(2.5rem,5vw,6rem);letter-spacing:-.04em;line-height:.95;color:var(--white);margin-bottom:2rem;">
-      告訴我<br>你想刻什麼。
+      Tell us<br>what you want engraved.
     </h2>
-    <p style="font-size:1rem;color:rgba(255,255,255,.75);line-height:1.8;max-width:500px;margin-bottom:2.5rem;font-weight:300;">不管是情人節、企業採購、ESG 方案、或你只是想送某個人一件永遠不會壞的東西——找我們聊。</p>
+    <p style="font-size:1rem;color:rgba(255,255,255,.75);line-height:1.8;max-width:500px;margin-bottom:2.5rem;font-weight:300;">Whether it's a gift for someone you love, a corporate procurement, an ESG initiative, or simply something that will never decay — let's talk.</p>
     <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
-      <a href="contact.html" style="display:inline-block;padding:.85rem 2.4rem;background:var(--white);color:var(--fire);font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background var(--ease);" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'">聯繫我們 →</a>
+      <a href="../contact.html" style="display:inline-block;padding:.85rem 2.4rem;background:var(--white);color:var(--fire);font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background var(--ease);" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='white'">Contact Us →</a>
       <a href="mailto:concredialab@gmail.com" style="display:inline-block;padding:.85rem 2.4rem;border:1.5px solid rgba(255,255,255,.5);color:var(--white);font-family:var(--fd);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">concredialab@gmail.com</a>
     </div>
   </div>
@@ -590,26 +588,26 @@ footer small{font-size:.72rem;color:var(--g400);}
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
-      <div style="font-size:0.68rem;letter-spacing:0.12em;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-bottom:0.75rem;">士敏文品</div>
-      <p>以土木博士研究為根，以設計為語言，<br>讓每一塊再生廢料都有自己的故事。<br><br>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
+      <div style="font-size:0.68rem;letter-spacing:0.12em;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-bottom:0.75rem;">Shimin Wenpin</div>
+      <p>Rooted in doctoral research in civil engineering,<br>speaking the language of design.<br>Every shard of recycled waste has its own story.<br><br>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
     </div>
-    <div class="footer-col"><h5>產品</h5><ul>
-      <li><a href="products.html">定錨家具 / 水泥音響</a></li>
-      <li><a href="products.html">Conbox 系列</a></li>
-      <li><a href="gifts.html">ESG 企業禮品</a></li>
-      <li><a href="products.html">客製化設計</a></li>
+    <div class="footer-col"><h5>Products</h5><ul>
+      <li><a href="../products.html">Anchor Furniture / Concrete Speakers</a></li>
+      <li><a href="../products.html">Conbox Series</a></li>
+      <li><a href="../gifts.html">ESG Corporate Gifts</a></li>
+      <li><a href="../products.html">Bespoke Design</a></li>
     </ul></div>
-    <div class="footer-col"><h5>品牌</h5><ul>
-      <li><a href="story.html">關於團隊</a></li>
-      <li><a href="story.html">寂寞公路計劃</a></li>
-      <li><a href="sustainability.html">永續 · ESG</a></li>
-      <li><a href="gallery.html">作品影像集</a></li>
-      <li><a href="partners.html">合作夥伴</a></li>
+    <div class="footer-col"><h5>Brand</h5><ul>
+      <li><a href="../story.html">About the Team</a></li>
+      <li><a href="../story.html">The Lonely Highway Project</a></li>
+      <li><a href="../sustainability.html">Sustainability · ESG</a></li>
+      <li><a href="../gallery.html">Image Gallery</a></li>
+      <li><a href="../partners.html">Partners</a></li>
     </ul></div>
-    <div class="footer-col"><h5>資源</h5><ul>
-      <li><a href="blog.html">最新動態</a></li>
-      <li><a href="contact.html">聯絡我們</a></li>
-      <li><a href="fundraise.html">募資計畫</a></li>
+    <div class="footer-col"><h5>Resources</h5><ul>
+      <li><a href="../blog.html">Journal</a></li>
+      <li><a href="../contact.html">Contact Us</a></li>
+      <li><a href="../fundraise.html">Fundraise</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
@@ -621,7 +619,7 @@ footer small{font-size:.72rem;color:var(--g400);}
     </div>
   </div>
   <div class="footer-easter">
-    <span class="footer-easter-text">🐾 本網站由寶妹親自監督品質。</span>
+    <span class="footer-easter-text">🐾 Quality control supervised by Baomei. Her enthusiasm lasted exactly three minutes.</span>
   </div>
 </footer>
 
@@ -635,7 +633,7 @@ footer small{font-size:.72rem;color:var(--g400);}
   ham.addEventListener('click', function(){
     var open = menu.classList.toggle('open');
     ham.classList.toggle('open', open);
-    ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    ham.setAttribute('aria-label', open ? 'Close Menu' : 'Open Menu');
     document.body.style.overflow = open ? 'hidden' : '';
   });
   menu.querySelectorAll('a').forEach(function(a){
