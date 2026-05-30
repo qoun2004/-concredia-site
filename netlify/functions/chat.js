@@ -140,9 +140,12 @@ exports.handler = async function(event) {
     if (!response.ok) {
       const errText = await response.text();
       console.error('Gemini API error:', response.status, errText);
+      let errJson = {};
+      try { errJson = JSON.parse(errText); } catch {}
+      const reason = errJson?.error?.message || `HTTP ${response.status}`;
       return {
         statusCode: 500,
-        body: JSON.stringify({ reply: '抱歉，目前服務暫時不可用，請直接 Email 聯繫我們：concredialab@gmail.com' })
+        body: JSON.stringify({ reply: `⚠️ API 錯誤：${reason}` })
       };
     }
 
