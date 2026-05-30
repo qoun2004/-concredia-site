@@ -157,9 +157,9 @@ const STATIC_PRODUCTS = [
 
 let ALL = [];
 let CURRENT_FILTER = 'all';
-const STOCK_TEXT = { available:'有現貨', order:'可預訂', sold:'已售出', unknown:'洽詢' };
-const STOCK_BADGE = { available:'sb-available', order:'sb-order', sold:'sb-sold', unknown:'sb-sold' };
-const STOCK_DOT = { available:'s-available', order:'s-order', sold:'s-sold', unknown:'' };
+const STOCK_TEXT = { available:'有現貨', order:'可預訂', sold:'已售出', unique:'獨一件', unknown:'洽詢' };
+const STOCK_BADGE = { available:'sb-available', order:'sb-order', sold:'sb-sold', unique:'sb-unique', unknown:'sb-sold' };
+const STOCK_DOT = { available:'s-available', order:'s-order', sold:'s-sold', unique:'s-unique', unknown:'' };
 
 async function loadData() {
   try {
@@ -210,16 +210,18 @@ function render(products, filter) {
     const dotClass = STOCK_DOT[p.stockStatus] || '';
     const dotHTML = dotClass ? `<div class="stock-dot ${dotClass}" title="${STOCK_TEXT[p.stockStatus]}"></div>` : '';
     const tags = [p.method, p.func].filter(Boolean).map(t => `<span class="card-tag">${esc(t)}</span>`).join('');
+    const uniqueBadge = p.isUnique ? `<div class="unique-badge">獨一件</div>` : '';
     return `<div class="product-card" onclick="openLb('${p.id}')">
-  <div class="card-img-wrap">${imgHTML}<div class="series-badge">${esc(p.series)}</div>${dotHTML}</div>
+  <div class="card-img-wrap">${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${dotHTML}</div>
   <div class="card-body">
     <div class="card-sku">${esc(p.sku)}</div>
     <div class="card-name">${esc(p.name)}</div>
+    ${p.nameEn ? `<div class="card-name-en">${esc(p.nameEn)}</div>` : ''}
     <div class="card-meta">${esc(p.material)||'—'}</div>
     ${tags?`<div class="card-tags">${tags}</div>`:''}
   </div>
   <div class="card-footer">
-    <div class="card-spec">${esc(p.spec)||'規格洽詢'}</div>
+    <div class="card-spec">${esc(p.spec)||'規格洽詢'}${p.weight ? ` · ${esc(p.weight)}` : ''}</div>
     <button class="card-open">查看詳情 →</button>
   </div>
 </div>`;
@@ -242,15 +244,17 @@ function openLb(id) {
   } else { thumbsWrap.style.display = 'none'; }
   const stockBadge = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
   const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>`<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`).join('');
+  const uniqueLbBadge = p.isUnique ? `<span class="lb-unique-badge">獨一件 · One of a Kind</span>` : '';
   document.getElementById('lb-right').innerHTML = `
 <div class="lb-header">
   <div class="lb-series">${esc(p.series)}</div>
   <div class="lb-name">${esc(p.name)}</div>
-  <div class="lb-sku">${esc(p.sku)}</div>
+  ${p.nameEn ? `<div class="lb-name-en">${esc(p.nameEn)}</div>` : ''}
+  <div class="lb-sku">${esc(p.sku)}${uniqueLbBadge}</div>
 </div>
 <div class="lb-section">
   <div class="lb-section-title">規格</div>
-  ${infoRows([['尺寸',p.spec],['重量',p.weight?p.weight+' g':''],['工法',p.method],['材料',p.material]])}
+  ${infoRows([['尺寸',p.spec],['重量',p.weight||''],['工法',p.method],['材料',p.material]])}
 </div>
 <div class="lb-section">
   <div class="lb-section-title">用途</div>
@@ -426,5 +430,74 @@ loadData();
     grid-template-columns: 1fr 1fr !important;
     gap: 1px !important;
   }
+}
+</style>
+
+<style>
+/* ── 英文名稱、獨一件、重量 新增樣式 ── */
+.card-name-en {
+  font-family: var(--fd);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--g400);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+  font-style: italic;
+}
+
+/* 獨一件標籤（卡片左下角）*/
+.unique-badge {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 0.6rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(10,10,10,0.85);
+  color: #F4D03F;
+  font-family: var(--fd);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(244,208,63,0.4);
+  backdrop-filter: blur(4px);
+}
+
+/* 燈箱英文名稱 */
+.lb-name-en {
+  font-family: var(--fd);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: rgba(212,207,200,0.5);
+  font-style: italic;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.04em;
+}
+
+/* 燈箱獨一件標籤 */
+.lb-unique-badge {
+  display: inline-block;
+  margin-left: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  background: rgba(244,208,63,0.1);
+  color: #F4D03F;
+  font-family: var(--fd);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(244,208,63,0.35);
+  vertical-align: middle;
+}
+
+/* sb-unique 庫存 badge */
+.sb-unique {
+  background: rgba(244,208,63,0.12);
+  color: #F4D03F;
+  border: 1px solid rgba(244,208,63,0.3);
+  font-weight: 700;
+}
+
+/* s-unique 狀態點 */
+.s-unique {
+  background: #F4D03F;
+  box-shadow: 0 0 6px rgba(244,208,63,0.6);
 }
 </style>
