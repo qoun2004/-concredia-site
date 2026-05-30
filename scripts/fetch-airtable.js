@@ -24,16 +24,19 @@ const OUT_FILE = path.join(OUT_DIR, 'products.json');
 const FIELDS = {
   sku:      'SKU產品編號',
   name:     '作品名稱',
+  nameEn:   '英文名稱',          // 英文名稱
   category: '類別',
   material: '材料',
   method:   '工法',
   func:     '功能',
   suitable: '適合',
   spec:     '規格公分（長Ｘ寬Ｘ高）',
-  weight:   '重量（克）',
+  weightG:  '重量（克）',        // 克（小件用）
+  weightKg: '重量（公斤）',      // 公斤（大件用）
   stock:    '庫存',
+  hidden:   '隱藏',              // 勾選則不顯示
   images:   'AI圖',
-  series:   '系列',     // 新增：流構系列/標準系列/客製系列/畫作系列
+  series:   '系列',
 };
 // ──────────────────────────────────────────────────
 
@@ -108,7 +111,8 @@ function parseRecord(record) {
   // 庫存狀態標準化
   const stockRaw = (f[F.stock] || '').toString().trim();
   const stockStatus =
-    /有|in.?stock|available/i.test(stockRaw) ? 'available' :
+    /獨一件|unique|唯一/i.test(stockRaw)     ? 'unique'    :
+    /有|in.?stock|available|上架/i.test(stockRaw) ? 'available' :
     /訂|order|預/i.test(stockRaw)            ? 'order'     :
     /無|sold|out/i.test(stockRaw)            ? 'sold'      : 'unknown';
 
@@ -123,11 +127,26 @@ function parseRecord(record) {
      /AW/i.test(sku) || /畫作/i.test(cat) ? '畫作系列' :
      cat || '其他');
 
+  // 隱藏欄位：勾選則回傳 null，主程式過濾掉
+  const isHidden = f[F.hidden] === true;
+  if (isHidden) return null;
+
+  // 重量：優先用公斤欄位，沒有才用克換算
+  const weightKgRaw = (f[F.weightKg] || '').toString().replace('kg','').trim();
+  const weightGRaw  = (f[F.weightG]  || '').toString().trim();
+  let weightDisplay = '';
+  if (weightKgRaw) {
+    weightDisplay = weightKgRaw + ' kg';
+  } else if (weightGRaw) {
+    const g = parseFloat(weightGRaw);
+    weightDisplay = g >= 1000 ? (g/1000).toFixed(1) + ' kg' : g + ' g';
+  }
+
   return {
     id:          record.id,
     sku:         f[F.sku]      || '',
-    series,       // 直接從欄位讀，或由 SKU 推斷
     name:        f[F.name]     || '未命名作品',
+    nameEn:      f[F.nameEn]   || '',
     series,
     category:    f[F.category] || '',
     material:    f[F.material] || '',
@@ -135,9 +154,10 @@ function parseRecord(record) {
     func:        f[F.func]     || '',
     suitable:    f[F.suitable] || '',
     spec:        f[F.spec]     || '',
-    weight:      f[F.weight]   || '',
+    weight:      weightDisplay,
     stockRaw,
     stockStatus,
+    isUnique:    /獨一件|unique|唯一/i.test(stockRaw),
     images,
     mainImg:     images[0]?.thumb_lg || '',
     mainImgFull: images[0]?.thumb_xl || '',
@@ -157,7 +177,7 @@ async function main() {
   try {
     // 1. 抓資料
     const records  = await fetchAll();
-    const products = records.map(parseRecord);
+    const products = records.map(parseRecord).filter(p => p !== null);
 
     console.log(`\n✅ 共取得 ${products.length} 件作品`);
 
