@@ -312,3 +312,119 @@ loadData();
 </script>
 </body>
 </html>
+
+<style>
+/* ── Gallery 手機版優化 ── */
+@media (max-width: 768px) {
+
+  /* 產品格子：手機單欄 */
+  #product-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  /* 卡片：圖為主，資料縮到底部 */
+  .product-card {
+    display: grid !important;
+    grid-template-rows: auto auto auto !important;
+    border-bottom: 1px solid rgba(58,54,50,0.1) !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 圖片區：佔滿寬度，比例 4:3 */
+  .card-img-wrap {
+    width: 100% !important;
+    aspect-ratio: 4/3 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .card-img-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* card-body：精簡，去掉 tags */
+  .card-body {
+    padding: 0.75rem 1rem 0.25rem !important;
+  }
+  .card-sku {
+    font-size: 0.6rem !important;
+  }
+  .card-name {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.2rem !important;
+  }
+  .card-meta {
+    font-size: 0.72rem !important;
+  }
+  .card-tags {
+    display: none !important;
+  }
+
+  /* card-footer：橫排，縮小 */
+  .card-footer {
+    padding: 0.5rem 1rem 0.75rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .card-spec {
+    font-size: 0.7rem !important;
+  }
+  .card-open {
+    font-size: 0.68rem !important;
+    padding: 0.3rem 0.75rem !important;
+  }
+
+  /* 燈箱手機版：圖片全螢幕，資料可滾動 */
+  #lb {
+    flex-direction: column !important;
+    overflow-y: auto !important;
+  }
+  #lb-left {
+    width: 100% !important;
+    min-height: 55vw !important;
+    max-height: 60vh !important;
+    flex-shrink: 0 !important;
+  }
+  #lb-right {
+    width: 100% !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+    padding-bottom: 5rem !important;
+  }
+  .lb-main-img {
+    height: 100% !important;
+  }
+  .lb-main-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+  .lb-name {
+    font-size: 1.2rem !important;
+  }
+  .lb-close {
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 1000 !important;
+    background: rgba(0,0,0,0.6) !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* 兩欄版（平板 768-1024px）*/
+@media (min-width: 481px) and (max-width: 1024px) {
+  #product-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1px !important;
+  }
+}
+</style>
