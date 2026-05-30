@@ -1107,3 +1107,202 @@ nav.scrolled .lang-toggle:hover {
   color: var(--bk) !important;
   border-color: var(--bk);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   全站手機版修正 — 最終版
+   解決：格子過大、左右滾動、字色對比、選單按鈕
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. 防止全站橫向滾動 ── */
+html { overflow-x: hidden; }
+body { overflow-x: hidden; max-width: 100vw; }
+* { min-width: 0; box-sizing: border-box; }
+
+/* ── 2. 字色對比修正（深色背景上的淺色文字確保可讀）── */
+/* 深色背景上接近背景色的文字加亮 */
+[style*="color:rgba(212,207,200,0.3)"],
+[style*="color:rgba(212,207,200,.3)"] {
+  color: rgba(212,207,200,0.55) !important;
+}
+[style*="color:rgba(212,207,200,0.35)"],
+[style*="color:rgba(212,207,200,.35)"] {
+  color: rgba(212,207,200,0.55) !important;
+}
+[style*="color:rgba(212,207,200,0.4)"],
+[style*="color:rgba(212,207,200,.4)"] {
+  color: rgba(212,207,200,0.6) !important;
+}
+[style*="color:rgba(212,207,200,0.45)"],
+[style*="color:rgba(212,207,200,.45)"] {
+  color: rgba(212,207,200,0.65) !important;
+}
+/* 英文名稱 .card-name-en 對比 */
+.card-name-en {
+  color: rgba(212,207,200,0.7) !important;
+}
+/* 燈箱英文名稱 */
+.lb-name-en {
+  color: rgba(212,207,200,0.65) !important;
+}
+
+/* ── 3. mobile-stack：條列式手機版 ── */
+/* 所有加了 mobile-stack class 的 grid 容器，手機上變成單欄條列 */
+@media (max-width: 768px) {
+
+  /* 條列式主規則 */
+  .mobile-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* mobile-stack 的子元素：全寬，加分隔線 */
+  .mobile-stack > div,
+  .mobile-stack > a,
+  .mobile-stack > section {
+    width: 100% !important;
+    min-width: 0 !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: 1px solid rgba(212,207,200,0.08) !important;
+    padding: 1.5rem 1.25rem !important;
+    box-sizing: border-box !important;
+  }
+  .mobile-stack > div:last-child,
+  .mobile-stack > a:last-child,
+  .mobile-stack > section:last-child {
+    border-bottom: none !important;
+  }
+
+  /* 同時處理沒有 class 的 inline grid */
+  div[style*="grid-template-columns:repeat(4"],
+  div[style*="grid-template-columns:repeat(5"],
+  div[style*="grid-template-columns:repeat(3"],
+  div[style*="grid-template-columns: repeat(4"],
+  div[style*="grid-template-columns: repeat(5"],
+  div[style*="grid-template-columns: repeat(3"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  div[style*="grid-template-columns:1fr 1fr 1fr"],
+  div[style*="grid-template-columns:1fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  div[style*="grid-template-columns:2fr 1fr 1fr"],
+  div[style*="grid-template-columns:2fr 1fr"],
+  div[style*="grid-template-columns:1fr 1.5fr"],
+  div[style*="grid-template-columns:1fr 2fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* ── 4. Padding 縮減 ── */
+  div[style*="padding:5rem 4rem"],
+  div[style*="padding:5rem 6rem"],
+  div[style*="padding:4rem"],
+  div[style*="padding:6rem"],
+  div[style*="padding:7rem 4rem"],
+  div[style*="padding:9rem 6rem"] {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  div[style*="padding:3rem 4rem"],
+  div[style*="padding:2.5rem 2rem"] {
+    padding: 2rem 1.25rem !important;
+  }
+  section[style*="padding:5rem"],
+  section[style*="padding:4rem"] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* ── 5. max-width 鬆開 ── */
+  div[style*="max-width:680px"],
+  div[style*="max-width:700px"],
+  div[style*="max-width:720px"],
+  div[style*="max-width:900px"],
+  div[style*="max-width:960px"],
+  div[style*="max-width:560px"],
+  div[style*="max-width:600px"],
+  p[style*="max-width"] {
+    max-width: 100% !important;
+  }
+
+  /* ── 6. Flex 換行 ── */
+  div[style*="display:flex"] {
+    flex-wrap: wrap !important;
+  }
+  div[style*="gap:4rem"] { gap: 1.25rem !important; }
+  div[style*="gap:3rem"] { gap: 1rem !important; }
+  div[style*="gap:2rem"] { gap: 0.85rem !important; }
+
+  /* ── 7. min-width 子元素 ── */
+  div[style*="min-width:200px"],
+  div[style*="min-width:160px"],
+  div[style*="min-width:220px"],
+  div[style*="min-width:240px"] {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ── 8. ESG / 試算器 ── */
+  .calc-grid, .inv-grid { grid-template-columns: 1fr !important; }
+  .annual-grid { grid-template-columns: 1fr 1fr !important; }
+  .result-metrics { grid-template-columns: 1fr 1fr !important; }
+  .calc-section, .annual-section { padding: 2.5rem 1.25rem !important; }
+  .dash-hero { padding: 5rem 1.25rem 3rem !important; }
+  .sustain-tabs { overflow-x: auto; padding: 0 0.5rem; }
+  .stab { padding: 0.65rem 0.85rem !important; font-size: 0.6rem !important; }
+
+  /* ── 9. Footer ── */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  footer { padding: 3rem 1.25rem 2rem !important; }
+
+  /* ── 10. 大數字縮小 ── */
+  div[style*="font-size:2.8rem"] { font-size: 1.6rem !important; }
+  div[style*="font-size:2.5rem"] { font-size: 1.4rem !important; }
+
+  /* ── 11. 生產分工表格 ── */
+  div[style*="grid-template-columns:2fr 1fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* ── 12. 防橫向滾動 ── */
+  .page-hero, .hero, .strip, .calc-wrap,
+  .annual-section, .dash-hero {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* ── 13. 選單按鈕確保可見 ── */
+  .hamburger {
+    display: flex !important;
+    z-index: 200 !important;
+    position: relative !important;
+  }
+
+  /* ── 14. 手機版 mobile-menu 確保正常 ── */
+  .mobile-menu {
+    z-index: 150 !important;
+    pointer-events: none !important;
+  }
+  .mobile-menu.open {
+    pointer-events: auto !important;
+  }
+}
+
+/* ── 375px 超小手機 ── */
+@media (max-width: 375px) {
+  .annual-grid,
+  .result-metrics {
+    grid-template-columns: 1fr !important;
+  }
+}
