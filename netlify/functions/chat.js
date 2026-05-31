@@ -36,8 +36,8 @@ exports.handler = async function(event) {
 - 創辦人：李俊憲（Rovi Lee），土木工程博士
 - 核心技術：EAC（Exposed Aggregate Concrete）骨料裸露工法，9年研發
 - 官網：concredia.tw
-- Email：concredialab@gmail.com
-- 地點：台灣嘉義縣（工作室預約制參觀）
+- Email：concredia.lab@gmail.com
+- 地點：彰化縣和美鎮北溪路119號（工作室預約制參觀）
 
 【產品資訊】
 - 流構系列：漂流木 × 再生混凝土，模組化可調高度，企業裝置首選
@@ -137,7 +137,7 @@ exports.handler = async function(event) {
 
     const data = await response.json();
     const reply = data?.choices?.[0]?.message?.content
-      || '抱歉，我沒有理解您的問題，請換個方式再問一次，或直接聯繫我們 concredialab@gmail.com 🐾';
+      || '抱歉，我沒有理解您的問題，請換個方式再問一次，或直接聯繫我們 concredia.lab@gmail.com 🐾';
 
     return {
       statusCode: 200,
@@ -152,7 +152,7 @@ exports.handler = async function(event) {
     console.error('Fetch error:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({ reply: '網路異常，請稍後再試，或直接 Email：concredialab@gmail.com' })
+      body: JSON.stringify({ reply: '網路異常，請稍後再試，或直接 Email：concredia.lab@gmail.com' })
     };
   }
 };

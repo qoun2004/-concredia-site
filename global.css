@@ -5,7 +5,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --w:#FFFFFF;--g50:#F7F7F5;--g100:#EFEFEC;--g200:#DDDDD8;
-  --g400:#9B9B95;--g700:#3D3D3A;--bk:#111111;
+  --g400:#5A5A54;--g700:#3D3D3A;--bk:#111111;
   --fire:#E85D04;  /* 警示橘 */
   --rust:#E85D04;   /* 向後相容別名 */
   --rust-light:#FF7A28;--fire-h:#FF7A28;
@@ -55,7 +55,7 @@ nav.scrolled .nav-cta,nav#mainNav.scrolled .nav-cta{color:var(--g400)!important;
 .hero-eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--fire);}
 .hero-manifesto{font-family:var(--fd);font-weight:900;font-size:clamp(4.5rem,10vw,12rem);line-height:.88;letter-spacing:-.05em;color:var(--w);margin-bottom:2rem;}
 .hero-manifesto em{font-style:italic;color:var(--fire);font-family:var(--fs);font-weight:400;}
-.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.55);font-weight:300;max-width:520px;line-height:1.75;margin-bottom:3rem;}
+.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.82);font-weight:300;max-width:520px;line-height:1.75;margin-bottom:3rem;}
 .hero-cta-row{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap;}
 
 /* ── PAGE HERO（其他頁頂部）── */
@@ -64,7 +64,7 @@ nav.scrolled .nav-cta,nav#mainNav.scrolled .nav-cta{color:var(--g400)!important;
 .page-hero h1 em,.gift-hero h1 em{font-style:italic;color:var(--fire);font-family:var(--fs);}
 .page-hero-eye,.hero-eye,.gift-hero-eye{font-family:var(--fd);font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--fire);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
 .page-hero-eye::before,.hero-eye::before,.gift-hero-eye::before{content:'';width:24px;height:2px;background:var(--fire);}
-.page-hero-sub,.hero-sub-sm,.gift-hero-sub{font-size:.95rem;color:rgba(255,255,255,.5);font-weight:300;max-width:500px;line-height:1.75;}
+.page-hero-sub,.hero-sub-sm,.gift-hero-sub{font-size:.95rem;color:rgba(255,255,255,.80);font-weight:300;max-width:500px;line-height:1.75;}
 
 /* ── MARQUEE ───────────────────────────────────── */
 .marquee-bar{background:var(--bk);padding:.85rem 0;overflow:hidden;}
@@ -78,7 +78,7 @@ nav.scrolled .nav-cta,nav#mainNav.scrolled .nav-cta{color:var(--g400)!important;
 h1,h2,.sec-h,.sec-title{font-family:var(--fd);font-weight:900;letter-spacing:-.05em;line-height:.9;}
 .sec-h,.sec-title{font-size:clamp(2.8rem,5.5vw,6rem);color:var(--bk);margin-bottom:2rem;}
 .sec-h em,.sec-title em{font-style:italic;color:var(--fire);font-family:var(--fs);}
-.sec-body,.sec-sub{font-size:.95rem;color:var(--g400);line-height:1.85;font-weight:300;max-width:540px;}
+.sec-body,.sec-sub{font-size:1rem;color:var(--g400);line-height:1.9;font-weight:300;max-width:540px;}
 p{line-height:1.85;}
 
 /* 深色背景版本 */
@@ -107,7 +107,7 @@ p{line-height:1.85;}
 .card{padding:2.5rem 0;border-top:2px solid var(--bk);background:transparent;}
 .card-num{font-family:var(--fd);font-weight:900;font-size:4rem;letter-spacing:-.05em;color:var(--g200);line-height:1;margin-bottom:.5rem;}
 .card-title{font-family:var(--fd);font-weight:900;font-size:1.25rem;letter-spacing:-.03em;color:var(--bk);margin-bottom:.75rem;}
-.card-text{font-size:.88rem;color:var(--g400);line-height:1.78;}
+.card-text{font-size:.95rem;color:var(--g400);line-height:1.85;}
 .strip--black .card{border-top-color:var(--g700);}
 .strip--black .card-title{color:var(--w);}
 
@@ -121,11 +121,11 @@ p{line-height:1.85;}
 .btn-fire:hover,.btn-primary:hover{background:var(--fire-h);transform:translateY(-2px);}
 .btn-black{display:inline-block;padding:.9rem 2.5rem;background:var(--bk);color:var(--w);font-family:var(--fd);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background var(--ease);}
 .btn-black:hover{background:var(--g700);}
-.btn-ghost{font-family:var(--fd);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.3);padding-bottom:2px;transition:color var(--ease),border-color var(--ease);}
+.btn-ghost{font-family:var(--fd);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,.3);padding-bottom:2px;transition:color var(--ease),border-color var(--ease);}
 .btn-ghost:hover{color:var(--w);border-color:var(--w);}
 .btn-ul{font-family:var(--fd);font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--bk);text-decoration:none;border-bottom:1.5px solid var(--bk);padding-bottom:2px;display:inline-block;transition:color var(--ease),border-color var(--ease);}
 .btn-ul:hover{color:var(--fire);border-color:var(--fire);}
-.btn-ul--white{color:var(--w);border-color:rgba(255,255,255,.5);}
+.btn-ul--white{color:var(--w);border-color:rgba(255,255,255,.80);}
 .btn-ul--white:hover{color:var(--fire);border-color:var(--fire);}
 button{cursor:pointer;}
 
@@ -133,7 +133,7 @@ button{cursor:pointer;}
 .team-card{padding:2rem 0;border-top:1px solid var(--g200);}
 .team-card-name{font-family:var(--fd);font-weight:900;font-size:1.5rem;letter-spacing:-.04em;margin-bottom:.25rem;}
 .team-card-role{font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fire);margin-bottom:.75rem;}
-.team-card-bio{font-size:.88rem;color:var(--g400);line-height:1.78;}
+.team-card-bio{font-size:.95rem;color:var(--g400);line-height:1.85;}
 
 /* ── FOOTER ────────────────────────────────────── */
 footer{padding:4rem 6rem;background:var(--bk);display:flex;align-items:center;justify-content:space-between;}
@@ -165,7 +165,7 @@ footer small{font-size:.72rem;color:var(--g400);}
 .card-body{flex:1;}
 .card-sku{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g400);margin-bottom:.3rem;font-family:var(--fd);font-weight:700;}
 .card-name{font-family:var(--fd);font-weight:900;font-size:1.1rem;letter-spacing:-.03em;color:var(--bk);margin-bottom:.4rem;line-height:1.1;}
-.card-meta,.card-material{font-size:.8rem;color:var(--g400);line-height:1.6;margin-bottom:.5rem;}
+.card-meta,.card-material{font-size:.88rem;color:var(--g400);line-height:1.6;margin-bottom:.5rem;}
 .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
 .card-tag{padding:.12rem .5rem;background:var(--g100);font-size:.6rem;letter-spacing:.06em;color:var(--g700);font-family:var(--fd);font-weight:600;}
 .card-footer{padding:.75rem 0 0;border-top:1px solid var(--g200);display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
@@ -225,7 +225,7 @@ footer small{font-size:.72rem;color:var(--g400);}
 .gift-card-tag{display:inline-block;padding:.2rem .6rem;background:var(--g100);color:var(--fire);font-size:.58rem;letter-spacing:.1em;font-family:var(--fd);font-weight:700;margin-bottom:.75rem;}
 .gift-card h3{font-family:var(--fd);font-weight:900;font-size:1.1rem;letter-spacing:-.03em;color:var(--bk);margin-bottom:.4rem;}
 .gift-card-slogan{font-family:var(--fs);font-size:.9rem;color:var(--fire);margin-bottom:.65rem;line-height:1.55;}
-.gift-card p{font-size:.82rem;color:var(--g400);line-height:1.75;}
+.gift-card p{font-size:.9rem;color:var(--g400);line-height:1.75;}
 .festival-section:nth-child(even) .gift-card h3{color:var(--bk);}
 .big-quote{padding:5rem 6rem;text-align:center;background:var(--bk);}
 .big-quote blockquote{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,3.5rem);color:var(--w);font-weight:900;letter-spacing:-.04em;line-height:1.1;max-width:900px;margin:0 auto;}
