@@ -299,7 +299,7 @@ function render(products, filter) {
     ${tags?`<div class="card-tags">${tags}</div>`:''}
   </div>
   <div class="card-footer">
-    <div class="card-spec">${esc(p.spec)||'規格洽詢'}${p.weight ? ` · ${esc(p.weight)}` : ''}</div>
+    <div class="card-spec">${esc(p.spec)||'規格洽詢'}${p.weightDisplay ? ` · ${esc(p.weightDisplay)}` : ''}</div>
     <button class="card-open">查看詳情 →</button>
   </div>
 </div>`;
@@ -332,11 +332,12 @@ function openLb(id) {
 </div>
 <div class="lb-section">
   <div class="lb-section-title">規格</div>
-  ${infoRows([['尺寸',p.spec],['重量',p.weight||''],['工法',p.method],['材料',p.material]])}
+  ${infoRows([['尺寸',p.spec],['重量',p.weightDisplay||''],['工法',p.method],['材料',p.material]])}
 </div>
 <div class="lb-section">
   <div class="lb-section-title">用途</div>
   ${infoRows([['功能',p.func],['適合',p.suitable],['系列',p.series]])}
+  ${p.carbonDisplay ? `<div class="lb-row lb-carbon"><span class="lb-key">🌱 預估減碳</span><span class="lb-val carbon-val">${esc(p.carbonDisplay)} CO₂e</span></div>` : ''}
 </div>
 <div class="lb-section">
   <div class="lb-section-title">庫存狀態</div>
@@ -513,6 +514,13 @@ loadData();
 </style>
 
 <style>
+/* ── 減碳數據樣式 ── */
+.lb-carbon { background: rgba(39,120,60,0.06); border-radius: 4px; margin-top: 0.25rem; }
+.carbon-val {
+  color: #2a7a3c !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+}
 /* ── 英文名稱、獨一件、重量 新增樣式 ── */
 .card-name-en {
   font-family: var(--fd);
