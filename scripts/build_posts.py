@@ -184,63 +184,40 @@ window.addEventListener('scroll', function(){{
 with open('blog.html', 'r', encoding='utf-8') as f:
     blog_html = f.read()
 
-# 建立文章卡片 HTML
+# 建立文章卡片 HTML（C 風格）
 cards_html = ''
 for post in posts:
-    cards_html += f'''
-    <a href="{post['filename']}" class="article-card" data-cat="{post['category']}">
-      <div class="article-thumb">
-        <img src="{post['thumbnail']}" alt="{post['title']}" loading="lazy">
-      </div>
-      <div class="article-body">
-        <div class="article-cat">{post['category']}</div>
-        <div class="article-title">{post['title']}</div>
-        <div class="article-excerpt">{post['excerpt']}</div>
-        <div class="article-meta">
-          <span>{post['date_display']}</span>
-          <span class="article-read">閱讀全文 →</span>
+    if post.get('thumbnail'):
+        thumb_inner = f'<img src="{post["thumbnail"]}" alt="{post["title"]}" loading="lazy"><div class="card-thumb-overlay"></div>'
+    else:
+        thumb_inner = '<span style="font-size:2rem">🧱</span>'
+    cards_html += f"""
+    <a href="{post['filename']}" class="blog-card-new" data-cat="{post['category']}">
+      <div class="card-thumb">{thumb_inner}</div>
+      <div class="card-body-new">
+        <div class="card-cat-new">{post['category']}</div>
+        <div class="card-title">{post['title']}</div>
+        <div class="card-excerpt">{post['excerpt']}</div>
+        <div class="card-foot-new">
+          <span class="card-date-new">{post['date_display']}</span>
+          <span class="card-read-new">閱讀全文 →</span>
         </div>
       </div>
-    </a>
-'''
+    </a>"""
 
-# 建立動態分類篩選列
-cat_emoji = {
-    '倉庫日常': '🐾',
-    'Maker 實錄': '⚙️',
-    '永續日誌': '🌱',
-    '寂寞公路計劃': '🛣️',
-    '社區行動': '🌿',
-    '媒體 & 活動': '📣',
-}
-# 收集所有文章的分類（去重、保留順序）
-seen_cats = []
-for post in posts:
-    cat = post['category']
-    if cat and cat not in seen_cats:
-        seen_cats.append(cat)
 
-filter_html = '\n<div class="filter-bar">\n'
-filter_html += '  <button class="filter-btn active" onclick="filterCat(\'all\', this)">全部</button>\n'
-for cat in seen_cats:
-    emoji = cat_emoji.get(cat, '📌')
-    filter_html += f'  <button class="filter-btn" onclick="filterCat(\'{cat}\', this)">{emoji} {cat}</button>\n'
-filter_html += '</div>'
-
-# 找到文章 grid 並替換內容
+# 找到文章 grid 並替換內容（支援 blog-grid 和 blog-grid-all）
 new_blog_html = re.sub(
-
-    r'(<div class="blog-grid-all" id="articleGrid">).*?(<!-- 新文章會由 CMS 發布後.*?-->)',
-    r'\1\n' + cards_html + r'\n    \2',
+    r'(<div[^>]+id="articleGrid"[^>]*>).*?(<!-- 新文章會由 CMS 發布後.*?-->)',
+    r'\1\n' + cards_html + r'\n  \2',
     blog_html,
     flags=re.DOTALL
 )
 
 if new_blog_html == blog_html:
-    # 如果找不到舊標記，直接替換整個 grid
     new_blog_html = re.sub(
-        r'(<div class="blog-grid-all" id="articleGrid">).*?(</div>\s*</div>\s*<footer)',
-        r'\1\n' + cards_html + r'\n  </div>\n\n\2',
+        r'(<div[^>]+id="articleGrid"[^>]*>).*?(</div>\s*<footer)',
+        r'\1\n' + cards_html + r'\n</div>\n\n\2',
         blog_html,
         flags=re.DOTALL
     )
