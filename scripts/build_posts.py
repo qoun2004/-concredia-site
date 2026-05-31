@@ -204,8 +204,32 @@ for post in posts:
     </a>
 '''
 
+# 建立動態分類篩選列
+cat_emoji = {
+    '倉庫日常': '🐾',
+    'Maker 實錄': '⚙️',
+    '永續日誌': '🌱',
+    '寂寞公路計劃': '🛣️',
+    '社區行動': '🌿',
+    '媒體 & 活動': '📣',
+}
+# 收集所有文章的分類（去重、保留順序）
+seen_cats = []
+for post in posts:
+    cat = post['category']
+    if cat and cat not in seen_cats:
+        seen_cats.append(cat)
+
+filter_html = '\n<div class="filter-bar">\n'
+filter_html += '  <button class="filter-btn active" onclick="filterCat(\'all\', this)">全部</button>\n'
+for cat in seen_cats:
+    emoji = cat_emoji.get(cat, '📌')
+    filter_html += f'  <button class="filter-btn" onclick="filterCat(\'{cat}\', this)">{emoji} {cat}</button>\n'
+filter_html += '</div>'
+
 # 找到文章 grid 並替換內容
 new_blog_html = re.sub(
+
     r'(<div class="blog-grid-all" id="articleGrid">).*?(<!-- 新文章會由 CMS 發布後.*?-->)',
     r'\1\n' + cards_html + r'\n    \2',
     blog_html,
