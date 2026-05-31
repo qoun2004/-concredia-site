@@ -22,18 +22,6 @@
       "thumbnail": "images/blog/gemini_generated_image_jy5cojy5cojy5coj.png"
     },
     {
-      "title": "test",
-      "date": "2026-05-03",
-      "date_display": "2026 年 5 月",
-      "category": "event",
-      "excerpt": "test",
-      "filename": "blog-test.html",
-      "md_filename": "2026-05-03-test.md",
-      "slug": "test",
-      "tags": [],
-      "thumbnail": "images/story-night.jpg"
-    },
-    {
       "title": "這是一篇範例文章（可以刪掉）",
       "date": "2025-04-14",
       "date_display": "2025 年 4 月",
@@ -49,5 +37,5 @@
       "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 3
+  "total": 2
 }
