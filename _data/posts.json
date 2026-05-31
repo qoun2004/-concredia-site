@@ -22,18 +22,6 @@
       "thumbnail": "images/blog/gemini_generated_image_jy5cojy5cojy5coj.png"
     },
     {
-      "title": "測試",
-      "date": "2026-05-04",
-      "date_display": "2026 年 5 月",
-      "category": "寂寞公路計劃",
-      "excerpt": "Test",
-      "filename": "blog-測試.html",
-      "md_filename": "2026-05-04-測試.md",
-      "slug": "測試",
-      "tags": [],
-      "thumbnail": "images/story-night.jpg"
-    },
-    {
       "title": "test",
       "date": "2026-05-03",
       "date_display": "2026 年 5 月",
@@ -61,5 +49,5 @@
       "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 4
+  "total": 3
 }
