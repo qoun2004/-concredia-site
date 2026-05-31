@@ -1,16 +1,16 @@
 // netlify/functions/chat.js
-// Concredia.Lab AI 助理 — Gemini 版本
+// Concredia.Lab AI 助理 — Groq 版本
 
 exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-  if (!GEMINI_API_KEY) {
+  const GROQ_API_KEY = process.env.GROQ_API_KEY;
+  if (!GROQ_API_KEY) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'API key 未設定' })
+      body: JSON.stringify({ reply: '⚠️ API key 未設定，請聯絡管理員。' })
     };
   }
 
@@ -93,53 +93,39 @@ exports.handler = async function(event) {
 7. 不要捏造不確定的資訊`;
 
   // ── 組建對話歷史 ──────────────────────────────────────
-  const contents = [];
+  const messages = [{ role: 'system', content: SYSTEM_PROMPT }];
 
-  // 加入歷史對話
   for (const msg of history) {
     if (msg.role && msg.content) {
-      contents.push({
-        role: msg.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: msg.content }]
+      messages.push({
+        role: msg.role === 'assistant' ? 'assistant' : 'user',
+        content: msg.content
       });
     }
   }
 
-  // 加入目前用戶訊息
-  contents.push({
-    role: 'user',
-    parts: [{ text: userMessage }]
-  });
+  messages.push({ role: 'user', content: userMessage });
 
-  // ── 呼叫 Gemini API ────────────────────────────────────
-  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-
+  // ── 呼叫 Groq API ──────────────────────────────────────
   try {
-    const response = await fetch(GEMINI_URL, {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${GROQ_API_KEY}`
+      },
       body: JSON.stringify({
-        system_instruction: {
-          parts: [{ text: SYSTEM_PROMPT }]
-        },
-        contents,
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 600,
-          topP: 0.9,
-        },
-        safetySettings: [
-          { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-          { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-          { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_MEDIUM_AND_ABOVE' },
-          { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' }
-        ]
+        model: 'llama-3.3-70b-versatile',
+        messages,
+        temperature: 0.7,
+        max_tokens: 600,
+        top_p: 0.9
       })
     });
 
     if (!response.ok) {
       const errText = await response.text();
-      console.error('Gemini API error:', response.status, errText);
+      console.error('Groq API error:', response.status, errText);
       let errJson = {};
       try { errJson = JSON.parse(errText); } catch {}
       const reason = errJson?.error?.message || `HTTP ${response.status}`;
@@ -150,7 +136,7 @@ exports.handler = async function(event) {
     }
 
     const data = await response.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text
+    const reply = data?.choices?.[0]?.message?.content
       || '抱歉，我沒有理解您的問題，請換個方式再問一次，或直接聯繫我們 concredialab@gmail.com 🐾';
 
     return {
