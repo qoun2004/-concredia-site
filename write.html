@@ -402,7 +402,141 @@
     opacity: 1;
   }
 
-  @media (max-width: 900px) {
+  /* ── HEADER NAV ── */
+  .header-nav { display: flex; gap: 0.25rem; }
+  .hnav-btn {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 0.45rem 1rem;
+    font-family: var(--fd);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .hnav-btn:hover { background: rgba(0,0,0,0.05); color: var(--text); }
+  .hnav-btn.active {
+    background: var(--fire);
+    color: #fff;
+    border-color: var(--fire);
+  }
+
+  /* ── MANAGE PAGE ── */
+  .manage-wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .manage-intro { }
+
+  .upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 2rem;
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: rgba(0,0,0,0.02);
+  }
+  .upload-area:hover {
+    border-color: var(--border-focus);
+    background: rgba(155,91,58,0.03);
+  }
+
+  /* ── POST CARD ── */
+  .post-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    transition: box-shadow 0.15s;
+  }
+  .post-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+  .post-card-info { flex: 1; }
+  .post-card-title {
+    font-family: var(--fd);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  .post-card-meta {
+    font-size: 0.74rem;
+    color: var(--text-dim);
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+  }
+  .post-card-excerpt {
+    font-size: 0.78rem;
+    color: var(--text-hint);
+    line-height: 1.55;
+  }
+  .post-card-filename {
+    font-size: 0.68rem;
+    color: var(--fire);
+    font-family: monospace;
+    margin-top: 0.4rem;
+  }
+  .post-card-actions { display: flex; flex-direction: column; gap: 0.4rem; flex-shrink: 0; }
+  .btn-sm {
+    padding: 0.35rem 0.85rem;
+    border-radius: 5px;
+    font-size: 0.72rem;
+    font-family: var(--fd);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.15s;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+  }
+  .btn-edit {
+    background: rgba(155,91,58,0.1);
+    border-color: rgba(155,91,58,0.3);
+    color: var(--fire);
+  }
+  .btn-edit:hover { background: var(--fire); color: #fff; }
+  .btn-delete {
+    background: rgba(200,50,50,0.07);
+    border-color: rgba(200,50,50,0.2);
+    color: #c83232;
+  }
+  .btn-delete:hover { background: #c83232; color: #fff; }
+  .post-cat-badge {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-family: var(--fd);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(155,91,58,0.1);
+    border: 1px solid rgba(155,91,58,0.2);
+    color: var(--fire);
+    padding: 0.12rem 0.45rem;
+    border-radius: 3px;
+  }
+
+@media (max-width: 900px) {
     .container { grid-template-columns: 1fr; }
     header { padding: 1rem 1.25rem; }
     .container { padding: 1.5rem 1rem; }
@@ -413,9 +547,14 @@
 
 <header>
   <div class="logo">Concredia<span>.</span>Lab</div>
-  <div class="header-tag">✏️ 文章編輯器</div>
+  <nav class="header-nav">
+    <button class="hnav-btn active" onclick="switchTab('write', this)">✏️ 寫文章</button>
+    <button class="hnav-btn" onclick="switchTab('manage', this)">📋 管理文章</button>
+  </nav>
 </header>
 
+<!-- ══ 寫文章頁 ══ -->
+<div id="page-write">
 <div class="container">
   <!-- ── 左側編輯區 ── -->
   <div class="main-form">
@@ -494,11 +633,32 @@
     </div>
 
     <div class="field">
-      <label>標籤 <span class="hint">打完按 Enter 新增</span></label>
+      <label>標籤 <span class="hint">點選常用標籤，或自己輸入後按 Enter</span></label>
+
+      <!-- 常用標籤快選 -->
+      <div id="preset-tags" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.75rem;"></div>
+
+      <!-- 已選標籤 + 輸入框 -->
       <div class="tag-input-wrap" id="tag-wrap" onclick="document.getElementById('tag-input').focus()">
-        <input type="text" id="tag-input" class="tag-input" placeholder="輸入標籤後按 Enter…" onkeydown="handleTag(event)">
+        <input type="text" id="tag-input" class="tag-input" placeholder="自行輸入標籤後按 Enter 新增…" onkeydown="handleTag(event)">
       </div>
       <input type="hidden" id="tags-hidden">
+
+      <!-- 自訂預設標籤管理 -->
+      <div style="margin-top:0.75rem;">
+        <button onclick="toggleCustomPreset()" style="background:none;border:none;cursor:pointer;font-size:0.72rem;color:var(--text-hint);font-family:var(--fb);padding:0;letter-spacing:0.04em;">
+          ＋ 管理我的常用標籤
+        </button>
+        <div id="custom-preset-panel" style="display:none;margin-top:0.6rem;padding:0.75rem;background:rgba(0,0,0,0.04);border-radius:6px;border:1px solid var(--border);">
+          <div style="font-size:0.74rem;color:var(--text-dim);margin-bottom:0.5rem;">輸入後按 Enter 加入常用清單（儲存在這台電腦）</div>
+          <div style="display:flex;gap:0.5rem;">
+            <input type="text" id="new-preset-input" placeholder="新標籤名稱…" 
+              style="flex:1;font-size:0.84rem;" onkeydown="if(event.key==='Enter'){addCustomPreset();event.preventDefault();}">
+            <button onclick="addCustomPreset()" style="background:var(--fire);color:#fff;border:none;border-radius:4px;padding:0.4rem 0.85rem;cursor:pointer;font-size:0.78rem;font-family:var(--fb);">新增</button>
+          </div>
+          <div id="custom-preset-list" style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.35rem;"></div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -558,6 +718,37 @@
           </li>
         </ol>
       </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end page-write container -->
+</div><!-- end page-write -->
+
+<!-- ══ 管理文章頁 ══ -->
+<div id="page-manage" style="display:none;">
+  <div class="manage-wrap">
+
+    <div class="manage-intro">
+      <div class="section-label" style="margin-bottom:0.5rem;">文章管理</div>
+      <p style="font-size:0.85rem;color:var(--text-dim);line-height:1.7;">
+        所有文章列表。點「刪除」會直接開啟 GitHub 該檔案頁面，按刪除鈕即可。
+      </p>
+    </div>
+
+    <!-- 狀態訊息 -->
+    <div id="manage-status" style="text-align:center;padding:2.5rem;color:var(--text-hint);font-size:0.85rem;">
+      載入文章中…
+    </div>
+
+    <!-- 文章列表 -->
+    <div id="post-list-wrap" style="display:none;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
+        <div class="section-label" style="flex:1;margin-bottom:0;">文章列表</div>
+        <span id="post-count" style="font-size:0.75rem;color:var(--text-hint);font-family:var(--fd);"></span>
+      </div>
+      <div id="post-list"></div>
     </div>
 
   </div>
@@ -648,7 +839,94 @@
       .slice(0, 60) || 'post';
   }
 
-  // ── 標籤 ──
+  // ── 內建預設標籤（依類別分組）──
+  const BUILT_IN_TAGS = [
+    // 材料工法
+    '再生混凝土', 'EAC工法', '骨料裸露', '廢磚骨料', '廢玻璃', '爐石粉', '蚵殼', '洗石子', '水磨工法', '鋼筋配置',
+    // 產品系列
+    '流構系列', '標準系列', '客製系列', '畫作系列', '桌腳系列', '盆器系列', 'Conbox', '水泥音響', '水泥桌几', '水泥茶几',
+    // ESG 永續
+    'ESG', '循環經濟', '再生建材', '永續設計', '綠色採購', '減碳', 'SDGs', '碳排削減', '廢棄物再利用', '企業禮品',
+    // 品牌故事
+    '寂寞公路計劃', '竹塘社區計畫', '倉庫日常', '寶妹', 'Rovi Lee', '士敏文品',
+    // 地域
+    '彰化和美', '台灣', '台26線', '旭海',
+    // 應用場景
+    '工業風', '空間裝置', '客製刻字', 'NFC溯源', '企業落成禮', '婚禮佈置', '辦公空間',
+  ];
+
+  const STORAGE_KEY = 'concredia_custom_tags';
+
+  function getCustomTags() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch { return []; }
+  }
+  function saveCustomTags(arr) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+  }
+
+  function initPresetTags() {
+    const customTags = getCustomTags();
+    const allPresets = [...BUILT_IN_TAGS, ...customTags.filter(t => !BUILT_IN_TAGS.includes(t))];
+    const wrap = document.getElementById('preset-tags');
+    wrap.innerHTML = '';
+    allPresets.forEach(t => {
+      const btn = document.createElement('button');
+      btn.textContent = t;
+      btn.dataset.tag = t;
+      btn.style.cssText = `background:${tags.includes(t)?'rgba(155,91,58,0.2)':'rgba(0,0,0,0.05)'};border:1px solid ${tags.includes(t)?'rgba(155,91,58,0.5)':'rgba(0,0,0,0.12)'};border-radius:4px;padding:0.2rem 0.6rem;font-size:0.74rem;cursor:pointer;font-family:var(--fb);color:${tags.includes(t)?'var(--fire)':'var(--text-dim)'};transition:all 0.15s;`;
+      btn.onclick = () => togglePresetTag(t);
+      wrap.appendChild(btn);
+    });
+    renderCustomPresetList();
+  }
+
+  function togglePresetTag(t) {
+    const idx = tags.indexOf(t);
+    if (idx > -1) tags.splice(idx, 1);
+    else tags.push(t);
+    renderTags();
+    initPresetTags();
+  }
+
+  function toggleCustomPreset() {
+    const panel = document.getElementById('custom-preset-panel');
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function addCustomPreset() {
+    const input = document.getElementById('new-preset-input');
+    const val = input.value.trim();
+    if (!val) return;
+    const custom = getCustomTags();
+    if (!custom.includes(val) && !BUILT_IN_TAGS.includes(val)) {
+      custom.push(val);
+      saveCustomTags(custom);
+    }
+    input.value = '';
+    initPresetTags();
+  }
+
+  function removeCustomPreset(t) {
+    const custom = getCustomTags().filter(x => x !== t);
+    saveCustomTags(custom);
+    initPresetTags();
+  }
+
+  function renderCustomPresetList() {
+    const custom = getCustomTags();
+    const list = document.getElementById('custom-preset-list');
+    if (!list) return;
+    list.innerHTML = '';
+    custom.forEach(t => {
+      const chip = document.createElement('span');
+      chip.className = 'tag-chip';
+      chip.innerHTML = `${t}<button onclick="removeCustomPreset('${t.replace(/'/g,"\'")}')">×</button>`;
+      list.appendChild(chip);
+    });
+  }
+
+  // ── 標籤輸入 ──
   const tags = [];
   function handleTag(e) {
     if (e.key === 'Enter' || e.key === ',') {
@@ -657,16 +935,19 @@
       if (val && !tags.includes(val)) {
         tags.push(val);
         renderTags();
+        initPresetTags();
       }
       e.target.value = '';
     } else if (e.key === 'Backspace' && !e.target.value && tags.length) {
       tags.pop();
       renderTags();
+      initPresetTags();
     }
   }
   function removeTag(i) {
     tags.splice(i, 1);
     renderTags();
+    initPresetTags();
   }
   function renderTags() {
     const wrap = document.getElementById('tag-wrap');
@@ -681,6 +962,9 @@
     wrap.appendChild(input);
     document.getElementById('tags-hidden').value = tags.join(', ');
   }
+
+  // 頁面載入時初始化標籤快選
+  initPresetTags();
 
   // ── 工具列 ──
   function wrap(before, after) {
@@ -753,6 +1037,126 @@
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 3000);
   }
+
+  // ══ 分頁切換 ══
+  let manageLoaded = false;
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.hnav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('page-write').style.display = tab === 'write' ? 'block' : 'none';
+    document.getElementById('page-manage').style.display = tab === 'manage' ? 'block' : 'none';
+    if (tab === 'manage' && !manageLoaded) {
+      manageLoaded = true;
+      loadManagePosts();
+    }
+  }
+
+  // ══ 讀取 .md 檔案 ══
+  let loadedPosts = [];
+
+  function loadMdFiles(files) {
+    loadedPosts = [];
+    const readers = Array.from(files).map(file => new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const raw = e.target.result;
+        const post = parseFrontmatter(raw, file.name);
+        loadedPosts.push(post);
+        resolve();
+      };
+      reader.readAsText(file, 'utf-8');
+    }));
+
+    Promise.all(readers).then(() => {
+      // 依日期排序，最新在上
+      loadedPosts.sort((a, b) => b.date.localeCompare(a.date));
+      renderPostList();
+    });
+  }
+
+  function parseFrontmatter(raw, filename) {
+    const match = raw.match(/^---
+([\s\S]*?)
+---/);
+    const meta = {};
+    if (match) {
+      match[1].split('
+').forEach(line => {
+        const [k, ...v] = line.split(':');
+        if (k && v.length) meta[k.trim()] = v.join(':').trim().replace(/^['"]|['"]$/g, '');
+      });
+    }
+    return {
+      filename,
+      title:    meta.title    || '（無標題）',
+      date:     meta.date     || '—',
+      category: meta.category || '—',
+      excerpt:  meta.excerpt  || '',
+      tags:     meta.tags     || '',
+      raw,
+    };
+  }
+
+  function renderPostList() {
+    const list = document.getElementById('post-list');
+    const wrap = document.getElementById('post-list-wrap');
+    const guide = document.getElementById('delete-guide');
+    const count = document.getElementById('post-count');
+
+    list.innerHTML = '';
+    wrap.style.display = 'block';
+    guide.style.display = 'block';
+    count.textContent = `共 ${loadedPosts.length} 篇`;
+
+    loadedPosts.forEach((post, i) => {
+      const ghUrl = `https://github.com/qoun2004/-concredia-site/blob/main/_posts/${encodeURIComponent(post.filename)}`;
+      const card = document.createElement('div');
+      card.className = 'post-card';
+      card.innerHTML = `
+        <div class="post-card-info">
+          <div class="post-card-title">${post.title}</div>
+          <div class="post-card-meta">
+            <span>📅 ${post.date}</span>
+            <span class="post-cat-badge">${post.category}</span>
+            ${post.tags ? `<span style="color:var(--text-hint)">🏷 ${post.tags}</span>` : ''}
+          </div>
+          ${post.excerpt ? `<div class="post-card-excerpt">${post.excerpt}</div>` : ''}
+          <div class="post-card-filename">${post.filename}</div>
+        </div>
+        <div class="post-card-actions">
+          <a class="btn-sm btn-edit" href="${ghUrl}" target="_blank">GitHub 查看</a>
+          <button class="btn-sm btn-delete" onclick="showDeleteGuide('${post.filename.replace(/'/g,"\'")}')">刪除指引</button>
+        </div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  // 刪除指引彈出提示
+  function showDeleteGuide(filename) {
+    const msg = `刪除步驟：
+
+1. 前往 GitHub _posts 資料夾
+2. 點開檔案：${filename}
+3. 右上角 ⋯ → Delete file
+4. Commit changes
+
+Netlify 約 1 分鐘後自動更新網站。`;
+    alert(msg);
+  }
+
+  // 拖曳上傳
+  const uploadLabel = document.getElementById('upload-label');
+  if (uploadLabel) {
+    uploadLabel.addEventListener('dragover', e => { e.preventDefault(); uploadLabel.style.borderColor = 'var(--border-focus)'; });
+    uploadLabel.addEventListener('dragleave', () => { uploadLabel.style.borderColor = 'var(--border)'; });
+    uploadLabel.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadLabel.style.borderColor = 'var(--border)';
+      loadMdFiles(e.dataTransfer.files);
+    });
+  }
+
 </script>
 
 </body>
