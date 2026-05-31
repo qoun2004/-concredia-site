@@ -3,576 +3,305 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>寫文章 · Concredia.Lab</title>
+<title>文章後台 · Concredia.Lab</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#F5F3F0;
+  --panel:#FFFFFF;
+  --border:rgba(0,0,0,0.1);
+  --border-focus:rgba(155,91,58,0.6);
+  --fire:#C04A00;
+  --fire-h:#E85D04;
+  --text:#2A2420;
+  --text-dim:#6B5E58;
+  --text-hint:#9E8E88;
+  --fd:'Inter Tight',sans-serif;
+  --fb:'Noto Sans TC',sans-serif;
+}
+body{font-family:var(--fb);background:var(--bg);color:var(--text);min-height:100vh;}
 
-  :root {
-    --bg: #F5F3F0;
-    --panel: #FFFFFF;
-    --border: rgba(0,0,0,0.1);
-    --border-focus: rgba(155,91,58,0.6);
-    --fire: #C04A00;
-    --fire-h: #E85D04;
-    --text: #2A2420;
-    --text-dim: #6B5E58;
-    --text-hint: #9E8E88;
-    --fd: 'Inter Tight', sans-serif;
-    --fb: 'Noto Sans TC', sans-serif;
-  }
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;
+  background:rgba(245,243,240,0.97);
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  backdrop-filter:blur(12px);
+}
+.logo{font-family:var(--fd);font-weight:900;font-size:1.1rem;letter-spacing:-0.04em;}
+.logo span{color:var(--fire);}
+.tab-nav{display:flex;gap:0.25rem;}
+.tab-btn{
+  padding:0.45rem 1.1rem;
+  border:1px solid transparent;border-radius:6px;
+  font-family:var(--fd);font-size:0.76rem;font-weight:700;
+  letter-spacing:0.06em;cursor:pointer;background:none;
+  color:var(--text-dim);transition:all 0.15s;
+}
+.tab-btn:hover{background:rgba(0,0,0,0.05);color:var(--text);}
+.tab-btn.active{background:var(--fire);color:#fff;border-color:var(--fire);}
 
-  body {
-    font-family: var(--fb);
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    line-height: 1.7;
-  }
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;}
 
-  /* ── HEADER ── */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 2.5rem;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    background: rgba(245,243,240,0.97);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(12px);
-  }
-  .logo {
-    font-family: var(--fd);
-    font-weight: 900;
-    font-size: 1.1rem;
-    letter-spacing: -0.04em;
-    color: var(--text);
-  }
-  .logo span { color: var(--fire); }
-  .header-tag {
-    font-family: var(--fd);
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
+/* ── WRITE PAGE ── */
+.write-layout{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:2rem;
+  max-width:1180px;
+  margin:0 auto;
+  padding:2rem;
+}
+@media(max-width:900px){.write-layout{grid-template-columns:1fr;padding:1rem;}}
 
-  /* ── LAYOUT ── */
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 380px;
-    gap: 0;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-    gap: 2.5rem;
-  }
+.field{margin-bottom:1.5rem;}
+label.lbl{
+  display:block;font-size:0.8rem;font-weight:600;
+  color:var(--text-dim);margin-bottom:0.45rem;letter-spacing:0.03em;
+}
+label.lbl .req{color:var(--fire);}
+label.lbl .hint{font-weight:400;color:var(--text-hint);font-size:0.7rem;margin-left:0.4rem;}
 
-  /* ── FORM SECTIONS ── */
-  .section-label {
-    font-family: var(--fd);
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fire);
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(155,91,58,0.25);
-  }
+input[type=text],input[type=date],input[type=url],select,textarea{
+  width:100%;background:#fff;border:1px solid var(--border);
+  border-radius:6px;padding:0.7rem 1rem;
+  font-size:0.95rem;color:var(--text);font-family:var(--fb);
+  outline:none;transition:border-color 0.2s;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--border-focus);}
+select option{background:#fff;}
+textarea{resize:vertical;line-height:1.8;}
 
-  .field { margin-bottom: 1.75rem; }
+#f-title{font-family:var(--fd);font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;}
 
-  label {
-    display: block;
-    font-size: 0.84rem;
-    font-weight: 600;
-    color: var(--text-dim);
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.04em;
-  }
-  label .req { color: var(--fire); margin-left: 2px; }
-  label .hint {
-    font-weight: 400;
-    color: var(--text-hint);
-    font-size: 0.76rem;
-    margin-left: 0.5rem;
-  }
+/* category row */
+.cat-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 
-  input[type="text"],
-  input[type="date"],
-  input[type="url"],
-  select,
-  textarea {
-    width: 100%;
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    color: var(--text);
-    font-family: var(--fb);
-    outline: none;
-    transition: border-color 0.2s;
-    -webkit-appearance: none;
-  }
-  input:focus, select:focus, textarea:focus {
-    border-color: var(--border-focus);
-    background: #FFF8F5;
-  }
-  select option { background: #1c1a17; }
-  textarea { resize: vertical; line-height: 1.75; }
+/* new-cat input */
+#f-newcat{display:none;margin-top:0.5rem;}
 
-  /* ── TITLE INPUT (BIG) ── */
-  #title {
-    font-family: var(--fd);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    padding: 1rem 1.25rem;
-  }
+/* editor toolbar */
+.toolbar{
+  display:flex;flex-wrap:wrap;gap:0.2rem;
+  padding:0.5rem 0.75rem;
+  background:#EDEBE8;border:1px solid var(--border);
+  border-bottom:none;border-radius:6px 6px 0 0;
+}
+.toolbar+textarea{border-radius:0 0 6px 6px;}
+.tb{
+  background:none;border:1px solid transparent;border-radius:4px;
+  color:var(--text-dim);font-size:0.74rem;font-family:var(--fd);
+  font-weight:700;padding:0.22rem 0.55rem;cursor:pointer;
+  transition:all 0.12s;
+}
+.tb:hover{background:rgba(155,91,58,0.1);border-color:rgba(155,91,58,0.3);color:var(--fire-h);}
+.tb-sep{width:1px;background:var(--border);margin:0.1rem 0.2rem;align-self:stretch;}
 
-  /* ── CONTENT EDITOR ── */
-  .editor-wrap { position: relative; }
-  #content {
-    min-height: 400px;
-    font-family: 'Noto Sans TC', monospace;
-    font-size: 1rem;
-    line-height: 1.9;
-    padding: 1.25rem;
-    tab-size: 2;
-  }
-  .editor-toolbar {
-    display: flex;
-    gap: 0.25rem;
-    flex-wrap: wrap;
-    padding: 0.6rem 0.75rem;
-    background: #EDEBE8;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-bottom: none;
-    border-radius: 6px 6px 0 0;
-  }
-  .editor-toolbar + textarea { border-radius: 0 0 6px 6px; }
-  .tb-btn {
-    background: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: var(--text-dim);
-    font-size: 0.75rem;
-    font-family: var(--fd);
-    font-weight: 600;
-    padding: 0.25rem 0.6rem;
-    cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.02em;
-  }
-  .tb-btn:hover {
-    background: rgba(155,91,58,0.12);
-    border-color: rgba(155,91,58,0.4);
-    color: var(--fire-h);
-  }
-  .tb-sep {
-    width: 1px;
-    background: var(--border);
-    margin: 0.1rem 0.25rem;
-    align-self: stretch;
-  }
+/* TAGS */
+.tag-presets{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.6rem;}
+.preset-btn{
+  padding:0.18rem 0.55rem;border-radius:4px;font-size:0.72rem;
+  cursor:pointer;font-family:var(--fb);transition:all 0.12s;
+  background:rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.1);color:var(--text-dim);
+}
+.preset-btn.selected{
+  background:rgba(155,91,58,0.15);border-color:rgba(155,91,58,0.4);color:var(--fire);
+}
+.tag-input-row{
+  display:flex;flex-wrap:wrap;gap:0.35rem;
+  padding:0.5rem 0.75rem;
+  background:#fff;border:1px solid var(--border);border-radius:6px;
+  cursor:text;min-height:42px;align-items:center;
+  transition:border-color 0.2s;
+}
+.tag-input-row:focus-within{border-color:var(--border-focus);}
+.tag-chip{
+  display:flex;align-items:center;gap:0.25rem;
+  background:rgba(155,91,58,0.12);border:1px solid rgba(155,91,58,0.28);
+  border-radius:4px;padding:0.12rem 0.45rem;
+  font-size:0.74rem;color:var(--fire);font-family:var(--fd);
+}
+.tag-chip button{
+  background:none;border:none;color:rgba(155,91,58,0.55);
+  cursor:pointer;font-size:1rem;line-height:1;padding:0;
+}
+.tag-chip button:hover{color:var(--fire);}
+#tag-input{
+  border:none!important;background:none!important;
+  padding:0.1rem 0.2rem!important;font-size:0.85rem!important;
+  flex:1;min-width:90px;outline:none!important;border-radius:0!important;
+}
 
-  /* ── TAGS ── */
-  .tag-input-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    padding: 0.6rem 0.75rem;
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    cursor: text;
-    min-height: 46px;
-    align-items: center;
-    transition: border-color 0.2s;
-  }
-  .tag-input-wrap:focus-within { border-color: var(--border-focus); }
-  .tag-chip {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    background: rgba(155,91,58,0.15);
-    border: 1px solid rgba(155,91,58,0.3);
-    border-radius: 4px;
-    padding: 0.15rem 0.5rem;
-    font-size: 0.75rem;
-    color: var(--fire-h);
-    font-family: var(--fd);
-  }
-  .tag-chip button {
-    background: none;
-    border: none;
-    color: rgba(155,91,58,0.6);
-    cursor: pointer;
-    font-size: 0.9rem;
-    line-height: 1;
-    padding: 0;
-    transition: color 0.15s;
-  }
-  .tag-chip button:hover { color: var(--fire); }
-  .tag-input {
-    border: none !important;
-    background: none !important;
-    padding: 0.15rem 0.25rem !important;
-    font-size: 0.85rem !important;
-    flex: 1;
-    min-width: 80px;
-    width: auto !important;
-    outline: none !important;
-    border-radius: 0 !important;
-  }
+/* custom tag mgmt */
+.custom-tag-toggle{
+  background:none;border:none;cursor:pointer;
+  font-size:0.72rem;color:var(--text-hint);font-family:var(--fb);
+  padding:0.3rem 0;margin-top:0.4rem;display:block;
+}
+.custom-tag-panel{
+  display:none;margin-top:0.5rem;padding:0.75rem;
+  background:rgba(0,0,0,0.03);border:1px solid var(--border);border-radius:6px;
+}
+.custom-tag-input-row{display:flex;gap:0.4rem;margin-bottom:0.5rem;}
+.custom-tag-input-row input{font-size:0.85rem;}
+.btn-add{
+  background:var(--fire);color:#fff;border:none;
+  border-radius:4px;padding:0.4rem 0.9rem;
+  cursor:pointer;font-size:0.76rem;font-family:var(--fd);font-weight:700;
+  white-space:nowrap;
+}
 
-  /* ── PREVIEW PANEL ── */
-  .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+/* SIDEBAR */
+.sidebar{display:flex;flex-direction:column;gap:1.25rem;}
+.panel{background:var(--panel);border:1px solid rgba(0,0,0,0.08);border-radius:8px;overflow:hidden;}
+.panel-hd{
+  padding:0.75rem 1.1rem;border-bottom:1px solid rgba(0,0,0,0.06);
+  font-family:var(--fd);font-size:0.62rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;color:var(--text-dim);
+}
+.panel-bd{padding:1.1rem;}
 
-  .panel {
-    background: #FFFFFF;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .panel-header {
-    padding: 0.9rem 1.25rem;
-    border-bottom: 1px solid var(--border);
-    font-family: var(--fd);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-  .panel-body { padding: 1.25rem; }
+/* preview card */
+.prev-card{background:#F0EDE9;border:1px solid rgba(0,0,0,0.07);border-radius:6px;overflow:hidden;}
+.prev-thumb{width:100%;aspect-ratio:16/9;background:rgba(155,91,58,0.1);display:flex;align-items:center;justify-content:center;font-size:2rem;overflow:hidden;}
+.prev-thumb img{width:100%;height:100%;object-fit:cover;}
+.prev-body{padding:0.8rem;}
+.prev-cat{font-family:var(--fd);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--fire);font-weight:700;margin-bottom:0.3rem;}
+.prev-title{font-family:var(--fd);font-size:0.92rem;font-weight:700;color:#2A2420;line-height:1.3;margin-bottom:0.3rem;}
+.prev-excerpt{font-size:0.72rem;color:#6B5E58;line-height:1.55;}
+.prev-date{font-size:0.64rem;color:#9E8E88;font-family:var(--fd);margin-top:0.5rem;}
 
-  /* ── PREVIEW CARD ── */
-  .preview-card {
-    background: #F0EDE9;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  .preview-thumb {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: rgba(155,91,58,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: rgba(155,91,58,0.4);
-    overflow: hidden;
-  }
-  .preview-thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .preview-card-body { padding: 0.85rem; }
-  .preview-cat {
-    font-family: var(--fd);
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--fire);
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-  }
-  .preview-title {
-    font-family: var(--fd);
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #2A2420;
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.4rem;
-  }
-  .preview-excerpt {
-    font-size: 0.72rem;
-    color: rgba(212,207,200,0.5);
-    line-height: 1.6;
-  }
-  .preview-date {
-    font-size: 0.65rem;
-    color: #9E8E88;
-    font-family: var(--fd);
-    margin-top: 0.6rem;
-  }
+/* filename */
+.filename-box{
+  background:#EDEBE8;border:1px solid var(--border);border-radius:6px;
+  padding:0.7rem 1rem;font-family:monospace;font-size:0.78rem;
+  color:var(--fire-h);word-break:break-all;line-height:1.5;
+}
 
-  /* ── FILENAME ── */
-  .filename-box {
-    background: #EDEBE8;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 6px;
-    padding: 0.75rem 1rem;
-    font-family: monospace;
-    font-size: 0.78rem;
-    color: var(--fire-h);
-    word-break: break-all;
-    line-height: 1.5;
-  }
+/* download btn */
+.btn-dl{
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  width:100%;padding:0.95rem;
+  background:linear-gradient(135deg,var(--fire),var(--fire-h));
+  border:none;border-radius:6px;color:#fff;
+  font-family:var(--fd);font-size:0.78rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  cursor:pointer;transition:opacity 0.15s,transform 0.12s;
+}
+.btn-dl:hover{opacity:0.9;transform:translateY(-1px);}
+.btn-dl:disabled{opacity:0.38;cursor:not-allowed;transform:none;}
 
-  /* ── DOWNLOAD BTN ── */
-  .btn-download {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    width: 100%;
-    padding: 1rem;
-    background: linear-gradient(135deg, var(--fire) 0%, var(--fire-h) 100%);
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-family: var(--fd);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: opacity 0.2s, transform 0.15s;
-  }
-  .btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
-  .btn-download:active { transform: translateY(0); }
-  .btn-download:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+/* publish-now notice */
+.publish-note{
+  font-size:0.75rem;color:var(--text-dim);
+  background:rgba(155,91,58,0.06);
+  border:1px solid rgba(155,91,58,0.15);
+  border-radius:6px;padding:0.75rem 0.9rem;
+  line-height:1.6;
+}
+.publish-note strong{color:var(--fire);}
 
-  /* ── STEPS ── */
-  .steps { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-  .steps li {
-    display: flex;
-    gap: 0.75rem;
-    font-size: 0.84rem;
-    color: var(--text-dim);
-    line-height: 1.6;
-  }
-  .step-num {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    background: rgba(155,91,58,0.15);
-    border: 1px solid rgba(155,91,58,0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--fd);
-    font-size: 0.62rem;
-    font-weight: 700;
-    color: var(--fire);
-    margin-top: 1px;
-  }
-  .steps a {
-    color: var(--fire-h);
-    text-decoration: none;
-  }
-  .steps a:hover { text-decoration: underline; }
+/* steps */
+.steps{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.steps li{display:flex;gap:0.6rem;font-size:0.78rem;color:var(--text-dim);line-height:1.55;}
+.sn{
+  flex-shrink:0;width:20px;height:20px;
+  background:rgba(155,91,58,0.12);border:1px solid rgba(155,91,58,0.28);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--fd);font-size:0.62rem;font-weight:700;color:var(--fire);margin-top:1px;
+}
+.steps a{color:var(--fire-h);text-decoration:none;}
+.steps a:hover{text-decoration:underline;}
 
-  /* ── SUCCESS TOAST ── */
-  #toast {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: #1a3a1a;
-    border: 1px solid rgba(39,174,96,0.4);
-    color: #7ecb7e;
-    padding: 0.85rem 1.5rem;
-    border-radius: 8px;
-    font-family: var(--fd);
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(.4,0,.2,1);
-    z-index: 9999;
-    white-space: nowrap;
-  }
-  #toast.show {
-    transform: translateX(-50%) translateY(0);
-    opacity: 1;
-  }
+/* ── MANAGE PAGE ── */
+.manage-wrap{max-width:820px;margin:0 auto;padding:2rem;}
+.manage-hd{margin-bottom:1.5rem;}
+.manage-hd h2{font-family:var(--fd);font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;}
+.manage-hd p{font-size:0.83rem;color:var(--text-dim);line-height:1.65;}
 
-  /* ── HEADER NAV ── */
-  .header-nav { display: flex; gap: 0.25rem; }
-  .hnav-btn {
-    background: none;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    padding: 0.45rem 1rem;
-    font-family: var(--fd);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--text-dim);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .hnav-btn:hover { background: rgba(0,0,0,0.05); color: var(--text); }
-  .hnav-btn.active {
-    background: var(--fire);
-    color: #fff;
-    border-color: var(--fire);
-  }
+#manage-status{
+  text-align:center;padding:3rem 1rem;
+  color:var(--text-hint);font-size:0.85rem;
+}
 
-  /* ── MANAGE PAGE ── */
-  .manage-wrap {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .manage-intro { }
+/* post card */
+.post-card{
+  background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:8px;
+  padding:1rem 1.15rem;display:flex;align-items:flex-start;gap:1rem;
+  margin-bottom:0.7rem;transition:box-shadow 0.15s;
+}
+.post-card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.07);}
+.pc-info{flex:1;}
+.pc-title{font-family:var(--fd);font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.2rem;}
+.pc-meta{font-size:0.73rem;color:var(--text-dim);display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;align-items:center;}
+.pc-cat{
+  font-size:0.6rem;font-family:var(--fd);font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;background:rgba(155,91,58,0.1);
+  border:1px solid rgba(155,91,58,0.2);color:var(--fire);
+  padding:0.1rem 0.4rem;border-radius:3px;
+}
+.pc-excerpt{font-size:0.77rem;color:var(--text-hint);line-height:1.5;}
+.pc-file{font-size:0.67rem;color:var(--fire);font-family:monospace;margin-top:0.35rem;}
+.pc-actions{display:flex;flex-direction:column;gap:0.35rem;flex-shrink:0;}
+.btn-sm{
+  padding:0.32rem 0.8rem;border-radius:5px;font-size:0.71rem;
+  font-family:var(--fd);font-weight:700;letter-spacing:0.05em;
+  cursor:pointer;border:1px solid;transition:all 0.14s;
+  white-space:nowrap;text-align:center;text-decoration:none;display:block;
+}
+.btn-view{background:rgba(155,91,58,0.08);border-color:rgba(155,91,58,0.25);color:var(--fire);}
+.btn-view:hover{background:var(--fire);color:#fff;}
+.btn-del{background:rgba(200,50,50,0.06);border-color:rgba(200,50,50,0.18);color:#c83232;}
+.btn-del:hover{background:#c83232;color:#fff;}
 
-  .upload-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    padding: 2rem;
-    border: 2px dashed var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    background: rgba(0,0,0,0.02);
-  }
-  .upload-area:hover {
-    border-color: var(--border-focus);
-    background: rgba(155,91,58,0.03);
-  }
-
-  /* ── POST CARD ── */
-  .post-card {
-    background: #fff;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 8px;
-    padding: 1.1rem 1.25rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-    transition: box-shadow 0.15s;
-  }
-  .post-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
-  .post-card-info { flex: 1; }
-  .post-card-title {
-    font-family: var(--fd);
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.25rem;
-    letter-spacing: -0.01em;
-  }
-  .post-card-meta {
-    font-size: 0.74rem;
-    color: var(--text-dim);
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 0.35rem;
-  }
-  .post-card-excerpt {
-    font-size: 0.78rem;
-    color: var(--text-hint);
-    line-height: 1.55;
-  }
-  .post-card-filename {
-    font-size: 0.68rem;
-    color: var(--fire);
-    font-family: monospace;
-    margin-top: 0.4rem;
-  }
-  .post-card-actions { display: flex; flex-direction: column; gap: 0.4rem; flex-shrink: 0; }
-  .btn-sm {
-    padding: 0.35rem 0.85rem;
-    border-radius: 5px;
-    font-size: 0.72rem;
-    font-family: var(--fd);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    border: 1px solid;
-    transition: all 0.15s;
-    white-space: nowrap;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-  }
-  .btn-edit {
-    background: rgba(155,91,58,0.1);
-    border-color: rgba(155,91,58,0.3);
-    color: var(--fire);
-  }
-  .btn-edit:hover { background: var(--fire); color: #fff; }
-  .btn-delete {
-    background: rgba(200,50,50,0.07);
-    border-color: rgba(200,50,50,0.2);
-    color: #c83232;
-  }
-  .btn-delete:hover { background: #c83232; color: #fff; }
-  .post-cat-badge {
-    display: inline-block;
-    font-size: 0.62rem;
-    font-family: var(--fd);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    background: rgba(155,91,58,0.1);
-    border: 1px solid rgba(155,91,58,0.2);
-    color: var(--fire);
-    padding: 0.12rem 0.45rem;
-    border-radius: 3px;
-  }
-
-@media (max-width: 900px) {
-    .container { grid-template-columns: 1fr; }
-    header { padding: 1rem 1.25rem; }
-    .container { padding: 1.5rem 1rem; }
-  }
+/* TOAST */
+#toast{
+  position:fixed;bottom:2rem;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:#1a3a1a;border:1px solid rgba(39,174,96,0.4);
+  color:#7ecb7e;padding:0.8rem 1.4rem;border-radius:8px;
+  font-family:var(--fd);font-size:0.82rem;font-weight:600;
+  opacity:0;transition:all 0.3s;z-index:9999;white-space:nowrap;
+}
+#toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">Concredia<span>.</span>Lab</div>
-  <nav class="header-nav">
-    <button class="hnav-btn active" onclick="switchTab('write', this)">✏️ 寫文章</button>
-    <button class="hnav-btn" onclick="switchTab('manage', this)">📋 管理文章</button>
-  </nav>
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showPage('write',this)">✏️ 寫文章</button>
+    <button class="tab-btn" onclick="showPage('manage',this)">📋 管理文章</button>
+  </div>
 </header>
 
-<!-- ══ 寫文章頁 ══ -->
-<div id="page-write">
-<div class="container">
-  <!-- ── 左側編輯區 ── -->
-  <div class="main-form">
+<!-- ══════════════════════════════════
+     寫文章
+══════════════════════════════════ -->
+<div id="page-write" class="page active">
+<div class="write-layout">
 
+  <!-- 左欄 -->
+  <div>
     <div class="field">
-      <div class="section-label">基本資訊</div>
-      <label for="title">文章標題 <span class="req">*</span></label>
-      <input type="text" id="title" placeholder="輸入文章標題…" oninput="updatePreview()">
+      <label class="lbl" for="f-title">文章標題 <span class="req">*</span></label>
+      <input type="text" id="f-title" placeholder="輸入文章標題…">
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="field">
+    <div class="cat-row field">
       <div>
-        <label for="date">發布日期 <span class="req">*</span></label>
-        <input type="date" id="date" oninput="updatePreview()">
+        <label class="lbl" for="f-date">發布日期 <span class="req">*</span></label>
+        <input type="date" id="f-date">
       </div>
       <div>
-        <label for="category">分類 <span class="req">*</span></label>
-        <select id="category" onchange="handleCatChange()">
+        <label class="lbl" for="f-cat">分類 <span class="req">*</span></label>
+        <select id="f-cat">
           <option value="倉庫日常">🐾 倉庫日常</option>
           <option value="Maker 實錄">⚙️ Maker 實錄</option>
           <option value="寂寞公路計劃">🛣️ 寂寞公路計劃</option>
@@ -580,584 +309,479 @@
           <option value="媒體 & 活動">📣 媒體 & 活動</option>
           <option value="__new__">＋ 新增類別…</option>
         </select>
-        <input type="text" id="new-category" placeholder="輸入新類別名稱" 
-          style="display:none;margin-top:0.5rem;" 
-          oninput="updatePreview()">
+        <input type="text" id="f-newcat" placeholder="輸入新類別名稱">
       </div>
     </div>
 
     <div class="field">
-      <label for="excerpt">文章摘要 <span class="req">*</span> <span class="hint">2–3 句話，顯示在列表卡片</span></label>
-      <textarea id="excerpt" rows="3" placeholder="簡短描述這篇文章的內容…" oninput="updatePreview()"></textarea>
+      <label class="lbl" for="f-excerpt">文章摘要 <span class="req">*</span> <span class="hint">2–3 句，顯示在列表卡片</span></label>
+      <textarea id="f-excerpt" rows="3" placeholder="簡短描述這篇文章的內容…"></textarea>
     </div>
 
     <div class="field">
-      <label for="thumbnail">封面圖片網址 <span class="hint">貼上圖片的 URL，或留空</span></label>
-      <input type="url" id="thumbnail" placeholder="https://…" oninput="updatePreview()">
+      <label class="lbl" for="f-thumb">封面圖片網址 <span class="hint">選填，貼上圖片 URL</span></label>
+      <input type="url" id="f-thumb" placeholder="https://…">
     </div>
 
     <div class="field">
-      <div class="section-label">文章內容</div>
-      <div class="editor-toolbar">
-        <button class="tb-btn" onclick="wrap('**','**')" title="粗體"><b>B</b></button>
-        <button class="tb-btn" onclick="wrap('*','*')" title="斜體"><i>I</i></button>
+      <label class="lbl">文章內容 <span class="req">*</span></label>
+      <div class="toolbar">
+        <button class="tb" onclick="wrapText('**','**')"><b>B</b></button>
+        <button class="tb" onclick="wrapText('*','*')"><i>I</i></button>
         <div class="tb-sep"></div>
-        <button class="tb-btn" onclick="insertLine('## ')">H2</button>
-        <button class="tb-btn" onclick="insertLine('### ')">H3</button>
+        <button class="tb" onclick="insertPrefix('## ')">H2</button>
+        <button class="tb" onclick="insertPrefix('### ')">H3</button>
         <div class="tb-sep"></div>
-        <button class="tb-btn" onclick="insertLine('> ')">引言</button>
-        <button class="tb-btn" onclick="insertLine('- ')">列表</button>
+        <button class="tb" onclick="insertPrefix('> ')">引言</button>
+        <button class="tb" onclick="insertPrefix('- ')">列表</button>
         <div class="tb-sep"></div>
-        <button class="tb-btn" onclick="insertImg()">🖼 圖片</button>
-        <button class="tb-btn" onclick="insertLine('---')">分隔線</button>
+        <button class="tb" onclick="doInsertImg()">🖼 圖片</button>
+        <button class="tb" onclick="insertPrefix('---')">分隔線</button>
       </div>
-      <textarea id="content" placeholder="在這裡寫文章內容（支援 Markdown 格式）…
+      <textarea id="f-content" rows="16" placeholder="在這裡寫文章內容，直接打字就好，不需要任何格式符號。
 
-## 大標題
+如果要分段，空一行就好。
 
-這裡寫段落內容。
-
-### 小標題
-
-- 列表項目一
-- 列表項目二
-
-> 引言文字放這裡
-
-![圖片說明](圖片網址)"></textarea>
+（想用粗體可以點上方工具列的 B 按鈕）"></textarea>
     </div>
 
     <div class="field">
-      <label for="youtube">YouTube 影片網址 <span class="hint">選填，會嵌入文章底部</span></label>
-      <input type="url" id="youtube" placeholder="https://www.youtube.com/watch?v=…">
+      <label class="lbl" for="f-yt">YouTube 影片網址 <span class="hint">選填，嵌入文章底部</span></label>
+      <input type="url" id="f-yt" placeholder="https://www.youtube.com/watch?v=…">
     </div>
 
     <div class="field">
-      <label>標籤 <span class="hint">點選常用標籤，或自己輸入後按 Enter</span></label>
-
-      <!-- 常用標籤快選 -->
-      <div id="preset-tags" style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.75rem;"></div>
-
-      <!-- 已選標籤 + 輸入框 -->
-      <div class="tag-input-wrap" id="tag-wrap" onclick="document.getElementById('tag-input').focus()">
-        <input type="text" id="tag-input" class="tag-input" placeholder="自行輸入標籤後按 Enter 新增…" onkeydown="handleTag(event)">
+      <label class="lbl">標籤 <span class="hint">點選常用標籤，或輸入後按 Enter</span></label>
+      <div class="tag-presets" id="preset-area"></div>
+      <div class="tag-input-row" id="tag-row">
+        <input type="text" id="tag-input" placeholder="輸入後按 Enter 新增…">
       </div>
-      <input type="hidden" id="tags-hidden">
-
-      <!-- 自訂預設標籤管理 -->
-      <div style="margin-top:0.75rem;">
-        <button onclick="toggleCustomPreset()" style="background:none;border:none;cursor:pointer;font-size:0.72rem;color:var(--text-hint);font-family:var(--fb);padding:0;letter-spacing:0.04em;">
-          ＋ 管理我的常用標籤
-        </button>
-        <div id="custom-preset-panel" style="display:none;margin-top:0.6rem;padding:0.75rem;background:rgba(0,0,0,0.04);border-radius:6px;border:1px solid var(--border);">
-          <div style="font-size:0.74rem;color:var(--text-dim);margin-bottom:0.5rem;">輸入後按 Enter 加入常用清單（儲存在這台電腦）</div>
-          <div style="display:flex;gap:0.5rem;">
-            <input type="text" id="new-preset-input" placeholder="新標籤名稱…" 
-              style="flex:1;font-size:0.84rem;" onkeydown="if(event.key==='Enter'){addCustomPreset();event.preventDefault();}">
-            <button onclick="addCustomPreset()" style="background:var(--fire);color:#fff;border:none;border-radius:4px;padding:0.4rem 0.85rem;cursor:pointer;font-size:0.78rem;font-family:var(--fb);">新增</button>
-          </div>
-          <div id="custom-preset-list" style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.35rem;"></div>
+      <button class="custom-tag-toggle" onclick="toggleCustomPanel()">＋ 管理我的常用標籤</button>
+      <div class="custom-tag-panel" id="custom-panel">
+        <div style="font-size:0.74rem;color:var(--text-dim);margin-bottom:0.5rem;">加入後下次還會在，存在這台電腦瀏覽器</div>
+        <div class="custom-tag-input-row">
+          <input type="text" id="custom-tag-input" placeholder="新標籤名稱…">
+          <button class="btn-add" onclick="addCustomTag()">新增</button>
         </div>
+        <div id="custom-tag-list" style="display:flex;flex-wrap:wrap;gap:0.35rem;"></div>
       </div>
     </div>
-
   </div>
 
-  <!-- ── 右側側欄 ── -->
+  <!-- 右欄 -->
   <div class="sidebar">
 
-    <!-- 預覽卡片 -->
+    <!-- 預覽 -->
     <div class="panel">
-      <div class="panel-header">預覽卡片效果</div>
-      <div class="panel-body">
-        <div class="preview-card">
-          <div class="preview-thumb" id="prev-thumb">🧱</div>
-          <div class="preview-card-body">
-            <div class="preview-cat" id="prev-cat">倉庫日常</div>
-            <div class="preview-title" id="prev-title">文章標題</div>
-            <div class="preview-excerpt" id="prev-excerpt">文章摘要會顯示在這裡…</div>
-            <div class="preview-date" id="prev-date">—</div>
+      <div class="panel-hd">列表卡片預覽</div>
+      <div class="panel-bd">
+        <div class="prev-card">
+          <div class="prev-thumb" id="prev-thumb">🧱</div>
+          <div class="prev-body">
+            <div class="prev-cat" id="prev-cat">倉庫日常</div>
+            <div class="prev-title" id="prev-title">文章標題</div>
+            <div class="prev-excerpt" id="prev-excerpt">摘要…</div>
+            <div class="prev-date" id="prev-date">—</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- 發布說明 -->
+    <div class="publish-note">
+      📌 <strong>立即發布</strong>：日期選今天 → 下載 → 上傳 GitHub → 約 1 分鐘上線<br>
+      📅 <strong>預約發布</strong>：選未來日期 → 一樣操作 → 文章會在指定日期出現
     </div>
 
     <!-- 檔名 -->
     <div class="panel">
-      <div class="panel-header">產生的檔案名稱</div>
-      <div class="panel-body">
+      <div class="panel-hd">產生的檔案名稱</div>
+      <div class="panel-bd">
         <div class="filename-box" id="filename-box">請先填寫標題和日期</div>
       </div>
     </div>
 
     <!-- 下載 -->
-    <button class="btn-download" id="download-btn" onclick="downloadMd()" disabled>
+    <button class="btn-dl" id="btn-dl" disabled onclick="doDownload()">
       ⬇ 下載 .md 文章檔案
     </button>
 
-    <!-- 上傳步驟 -->
+    <!-- 步驟 -->
     <div class="panel">
-      <div class="panel-header">下載後怎麼發布？</div>
-      <div class="panel-body">
+      <div class="panel-hd">下載後怎麼發布？</div>
+      <div class="panel-bd">
         <ol class="steps">
-          <li>
-            <span class="step-num">1</span>
-            按上方按鈕下載 <code style="color:var(--fire-h);font-size:0.75rem;">.md</code> 檔案
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            前往 <a href="https://github.com/qoun2004/-concredia-site/upload/main/_posts" target="_blank">GitHub → _posts 資料夾</a>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            點 <strong style="color:var(--text)">Add file → Upload files</strong>，上傳剛才的 .md 檔案
-          </li>
-          <li>
-            <span class="step-num">4</span>
-            點 <strong style="color:var(--text)">Commit changes</strong>，Netlify 自動部署，約 1 分鐘後上線
-          </li>
+          <li><span class="sn">1</span>按上方按鈕下載 <code style="color:var(--fire-h);font-size:0.75rem;">.md</code> 檔案</li>
+          <li><span class="sn">2</span>前往 <a href="https://github.com/qoun2004/-concredia-site/upload/main/_posts" target="_blank">GitHub → _posts 資料夾</a></li>
+          <li><span class="sn">3</span>點 <strong style="color:var(--text)">Add file → Upload files</strong>，上傳 .md</li>
+          <li><span class="sn">4</span>點 <strong style="color:var(--text)">Commit changes</strong>，約 1 分鐘後上線</li>
         </ol>
       </div>
     </div>
 
   </div>
 </div>
-
-</div><!-- end page-write container -->
-</div><!-- end page-write -->
-
-<!-- ══ 管理文章頁 ══ -->
-<div id="page-manage" style="display:none;">
-  <div class="manage-wrap">
-
-    <div class="manage-intro">
-      <div class="section-label" style="margin-bottom:0.5rem;">文章管理</div>
-      <p style="font-size:0.85rem;color:var(--text-dim);line-height:1.7;">
-        所有文章列表。點「刪除」會直接開啟 GitHub 該檔案頁面，按刪除鈕即可。
-      </p>
-    </div>
-
-    <!-- 狀態訊息 -->
-    <div id="manage-status" style="text-align:center;padding:2.5rem;color:var(--text-hint);font-size:0.85rem;">
-      載入文章中…
-    </div>
-
-    <!-- 文章列表 -->
-    <div id="post-list-wrap" style="display:none;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-        <div class="section-label" style="flex:1;margin-bottom:0;">文章列表</div>
-        <span id="post-count" style="font-size:0.75rem;color:var(--text-hint);font-family:var(--fd);"></span>
-      </div>
-      <div id="post-list"></div>
-    </div>
-
-  </div>
 </div>
 
-<div id="toast">✅ 文章下載成功！</div>
+<!-- ══════════════════════════════════
+     管理文章
+══════════════════════════════════ -->
+<div id="page-manage" class="page">
+<div class="manage-wrap">
+  <div class="manage-hd">
+    <h2>文章管理</h2>
+    <p>點「🗑 刪除」會直接開啟 GitHub 刪除頁面，按 Commit changes 即可完成刪除。<br>Netlify 約 1 分鐘後自動重新部署。</p>
+  </div>
+  <div id="manage-status">載入文章中…</div>
+  <div id="post-list"></div>
+</div>
+</div>
+
+<div id="toast"></div>
 
 <script>
-  // ── 分類處理 ──
-  function handleCatChange() {
-    const sel = document.getElementById('category');
-    const newInput = document.getElementById('new-category');
-    if (sel.value === '__new__') {
-      newInput.style.display = 'block';
-      newInput.focus();
-    } else {
-      newInput.style.display = 'none';
-    }
+// ══════════════════════════════════════════════
+// 工具
+// ══════════════════════════════════════════════
+function $(id){ return document.getElementById(id); }
+
+function showToast(msg){
+  var t = $('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3000);
+}
+
+// ══════════════════════════════════════════════
+// 分頁切換
+// ══════════════════════════════════════════════
+var manageLoaded = false;
+function showPage(name, btn){
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  $(('page-' + name)).classList.add('active');
+  btn.classList.add('active');
+  if(name === 'manage' && !manageLoaded){
+    manageLoaded = true;
+    loadPosts();
+  }
+}
+
+// ══════════════════════════════════════════════
+// 初始化
+// ══════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', function(){
+  // 今天日期
+  $('f-date').value = new Date().toISOString().slice(0,10);
+
+  // 事件
+  $('f-title').addEventListener('input', updatePreview);
+  $('f-date').addEventListener('input', updatePreview);
+  $('f-excerpt').addEventListener('input', updatePreview);
+  $('f-thumb').addEventListener('input', updatePreview);
+  $('f-cat').addEventListener('change', function(){
+    var show = this.value === '__new__';
+    $('f-newcat').style.display = show ? 'block' : 'none';
+    if(show) $('f-newcat').focus();
     updatePreview();
-  }
+  });
+  $('f-newcat').addEventListener('input', updatePreview);
 
-  function getCategory() {
-    const sel = document.getElementById('category');
-    if (sel.value === '__new__') {
-      return document.getElementById('new-category').value.trim() || '其他';
-    }
-    return sel.value;
-  }
+  $('tag-input').addEventListener('keydown', handleTagKey);
+  $('tag-row').addEventListener('click', function(){ $('tag-input').focus(); });
+  $('custom-tag-input').addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ e.preventDefault(); addCustomTag(); }
+  });
 
-  // ── 初始化：設定今天日期 ──
-  document.getElementById('date').value = new Date().toISOString().split('T')[0];
+  renderPresets();
   updatePreview();
+});
 
-  // ── 即時預覽 ──
-  function updatePreview() {
-    const title    = document.getElementById('title').value || '文章標題';
-    const excerpt  = document.getElementById('excerpt').value || '文章摘要會顯示在這裡…';
-    const cat      = getCategory();
-    const thumb    = document.getElementById('thumbnail').value;
-    const dateVal  = document.getElementById('date').value;
+// ══════════════════════════════════════════════
+// 分類
+// ══════════════════════════════════════════════
+function getCat(){
+  var sel = $('f-cat');
+  if(sel.value === '__new__') return $('f-newcat').value.trim() || '其他';
+  return sel.value;
+}
 
-    document.getElementById('prev-title').textContent   = title;
-    document.getElementById('prev-excerpt').textContent = excerpt;
-    document.getElementById('prev-cat').textContent     = cat;
+// ══════════════════════════════════════════════
+// 即時預覽
+// ══════════════════════════════════════════════
+function updatePreview(){
+  var title   = $('f-title').value   || '文章標題';
+  var excerpt = $('f-excerpt').value || '摘要…';
+  var cat     = getCat();
+  var thumb   = $('f-thumb').value;
+  var dateVal = $('f-date').value;
 
-    if (dateVal) {
-      const d = new Date(dateVal);
-      document.getElementById('prev-date').textContent =
-        `${d.getFullYear()} 年 ${d.getMonth()+1} 月 ${d.getDate()} 日`;
-    }
+  $('prev-title').textContent   = title;
+  $('prev-excerpt').textContent = excerpt;
+  $('prev-cat').textContent     = cat;
 
-    const thumbEl = document.getElementById('prev-thumb');
-    if (thumb) {
-      thumbEl.innerHTML = `<img src="${thumb}" onerror="this.parentElement.innerHTML='🧱'">`;
-    } else {
-      thumbEl.innerHTML = '🧱';
-    }
-
-    // 更新檔名
-    const slug = toSlug(title);
-    const filename = dateVal && slug
-      ? `${dateVal}-${slug}.md`
-      : '請先填寫標題和日期';
-    document.getElementById('filename-box').textContent = filename;
-
-    // 開關下載按鈕
-    const hasRequired = document.getElementById('title').value.trim() &&
-                        document.getElementById('date').value &&
-                        document.getElementById('excerpt').value.trim() &&
-                        document.getElementById('content').value.trim();
-    document.getElementById('download-btn').disabled = !hasRequired;
+  if(dateVal){
+    var d = new Date(dateVal + 'T00:00:00');
+    $('prev-date').textContent = d.getFullYear() + ' 年 ' + (d.getMonth()+1) + ' 月 ' + d.getDate() + ' 日';
   }
 
-  document.getElementById('title').addEventListener('input', updatePreview);
-  document.getElementById('date').addEventListener('input', updatePreview);
-  document.getElementById('excerpt').addEventListener('input', updatePreview);
-  document.getElementById('content').addEventListener('input', updatePreview);
-  document.getElementById('thumbnail').addEventListener('input', updatePreview);
-
-  // ── slug 轉換 ──
-  function toSlug(str) {
-    return str.trim()
-      .toLowerCase()
-      .replace(/[\s\u3000]+/g, '-')
-      .replace(/[^\w\u4e00-\u9fff\u3040-\u30ff-]/g, '')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '')
-      .slice(0, 60) || 'post';
+  var thumbEl = $('prev-thumb');
+  if(thumb){
+    thumbEl.innerHTML = '<img src="' + thumb + '" onerror="this.parentElement.innerHTML=\'🧱\'">';
+  } else {
+    thumbEl.innerHTML = '🧱';
   }
 
-  // ── 內建預設標籤（依類別分組）──
-  const BUILT_IN_TAGS = [
-    // 材料工法
-    '再生混凝土', 'EAC工法', '骨料裸露', '廢磚骨料', '廢玻璃', '爐石粉', '蚵殼', '洗石子', '水磨工法', '鋼筋配置',
-    // 產品系列
-    '流構系列', '標準系列', '客製系列', '畫作系列', '桌腳系列', '盆器系列', 'Conbox', '水泥音響', '水泥桌几', '水泥茶几',
-    // ESG 永續
-    'ESG', '循環經濟', '再生建材', '永續設計', '綠色採購', '減碳', 'SDGs', '碳排削減', '廢棄物再利用', '企業禮品',
-    // 品牌故事
-    '寂寞公路計劃', '竹塘社區計畫', '倉庫日常', '寶妹', 'Rovi Lee', '士敏文品',
-    // 地域
-    '彰化和美', '台灣', '台26線', '旭海',
-    // 應用場景
-    '工業風', '空間裝置', '客製刻字', 'NFC溯源', '企業落成禮', '婚禮佈置', '辦公空間',
-  ];
+  var slug = toSlug($('f-title').value);
+  var fn   = dateVal && slug ? (dateVal + '-' + slug + '.md') : '請先填寫標題和日期';
+  $('filename-box').textContent = fn;
 
-  const STORAGE_KEY = 'concredia_custom_tags';
+  var ok = $('f-title').value.trim() && $('f-date').value &&
+           $('f-excerpt').value.trim() && $('f-content').value.trim();
+  $('btn-dl').disabled = !ok;
+}
 
-  function getCustomTags() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-    catch { return []; }
+function toSlug(s){
+  return (s||'').trim()
+    .toLowerCase()
+    .replace(/[\s\u3000]+/g,'-')
+    .replace(/[^\w\u4e00-\u9fff\u3040-\u30ff-]/g,'')
+    .replace(/-+/g,'-').replace(/^-|-$/g,'')
+    .slice(0,60) || 'post';
+}
+
+// ══════════════════════════════════════════════
+// 工具列
+// ══════════════════════════════════════════════
+function wrapText(before, after){
+  var ta = $('f-content');
+  var s = ta.selectionStart, e = ta.selectionEnd;
+  var sel = ta.value.slice(s,e) || '文字';
+  ta.value = ta.value.slice(0,s) + before + sel + after + ta.value.slice(e);
+  ta.focus();
+  ta.setSelectionRange(s+before.length, s+before.length+sel.length);
+  updatePreview();
+}
+function insertPrefix(prefix){
+  var ta = $('f-content');
+  var s = ta.selectionStart;
+  var before = ta.value.slice(0,s);
+  var after  = ta.value.slice(s);
+  var nl = (before.length && !before.endsWith('\n')) ? '\n' : '';
+  ta.value = before + nl + prefix + after;
+  var pos = before.length + nl.length + prefix.length;
+  ta.focus(); ta.setSelectionRange(pos,pos);
+  updatePreview();
+}
+function doInsertImg(){
+  var url = prompt('請貼上圖片網址：');
+  if(!url) return;
+  var alt = prompt('圖片說明（可留空）：') || '圖片';
+  insertPrefix('![' + alt + '](' + url + ')\n');
+}
+
+// ══════════════════════════════════════════════
+// 標籤
+// ══════════════════════════════════════════════
+var BUILTIN = [
+  // 材料工法
+  '再生混凝土','EAC工法','骨料裸露','廢磚骨料','廢玻璃','爐石粉','蚵殼','洗石子','水磨工法',
+  // 產品
+  '流構系列','標準系列','客製系列','畫作系列','Conbox','水泥音響','水泥桌几','水泥茶几','盆器系列',
+  // ESG
+  'ESG','循環經濟','再生建材','永續設計','綠色採購','減碳','SDGs','企業禮品','碳排削減',
+  // 品牌
+  '寂寞公路計劃','竹塘社區計畫','倉庫日常','寶妹','Rovi Lee','士敏文品',
+  // 場景
+  '工業風','空間裝置','客製刻字','NFC溯源','企業落成禮','婚禮佈置',
+  // 地域
+  '彰化和美','台灣','台26線','旭海',
+];
+
+var selectedTags = [];
+var CUSTOM_KEY   = 'clab_custom_tags';
+
+function getCustomTags(){
+  try{ return JSON.parse(localStorage.getItem(CUSTOM_KEY)) || []; }
+  catch(e){ return []; }
+}
+function saveCustomTags(arr){
+  localStorage.setItem(CUSTOM_KEY, JSON.stringify(arr));
+}
+
+function renderPresets(){
+  var area = $('preset-area');
+  area.innerHTML = '';
+  var custom = getCustomTags();
+  var all = BUILTIN.concat(custom.filter(function(t){ return BUILTIN.indexOf(t) < 0; }));
+  all.forEach(function(t){
+    var btn = document.createElement('button');
+    btn.className = 'preset-btn' + (selectedTags.indexOf(t) >= 0 ? ' selected' : '');
+    btn.textContent = t;
+    btn.addEventListener('click', function(){ toggleTag(t); });
+    area.appendChild(btn);
+  });
+  renderCustomList();
+}
+
+function toggleTag(t){
+  var i = selectedTags.indexOf(t);
+  if(i >= 0) selectedTags.splice(i,1); else selectedTags.push(t);
+  renderPresets();
+  renderTagChips();
+}
+
+function handleTagKey(e){
+  if(e.key === 'Enter' || e.key === ','){
+    e.preventDefault();
+    var val = e.target.value.trim().replace(/,/g,'');
+    if(val && selectedTags.indexOf(val) < 0){ selectedTags.push(val); }
+    e.target.value = '';
+    renderPresets();
+    renderTagChips();
+  } else if(e.key === 'Backspace' && !e.target.value && selectedTags.length){
+    selectedTags.pop();
+    renderPresets();
+    renderTagChips();
   }
-  function saveCustomTags(arr) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+}
+
+function removeTag(i){
+  selectedTags.splice(i,1);
+  renderPresets();
+  renderTagChips();
+}
+
+function renderTagChips(){
+  var row   = $('tag-row');
+  var input = $('tag-input');
+  row.innerHTML = '';
+  selectedTags.forEach(function(t, i){
+    var chip = document.createElement('span');
+    chip.className = 'tag-chip';
+    chip.innerHTML = t + '<button onclick="removeTag(' + i + ')">×</button>';
+    row.appendChild(chip);
+  });
+  row.appendChild(input);
+}
+
+function toggleCustomPanel(){
+  var p = $('custom-panel');
+  p.style.display = p.style.display === 'block' ? 'none' : 'block';
+}
+function addCustomTag(){
+  var val = $('custom-tag-input').value.trim();
+  if(!val) return;
+  var custom = getCustomTags();
+  if(BUILTIN.indexOf(val) < 0 && custom.indexOf(val) < 0){ custom.push(val); saveCustomTags(custom); }
+  $('custom-tag-input').value = '';
+  renderPresets();
+}
+function removeCustomTag(t){
+  saveCustomTags(getCustomTags().filter(function(x){ return x !== t; }));
+  renderPresets();
+}
+function renderCustomList(){
+  var list = $('custom-tag-list');
+  if(!list) return;
+  list.innerHTML = '';
+  getCustomTags().forEach(function(t){
+    var chip = document.createElement('span');
+    chip.className = 'tag-chip';
+    chip.innerHTML = t + '<button onclick="removeCustomTag(\'' + t.replace(/'/g,"\\'") + '\')">×</button>';
+    list.appendChild(chip);
+  });
+}
+
+// ══════════════════════════════════════════════
+// 下載 .md
+// ══════════════════════════════════════════════
+function doDownload(){
+  var title   = $('f-title').value.trim();
+  var date    = $('f-date').value;
+  var cat     = getCat();
+  var excerpt = $('f-excerpt').value.trim();
+  var thumb   = $('f-thumb').value.trim();
+  var content = $('f-content').value.trim();
+  var yt      = $('f-yt').value.trim();
+
+  if(!title || !date || !excerpt || !content){
+    alert('請填寫必填欄位：標題、日期、摘要、文章內容');
+    return;
   }
 
-  function initPresetTags() {
-    const customTags = getCustomTags();
-    const allPresets = [...BUILT_IN_TAGS, ...customTags.filter(t => !BUILT_IN_TAGS.includes(t))];
-    const wrap = document.getElementById('preset-tags');
-    wrap.innerHTML = '';
-    allPresets.forEach(t => {
-      const btn = document.createElement('button');
-      btn.textContent = t;
-      btn.dataset.tag = t;
-      btn.style.cssText = `background:${tags.includes(t)?'rgba(155,91,58,0.2)':'rgba(0,0,0,0.05)'};border:1px solid ${tags.includes(t)?'rgba(155,91,58,0.5)':'rgba(0,0,0,0.12)'};border-radius:4px;padding:0.2rem 0.6rem;font-size:0.74rem;cursor:pointer;font-family:var(--fb);color:${tags.includes(t)?'var(--fire)':'var(--text-dim)'};transition:all 0.15s;`;
-      btn.onclick = () => togglePresetTag(t);
-      wrap.appendChild(btn);
-    });
-    renderCustomPresetList();
+  var fm = '---\n';
+  fm += 'title: ' + title + '\n';
+  fm += 'date: ' + date + '\n';
+  fm += 'category: ' + cat + '\n';
+  if(thumb) fm += 'thumbnail: ' + thumb + '\n';
+  fm += 'excerpt: ' + excerpt + '\n';
+  if(yt)    fm += 'youtube: ' + yt + '\n';
+  if(selectedTags.length){
+    fm += 'tags:\n';
+    selectedTags.forEach(function(t){ fm += '  - ' + t + '\n'; });
   }
+  fm += '---\n\n';
 
-  function togglePresetTag(t) {
-    const idx = tags.indexOf(t);
-    if (idx > -1) tags.splice(idx, 1);
-    else tags.push(t);
-    renderTags();
-    initPresetTags();
-  }
+  var md  = fm + content;
+  var fn  = date + '-' + toSlug(title) + '.md';
+  var url = URL.createObjectURL(new Blob([md], {type:'text/markdown;charset=utf-8'}));
+  var a   = document.createElement('a');
+  a.href = url; a.download = fn; a.click();
+  URL.revokeObjectURL(url);
+  showToast('✅ ' + fn + ' 下載成功！');
+}
 
-  function toggleCustomPreset() {
-    const panel = document.getElementById('custom-preset-panel');
-    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-  }
-
-  function addCustomPreset() {
-    const input = document.getElementById('new-preset-input');
-    const val = input.value.trim();
-    if (!val) return;
-    const custom = getCustomTags();
-    if (!custom.includes(val) && !BUILT_IN_TAGS.includes(val)) {
-      custom.push(val);
-      saveCustomTags(custom);
-    }
-    input.value = '';
-    initPresetTags();
-  }
-
-  function removeCustomPreset(t) {
-    const custom = getCustomTags().filter(x => x !== t);
-    saveCustomTags(custom);
-    initPresetTags();
-  }
-
-  function renderCustomPresetList() {
-    const custom = getCustomTags();
-    const list = document.getElementById('custom-preset-list');
-    if (!list) return;
-    list.innerHTML = '';
-    custom.forEach(t => {
-      const chip = document.createElement('span');
-      chip.className = 'tag-chip';
-      chip.innerHTML = `${t}<button onclick="removeCustomPreset('${t.replace(/'/g,"\'")}')">×</button>`;
-      list.appendChild(chip);
-    });
-  }
-
-  // ── 標籤輸入 ──
-  const tags = [];
-  function handleTag(e) {
-    if (e.key === 'Enter' || e.key === ',') {
-      e.preventDefault();
-      const val = e.target.value.trim().replace(/,/g, '');
-      if (val && !tags.includes(val)) {
-        tags.push(val);
-        renderTags();
-        initPresetTags();
+// ══════════════════════════════════════════════
+// 管理頁：讀取 posts.json
+// ══════════════════════════════════════════════
+function loadPosts(){
+  fetch('/_data/posts.json?t=' + Date.now())
+    .then(function(r){
+      if(!r.ok) throw new Error('no data');
+      return r.json();
+    })
+    .then(function(json){
+      var posts = json.posts || [];
+      if(!posts.length){
+        $('manage-status').textContent = '目前還沒有任何文章。';
+        return;
       }
-      e.target.value = '';
-    } else if (e.key === 'Backspace' && !e.target.value && tags.length) {
-      tags.pop();
-      renderTags();
-      initPresetTags();
-    }
-  }
-  function removeTag(i) {
-    tags.splice(i, 1);
-    renderTags();
-    initPresetTags();
-  }
-  function renderTags() {
-    const wrap = document.getElementById('tag-wrap');
-    const input = document.getElementById('tag-input');
-    wrap.innerHTML = '';
-    tags.forEach((t, i) => {
-      const chip = document.createElement('span');
-      chip.className = 'tag-chip';
-      chip.innerHTML = `${t}<button onclick="removeTag(${i})">×</button>`;
-      wrap.appendChild(chip);
-    });
-    wrap.appendChild(input);
-    document.getElementById('tags-hidden').value = tags.join(', ');
-  }
+      $('manage-status').style.display = 'none';
+      var list = $('post-list');
+      list.innerHTML = '';
+      posts.forEach(function(p){
+        var md   = p.md_filename || (p.date + '-' + p.slug + '.md');
+        var ghDel  = 'https://github.com/qoun2004/-concredia-site/delete/main/_posts/' + encodeURIComponent(md);
+        var preview = p.filename || '';
+        var tags = Array.isArray(p.tags) ? p.tags.join('、') : (p.tags || '');
 
-  // 頁面載入時初始化標籤快選
-  initPresetTags();
-
-  // ── 工具列 ──
-  function wrap(before, after) {
-    const ta = document.getElementById('content');
-    const s = ta.selectionStart, e = ta.selectionEnd;
-    const sel = ta.value.slice(s, e) || '文字';
-    const newVal = ta.value.slice(0, s) + before + sel + after + ta.value.slice(e);
-    ta.value = newVal;
-    ta.focus();
-    ta.setSelectionRange(s + before.length, s + before.length + sel.length);
-    updatePreview();
-  }
-  function insertLine(prefix) {
-    const ta = document.getElementById('content');
-    const s = ta.selectionStart;
-    const before = ta.value.slice(0, s);
-    const after = ta.value.slice(s);
-    const needNl = before.length && !before.endsWith('\n') ? '\n' : '';
-    ta.value = before + needNl + prefix + after;
-    const pos = before.length + needNl.length + prefix.length;
-    ta.focus();
-    ta.setSelectionRange(pos, pos);
-    updatePreview();
-  }
-  function insertImg() {
-    const url = prompt('請貼上圖片網址：');
-    if (!url) return;
-    const alt = prompt('圖片說明文字（可留空）：') || '圖片';
-    insertLine(`![${alt}](${url})\n`);
-  }
-
-  // ── 下載 .md ──
-  function downloadMd() {
-    const title   = document.getElementById('title').value.trim();
-    const date    = document.getElementById('date').value;
-    const cat     = getCategory();
-    const excerpt = document.getElementById('excerpt').value.trim();
-    const thumb   = document.getElementById('thumbnail').value.trim();
-    const content = document.getElementById('content').value.trim();
-    const youtube = document.getElementById('youtube').value.trim();
-    const tagList = tags;
-
-    if (!title || !date || !excerpt || !content) {
-      alert('請填寫：標題、日期、摘要、文章內容（這四項必填）');
-      return;
-    }
-
-    let frontmatter = `---\ntitle: ${title}\ndate: ${date}\ncategory: ${cat}\n`;
-    if (thumb) frontmatter += `thumbnail: ${thumb}\n`;
-    frontmatter += `excerpt: ${excerpt}\n`;
-    if (youtube) frontmatter += `youtube: ${youtube}\n`;
-    if (tagList.length) frontmatter += `tags:\n${tagList.map(t => `  - ${t}`).join('\n')}\n`;
-    frontmatter += `---\n\n`;
-
-    const md = frontmatter + content;
-    const slug = toSlug(title);
-    const filename = `${date}-${slug}.md`;
-
-    const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement('a');
-    a.href     = url;
-    a.download = filename;
-    a.click();
-    URL.revokeObjectURL(url);
-
-    // Toast
-    const toast = document.getElementById('toast');
-    toast.textContent = `✅ ${filename} 下載完成！`;
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
-  }
-
-  // ══ 分頁切換 ══
-  let manageLoaded = false;
-  function switchTab(tab, btn) {
-    document.querySelectorAll('.hnav-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('page-write').style.display = tab === 'write' ? 'block' : 'none';
-    document.getElementById('page-manage').style.display = tab === 'manage' ? 'block' : 'none';
-    if (tab === 'manage' && !manageLoaded) {
-      manageLoaded = true;
-      loadManagePosts();
-    }
-  }
-
-  // ══ 讀取 .md 檔案 ══
-  let loadedPosts = [];
-
-  function loadMdFiles(files) {
-    loadedPosts = [];
-    const readers = Array.from(files).map(file => new Promise(resolve => {
-      const reader = new FileReader();
-      reader.onload = e => {
-        const raw = e.target.result;
-        const post = parseFrontmatter(raw, file.name);
-        loadedPosts.push(post);
-        resolve();
-      };
-      reader.readAsText(file, 'utf-8');
-    }));
-
-    Promise.all(readers).then(() => {
-      // 依日期排序，最新在上
-      loadedPosts.sort((a, b) => b.date.localeCompare(a.date));
-      renderPostList();
-    });
-  }
-
-  function parseFrontmatter(raw, filename) {
-    const match = raw.match(/^---
-([\s\S]*?)
----/);
-    const meta = {};
-    if (match) {
-      match[1].split('
-').forEach(line => {
-        const [k, ...v] = line.split(':');
-        if (k && v.length) meta[k.trim()] = v.join(':').trim().replace(/^['"]|['"]$/g, '');
+        var card = document.createElement('div');
+        card.className = 'post-card';
+        card.innerHTML =
+          '<div class="pc-info">' +
+            '<div class="pc-title">' + p.title + '</div>' +
+            '<div class="pc-meta">' +
+              '<span>📅 ' + (p.date_display || p.date) + '</span>' +
+              '<span class="pc-cat">' + p.category + '</span>' +
+              (tags ? '<span style="color:var(--text-hint);font-size:0.7rem;">🏷 ' + tags + '</span>' : '') +
+            '</div>' +
+            (p.excerpt ? '<div class="pc-excerpt">' + p.excerpt + '</div>' : '') +
+            '<div class="pc-file">' + md + '</div>' +
+          '</div>' +
+          '<div class="pc-actions">' +
+            (preview ? '<a class="btn-sm btn-view" href="' + preview + '" target="_blank">預覽</a>' : '') +
+            '<a class="btn-sm btn-del" href="' + ghDel + '" target="_blank">🗑 刪除</a>' +
+          '</div>';
+        list.appendChild(card);
       });
-    }
-    return {
-      filename,
-      title:    meta.title    || '（無標題）',
-      date:     meta.date     || '—',
-      category: meta.category || '—',
-      excerpt:  meta.excerpt  || '',
-      tags:     meta.tags     || '',
-      raw,
-    };
-  }
-
-  function renderPostList() {
-    const list = document.getElementById('post-list');
-    const wrap = document.getElementById('post-list-wrap');
-    const guide = document.getElementById('delete-guide');
-    const count = document.getElementById('post-count');
-
-    list.innerHTML = '';
-    wrap.style.display = 'block';
-    guide.style.display = 'block';
-    count.textContent = `共 ${loadedPosts.length} 篇`;
-
-    loadedPosts.forEach((post, i) => {
-      const ghUrl = `https://github.com/qoun2004/-concredia-site/blob/main/_posts/${encodeURIComponent(post.filename)}`;
-      const card = document.createElement('div');
-      card.className = 'post-card';
-      card.innerHTML = `
-        <div class="post-card-info">
-          <div class="post-card-title">${post.title}</div>
-          <div class="post-card-meta">
-            <span>📅 ${post.date}</span>
-            <span class="post-cat-badge">${post.category}</span>
-            ${post.tags ? `<span style="color:var(--text-hint)">🏷 ${post.tags}</span>` : ''}
-          </div>
-          ${post.excerpt ? `<div class="post-card-excerpt">${post.excerpt}</div>` : ''}
-          <div class="post-card-filename">${post.filename}</div>
-        </div>
-        <div class="post-card-actions">
-          <a class="btn-sm btn-edit" href="${ghUrl}" target="_blank">GitHub 查看</a>
-          <button class="btn-sm btn-delete" onclick="showDeleteGuide('${post.filename.replace(/'/g,"\'")}')">刪除指引</button>
-        </div>
-      `;
-      list.appendChild(card);
+    })
+    .catch(function(){
+      $('manage-status').innerHTML =
+        '<div style="color:#c83232;margin-bottom:0.4rem;">⚠️ 無法載入文章清單</div>' +
+        '<div style="font-size:0.78rem;color:var(--text-hint);">請先上傳一篇文章觸發 Netlify 重新部署，即可在此看到文章列表。</div>';
     });
-  }
-
-  // 刪除指引彈出提示
-  function showDeleteGuide(filename) {
-    const msg = `刪除步驟：
-
-1. 前往 GitHub _posts 資料夾
-2. 點開檔案：${filename}
-3. 右上角 ⋯ → Delete file
-4. Commit changes
-
-Netlify 約 1 分鐘後自動更新網站。`;
-    alert(msg);
-  }
-
-  // 拖曳上傳
-  const uploadLabel = document.getElementById('upload-label');
-  if (uploadLabel) {
-    uploadLabel.addEventListener('dragover', e => { e.preventDefault(); uploadLabel.style.borderColor = 'var(--border-focus)'; });
-    uploadLabel.addEventListener('dragleave', () => { uploadLabel.style.borderColor = 'var(--border)'; });
-    uploadLabel.addEventListener('drop', e => {
-      e.preventDefault();
-      uploadLabel.style.borderColor = 'var(--border)';
-      loadMdFiles(e.dataTransfer.files);
-    });
-  }
-
+}
 </script>
-
 </body>
 </html>
