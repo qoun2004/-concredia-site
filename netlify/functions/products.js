@@ -71,9 +71,11 @@ function parseRecord(rec, index) {
   const weightG  = f[FIELDS.weightG]  || 0;
   const weightKg = f[FIELDS.weightKg] || 0;
   const weight   = weightG || (weightKg ? weightKg * 1000 : null);
-  const weightDisplay = weightG
-    ? (weightG >= 1000 ? `${(weightG/1000).toFixed(1)} kg` : `${weightG} g`)
-    : weightKg ? `${weightKg} kg` : null;
+  // weightKg 欄位值本身含 'kg'（如 '3.2kg'），直接用；weightG 欄位是純數字需格式化
+  const weightDisplay = weightKg
+    ? String(weightKg).trim()
+    : (weightG >= 1000 ? `${(weightG/1000).toFixed(1)} kg` : weightG ? `${weightG} g` : null);
+  // carbonDisplay：Airtable 值已含 'kg'，直接顯示
   const carbonRaw = f[FIELDS.carbon] || null;
   const carbonDisplay = carbonRaw ? String(carbonRaw).trim() : null;
 
