@@ -295,4 +295,28 @@ if latest:
     else:
         print("index.html blog-grid 標記找不到，跳過更新")
 
+# ============================================================
+# 產生 _data/posts.json 供管理頁使用
+# ============================================================
+import json, os
+os.makedirs('_data', exist_ok=True)
+posts_index = []
+for post in posts:
+    posts_index.append({
+        'title':       post['title'],
+        'date':        post['date'],
+        'date_display': post['date_display'],
+        'category':    post['category'],
+        'excerpt':     post['excerpt'],
+        'filename':    post['filename'],
+        'md_filename': f"{post['date']}-{post['slug']}.md",
+        'slug':        post['slug'],
+        'tags':        post['tags'],
+        'thumbnail':   post['thumbnail'],
+    })
+
+with open('_data/posts.json', 'w', encoding='utf-8') as f:
+    json.dump({'posts': posts_index, 'total': len(posts_index)}, f, ensure_ascii=False, indent=2)
+print(f"_data/posts.json 更新完成（{len(posts_index)} 篇）")
+
 print("\n✅ 全部完成！")
