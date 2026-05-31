@@ -7,7 +7,7 @@
 <meta name="description" content="士敏文品最新動態：寂寞公路計劃、永續日誌、倉庫日常、社區行動、媒體活動。記錄每一件作品背後的真實過程。">
 
 
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
     <meta property="og:type" content="website">
   <meta property="og:site_name" content="Concredia.Lab 士敏文品">
@@ -153,8 +153,9 @@
 </div>
 
 <style>
-/* ── BLOG 新版版面 ── */
-body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important; }
+/* ── BLOG C 風格：溫潤米白 ── */
+body { background: #F5F1EA !important; color: #2A1A0E !important; }
+.blog-hero { background: #2A1A0E !important; }
 .blog-hero {
   padding: 3rem 2.5rem 2rem;
   border-bottom: 1px solid rgba(212,207,200,0.07);
@@ -172,63 +173,66 @@ body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important;
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 900;
   letter-spacing: -0.03em;
-  color: rgba(212,207,200,0.92);
+  color: #1E1B18;
   margin-bottom: 0.5rem;
 }
 .blog-hero p {
   font-size: 0.82rem;
-  color: rgba(212,207,200,0.42);
-  letter-spacing: 0.08em;
+  color: rgba(245,241,234,0.5);
+  letter-spacing: 0.06em;
 }
 
 /* Filter */
-.filter-bar {
-  display: flex;
-  gap: 0.4rem;
-  padding: 0.85rem 2.5rem;
-  border-top: 1px solid rgba(212,207,200,0.07);
-  border-bottom: 1px solid rgba(212,207,200,0.07);
-  flex-wrap: wrap;
-  background: #0f0d0b;
+.filter-bar, div.filter-bar {
+  display: flex !important;
+  gap: 0.4rem !important;
+  padding: 0.85rem 2.5rem !important;
+  border-top: 1px solid rgba(155,91,58,0.12) !important;
+  border-bottom: 1px solid rgba(155,91,58,0.12) !important;
+  flex-wrap: wrap !important;
+  background: #F5F1EA !important;
+  position: static !important;
+  backdrop-filter: none !important;
 }
 .filter-btn {
-  padding: 0.28rem 0.9rem;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-family: var(--fd);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  cursor: pointer;
-  border: 1px solid rgba(212,207,200,0.2);
-  background: none;
-  color: rgba(212,207,200,0.65);
-  transition: all 0.15s;
+  padding: 0.26rem 0.9rem !important;
+  border-radius: 20px !important;
+  font-size: 0.7rem !important;
+  font-family: var(--fd) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  cursor: pointer !important;
+  border: 1.5px solid rgba(155,91,58,0.22) !important;
+  background: rgba(155,91,58,0.04) !important;
+  color: rgba(155,91,58,0.7) !important;
+  transition: all 0.15s !important;
 }
 .filter-btn.active {
-  background: var(--fire);
-  border-color: var(--fire);
-  color: #fff;
+  background: #9B5B3A !important;
+  border-color: #9B5B3A !important;
+  color: #fff !important;
 }
 .filter-btn:hover:not(.active) {
-  border-color: rgba(155,91,58,0.5);
-  color: rgba(212,207,200,0.9);
-  background: rgba(155,91,58,0.08);
+  border-color: #9B5B3A !important;
+  color: #9B5B3A !important;
+  background: rgba(155,91,58,0.1) !important;
 }
 
 /* Grid */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-  padding: 1.75rem 2.5rem;
+  gap: 1.25rem;
+  padding: 2rem 2.5rem;
   max-width: 1300px;
   margin: 0 auto;
+  background: #F5F1EA;
 }
 
 /* Card */
 .blog-card-new {
-  background: #161412;
-  border: 1px solid rgba(212,207,200,0.07);
+  background: #FAF7F2;
+  border: 1px solid rgba(155,91,58,0.12);
   border-radius: 8px;
   overflow: hidden;
   text-decoration: none;
@@ -238,19 +242,19 @@ body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important;
 }
 .blog-card-new:hover {
   transform: translateY(-3px);
-  border-color: rgba(155,91,58,0.3);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+  border-color: rgba(155,91,58,0.38);
+  box-shadow: 0 6px 24px rgba(155,91,58,0.1);
 }
 
-/* 移除 featured 大卡，全部等寬 */
+/* featured 等寬 */
 .blog-card-new.featured {
   grid-column: span 1;
 }
 .blog-card-new.featured .card-thumb {
-  aspect-ratio: 16/9;
+  aspect-ratio: 3/2;
 }
 .blog-card-new.featured .card-title {
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 .blog-card-new.featured .card-excerpt {
   -webkit-line-clamp: 2;
@@ -260,7 +264,7 @@ body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important;
   width: 100%;
   aspect-ratio: 3/2;
   overflow: hidden;
-  background: rgba(155,91,58,0.08);
+  background: #EDE8DF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,37 +282,43 @@ body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important;
 .card-thumb-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10,8,6,0.65) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(42,26,14,0.35) 0%, transparent 50%);
 }
 
 .card-body-new {
-  padding: 1rem 1.1rem 1.25rem;
+  padding: 1rem 1.1rem 1.2rem;
   display: flex;
   flex-direction: column;
   flex: 1;
+  background: #FAF7F2;
 }
 .card-cat-new {
+  display: inline-block;
   font-family: var(--fd);
   font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-weight: 800;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--fire);
-  margin-bottom: 0.45rem;
+  color: #9B5B3A;
+  background: rgba(155,91,58,0.1);
+  border: 1px solid rgba(155,91,58,0.18);
+  padding: 0.14rem 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 0.55rem;
 }
 .card-title {
-  font-family: var(--fd);
-  font-size: 0.92rem;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 0.97rem;
   font-weight: 700;
-  color: rgba(212,207,200,0.92);
-  line-height: 1.32;
-  letter-spacing: -0.01em;
+  color: #2A1A0E;
+  line-height: 1.38;
+  letter-spacing: 0.01em;
   margin-bottom: 0.5rem;
 }
 .card-excerpt {
-  font-size: 0.75rem;
-  color: rgba(212,207,200,0.48);
-  line-height: 1.65;
+  font-size: 0.78rem;
+  color: #7A5C48;
+  line-height: 1.7;
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -320,21 +330,22 @@ body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(212,207,200,0.06);
+  border-top: 1px solid rgba(155,91,58,0.1);
   padding-top: 0.65rem;
   margin-top: auto;
 }
 .card-date-new {
   font-size: 0.64rem;
-  color: rgba(212,207,200,0.3);
+  color: #B8A090;
   font-family: var(--fd);
+  letter-spacing: 0.04em;
 }
 .card-read-new {
   font-size: 0.64rem;
-  color: var(--fire);
+  color: #9B5B3A;
   font-family: var(--fd);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 /* Empty state */
@@ -342,7 +353,7 @@ body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important;
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 1rem;
-  color: rgba(212,207,200,0.3);
+  color: #9E8E88;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
 }
