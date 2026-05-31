@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
+<script>
+  // Netlify Identity — 處理 recovery_token 和 invite_token
+  // 當重設密碼或邀請連結帶著 token 來到首頁時，自動轉址到 /admin/
+  (function(){
+    var hash = window.location.hash;
+    if (hash && (hash.indexOf('recovery_token=') > -1 || hash.indexOf('invite_token=') > -1 || hash.indexOf('confirmation_token=') > -1)) {
+      window.location.href = '/admin/' + hash;
+    }
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Concredia.Lab 士敏文品 — Concrete as a Medium for Life</title>
