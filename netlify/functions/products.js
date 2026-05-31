@@ -19,6 +19,7 @@ const FIELDS = {
   spec:     '規格公分（長Ｘ寬Ｘ高）',
   weightG:  '重量（克）',
   weightKg: '重量（公斤）',
+  carbon:   '預估減碳量數據',
   stock:    '庫存',
   hidden:   '隱藏',
   images:   'AI圖',
@@ -73,6 +74,8 @@ function parseRecord(rec, index) {
   const weightDisplay = weightG
     ? (weightG >= 1000 ? `${(weightG/1000).toFixed(1)} kg` : `${weightG} g`)
     : weightKg ? `${weightKg} kg` : null;
+  const carbonRaw = f[FIELDS.carbon] || null;
+  const carbonDisplay = carbonRaw ? String(carbonRaw).trim() : null;
 
   const stockRaw = f[FIELDS.stock] || '';
   const stockMap = { '有現貨':'available', '可預訂':'order', '已售出':'sold', '獨一件':'unique' };
@@ -92,6 +95,7 @@ function parseRecord(rec, index) {
     spec:        f[FIELDS.spec]     || '',
     weight,
     weightDisplay,
+    carbonDisplay,
     stockStatus,
     isUnique:    stockStatus === 'unique',
     images,
