@@ -222,9 +222,35 @@ if new_blog_html == blog_html:
         flags=re.DOTALL
     )
 
+# 同步更新篩選列（從文章分類自動產生）
+cat_emoji = {
+    '倉庫日常': '🐾',
+    'Maker 實錄': '⚙️',
+    '寂寞公路計劃': '🛣️',
+    '社區行動': '🌱',
+    '媒體 & 活動': '📣',
+}
+seen_cats = []
+for post in posts:
+    cat = post['category']
+    if cat and cat not in seen_cats:
+        seen_cats.append(cat)
+
+filter_btns = '\n  <button class="filter-btn active" onclick="filterCat(\'all\', this)">全部</button>\n'
+for cat in seen_cats:
+    emoji = cat_emoji.get(cat, '📌')
+    filter_btns += f'  <button class="filter-btn" onclick="filterCat(\'{cat}\', this)">{emoji} {cat}</button>\n'
+
+new_blog_html = re.sub(
+    r'<div class="filter-bar" id="filterBar">.*?</div>',
+    '<div class="filter-bar" id="filterBar">' + filter_btns + '</div>',
+    new_blog_html,
+    flags=re.DOTALL
+)
+
 with open('blog.html', 'w', encoding='utf-8') as f:
     f.write(new_blog_html)
-print(f"\nblog.html 更新完成（{len(posts)} 篇文章）")
+print(f"\nblog.html 更新完成（{len(posts)} 篇文章，{len(seen_cats)} 個分類）")
 
 # ============================================================
 # 更新 index.html 最新動態（顯示最新三篇）
