@@ -235,13 +235,19 @@ const STOCK_DOT = { available:'s-available', order:'s-order', sold:'s-sold', uni
 
 async function loadData() {
   try {
-    const res = await fetch('/_data/products.json');
+    const res = await fetch('/.netlify/functions/products');
     if (!res.ok) throw new Error('no data');
     const json = await res.json();
     if (json.error || !json.products?.length) throw new Error('empty');
     ALL = json.products;
   } catch(e) {
-    ALL = STATIC_PRODUCTS;
+    // fallback：靜態 JSON（可能圖片過期，但至少顯示文字）
+    try {
+      const res2 = await fetch('/_data/products.json');
+      const json2 = await res2.json();
+      if (json2.products?.length) { ALL = json2.products; }
+      else { ALL = STATIC_PRODUCTS; }
+    } catch { ALL = STATIC_PRODUCTS; }
   }
   buildFilterBar(ALL);
   render(ALL, CURRENT_FILTER);
