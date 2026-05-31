@@ -259,6 +259,24 @@ textarea{resize:vertical;line-height:1.8;}
 .btn-del{background:rgba(200,50,50,0.06);border-color:rgba(200,50,50,0.18);color:#c83232;}
 .btn-del:hover{background:#c83232;color:#fff;}
 
+/* upload img btn */
+.upload-img-btn{
+  display:inline-flex;align-items:center;gap:0.35rem;
+  padding:0.55rem 1rem;background:#fff;border:1px solid var(--border);
+  border-radius:6px;font-size:0.82rem;cursor:pointer;
+  color:var(--text-dim);font-family:var(--fb);
+  transition:border-color 0.15s;white-space:nowrap;
+}
+.upload-img-btn:hover{border-color:var(--border-focus);color:var(--text);}
+
+/* refresh btn */
+.refresh-btn{
+  padding:0.4rem 0.9rem;background:#fff;border:1px solid var(--border);
+  border-radius:6px;font-size:0.78rem;font-family:var(--fd);font-weight:700;
+  cursor:pointer;color:var(--text-dim);transition:all 0.15s;
+}
+.refresh-btn:hover{border-color:var(--border-focus);color:var(--fire);}
+
 /* TOAST */
 #toast{
   position:fixed;bottom:2rem;left:50%;
@@ -319,8 +337,18 @@ textarea{resize:vertical;line-height:1.8;}
     </div>
 
     <div class="field">
-      <label class="lbl" for="f-thumb">封面圖片網址 <span class="hint">選填，貼上圖片 URL</span></label>
-      <input type="url" id="f-thumb" placeholder="https://…">
+      <label class="lbl">封面圖片 <span class="hint">選填，從電腦上傳或貼網址</span></label>
+      <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.5rem;">
+        <label class="upload-img-btn" for="thumb-file" id="thumb-upload-btn">📁 從電腦選圖</label>
+        <input type="file" id="thumb-file" accept="image/*" style="display:none">
+        <span style="font-size:0.75rem;color:var(--text-hint);">或</span>
+        <input type="url" id="f-thumb" placeholder="貼上圖片網址 https://…" style="flex:1;">
+      </div>
+      <div id="thumb-uploading" style="display:none;font-size:0.78rem;color:var(--fire);padding:0.4rem 0;">⏳ 上傳中…</div>
+      <div id="thumb-preview" style="display:none;margin-top:0.5rem;">
+        <img id="thumb-img" style="max-height:140px;border-radius:6px;border:1px solid var(--border);object-fit:cover;">
+        <button onclick="clearThumb()" style="display:block;margin-top:0.4rem;background:none;border:none;cursor:pointer;font-size:0.74rem;color:var(--text-hint);">✕ 移除圖片</button>
+      </div>
     </div>
 
     <div class="field">
@@ -336,6 +364,8 @@ textarea{resize:vertical;line-height:1.8;}
         <button class="tb" onclick="insertPrefix('- ')">列表</button>
         <div class="tb-sep"></div>
         <button class="tb" onclick="doInsertImg()">🖼 圖片</button>
+        <label class="tb" for="content-img-file" id="content-img-btn" style="cursor:pointer;display:inline-flex;align-items:center;">📁 上傳圖</label>
+        <input type="file" id="content-img-file" accept="image/*" style="display:none">
         <button class="tb" onclick="insertPrefix('---')">分隔線</button>
       </div>
       <textarea id="f-content" rows="16" placeholder="在這裡寫文章內容，直接打字就好，不需要任何格式符號。
@@ -370,6 +400,31 @@ textarea{resize:vertical;line-height:1.8;}
 
   <!-- 右欄 -->
   <div class="sidebar">
+
+    <!-- GitHub Token -->
+    <div class="panel" id="token-panel">
+      <div class="panel-hd">⚙️ GitHub 設定（一次即可）</div>
+      <div class="panel-bd">
+        <div id="token-set-area">
+          <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.65;margin-bottom:0.75rem;">
+            設定後圖片可直接從電腦上傳，自動存到網站 images/ 資料夾。
+          </div>
+          <label class="lbl" for="gh-token">GitHub Personal Access Token</label>
+          <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx" style="margin-bottom:0.5rem;">
+          <button onclick="saveToken()" style="width:100%;padding:0.55rem;background:var(--fire);color:#fff;border:none;border-radius:6px;font-family:var(--fd);font-size:0.78rem;font-weight:700;cursor:pointer;">儲存 Token</button>
+          <div style="font-size:0.7rem;color:var(--text-hint);margin-top:0.6rem;line-height:1.6;">
+            <a href="https://github.com/settings/tokens/new?scopes=repo&description=Concredia+Write" target="_blank" style="color:var(--fire-h);">點這裡產生 Token →</a><br>
+            勾選 <strong>repo</strong> 權限即可，儲存在這台電腦瀏覽器。
+          </div>
+        </div>
+        <div id="token-ok-area" style="display:none;">
+          <div style="font-size:0.82rem;color:#2a7a2a;display:flex;align-items:center;gap:0.4rem;">
+            ✅ Token 已設定
+          </div>
+          <button onclick="clearToken()" style="margin-top:0.4rem;background:none;border:none;cursor:pointer;font-size:0.72rem;color:var(--text-hint);">重新設定</button>
+        </div>
+      </div>
+    </div>
 
     <!-- 預覽 -->
     <div class="panel">
@@ -429,8 +484,11 @@ textarea{resize:vertical;line-height:1.8;}
 <div id="page-manage" class="page">
 <div class="manage-wrap">
   <div class="manage-hd">
-    <h2>文章管理</h2>
-    <p>點「🗑 刪除」會直接開啟 GitHub 刪除頁面，按 Commit changes 即可完成刪除。<br>Netlify 約 1 分鐘後自動重新部署。</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+      <h2>文章管理</h2>
+      <button class="refresh-btn" onclick="refreshPosts()">↻ 刷新列表</button>
+    </div>
+    <p>點「🗑 刪除」會直接開啟 GitHub 刪除頁面，按 Commit changes 即可完成刪除。<br>刪除後 Netlify 約 1 分鐘重新部署，再按刷新即可更新列表。</p>
   </div>
   <div id="manage-status">載入文章中…</div>
   <div id="post-list"></div>
@@ -486,6 +544,7 @@ window.addEventListener('DOMContentLoaded', function(){
     updatePreview();
   });
   $('f-newcat').addEventListener('input', updatePreview);
+  $('f-content').addEventListener('input', updatePreview);
 
   $('tag-input').addEventListener('keydown', handleTagKey);
   $('tag-row').addEventListener('click', function(){ $('tag-input').focus(); });
@@ -495,6 +554,48 @@ window.addEventListener('DOMContentLoaded', function(){
 
   renderPresets();
   updatePreview();
+  updateTokenUI();
+
+  // 封面圖片上傳
+  $('thumb-file').addEventListener('change', function(){
+    var file = this.files[0];
+    if(!file) return;
+    uploadImageToGitHub(file, function(url){
+      $('f-thumb').value = url;
+      $('thumb-img').src = url;
+      $('thumb-preview').style.display = 'block';
+      updatePreview();
+    }, 'thumb');
+  });
+
+  // 封面網址輸入
+  $('f-thumb').addEventListener('input', function(){
+    var url = this.value.trim();
+    if(url){
+      $('thumb-img').src = url;
+      $('thumb-preview').style.display = 'block';
+    } else {
+      $('thumb-preview').style.display = 'none';
+    }
+    updatePreview();
+  });
+
+  // 文章內圖片上傳
+  $('content-img-file').addEventListener('change', function(){
+    var file = this.files[0];
+    if(!file) return;
+    uploadImageToGitHub(file, function(url){
+      var ta = $('f-content');
+      var s  = ta.selectionStart;
+      var before = ta.value.slice(0, s);
+      var after  = ta.value.slice(s);
+      var nl = (before.length && !before.endsWith('\n')) ? '\n' : '';
+      ta.value = before + nl + '![圖片](' + url + ')\n' + after;
+      ta.focus();
+      updatePreview();
+    }, 'content');
+    this.value = '';
+  });
 });
 
 // ══════════════════════════════════════════════
@@ -513,7 +614,7 @@ function updatePreview(){
   var title   = $('f-title').value   || '文章標題';
   var excerpt = $('f-excerpt').value || '摘要…';
   var cat     = getCat();
-  var thumb   = $('f-thumb').value;
+  var thumb   = $('thumb-img').src && $('thumb-preview').style.display !== 'none' ? $('thumb-img').src : $('f-thumb').value;
   var dateVal = $('f-date').value;
 
   $('prev-title').textContent   = title;
@@ -696,12 +797,117 @@ function renderCustomList(){
 // ══════════════════════════════════════════════
 // 下載 .md
 // ══════════════════════════════════════════════
+// ══ GitHub Token ══
+var TOKEN_KEY = 'clab_gh_token';
+function getToken(){ return localStorage.getItem(TOKEN_KEY) || ''; }
+function saveToken(){
+  var t = $('gh-token').value.trim();
+  if(!t){ alert('請輸入 Token'); return; }
+  localStorage.setItem(TOKEN_KEY, t);
+  $('gh-token').value = '';
+  updateTokenUI();
+  showToast('✅ Token 儲存成功！');
+}
+function clearToken(){
+  localStorage.removeItem(TOKEN_KEY);
+  updateTokenUI();
+}
+function updateTokenUI(){
+  var has = !!getToken();
+  $('token-set-area').style.display = has ? 'none' : 'block';
+  $('token-ok-area').style.display  = has ? 'block' : 'none';
+}
+
+// ══ 上傳圖片到 GitHub ══
+function uploadImageToGitHub(file, onSuccess, target){
+  var token = getToken();
+  if(!token){
+    alert('請先在右側設定 GitHub Token，才能直接上傳圖片。');
+    return;
+  }
+  // 顯示上傳中
+  if(target === 'thumb'){
+    $('thumb-uploading').style.display = 'block';
+    $('thumb-file').disabled = true;
+  } else {
+    $('content-img-btn').textContent = '⏳ 上傳中…';
+  }
+
+  var reader = new FileReader();
+  reader.onload = function(e){
+    var base64 = e.target.result.split(',')[1];
+    var filename = 'images/' + Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+    var apiUrl = 'https://api.github.com/repos/qoun2004/-concredia-site/contents/' + filename;
+
+    fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: 'upload image: ' + file.name,
+        content: base64,
+        branch: 'main'
+      })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(target === 'thumb'){
+        $('thumb-uploading').style.display = 'none';
+        $('thumb-file').disabled = false;
+      } else {
+        $('content-img-btn').textContent = '📁 上傳圖';
+      }
+      if(data.content && data.content.download_url){
+        var url = data.content.download_url;
+        onSuccess(url);
+        showToast('✅ 圖片上傳成功！');
+      } else if(data.message){
+        alert('上傳失敗：' + data.message + '\n\n請確認 Token 有 repo 權限。');
+      }
+    })
+    .catch(function(err){
+      if(target === 'thumb'){
+        $('thumb-uploading').style.display = 'none';
+        $('thumb-file').disabled = false;
+      } else {
+        $('content-img-btn').textContent = '📁 上傳圖';
+      }
+      alert('上傳失敗，請檢查網路或 Token 設定。');
+    });
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearThumb(){
+  $('thumb-img').src = '';
+  $('thumb-preview').style.display = 'none';
+  $('thumb-file').value = '';
+  $('f-thumb').value = '';
+  window._thumbBase64 = null;
+  updatePreview();
+}
+
+// 封面圖取值（優先 base64，其次 URL）
+function getThumbValue(){
+  return $('f-thumb').value.trim();
+}
+
+function refreshPosts(){
+  $('manage-status').style.display = 'block';
+  $('manage-status').textContent = '刷新中…';
+  $('post-list').innerHTML = '';
+  manageLoaded = false;
+  loadPosts();
+}
+
 function doDownload(){
   var title   = $('f-title').value.trim();
   var date    = $('f-date').value;
   var cat     = getCat();
   var excerpt = $('f-excerpt').value.trim();
-  var thumb   = $('f-thumb').value.trim();
+  var thumb   = getThumbValue();
   var content = $('f-content').value.trim();
   var yt      = $('f-yt').value.trim();
 
