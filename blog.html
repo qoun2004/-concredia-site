@@ -154,6 +154,7 @@
 
 <style>
 /* ── BLOG 新版版面 ── */
+body { background: #0f0d0b !important; color: rgba(212,207,200,0.88) !important; }
 .blog-hero {
   padding: 3rem 2.5rem 2rem;
   border-bottom: 1px solid rgba(212,207,200,0.07);
@@ -373,12 +374,28 @@
 <!-- 分類 Filter -->
 <div class="filter-bar" id="filterBar">
   <button class="filter-btn active" onclick="filterCat('all', this)">全部</button>
+  <button class="filter-btn" onclick="filterCat('倉庫日常', this)">🐾 倉庫日常</button>
 </div>
 
 <!-- 文章 Grid -->
 <div class="blog-grid" id="articleGrid">
   <!-- 由 build_posts.py 自動填入 -->
   <!-- 新文章會由 CMS 發布後手動加到這裡，或未來升級為自動 -->
+  <a href="blog-example.html" class="blog-card-new featured" data-cat="倉庫日常">
+    <div class="card-thumb">
+      <img src="images/baomei.jpg" alt="這是一篇範例文章" loading="lazy">
+      <div class="card-thumb-overlay"></div>
+    </div>
+    <div class="card-body-new">
+      <div class="card-cat-new">倉庫日常</div>
+      <div class="card-title">這是一篇範例文章（可以刪掉）</div>
+      <div class="card-excerpt">這是文章摘要，大約 2-3 句話，會顯示在首頁列表卡片上。</div>
+      <div class="card-foot-new">
+        <span class="card-date-new">2025 年 4 月</span>
+        <span class="card-read-new">閱讀全文 →</span>
+      </div>
+    </div>
+  </a>
 </div>
 
 <footer>
