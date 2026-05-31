@@ -842,8 +842,10 @@ function uploadImageToGitHub(file, onSuccess, target){
     fetch(apiUrl, {
       method: 'PUT',
       headers: {
-        'Authorization': 'token ' + token,
+        'Authorization': 'Bearer ' + token,
         'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28'
       },
       body: JSON.stringify({
         message: 'upload image: ' + file.name,
@@ -851,7 +853,12 @@ function uploadImageToGitHub(file, onSuccess, target){
         branch: 'main'
       })
     })
-    .then(function(r){ return r.json(); })
+    .then(function(r){
+      if(!r.ok){
+        return r.json().then(function(d){ throw new Error(d.message || 'HTTP ' + r.status); });
+      }
+      return r.json();
+    })
     .then(function(data){
       if(target === 'thumb'){
         $('thumb-uploading').style.display = 'none';
@@ -859,12 +866,10 @@ function uploadImageToGitHub(file, onSuccess, target){
       } else {
         $('content-img-btn').textContent = '📁 上傳圖';
       }
-      if(data.content && data.content.download_url){
-        var url = data.content.download_url;
+      var url = data.content && (data.content.download_url || ('https://raw.githubusercontent.com/qoun2004/-concredia-site/main/' + filename));
+      if(url){
         onSuccess(url);
         showToast('✅ 圖片上傳成功！');
-      } else if(data.message){
-        alert('上傳失敗：' + data.message + '\n\n請確認 Token 有 repo 權限。');
       }
     })
     .catch(function(err){
@@ -874,7 +879,8 @@ function uploadImageToGitHub(file, onSuccess, target){
       } else {
         $('content-img-btn').textContent = '📁 上傳圖';
       }
-      alert('上傳失敗，請檢查網路或 Token 設定。');
+      console.error('GitHub upload error:', err);
+      alert('上傳失敗：' + err.message + '\n\n請確認：\n1. Token 是否正確貼上（重新設定試試）\n2. Token 有勾 repo 權限\n3. 網路連線正常');
     });
   };
   reader.readAsDataURL(file);
