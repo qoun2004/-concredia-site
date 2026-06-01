@@ -15,6 +15,24 @@
       "thumbnail": "images/2026-06-01-post-778013-cover.jpg"
     },
     {
+      "title": "混凝土工藝與現代藝術的交融：Concredia.Lab 在藝術展覽中的表現",
+      "date": "2026-06-01",
+      "date_display": "2026 年 6 月",
+      "category": "媒體 & 活動",
+      "excerpt": "Concredia.Lab 近期在一場現代藝術展覽中展出了一件令人驚艷的混凝土工藝品，結合了台灣本土製造和循環材料，呈現出永續美學與工藝價值。這件作品吸引了許多參觀者的目光，引發了對混凝土工藝與現代藝術的深入思考。通過這次展覽，Concredia.Lab 展現了其對於混凝土工藝的創新與實踐。",
+      "filename": "blog-photo-930331.html",
+      "md_filename": "2026-06-01-photo-930331.md",
+      "slug": "photo-930331",
+      "tags": [
+        "混凝土工藝",
+        "現代藝術",
+        "永續美學",
+        "台灣本土製造",
+        "循環材料"
+      ],
+      "thumbnail": "https://lh3.googleusercontent.com/d/1rtOmgcbquqb94RA2GhOLMq45OQI9hgvr"
+    },
+    {
       "title": "混凝土工藝與現代藝術的交融：Concredia.Lab 在現代藝術博物館的展覽紀錄",
       "date": "2026-06-01",
       "date_display": "2026 年 6 月",
@@ -96,5 +114,5 @@
       "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 6
+  "total": 7
 }
