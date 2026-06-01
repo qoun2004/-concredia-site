@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "title": "淺談混擬土",
+      "date": "2026-06-01",
+      "date_display": "2026 年 6 月",
+      "category": "Maker 實錄",
+      "excerpt": "本文將探討混擬土的基本知識，包括其成分、特性和應用。通過了解混擬土的特點，讀者可以更好地運用它們來創造新的作品。同時，本文也會分享一些實用的技巧和注意事項，讓讀者能夠更自信地使用混擬土。",
+      "filename": "blog-post-778013.html",
+      "md_filename": "2026-06-01-post-778013.md",
+      "slug": "post-778013",
+      "tags": [
+        "混擬土、手工藝、材料科學、DIY、創作"
+      ],
+      "thumbnail": "images/2026-06-01-post-778013-cover.jpg"
+    },
+    {
       "title": "tttt",
       "date": "2026-05-31",
       "date_display": "2026 年 5 月",
@@ -28,5 +42,5 @@
       "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 2
+  "total": 3
 }
