@@ -15,6 +15,24 @@
       "thumbnail": "images/2026-06-01-post-778013-cover.jpg"
     },
     {
+      "title": "在藝術的殿堂中，感受永續美學的魅力",
+      "date": "2026-06-01",
+      "date_display": "2026 年 6 月",
+      "category": "媒體 & 活動",
+      "excerpt": "最近，我們有幸參加了一場在當地博物館舉辦的藝術展覽，展出的作品包括我們的混凝土工藝品。展覽會上，各式各樣的藝術品在博物館內相互輝映，呈現出一個豐富多彩的藝術世界。這次的活動不僅讓我們的作品得以與更多人分享，也讓我們深刻體會到永續美學的重要性。",
+      "filename": "blog-photo-008598.html",
+      "md_filename": "2026-06-01-photo-008598.md",
+      "slug": "photo-008598",
+      "tags": [
+        "永續美學",
+        "混凝土工藝",
+        "博物館展覽",
+        "藝術設計",
+        "文化探訪"
+      ],
+      "thumbnail": "https://lh3.googleusercontent.com/d/10mqcBYm0Isz9XOB-McMEIfBcXGozZ-M5"
+    },
+    {
       "title": "tttt",
       "date": "2026-05-31",
       "date_display": "2026 年 5 月",
@@ -42,5 +60,5 @@
       "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 3
+  "total": 4
 }
