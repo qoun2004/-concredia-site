@@ -15,6 +15,24 @@
       "thumbnail": "images/2026-06-01-post-778013-cover.jpg"
     },
     {
+      "title": "「永續美學的展現：Concredia.Lab 在現代藝術空間的耀眼登場」",
+      "date": "2026-06-01",
+      "date_display": "2026 年 6 月",
+      "category": "媒體 & 活動",
+      "excerpt": "Concredia.Lab 的大型粉紅雕塑在混凝土牆面上展示，展現出品牌對於永續美學和工藝價值的堅持。這件藝術作品不僅呈現出現代藝術的創新風格，也強調了循環材料與台灣本土製造的重要性。通過這次活動，Concredia.Lab 希望傳遞出對於美學和可持續發展的獨特見解。",
+      "filename": "blog-photo-060460.html",
+      "md_filename": "2026-06-01-photo-060460.md",
+      "slug": "photo-060460",
+      "tags": [
+        "永續美學",
+        "現代藝術",
+        "循環材料",
+        "台灣本土製造",
+        "工藝價值"
+      ],
+      "thumbnail": "https://lh3.googleusercontent.com/d/10mqcBYm0Isz9XOB-McMEIfBcXGozZ-M5"
+    },
+    {
       "title": "在藝術的殿堂中，感受永續美學的魅力",
       "date": "2026-06-01",
       "date_display": "2026 年 6 月",
@@ -60,5 +78,5 @@
       "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 4
+  "total": 5
 }
