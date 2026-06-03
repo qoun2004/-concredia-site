@@ -166,9 +166,14 @@
 
 <!-- 照片 Zoom 全螢幕 -->
 <div id="photo-zoom">
-  <button class="pz-close" onclick="closePhotoZoom()" title="關閉">✕</button>
-  <img id="pz-img" src="" alt="" onclick="closePhotoZoom()">
-  <div class="pz-hint">點任意處關閉</div>
+  <div class="pz-toolbar">
+    <button class="pz-back" id="pz-back" onclick="closePhotoZoomBack()" title="返回">← 返回</button>
+    <button class="pz-close-btn" onclick="closePhotoZoom()" title="關閉">✕</button>
+  </div>
+  <div class="pz-scroll-wrap" id="pz-scroll-wrap">
+    <img id="pz-img" src="" alt="">
+  </div>
+  <div class="pz-hint" id="pz-hint">雙指可放大查看細節</div>
 </div>
 
 <!-- 燈箱 -->
@@ -322,7 +327,7 @@ function openLb(id) {
   if (!p) return;
   const mainWrap = document.getElementById('lb-main-img');
   if (p.images.length) {
-    mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull||p.mainImg}" alt="${esc(p.name)}">`;
+    mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull||p.mainImg}" alt="${esc(p.name)}" onclick="openPhotoZoomFromLb('${p.id}')" style="cursor:zoom-in;" title="點擊放大">`;
   } else {
     mainWrap.innerHTML = `<div class="lb-no-photo">🧱<br><small style="font-size:.75rem;color:rgba(212,207,200,0.5);margin-top:.5rem;display:block;">照片拍攝中</small></div>`;
   }
@@ -373,29 +378,65 @@ function closeLb() {
   document.body.style.overflow = '';
 }
 
-function openPhotoZoom(id, e) {
-  if (e) e.stopPropagation();
-  const p = ALL.find(x => x.id === id);
-  if (!p || !p.mainImg) return;
+let _pzFromLb = false;
+
+function _openPhotoZoom(imgSrc, imgAlt, fromLb) {
+  _pzFromLb = !!fromLb;
   const pzImg = document.getElementById('pz-img');
-  pzImg.src = p.mainImgFull || p.mainImg;
-  pzImg.alt = p.name || '';
+  const scrollWrap = document.getElementById('pz-scroll-wrap');
+  pzImg.src = imgSrc;
+  pzImg.alt = imgAlt || '';
+  // reset zoom
+  pzImg.style.transform = '';
+  scrollWrap.scrollTop = 0; scrollWrap.scrollLeft = 0;
+  // show/hide back button
+  document.getElementById('pz-back').style.display = fromLb ? 'flex' : 'none';
   document.getElementById('photo-zoom').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
+function openPhotoZoom(id, e) {
+  if (e) e.stopPropagation();
+  const p = ALL.find(x => x.id === id);
+  if (!p || !p.mainImg) return;
+  _openPhotoZoom(p.mainImgFull || p.mainImg, p.name, false);
+}
+
+function openPhotoZoomFromLb(id) {
+  const p = ALL.find(x => x.id === id);
+  if (!p || !p.mainImg) return;
+  _openPhotoZoom(p.mainImgFull || p.mainImg, p.name, true);
+}
+
 function closePhotoZoom() {
   document.getElementById('photo-zoom').classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.overflow = 'hidden'; // lb is still open, keep body locked
+  if (!document.getElementById('lb').classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+function closePhotoZoomBack() {
+  // return to lb without closing it
+  document.getElementById('photo-zoom').classList.remove('open');
+  document.body.style.overflow = 'hidden';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('photo-zoom').addEventListener('click', function(e) {
-    if (e.target === this) closePhotoZoom();
+    if (e.target === this) {
+      if (_pzFromLb) closePhotoZoomBack(); else closePhotoZoom();
+    }
   });
 });
 
-document.addEventListener('keydown', e => { if(e.key==='Escape') { closeLb(); closePhotoZoom(); } });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (document.getElementById('photo-zoom').classList.contains('open')) {
+      if (_pzFromLb) closePhotoZoomBack(); else closePhotoZoom();
+    } else { closeLb(); }
+  }
+});
 document.getElementById('lb').addEventListener('click', function(e){ if(e.target===this) closeLb(); });
 window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>60); });
 function esc(str) { return String(str||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -629,50 +670,79 @@ loadData();
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: rgba(0,0,0,0.96);
-  align-items: center;
-  justify-content: center;
+  background: rgba(0,0,0,0.97);
   flex-direction: column;
+  align-items: stretch;
 }
 #photo-zoom.open {
   display: flex;
 }
-#photo-zoom #pz-img {
-  max-width: 95vw;
-  max-height: 88vh;
-  object-fit: contain;
-  border-radius: 2px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-  cursor: zoom-out;
-  display: block;
+
+/* 工具列：返回 + 關閉 */
+.pz-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  flex-shrink: 0;
+  background: rgba(0,0,0,0.4);
 }
-.pz-close {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 44px;
-  height: 44px;
+.pz-back {
+  display: none; /* shown via JS when from lb */
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.82rem;
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}
+.pz-back:active { background: rgba(255,255,255,0.1); }
+.pz-close-btn {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.18);
-  border: 1.5px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.25);
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10001;
-  transition: background 0.2s;
   backdrop-filter: blur(4px);
 }
-.pz-close:hover {
-  background: rgba(255,255,255,0.32);
+.pz-close-btn:active { background: rgba(255,255,255,0.3); }
+
+/* 捲動容器 — 支援雙指縮放後捲動 */
+.pz-scroll-wrap {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-overflow-scrolling: touch;
+}
+#pz-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  touch-action: pinch-zoom;
+  cursor: zoom-out;
+  user-select: none;
 }
 .pz-hint {
-  margin-top: 1rem;
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.28);
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
   font-family: var(--fd, sans-serif);
 }
 
@@ -704,6 +774,36 @@ loadData();
 @media (max-width: 768px) {
   .zoom-hint {
     opacity: 0.75 !important;
+  }
+}
+
+/* ── 燈箱 lb-right 手機資訊緊湊版 ── */
+@media (max-width: 768px) {
+  .lb-header { padding: 0.9rem 1rem 0.5rem !important; }
+  .lb-series { font-size: 0.6rem !important; margin-bottom: 0.2rem !important; }
+  .lb-name   { font-size: 1rem !important; line-height: 1.3 !important; margin-bottom: 0.15rem !important; }
+  .lb-name-en { font-size: 0.75rem !important; margin-bottom: 0.2rem !important; }
+  .lb-sku    { font-size: 0.65rem !important; }
+  .lb-section { padding: 0.5rem 1rem !important; }
+  .lb-section-title { font-size: 0.58rem !important; margin-bottom: 0.3rem !important; letter-spacing: 0.12em !important; }
+  .lb-row    { padding: 0.28rem 0 !important; gap: 0.5rem !important; }
+  .lb-key    { font-size: 0.65rem !important; min-width: 3.2rem !important; }
+  .lb-val    { font-size: 0.72rem !important; line-height: 1.4 !important; }
+  .lb-footer { padding: 0.75rem 1rem 1.2rem !important; }
+  .lb-cta    { font-size: 0.82rem !important; padding: 0.6rem 1.2rem !important; }
+  /* 燈箱圖片加放大提示 */
+  #lb-main-img img { cursor: zoom-in !important; }
+  #lb-main-img::after {
+    content: '🔍 點擊放大';
+    position: absolute;
+    bottom: 0.4rem;
+    right: 0.4rem;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.45);
+    padding: 0.15rem 0.45rem;
+    border-radius: 10px;
+    pointer-events: none;
   }
 }
 </style>
