@@ -46,6 +46,20 @@
       "thumbnail": "images/2026-06-03-post-710607-cover.jpg"
     },
     {
+      "title": "官網開放消息",
+      "date": "2026-06-03",
+      "date_display": "2026 年 6 月",
+      "category": "媒體 & 活動",
+      "excerpt": "Concredia.Lab 官網正式開放，提供混凝土工藝品、ESG 永續設計理念和購買服務。這個里程碑事件是對於我們一直堅持的永續生活和工藝精神的見證。讓我們一起探索混凝土工藝品的世界，創造一個更加美好的空間。",
+      "filename": "blog-post-289103.html",
+      "md_filename": "2026-06-03-post-289103.md",
+      "slug": "post-289103",
+      "tags": [
+        "混凝土工藝、ESG設計、永續生活、台灣製造、工藝品"
+      ],
+      "thumbnail": "images/2026-06-03-post-289103-cover.jpg"
+    },
+    {
       "title": "混凝土工藝品的誕生過程：Concredia.Lab 的創作日常",
       "date": "2026-06-03",
       "date_display": "2026 年 6 月",
@@ -114,5 +128,5 @@
       "thumbnail": "https://lh3.googleusercontent.com/d/10mqcBYm0Isz9XOB-McMEIfBcXGozZ-M5"
     }
   ],
-  "total": 5
+  "total": 6
 }
