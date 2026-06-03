@@ -46,6 +46,24 @@
       "thumbnail": "images/2026-06-03-post-710607-cover.jpg"
     },
     {
+      "title": "混凝土工藝品的誕生過程：Concredia.Lab 的創作日常",
+      "date": "2026-06-03",
+      "date_display": "2026 年 6 月",
+      "category": "Maker 實錄",
+      "excerpt": "本文將帶您進入 Concredia.Lab 的工作室，觀察混凝土工藝品的製作過程。從原材料選擇到最終成品的打造，每一步都需要精心設計和執行。通過這個過程，我們可以看到工匠們對混凝土藝術的熱情和對細節的關注。",
+      "filename": "blog-photo-942076.html",
+      "md_filename": "2026-06-03-photo-942076.md",
+      "slug": "photo-942076",
+      "tags": [
+        "混凝土工藝品",
+        "循環材料",
+        "台灣本土製造",
+        "永續美學",
+        "工藝價值"
+      ],
+      "thumbnail": "https://lh3.googleusercontent.com/d/1KKDdrphGZMKTtJbQ_dvdFc0AgZ6wJcC2"
+    },
+    {
       "title": "淺談混擬土",
       "date": "2026-06-01",
       "date_display": "2026 年 6 月",
@@ -129,5 +147,5 @@
       "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 6
+  "total": 7
 }
