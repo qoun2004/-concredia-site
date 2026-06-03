@@ -130,22 +130,7 @@
         "文化探訪"
       ],
       "thumbnail": "https://lh3.googleusercontent.com/d/10mqcBYm0Isz9XOB-McMEIfBcXGozZ-M5"
-    },
-    {
-      "title": "這是一篇範例文章（可以刪掉）",
-      "date": "2025-04-14",
-      "date_display": "2025 年 4 月",
-      "category": "倉庫日常",
-      "excerpt": "這是文章摘要，大約 2-3 句話，會顯示在首頁列表卡片上。",
-      "filename": "blog-example.html",
-      "md_filename": "2025-04-14-example.md",
-      "slug": "example",
-      "tags": [
-        "範例",
-        "教學"
-      ],
-      "thumbnail": "images/baomei.jpg"
     }
   ],
-  "total": 7
+  "total": 6
 }
