@@ -327,7 +327,7 @@ function openLb(id) {
   if (!p) return;
   const mainWrap = document.getElementById('lb-main-img');
   if (p.images.length) {
-    mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull||p.mainImg}" alt="${esc(p.name)}" onclick="openPhotoZoomFromLb('${p.id}')" style="cursor:zoom-in;" title="點擊放大">`;
+    mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull||p.mainImg}" alt="${esc(p.name)}" onclick="openPhotoZoomFromLb(this)" style="cursor:zoom-in;" title="點擊放大">`;
   } else {
     mainWrap.innerHTML = `<div class="lb-no-photo">🧱<br><small style="font-size:.75rem;color:rgba(212,207,200,0.5);margin-top:.5rem;display:block;">照片拍攝中</small></div>`;
   }
@@ -402,10 +402,9 @@ function openPhotoZoom(id, e) {
   _openPhotoZoom(p.mainImgFull || p.mainImg, p.name, false);
 }
 
-function openPhotoZoomFromLb(id) {
-  const p = ALL.find(x => x.id === id);
-  if (!p || !p.mainImg) return;
-  _openPhotoZoom(p.mainImgFull || p.mainImg, p.name, true);
+function openPhotoZoomFromLb(imgEl) {
+  if (!imgEl || !imgEl.src) return;
+  _openPhotoZoom(imgEl.src, imgEl.alt, true);
 }
 
 function closePhotoZoom() {
