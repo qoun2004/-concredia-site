@@ -164,6 +164,13 @@
 
 <div id="product-grid"></div>
 
+<!-- 照片 Zoom 全螢幕 -->
+<div id="photo-zoom">
+  <button class="pz-close" onclick="closePhotoZoom()" title="關閉">✕</button>
+  <img id="pz-img" src="" alt="" onclick="closePhotoZoom()">
+  <div class="pz-hint">點任意處關閉</div>
+</div>
+
 <!-- 燈箱 -->
 <div id="lb">
 <button class="lb-close" onclick="closeLb()" title="關閉">✕</button>
@@ -290,8 +297,11 @@ function render(products, filter) {
     const dotHTML = dotClass ? `<div class="stock-dot ${dotClass}" title="${STOCK_TEXT[p.stockStatus]}"></div>` : '';
     const tags = [p.method, p.func].filter(Boolean).map(t => `<span class="card-tag">${esc(t)}</span>`).join('');
     const uniqueBadge = p.isUnique ? `<div class="unique-badge">獨一件</div>` : '';
-    return `<div class="product-card" onclick="openLb('${p.id}')">
-  <div class="card-img-wrap">${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${dotHTML}</div>
+    const hasImg = !!p.mainImg;
+    const imgWrapClick = hasImg ? `onclick="openPhotoZoom('${p.id}',event)"` : '';
+    const imgWrapCursor = hasImg ? `style="cursor:zoom-in;"` : '';
+    return `<div class="product-card">
+  <div class="card-img-wrap" ${imgWrapClick} ${imgWrapCursor}>${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${dotHTML}${hasImg ? '<div class="zoom-hint">🔍</div>' : ''}</div>
   <div class="card-body">
     <div class="card-sku">${esc(p.sku)}</div>
     <div class="card-name">${esc(p.name)}</div>
@@ -301,7 +311,7 @@ function render(products, filter) {
   </div>
   <div class="card-footer">
     <div class="card-spec">${esc(p.spec)||'規格洽詢'}${p.weightDisplay ? ` · ${esc(p.weightDisplay)}` : ''}</div>
-    <button class="card-open">查看詳情 →</button>
+    <button class="card-open" onclick="openLb('${p.id}')">查看詳情 →</button>
   </div>
 </div>`;
   }).join('');
@@ -363,7 +373,29 @@ function closeLb() {
   document.body.style.overflow = '';
 }
 
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeLb(); });
+function openPhotoZoom(id, e) {
+  if (e) e.stopPropagation();
+  const p = ALL.find(x => x.id === id);
+  if (!p || !p.mainImg) return;
+  const pzImg = document.getElementById('pz-img');
+  pzImg.src = p.mainImgFull || p.mainImg;
+  pzImg.alt = p.name || '';
+  document.getElementById('photo-zoom').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePhotoZoom() {
+  document.getElementById('photo-zoom').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('photo-zoom').addEventListener('click', function(e) {
+    if (e.target === this) closePhotoZoom();
+  });
+});
+
+document.addEventListener('keydown', e => { if(e.key==='Escape') { closeLb(); closePhotoZoom(); } });
 document.getElementById('lb').addEventListener('click', function(e){ if(e.target===this) closeLb(); });
 window.addEventListener('scroll', () => { document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>60); });
 function esc(str) { return String(str||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -587,5 +619,91 @@ loadData();
 .s-unique {
   background: #F4D03F;
   box-shadow: 0 0 6px rgba(244,208,63,0.6);
+}
+</style>
+
+<style>
+/* ── 照片 Zoom 全螢幕燈箱 ── */
+#photo-zoom {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.96);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#photo-zoom.open {
+  display: flex;
+}
+#photo-zoom #pz-img {
+  max-width: 95vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  cursor: zoom-out;
+  display: block;
+}
+.pz-close {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  transition: background 0.2s;
+  backdrop-filter: blur(4px);
+}
+.pz-close:hover {
+  background: rgba(255,255,255,0.32);
+}
+.pz-hint {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+  font-family: var(--fd, sans-serif);
+}
+
+/* 卡片圖片放大提示圖示 */
+.card-img-wrap {
+  position: relative;
+}
+.zoom-hint {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.9rem;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.card-img-wrap:hover .zoom-hint {
+  opacity: 1;
+}
+
+/* 手機：zoom hint 常駐顯示 */
+@media (max-width: 768px) {
+  .zoom-hint {
+    opacity: 0.75 !important;
+  }
 }
 </style>
