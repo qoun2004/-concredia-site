@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一個人的寂寞旅行 — Concredia.Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--rust:#9B5B3A;--rust-light:#C47A54;--concrete-dark:#3A3632;--concrete:#8B8680;--concrete-light:#D4CFC8;--warm-white:#FAF8F5;--cream:#F5F2ED;--charcoal:#2A2724;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;}
+body{font-family:var(--font-body);background:var(--warm-white);color:var(--charcoal);font-size:17px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,248,245,0.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(139,134,128,0.15);}
+.nav-logo{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--concrete-dark);text-decoration:none;}
+.nav-logo .dot{color:var(--rust);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--concrete-dark);text-decoration:none;}
+.nav-links a:hover{color:var(--rust);}
+.art-back{padding:1.2rem 4rem;border-bottom:1px solid rgba(58,54,50,0.08);margin-top:72px;}
+.art-back a{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--concrete);text-decoration:none;}
+.art-back a:hover{color:var(--rust);}
+.art-header{max-width:740px;margin:3rem auto;padding:0 2rem;}
+.art-category{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem;}
+.art-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--concrete-dark);line-height:1.15;margin-bottom:0.75rem;}
+.art-meta{font-size:0.75rem;color:rgba(58,54,50,0.45);}
+.art-body{max-width:740px;margin:0 auto;padding:0 2rem 4rem;}
+.art-body p{font-size:0.97rem;color:#3A3632;line-height:1.92;font-weight:300;margin-bottom:1.25rem;}
+.art-photo{width:100%;margin:2rem 0;cursor:zoom-in;border-radius:2px;display:block;transition:opacity 0.2s;}
+.art-photo:hover{opacity:0.9;}
+.art-divider{width:40px;height:1px;background:var(--concrete-light);margin:2rem 0;}
+/* 全圖燈箱 */
+#photobox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.95);flex-direction:column;}
+#photobox.open{display:flex;}
+.pb-toolbar{display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.25rem;flex-shrink:0;}
+.pb-btn{background:none;border:1px solid rgba(255,255,255,0.25);border-radius:20px;color:rgba(255,255,255,0.85);font-size:0.8rem;padding:0.35rem 1rem;cursor:pointer;letter-spacing:0.04em;}
+.pb-btn:hover{background:rgba(255,255,255,0.1);}
+.pb-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.pb-close:hover{background:rgba(255,255,255,0.3);}
+.pb-img-wrap{flex:1;display:flex;align-items:center;justify-content:center;overflow:auto;padding:1rem;}
+#pb-img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+footer{padding:2rem 4rem;border-top:1px solid rgba(58,54,50,0.08);display:flex;justify-content:space-between;align-items:center;}
+footer .logo{font-family:var(--font-display);font-size:1rem;color:var(--charcoal);}
+footer p{font-size:0.72rem;color:var(--concrete);opacity:0.45;}
+@media(max-width:768px){nav{padding:0.9rem 1.25rem;}.nav-links{display:none;}.art-back{padding:1rem 1.25rem;}.art-header,.art-body{padding-left:1.25rem;padding-right:1.25rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span>Lab</a>
+  <ul class="nav-links">
+    <li><a href="products.html">產品系列</a></li>
+    <li><a href="gallery.html">作品影像集</a></li>
+    <li><a href="blog.html">最新動態</a></li>
+  </ul>
+</nav>
+
+<div class="art-back"><a href="blog.html">← 返回最新動態</a></div>
+
+<div class="art-header">
+  <div class="art-category">最新動態</div>
+  <h1 class="art-title">一個人的寂寞旅行</h1>
+  <div class="art-meta">2026-06-04 · Concredia.Lab</div>
+</div>
+
+<div class="art-body">
+  <div class="art-divider"></div>
+  <p>如果年紀是不可以放棄的資源，那麼年過50必須更勇敢的面對時間。不一定需要有人陪著，不需要很多歡樂，只需要跟著心情去旅行，從寂寞的四下，認識自己。帶著自己創作的杯墊、桌椅，在森林裡、在沙灘上，暢飲一杯。</p>
+</div>
+
+<div id="photobox">
+  <div class="pb-toolbar">
+    <button class="pb-btn" onclick="closePhoto()">← 返回</button>
+    <button class="pb-close" onclick="closePhoto()">✕</button>
+  </div>
+  <div class="pb-img-wrap">
+    <img id="pb-img" src="" alt="">
+  </div>
+</div>
+
+<footer>
+  <div class="logo">Concredia<span style="color:var(--rust);">.</span>Lab</div>
+  <p>© 2026 Concredia.Lab</p>
+</footer>
+
+<script>
+function openPhoto(src){
+  document.getElementById('pb-img').src=src;
+  document.getElementById('photobox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePhoto(){
+  document.getElementById('photobox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('photobox').addEventListener('click',function(e){if(e.target===this)closePhoto();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePhoto();});
+document.querySelectorAll('.art-photo').forEach(img=>{
+  img.addEventListener('click',function(){openPhoto(this.src);});
+});
+window.addEventListener('scroll',function(){
+  document.querySelector('nav').classList.toggle('scrolled',window.scrollY>60);
+});
+</script>
+</body>
+</html>
