@@ -20,7 +20,7 @@ const FIELDS = {
   weightG:  '重量（克）',
   weightKg: '重量（公斤）',
   carbon:   '預估減碳量數據',
-  status:   '狀態',   // ← 新增：上架中 / 非賣品 / 不公開 / 已停售
+  special:  '特殊',
   stock:    '庫存',
   hidden:   '隱藏',
   images:   'AI圖',
@@ -63,13 +63,9 @@ function parseRecord(rec) {
   // 隱藏勾選 → 不顯示
   if (f[FIELDS.hidden]) return null;
 
-  // 狀態欄位（Multiple select，取第一個值）
-  const statusRaw = Array.isArray(f[FIELDS.status])
-    ? f[FIELDS.status][0]
-    : (f[FIELDS.status] || '上架中');
-
-  // 不公開 → 不顯示
-  if (statusRaw === '不公開') return null;
+  // 特殊欄位（非賣品）
+  const specialRaw = f[FIELDS.special] || [];
+  const isNotForSale = Array.isArray(specialRaw) ? specialRaw.includes('非賣品') : specialRaw === '非賣品';
 
   const rawImages = f[FIELDS.images] || [];
   const images = rawImages.map(img => ({
@@ -110,8 +106,7 @@ function parseRecord(rec) {
     weight,
     weightDisplay,
     carbonDisplay,
-    productStatus: statusRaw,          // ← 上架中 / 非賣品 / 已停售
-    isNotForSale:  statusRaw === '非賣品',
+    isNotForSale,
     stockStatus,
     isUnique:     stockStatus === 'unique',
     images,
