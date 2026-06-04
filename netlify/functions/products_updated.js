@@ -92,10 +92,14 @@ function parseRecord(rec) {
   const stockRaw = Array.isArray(f[FIELDS.stock])
     ? f[FIELDS.stock][0]
     : (f[FIELDS.stock] || '');
+  // 狀態欄位（狀態=不公開 → 不顯示）
+const statusRaw = Array.isArray(f['狀態']) ? f['狀態'][0] : (f['狀態'] || '');
+if (statusRaw === '不公開') return null;
+const isNotForSale = statusRaw === '非賣品';
   const stockMap = { '有現貨':'available', '可預訂':'order', '已售出':'sold', '獨一件':'unique' };
   const stockStatus = stockMap[stockRaw] || 'unknown';
 
-  return {
+  return {isNotForSale,
     id:           rec.id,
     sku:          f[FIELDS.sku]      || '',
     name:         f[FIELDS.name]     || '未命名作品',
