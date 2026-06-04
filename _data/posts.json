@@ -25,6 +25,18 @@
       "thumbnail": "images/story-night.jpg"
     },
     {
+      "title": "一個人的寂寞旅行",
+      "date": "2026-06-04",
+      "date_display": "2026 年 6 月",
+      "category": "最新動態",
+      "excerpt": "如果年紀是不可以放棄的資源，那麼年過50必須更勇敢的面對時間。不一定需要有人陪著，不需要很多歡樂，只需要跟著心情去旅行，從寂寞的四下，認識自己。帶著自己創作的杯墊、桌椅，在森林裡、在沙灘上，暢飲一杯。",
+      "filename": "blog-post-405963.html",
+      "md_filename": "2026-06-04-post-405963.md",
+      "slug": "post-405963",
+      "tags": [],
+      "thumbnail": "images/story-night.jpg"
+    },
+    {
       "title": "什麼是營建廢棄物？",
       "date": "2026-06-03",
       "date_display": "2026 年 6 月",
@@ -139,5 +151,5 @@
       "thumbnail": "https://lh3.googleusercontent.com/d/10mqcBYm0Isz9XOB-McMEIfBcXGozZ-M5"
     }
   ],
-  "total": 9
+  "total": 10
 }
