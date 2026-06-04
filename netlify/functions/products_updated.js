@@ -57,12 +57,15 @@ async function fetchAll() {
   return records;
 }
 
-function parseRecord(rec) {
+function parseRecord(rec, index) {
   const f = rec.fields;
-
-  // 隱藏勾選 → 不顯示
   if (f[FIELDS.hidden]) return null;
-
+  
+  // 狀態為不公開則不顯示
+  const statusArr = f['狀態'] || [];
+  const statusVal = Array.isArray(statusArr) ? statusArr[0] : statusArr;
+  if (statusVal === '不公開') return null;
+  const isNotForSale = statusVal === '非賣品';
   // 狀態欄位（Multiple select，取第一個值）
   const statusRaw = Array.isArray(f[FIELDS.status])
     ? f[FIELDS.status][0]
