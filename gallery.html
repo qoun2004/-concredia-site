@@ -179,6 +179,10 @@
 <!-- 燈箱 -->
 <div id="lb">
 <button class="lb-close" onclick="closeLb()" title="關閉">✕</button>
+<!-- 手機版頂部工具列 -->
+<div class="lb-mobile-bar">
+  <button class="lb-mobile-back" onclick="closeLb()">← 關閉</button>
+</div>
 <div class="lb-left" id="lb-left">
 <div class="lb-main-img" id="lb-main-img"></div>
 <div class="lb-thumbs" id="lb-thumbs"></div>
@@ -307,7 +311,7 @@ function render(products, filter) {
     const imgWrapCursor = hasImg ? `style="cursor:zoom-in;"` : '';
     return `<div class="product-card">
   <div class="card-img-wrap" ${imgWrapClick} ${imgWrapCursor}>${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${dotHTML}${hasImg ? '<div class="zoom-hint">🔍</div>' : ''}</div>
-  <div class="card-body">
+  <div class="card-body" onclick="openLb('${p.id}')" style="cursor:pointer;">
     <div class="card-sku">${esc(p.sku)}</div>
     <div class="card-name">${esc(p.name)}</div>
     ${p.nameEn ? `<div class="card-name-en">${esc(p.nameEn)}</div>` : ''}
@@ -539,6 +543,30 @@ loadData();
     flex-direction: column !important;
     overflow-y: auto !important;
   }
+
+  /* 手機頂部關閉列 */
+  .lb-mobile-bar {
+    display: flex !important;
+    align-items: center;
+    padding: 0.55rem 1rem;
+    background: rgba(18,16,14,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .lb-mobile-back {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    color: rgba(212,207,200,0.85);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.9rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
   #lb-left {
     width: 100% !important;
     min-height: 55vw !important;
@@ -563,17 +591,7 @@ loadData();
     font-size: 1.2rem !important;
   }
   .lb-close {
-    position: fixed !important;
-    top: 1rem !important;
-    right: 1rem !important;
-    z-index: 1000 !important;
-    background: rgba(0,0,0,0.6) !important;
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: none !important; /* 手機改用 lb-mobile-bar */
   }
 }
 
@@ -587,6 +605,9 @@ loadData();
 </style>
 
 <style>
+/* 手機頂部關閉列：桌機隱藏 */
+.lb-mobile-bar { display: none; }
+
 /* ── 減碳數據樣式 ── */
 .lb-carbon { background: rgba(39,120,60,0.06); border-radius: 4px; margin-top: 0.25rem; }
 .carbon-val {
