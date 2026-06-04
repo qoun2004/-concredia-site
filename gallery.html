@@ -178,10 +178,20 @@
 
 <!-- 燈箱 -->
 <div id="lb">
-<button class="lb-close" onclick="closeLb()" title="關閉">✕</button>
-<!-- 手機版頂部工具列 -->
-<div class="lb-mobile-bar">
-  <button class="lb-mobile-back" onclick="closeLb()">← 關閉</button>
+<!-- 頂部工具列（手機＋電腦都顯示） -->
+<div class="lb-topbar">
+  <button class="lb-topbar-back" onclick="closeLb()">← 返回作品集</button>
+  <button class="lb-topbar-close" onclick="closeLb()" title="關閉">✕</button>
+</div>
+<!-- 作品故事 Overlay（在 lb 內覆蓋） -->
+<div class="lb-story-overlay" id="lb-story-overlay">
+  <div class="lb-story-inner">
+    <div class="lb-story-header">
+      <div class="lb-story-label">📖 作品故事</div>
+      <button class="lb-story-close" onclick="closeStory()" title="返回詳情">✕</button>
+    </div>
+    <div class="lb-story-content" id="lb-story-content"></div>
+  </div>
 </div>
 <div class="lb-left" id="lb-left">
 <div class="lb-main-img" id="lb-main-img"></div>
@@ -306,11 +316,12 @@ function render(products, filter) {
     const dotHTML = dotClass ? `<div class="stock-dot ${dotClass}" title="${STOCK_TEXT[p.stockStatus]}"></div>` : '';
     const tags = [p.method, p.func].filter(Boolean).map(t => `<span class="card-tag">${esc(t)}</span>`).join('');
     const uniqueBadge = p.isUnique ? `<div class="unique-badge">獨一件</div>` : '';
+    const notForSaleBadge = p.isNotForSale ? `<div class="not-for-sale-badge">非賣品</div>` : '';
     const hasImg = !!p.mainImg;
     const imgWrapClick = hasImg ? `onclick="openPhotoZoom('${p.id}',event)"` : '';
     const imgWrapCursor = hasImg ? `style="cursor:zoom-in;"` : '';
     return `<div class="product-card">
-  <div class="card-img-wrap" ${imgWrapClick} ${imgWrapCursor}>${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${dotHTML}${hasImg ? '<div class="zoom-hint">🔍</div>' : ''}</div>
+  <div class="card-img-wrap" ${imgWrapClick} ${imgWrapCursor}>${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${notForSaleBadge}${dotHTML}${hasImg ? '<div class="zoom-hint">🔍</div>' : ''}</div>
   <div class="card-body" onclick="openLb('${p.id}')" style="cursor:pointer;">
     <div class="card-sku">${esc(p.sku)}</div>
     <div class="card-name">${esc(p.name)}</div>
@@ -343,12 +354,21 @@ function openLb(id) {
   const stockBadge = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
   const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>`<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`).join('');
   const uniqueLbBadge = p.isUnique ? `<span class="lb-unique-badge">獨一件 · One of a Kind</span>` : '';
+  const hasStory = !!(p.story);
+  const storyExcerpt = hasStory ? p.story.slice(0, 30) + '…' : '';
+  const storyBtn = hasStory
+    ? `<button class="lb-story-btn" onclick="openStory('${p.id}')">📖 作品故事</button>`
+    : '';
   document.getElementById('lb-right').innerHTML = `
 <div class="lb-header">
   <div class="lb-series">${esc(p.series)}</div>
-  <div class="lb-name">${esc(p.name)}</div>
+  <div class="lb-name-row">
+    <div class="lb-name">${esc(p.name)}</div>
+    ${storyBtn}
+  </div>
   ${p.nameEn ? `<div class="lb-name-en">${esc(p.nameEn)}</div>` : ''}
   <div class="lb-sku">${esc(p.sku)}${uniqueLbBadge}</div>
+  ${hasStory ? `<div class="lb-story-excerpt">${esc(storyExcerpt)}<button class="lb-story-excerpt-more" onclick="openStory('${p.id}')">展開全文</button></div>` : ''}
 </div>
 <div class="lb-section">
   <div class="lb-section-title">規格</div>
@@ -379,6 +399,7 @@ function switchImg(url, el) {
 
 function closeLb() {
   document.getElementById('lb').classList.remove('open');
+  document.getElementById('lb-story-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
 
@@ -417,6 +438,18 @@ function closePhotoZoom() {
   if (!document.getElementById('lb').classList.contains('open')) {
     document.body.style.overflow = '';
   }
+}
+
+function openStory(id) {
+  const p = ALL.find(x => x.id === id);
+  if (!p || !p.story) return;
+  const content = document.getElementById('lb-story-content');
+  content.innerHTML = `<div class="story-body">${esc(p.story).replace(/\n/g,'<br>')}</div>`;
+  document.getElementById('lb-story-overlay').classList.add('open');
+}
+
+function closeStory() {
+  document.getElementById('lb-story-overlay').classList.remove('open');
 }
 
 function closePhotoZoomBack() {
@@ -544,29 +577,11 @@ loadData();
     overflow-y: auto !important;
   }
 
-  /* 手機頂部關閉列 */
-  .lb-mobile-bar {
-    display: flex !important;
-    align-items: center;
-    padding: 0.55rem 1rem;
-    background: rgba(18,16,14,0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    flex-shrink: 0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+  /* 手機：topbar 調整 */
+  .lb-topbar {
+    padding: 0.5rem 0.75rem !important;
   }
-  .lb-mobile-back {
-    background: none;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    color: rgba(212,207,200,0.85);
-    font-size: 0.8rem;
-    padding: 0.3rem 0.9rem;
-    cursor: pointer;
-    letter-spacing: 0.04em;
-  }
+  .lb-topbar-back span { display: none; } /* 手機只顯示「←」 */
   #lb-left {
     width: 100% !important;
     min-height: 55vw !important;
@@ -590,9 +605,7 @@ loadData();
   .lb-name {
     font-size: 1.2rem !important;
   }
-  .lb-close {
-    display: none !important; /* 手機改用 lb-mobile-bar */
-  }
+  .lb-close { display: none !important; }
 }
 
 /* 兩欄版（平板 768-1024px）*/
@@ -605,8 +618,163 @@ loadData();
 </style>
 
 <style>
-/* 手機頂部關閉列：桌機隱藏 */
-.lb-mobile-bar { display: none; }
+/* lb 需要 relative 才能讓 story overlay absolute 定位 */
+#lb { position: fixed !important; }
+
+/* ── 燈箱頂部工具列（手機＋電腦） ── */
+.lb-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem;
+  background: rgba(14,12,11,0.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.lb-topbar-back {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  color: rgba(212,207,200,0.85);
+  font-size: 0.78rem;
+  padding: 0.32rem 0.9rem;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.15s;
+}
+.lb-topbar-back:hover { background: rgba(255,255,255,0.08); }
+.lb-topbar-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(212,207,200,0.8);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.lb-topbar-close:hover { background: rgba(255,255,255,0.2); }
+
+/* ── lb-header 名稱列（名稱 + 作品故事按鈕橫排） ── */
+.lb-name-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.15rem;
+}
+.lb-story-btn {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  padding: 0.25rem 0.7rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 20px;
+  color: rgba(212,207,200,0.8);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.lb-story-btn:hover { background: rgba(255,255,255,0.14); }
+.lb-story-excerpt {
+  font-size: 0.72rem;
+  color: rgba(212,207,200,0.45);
+  font-style: italic;
+  margin-top: 0.35rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* ── 作品故事 Overlay（在 #lb 內覆蓋） ── */
+.lb-story-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: var(--bg, #0e0c0b);
+  flex-direction: column;
+  overflow: hidden;
+}
+.lb-story-overlay.open { display: flex; }
+.lb-story-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+.lb-story-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  flex-shrink: 0;
+  background: rgba(14,12,11,0.7);
+  backdrop-filter: blur(8px);
+}
+.lb-story-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(212,207,200,0.7);
+  text-transform: uppercase;
+}
+.lb-story-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(212,207,200,0.8);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.lb-story-close:hover { background: rgba(255,255,255,0.18); }
+.lb-story-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+.story-zh {
+  font-family: var(--fn, 'Noto Sans TC', sans-serif);
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: rgba(212,207,200,0.85);
+  margin-bottom: 1.5rem;
+}
+.story-en {
+  font-family: var(--fd, 'Inter Tight', sans-serif);
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: rgba(212,207,200,0.5);
+  font-style: italic;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 1.25rem;
+}
+.story-body {
+  font-family: var(--fn, 'Noto Sans TC', sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: rgba(212,207,200,0.85);
+}
+.lb-story-excerpt-more {
+  display: inline;
+  margin-left: 0.4rem;
+  background: none;
+  border: none;
+  color: rgba(212,207,200,0.5);
+  font-size: 0.68rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  vertical-align: middle;
+}
 
 /* ── 減碳數據樣式 ── */
 .lb-carbon { background: rgba(39,120,60,0.06); border-radius: 4px; margin-top: 0.25rem; }
@@ -680,6 +848,22 @@ loadData();
 .s-unique {
   background: #F4D03F;
   box-shadow: 0 0 6px rgba(244,208,63,0.6);
+}
+
+/* 非賣品標籤（卡片右下角）*/
+.not-for-sale-badge {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(58,54,50,0.85);
+  color: rgba(212,207,200,0.9);
+  font-family: var(--fd);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: 1px solid rgba(212,207,200,0.25);
+  backdrop-filter: blur(4px);
 }
 </style>
 
