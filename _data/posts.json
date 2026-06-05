@@ -2,6 +2,18 @@
   "posts": [
     {
       "title": "一個人的寂寞旅行",
+      "date": "2026-06-05",
+      "date_display": "2026 年 6 月",
+      "category": "最新動態",
+      "excerpt": "",
+      "filename": "blog-post-676826.html",
+      "md_filename": "2026-06-05-post-676826.md",
+      "slug": "post-676826",
+      "tags": [],
+      "thumbnail": "images/story-night.jpg"
+    },
+    {
+      "title": "一個人的寂寞旅行",
       "date": "2026-06-04",
       "date_display": "2026 年 6 月",
       "category": "最新動態",
@@ -175,5 +187,5 @@
       "thumbnail": "https://lh3.googleusercontent.com/d/10mqcBYm0Isz9XOB-McMEIfBcXGozZ-M5"
     }
   ],
-  "total": 12
+  "total": 13
 }
