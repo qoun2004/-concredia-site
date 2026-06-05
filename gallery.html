@@ -357,6 +357,7 @@ function openLb(id) {
   const stockBadge = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
   const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>`<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`).join('');
   const uniqueLbBadge = p.isUnique ? `<span class="lb-unique-badge">獨一件 · One of a Kind</span>` : '';
+  const notForSaleLbBadge = p.isNotForSale ? `<span class="lb-not-for-sale-badge">非賣品 · Not for Sale</span>` : '';
   const hasStory = !!(p.story);
   const storyExcerpt = hasStory ? p.story.slice(0, 30) + '…' : '';
   const storyBtn = hasStory
@@ -370,7 +371,7 @@ function openLb(id) {
     ${storyBtn}
   </div>
   ${p.nameEn ? `<div class="lb-name-en">${esc(p.nameEn)}</div>` : ''}
-  <div class="lb-sku">${esc(p.sku)}${uniqueLbBadge}</div>
+  <div class="lb-sku">${esc(p.sku)}${uniqueLbBadge}${notForSaleLbBadge}</div>
   ${hasStory ? `<div class="lb-story-excerpt">${esc(storyExcerpt)}<button class="lb-story-excerpt-more" onclick="openStory('${p.id}')">展開全文</button></div>` : ''}
 </div>
 <div class="lb-section">
@@ -828,6 +829,21 @@ loadData();
   font-style: italic;
   margin-bottom: 0.4rem;
   letter-spacing: 0.04em;
+}
+
+/* 燈箱非賣品標籤 */
+.lb-not-for-sale-badge {
+  display: inline-block;
+  margin-left: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  background: rgba(150,150,150,0.12);
+  color: rgba(212,207,200,0.7);
+  font-family: var(--fd);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(212,207,200,0.3);
+  vertical-align: middle;
 }
 
 /* 燈箱獨一件標籤 */
