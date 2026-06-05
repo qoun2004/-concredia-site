@@ -193,11 +193,14 @@
     <div class="lb-story-content" id="lb-story-content"></div>
   </div>
 </div>
+<!-- lb-body 包住左右兩欄，讓 topbar 在上方獨立一列 -->
+<div class="lb-body">
 <div class="lb-left" id="lb-left">
 <div class="lb-main-img" id="lb-main-img"></div>
 <div class="lb-thumbs" id="lb-thumbs"></div>
 </div>
 <div class="lb-right" id="lb-right"></div>
+</div>
 </div>
 
 <footer>
@@ -504,8 +507,6 @@ loadData();
 })();
 </script>
 <script src="scripts/chat-widget.js" defer></script>
-</body>
-</html>
 
 <style>
 /* ── Gallery 手機版優化 ── */
@@ -571,8 +572,8 @@ loadData();
     padding: 0.3rem 0.75rem !important;
   }
 
-  /* 燈箱手機版：圖片全螢幕，資料可滾動 */
-  #lb {
+  /* 手機：lb-body 改成直排，可滾動 */
+  .lb-body {
     flex-direction: column !important;
     overflow-y: auto !important;
   }
@@ -618,8 +619,16 @@ loadData();
 </style>
 
 <style>
-/* lb 需要 relative 才能讓 story overlay absolute 定位 */
-#lb { position: fixed !important; }
+/* lb 垂直排列：topbar 在上，lb-body（左圖＋右資訊）在下 */
+#lb { position: fixed !important; flex-direction: column !important; }
+/* lb-body：橫向並排左右兩欄 */
+.lb-body {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  min-height: 0;
+}
 
 /* ── 燈箱頂部工具列（手機＋電腦） ── */
 .lb-topbar {
@@ -1011,3 +1020,5 @@ loadData();
   }
 }
 </style>
+</body>
+</html>
