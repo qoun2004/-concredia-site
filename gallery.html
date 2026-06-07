@@ -1037,5 +1037,271 @@ loadData();
   }
 }
 </style>
+
+<style>
+/* ═══════════════════════════════════════════════
+   GALLERY VISUAL OVERHAUL — 修復所有 UI 問題
+   ═══════════════════════════════════════════════ */
+
+/* ── 1. HERO 修復：h1 黑字在黑背景 → 白色；縮短高度 ── */
+.hero {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  min-height: 42vh !important;
+  padding: 7.5rem 5rem 3.5rem !important;
+}
+.hero > h1,
+.hero h1 {
+  color: #ffffff !important;
+  font-size: clamp(2.4rem, 5vw, 6.5rem) !important;
+  margin: 0.5rem 0 1rem !important;
+  line-height: 0.92 !important;
+}
+.hero > h1 em,
+.hero h1 em {
+  color: var(--fire) !important;
+  font-style: italic !important;
+  font-family: var(--fs) !important;
+}
+.hero-eye {
+  margin-bottom: 0.75rem !important;
+}
+.hero > .hero-sub,
+.hero .hero-sub {
+  margin-bottom: 0 !important;
+  color: rgba(255,255,255,0.72) !important;
+  font-size: 0.9rem !important;
+  max-width: 520px !important;
+}
+
+/* ── 2. 作品格子背景：淡灰底，更有層次 ── */
+#product-grid {
+  background: #F4F4F1 !important;
+  padding: 3.5rem 4rem !important;
+  gap: 2rem !important;
+}
+
+/* ── 3. 卡片：加完整邊框＋陰影，去掉只有頂線的設計 ── */
+.product-card {
+  background: #ffffff !important;
+  border: none !important;
+  border-top: 3px solid #111111 !important;
+  padding-top: 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06) !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+.product-card:hover {
+  opacity: 1 !important;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.13) !important;
+  transform: translateY(-4px) !important;
+}
+.card-img-wrap {
+  margin-bottom: 0 !important;
+  border-bottom: 1px solid #ebebeb !important;
+}
+.card-body {
+  padding: 1.1rem 1.2rem 0.4rem !important;
+}
+.card-sku {
+  font-size: 0.6rem !important;
+  color: #aaaaaa !important;
+  margin-bottom: 0.2rem !important;
+  opacity: 1 !important;
+}
+.card-name {
+  font-size: 1.12rem !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.25rem !important;
+  color: #111111 !important;
+}
+.card-name-en {
+  font-size: 0.7rem !important;
+  color: #999990 !important;
+  margin-bottom: 0.35rem !important;
+}
+.card-meta {
+  font-size: 0.83rem !important;
+  color: #6a6a62 !important;
+  margin-bottom: 0.4rem !important;
+  line-height: 1.5 !important;
+}
+
+/* ── 4. Tags：去掉醜灰方塊，改細邊框 pill ── */
+.card-tag {
+  background: transparent !important;
+  border: 1px solid #d8d8d2 !important;
+  color: #888880 !important;
+  font-size: 0.65rem !important;
+  padding: 0.1rem 0.5rem !important;
+  letter-spacing: 0.04em !important;
+  border-radius: 2px !important;
+}
+
+/* ── 5. 卡片 footer ── */
+.card-footer {
+  padding: 0.65rem 1.2rem 1.1rem !important;
+  margin-top: 0.5rem !important;
+  border-top: 1px solid #eeeeea !important;
+}
+.card-spec {
+  font-size: 0.68rem !important;
+  color: #9a9a90 !important;
+}
+.card-open {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border: none !important;
+  padding: 0.38rem 0.9rem !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  transition: background 0.15s !important;
+  border-radius: 0 !important;
+}
+.card-open:hover {
+  background: var(--fire) !important;
+  color: #ffffff !important;
+}
+
+/* ── 6. 篩選列 active：橘色 ── */
+.filter-btn.active {
+  background: var(--fire) !important;
+  border-color: var(--fire) !important;
+  color: #ffffff !important;
+}
+
+/* ── 7. Footer：補缺少的 grid 排版 CSS ── */
+footer {
+  display: block !important;
+  padding: 0 !important;
+}
+.footer-grid {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr 1fr !important;
+  gap: 3rem !important;
+  padding: 3.5rem 5rem !important;
+  background: #111111 !important;
+}
+.footer-brand .logo {
+  font-family: var(--fd) !important;
+  font-size: 1.1rem !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.03em !important;
+  margin-bottom: 0.3rem !important;
+}
+.footer-brand p {
+  font-size: 0.78rem !important;
+  color: rgba(212,207,200,0.5) !important;
+  line-height: 1.75 !important;
+  margin-top: 0.5rem !important;
+}
+.footer-col h5 {
+  font-family: var(--fd) !important;
+  font-size: 0.6rem !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--fire) !important;
+  margin-bottom: 1rem !important;
+  font-weight: 700 !important;
+}
+.footer-col ul { list-style: none !important; }
+.footer-col ul li { margin-bottom: 0.5rem !important; }
+.footer-col ul li a {
+  color: rgba(212,207,200,0.55) !important;
+  text-decoration: none !important;
+  font-size: 0.82rem !important;
+  transition: color 0.15s !important;
+}
+.footer-col ul li a:hover { color: #ffffff !important; }
+.footer-bottom {
+  padding: 1.25rem 5rem !important;
+  background: #111111 !important;
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+.footer-bottom p {
+  font-size: 0.72rem !important;
+  color: rgba(212,207,200,0.35) !important;
+  font-family: var(--fd) !important;
+}
+.social-links { display: flex !important; gap: 1rem !important; }
+.social-link {
+  font-size: 0.7rem !important;
+  color: rgba(212,207,200,0.4) !important;
+  text-decoration: none !important;
+  font-family: var(--fd) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  transition: color 0.15s !important;
+}
+.social-link:hover { color: var(--fire) !important; }
+.footer-easter {
+  text-align: center !important;
+  padding: 0.5rem 5rem 1.25rem !important;
+  background: #111111 !important;
+}
+.footer-easter-text {
+  font-size: 0.65rem !important;
+  color: rgba(212,207,200,0.2) !important;
+}
+
+/* ── 8. 手機版 Hero & Grid 修正 ── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 5.5rem 1.5rem 2.5rem !important;
+    min-height: 36vh !important;
+  }
+  .hero h1 {
+    font-size: clamp(1.9rem, 7vw, 3.2rem) !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .hero .hero-sub {
+    font-size: 0.82rem !important;
+    line-height: 1.65 !important;
+  }
+  #product-grid {
+    padding: 1.25rem 0.75rem !important;
+    gap: 1rem !important;
+  }
+  .product-card:hover {
+    transform: none !important;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.06) !important;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    padding: 2.5rem 1.5rem !important;
+    gap: 2rem !important;
+  }
+  .footer-bottom {
+    padding: 1rem 1.5rem !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    text-align: center !important;
+  }
+  .footer-easter {
+    padding: 0.5rem 1.5rem 1rem !important;
+  }
+}
+
+/* ── 9. 平板 footer 兩欄 ── */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    padding: 3rem !important;
+  }
+  .footer-bottom, .footer-easter {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+  #product-grid {
+    padding: 3rem 2.5rem !important;
+  }
+}
+</style>
 </body>
 </html>
