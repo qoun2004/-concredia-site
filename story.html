@@ -26,7 +26,19 @@
     background:var(--story-paper)!important;
     border-top:1px solid rgba(216,208,194,.55)!important;
   }
-  body > div[style*="background:var(--fire)"]{background:#B8754C!important;}
+  body > div[style*="background:var(--fire)"]{
+    background:var(--story-soft)!important;
+    border-top:1px solid rgba(216,208,194,.8)!important;
+  }
+  body > div[style*="background:var(--fire)"] h2,
+  body > div[style*="background:var(--fire)"] p,
+  body > div[style*="background:var(--fire)"] em{
+    color:var(--story-ink)!important;
+  }
+  body > div[style*="background:var(--fire)"] .btn-p{
+    background:var(--story-ink)!important;
+    color:#fff!important;
+  }
   [style*="background:var(--bk)"],
   [style*="background:#0D0C0B"],
   [style*="background:#1A1917"],
@@ -485,7 +497,7 @@
   <!-- BAOMEI CHAPTER -->
   <div style="background:var(--bk);padding:5rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;" class="mobile-stack">
     <div style="text-align:center;">
-      <img src="images/rovi-studio-portrait.jpg" alt="Rovi Lee 士敏文品工作室肖像" onclick="openLightbox(this.src,this.alt)" style="width:260px;height:260px;object-fit:cover;object-position:center 28%;border-radius:50%;border:3px solid rgba(216,208,194,0.8);margin-bottom:1.5rem;cursor:zoom-in;">
+      <img src="images/baomei.jpg" alt="寶妹 Bao Mei" onclick="openLightbox(this.src,this.alt)" style="width:260px;height:260px;object-fit:cover;object-position:22% center;border-radius:50%;border:3px solid rgba(216,208,194,0.8);margin-bottom:1.5rem;cursor:zoom-in;">
       <div style="font-family:var(--fd);font-size:1.35rem;color:var(--w);font-weight:700;">寶妹 Bao Mei</div>
       <div style="font-size:0.68rem;letter-spacing:0.15em;color:var(--fire-h);margin-top:0.35rem;">2020.07.01 · Chief Quality Inspector</div>
     </div>
@@ -503,7 +515,7 @@
   <!-- MANIFESTO -->
   <div style="background:var(--fire);padding:5rem 4rem;text-align:center;">
     <h2 style="font-family:var(--fd);font-size:clamp(1.6rem,2.8vw,2.2rem);color:white;font-weight:700;margin-bottom:1.5rem;line-height:1.3;">Realise · 讓價值落地實踐</h2>
-    <p style="font-size:0.97rem;color:rgba(255,255,255,0.85);line-height:1.92;font-weight:300;max-width:680px;margin:0 auto 2rem;">物質是不滅的。山上被挖掘的礦石，被運到城市蓋樓，再被拆除成堆無處安放的碎石——它從未消失，只是失去了被看見的理由。<br><br>Concredia.Lab 相信，每一塊廢棄的混凝土，都記錄著它所在的空間與時間。我們的工作，是讓這段記憶以新的形式延續——作為家具、作為音響、作為一張讓陌生人坐下來喝茶的桌子。<br><br><em>Concrete as a medium. 混凝土是媒介，生活才是訊息。</em></p>
+    <p style="font-size:0.97rem;color:rgba(255,255,255,0.85);line-height:1.92;font-weight:300;max-width:680px;margin:0 auto 2rem;">物質是不滅的。山上被挖掘的礦石，被運到城市蓋樓，再被拆除成堆無處安放的碎石——它從未消失，只是失去了被看見的理由。<br><br>Concredia.Lab 相信，每一塊廢棄的混凝土，都記錄著它所在的空間與時間。我們的工作，是讓這段記憶以新的形式延續——作為家具、作為音響、作為一張讓陌生人坐下來喝茶的桌子。<br><br><em>Concrete as a media. 混凝土是媒介，生活才是訊息。</em></p>
     <a href="contact.html" class="btn-p" style="background:white;color:var(--fire);">開始合作對話 →</a>
   </div>
 </div>
@@ -806,7 +818,7 @@
     <div class="footer-brand">
       <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
       <div style="font-size:0.68rem;letter-spacing:0.12em;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-bottom:0.75rem;">士敏文品</div>
-      <p>以土木博士研究為根，以設計為語言，<br>讓每一塊再生廢料都有自己的故事。<br><br>Concrete as a Medium for Life.<br>Taiwan · Circular Design · Est. 2021</p>
+      <p>以土木博士研究為根，以設計為語言，<br>讓每一塊再生廢料都有自己的故事。<br><br>Concrete as a Media for Life.<br>Taiwan · Circular Design · Est. 2021</p>
     </div>
     <div class="footer-col"><h5>產品</h5><ul>
       <li><a href="products.html">定錨家具 / 水泥音響</a></li>

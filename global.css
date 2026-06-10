@@ -157,7 +157,7 @@ footer small{font-size:.72rem;color:var(--g400);}
 .card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .3s;opacity:0;}
 .card-img-wrap img.loaded{opacity:1;}
 .product-card:hover .card-img-wrap img{transform:scale(1.04);}
-.no-photo{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--g200);}
+.no-photo{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--g400);}
 .no-photo span{font-size:3rem;}.no-photo small{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);}
 .series-badge,.card-series-badge{position:absolute;top:0;left:0;padding:.22rem .7rem;background:var(--fire);color:var(--w);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-family:var(--fd);font-weight:700;}
 .stock-dot,.card-stock-dot{position:absolute;top:.75rem;right:.75rem;width:8px;height:8px;border-radius:50%;}
@@ -167,7 +167,7 @@ footer small{font-size:.72rem;color:var(--g400);}
 .card-name{font-family:var(--fd);font-weight:900;font-size:1.15rem;letter-spacing:-.03em;color:var(--bk);margin-bottom:.4rem;line-height:1.1;}
 .card-meta,.card-material{font-size:.92rem;color:var(--g400);line-height:1.6;margin-bottom:.5rem;}
 .card-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
-.card-tag{padding:.12rem .5rem;background:var(--g100);font-size:.68rem;letter-spacing:.06em;color:var(--g700);font-family:var(--fd);font-weight:600;}
+.card-tag{padding:.12rem .6rem;background:transparent;border:1px solid var(--g200);font-size:.68rem;letter-spacing:.06em;color:var(--g400);font-family:var(--fd);font-weight:600;}
 .card-footer{padding:.75rem 0 0;border-top:1px solid var(--g200);display:flex;justify-content:space-between;align-items:center;margin-top:1rem;}
 .card-spec{font-size:.75rem;font-family:var(--fd);font-weight:600;color:var(--g400);}
 .card-cta,.card-open{font-size:.75rem;font-family:var(--fd);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fire);background:none;border:none;cursor:pointer;transition:color var(--ease);padding:0;}
@@ -1078,4 +1078,935 @@ html, body { overflow-x: hidden; max-width: 100vw; }
     grid-template-columns: 1fr !important;
   }
   .stab { padding: 0.5rem 0.6rem !important; font-size: 0.55rem !important; }
+}
+
+/* ═══════════════════════════════════════════════
+   全站視覺修正 Global UI Fixes
+   ═══════════════════════════════════════════════ */
+
+/* 確保深色區塊的標題都是白色，避免黑字在黑底 */
+.strip--black h1, .strip--black h2, .strip--black h3,
+[style*="background:var(--bk)"] h1,
+[style*="background:#111"] h1,
+[style*="background:#161412"] h1,
+[style*="background:#0a0a0a"] h1 {
+  color: var(--w);
+}
+
+/* gift-card-tag 也改成邊框 pill */
+.gift-card-tag {
+  background: transparent !important;
+  border: 1px solid rgba(232,93,4,0.35) !important;
+  color: var(--fire) !important;
+}
+
+/* 圖片佔位符：讓 🧱 在淺灰底上看得見 */
+.no-photo {
+  background: var(--g100);
+}
+
+/* card-tag hover 效果 */
+.card-tag:hover {
+  border-color: var(--fire);
+  color: var(--fire);
+}
+
+/* 確保所有卡片圖片顯示正常 */
+.card-img-wrap img,
+.product-card img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card-img-wrap img.loaded,
+.product-card img.loaded {
+  opacity: 1;
+}
+
+/* 字體可讀性：最小字放大到不低於 0.68rem */
+.sec-tag, .sec-eye,
+.page-hero-eye, .hero-eye, .gift-hero-eye,
+.hero-eyebrow {
+  font-size: 0.72rem !important;
+}
+
+/* filter 按鈕 active 狀態用橘色（非黑色）更醒目 */
+.filter-btn.active {
+  background: var(--fire) !important;
+  border-color: var(--fire) !important;
+  color: #fff !important;
+}
+
+/* ============================================================
+   FOOTER GRID SYSTEM
+   全站共用的 footer 多欄佈局
+   ============================================================ */
+
+footer {
+  padding: 4rem 6rem;
+  background: var(--bk);
+  display: block; /* 覆蓋 flex，改用 grid 子層處理 */
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 0 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--g200);
+  align-items: start;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-brand .logo {
+  font-family: var(--fd);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--w);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.footer-brand p {
+  font-size: 0.78rem;
+  color: var(--g400);
+  line-height: 1.6;
+  max-width: 22ch;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-col h4 {
+  font-family: var(--fd);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--g400);
+  margin-bottom: 0.25rem;
+}
+
+.footer-col a {
+  font-size: 0.85rem;
+  color: var(--g400);
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+.footer-col a:hover {
+  color: var(--w);
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.social-links a {
+  font-size: 0.85rem;
+  color: var(--g400);
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+.social-links a:hover {
+  color: var(--fire);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  gap: 1rem;
+}
+
+.footer-bottom small {
+  font-size: 0.72rem;
+  color: var(--g400);
+}
+
+.footer-easter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: default;
+}
+
+.footer-easter-text {
+  font-size: 0.72rem;
+  color: var(--g400);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footer-easter:hover .footer-easter-text {
+  opacity: 1;
+  color: var(--fire);
+}
+
+/* ============================================================
+   NAV FUNDRAISE BUTTON
+   ============================================================ */
+
+.nav-fundraise {
+  font-family: var(--fd);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--fire);
+  border: 1.5px solid var(--fire);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  text-decoration: none;
+  transition: background var(--ease), color var(--ease);
+  white-space: nowrap;
+}
+
+.nav-fundraise:hover {
+  background: var(--fire);
+  color: var(--w);
+}
+
+/* ============================================================
+   GIFTS PAGE — FESTIVAL NAV
+   ============================================================ */
+
+.festival-nav {
+  position: sticky;
+  top: 64px; /* 與 nav 高度對齊 */
+  z-index: 90;
+  background: var(--bk);
+  border-bottom: 1px solid var(--g200);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 6rem;
+}
+
+.festival-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.fnav-btn {
+  font-family: var(--fd);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--g400);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--ease), border-color var(--ease);
+}
+
+.fnav-btn:hover,
+.fnav-btn.active {
+  color: var(--w);
+  border-bottom-color: var(--fire);
+}
+
+/* ============================================================
+   GIFTS PAGE — FESTIVAL SECTION CONTAINER
+   ============================================================ */
+
+.festival-section {
+  padding: 6rem;
+  border-bottom: 1px solid var(--g200);
+}
+
+.festival-section:last-of-type {
+  border-bottom: none;
+}
+
+.festival-section .sec-eye {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fire);
+  margin-bottom: 0.75rem;
+}
+
+.festival-section h2 {
+  font-family: var(--fd);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.festival-section .sec-sub {
+  font-size: 0.95rem;
+  color: var(--g400);
+  max-width: 55ch;
+  line-height: 1.65;
+  margin-bottom: 3rem;
+}
+
+/* ============================================================
+   GIFTS PAGE — GIFT CARDS GRID
+   ============================================================ */
+
+.gift-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.gift-card {
+  background: var(--g50);
+  border-radius: 4px;
+  padding: 2rem 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: background var(--ease), transform var(--ease);
+  cursor: default;
+}
+
+.gift-card:hover {
+  background: var(--g100);
+  transform: translateY(-3px);
+}
+
+/* 禮品卡 emoji icon — 修正顯示/定位問題 */
+.gift-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.75rem;
+  line-height: 1;
+  /* 避免 emoji 被字體縮放影響 */
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  /* 防止行高壓縮造成 emoji 截切 */
+  overflow: visible;
+  flex-shrink: 0;
+  /* 修正 emoji 在非 macOS 上的垂直偏移 */
+  user-select: none;
+}
+
+.gift-card-tag {
+  display: inline-block;
+  font-family: var(--fd);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--g700);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0.18rem 0.6rem;
+}
+
+.gift-card h3 {
+  font-family: var(--fd);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--bk);
+  margin: 0;
+}
+
+.gift-card-slogan {
+  font-size: 0.82rem;
+  color: var(--g700);
+  line-height: 1.55;
+}
+
+/* dark strip 內的 gift card */
+.strip--black .gift-card,
+[class*="strip--black"] .gift-card {
+  background: var(--g200);
+}
+
+.strip--black .gift-card:hover {
+  background: var(--g400);
+}
+
+.strip--black .gift-card h3 {
+  color: var(--w);
+}
+
+.strip--black .gift-card-slogan {
+  color: var(--g100);
+}
+
+/* ============================================================
+   GIFTS PAGE — BIG QUOTE
+   ============================================================ */
+
+.big-quote {
+  font-family: var(--fs);
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--w);
+  border-left: 3px solid var(--fire);
+  padding-left: 2rem;
+  margin: 0;
+  max-width: 55ch;
+}
+
+/* ============================================================
+   GIFTS PAGE — SHOP GRID（門市列表）
+   ============================================================ */
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem 3rem;
+}
+
+.shop-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--g200);
+}
+
+.shop-date {
+  font-family: var(--fd);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fire);
+}
+
+.shop-name {
+  font-family: var(--fd);
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--w);
+  letter-spacing: -0.01em;
+}
+
+.shop-line {
+  font-size: 0.82rem;
+  color: var(--g400);
+}
+
+/* ============================================================
+   GIFTS PAGE — CORPORATE GRID（企業認養）
+   ============================================================ */
+
+.corp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.corp-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem;
+  background: var(--g50);
+  border-radius: 4px;
+  transition: background var(--ease);
+}
+
+.corp-cell:hover {
+  background: var(--g100);
+}
+
+.corp-no {
+  font-family: var(--fd);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fire);
+}
+
+.corp-label {
+  font-family: var(--fd);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--g400);
+  letter-spacing: 0.05em;
+}
+
+.corp-title {
+  font-family: var(--fd);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--bk);
+  letter-spacing: -0.02em;
+}
+
+.corp-slogan {
+  font-size: 0.85rem;
+  color: var(--g700);
+  font-style: italic;
+}
+
+.corp-desc {
+  font-size: 0.82rem;
+  color: var(--g700);
+  line-height: 1.6;
+}
+
+/* dark strip 內的 corp cell */
+.strip--black .corp-cell {
+  background: var(--g200);
+}
+
+.strip--black .corp-cell:hover {
+  background: var(--g400);
+}
+
+.strip--black .corp-title {
+  color: var(--w);
+}
+
+/* ============================================================
+   GIFTS PAGE — ENGRAVE SECTION
+   ============================================================ */
+
+.engrave-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.engrave-visual {
+  aspect-ratio: 4/3;
+  background: var(--g100);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.engrave-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ============================================================
+   GIFTS PAGE — CTA BANNER
+   ============================================================ */
+
+.cta-banner {
+  text-align: center;
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cta-banner h2 {
+  font-family: var(--fd);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--w);
+  line-height: 1.05;
+}
+
+.cta-banner p {
+  font-size: 0.95rem;
+  color: var(--g400);
+  max-width: 50ch;
+  line-height: 1.65;
+}
+
+.cta-btn-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-white {
+  font-family: var(--fd);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--w);
+  color: var(--bk);
+  border: none;
+  border-radius: 4px;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity var(--ease);
+}
+
+.btn-white:hover {
+  opacity: 0.88;
+}
+
+.btn-outline-white {
+  font-family: var(--fd);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: none;
+  color: var(--w);
+  border: 1.5px solid var(--g400);
+  border-radius: 4px;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color var(--ease), color var(--ease);
+}
+
+.btn-outline-white:hover {
+  border-color: var(--w);
+  color: var(--w);
+}
+
+/* ============================================================
+   HELPER — MOBILE STACK
+   ============================================================ */
+
+.mobile-stack {
+  /* 預設不疊：由 RWD 斷點控制 */
+}
+
+/* ============================================================
+   RWD — FOOTER + GIFTS PAGE MOBILE BREAKPOINTS
+   ============================================================ */
+
+@media (max-width: 900px) {
+  /* Footer RWD */
+  footer {
+    padding: 3rem 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  /* Festival nav RWD */
+  .festival-nav {
+    padding: 0 2rem;
+    top: 56px;
+  }
+
+  /* Festival section RWD */
+  .festival-section {
+    padding: 4rem 2rem;
+  }
+
+  /* Gift cards RWD */
+  .gift-cards {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+
+  /* Shop grid RWD */
+  .shop-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Corp grid RWD */
+  .corp-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Engrave section RWD */
+  .engrave-section {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* CTA banner RWD */
+  .cta-banner {
+    padding: 4rem 2rem;
+  }
+
+  /* Mobile stack: applies at 900px */
+  .mobile-stack {
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .gift-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .fnav-btn {
+    padding: 0.85rem 0.9rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Concredia.Lab — Soft Minimal Refresh
+   讓非首頁頁面同步成更淺、更清楚、更接近生活工藝品牌的視覺。
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --w:#FBFAF6;
+  --g50:#F7F4EE;
+  --g100:#ECE6DA;
+  --g200:#D8D0C2;
+  --g400:#6F665B;
+  --g700:#3F3A33;
+  --bk:#27231F;
+  --fire:#A9653D;
+  --rust:#A9653D;
+  --rust-light:#C87949;
+  --fire-h:#C87949;
+}
+
+body{
+  background:var(--w);
+  color:var(--bk);
+  letter-spacing:0;
+}
+
+nav,
+nav#mainNav{
+  background:rgba(251,250,246,.94);
+  border-bottom:1px solid rgba(216,208,194,.72);
+  backdrop-filter:blur(18px);
+}
+
+.nav-logo,
+nav#mainNav .nav-logo,
+nav .nav-links a,
+nav#mainNav .nav-links a,
+.nav-fundraise,
+.lang-toggle{
+  color:var(--bk)!important;
+}
+
+.nav-links a:hover,
+.nav-fundraise:hover,
+.lang-toggle:hover{
+  color:var(--fire)!important;
+}
+
+.page-hero,
+.gift-hero{
+  background:var(--w);
+  color:var(--bk);
+  border-bottom:1px solid rgba(216,208,194,.72);
+  padding-top:10rem;
+}
+
+.page-hero h1,
+.gift-hero h1{
+  color:var(--bk);
+  letter-spacing:0;
+  line-height:1;
+  max-width:980px;
+}
+
+.page-hero h1 em,
+.gift-hero h1 em{
+  color:var(--fire);
+}
+
+.page-hero-sub,
+.hero-sub-sm,
+.gift-hero-sub{
+  color:var(--g400);
+  font-size:1.05rem;
+}
+
+.marquee-bar,
+.festival-nav,
+.filter-bar,
+div.filter-bar{
+  background:#EFE8DC;
+  border-color:rgba(216,208,194,.8);
+}
+
+.strip--black,
+.festival-section[style*="background:var(--bk)"],
+.festival-section[style*="background:#111"],
+section[style*="background:var(--bk)"]{
+  background:#F4F0E8!important;
+  color:var(--bk)!important;
+}
+
+.strip--black .sec-h,
+.strip--black .sec-title,
+.festival-section[style*="background:var(--bk)"] .sec-title,
+.festival-section[style*="background:var(--bk)"] h2,
+section[style*="background:var(--bk)"] .sec-title,
+section[style*="background:var(--bk)"] h2{
+  color:var(--bk)!important;
+}
+
+.strip--black .sec-body,
+.strip--black .sec-sub,
+.festival-section[style*="background:var(--bk)"] p,
+section[style*="background:var(--bk)"] p{
+  color:var(--g400)!important;
+  opacity:1!important;
+}
+
+.festival-section{
+  background:var(--w);
+  border-top:1px solid rgba(216,208,194,.55);
+}
+
+.festival-section:nth-child(even){
+  background:#F7F4EE;
+}
+
+.sec-title,
+.sec-h,
+.gift-hero h1,
+.page-hero h1{
+  letter-spacing:0!important;
+}
+
+.sec-body,
+.sec-sub,
+.card-text,
+.gift-card p,
+.corp-desc,
+.shop-line{
+  color:var(--g400);
+}
+
+.gift-card,
+.corp-cell,
+.shop-cell,
+.card,
+.product-card{
+  background:#fff!important;
+  border:1px solid rgba(216,208,194,.85)!important;
+  border-top:1px solid rgba(216,208,194,.85)!important;
+  padding:1.75rem!important;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease;
+}
+
+.gift-card:hover,
+.corp-cell:hover,
+.shop-cell:hover,
+.card:hover,
+.product-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--fire)!important;
+}
+
+.gift-card-icon{
+  display:grid;
+  place-items:center;
+  width:2.35rem;
+  height:2.35rem;
+  border-radius:50%;
+  border:1px solid var(--g200);
+  color:var(--fire);
+  background:#FBFAF6;
+  font-size:0!important;
+}
+
+.gift-card-icon::after{
+  content:"";
+  width:.72rem;
+  height:.72rem;
+  border-radius:50%;
+  background:var(--fire);
+  display:block;
+}
+
+.big-quote,
+.cta-banner,
+.engrave-section{
+  background:#EFE8DC!important;
+  color:var(--bk)!important;
+}
+
+.big-quote blockquote,
+.cta-banner h2,
+.engrave-section .sec-title{
+  color:var(--bk)!important;
+}
+
+.big-quote cite,
+.cta-banner p,
+.engrave-section p{
+  color:var(--g400)!important;
+}
+
+#product-grid{
+  background:var(--w);
+  gap:2rem;
+}
+
+.card-img-wrap{
+  aspect-ratio:4/3;
+  background:#ECE6DA;
+}
+
+.lb-right,
+.lb-section,
+.lb-header,
+.lb-footer{
+  background:#FBFAF6;
+}
+
+.btn-fire,
+.btn-primary,
+.btn-black,
+.lb-cta,
+.lb-contact{
+  background:var(--bk);
+  color:#fff;
+}
+
+.btn-fire:hover,
+.btn-primary:hover,
+.btn-black:hover,
+.lb-cta:hover,
+.lb-contact:hover{
+  background:var(--fire);
+}
+
+footer{
+  background:#27231F;
 }
