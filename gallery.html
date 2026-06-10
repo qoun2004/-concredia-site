@@ -120,7 +120,7 @@
   <ul class="nav-links">
     <li><a href="story.html">品牌故事</a></li>
     <li><a href="products.html">產品系列</a></li>
-    <li><a href="gifts.html" style="color:var(--fire-h);">🎁 節慶禮品</a></li>
+    <li><a href="gifts.html" style="color:var(--fire-h);">節慶禮品</a></li>
     <li><a href="gallery.html">作品集</a></li>
     <li><a href="sustainability.html">永續 · ESG</a></li>
     <li><a href="blog.html">最新動態</a></li>
@@ -138,7 +138,7 @@
   <a href="index.html">首頁</a>
   <a href="story.html">品牌故事</a>
   <a href="products.html">產品系列</a>
-  <a href="gifts.html">🎁 節慶禮品</a>
+  <a href="gifts.html">節慶禮品</a>
   <a href="gallery.html">作品集</a>
   <a href="sustainability.html">永續 · ESG</a>
   <a href="blog.html">最新動態</a>
@@ -187,7 +187,7 @@
 <div class="lb-story-overlay" id="lb-story-overlay">
   <div class="lb-story-inner">
     <div class="lb-story-header">
-      <div class="lb-story-label">📖 作品故事</div>
+      <div class="lb-story-label">作品故事</div>
       <button class="lb-story-close" onclick="closeStory()" title="返回詳情">✕</button>
     </div>
     <div class="lb-story-content" id="lb-story-content"></div>
@@ -238,7 +238,7 @@
     </div>
   </div>
   <div class="footer-easter">
-    <span class="footer-easter-text">🐾 本網站由寶妹親自監督品質。</span>
+    <span class="footer-easter-text">本網站由寶妹親自監督品質。</span>
   </div>
 </footer>
 
@@ -314,7 +314,7 @@ function render(products, filter) {
   grid.innerHTML = list.map(p => {
     const imgHTML = p.mainImg
       ? `<img src="${p.mainImg}" alt="${esc(p.name)}" loading="lazy" onload="this.classList.add('loaded')">`
-      : `<div class="no-photo"><span>🧱</span><small>拍攝中</small></div>`;
+      : `<div class="no-photo"><span>拍攝中</span><small>拍攝中</small></div>`;
     const dotClass = STOCK_DOT[p.stockStatus] || '';
     const dotHTML = dotClass ? `<div class="stock-dot ${dotClass}" title="${STOCK_TEXT[p.stockStatus]}"></div>` : '';
     const tags = [p.method, p.func].filter(Boolean).map(t => `<span class="card-tag">${esc(t)}</span>`).join('');
@@ -324,7 +324,7 @@ function render(products, filter) {
     const imgWrapClick = hasImg ? `onclick="openPhotoZoom('${p.id}',event)"` : '';
     const imgWrapCursor = hasImg ? `style="cursor:zoom-in;"` : '';
     return `<div class="product-card">
-  <div class="card-img-wrap" ${imgWrapClick} ${imgWrapCursor}>${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${notForSaleBadge}${dotHTML}${hasImg ? '<div class="zoom-hint">🔍</div>' : ''}</div>
+  <div class="card-img-wrap" ${imgWrapClick} ${imgWrapCursor}>${imgHTML}<div class="series-badge">${esc(p.series)}</div>${uniqueBadge}${notForSaleBadge}${dotHTML}${hasImg ? '<div class="zoom-hint">放大</div>' : ''}</div>
   <div class="card-body" onclick="openLb('${p.id}')" style="cursor:pointer;">
     <div class="card-sku">${esc(p.sku)}</div>
     <div class="card-name">${esc(p.name)}</div>
@@ -347,7 +347,7 @@ function openLb(id) {
   if (p.images.length) {
     mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull||p.mainImg}" alt="${esc(p.name)}" onclick="openPhotoZoomFromLb(this)" style="cursor:zoom-in;" title="點擊放大">`;
   } else {
-    mainWrap.innerHTML = `<div class="lb-no-photo">🧱<br><small style="font-size:.75rem;color:rgba(212,207,200,0.5);margin-top:.5rem;display:block;">照片拍攝中</small></div>`;
+    mainWrap.innerHTML = `<div class="lb-no-photo">拍攝中<br><small style="font-size:.75rem;color:rgba(212,207,200,0.5);margin-top:.5rem;display:block;">照片拍攝中</small></div>`;
   }
   const thumbsWrap = document.getElementById('lb-thumbs');
   if (p.images.length > 1) {
@@ -361,7 +361,7 @@ function openLb(id) {
   const hasStory = !!(p.story);
   const storyExcerpt = hasStory ? p.story.slice(0, 30) + '…' : '';
   const storyBtn = hasStory
-    ? `<button class="lb-story-btn" onclick="openStory('${p.id}')">📖 作品故事</button>`
+    ? `<button class="lb-story-btn" onclick="openStory('${p.id}')">作品故事</button>`
     : '';
   document.getElementById('lb-right').innerHTML = `
 <div class="lb-header">
@@ -381,7 +381,7 @@ function openLb(id) {
 <div class="lb-section">
   <div class="lb-section-title">用途</div>
   ${infoRows([['功能',p.func],['適合',p.suitable],['系列',p.series]])}
-  ${p.carbonDisplay ? `<div class="lb-row lb-carbon"><span class="lb-key">🌱 預估減碳</span><span class="lb-val carbon-val">${esc(p.carbonDisplay)} CO₂e</span></div>` : ''}
+  ${p.carbonDisplay ? `<div class="lb-row lb-carbon"><span class="lb-key">預估減碳</span><span class="lb-val carbon-val">${esc(p.carbonDisplay)} CO₂e</span></div>` : ''}
 </div>
 <div class="lb-section">
   <div class="lb-section-title">庫存狀態</div>
@@ -1024,7 +1024,7 @@ loadData();
   /* 燈箱圖片加放大提示 */
   #lb-main-img img { cursor: zoom-in !important; }
   #lb-main-img::after {
-    content: '🔍 點擊放大';
+    content: '放大 點擊放大';
     position: absolute;
     bottom: 0.4rem;
     right: 0.4rem;
@@ -1302,6 +1302,32 @@ footer {
     padding: 3rem 2.5rem !important;
   }
 }
+</style>
+<style>
+  :root{--w:#FBFAF6;--g50:#F7F4EE;--g100:#ECE6DA;--g200:#D8D0C2;--g400:#6F665B;--g700:#3F3A33;--bk:#27231F;--fire:#A9653D;--fire-h:#C87949;}
+  body{background:var(--w)!important;color:var(--bk)!important;}
+  .page-hero{background:var(--w)!important;border-bottom:1px solid var(--g200)!important;}
+  .page-hero h1{color:var(--bk)!important;letter-spacing:0!important;}
+  .page-hero-sub{color:var(--g400)!important;}
+  #product-grid{background:var(--w)!important;gap:2.4rem!important;}
+  .product-card{background:transparent!important;border:0!important;border-top:1px solid var(--g200)!important;border-radius:0!important;box-shadow:none!important;padding:1.4rem 0 0!important;}
+  .product-card:hover{transform:translateY(-2px)!important;border-top-color:var(--fire)!important;}
+  .card-img-wrap{background:var(--g100)!important;border:0!important;border-radius:0!important;aspect-ratio:4/3!important;}
+  .card-body{padding:0!important;}
+  .card-name{letter-spacing:0!important;color:var(--bk)!important;}
+  .card-meta,.card-spec,.card-name-en{color:var(--g400)!important;}
+  .card-footer{border-top:1px solid var(--g200)!important;}
+  .series-badge,.unique-badge,.not-for-sale-badge,.card-tag,.stock-badge{background:rgba(251,250,246,.92)!important;border:1px solid var(--g200)!important;color:var(--g700)!important;border-radius:999px!important;box-shadow:none!important;}
+  .stock-dot{background:var(--g400)!important;box-shadow:0 0 0 4px rgba(251,250,246,.9)!important;}
+  .zoom-hint{background:rgba(251,250,246,.92)!important;border:1px solid var(--g200)!important;color:var(--g700)!important;border-radius:999px!important;font-size:.65rem!important;}
+  .filter-bar{background:#EFE8DC!important;border-color:var(--g200)!important;}
+  .filter-btn{background:transparent!important;border:1px solid var(--g200)!important;color:var(--g700)!important;border-radius:999px!important;}
+  .filter-btn.active{background:var(--bk)!important;border-color:var(--bk)!important;color:#fff!important;}
+  .lb-right,.lb-header,.lb-section,.lb-footer{background:#FBFAF6!important;}
+  .lb-topbar,.lb-story-overlay,.pz-toolbar{background:rgba(251,250,246,.94)!important;}
+  .lb-story-btn,.lb-story-excerpt-more,.lb-topbar-back,.lb-topbar-close,.pz-back,.pz-close-btn{background:#FBFAF6!important;border:1px solid var(--g200)!important;color:var(--bk)!important;border-radius:999px!important;}
+  .lb-carbon{background:rgba(169,101,61,.08)!important;border-radius:0!important;}
+  .carbon-val,[style*="color:var(--fire)"]{color:var(--fire)!important;}
 </style>
 </body>
 </html>

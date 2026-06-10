@@ -10,7 +10,7 @@
   --rust:#E85D04;   /* 向後相容別名 */
   --rust-light:#FF7A28;--fire-h:#FF7A28;
   --neon:#39FF14;--neon-d:#22CC0A;
-  --green:#27AE60;--gold:#C8A030;--blue:#2A5A9A;
+  --green:#A9653D;--gold:#A9653D;--blue:#A9653D;
   --fd:'Inter Tight',system-ui,sans-serif;
   --fb:'Noto Sans TC',system-ui,sans-serif;
   --fs:'Noto Serif TC',Georgia,serif;
@@ -1100,7 +1100,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   color: var(--fire) !important;
 }
 
-/* 圖片佔位符：讓 🧱 在淺灰底上看得見 */
+/* 圖片佔位符：讓拍攝中狀態在淺灰底上看得見 */
 .no-photo {
   background: var(--g100);
 }
@@ -1778,4 +1778,396 @@ footer {
     padding: 0.85rem 0.9rem;
     font-size: 0.75rem;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Concredia.Lab — Soft Minimal Refresh
+   讓非首頁頁面同步成更淺、更清楚、更接近生活工藝品牌的視覺。
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --w:#FBFAF6;
+  --g50:#F7F4EE;
+  --g100:#ECE6DA;
+  --g200:#D8D0C2;
+  --g400:#6F665B;
+  --g700:#3F3A33;
+  --bk:#27231F;
+  --fire:#A9653D;
+  --rust:#A9653D;
+  --rust-light:#C87949;
+  --fire-h:#C87949;
+}
+
+body{
+  background:var(--w);
+  color:var(--bk);
+  letter-spacing:0;
+}
+
+nav,
+nav#mainNav{
+  background:rgba(251,250,246,.94);
+  border-bottom:1px solid rgba(216,208,194,.72);
+  backdrop-filter:blur(18px);
+}
+
+.nav-logo,
+nav#mainNav .nav-logo,
+nav .nav-links a,
+nav#mainNav .nav-links a,
+.nav-fundraise,
+.lang-toggle{
+  color:var(--bk)!important;
+}
+
+.nav-links a:hover,
+.nav-fundraise:hover,
+.lang-toggle:hover{
+  color:var(--fire)!important;
+}
+
+.page-hero,
+.gift-hero{
+  background:var(--w);
+  color:var(--bk);
+  border-bottom:1px solid rgba(216,208,194,.72);
+  padding-top:10rem;
+}
+
+.page-hero h1,
+.gift-hero h1{
+  color:var(--bk);
+  letter-spacing:0;
+  line-height:1;
+  max-width:980px;
+}
+
+.page-hero h1 em,
+.gift-hero h1 em{
+  color:var(--fire);
+}
+
+.page-hero-sub,
+.hero-sub-sm,
+.gift-hero-sub{
+  color:var(--g400);
+  font-size:1.05rem;
+}
+
+.marquee-bar,
+.festival-nav,
+.filter-bar,
+div.filter-bar{
+  background:#EFE8DC;
+  border-color:rgba(216,208,194,.8);
+}
+
+.strip--black,
+.festival-section[style*="background:var(--bk)"],
+.festival-section[style*="background:#111"],
+section[style*="background:var(--bk)"]{
+  background:#F4F0E8!important;
+  color:var(--bk)!important;
+}
+
+.strip--black .sec-h,
+.strip--black .sec-title,
+.festival-section[style*="background:var(--bk)"] .sec-title,
+.festival-section[style*="background:var(--bk)"] h2,
+section[style*="background:var(--bk)"] .sec-title,
+section[style*="background:var(--bk)"] h2{
+  color:var(--bk)!important;
+}
+
+.strip--black .sec-body,
+.strip--black .sec-sub,
+.festival-section[style*="background:var(--bk)"] p,
+section[style*="background:var(--bk)"] p{
+  color:var(--g400)!important;
+  opacity:1!important;
+}
+
+.festival-section{
+  background:var(--w);
+  border-top:1px solid rgba(216,208,194,.55);
+}
+
+.festival-section:nth-child(even){
+  background:#F7F4EE;
+}
+
+.sec-title,
+.sec-h,
+.gift-hero h1,
+.page-hero h1{
+  letter-spacing:0!important;
+}
+
+.sec-body,
+.sec-sub,
+.card-text,
+.gift-card p,
+.corp-desc,
+.shop-line{
+  color:var(--g400);
+}
+
+.gift-card,
+.corp-cell,
+.shop-cell,
+.card,
+.product-card{
+  background:#fff!important;
+  border:1px solid rgba(216,208,194,.85)!important;
+  border-top:1px solid rgba(216,208,194,.85)!important;
+  padding:1.75rem!important;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease;
+}
+
+.gift-card:hover,
+.corp-cell:hover,
+.shop-cell:hover,
+.card:hover,
+.product-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--fire)!important;
+}
+
+.gift-card-icon{
+  display:grid;
+  place-items:center;
+  width:2.35rem;
+  height:2.35rem;
+  border-radius:50%;
+  border:1px solid var(--g200);
+  color:var(--fire);
+  background:#FBFAF6;
+  font-size:0!important;
+}
+
+.gift-card-icon::after{
+  content:"";
+  width:.72rem;
+  height:.72rem;
+  border-radius:50%;
+  background:var(--fire);
+  display:block;
+}
+
+.big-quote,
+.cta-banner,
+.engrave-section{
+  background:#EFE8DC!important;
+  color:var(--bk)!important;
+}
+
+.big-quote blockquote,
+.cta-banner h2,
+.engrave-section .sec-title{
+  color:var(--bk)!important;
+}
+
+.big-quote cite,
+.cta-banner p,
+.engrave-section p{
+  color:var(--g400)!important;
+}
+
+#product-grid{
+  background:var(--w);
+  gap:2rem;
+}
+
+.card-img-wrap{
+  aspect-ratio:4/3;
+  background:#ECE6DA;
+}
+
+.lb-right,
+.lb-section,
+.lb-header,
+.lb-footer{
+  background:#FBFAF6;
+}
+
+.btn-fire,
+.btn-primary,
+.btn-black,
+.lb-cta,
+.lb-contact{
+  background:var(--bk);
+  color:#fff;
+}
+
+.btn-fire:hover,
+.btn-primary:hover,
+.btn-black:hover,
+.lb-cta:hover,
+.lb-contact:hover{
+  background:var(--fire);
+}
+
+footer{
+  background:#27231F;
+}
+
+/* Final polish: remove noisy icon/card styling and keep one quiet palette */
+.gift-cards{counter-reset:gift-card;}
+.gift-card{counter-increment:gift-card;}
+.gift-card-icon{
+  width:2.45rem!important;
+  height:2.45rem!important;
+  border-radius:50%!important;
+  border:1px solid var(--g200)!important;
+  background:transparent!important;
+  color:var(--fire)!important;
+  font-size:0!important;
+  margin-bottom:1rem!important;
+}
+.gift-card-icon::after{
+  content:counter(gift-card, decimal-leading-zero)!important;
+  width:auto!important;
+  height:auto!important;
+  background:transparent!important;
+  border-radius:0!important;
+  font-family:var(--fd);
+  font-size:.72rem;
+  line-height:1;
+  font-weight:700;
+  letter-spacing:.08em;
+  color:var(--fire);
+}
+
+.gift-card,
+.corp-cell,
+.shop-cell,
+.card,
+.product-card{
+  background:transparent!important;
+  border:0!important;
+  border-top:1px solid rgba(216,208,194,.95)!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+.gift-card:hover,
+.corp-cell:hover,
+.shop-cell:hover,
+.card:hover,
+.product-card:hover{
+  transform:translateY(-2px);
+  border-top-color:var(--fire)!important;
+  background:rgba(255,255,255,.46)!important;
+}
+
+.gift-card-tag,
+.card-tag,
+.series-badge,
+.card-series-badge,
+.unique-badge,
+.not-for-sale-badge,
+.lb-unique-badge,
+.lb-not-for-sale-badge,
+.stock-badge,
+.filter-btn,
+.fnav-btn{
+  background:transparent!important;
+  border:1px solid rgba(216,208,194,.95)!important;
+  color:var(--g700)!important;
+  border-radius:999px!important;
+  box-shadow:none!important;
+}
+
+.filter-btn.active,
+.fnav-btn.active{
+  background:var(--bk)!important;
+  border-color:var(--bk)!important;
+  color:#fff!important;
+}
+
+.series-badge,
+.card-series-badge{
+  top:.75rem!important;
+  left:.75rem!important;
+  padding:.2rem .7rem!important;
+  background:rgba(251,250,246,.92)!important;
+  backdrop-filter:blur(8px);
+}
+
+.stock-dot,
+.card-stock-dot{
+  background:var(--g400)!important;
+  box-shadow:0 0 0 4px rgba(251,250,246,.88);
+}
+.s-available,
+.stock-available,
+.s-order,
+.stock-order,
+.s-sold,
+.stock-sold{
+  background:var(--g400)!important;
+}
+
+.zoom-hint{
+  background:rgba(251,250,246,.92)!important;
+  color:var(--g700)!important;
+  border:1px solid var(--g200)!important;
+  font-size:.65rem!important;
+  letter-spacing:.08em;
+  font-family:var(--fd);
+  border-radius:999px!important;
+}
+
+.lb-story-btn,
+.lb-story-excerpt-more,
+.lb-topbar-back,
+.lb-topbar-close,
+.pz-back,
+.pz-close-btn{
+  background:#FBFAF6!important;
+  border:1px solid var(--g200)!important;
+  color:var(--bk)!important;
+  border-radius:999px!important;
+  box-shadow:none!important;
+}
+
+.lb-story-label,
+.lb-section-title,
+.lb-series,
+.corp-label,
+.gift-card-tag,
+.card-sku,
+.filter-label{
+  color:var(--fire)!important;
+}
+
+.lb-carbon,
+.report-hint,
+[style*="rgba(42,122,74"],
+[style*="rgba(39,174,96"],
+[style*="rgba(244,208,63"],
+[style*="rgba(200,195,240"],
+[style*="rgba(155,91,58"]{
+  background:rgba(169,101,61,.08)!important;
+  border-color:rgba(169,101,61,.22)!important;
+}
+
+[style*="color:#A9653D"],
+.metric-value.green,
+.metric-value.blue,
+.metric-value.amber,
+.carbon-val{
+  color:var(--fire)!important;
+}
+
+.no-photo span,
+.lb-no-photo{
+  font-size:.82rem!important;
+  color:var(--g400)!important;
+  font-family:var(--fd)!important;
+  letter-spacing:.08em;
+}
+
+.md{
+  color:var(--g200)!important;
 }
