@@ -26,13 +26,16 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   /* ── Monochrome System */
-  --white:  #FFFFFF;
-  --g50:    #F7F7F5;
-  --g100:   #EFEFEC;
-  --g200:   #DDDDD8;
-  --g400:   #9B9B95;
-  --g700:   #3D3D3A;
-  --black:  var(--bk);   /* references global --bk, NOT circular */
+  --white:  #FBFAF6;
+  --paper:  #F4F0E8;
+  --g50:    #F7F4EE;
+  --g100:   #ECE6DA;
+  --g200:   #D8D0C2;
+  --g400:   #7B746A;
+  --g700:   #3F3A33;
+  --black:  #27231F;
+  --fire:   #A9653D;
+  --fire-h: #C87949;
 
   /* ── Accent — 直接使用 global.css 已定義的 --fire / --fire-h，不重複定義 */
   --neon:   #39FF14;   /* 螢光綠（Conga 專用）*/
@@ -54,7 +57,9 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:1.25rem 4rem;
-  background:transparent;
+  background:rgba(251,250,246,.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(216,208,194,.55);
   transition:background var(--ease),padding var(--ease);
 }
 nav.scrolled{
@@ -65,7 +70,7 @@ nav.scrolled{
 }
 .nav-logo{
   font-family:var(--fd);font-size:1.1rem;font-weight:900;
-  color:var(--white);text-decoration:none;letter-spacing:-.03em;
+  color:var(--black);text-decoration:none;letter-spacing:-.03em;
   transition:color var(--ease);
 }
 nav.scrolled .nav-logo{color:var(--black);}
@@ -75,7 +80,7 @@ nav.scrolled .nav-logo{color:var(--black);}
 .nav-links a{
   font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   font-family:var(--fd);font-weight:600;
-  color:rgba(255,255,255,.75);text-decoration:none;
+  color:var(--g700);text-decoration:none;
   transition:color var(--ease);
 }
 nav.scrolled .nav-links a{color:var(--g400);}
@@ -83,7 +88,7 @@ nav.scrolled .nav-links a{color:var(--g400);}
 .nav-cta{
   font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   font-family:var(--fd);font-weight:600;
-  color:rgba(255,255,255,.75)!important;text-decoration:none;
+  color:var(--g700)!important;text-decoration:none;
   border:none;background:transparent;padding:0;cursor:pointer;
   transition:color var(--ease);
 }
@@ -92,24 +97,24 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 
 /* ─── HERO ─────────────────────────────────────── */
 .hero{
-  position:relative;min-height:100vh;
-  display:flex;align-items:flex-end;
-  overflow:hidden;background:var(--black);
+  position:relative;min-height:88vh;
+  display:flex;align-items:center;
+  overflow:hidden;background:var(--paper);
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
   background:url('images/rovi-studio-hero-wide.jpg') center/cover no-repeat;
-  filter:brightness(.38);
+  filter:brightness(.9) saturate(.86);
   transition:transform 12s ease;
 }
 .hero:hover .hero-bg{transform:scale(1.03);}
 .hero-scrim{
   position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 60%);
+  background:linear-gradient(90deg,rgba(251,250,246,.96) 0%,rgba(251,250,246,.86) 36%,rgba(251,250,246,.28) 66%,rgba(251,250,246,.08) 100%);
 }
 .hero-content{
   position:relative;z-index:4;
-  padding:0 6rem 7rem;
+  padding:7rem 6rem 4rem;
   max-width:1280px;width:100%;
 }
 .hero-eyebrow{
@@ -124,39 +129,39 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 .hero-manifesto{
   font-family:var(--fd);font-weight:900;
   font-size:clamp(4rem,9vw,11rem);
-  line-height:.92;letter-spacing:-.04em;
-  color:var(--white);margin-bottom:2rem;
+  line-height:.94;letter-spacing:0;
+  color:var(--black);margin-bottom:2rem;
 }
 .hero-manifesto em{
   font-style:italic;color:var(--fire);
   font-family:var(--fs);font-weight:400;
 }
 .hero-sub{
-  font-size:1rem;color:rgba(255,255,255,.6);
-  font-weight:300;max-width:560px;line-height:1.75;
+  font-size:1.08rem;color:var(--g700);
+  font-weight:400;max-width:560px;line-height:1.85;
   margin-bottom:2.5rem;
 }
 .hero-cta-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
 .btn-fire{
   display:inline-block;padding:.85rem 2.4rem;
-  background:var(--fire);color:var(--white);
+  background:var(--black);color:var(--white);
   font-family:var(--fd);font-size:.78rem;font-weight:700;
   letter-spacing:.12em;text-transform:uppercase;
   text-decoration:none;border:none;cursor:pointer;
   transition:background var(--ease),transform var(--ease);
 }
-.btn-fire:hover{background:var(--fire-h);transform:translateY(-2px);}
+.btn-fire:hover{background:var(--fire);transform:translateY(-2px);}
 .btn-ghost{
   font-family:var(--fd);font-size:.72rem;font-weight:600;
   letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.6);text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;
+  color:var(--g700);text-decoration:none;
+  border-bottom:1px solid rgba(63,58,51,.35);padding-bottom:2px;
   transition:color var(--ease),border-color var(--ease);
 }
-.btn-ghost:hover{color:var(--white);border-color:var(--white);}
+.btn-ghost:hover{color:var(--fire);border-color:var(--fire);}
 
 /* ─── MARQUEE ──────────────────────────────────── */
-.marquee-bar{background:var(--black);padding:.85rem 0;overflow:hidden;}
+.marquee-bar{background:#EDE6DA;padding:.85rem 0;overflow:hidden;border-top:1px solid rgba(216,208,194,.7);border-bottom:1px solid rgba(216,208,194,.7);}
 .marquee-track{
   display:flex;gap:4rem;
   animation:marquee 30s linear infinite;white-space:nowrap;
@@ -164,7 +169,7 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 .mi{
   font-family:var(--fd);font-size:.62rem;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase;
-  color:var(--g400);flex-shrink:0;
+  color:#6B6256;flex-shrink:0;
 }
 .md{color:var(--fire);}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -188,17 +193,18 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 }
 
 /* ─── 橫幅 strip ────────────────────────────────── */
-.strip{padding:6rem 6rem;}
+.strip{padding:6.5rem 6rem;}
 .strip--white{background:var(--white);}
 .strip--grey{background:var(--g50);}
-.strip--black{background:var(--black);}
-.strip--fire{background:var(--fire);}
+.strip--black{background:#2D2923;}
+.strip--fire{background:#B8754C;}
 
 /* ─── 大左右分欄 ──────────────────────────────── */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .split--reverse{direction:rtl;}.split--reverse>*{direction:ltr;}
-.split-visual{position:relative;min-height:460px;overflow:hidden;background:var(--g100);}
-.split-visual img{width:100%;height:100%;min-height:460px;object-fit:cover;display:block;}
+.split-visual{position:relative;overflow:hidden;background:var(--g100);aspect-ratio:4/3;}
+.split-visual img{width:100%;height:100%;min-height:0;object-fit:cover;display:block;transition:transform .45s ease;}
+.split-visual:hover img{transform:scale(1.025);}
 .split-visual--portrait img{object-position:center top;}
 .split-visual-caption{
   position:absolute;left:1.25rem;bottom:1.25rem;
@@ -208,8 +214,8 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
   background:rgba(0,0,0,.42);padding:.55rem .75rem;
   backdrop-filter:blur(8px);
 }
-.process-pair{display:grid;grid-template-columns:1fr .72fr;gap:1rem;align-items:stretch;}
-.process-pair img{width:100%;height:100%;min-height:430px;object-fit:cover;display:block;}
+.process-pair{display:block;aspect-ratio:4/3;overflow:hidden;}
+.process-pair img{width:100%;height:100%;min-height:0;object-fit:cover;display:block;}
 .process-note{
   position:absolute;right:1rem;bottom:1rem;max-width:260px;
   background:rgba(255,255,255,.88);padding:1rem;
@@ -221,15 +227,16 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
 
 /* ─── 卡片：無邊框設計 ──────────────────────────── */
-.card{padding:2.5rem 0;border-top:2px solid var(--black);}
+.card{padding:2rem;background:rgba(255,255,255,.62);border:1px solid rgba(216,208,194,.78);transition:transform .25s ease,background .25s ease,border-color .25s ease;min-height:100%;}
+.card:hover{transform:translateY(-4px);background:#fff;border-color:var(--fire);}
 .card-num{
   font-family:var(--fd);font-weight:900;font-size:3.5rem;
   letter-spacing:-.04em;color:var(--g200);line-height:1;
   margin-bottom:.5rem;
 }
 .card-title{
-  font-family:var(--fd);font-weight:900;font-size:1.2rem;
-  letter-spacing:-.02em;color:var(--black);margin-bottom:.75rem;
+  font-family:var(--fd);font-weight:800;font-size:1.2rem;
+  letter-spacing:0;color:var(--black);margin-bottom:.75rem;
 }
 .card-text{font-size:.88rem;color:var(--g400);line-height:1.75;}
 
@@ -282,7 +289,8 @@ footer{
   .hero-content{padding:0 2rem 5rem;}
   .strip{padding:4rem 2rem;}
   .split{grid-template-columns:1fr;gap:2.5rem;}
-  .split-visual,.split-visual img,.process-pair img{min-height:320px;}
+  .split-visual{aspect-ratio:1/1;}
+  .split-visual,.split-visual img,.process-pair img{min-height:0;}
   .process-pair{grid-template-columns:1fr;}
   .process-note{position:static;max-width:none;margin-top:1rem;}
   .grid3,.grid4{grid-template-columns:1fr;gap:1.5rem;}
@@ -492,7 +500,6 @@ footer{
     <div class="split-visual" style="background:var(--black);">
       <div class="process-pair">
         <img src="images/water-grinding-wide.jpg" alt="水磨工序中的水花與手作細節">
-        <img src="images/water-grinding-close.jpg" alt="再生混凝土作品水磨加工特寫">
       </div>
       <div class="process-note">水磨不是修飾，是把材料裡的時間慢慢磨出來。每一次靠近，都能看見廢料重新成為作品的那一刻。</div>
     </div>
@@ -549,23 +556,23 @@ footer{
     <a href="gifts.html" class="btn-ul">查看所有節慶方案 →</a>
   </div>
   <div class="grid4">
-    <div style="padding:1.5rem;background:var(--white);">
-      <div style="font-size:1.5rem;margin-bottom:.5rem;">💝</div>
+    <div style="padding:1.5rem;background:var(--white);border:1px solid rgba(216,208,194,.65);">
+      <div style="width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--g200);display:grid;place-items:center;font-family:var(--fd);font-weight:700;color:var(--fire);margin-bottom:.75rem;">01</div>
       <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">情人節・父母親節</div>
       <div style="font-size:.8rem;color:var(--g400);">玫瑰七天凋謝，水泥壓死不會壞</div>
     </div>
-    <div style="padding:1.5rem;background:var(--white);">
-      <div style="font-size:1.5rem;margin-bottom:.5rem;">🏮</div>
+    <div style="padding:1.5rem;background:var(--white);border:1px solid rgba(216,208,194,.65);">
+      <div style="width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--g200);display:grid;place-items:center;font-family:var(--fd);font-weight:700;color:var(--fire);margin-bottom:.75rem;">02</div>
       <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">農曆新年・中秋</div>
       <div style="font-size:.8rem;color:var(--g400);">月餅吃完了，這件還在</div>
     </div>
-    <div style="padding:1.5rem;background:var(--white);">
-      <div style="font-size:1.5rem;margin-bottom:.5rem;">🛒</div>
+    <div style="padding:1.5rem;background:var(--white);border:1px solid rgba(216,208,194,.65);">
+      <div style="width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid var(--g200);display:grid;place-items:center;font-family:var(--fd);font-weight:700;color:var(--fire);margin-bottom:.75rem;">03</div>
       <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;margin-bottom:.3rem;">雙11・雙12</div>
       <div style="font-size:.8rem;color:var(--g400);">買一堆不如買一件對的</div>
     </div>
-    <div style="padding:1.5rem;background:var(--fire);">
-      <div style="font-size:1.5rem;margin-bottom:.5rem;">🏢</div>
+    <div style="padding:1.5rem;background:#2D2923;">
+      <div style="width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid rgba(255,255,255,.28);display:grid;place-items:center;font-family:var(--fd);font-weight:700;color:var(--fire-h);margin-bottom:.75rem;">04</div>
       <div style="font-family:var(--fd);font-weight:700;font-size:.9rem;color:var(--white);margin-bottom:.3rem;">企業禮贈品</div>
       <div style="font-size:.8rem;color:rgba(255,255,255,.75);">尾牙・週年・開幕・VIP</div>
     </div>
