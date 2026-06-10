@@ -2171,3 +2171,231 @@ footer{
 .md{
   color:var(--g200)!important;
 }
+
+/* ═══════════════════════════════════════════════════════
+   v8：可讀性與視覺收斂補丁
+   目標：移除 emoji 感、降低粗框、提高文字對比、避免標題爆行
+   ═══════════════════════════════════════════════════════ */
+:root{
+  --soft-paper:#FBFAF6;
+  --soft-ink:#2B2824;
+  --soft-muted:#6F685F;
+  --soft-line:#E3DCCE;
+  --soft-dark:#25221E;
+  --soft-dark-2:#2F2A25;
+  --soft-accent:#A9653D;
+}
+
+body{
+  color:var(--soft-ink);
+}
+
+.strip--black,
+[style*="background:var(--bk)"],
+[style*="background:#111009"],
+[style*="background:#0D0C0B"],
+[style*="background:#1A1917"]{
+  background:var(--soft-dark)!important;
+}
+
+.strip--black p,
+.strip--black .sec-body,
+.strip--black .sec-sub,
+[style*="color:var(--g200)"],
+[style*="color:rgba(212,207,200,0.6)"],
+[style*="color:rgba(212,207,200,0.7)"],
+[style*="color:rgba(212,207,200,0.82)"],
+[style*="color:rgba(212,207,200,0.88)"],
+[style*="color:rgba(200,195,240,0.5)"]{
+  color:#D9D2C6!important;
+  opacity:1!important;
+}
+
+.sec-body,
+.sec-sub,
+.card-text,
+.gift-card p,
+.corp-desc,
+.shop-line,
+.stat-label,
+.team-card-bio,
+p[style*="color:var(--g400)"]{
+  color:var(--soft-muted)!important;
+  font-weight:400!important;
+}
+
+.sec-h,
+.sec-title{
+  font-size:clamp(2.35rem,4.5vw,5rem)!important;
+  line-height:1.02!important;
+  letter-spacing:-.025em!important;
+  max-width:980px;
+}
+
+.strip--black .sec-h,
+.strip--black .sec-title,
+[style*="color:var(--w)"],
+[style*="color:var(--white)"]{
+  color:#FBFAF6!important;
+}
+
+.grid3,
+.grid4{
+  gap:1.25rem!important;
+}
+
+.card,
+.gift-card,
+.corp-cell,
+.shop-cell,
+.product-card,
+[style*="border:1px solid rgba"],
+[style*="border-top:2px solid"],
+[style*="border-top:1px solid"]{
+  border-color:var(--soft-line)!important;
+  box-shadow:none!important;
+}
+
+.card:hover,
+.gift-card:hover,
+.corp-cell:hover,
+.shop-cell:hover,
+.product-card:hover{
+  transform:translateY(-2px)!important;
+  border-color:#D0C5B4!important;
+  background:rgba(255,255,255,.52)!important;
+}
+
+.strip--black .card:hover,
+.strip--black .gift-card:hover,
+[style*="background:var(--bk)"] .gift-card:hover{
+  background:rgba(255,255,255,.045)!important;
+}
+
+.gift-card-icon{
+  width:2rem!important;
+  height:2rem!important;
+  margin:0 0 1rem!important;
+  border-radius:999px!important;
+  background:rgba(169,101,61,.1)!important;
+  border:1px solid rgba(169,101,61,.22)!important;
+  color:var(--soft-accent)!important;
+  font-family:var(--fd)!important;
+  font-size:0!important;
+  display:grid!important;
+  place-items:center!important;
+}
+
+.gift-card-icon::after{
+  content:"";
+  width:.55rem;
+  height:.55rem;
+  border:1.5px solid currentColor;
+  border-radius:50%;
+}
+
+.gift-card h3,
+.corp-title,
+.shop-name,
+.card-title{
+  color:var(--soft-ink)!important;
+  letter-spacing:0!important;
+  line-height:1.28!important;
+}
+
+.strip--black .gift-card h3,
+.strip--black .corp-title,
+.strip--black .card-title,
+[style*="background:var(--bk)"] .gift-card h3{
+  color:#FBFAF6!important;
+}
+
+.gift-card-slogan,
+.corp-slogan{
+  color:#8F5E40!important;
+  font-style:normal!important;
+}
+
+.shop-date,
+.corp-no,
+.card-num{
+  color:var(--soft-accent)!important;
+  opacity:.88!important;
+}
+
+.shop-name{
+  color:#5B544B!important;
+  opacity:1!important;
+}
+
+.shop-grid,
+.corp-grid,
+.gift-cards{
+  border-color:var(--soft-line)!important;
+}
+
+.big-quote{
+  background:var(--soft-dark)!important;
+}
+
+.big-quote blockquote{
+  font-size:clamp(1.7rem,3vw,3rem)!important;
+  line-height:1.22!important;
+}
+
+.engrave-section{
+  background:var(--soft-paper)!important;
+}
+
+.engrave-section .sec-title{
+  color:var(--soft-ink)!important;
+  font-size:clamp(2.4rem,5vw,4.8rem)!important;
+}
+
+.engrave-section p,
+.engrave-section span{
+  color:var(--soft-muted)!important;
+  opacity:1!important;
+}
+
+.engrave-visual{
+  background:#F2EDE4!important;
+  color:#686158!important;
+  font-size:clamp(1.8rem,3.5vw,3.6rem)!important;
+  line-height:1.45!important;
+}
+
+.engrave-visual small{
+  color:#70695F!important;
+}
+
+.cta-banner{
+  background:#B8754C!important;
+}
+
+@media(max-width:1024px){
+  .sec-h,
+  .sec-title{
+    font-size:clamp(2.1rem,6vw,4rem)!important;
+  }
+}
+
+@media(max-width:768px){
+  .sec-h,
+  .sec-title{
+    font-size:clamp(1.9rem,9vw,3rem)!important;
+    line-height:1.12!important;
+  }
+  .grid3,
+  .grid4,
+  .gift-cards,
+  .corp-grid,
+  .shop-grid{
+    grid-template-columns:1fr!important;
+  }
+  .gift-card,
+  .corp-cell,
+  .shop-cell{
+    padding:1.5rem 0!important;
+  }
+}
