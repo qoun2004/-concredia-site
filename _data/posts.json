@@ -1,6 +1,18 @@
 {
   "posts": [
     {
+      "title": "水磨｜Grinding Time",
+      "date": "2026-06-10",
+      "date_display": "2026 年 6 月",
+      "category": "最新動態",
+      "excerpt": "昨天以專業攝影的視角，把我過去幾年來的投入，轉換成影像。這不是一張單純記錄工作過程的照片，而是我在時間、材料與勞動的累積。 攝影家黃名毅長期行走於臺灣各地，記錄百工百業的勞動身影，並曾獲國家地理雜誌攝...",
+      "filename": "blog-水磨grinding-time-902994.html",
+      "md_filename": "2026-06-10-水磨grinding-time-902994.md",
+      "slug": "水磨grinding-time-902994",
+      "tags": [],
+      "thumbnail": "images/posts/2026-06-10-水磨grinding-time-902994/cover.jpg"
+    },
+    {
       "title": "一個人的寂寞旅行",
       "date": "2026-06-05",
       "date_display": "2026 年 6 月",
@@ -127,5 +139,5 @@
       "thumbnail": "https://lh3.googleusercontent.com/d/10mqcBYm0Isz9XOB-McMEIfBcXGozZ-M5"
     }
   ],
-  "total": 8
+  "total": 9
 }
