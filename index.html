@@ -98,7 +98,7 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
-  background:url('images/hero-bg.jpg') center/cover no-repeat;
+  background:url('images/brand/rovi-studio-hero-wide.jpg') center/cover no-repeat;
   filter:brightness(.38);
   transition:transform 12s ease;
 }
@@ -197,6 +197,24 @@ nav.scrolled .nav-cta{color:var(--g400)!important;}
 /* ─── 大左右分欄 ──────────────────────────────── */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
 .split--reverse{direction:rtl;}.split--reverse>*{direction:ltr;}
+.split-visual{position:relative;min-height:460px;overflow:hidden;background:var(--g100);}
+.split-visual img{width:100%;height:100%;min-height:460px;object-fit:cover;display:block;}
+.split-visual--portrait img{object-position:center top;}
+.split-visual-caption{
+  position:absolute;left:1.25rem;bottom:1.25rem;
+  font-family:var(--fd);font-size:.62rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.78);
+  background:rgba(0,0,0,.42);padding:.55rem .75rem;
+  backdrop-filter:blur(8px);
+}
+.process-pair{display:grid;grid-template-columns:1fr .72fr;gap:1rem;align-items:stretch;}
+.process-pair img{width:100%;height:100%;min-height:430px;object-fit:cover;display:block;}
+.process-note{
+  position:absolute;right:1rem;bottom:1rem;max-width:260px;
+  background:rgba(255,255,255,.88);padding:1rem;
+  font-size:.78rem;line-height:1.65;color:var(--g700);
+}
 
 /* ─── 三欄網格 ───────────────────────────────────── */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;}
@@ -264,6 +282,9 @@ footer{
   .hero-content{padding:0 2rem 5rem;}
   .strip{padding:4rem 2rem;}
   .split{grid-template-columns:1fr;gap:2.5rem;}
+  .split-visual,.split-visual img,.process-pair img{min-height:320px;}
+  .process-pair{grid-template-columns:1fr;}
+  .process-note{position:static;max-width:none;margin-top:1rem;}
   .grid3,.grid4{grid-template-columns:1fr;gap:1.5rem;}
   .hero-manifesto{font-size:clamp(2.8rem,12vw,5rem);}
   .sec-h{font-size:clamp(2rem,8vw,3.5rem);}
@@ -391,6 +412,10 @@ footer{
       <h2 class="sec-h">台灣最溫柔的人，<br>做出最<em>堅硬</em>的作品。</h2>
     </div>
     <div>
+      <div class="split-visual" style="margin-bottom:2rem;">
+        <img src="images/brand/rovi-studio-portrait.jpg" alt="李俊憲老師在士敏文品工作室與再生混凝土作品合影">
+        <div class="split-visual-caption">Rovi Lee · Studio Portrait</div>
+      </div>
       <p class="sec-body" style="margin-bottom:2rem;">土木博士，做家具。蓋橋的精密，做一張桌子。鋼筋、模板、養護、水磨——每一道工序，都和一棟建築一樣認真。</p>
       <p class="sec-body" style="margin-bottom:2.5rem;">廢棄物不是廢物，是放錯地方的資源。我們把台灣的營建廢棄物，升級轉化為家具、音響與藝術裝置。</p>
       <a href="story.html" class="btn-ul">了解品牌故事 →</a>
@@ -464,12 +489,12 @@ footer{
 <!-- ══ SECTION 4：你想刻什麼 ══════════════════════ -->
 <div class="strip strip--white">
   <div class="split split--reverse">
-    <div style="padding:3rem;background:var(--g50);">
-      <div style="font-family:var(--fs);font-size:3rem;color:var(--g200);line-height:1.4;letter-spacing:-.02em;">
-        給某人的愛意<br>紀念著什麼<br>
-        <span style="color:var(--fire);">或是一段詩句</span>
+    <div class="split-visual" style="background:var(--black);">
+      <div class="process-pair">
+        <img src="images/brand/water-grinding-wide.jpg" alt="水磨工序中的水花與手作細節">
+        <img src="images/brand/water-grinding-close.jpg" alt="再生混凝土作品水磨加工特寫">
       </div>
-      <div style="font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g400);margin-top:2rem;font-family:var(--fd);font-weight:700;">← 告訴我，我來刻</div>
+      <div class="process-note">水磨不是修飾，是把材料裡的時間慢慢磨出來。每一次靠近，都能看見廢料重新成為作品的那一刻。</div>
     </div>
     <div>
       <div class="sec-tag">Custom Engraving · 客製刻字</div>
