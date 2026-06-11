@@ -299,6 +299,120 @@ footer{
   footer{padding:3rem 2rem;}
   .nav-links{display:none;}
 }
+
+/* v8 local polish：首頁覆蓋，避免內嵌 CSS 把全域修正蓋掉 */
+:root{
+  --white:#FBFAF6;
+  --paper:#F4F0E8;
+  --black:#27231F;
+  --g400:#6F685F;
+  --fire:#A9653D;
+  --fire-h:#B8754C;
+}
+
+.hero-manifesto{
+  font-size:clamp(3rem,6vw,6.4rem);
+  line-height:1.02;
+  letter-spacing:-.015em;
+}
+
+.sec-h{
+  font-size:clamp(2.35rem,4.4vw,4.9rem);
+  line-height:1.04;
+  letter-spacing:-.025em;
+}
+
+.strip{
+  padding-block:6rem;
+}
+
+.strip--black{
+  background:#282520;
+}
+
+.strip--black p,
+.strip--black .stat-label,
+.strip--black .card-text{
+  color:#D8D0C2!important;
+  opacity:1;
+}
+
+.strip--black .sec-h,
+.strip--black h2,
+.strip--black [style*="var(--white)"],
+.strip--black [style*="var(--w)"]{
+  color:#FBFAF6!important;
+}
+
+.grid3,
+.grid4{
+  gap:1.25rem;
+}
+
+.card,
+[style*="border:1px solid rgba(216,208,194"]{
+  border-color:#E1D9CA!important;
+  background:rgba(255,255,255,.55)!important;
+  box-shadow:none!important;
+}
+
+.card:hover,
+[style*="border:1px solid rgba(216,208,194"]:hover{
+  transform:translateY(-2px);
+  border-color:#CFC3B0!important;
+}
+
+.stat-num{
+  font-size:clamp(2.7rem,5vw,5.8rem);
+  color:#FBFAF6!important;
+}
+
+.stat-label,
+.card-text,
+.sec-body{
+  color:#625B52!important;
+  font-weight:400;
+}
+
+.strip--black .grid3 > div{
+  padding:1.4rem 0;
+  border-top:1px solid rgba(251,250,246,.12);
+}
+
+.strip--black .grid3 > div [style*="font-size:1.5rem"]{
+  color:#FBFAF6!important;
+  font-size:1.2rem!important;
+  line-height:1.35!important;
+}
+
+.strip--black .grid3 > div p{
+  color:#D8D0C2!important;
+}
+
+.split-visual,
+.process-pair{
+  border-radius:0;
+}
+
+.process-note{
+  color:#423D36;
+  background:rgba(251,250,246,.94);
+}
+
+@media(max-width:768px){
+  .hero-manifesto{
+    font-size:clamp(2.6rem,12vw,4rem);
+    line-height:1.05;
+  }
+  .sec-h{
+    font-size:clamp(2rem,9vw,3rem);
+    line-height:1.12;
+  }
+  .grid3,
+  .grid4{
+    grid-template-columns:1fr;
+  }
+}
 </style>
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -666,12 +780,14 @@ footer{
     var open = menu.classList.toggle('open');
     ham.classList.toggle('open', open);
     ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
   menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       menu.classList.remove('open');
       ham.classList.remove('open');
+      document.body.classList.remove('menu-open');
       document.body.style.overflow = '';
     });
   });

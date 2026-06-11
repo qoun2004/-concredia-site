@@ -84,6 +84,56 @@
     .sec-title{font-size:clamp(2rem,10vw,3.2rem)!important;}
     p{font-size:.96rem!important;}
   }
+
+  /* v8 local polish：修正故事頁過淡文字與過大標題 */
+  .sec-title{
+    font-size:clamp(2.15rem,4.2vw,4.2rem)!important;
+    line-height:1.14!important;
+    max-width:900px;
+  }
+
+  body > div:not(.story-hero) p,
+  body > div:not(.story-hero) [style*="color:rgba(212,207,200"],
+  body > div:not(.story-hero) [style*="color:rgba(200,195,240"],
+  body > div:not(.story-hero) [style*="color:var(--g200)"]{
+    color:#615A51!important;
+    opacity:1!important;
+    background:transparent!important;
+  }
+
+  body > div:not(.story-hero) [style*="font-style:italic"]{
+    color:#514B44!important;
+  }
+
+  body > div:not(.story-hero) [style*="background:rgba(155,91,58"],
+  body > div:not(.story-hero) [style*="background:rgba(212,207,200"],
+  body > div:not(.story-hero) [style*="background:rgba(200,195,240"]{
+    background:#F2EDE4!important;
+    border-color:#D9CDBD!important;
+  }
+
+  body > div:not(.story-hero) [style*="background:#FFFFFF"],
+  body > div:not(.story-hero) [style*="background:#fff"]{
+    background:#FBFAF6!important;
+  }
+
+  body > div:not(.story-hero) [style*="font-size:1.15rem"]{
+    font-size:1rem!important;
+    line-height:1.85!important;
+  }
+
+  body > div:not(.story-hero) [style*="font-size:2.8rem"]{
+    font-size:clamp(1.7rem,3vw,2.5rem)!important;
+    color:#A9653D!important;
+    opacity:.22!important;
+  }
+
+  @media(max-width:768px){
+    .sec-title{
+      font-size:clamp(1.9rem,8vw,2.8rem)!important;
+      line-height:1.16!important;
+    }
+  }
 </style>
     <meta property="og:type" content="website">
   <meta property="og:site_name" content="Concredia.Lab 士敏文品">
@@ -856,11 +906,31 @@ const navEl=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>{if(window.scrollY>80){navEl.classList.add('scrolled');}else{navEl.classList.remove('scrolled');}});
 const burger=document.getElementById('hamburger');
 const mMenu=document.getElementById('mobileMenu');
-const mClose=document.getElementById('mobileClose');
-function openMobileMenu(){if(mMenu)mMenu.classList.add('open');document.body.style.overflow='hidden';}
-function closeMobileMenu(){if(mMenu)mMenu.classList.remove('open');document.body.style.overflow='';}
-if(burger)burger.addEventListener('click',openMobileMenu);
-if(mClose)mClose.addEventListener('click',closeMobileMenu);
+function openMobileMenu(){
+  if(!mMenu) return;
+  mMenu.classList.add('open');
+  if(burger) {
+    burger.classList.add('open');
+    burger.setAttribute('aria-label','關閉選單');
+  }
+  document.body.classList.add('menu-open');
+  document.body.style.overflow='hidden';
+}
+function closeMobileMenu(){
+  if(mMenu)mMenu.classList.remove('open');
+  if(burger) {
+    burger.classList.remove('open');
+    burger.setAttribute('aria-label','開啟選單');
+  }
+  document.body.classList.remove('menu-open');
+  document.body.style.overflow='';
+}
+function toggleMobileMenu(){
+  if(mMenu && mMenu.classList.contains('open')) closeMobileMenu();
+  else openMobileMenu();
+}
+if(burger)burger.addEventListener('click',toggleMobileMenu);
+if(mMenu)mMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileMenu));
 function checkMobile(){if(window.innerWidth<=768){if(burger)burger.style.display='flex';}else{if(burger)burger.style.display='none';closeMobileMenu();}}
 checkMobile();window.addEventListener('resize',checkMobile);
 function openLightbox(src,cap){const lb=document.getElementById('lightbox');if(!lb)return;document.getElementById('lightbox-img').src=src;document.getElementById('lightbox-cap').textContent=cap;lb.style.display='flex';document.body.style.overflow='hidden';}

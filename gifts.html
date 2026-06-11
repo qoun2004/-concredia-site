@@ -527,12 +527,14 @@ window.addEventListener('scroll',()=>{
     var open = menu.classList.toggle('open');
     ham.classList.toggle('open', open);
     ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
   menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       menu.classList.remove('open');
       ham.classList.remove('open');
+      document.body.classList.remove('menu-open');
       document.body.style.overflow = '';
     });
   });
