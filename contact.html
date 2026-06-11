@@ -296,7 +296,7 @@
       <div class="contact-items">
         <div class="contact-item">
           <div class="contact-icon">✉</div>
-          <div class="contact-text"><strong>Email</strong>hello@concredia.lab</div>
+          <div class="contact-text"><strong>Email</strong><a href="mailto:concredia.lab@gmail.com">concredia.lab@gmail.com</a></div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">📱</div>
@@ -510,12 +510,14 @@ window.addEventListener('scroll', () => { navEl.classList.toggle('scrolled', win
     var open = menu.classList.toggle('open');
     ham.classList.toggle('open', open);
     ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
   menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       menu.classList.remove('open');
       ham.classList.remove('open');
+      document.body.classList.remove('menu-open');
       document.body.style.overflow = '';
     });
   });

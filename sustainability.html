@@ -7,6 +7,111 @@
 <meta name="description" content="士敏文品直接對應 SDG 9.4 / 11.6 / 12.5。再生料佔比 60–70%，每件附材料溯源文件，可直接引用於企業 ESG 報告。建築業 37% 碳排，台灣每年 1000 萬噸廢棄物——我們正在解決這個問題。">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
+<style>
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; }
+  .sustain-tabs {
+    position: sticky !important;
+    top: 64px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1px !important;
+    padding: 1px !important;
+    background: #201d1a !important;
+    overflow: visible !important;
+  }
+  .sustain-tabs .stab {
+    min-width: 0 !important;
+    min-height: 44px !important;
+    padding: .7rem .55rem !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    font-size: .82rem !important;
+    letter-spacing: .02em !important;
+    line-height: 1.25 !important;
+    color: rgba(255,255,255,.72) !important;
+    background: #141210 !important;
+  }
+  .sustain-tabs .stab.active {
+    color: #fff !important;
+    background: #a96b45 !important;
+  }
+  .stab-panel > div,
+  .stab-panel section {
+    padding: 2.75rem 1.25rem !important;
+  }
+  .sustain-impact-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: .75rem !important;
+    padding: 1.25rem !important;
+    background: #201d1a !important;
+  }
+  .sustain-impact-grid > div {
+    display: grid !important;
+    grid-template-columns: 5.5rem 1fr !important;
+    gap: .8rem 1rem !important;
+    align-items: center !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(212,207,200,.14) !important;
+    border-left: 4px solid #a96b45 !important;
+    border-top: 0 !important;
+    background: #161412 !important;
+  }
+  .sustain-impact-grid > div > div:first-child {
+    display: none !important;
+  }
+  .sustain-impact-grid > div > div:nth-child(2) {
+    grid-row: 1 / 3 !important;
+    align-self: center !important;
+    margin: 0 !important;
+    font-size: 2rem !important;
+    white-space: nowrap !important;
+  }
+  .sustain-impact-grid > div > div:nth-child(3),
+  .sustain-impact-grid > div > div:nth-child(4) {
+    margin: 0 !important;
+  }
+  .sustain-flow {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: .65rem !important;
+  }
+  .sustain-flow > div[style*="align-items:center"] {
+    display: none !important;
+  }
+  .sustain-flow > div {
+    min-width: 0 !important;
+    padding: 1rem 1rem 1rem 1.1rem !important;
+    border: 1px solid rgba(212,207,200,.14) !important;
+    border-left: 4px solid #a96b45 !important;
+    background: #161412 !important;
+  }
+  .sustain-flow-step {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(255,255,255,.22) !important;
+    color: #fff !important;
+    font: 700 .72rem/1 var(--fd) !important;
+    letter-spacing: .06em !important;
+    margin-bottom: .7rem !important;
+  }
+  .sustain-resource-list {
+    gap: .55rem !important;
+  }
+  .sustain-resource-list > div {
+    padding: .85rem .95rem !important;
+    border: 1px solid rgba(58,54,50,.12) !important;
+    background: #fff !important;
+    font-size: .9rem !important;
+    line-height: 1.45 !important;
+  }
+}
+</style>
     <meta property="og:type" content="website">
   <meta property="og:site_name" content="Concredia.Lab 士敏文品">
   <meta property="og:title" content="永續 · ESG · SDGs — Concredia.Lab 士敏文品">
@@ -156,10 +261,10 @@
 
 <!-- Tab 導覽 -->
 <div class="sustain-tabs" id="sustainTabs">
-  <button class="stab active" data-tab="environment">🌍 環境現況</button>
-  <button class="stab" data-tab="sdgs">🎯 SDGs 對應</button>
-  <button class="stab" data-tab="esg">📊 ESG 數據儀表板</button>
-  <button class="stab" data-tab="calculator">🧮 採購影響力計算機</button>
+  <button class="stab active" data-tab="environment">環境現況</button>
+  <button class="stab" data-tab="sdgs">SDGs 對應</button>
+  <button class="stab" data-tab="esg">ESG 數據</button>
+  <button class="stab" data-tab="calculator">影響力計算</button>
 </div>
 
 <!-- ══ Tab 1：環境現況 ══ -->
@@ -172,27 +277,27 @@
   </div>
 
   <!-- 四大危機數字 -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(212,207,200,0.06);" class="mobile-stack" class="impact-4col">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(212,207,200,0.06);" class="sustain-impact-grid">
     <div style="padding:2.5rem 2rem;background:var(--bk);border-top:3px solid #C0392B;">
-      <div style="font-size:2rem;margin-bottom:0.6rem;">🏗️</div>
+      <div style="font-size:2rem;margin-bottom:0.6rem;">BUILD</div>
       <div style="font-family:var(--fd);font-size:2.8rem;font-weight:700;color:#E74C3C;line-height:1;margin-bottom:0.4rem;">37%</div>
       <div style="font-size:0.82rem;color:var(--g200);line-height:1.6;font-weight:300;">全球溫室氣體排放來自<strong style="color:var(--w);font-weight:400;">建築與營建業</strong></div>
       <div style="font-size:0.6rem;color:var(--g200);opacity:0.35;margin-top:0.6rem;">UNEP 2022 建築現狀報告</div>
     </div>
     <div style="padding:2.5rem 2rem;background:var(--bk);border-top:3px solid #E67E22;">
-      <div style="font-size:2rem;margin-bottom:0.6rem;">🏭</div>
+      <div style="font-size:2rem;margin-bottom:0.6rem;">CO2</div>
       <div style="font-family:var(--fd);font-size:2.8rem;font-weight:700;color:#E67E22;line-height:1;margin-bottom:0.4rem;">8%</div>
       <div style="font-size:0.82rem;color:var(--g200);line-height:1.6;font-weight:300;">全球 CO₂ 排放來自<strong style="color:var(--w);font-weight:400;">水泥業</strong>，相當於航空業的 4 倍</div>
       <div style="font-size:0.6rem;color:var(--g200);opacity:0.35;margin-top:0.6rem;">GCCA · 世界經濟論壇 2024</div>
     </div>
     <div style="padding:2.5rem 2rem;background:var(--bk);border-top:3px solid #F39C12;">
-      <div style="font-size:2rem;margin-bottom:0.6rem;">🗑️</div>
+      <div style="font-size:2rem;margin-bottom:0.6rem;">WASTE</div>
       <div style="font-family:var(--fd);font-size:2.2rem;font-weight:700;color:#F39C12;line-height:1;margin-bottom:0.4rem;">1,000萬噸</div>
       <div style="font-size:0.82rem;color:var(--g200);line-height:1.6;font-weight:300;">台灣每年廢棄物總量，暫置垃圾 2017–2022 年<strong style="color:var(--w);font-weight:400;">暴增 9 倍</strong></div>
       <div style="font-size:0.6rem;color:var(--g200);opacity:0.35;margin-top:0.6rem;">環境部 · 綠色和平 2024</div>
     </div>
     <div style="padding:2.5rem 2rem;background:var(--bk);border-top:3px solid #2980B9;">
-      <div style="font-size:2rem;margin-bottom:0.6rem;">🏢</div>
+      <div style="font-size:2rem;margin-bottom:0.6rem;">AGE</div>
       <div style="font-family:var(--fd);font-size:2.8rem;font-weight:700;color:#5DADE2;line-height:1;margin-bottom:0.4rem;">53%</div>
       <div style="font-size:0.82rem;color:var(--g200);line-height:1.6;font-weight:300;">台灣建築屋齡<strong style="color:var(--w);font-weight:400;">超過 30 年</strong>，拆除潮正在到來</div>
       <div style="font-size:0.6rem;color:var(--g200);opacity:0.35;margin-top:0.6rem;">內政部不動產資訊平台 2023</div>
@@ -203,31 +308,31 @@
   <div style="padding:5rem 4rem;background:var(--bk);border-top:1px solid rgba(212,207,200,0.08);">
     <div class="sec-eye" style="color:var(--fire-h);"><span style="width:20px;height:1px;background:var(--fire-h);display:inline-block;margin-right:0.7rem;"></span>材料流動邏輯的斷裂</div>
     <h2 class="sec-title" style="color:var(--w);margin-bottom:3rem;">從開採到廢棄，<br>沒有出口的線性循環</h2>
-    <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;">
+    <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;" class="sustain-flow">
       <div style="flex:1;min-width:200px;padding:1.75rem 1.5rem;background:rgba(192,57,43,0.1);border:1px solid rgba(231,76,60,0.3);">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#E74C3C;margin-bottom:0.7rem;font-weight:500;">問題起點</div>
-        <div style="font-size:1.5rem;margin-bottom:0.5rem;">⛏️</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;" class="sustain-flow-step">01</div>
         <div style="font-size:0.95rem;font-weight:500;color:var(--w);margin-bottom:0.4rem;">原生材料過度開採</div>
         <div style="font-size:0.82rem;color:var(--g200);line-height:1.65;font-weight:300;">山上石灰石被挖掘製成高碳排水泥，每噸製程排放約 0.9 噸 CO₂。</div>
       </div>
       <div style="display:flex;align-items:center;padding:0 1rem;color:var(--g200);opacity:0.3;font-size:1.4rem;flex-shrink:0;">→</div>
       <div style="flex:1;min-width:200px;padding:1.75rem 1.5rem;background:rgba(212,207,200,0.04);border:1px solid rgba(212,207,200,0.09);">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--g200);margin-bottom:0.7rem;opacity:0.55;">建設使用期</div>
-        <div style="font-size:1.5rem;margin-bottom:0.5rem;">🏗️</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;" class="sustain-flow-step">02</div>
         <div style="font-size:0.95rem;font-weight:500;color:var(--w);margin-bottom:0.4rem;">建成環境</div>
         <div style="font-size:0.82rem;color:var(--g200);line-height:1.65;font-weight:300;">台灣 912 萬宅，平均屋齡 33 年，大量進入生命週期末端。</div>
       </div>
       <div style="display:flex;align-items:center;padding:0 1rem;color:var(--g200);opacity:0.3;font-size:1.4rem;flex-shrink:0;">→</div>
       <div style="flex:1;min-width:200px;padding:1.75rem 1.5rem;background:rgba(192,57,43,0.1);border:1px solid rgba(231,76,60,0.3);">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#E74C3C;margin-bottom:0.7rem;font-weight:500;">廢棄物危機</div>
-        <div style="font-size:1.5rem;margin-bottom:0.5rem;">💔</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;" class="sustain-flow-step">03</div>
         <div style="font-size:0.95rem;font-weight:500;color:var(--w);margin-bottom:0.4rem;">廢料無法歸還自然</div>
         <div style="font-size:0.82rem;color:var(--g200);line-height:1.65;font-weight:300;">大多僅能 Down-cycle 為低強度回填材或直接填埋。</div>
       </div>
       <div style="display:flex;align-items:center;padding:0 1rem;color:var(--fire-h);opacity:0.85;font-size:1.4rem;flex-shrink:0;">→</div>
       <div style="flex:1;min-width:200px;padding:1.75rem 1.5rem;background:rgba(39,174,96,0.07);border:1px solid rgba(39,174,96,0.3);">
         <div style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#27AE60;margin-bottom:0.7rem;font-weight:500;">Concredia 的答案</div>
-        <div style="font-size:1.5rem;margin-bottom:0.5rem;">✦</div>
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;" class="sustain-flow-step">04</div>
         <div style="font-size:0.95rem;font-weight:500;color:var(--w);margin-bottom:0.4rem;">Up-cycle 升級改造</div>
         <div style="font-size:0.82rem;color:var(--g200);line-height:1.65;font-weight:300;">EAC 技術讓廢棄骨料的地質記憶重新成為設計語言與市場價值。</div>
       </div>
@@ -244,21 +349,21 @@
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="mobile-stack">
       <div>
-        <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire);margin-bottom:0.85rem;font-weight:600;">🏙️ 城市採礦 Urban Mining</div>
+        <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire);margin-bottom:0.85rem;font-weight:600;">城市採礦 Urban Mining</div>
         <p style="font-size:0.88rem;color:var(--g400);line-height:1.78;margin-bottom:0.85rem;">城市裡的廢棄建材——拆除物、廢混凝土塊、廢玻璃——都是可以「採礦」的資源。</p>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">🧱 建築拆除廢棄物</div>
-          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">💎 廢棄玻璃</div>
-          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">🏚️ 老屋翻新廢料</div>
+        <div style="display:flex;flex-direction:column;gap:4px;" class="sustain-resource-list">
+          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">建築拆除廢棄物</div>
+          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">廢棄玻璃</div>
+          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">老屋翻新廢料</div>
         </div>
       </div>
       <div>
-        <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire);margin-bottom:0.85rem;font-weight:600;">🏭 工業採礦 Industrial Mining</div>
+        <div style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--fire);margin-bottom:0.85rem;font-weight:600;">工業採礦 Industrial Mining</div>
         <p style="font-size:0.88rem;color:var(--g400);line-height:1.78;margin-bottom:0.85rem;">工業生產的副產品——爐石粉、飛灰、陶瓷廢料——過去被當廢棄物，現在是降低水泥用量的關鍵。</p>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">⚙️ 爐石粉（煉鋼副產品）</div>
-          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">🌫️ 飛灰（火力發電副產品）</div>
-          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">🪴 陶瓷廢料</div>
+        <div style="display:flex;flex-direction:column;gap:4px;" class="sustain-resource-list">
+          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">爐石粉（煉鋼副產品）</div>
+          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">飛灰（火力發電副產品）</div>
+          <div style="padding:0.65rem 1rem;background:white;font-size:0.82rem;color:var(--bk);">陶瓷廢料</div>
         </div>
       </div>
     </div>
@@ -622,12 +727,14 @@ calculate();
     var open = menu.classList.toggle('open');
     ham.classList.toggle('open', open);
     ham.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    document.body.classList.toggle('menu-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
   menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       menu.classList.remove('open');
       ham.classList.remove('open');
+      document.body.classList.remove('menu-open');
       document.body.style.overflow = '';
     });
   });
