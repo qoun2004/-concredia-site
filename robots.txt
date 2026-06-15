@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /.netlify/functions/
+
+Sitemap: https://concredia.tw/sitemap.xml
