@@ -390,6 +390,7 @@ function render(products, filter) {
 function openLb(id) {
   const p = ALL.find(x => x.id === id);
   if (!p) return;
+  document.getElementById('lb').dataset.currentId = id;
   const mainWrap = document.getElementById('lb-main-img');
   if (p.images.length) {
     mainWrap.innerHTML = `<img id="lb-img" src="${p.mainImgFull||p.mainImg}" alt="${esc(p.name)}" onclick="openPhotoZoomFromLb(this)" style="cursor:zoom-in;" title="點擊放大">`;
@@ -403,6 +404,12 @@ function openLb(id) {
   } else { thumbsWrap.style.display = 'none'; }
   const stockBadge = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
   const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>`<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`).join('');
+  renderLbInfo(p, stockBadge, infoRows);
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderLbInfo(p, stockBadge, infoRows) {
   const uniqueLbBadge = p.isUnique ? `<span class="lb-unique-badge">獨一件 · One of a Kind</span>` : '';
   const notForSaleLbBadge = p.isNotForSale ? `<span class="lb-not-for-sale-badge">非賣品 · Not for Sale</span>` : '';
   const story = getProductStory(p);
@@ -438,8 +445,6 @@ function openLb(id) {
 <div class="lb-footer">
   <a class="lb-cta" href="contact.html?ref=${encodeURIComponent(p.sku)}">詢問這件作品 →</a>
 </div>`;
-  document.getElementById('lb').classList.add('open');
-  document.body.style.overflow = 'hidden';
 }
 
 function switchImg(url, el) {
@@ -452,6 +457,7 @@ function switchImg(url, el) {
 function closeLb() {
   document.getElementById('lb').classList.remove('open');
   document.getElementById('lb-story-overlay').classList.remove('open');
+  document.getElementById('lb').dataset.currentId = '';
   document.body.style.overflow = '';
 }
 
@@ -496,13 +502,30 @@ function openStory(id) {
   const p = ALL.find(x => x.id === id);
   const story = getProductStory(p);
   if (!p || !story.hasAny) return;
-  const content = document.getElementById('lb-story-content');
-  content.innerHTML = formatStoryHtml(story);
-  document.getElementById('lb-story-overlay').classList.add('open');
+  document.getElementById('lb').dataset.currentId = id;
+  document.getElementById('lb-right').innerHTML = `
+<div class="lb-header lb-story-panel-header">
+  <button class="lb-story-back" onclick="closeStory()">← 作品資訊</button>
+  <div class="lb-series">${esc(p.series)}</div>
+  <div class="lb-name">${esc(p.name)}</div>
+  ${p.nameEn ? `<div class="lb-name-en">${esc(p.nameEn)}</div>` : ''}
+</div>
+<div class="lb-section lb-story-panel">
+  <div class="lb-section-title">作品故事</div>
+  <div class="lb-story-content">${formatStoryHtml(story)}</div>
+</div>
+<div class="lb-footer">
+  <a class="lb-cta" href="contact.html?ref=${encodeURIComponent(p.sku)}">詢問這件作品 →</a>
+</div>`;
 }
 
 function closeStory() {
-  document.getElementById('lb-story-overlay').classList.remove('open');
+  const id = document.getElementById('lb').dataset.currentId;
+  const p = ALL.find(x => x.id === id);
+  if (!p) return;
+  const stockBadge = `<span class="stock-badge ${STOCK_BADGE[p.stockStatus]}">${STOCK_TEXT[p.stockStatus]}</span>`;
+  const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>`<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`).join('');
+  renderLbInfo(p, stockBadge, infoRows);
 }
 
 function closePhotoZoomBack() {
@@ -1642,6 +1665,47 @@ footer {
     margin-top:1.2rem;
     padding-top:1.2rem;
     border-top:1px solid rgba(58,54,50,.12);
+  }
+  .lb-story-panel-header{
+    border-bottom:1px solid rgba(58,54,50,.1)!important;
+  }
+  .lb-story-back{
+    display:inline-flex;
+    align-items:center;
+    width:max-content;
+    margin-bottom:.9rem;
+    padding:.45rem .8rem;
+    border:1px solid var(--g200);
+    border-radius:999px;
+    background:#FBFAF6;
+    color:var(--bk);
+    font-size:.78rem;
+    line-height:1;
+    cursor:pointer;
+  }
+  .lb-story-back:hover{
+    border-color:var(--fire);
+    color:var(--fire);
+  }
+  .lb-story-panel{
+    flex:1;
+    overflow-y:auto;
+  }
+  .lb-story-panel .lb-story-content{
+    padding:0;
+    overflow:visible;
+    max-width:46rem;
+  }
+  .lb-story-panel .story-zh,
+  .lb-story-panel .story-body{
+    font-size:.95rem;
+    line-height:1.9;
+    color:#3B342F!important;
+  }
+  .lb-story-panel .story-en{
+    font-size:.88rem;
+    line-height:1.85;
+    color:#62584F!important;
   }
   .gallery-artwork-strip{
     display:grid;
