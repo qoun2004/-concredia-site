@@ -155,6 +155,12 @@
 <p class="page-hero-sub">流構系列 · 標準系列 · 客製系列 · 畫作系列<br>再生廢料佔比 60–70%，每件附材料溯源文件，點擊查看完整資訊</p>
 </div>
 
+<div class="gallery-artwork-strip" aria-label="近期作品影像">
+  <img src="images/artworks/landscape-panel-wide.jpg" alt="再生混凝土山形紋理作品">
+  <img src="images/artworks/taiwan-frame-side-wide.jpg" alt="台灣輪廓再生混凝土框體作品">
+  <img src="images/artworks/white-form-piece-wide.jpg" alt="白色再生混凝土造型作品">
+</div>
+
 <div class="filter-bar" id="filter-bar">
 <span class="filter-label">篩選：</span>
 <button class="filter-btn active" data-f="all">全部</button>
@@ -263,21 +269,62 @@ const STOCK_TEXT = { available:'有現貨', order:'可預訂', sold:'已售出',
 const STOCK_BADGE = { available:'sb-available', order:'sb-order', sold:'sb-sold', unique:'sb-unique', unknown:'sb-sold' };
 const STOCK_DOT = { available:'s-available', order:'s-order', sold:'s-sold', unique:'s-unique', unknown:'' };
 
+function sortProducts(products) {
+  return [...(products || [])].sort((a, b) => {
+    const ax = String(a.sku || a.name || '');
+    const bx = String(b.sku || b.name || '');
+    return ax.localeCompare(bx, 'zh-Hant-u-kn-true', { numeric: true, sensitivity: 'base' });
+  });
+}
+
+function cleanStoryText(value) {
+  if (!value) return '';
+  if (Array.isArray(value)) return value.map(cleanStoryText).filter(Boolean).join('\n');
+  if (typeof value === 'object') {
+    return cleanStoryText(value.zh || value.en || value.text || value.content || value.name || '');
+  }
+  return String(value).trim();
+}
+
+function getProductStory(p) {
+  if (!p) return { zh:'', en:'', combined:'', hasAny:false };
+  const storyObj = (p.story && typeof p.story === 'object' && !Array.isArray(p.story)) ? p.story : {};
+  const storiesObj = (p.stories && typeof p.stories === 'object' && !Array.isArray(p.stories)) ? p.stories : {};
+  const zh = cleanStoryText(p.storyZh || p.story_zh || p.chineseStory || storyObj.zh || storiesObj.zh);
+  const en = cleanStoryText(p.storyEn || p.story_en || p.englishStory || storyObj.en || storiesObj.en);
+  const combined = cleanStoryText(p.story);
+  const merged = combined || [zh, en].filter(Boolean).join('\n\n');
+  return { zh, en, combined: merged, hasAny: !!merged };
+}
+
+function storyPreview(story) {
+  const text = cleanStoryText(story.zh || story.combined || story.en).replace(/\s+/g, ' ');
+  return text ? text.slice(0, 34) + (text.length > 34 ? '…' : '') : '';
+}
+
+function formatStoryHtml(story) {
+  const parts = [];
+  if (story.zh) parts.push(`<div class="story-zh">${esc(story.zh).replace(/\n/g,'<br>')}</div>`);
+  if (story.en) parts.push(`<div class="story-en">${esc(story.en).replace(/\n/g,'<br>')}</div>`);
+  if (!parts.length && story.combined) parts.push(`<div class="story-body">${esc(story.combined).replace(/\n/g,'<br>')}</div>`);
+  return parts.join('');
+}
+
 async function loadData() {
   try {
     const res = await fetch('/.netlify/functions/products');
     if (!res.ok) throw new Error('no data');
     const json = await res.json();
     if (json.error || !json.products?.length) throw new Error('empty');
-    ALL = json.products;
+    ALL = sortProducts(json.products);
   } catch(e) {
     // fallback：靜態 JSON（可能圖片過期，但至少顯示文字）
     try {
       const res2 = await fetch('/_data/products.json');
       const json2 = await res2.json();
-      if (json2.products?.length) { ALL = json2.products; }
-      else { ALL = STATIC_PRODUCTS; }
-    } catch { ALL = STATIC_PRODUCTS; }
+      if (json2.products?.length) { ALL = sortProducts(json2.products); }
+      else { ALL = sortProducts(STATIC_PRODUCTS); }
+    } catch { ALL = sortProducts(STATIC_PRODUCTS); }
   }
   buildFilterBar(ALL);
   render(ALL, CURRENT_FILTER);
@@ -358,8 +405,9 @@ function openLb(id) {
   const infoRows = (arr) => arr.filter(([,v])=>v).map(([k,v])=>`<div class="lb-row"><span class="lb-key">${k}</span><span class="lb-val">${esc(String(v))}</span></div>`).join('');
   const uniqueLbBadge = p.isUnique ? `<span class="lb-unique-badge">獨一件 · One of a Kind</span>` : '';
   const notForSaleLbBadge = p.isNotForSale ? `<span class="lb-not-for-sale-badge">非賣品 · Not for Sale</span>` : '';
-  const hasStory = !!(p.story);
-  const storyExcerpt = hasStory ? p.story.slice(0, 30) + '…' : '';
+  const story = getProductStory(p);
+  const hasStory = story.hasAny;
+  const storyExcerpt = hasStory ? storyPreview(story) : '';
   const storyBtn = hasStory
     ? `<button class="lb-story-btn" onclick="openStory('${p.id}')">作品故事</button>`
     : '';
@@ -446,9 +494,10 @@ function closePhotoZoom() {
 
 function openStory(id) {
   const p = ALL.find(x => x.id === id);
-  if (!p || !p.story) return;
+  const story = getProductStory(p);
+  if (!p || !story.hasAny) return;
   const content = document.getElementById('lb-story-content');
-  content.innerHTML = `<div class="story-body">${esc(p.story).replace(/\n/g,'<br>')}</div>`;
+  content.innerHTML = formatStoryHtml(story);
   document.getElementById('lb-story-overlay').classList.add('open');
 }
 
@@ -1557,6 +1606,69 @@ footer {
     .footer-easter{
       padding-left:1.25rem!important;
       padding-right:1.25rem!important;
+    }
+  }
+</style>
+<style>
+  #product-grid .card-name,
+  #product-grid .card-sku,
+  .lb-name,
+  .lb-section-title,
+  .lb-story-label{
+    color:#27231F!important;
+    opacity:1!important;
+  }
+  #product-grid .card-name-en,
+  #product-grid .card-meta,
+  #product-grid .card-spec,
+  #product-grid .card-tag,
+  .lb-val,
+  .lb-name-en,
+  .lb-story-excerpt,
+  .lb-story-content .story-body,
+  .lb-story-content .story-zh,
+  .lb-story-content .story-en{
+    color:#554C43!important;
+    opacity:1!important;
+  }
+  .lb-series,
+  .lb-key,
+  .lb-sku,
+  #product-grid .series-badge{
+    color:#9B5B3A!important;
+    opacity:1!important;
+  }
+  .lb-story-content .story-en{
+    margin-top:1.2rem;
+    padding-top:1.2rem;
+    border-top:1px solid rgba(58,54,50,.12);
+  }
+  .gallery-artwork-strip{
+    display:grid;
+    grid-template-columns:1.2fr .9fr 1.05fr;
+    gap:.85rem;
+    padding:1rem 4rem 2rem;
+    background:#FBFAF6;
+  }
+  .gallery-artwork-strip img{
+    width:100%;
+    height:clamp(170px,20vw,300px);
+    object-fit:cover;
+    display:block;
+    border:1px solid rgba(216,208,194,.55);
+  }
+  .gallery-artwork-strip img:nth-child(2){margin-top:2rem;}
+  .gallery-artwork-strip img:nth-child(3){margin-top:.8rem;}
+  @media (max-width: 768px){
+    .gallery-artwork-strip{
+      grid-template-columns:1fr;
+      padding:1rem 1.25rem 1.5rem;
+    }
+    .gallery-artwork-strip img,
+    .gallery-artwork-strip img:nth-child(2),
+    .gallery-artwork-strip img:nth-child(3){
+      height:210px;
+      margin-top:0;
     }
   }
 </style>

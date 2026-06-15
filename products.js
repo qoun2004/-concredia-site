@@ -43,12 +43,10 @@ function httpsGet(url, headers) {
 }
 
 async function fetchAll() {
-  const fieldValues = Object.values(FIELDS);
-  const fieldsParam = fieldValues.map(f => `fields[]=${encodeURIComponent(f)}`).join('&');
   let records = [], offset = null;
 
   do {
-    const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE}?${fieldsParam}${offset ? `&offset=${offset}` : ''}`;
+    const url = `https://api.airtable.com/v0/${BASE_ID}/${TABLE}?pageSize=100${offset ? `&offset=${offset}` : ''}`;
     const { status, data } = await httpsGet(url, { Authorization: `Bearer ${TOKEN}` });
     if (status !== 200) throw new Error(`Airtable HTTP ${status}: ${JSON.stringify(data)}`);
     records = records.concat(data.records || []);
@@ -56,6 +54,31 @@ async function fetchAll() {
   } while (offset);
 
   return records;
+}
+
+function airtableValue(value) {
+  if (Array.isArray(value)) {
+    return value
+      .map(v => (v && typeof v === 'object') ? (v.name || v.url || v.text || '') : String(v))
+      .filter(Boolean)
+      .join('、');
+  }
+  if (value && typeof value === 'object') return value.name || value.text || value.url || '';
+  return value ?? '';
+}
+
+function pickField(fields, names) {
+  for (const name of names) {
+    const value = fields[name];
+    if (value !== undefined && value !== null && value !== '') return airtableValue(value);
+  }
+  return '';
+}
+
+function compareProducts(a, b) {
+  const ax = String(a.sku || a.name || '');
+  const bx = String(b.sku || b.name || '');
+  return ax.localeCompare(bx, 'zh-Hant-u-kn-true', { numeric: true, sensitivity: 'base' });
 }
 
 function parseRecord(rec) {
@@ -87,6 +110,11 @@ function parseRecord(rec) {
   const carbonRaw = f[FIELDS.carbon] || null;
   const carbonDisplay = carbonRaw ? String(carbonRaw).trim() : null;
 
+  const storyCombined = pickField(f, [FIELDS.story, '作品故事', '故事', '作品介紹']);
+  const storyZh = pickField(f, ['中文故事', '作品故事（中文）', '作品故事中文', '故事中文', '中文作品故事', '作品故事_中文']);
+  const storyEn = pickField(f, ['英文故事', '作品故事（英文）', '作品故事英文', '故事英文', '英文作品故事', 'English Story', 'Story EN', '作品故事_英文']);
+  const story = storyCombined || [storyZh, storyEn].filter(Boolean).join('\n\n');
+
   // 庫存（Airtable 單選欄位有時回傳 array，有時回傳 string）
   const stockRaw = Array.isArray(f[FIELDS.stock])
     ? f[FIELDS.stock][0]
@@ -115,7 +143,9 @@ function parseRecord(rec) {
     images,
     mainImg:     images[0]?.thumb_lg || '',
     mainImgFull: images[0]?.thumb_xl || images[0]?.url || '',
-    story:       f[FIELDS.story] || '',
+    story,
+    storyZh,
+    storyEn,
   };
 }
 
@@ -142,7 +172,7 @@ exports.handler = async function(event) {
 
   try {
     const records  = await fetchAll();
-    const products = records.map(parseRecord).filter(Boolean);
+    const products = records.map(parseRecord).filter(Boolean).sort(compareProducts);
 
     return {
       statusCode: 200,

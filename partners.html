@@ -9,6 +9,94 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/global.css">
+<style>
+  .partners-photo-band{
+    display:grid;
+    grid-template-columns:1.35fr .9fr 1.05fr;
+    gap:1rem;
+    padding:1rem 4rem 0;
+    background:var(--bk);
+  }
+  .partners-photo-band figure{
+    margin:0;
+    height:clamp(180px,22vw,320px);
+    overflow:hidden;
+    background:#1C1A18;
+  }
+  .partners-photo-band img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .partners-photo-band figure:nth-child(2){margin-top:2.5rem;}
+  .partners-photo-band figure:nth-child(3){margin-top:1rem;}
+
+  @media (max-width: 768px){
+    html, body{overflow-x:hidden;}
+    .partners-photo-band{
+      grid-template-columns:1fr;
+      padding:1rem 1.25rem 0;
+      gap:.85rem;
+    }
+    .partners-photo-band figure,
+    .partners-photo-band figure:nth-child(2),
+    .partners-photo-band figure:nth-child(3){
+      height:220px;
+      margin-top:0;
+    }
+    .page-hero{
+      padding:6.5rem 1.25rem 2.75rem!important;
+      min-height:auto!important;
+    }
+    .page-hero h1{
+      font-size:clamp(2.4rem,14vw,4.2rem)!important;
+      line-height:.98!important;
+    }
+    section,
+    div[style*="padding:7rem 4rem"],
+    div[style*="padding:5rem 4rem"],
+    div[style*="padding:4rem"]{
+      padding-left:1.25rem!important;
+      padding-right:1.25rem!important;
+    }
+    .mobile-stack{
+      display:grid!important;
+      grid-template-columns:1fr!important;
+      gap:.85rem!important;
+      background:transparent!important;
+    }
+    .mobile-stack > div,
+    .mobile-stack > a{
+      min-width:0!important;
+      padding:1.15rem!important;
+      border:1px solid rgba(155,91,58,.18)!important;
+      border-top:3px solid rgba(155,91,58,.55)!important;
+      background:#FBFAF6!important;
+      color:#27231F!important;
+    }
+    .mobile-stack > div[style*="background:#1C1A18"],
+    .mobile-stack > div[style*="background:#161412"]{
+      background:#27231F!important;
+      color:#FBFAF6!important;
+    }
+    .mobile-stack [style*="font-size:1.5rem"],
+    .mobile-stack [style*="font-size:1.4rem"]{
+      font-size:1.05rem!important;
+      margin-bottom:.45rem!important;
+    }
+    .mobile-stack p,
+    .mobile-stack div{
+      max-width:100%!important;
+    }
+    footer{
+      padding:1.5rem 1.25rem!important;
+      flex-direction:column!important;
+      align-items:flex-start!important;
+      gap:.6rem!important;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -62,6 +150,18 @@
     <p style="font-size:0.95rem;color:var(--g200);line-height:1.82;font-weight:300;opacity:0.88;">Concredia.Lab 的每一件作品，都是在地協力的結果。感謝社區組織、農會、企業夥伴與友好單位，一起讓廢料不再只是廢料。</p>
   </div>
 </div>
+
+<section class="partners-photo-band" aria-label="合作與材料作品影像">
+  <figure>
+    <img src="images/artworks/taiwan-frame-side-wide.jpg" alt="再生混凝土台灣輪廓作品於工作室展示">
+  </figure>
+  <figure>
+    <img src="images/artworks/landscape-panel-wide.jpg" alt="再生混凝土山形紋理作品">
+  </figure>
+  <figure>
+    <img src="images/artworks/white-form-piece-wide.jpg" alt="白色再生混凝土造型物件">
+  </figure>
+</section>
 
 <!-- 掃一張桌子計畫 -->
 <section style="padding:5rem 4rem;background:var(--bk);">
@@ -273,9 +373,38 @@
 </footer>
 
 <script>
-window.addEventListener('scroll',function(){
-  document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);
-});
+(function(){
+  const nav = document.getElementById('mainNav');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMenu(){
+    if (!hamburger || !mobileMenu) return;
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  window.addEventListener('scroll', function(){
+    if (nav) nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function(){
+      const isOpen = mobileMenu.classList.toggle('active');
+      hamburger.classList.toggle('active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('keydown', function(event){
+      if (event.key === 'Escape') closeMenu();
+    });
+  }
+})();
 </script>
 <script src="scripts/chat-widget.js" defer></script>
 </body>
