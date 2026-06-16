@@ -128,10 +128,10 @@
     <li><a href="sustainability.html">永續 · ESG</a></li>
     <li><a href="blog.html">最新動態</a></li>
     <li><a href="partners.html">合作夥伴</a></li>
-    <li><a href="faq.html">常見問題</a></li>
+    <li><a href="contact.html">常見問題</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
+  <a href="story.html" class="nav-fundraise">募資計畫 →</a>
   <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
@@ -146,10 +146,10 @@
   <a href="gallery.html">作品集</a>
   <a href="sustainability.html">永續 · ESG</a>
   <a href="blog.html">最新動態</a>
-  <a href="faq.html">常見問題</a>
+  <a href="contact.html">常見問題</a>
   <a href="partners.html">合作夥伴</a>
   <a href="contact.html">聯絡我們</a>
-  <a href="fundraise.html" class="fundraise-link">募資計畫 →</a>
+  <a href="story.html" class="fundraise-link">募資計畫 →</a>
   <div class="mobile-menu-footer">Concredia.Lab · 士敏文品</div>
 </div><div class="page-hero">
   <div class="page-hero-eye">Partners · 合作夥伴</div>
@@ -399,8 +399,8 @@
 
   function closeMenu(){
     if (!hamburger || !mobileMenu) return;
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('active');
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
 
@@ -410,8 +410,9 @@
 
   if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', function(){
-      const isOpen = mobileMenu.classList.toggle('active');
-      hamburger.classList.toggle('active', isOpen);
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? '關閉選單' : '開啟選單');
       document.body.style.overflow = isOpen ? 'hidden' : '';
     });
 
