@@ -90,6 +90,23 @@
     .mobile-stack div{
       max-width:100%!important;
     }
+    .partner-flow{
+      display:grid!important;
+      grid-template-columns:1fr!important;
+      gap:.85rem!important;
+      margin-bottom:2rem!important;
+    }
+    .partner-flow > div:not(.partner-flow-arrow){
+      flex:none!important;
+      min-width:0!important;
+      width:100%!important;
+      padding:1.15rem!important;
+      border-top:3px solid rgba(155,91,58,.55)!important;
+      background:#27231F!important;
+    }
+    .partner-flow-arrow{
+      display:none!important;
+    }
     footer{
       padding:1.5rem 1.25rem!important;
       flex-direction:column!important;
@@ -110,6 +127,7 @@
     <li><a href="gallery.html">作品集</a></li>
     <li><a href="sustainability.html">永續 · ESG</a></li>
     <li><a href="blog.html">最新動態</a></li>
+    <li><a href="partners.html">合作夥伴</a></li>
     <li><a href="faq.html">常見問題</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
@@ -190,7 +208,7 @@
   </div>
 
   <!-- 流程圖 -->
-  <div style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:3rem;">
+  <div class="partner-flow" style="display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin-bottom:3rem;">
 
     <div style="flex:1;min-width:160px;padding:1.75rem 1.5rem;background:#1C1A18;border-top:3px solid var(--fire);">
       <div style="font-size:1.5rem;margin-bottom:0.75rem;">📦</div>
@@ -199,7 +217,7 @@
       <p style="font-size:0.78rem;color:rgba(212,207,200,0.82);line-height:1.7;">社區居民帶來廢棄建材、廢磚、廢玻璃。玩家掃描 QR 碼即可累積康加幣點數，完成首次參與。</p>
     </div>
 
-    <div style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
+    <div class="partner-flow-arrow" style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
 
     <div style="flex:1;min-width:160px;padding:1.75rem 1.5rem;background:#1C1A18;border-top:3px solid rgba(155,91,58,0.4);">
       <div style="font-size:1.5rem;margin-bottom:0.75rem;">🔍</div>
@@ -208,7 +226,7 @@
       <p style="font-size:0.78rem;color:rgba(212,207,200,0.82);line-height:1.7;">依材料種類分類：再生骨料、廢玻璃、爐石粉各歸其位。由 Rovi 老師進行材質鑑別與配比評估。</p>
     </div>
 
-    <div style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
+    <div class="partner-flow-arrow" style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
 
     <div style="flex:1;min-width:160px;padding:1.75rem 1.5rem;background:#1C1A18;border-top:3px solid rgba(155,91,58,0.4);">
       <div style="font-size:1.5rem;margin-bottom:0.75rem;">✏️</div>
@@ -217,7 +235,7 @@
       <p style="font-size:0.78rem;color:rgba(212,207,200,0.82);line-height:1.7;">社區居民可以參與討論作品造型、刻字內容或骨料配色。讓最終作品帶有社區共同的記憶。</p>
     </div>
 
-    <div style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
+    <div class="partner-flow-arrow" style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
 
     <div style="flex:1;min-width:160px;padding:1.75rem 1.5rem;background:#1C1A18;border-top:3px solid rgba(155,91,58,0.4);">
       <div style="font-size:1.5rem;margin-bottom:0.75rem;">🏗️</div>
@@ -226,7 +244,7 @@
       <p style="font-size:0.78rem;color:rgba(212,207,200,0.82);line-height:1.7;">PS 板割模、鋼筋定位、分次灌漿——由 Rovi 老師主導製作。居民可在開幕階段現場見證。</p>
     </div>
 
-    <div style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
+    <div class="partner-flow-arrow" style="display:flex;align-items:center;padding:0 0.75rem;color:var(--fire);opacity:0.6;font-size:1.2rem;flex-shrink:0;">→</div>
 
     <div style="flex:1;min-width:160px;padding:1.75rem 1.5rem;background:#1C1A18;border-top:3px solid #2ECC71;">
       <div style="font-size:1.5rem;margin-bottom:0.75rem;">✨</div>
