@@ -139,9 +139,9 @@
         "@id": "https://concredia.tw/#rovi-lee",
         "name": "李俊憲",
         "alternateName": ["Rovi Lee", "Ivor Lee"],
-        "jobTitle": "創辦人 · 土木博士 · EAC 工法研發者",
-        "description": "土木工程博士，2016年開始以再生水泥廢料進行創作，研發 EAC 骨料裸露工法，致力於將台灣營建廢棄物升級轉化為設計家具與藝術裝置。",
-        "knowsAbout": ["EAC骨料裸露工法","再生混凝土","營建廢棄物再生","水泥家具設計","永續建材","SDGs循環設計","ESG企業禮品","城市採礦"]
+        "jobTitle": "創辦人 · 土木博士 · 混凝土創作者",
+        "description": "土木工程博士與混凝土創作者，早年投入橋梁檢測、結構分析與工程管理，並長期參與社區營造與地方記憶保存。2016 年開始以再生材料與混凝土創作，將結構思維、地方文化與材料敘事整合為 Concredia.Lab 的實踐。",
+        "knowsAbout": ["橋梁檢測","結構分析","混凝土結構畫作","EAC骨料裸露工法","再生混凝土","營建廢棄物再生","地方記憶保存","社區營造","水泥家具設計","永續建材","SDGs循環設計","ESG企業禮品","城市採礦"]
       }],
       "knowsAbout": ["EAC骨料裸露工法","再生混凝土設計","營建廢棄物升級再生","ESG企業禮品","SDGs循環設計","城市採礦","水泥音響","士敏小礦獸","康加台灣","台灣永續設計"],
       "hasOfferCatalog": {
@@ -151,7 +151,7 @@
           {"@type": "OfferCatalog", "name": "流構系列 Flow Structure"},
           {"@type": "OfferCatalog", "name": "標準系列 Standard Series"},
           {"@type": "OfferCatalog", "name": "客製系列 Bespoke Series"},
-          {"@type": "OfferCatalog", "name": "畫作系列 Artwork Series"}
+          {"@type": "OfferCatalog", "name": "畫作系列 Structural Drawing Series"}
         ]
       },
       "sameAs": ["https://www.instagram.com/concredia.lab","https://www.threads.net/@concredia.lab"]
@@ -231,10 +231,10 @@
     <li><a href="gallery.html">作品集</a></li>
     <li><a href="sustainability.html">永續 · ESG</a></li>
     <li><a href="blog.html">最新動態</a></li>
-    <li><a href="faq.html">常見問題</a></li>
+    <li><a href="contact.html">常見問題</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
+  <a href="story.html" class="nav-fundraise">募資計畫 →</a>
   <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
@@ -249,10 +249,10 @@
   <a href="gallery.html">作品集</a>
   <a href="sustainability.html">永續 · ESG</a>
   <a href="blog.html">最新動態</a>
-  <a href="faq.html">常見問題</a>
+  <a href="contact.html">常見問題</a>
   <a href="partners.html">合作夥伴</a>
   <a href="contact.html">聯絡我們</a>
-  <a href="fundraise.html" class="fundraise-link">募資計畫 →</a>
+  <a href="story.html" class="fundraise-link">募資計畫 →</a>
   <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
 </div><div class="page-hero">
   <div class="page-hero-eye">Sustainability · 永續 · ESG</div>
@@ -469,6 +469,7 @@
           <div>✓ 企業內部培訓工作坊</div>
           <div>✓ 材料溯源文件套件</div>
           <div>✓ GRI 格式摘要提供</div>
+          <div>✓ 混凝土結構畫作內部審查標準</div>
           <div style="font-size:0.72rem;color:var(--g400);opacity:0.6;margin-top:0.5rem;border-top:1px solid rgba(58,54,50,0.08);padding-top:0.5rem;">不涉及公司內部治理；提供外部知識支援</div>
         </div>
       </div>
@@ -542,7 +543,7 @@
             <option value="lamp">漢字鏤空燈具</option>
             <option value="conbox">Conbox 水盆器</option>
             <option value="coaster">水泥杯墊組（4入）</option>
-            <option value="painting">保麗龍板畫作（中型）</option>
+            <option value="painting">混凝土結構畫作（中型）</option>
           </select>
         </div>
         <div class="input-group">
@@ -632,7 +633,7 @@
     <div class="footer-col"><h5>資源</h5><ul>
       <li><a href="blog.html">最新動態</a></li>
       <li><a href="contact.html">聯絡我們</a></li>
-      <li><a href="fundraise.html">募資計畫</a></li>
+      <li><a href="story.html">募資計畫</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
@@ -680,7 +681,7 @@ const PRODUCTS = {
   lamp:     { name:'漢字鏤空燈具',          waste:8,  carbon:3,  sand:6,  ratio:60 },
   conbox:   { name:'Conbox 水盆器',         waste:18, carbon:6,  sand:14, ratio:70 },
   coaster:  { name:'水泥杯墊組（4入）',     waste:3,  carbon:1,  sand:2,  ratio:62 },
-  painting: { name:'保麗龍板畫作（中型）',  waste:0.8,carbon:0.2,sand:0,  ratio:0  },
+  painting: { name:'混凝土結構畫作（中型）',  waste:18, carbon:6, sand:13, ratio:65 },
 };
 
 function adj(d) {
