@@ -47,7 +47,7 @@ nav.scrolled .nav-cta,nav#mainNav.scrolled .nav-cta{color:var(--g400)!important;
 
 /* ── HERO ─────────────────────────────────────── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--bk);}
-.hero-bg{position:absolute;inset:0;z-index:0;background:url('images/hero-bg.jpg') center/cover no-repeat;filter:brightness(.38);transition:transform 12s ease;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:url('../images/rovi-studio-hero-wide.jpg') center/cover no-repeat;filter:brightness(.38);transition:transform 12s ease;}
 .hero:hover .hero-bg{transform:scale(1.03);}
 .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 60%);}
 .hero-content{position:relative;z-index:4;padding:0 6rem 7rem;max-width:1280px;width:100%;}

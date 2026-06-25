@@ -125,10 +125,10 @@
     <li><a href="gallery.html">作品集</a></li>
     <li><a href="sustainability.html">永續 · ESG</a></li>
     <li><a href="blog.html">最新動態</a></li>
-    <li><a href="faq.html">常見問題</a></li>
+    <li><a href="contact.html">常見問題</a></li>
     <li><a href="contact.html">聯絡</a></li>
   </ul>
-  <a href="fundraise.html" class="nav-fundraise">募資計畫 →</a>
+  <a href="story.html" class="nav-fundraise">募資計畫 →</a>
   <button class="hamburger" id="hamburger" aria-label="開啟選單">
     <span></span><span></span><span></span>
   </button>
@@ -143,10 +143,10 @@
   <a href="gallery.html">作品集</a>
   <a href="sustainability.html">永續 · ESG</a>
   <a href="blog.html">最新動態</a>
-  <a href="faq.html">常見問題</a>
+  <a href="contact.html">常見問題</a>
   <a href="partners.html">合作夥伴</a>
   <a href="contact.html">聯絡我們</a>
-  <a href="fundraise.html" class="fundraise-link">募資計畫 →</a>
+  <a href="story.html" class="fundraise-link">募資計畫 →</a>
   <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
 </div>
 
@@ -233,7 +233,7 @@
     <div class="footer-col"><h5>資源</h5><ul>
       <li><a href="blog.html">最新動態</a></li>
       <li><a href="contact.html">聯絡我們</a></li>
-      <li><a href="fundraise.html">募資計畫</a></li>
+      <li><a href="story.html">募資計畫</a></li>
     </ul></div>
   </div>
   <div class="footer-bottom">
@@ -251,17 +251,23 @@
 
 <script>
 // ── 靜態備用作品（Airtable 未同步時顯示）
+function localImages() {
+  return Array.from(arguments).map(function(path) {
+    return { url:path, thumb_sm:path, thumb_lg:path, thumb_xl:path };
+  });
+}
+
 const STATIC_PRODUCTS = [
-  { id:'s1', sku:'CL-F001', name:'流構桌几 · 大型', series:'流構系列', stockStatus:'available', material:'漂流木 × 再生混凝土', method:'EAC 骨料裸露工法', func:'主桌 / 工作台', suitable:'企業空間 / 藝廊', spec:'W180 × D80 × H75 cm', weight:null, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s2', sku:'CL-F002', name:'流構茶几 · 小型', series:'流構系列', stockStatus:'available', material:'漂流木 × 再生混凝土', method:'EAC 骨料裸露工法', func:'茶几 / 邊几', suitable:'客廳 / 辦公室', spec:'W60 × D60 × H40 cm', weight:null, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s3', sku:'CL-S001', name:'定錨桌几 · 大型', series:'標準系列', stockStatus:'available', material:'再生混凝土（廢磚 + 爐石粉）', method:'鋼模澆鑄 + 水磨', func:'桌几', suitable:'家用 / 企業採購', spec:'W120 × D60 × H45 cm', weight:38000, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s4', sku:'CL-S002', name:'定錨茶几 · 標準', series:'標準系列', stockStatus:'available', material:'再生混凝土（廢玻璃 + 爐石粉）', method:'鋼模澆鑄 + 水磨 #50–#5000', func:'茶几', suitable:'家用 / 辦公', spec:'W80 × D50 × H40 cm', weight:22000, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s5', sku:'CL-S003', name:'水泥杯墊組', series:'標準系列', stockStatus:'available', material:'再生混凝土', method:'EAC 工法', func:'杯墊', suitable:'生活小物 / 送禮', spec:'Ø10 cm（4入組）', weight:800, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s6', sku:'CL-SP001', name:'水泥音響 · Conbox', series:'標準系列', stockStatus:'order', material:'再生混凝土 + 竹炭粉', method:'精密澆鑄 + 水磨', func:'被動式音響共鳴箱', suitable:'桌面音響 / 禮品', spec:'W20 × D12 × H15 cm', weight:4500, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s7', sku:'CL-C001', name:'場域記憶 · 建案落成禮', series:'客製系列', stockStatus:'order', material:'建案廢料（就地取材）', method:'EAC + 客製刻字', func:'場域記念品 / 裝置', suitable:'建案開幕 / VIP 禮', spec:'依需求定制', weight:null, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s8', sku:'CL-C002', name:'刻字燈具 · 訂製款', series:'客製系列', stockStatus:'order', material:'再生混凝土 + 燈座五金', method:'EAC 工法 + 刻字', func:'燈具 / 裝置', suitable:'空間設計 / 婚禮', spec:'依需求定制', weight:null, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s9', sku:'CL-A001', name:'畫作 · 山脈系列 #1', series:'畫作系列', stockStatus:'available', material:'保麗龍板 + 手工割製', method:'手工割刻', func:'壁掛裝飾 / 藝術品', suitable:'家居 / 收藏', spec:'W60 × H40 cm', weight:500, mainImg:'', images:[], mainImgFull:'' },
-  { id:'s10', sku:'CL-A002', name:'畫作 · 海岸線 #3', series:'畫作系列', stockStatus:'sold', material:'保麗龍板 + 手工割製', method:'手工割刻 · 親簽限量', func:'壁掛裝飾 / 藝術品', suitable:'家居 / 收藏', spec:'W80 × H50 cm', weight:650, mainImg:'', images:[], mainImgFull:'' }
+  { id:'s1', sku:'CL-F001', name:'流構桌几 · 大型', nameEn:'Flow Structure Table', series:'流構系列', stockStatus:'available', material:'漂流木 × 再生混凝土', method:'EAC 骨料裸露工法', func:'主桌 / 工作台', suitable:'企業空間 / 藝廊', spec:'W180 × D80 × H75 cm', weight:null, mainImg:'images/artworks/taiwan-frame-wide.jpg', images:localImages('images/artworks/taiwan-frame-wide.jpg','images/artworks/taiwan-frame-side-wide.jpg','images/artworks/taiwan-frame-flat-wide.jpg'), mainImgFull:'images/artworks/taiwan-frame-wide.jpg', storyZh:'漂流木與再生混凝土在同一個平面上相遇，像是一段被水帶來、又被土留下的時間。每一次水磨都把骨料的色彩往外推，讓桌面保留材料原本的路徑。', storyEn:'Driftwood and recycled concrete meet on one surface, carrying the memory of water, weight, and time. Each grinding pass reveals the aggregate and leaves the material history visible.' },
+  { id:'s2', sku:'CL-F002', name:'流構茶几 · 小型', nameEn:'Flow Structure Low Table', series:'流構系列', stockStatus:'available', material:'漂流木 × 再生混凝土', method:'EAC 骨料裸露工法', func:'茶几 / 邊几', suitable:'客廳 / 辦公室', spec:'W60 × D60 × H40 cm', weight:null, mainImg:'images/artworks/leaf-panel-wide.jpg', images:localImages('images/artworks/leaf-panel-wide.jpg','images/artworks/leaf-aggregate-texture.jpg'), mainImgFull:'images/artworks/leaf-panel-wide.jpg', storyZh:'小型桌几保留流構系列的地景感，把廢料骨料的顏色收進日常尺度。它不是縮小的大桌，而是一件可以靠近、使用、觸摸的材料標本。', storyEn:'This smaller table keeps the landscape quality of the Flow Structure series while bringing recycled aggregate into an everyday scale: close, usable, and tactile.' },
+  { id:'s3', sku:'CL-S001', name:'定錨桌几 · 大型', nameEn:'Anchor Table', series:'標準系列', stockStatus:'available', material:'再生混凝土（廢磚 + 爐石粉）', method:'鋼模澆鑄 + 水磨', func:'桌几', suitable:'家用 / 企業採購', spec:'W120 × D60 × H45 cm', weight:38000, mainImg:'images/objects/brick-organizer-wide.jpg', images:localImages('images/objects/brick-organizer-wide.jpg','images/objects/brick-organizer-close.jpg','images/objects/brick-texture-wide.jpg'), mainImgFull:'images/objects/brick-organizer-wide.jpg', storyZh:'廢磚不只是一種顏色，也是一段城市拆除後留下的溫度。定錨系列把這些碎片重新壓回生活場景，成為可被使用的重量。', storyEn:'Waste brick is more than a color; it is the warmth left after a city changes. The Anchor series brings those fragments back into use as functional weight.' },
+  { id:'s4', sku:'CL-S002', name:'定錨茶几 · 標準', nameEn:'Anchor Low Table', series:'標準系列', stockStatus:'available', material:'再生混凝土（廢玻璃 + 爐石粉）', method:'鋼模澆鑄 + 水磨 #50–#5000', func:'茶几', suitable:'家用 / 辦公', spec:'W80 × D50 × H40 cm', weight:22000, mainImg:'images/artworks/blue-landscape-texture-portrait.jpg', images:localImages('images/artworks/blue-landscape-texture-portrait.jpg','images/artworks/rainbow-texture-portrait.jpg'), mainImgFull:'images/artworks/blue-landscape-texture-portrait.jpg', storyZh:'水磨到高番數之後，廢玻璃開始像礦物一樣反光。它讓一件茶几同時有建築的硬度，也有近距離觀看時的細節。', storyEn:'After fine grinding, waste glass begins to reflect like mineral fragments, giving the table both architectural hardness and close-up detail.' },
+  { id:'s5', sku:'CL-S003', name:'水泥杯墊組', nameEn:'Concrete Coaster Set', series:'標準系列', stockStatus:'available', material:'再生混凝土', method:'EAC 工法', func:'杯墊', suitable:'生活小物 / 送禮', spec:'Ø10 cm（4入組）', weight:800, mainImg:'images/objects/triangular-trays-overhead.jpg', images:localImages('images/objects/triangular-trays-overhead.jpg','images/objects/triangular-trays-front.jpg'), mainImgFull:'images/objects/triangular-trays-overhead.jpg', storyZh:'杯墊是最小的材料入口。它把營建廢料從工地帶到桌面，讓每天拿起杯子的瞬間，都能看見循環設計不是抽象口號。', storyEn:'The coaster is the smallest entry point into the material story, bringing construction waste from the jobsite to the tabletop in a form used every day.' },
+  { id:'s6', sku:'CL-SP001', name:'水泥音響 · Conbox', nameEn:'Conbox Passive Speaker', series:'標準系列', stockStatus:'order', material:'再生混凝土 + 竹炭粉', method:'精密澆鑄 + 水磨', func:'被動式音響共鳴箱', suitable:'桌面音響 / 禮品', spec:'W20 × D12 × H15 cm', weight:4500, mainImg:'images/objects/brick-organizer-standing.jpg', images:localImages('images/objects/brick-organizer-standing.jpg','images/objects/brick-organizer-set.jpg'), mainImgFull:'images/objects/brick-organizer-standing.jpg', storyZh:'Conbox 把聲音放進水泥裡。厚重的無機材料不追求喧鬧，而是讓桌面上的聲音變得更安定、更有身體感。', storyEn:'Conbox places sound inside concrete. Its mineral weight does not chase volume; it gives desktop audio a grounded, physical presence.' },
+  { id:'s7', sku:'CL-C001', name:'場域記憶 · 建案落成禮', nameEn:'Site Memory Commemorative Piece', series:'客製系列', stockStatus:'order', material:'建案廢料（就地取材）', method:'EAC + 客製刻字', func:'場域記念品 / 裝置', suitable:'建案開幕 / VIP 禮', spec:'依需求定制', weight:null, mainImg:'images/artworks/dark-leaf-panel-wide.jpg', images:localImages('images/artworks/dark-leaf-panel-wide.jpg','images/artworks/twin-taiwan-frame-portrait.jpg'), mainImgFull:'images/artworks/dark-leaf-panel-wide.jpg', storyZh:'客製作品的起點不是造型，而是材料從哪裡來。把同一個場域拆下的廢料重新做成紀念物，讓落成禮不只是新的開始，也保留舊地景的痕跡。', storyEn:'A bespoke piece begins with material origin. Waste collected from the same site is remade as a commemorative object, preserving traces of the old landscape inside the new beginning.' },
+  { id:'s8', sku:'CL-C002', name:'刻字燈具 · 訂製款', nameEn:'Engraved Light Object', series:'客製系列', stockStatus:'order', material:'再生混凝土 + 燈座五金', method:'EAC 工法 + 刻字', func:'燈具 / 裝置', suitable:'空間設計 / 婚禮', spec:'依需求定制', weight:null, mainImg:'images/objects/cone-vase-set-wide.jpg', images:localImages('images/objects/cone-vase-set-wide.jpg','images/objects/cone-vase-flowers-portrait.jpg'), mainImgFull:'images/objects/cone-vase-set-wide.jpg', storyZh:'文字刻進水泥後，不像印刷那樣停在表面。它和材料一起變成作品的一部分，適合把誓詞、地名、品牌符號或家族記憶留在物件裡。', storyEn:'Once engraved into concrete, words no longer sit on the surface. They become part of the object, carrying vows, place names, brand marks, or family memory.' },
+  { id:'s9', sku:'CL-A001', name:'畫作 · 山脈系列 #1', nameEn:'Mountain Series #1', series:'畫作系列', stockStatus:'available', material:'保麗龍板 + 手工割製', method:'手工割刻', func:'壁掛裝飾 / 藝術品', suitable:'家居 / 收藏', spec:'W60 × H40 cm', weight:500, mainImg:'images/artworks/landscape-panel-wide.jpg', images:localImages('images/artworks/landscape-panel-wide.jpg','images/artworks/white-form-texture.jpg'), mainImgFull:'images/artworks/landscape-panel-wide.jpg', storyZh:'山脈系列把材料切成地形。它不模仿自然，而是用手工割製的節奏，讓表面產生像地層一樣的起伏。', storyEn:'The Mountain Series cuts material into terrain. It does not imitate nature; it uses hand-cut rhythm to create a surface that rises like strata.' },
+  { id:'s10', sku:'CL-A002', name:'畫作 · 海岸線 #3', nameEn:'Coastline #3', series:'畫作系列', stockStatus:'sold', material:'保麗龍板 + 手工割製', method:'手工割刻 · 親簽限量', func:'壁掛裝飾 / 藝術品', suitable:'家居 / 收藏', spec:'W80 × H50 cm', weight:650, mainImg:'images/artworks/white-form-piece-wide.jpg', images:localImages('images/artworks/white-form-piece-wide.jpg','images/artworks/white-form-texture.jpg'), mainImgFull:'images/artworks/white-form-piece-wide.jpg', storyZh:'海岸線不是一條線，而是反覆被推回來的邊界。這件作品用白色量體和手工切面，留下那種介於平靜與侵蝕之間的狀態。', storyEn:'A coastline is not a line, but a boundary repeatedly pushed back. This work uses white volume and hand-cut surfaces to hold the state between calm and erosion.' }
 ];
 
 let ALL = [];
@@ -287,13 +293,31 @@ function cleanStoryText(value) {
   return String(value).trim();
 }
 
+function splitCombinedStory(value) {
+  const text = cleanStoryText(value);
+  if (!text) return { zh:'', en:'' };
+  const normalized = text.replace(/\r\n/g, '\n');
+  const labelMatch = normalized.match(/(?:^|\n)\s*(?:英文|English|EN|Story EN|英文故事)\s*[:：]\s*/i);
+  if (labelMatch && labelMatch.index > 0) {
+    const zhPart = normalized.slice(0, labelMatch.index).replace(/^\s*(?:中文|Chinese|ZH|作品故事|中文故事)\s*[:：]\s*/i, '').trim();
+    const enPart = normalized.slice(labelMatch.index + labelMatch[0].length).trim();
+    return { zh:zhPart, en:enPart };
+  }
+  const doubleBreak = normalized.split(/\n{2,}/).map(function(part) { return part.trim(); }).filter(Boolean);
+  if (doubleBreak.length >= 2 && /[A-Za-z]{4,}/.test(doubleBreak[doubleBreak.length - 1]) && /[\u4e00-\u9fff]/.test(doubleBreak[0])) {
+    return { zh:doubleBreak.slice(0, -1).join('\n\n'), en:doubleBreak[doubleBreak.length - 1] };
+  }
+  return { zh:'', en:'' };
+}
+
 function getProductStory(p) {
   if (!p) return { zh:'', en:'', combined:'', hasAny:false };
   const storyObj = (p.story && typeof p.story === 'object' && !Array.isArray(p.story)) ? p.story : {};
   const storiesObj = (p.stories && typeof p.stories === 'object' && !Array.isArray(p.stories)) ? p.stories : {};
-  const zh = cleanStoryText(p.storyZh || p.story_zh || p.chineseStory || storyObj.zh || storiesObj.zh);
-  const en = cleanStoryText(p.storyEn || p.story_en || p.englishStory || storyObj.en || storiesObj.en);
   const combined = cleanStoryText(p.story);
+  const split = splitCombinedStory(combined);
+  const zh = cleanStoryText(p.storyZh || p.story_zh || p.chineseStory || storyObj.zh || storiesObj.zh || split.zh);
+  const en = cleanStoryText(p.storyEn || p.story_en || p.englishStory || storyObj.en || storiesObj.en || split.en);
   const merged = combined || [zh, en].filter(Boolean).join('\n\n');
   return { zh, en, combined: merged, hasAny: !!merged };
 }
@@ -305,8 +329,8 @@ function storyPreview(story) {
 
 function formatStoryHtml(story) {
   const parts = [];
-  if (story.zh) parts.push(`<div class="story-zh">${esc(story.zh).replace(/\n/g,'<br>')}</div>`);
-  if (story.en) parts.push(`<div class="story-en">${esc(story.en).replace(/\n/g,'<br>')}</div>`);
+  if (story.zh) parts.push(`<section class="story-lang-block"><div class="story-lang-label">中文故事</div><div class="story-zh">${esc(story.zh).replace(/\n/g,'<br>')}</div></section>`);
+  if (story.en) parts.push(`<section class="story-lang-block"><div class="story-lang-label">English Story</div><div class="story-en">${esc(story.en).replace(/\n/g,'<br>')}</div></section>`);
   if (!parts.length && story.combined) parts.push(`<div class="story-body">${esc(story.combined).replace(/\n/g,'<br>')}</div>`);
   return parts.join('');
 }
@@ -1666,6 +1690,25 @@ footer {
     margin-top:1.2rem;
     padding-top:1.2rem;
     border-top:1px solid rgba(58,54,50,.12);
+  }
+  .story-lang-block + .story-lang-block{
+    margin-top:1.35rem;
+    padding-top:1.35rem;
+    border-top:1px solid rgba(58,54,50,.12);
+  }
+  .story-lang-label{
+    margin-bottom:.55rem;
+    font-family:var(--fd);
+    font-size:.66rem;
+    font-weight:800;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:#9B5B3A;
+  }
+  .story-lang-block .story-en{
+    margin-top:0;
+    padding-top:0;
+    border-top:0;
   }
   .lb-story-panel-header{
     border-bottom:1px solid rgba(58,54,50,.1)!important;
