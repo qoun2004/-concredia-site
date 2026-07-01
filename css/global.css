@@ -2993,6 +2993,47 @@ button{
   object-fit:cover;
 }
 
+.video-embed-card{
+  background:rgba(212,207,200,.04);
+  border:1px solid rgba(212,207,200,.1);
+  padding:1rem;
+}
+
+.video-embed-card--light{
+  background:rgba(58,54,50,.04);
+  border-color:rgba(58,54,50,.1);
+}
+
+.video-embed__label{
+  color:var(--fire-h);
+  font-family:var(--fd);
+  font-size:.62rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-bottom:.75rem;
+}
+
+.video-embed-card--light .video-embed__label{
+  color:var(--fire);
+}
+
+.video-embed{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#0f0d0b;
+  overflow:hidden;
+  border:1px solid rgba(212,207,200,.12);
+}
+
+.video-embed iframe{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
 @media(max-width:768px){
   .site-photo-feature,
   .site-photo-feature--reverse,
