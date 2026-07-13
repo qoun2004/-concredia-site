@@ -731,17 +731,16 @@ footer:has(.footer-grid) {
   gap: 1px;
 }
 .nav-logo-sub {
-  font-size: 0.52rem;
-  font-weight: 400;
-  letter-spacing: 0.22em;
-  color: rgba(255,255,255,0.4);
-  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: currentColor;
   font-family: var(--fd);
   transition: color var(--ease);
 }
 nav.scrolled .nav-logo-sub,
 nav#mainNav.scrolled .nav-logo-sub {
-  color: rgba(58,54,50,0.45);
+  color: var(--bk);
 }
 
 /* ── products.html 產品卡片：小圖橫排一列 ────────── */
@@ -2478,7 +2477,9 @@ button{
   }
 
   .nav-logo-sub{
-    display:none!important;
+    display:block!important;
+    font-size:.86rem!important;
+    letter-spacing:.04em!important;
   }
 
   .nav-links,

@@ -136,12 +136,76 @@
   color: rgba(212,207,200,0.8);
   line-height: 1.6;
 }
+.contact-text a {
+  color: rgba(212,207,200,0.92);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232,93,4,0.45);
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.contact-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid rgba(232,93,4,0.5);
+  color: var(--fire-h);
+  text-decoration: none;
+  font-family: var(--fd);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.contact-link-btn:hover {
+  background: var(--fire);
+  border-color: var(--fire);
+  color: white;
+}
+.map-card {
+  margin-top: 2.4rem;
+  background: #FFFFFF;
+  border: 1px solid rgba(26,25,23,0.1);
+}
+.map-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 0;
+  display: block;
+  filter: grayscale(0.15) contrast(0.98);
+}
+.map-card-info {
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.map-card-info strong {
+  display: block;
+  font-family: var(--fd);
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #1A1917;
+  margin-bottom: 0.1rem;
+}
+.map-card-info span {
+  font-size: 0.82rem;
+  color: rgba(26,25,23,0.58);
+}
 /* 響應式 */
 @media (max-width: 900px) {
   .contact-section { grid-template-columns: 1fr; }
   .contact-left { padding: 3rem 2rem; }
   .contact-right { padding: 3rem 2rem; }
   .form-row { grid-template-columns: 1fr; }
+  .map-card iframe { aspect-ratio: 4 / 3; }
 }
 </style>
     <meta property="og:type" content="website">
@@ -185,7 +249,7 @@
           {"@type": "OfferCatalog", "name": "畫作系列 Artwork Series"}
         ]
       },
-      "sameAs": ["https://www.instagram.com/concredia.lab","https://www.threads.net/@concredia.lab"]
+      "sameAs": ["https://www.instagram.com/concredia.lab","https://www.threads.net/@concredia.lab","https://www.facebook.com/profile.php?id=61573239581021","https://www.google.com/maps/search/?api=1&query=Concredia.Lab%20%E5%A3%AB%E6%95%8F%E6%96%87%E5%93%81%20508%E5%BD%B0%E5%8C%96%E7%B8%A3%E5%92%8C%E7%BE%8E%E9%8E%AE%E5%8C%97%E6%BA%AA%E8%B7%AF119%E8%99%9F"]
     },
     {
       "@type": "WebSite",
@@ -204,7 +268,7 @@
       "url": "https://concredia.tw",
       "priceRange": "NT$800–NT$80,000",
       "currenciesAccepted": "TWD",
-      "address": {"@type": "PostalAddress", "addressCountry": "TW"}
+      "address": {"@type": "PostalAddress", "streetAddress": "北溪路119號", "addressLocality": "和美鎮", "addressRegion": "彰化縣", "postalCode": "508", "addressCountry": "TW"}
     },
     {
       "@type": "FAQPage",
@@ -301,16 +365,21 @@
         </div>
         <div class="contact-item">
           <div class="contact-icon">📱</div>
-          <div class="contact-text"><strong>LINE · IG · Threads</strong>請來信索取帳號</div>
+          <div class="contact-text"><strong>社群</strong><a href="https://www.instagram.com/concredia.lab" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.threads.net/@concredia.lab" target="_blank" rel="noopener">Threads</a> · <a href="https://www.facebook.com/profile.php?id=61573239581021" target="_blank" rel="noopener">Facebook 粉絲團</a></div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">📍</div>
-          <div class="contact-text"><strong>工作室地址</strong>台灣（預約制參觀）</div>
+          <div class="contact-text"><strong>工作室地址</strong>508 彰化縣和美鎮北溪路119號<br>預約制參觀</div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">⏰</div>
           <div class="contact-text"><strong>回覆時間</strong>週一至週五，2 個工作天內</div>
         </div>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link-btn" href="https://www.google.com/maps/search/?api=1&amp;query=Concredia.Lab%20%E5%A3%AB%E6%95%8F%E6%96%87%E5%93%81%20508%E5%BD%B0%E5%8C%96%E7%B8%A3%E5%92%8C%E7%BE%8E%E9%8E%AE%E5%8C%97%E6%BA%AA%E8%B7%AF119%E8%99%9F" target="_blank" rel="noopener">Google 商家</a>
+        <a class="contact-link-btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Concredia.Lab%20%E5%A3%AB%E6%95%8F%E6%96%87%E5%93%81%20508%E5%BD%B0%E5%8C%96%E7%B8%A3%E5%92%8C%E7%BE%8E%E9%8E%AE%E5%8C%97%E6%BA%AA%E8%B7%AF119%E8%99%9F" target="_blank" rel="noopener">導航路線</a>
+        <a class="contact-link-btn" href="https://www.facebook.com/profile.php?id=61573239581021" target="_blank" rel="noopener">Facebook 粉絲團</a>
       </div>
     </div>
 
@@ -352,6 +421,16 @@
           <textarea placeholder="請描述您的需求或想法..."></textarea>
         </div>
         <button class="submit-btn" onclick="handleSubmit(this)">送出訊息</button>
+      </div>
+      <div class="map-card" aria-label="Concredia.Lab 士敏文品 Google 地圖">
+        <iframe src="https://www.google.com/maps?q=Concredia.Lab%20%E5%A3%AB%E6%95%8F%E6%96%87%E5%93%81%20508%E5%BD%B0%E5%8C%96%E7%B8%A3%E5%92%8C%E7%BE%8E%E9%8E%AE%E5%8C%97%E6%BA%AA%E8%B7%AF119%E8%99%9F&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Concredia.Lab 士敏文品 Google 地圖"></iframe>
+        <div class="map-card-info">
+          <div>
+            <strong>Concredia.Lab 士敏文品</strong>
+            <span>508 彰化縣和美鎮北溪路119號 · 預約制參觀</span>
+          </div>
+          <a class="btn-ul" href="https://www.google.com/maps/search/?api=1&amp;query=Concredia.Lab%20%E5%A3%AB%E6%95%8F%E6%96%87%E5%93%81%20508%E5%BD%B0%E5%8C%96%E7%B8%A3%E5%92%8C%E7%BE%8E%E9%8E%AE%E5%8C%97%E6%BA%AA%E8%B7%AF119%E8%99%9F" target="_blank" rel="noopener">開啟 Google 地圖 →</a>
+        </div>
       </div>
     </div>
 
@@ -421,9 +500,9 @@ style="flex:1;background:rgba(212,207,200,0.08);border:1px solid rgba(212,207,20
   <div class="footer-bottom">
     <p>© 2025 Concredia.Lab · Dr. Rovi Lee. All rights reserved.</p>
     <div class="social-links">
-      <a class="social-link" href="#">IG</a>
-      <a class="social-link" href="#">TH</a>
-      <a class="social-link" href="#">YT</a>
+      <a class="social-link" href="https://www.instagram.com/concredia.lab" target="_blank" rel="noopener">IG</a>
+      <a class="social-link" href="https://www.facebook.com/profile.php?id=61573239581021" target="_blank" rel="noopener">FB</a>
+      <a class="social-link" href="https://www.google.com/maps/search/?api=1&amp;query=Concredia.Lab%20%E5%A3%AB%E6%95%8F%E6%96%87%E5%93%81%20508%E5%BD%B0%E5%8C%96%E7%B8%A3%E5%92%8C%E7%BE%8E%E9%8E%AE%E5%8C%97%E6%BA%AA%E8%B7%AF119%E8%99%9F" target="_blank" rel="noopener">MAP</a>
     </div>
   </div>
   <div class="footer-easter">
