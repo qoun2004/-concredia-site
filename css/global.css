@@ -2604,15 +2604,47 @@ button{
 
   .hero,
   .page-hero,
-  .gift-hero{
+  .gift-hero,
+  .story-hero{
     min-height:auto!important;
     padding:5.25rem 1.25rem 2.75rem!important;
     display:block!important;
+    background:#111!important;
+  }
+
+  .story-hero{
+    min-height:88vh!important;
+    display:flex!important;
+    align-items:flex-end!important;
+  }
+
+  .story-hero > div:first-child{
+    opacity:.28!important;
+    filter:brightness(.45) contrast(1.12)!important;
+  }
+
+  .story-hero > div:nth-child(2){
+    background:linear-gradient(180deg,rgba(0,0,0,.64) 0%,rgba(0,0,0,.78) 44%,rgba(0,0,0,.96) 100%)!important;
+  }
+
+  .story-hero > div:last-child{
+    padding:0!important;
+    max-width:100%!important;
+  }
+
+  .hero-bg{
+    filter:brightness(.18) contrast(1.08)!important;
+  }
+
+  .hero-scrim{
+    background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.84) 46%,rgba(0,0,0,.94) 100%)!important;
   }
 
   .hero-content{
     padding:0!important;
     max-width:100%!important;
+    position:relative!important;
+    z-index:5!important;
   }
 
   h1,
@@ -2624,6 +2656,33 @@ button{
     letter-spacing:-.01em!important;
     max-width:100%!important;
     overflow-wrap:break-word!important;
+  }
+
+  .hero-manifesto,
+  .page-hero h1,
+  .gift-hero h1,
+  .story-hero h1,
+  .hero-manifesto em,
+  .page-hero h1 em,
+  .gift-hero h1 em,
+  .story-hero h1 em{
+    color:#fff!important;
+    text-shadow:0 2px 18px rgba(0,0,0,.82),0 1px 3px rgba(0,0,0,.9)!important;
+  }
+
+  .hero-eyebrow,
+  .page-hero-eye,
+  .hero-eye,
+  .gift-hero-eye{
+    color:#FFB07C!important;
+    text-shadow:0 1px 8px rgba(0,0,0,.75)!important;
+  }
+
+  .hero-eyebrow::before,
+  .page-hero-eye::before,
+  .hero-eye::before,
+  .gift-hero-eye::before{
+    background:#FFB07C!important;
   }
 
   h2,
@@ -2651,12 +2710,28 @@ button{
   .gift-hero-sub,
   .hero-sub,
   .card-text,
-  .gift-card p,
+    .gift-card p,
   .corp-desc,
   .shop-line{
     font-size:.96rem!important;
     line-height:1.78!important;
     max-width:100%!important;
+  }
+
+  .hero-sub,
+  .page-hero-sub,
+  .gift-hero-sub,
+  .story-hero p{
+    color:#fff!important;
+    font-weight:500!important;
+    text-shadow:0 2px 12px rgba(0,0,0,.82),0 1px 3px rgba(0,0,0,.9)!important;
+  }
+
+  .btn-ghost,
+  .btn-ul--white{
+    color:#fff!important;
+    border-color:rgba(255,255,255,.82)!important;
+    text-shadow:0 1px 8px rgba(0,0,0,.65)!important;
   }
 
   .strip,
