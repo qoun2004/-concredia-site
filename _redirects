@@ -12,8 +12,10 @@
 /gifts /gifts.html 301
 /faq /contact.html 301
 /faq.html /contact.html 301
-/fundraise /story.html 301
-/fundraise.html /story.html 301
+/fundraise /conga-pretest.html 301
+/fundraise.html /conga-pretest.html 301
+/conga /conga-pretest.html 301
+/conga-pretest /conga-pretest.html 301
 /esg-dashboard /sustainability.html 301
 /esg-dashboard.html /sustainability.html 301
 /blog-post-918676 /blog.html 301

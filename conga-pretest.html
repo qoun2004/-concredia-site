@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="康加台灣是一款從台灣地方文化、材料與生活記憶長出的原創守護獸手機遊戲。填寫 3 分鐘問卷，參與早期前測。">
+  <title>康加台灣 Conga Taiwan｜募資前測問卷</title>
+  <link rel="canonical" href="https://concredia.tw/conga-pretest.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Concredia.Lab 士敏文品">
+  <meta property="og:title" content="康加台灣 Conga Taiwan｜募資前測問卷">
+  <meta property="og:description" content="從台灣地方文化、材料與生活記憶長出的原創守護獸手機遊戲。填寫 3 分鐘問卷，參與早期前測。">
+  <meta property="og:url" content="https://concredia.tw/conga-pretest.html">
+  <meta property="og:image" content="https://concredia.tw/assets/landing/stone-turtle-kit.png">
+  <meta property="og:locale" content="zh_TW">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="康加台灣 Conga Taiwan｜募資前測問卷">
+  <meta name="twitter:description" content="填寫 3 分鐘問卷，幫我們決定台灣本土守護獸遊戲的早期方向。">
+  <meta name="twitter:image" content="https://concredia.tw/assets/landing/stone-turtle-kit.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      color-scheme: light;
+      --ink: #11110f;
+      --ink-2: #25231f;
+      --stone: #706b60;
+      --cement: #d8d2c7;
+      --cement-2: #eee9df;
+      --paper: #f8f4ea;
+      --white: #fffdf8;
+      --line: rgba(17, 17, 15, .16);
+      --line-dark: rgba(255, 253, 248, .18);
+      --fire: #f04d35;
+      --water: #20a7d8;
+      --wood: #40a66a;
+      --earth: #d5a14c;
+      --metal: #d7dde2;
+      --violet: #8d79d6;
+      --shadow: 0 28px 80px rgba(17, 17, 15, .18);
+      --radius: 8px;
+      --nav-h: 72px;
+      --content: 1160px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.68;
+      text-rendering: geometricPrecision;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg { display: block; }
+    img { max-width: 100%; }
+    a { color: inherit; }
+
+    a:focus-visible,
+    button:focus-visible,
+    iframe:focus-visible {
+      outline: 3px solid var(--water);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 16px;
+      top: 12px;
+      z-index: 100;
+      transform: translateY(-140%);
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--ink);
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform 180ms var(--ease);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .page {
+      overflow-x: hidden;
+      background:
+        linear-gradient(rgba(248, 244, 234, .94), rgba(248, 244, 234, .94)),
+        repeating-linear-gradient(135deg, rgba(17, 17, 15, .06) 0 1px, transparent 1px 18px);
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      color: var(--white);
+      background: rgba(17, 17, 15, .82);
+      border-bottom: 1px solid rgba(255, 253, 248, .14);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      width: min(var(--content), 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-weight: 950;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 253, 248, .32);
+      background:
+        radial-gradient(circle at 30% 28%, var(--water), transparent 23%),
+        radial-gradient(circle at 70% 72%, var(--fire), transparent 24%),
+        linear-gradient(135deg, #f0ece2 0%, #6f6a60 48%, #141411 100%);
+      box-shadow: inset 0 0 0 1px rgba(17, 17, 15, .25);
+    }
+
+    .brand-mark svg { width: 20px; height: 20px; color: rgba(255, 253, 248, .92); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .92rem;
+      font-weight: 850;
+    }
+
+    .nav-links a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      border-radius: var(--radius);
+      color: rgba(255, 253, 248, .78);
+      text-decoration: none;
+      transition: color 180ms var(--ease), background 180ms var(--ease);
+      touch-action: manipulation;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255, 253, 248, .08);
+    }
+
+    .nav-links .nav-cta {
+      margin-left: 6px;
+      padding: 0 18px;
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .22);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 86svh;
+      display: grid;
+      align-items: end;
+      padding: calc(var(--nav-h) + 54px) 24px 58px;
+      color: var(--white);
+      background: #111;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background: url("assets/landing/material-field.png") center / cover no-repeat;
+      filter: saturate(.86) contrast(1.12) brightness(.54);
+      transform: scale(1.015);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(8, 8, 7, .94) 0%, rgba(8, 8, 7, .78) 42%, rgba(8, 8, 7, .36) 100%),
+        linear-gradient(0deg, rgba(8, 8, 7, .86) 0%, rgba(8, 8, 7, .08) 54%);
+    }
+
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .24;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 253, 248, .24) 0 1px, transparent 1px 14px),
+        repeating-linear-gradient(135deg, rgba(255, 253, 248, .12) 0 1px, transparent 1px 16px);
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 44px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      color: rgba(255, 253, 248, .78);
+      font-size: .84rem;
+      font-weight: 950;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--wood);
+      box-shadow: 0 0 22px rgba(64, 166, 106, .88);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      max-width: 780px;
+      font-size: 4.8rem;
+      line-height: 1.05;
+      font-weight: 950;
+    }
+
+    .hero-subtitle {
+      max-width: 780px;
+      margin-top: 18px;
+      font-size: 2rem;
+      line-height: 1.26;
+      font-weight: 920;
+      color: rgba(255, 253, 248, .94);
+    }
+
+    .hero-lead {
+      max-width: 760px;
+      margin-top: 20px;
+      color: rgba(255, 253, 248, .78);
+      font-size: 1.18rem;
+      font-weight: 720;
+    }
+
+    .hero-actions,
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .hero-actions { margin-top: 30px; }
+
+    .hero-note {
+      max-width: 700px;
+      margin-top: 14px;
+      color: rgba(255, 253, 248, .66);
+      font-size: .94rem;
+      font-weight: 760;
+    }
+
+    .btn {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 950;
+      text-decoration: none;
+      transition: transform 180ms var(--ease), box-shadow 180ms var(--ease), background 180ms var(--ease), color 180ms var(--ease);
+      touch-action: manipulation;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0) scale(.99); }
+    .btn svg { width: 19px; height: 19px; flex: 0 0 auto; }
+
+    .btn-primary {
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, .28);
+    }
+
+    .btn-primary:hover { box-shadow: 0 22px 54px rgba(0, 0, 0, .36); }
+
+    .btn-dark {
+      color: var(--white);
+      background: var(--ink);
+      box-shadow: 0 16px 38px rgba(17, 17, 15, .18);
+    }
+
+    .btn-ghost {
+      color: var(--white);
+      border-color: rgba(255, 253, 248, .28);
+      background: rgba(255, 253, 248, .08);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-spec {
+      align-self: stretch;
+      display: grid;
+      align-content: end;
+      gap: 14px;
+    }
+
+    .spec-card {
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 253, 248, .18);
+      background: rgba(17, 17, 15, .54);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, .28);
+      overflow: hidden;
+    }
+
+    .spec-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: #151515;
+      overflow: hidden;
+    }
+
+    .spec-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 42% 40%;
+      opacity: .95;
+    }
+
+    .badge-stack {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .element-badge {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 253, 248, .24);
+      color: var(--white);
+      background: rgba(17, 17, 15, .72);
+      font-size: 1.1rem;
+      font-weight: 950;
+      backdrop-filter: blur(12px);
+    }
+
+    .badge-water { box-shadow: inset 0 -4px 0 var(--water); }
+    .badge-fire { box-shadow: inset 0 -4px 0 var(--fire); }
+    .badge-wood { box-shadow: inset 0 -4px 0 var(--wood); }
+
+    .spec-body {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .spec-body strong {
+      font-size: 1.08rem;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .spec-body p {
+      color: rgba(255, 253, 248, .68);
+      font-size: .94rem;
+      font-weight: 700;
+    }
+
+    .proof-strip {
+      position: relative;
+      z-index: 2;
+      margin-top: -34px;
+      padding: 0 24px;
+    }
+
+    .proof-inner {
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .94);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .proof-item {
+      min-height: 112px;
+      padding: 22px;
+      border-right: 1px solid var(--line);
+    }
+
+    .proof-item:last-child { border-right: 0; }
+    .proof-item span {
+      display: block;
+      color: var(--stone);
+      font-size: .76rem;
+      font-weight: 950;
+    }
+    .proof-item strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.22rem;
+      line-height: 1.3;
+      font-weight: 950;
+    }
+
+    .pretest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .pretest-card {
+      min-height: 210px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .62);
+      box-shadow: 0 16px 44px rgba(17, 17, 15, .08);
+    }
+
+    .pretest-card span {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 18px;
+      border-radius: var(--radius);
+      color: var(--white);
+      background: var(--ink);
+      font-weight: 950;
+    }
+
+    .pretest-card h3 {
+      font-size: 1.2rem;
+      line-height: 1.36;
+      font-weight: 950;
+    }
+
+    .pretest-card p {
+      margin-top: 10px;
+      color: rgba(17, 17, 15, .68);
+      font-weight: 680;
+    }
+
+    .status-note {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--fire);
+      color: rgba(17, 17, 15, .76);
+      background: rgba(255, 253, 248, .62);
+      font-weight: 760;
+    }
+
+    .section {
+      position: relative;
+      padding: 112px 24px;
+    }
+
+    .section.dark {
+      color: var(--white);
+      background:
+        linear-gradient(rgba(17, 17, 15, .94), rgba(17, 17, 15, .94)),
+        repeating-linear-gradient(45deg, rgba(255, 253, 248, .08) 0 1px, transparent 1px 18px);
+    }
+
+    .section.cement {
+      background:
+        linear-gradient(rgba(238, 233, 223, .92), rgba(238, 233, 223, .92)),
+        radial-gradient(circle at 18% 12%, rgba(17, 17, 15, .11) 0 1px, transparent 1px 14px),
+        repeating-linear-gradient(135deg, rgba(17, 17, 15, .055) 0 1px, transparent 1px 18px);
+    }
+
+    .container {
+      width: min(var(--content), 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 42px;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: var(--fire);
+      font-size: .78rem;
+      font-weight: 950;
+    }
+
+    .section.dark .label { color: var(--earth); }
+
+    .label::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    .section-title {
+      max-width: 860px;
+      font-size: 3.15rem;
+      line-height: 1.14;
+      font-weight: 950;
+    }
+
+    .section-copy,
+    .body-copy {
+      color: rgba(17, 17, 15, .72);
+      font-size: 1.1rem;
+      font-weight: 680;
+    }
+
+    .section-copy {
+      max-width: 790px;
+      margin-top: 18px;
+    }
+
+    .section.dark .section-copy,
+    .section.dark .body-copy { color: rgba(255, 253, 248, .72); }
+
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 68px;
+      align-items: start;
+    }
+
+    .quote-xl {
+      font-size: 3.4rem;
+      line-height: 1.14;
+      font-weight: 950;
+    }
+
+    .manifesto-copy {
+      display: grid;
+      gap: 22px;
+      color: rgba(255, 253, 248, .74);
+      font-size: 1.14rem;
+      font-weight: 680;
+    }
+
+    .principle-line {
+      margin-top: 8px;
+      padding: 18px 0 18px 20px;
+      border-left: 4px solid var(--earth);
+      color: var(--white);
+      font-size: 1.3rem;
+      line-height: 1.42;
+      font-weight: 950;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, .96fr) minmax(0, 1.04fr);
+      gap: 52px;
+      align-items: center;
+    }
+
+    .media-frame {
+      position: relative;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #121211;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .media-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border: 1px solid rgba(255, 253, 248, .18);
+      border-radius: inherit;
+    }
+
+    .media-frame img {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      object-fit: cover;
+    }
+
+    .media-frame.contain img {
+      object-fit: contain;
+      padding: 18px;
+      background: #111;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .feature {
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .feature:last-child { border-bottom: 1px solid var(--line); }
+
+    .feature h3 {
+      font-size: 1.28rem;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .feature p {
+      margin-top: 9px;
+      color: rgba(17, 17, 15, .7);
+      font-weight: 680;
+    }
+
+    .material-grid,
+    .roadmap-grid,
+    .ware-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .material-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 30px;
+    }
+
+    .material-chip {
+      min-height: 126px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .56);
+    }
+
+    .material-chip svg {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 14px;
+      color: var(--fire);
+    }
+
+    .material-chip:nth-child(2) svg { color: var(--water); }
+    .material-chip:nth-child(3) svg { color: var(--earth); }
+    .material-chip:nth-child(4) svg { color: var(--wood); }
+
+    .material-chip strong {
+      display: block;
+      font-size: 1.02rem;
+      line-height: 1.35;
+      font-weight: 950;
+    }
+
+    .material-chip span {
+      display: block;
+      margin-top: 6px;
+      color: rgba(17, 17, 15, .64);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .ware-grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 34px;
+    }
+
+    .ware-item {
+      min-height: 150px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .56);
+    }
+
+    .ware-item h3 {
+      font-size: 1.12rem;
+      font-weight: 950;
+    }
+
+    .ware-item p {
+      margin-top: 8px;
+      color: rgba(17, 17, 15, .68);
+      font-weight: 680;
+    }
+
+    .burst-layout {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .burst-panel {
+      border-radius: var(--radius);
+      border: 1px solid var(--line-dark);
+      background: rgba(255, 253, 248, .06);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .28);
+      overflow: hidden;
+    }
+
+    .burst-panel img {
+      width: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .section.dark .feature {
+      border-color: var(--line-dark);
+    }
+
+    .section.dark .feature:last-child { border-bottom-color: var(--line-dark); }
+    .section.dark .feature p { color: rgba(255, 253, 248, .68); }
+
+    .roadmap-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 42px;
+    }
+
+    .roadmap-card {
+      min-height: 290px;
+      padding: 28px;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .065);
+    }
+
+    .roadmap-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: var(--metal);
+      font-size: .9rem;
+      font-weight: 950;
+    }
+
+    .roadmap-card:nth-child(2) .roadmap-icon { background: #bfe6ff; }
+    .roadmap-card:nth-child(3) .roadmap-icon { background: #cde8c9; }
+
+    .roadmap-card h3 {
+      font-size: 1.24rem;
+      line-height: 1.38;
+      font-weight: 950;
+    }
+
+    .roadmap-card p {
+      margin-top: 12px;
+      color: rgba(255, 253, 248, .68);
+      font-weight: 680;
+    }
+
+    .creator-layout {
+      display: grid;
+      grid-template-columns: 400px minmax(0, 1fr);
+      gap: 56px;
+      align-items: center;
+    }
+
+    .creator-photo {
+      border-radius: var(--radius);
+      border: 1px solid var(--line-dark);
+      background: #191816;
+      box-shadow: 0 24px 68px rgba(0, 0, 0, .26);
+      overflow: hidden;
+    }
+
+    .creator-photo img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .creator-copy {
+      margin-top: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .survey {
+      padding-bottom: 90px;
+    }
+
+    .survey-panel {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 34px;
+      align-items: start;
+      margin-top: 34px;
+    }
+
+    .survey-copy {
+      position: sticky;
+      top: calc(var(--nav-h) + 28px);
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 248, .66);
+      box-shadow: 0 18px 56px rgba(17, 17, 15, .1);
+    }
+
+    .survey-copy h3 {
+      font-size: 1.38rem;
+      line-height: 1.36;
+      font-weight: 950;
+    }
+
+    .survey-copy p {
+      margin-top: 12px;
+      color: rgba(17, 17, 15, .68);
+      font-weight: 700;
+    }
+
+    .survey-meta {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0;
+      color: rgba(17, 17, 15, .72);
+      font-size: .95rem;
+      font-weight: 850;
+    }
+
+    .survey-meta span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .survey-meta svg {
+      width: 18px;
+      height: 18px;
+      color: var(--wood);
+      flex: 0 0 auto;
+    }
+
+    .form-shell {
+      min-height: 760px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .form-shell iframe {
+      width: 100%;
+      min-height: 760px;
+      display: block;
+      border: 0;
+    }
+
+    footer {
+      padding: 40px 24px;
+      color: rgba(255, 253, 248, .62);
+      background: var(--ink);
+      font-size: .92rem;
+      font-weight: 720;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .site-nav { padding: 10px 18px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .hero {
+        min-height: 86svh;
+        padding: calc(var(--nav-h) + 34px) 20px 42px;
+      }
+      .hero-inner,
+      .split,
+      .burst-layout,
+      .creator-layout,
+      .manifesto-grid,
+      .survey-panel {
+        grid-template-columns: 1fr;
+      }
+      .hero-spec { display: none; }
+      h1 { font-size: 3.35rem; }
+      .hero-subtitle { font-size: 1.55rem; }
+      .proof-inner,
+      .material-grid,
+      .roadmap-grid,
+      .ware-grid,
+      .pretest-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .proof-item:nth-child(2) { border-right: 0; }
+      .proof-item:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+      .section { padding: 86px 20px; }
+      .section-title,
+      .quote-xl { font-size: 2.42rem; }
+      .media-frame img,
+      .burst-panel img {
+        min-height: 380px;
+      }
+      .survey-copy { position: static; }
+    }
+
+    @media (max-width: 620px) {
+      :root { --nav-h: 66px; }
+      .brand span {
+        max-width: 120px;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: .96rem;
+      }
+      .nav-links .nav-cta { padding: 0 14px; }
+      .hero {
+        min-height: 84svh;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+      h1 { font-size: 2.72rem; }
+      .hero-subtitle {
+        margin-top: 14px;
+        font-size: 1.26rem;
+      }
+      .hero-lead { font-size: 1rem; }
+      .hero-actions,
+      .cta-row { width: 100%; }
+      .btn {
+        width: 100%;
+        min-height: 54px;
+        padding-left: 16px;
+        padding-right: 16px;
+        text-align: center;
+      }
+      .proof-strip {
+        margin-top: 0;
+        padding: 0;
+      }
+      .proof-inner {
+        grid-template-columns: 1fr;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .proof-item {
+        min-height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .proof-item:last-child { border-bottom: 0; }
+      .section { padding: 72px 18px; }
+      .section-title,
+      .quote-xl { font-size: 2rem; }
+      .section-copy,
+      .body-copy,
+      .manifesto-copy { font-size: 1rem; }
+      .material-grid,
+      .roadmap-grid,
+      .ware-grid,
+      .pretest-grid {
+        grid-template-columns: 1fr;
+      }
+      .media-frame img,
+      .burst-panel img,
+      .creator-photo img {
+        min-height: 0;
+        height: 320px;
+      }
+      .media-frame.contain img {
+        height: auto;
+        min-height: 0;
+      }
+      .survey-copy { padding: 22px; }
+      .form-shell,
+      .form-shell iframe { min-height: 720px; }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      :root { --nav-h: 58px; }
+      .site-nav { padding: 6px 18px; }
+      .brand { min-height: 44px; }
+      .brand-mark { width: 30px; height: 30px; }
+      .nav-links .nav-cta {
+        min-height: 40px;
+        padding: 0 14px;
+      }
+      .hero {
+        min-height: 78svh;
+        padding-top: calc(var(--nav-h) + 18px);
+        padding-bottom: 24px;
+      }
+      .eyebrow {
+        margin-bottom: 8px;
+        font-size: .78rem;
+      }
+      h1 { font-size: 2.28rem; }
+      .hero-subtitle {
+        margin-top: 8px;
+        font-size: 1.08rem;
+      }
+      .hero-lead {
+        max-width: 680px;
+        margin-top: 8px;
+        font-size: .92rem;
+        line-height: 1.5;
+      }
+      .hero-actions { margin-top: 14px; }
+      .btn {
+        min-height: 44px;
+        width: auto;
+      }
+      .proof-item { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <main class="page" id="main">
+    <nav class="site-nav" aria-label="主選單">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="康加台灣首頁">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3.2 20 8v8l-8 4.8L4 16V8l8-4.8Z" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M8.2 12h7.6M12 8.2v7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span>康加台灣 Conga Taiwan</span>
+        </a>
+        <div class="nav-links">
+          <a href="#pretest">前測</a>
+          <a href="#gameplay">玩法</a>
+          <a href="#ware">實體工藝</a>
+          <a href="#about">開發者</a>
+          <a class="nav-cta" href="#survey">參與前測</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-texture" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">3 分鐘問卷招募中 · 台灣本土守護獸 IP</div>
+          <h1 id="hero-title">康加台灣 Conga Taiwan</h1>
+          <p class="hero-subtitle">台灣自己的守護獸遊戲，正在前測中。</p>
+          <p class="hero-lead">我正在開發一款從台灣地方文化、材料、生活記憶長出的原創手機遊戲。現在還在早期概念與原型階段，想先請你用 3 分鐘問卷，幫我判斷這個方向值不值得繼續做大。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://tally.so/r/2E5L9A" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              直接填寫問卷
+            </a>
+            <a class="btn btn-ghost" href="#pretest">先看這是什麼</a>
+          </div>
+          <p class="hero-note">目前展示內容皆為 concept preview / work in progress，不代表最終遊戲畫面。你的回覆會影響玩法、角色、美術與未來募資方向。</p>
+        </div>
+        <aside class="hero-spec" aria-label="守護獸概念預覽">
+          <div class="spec-card">
+            <div class="spec-visual">
+              <img src="assets/landing/stone-turtle-kit.png" width="900" height="1125" alt="康加台灣守護獸小石龜概念圖">
+              <div class="badge-stack" aria-label="五行徽章示意">
+                <span class="element-badge badge-water">水</span>
+                <span class="element-badge badge-fire">火</span>
+                <span class="element-badge badge-wood">木</span>
+              </div>
+            </div>
+            <div class="spec-body">
+              <strong>早期概念圖：守護獸會帶著材料紋理與地方記憶成長。</strong>
+              <p>我們正在測試角色、美術、彈射戰鬥與實體工藝連動，現在最需要的是玩家與朋友的真實回饋。</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="核心賣點摘要">
+      <div class="proof-inner">
+        <div class="proof-item">
+          <span>目前任務</span>
+          <strong>3 分鐘前測問卷</strong>
+        </div>
+        <div class="proof-item">
+          <span>遊戲想像</span>
+          <strong>台灣地方守護獸</strong>
+        </div>
+        <div class="proof-item">
+          <span>玩法方向</span>
+          <strong>彈射無雙採集戰</strong>
+        </div>
+        <div class="proof-item">
+          <span>未來可能</span>
+          <strong>工藝 × 募資 × IP</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cement" id="pretest">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">WHY THIS SURVEY</div>
+          <h2 class="section-title">這不是正式發表，而是邀請你一起決定：這個世界該往哪裡長。</h2>
+          <p class="section-copy">我不想只關在自己的腦袋裡做一個很大的夢。這份問卷會先確認大家對「台灣自己的角色 IP」、「彈射爽感玩法」與「實體工藝連動」的真實反應。</p>
+        </div>
+        <div class="pretest-grid">
+          <article class="pretest-card">
+            <span>1</span>
+            <h3>你喜不喜歡台灣地方守護獸？</h3>
+            <p>角色可以來自地方材料、廟口、產業、童年記憶、地景或生活感。你覺得哪一種最有收集慾？</p>
+          </article>
+          <article class="pretest-card">
+            <span>2</span>
+            <h3>你想玩的戰鬥是爽快，還是策略？</h3>
+            <p>我們正在測試拉開、瞄準、放開的彈射無雙採集戰，也想知道玩家是否在意五行、材料重量與角色成長。</p>
+          </article>
+          <article class="pretest-card">
+            <span>3</span>
+            <h3>實體工藝是否值得進入募資？</h3>
+            <p>如果手機遊戲能連動水磨工藝、NFC 擺件、材料包或線下活動，你會想支持哪一種版本？</p>
+          </article>
+        </div>
+        <p class="status-note">目前所有圖像與畫面都還是早期概念。它們的作用不是假裝完成，而是讓大家更容易理解方向、提出意見。</p>
+      </div>
+    </section>
+
+    <section class="section dark" id="manifesto">
+      <div class="container manifesto-grid">
+        <div>
+          <div class="label">THE MANIFESTO</div>
+          <h2 class="quote-xl">我想做的不是換皮遊戲，而是從台灣生活裡長出來的角色世界。</h2>
+        </div>
+        <div class="manifesto-copy">
+          <p>台灣有山、有海、有廟口、有稻田，有紅磚、碎玻璃、蚵殼、黑泥，也有很多平常不會被放進遊戲裡的小故事。</p>
+          <p>《康加台灣》想把這些地方記憶變成守護獸、關卡、材料、技能與玩家能參與的行動。它可以是遊戲，也可以慢慢長成角色 IP、實體工藝與地方活動。</p>
+          <div class="principle-line">用台灣的土地，長出守護你的獸。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cement" id="gameplay">
+      <div class="container split">
+        <div>
+          <div class="section-head">
+            <div class="label">CORE GAMEPLAY</div>
+            <h2 class="section-title">拖拉、放開、撞碎全場。先把核心手感做出來。</h2>
+            <p class="section-copy">目前的玩法方向是「彈射無雙採集戰」：守護獸在材料戰場中反彈、旋轉、破壞障礙、擊倒小怪，收集紅磚、碎玻璃、黑泥、貝殼與地方素材。</p>
+          </div>
+          <div class="feature-list">
+            <div class="feature">
+              <h3>材料會改變戰鬥手感</h3>
+              <p>紅磚可以重而穩，碎玻璃可以快而銳，黑泥可以減速控場，貝殼與蚵殼則適合反彈與防禦。</p>
+            </div>
+            <div class="feature">
+              <h3>角色不是只有數值</h3>
+              <p>我們希望每隻守護獸都有自己的材料來源、地方感、外型記憶與戰鬥特色，而不是只換顏色或換皮。</p>
+            </div>
+            <div class="feature">
+              <h3>前測會幫我們取捨</h3>
+              <p>問卷會確認大家比較期待爽快打怪、角色收集、五行策略、地方探索，還是實體活動與募資回饋。</p>
+            </div>
+          </div>
+        </div>
+        <figure class="media-frame">
+          <img src="assets/landing/material-field.png" width="1536" height="1024" alt="康加台灣材料戰場與地方採集概念畫面">
+        </figure>
+      </div>
+
+      <div class="container">
+        <div class="material-grid" aria-label="材料玩法範例">
+          <div class="material-chip">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19h16L17 5H7L4 19Z" stroke="currentColor" stroke-width="1.9"/><path d="M7 12h10M9 5l2 14M15 5l-2 14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            <strong>紅磚瓦</strong>
+            <span>重、穩、破牆強。</span>
+          </div>
+          <div class="material-chip">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8 7-3 10H7L4 10l8-7Z" stroke="currentColor" stroke-width="1.9"/><path d="m12 3-1 9 6 8M4 10l7 2-4 8M20 10l-9 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <strong>碎玻璃</strong>
+            <span>快、銳、爆擊高。</span>
+          </div>
+          <div class="material-chip">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 16c2.4-5 5-7.5 7.8-7.5 2.7 0 4.8 1.7 6.2 5.2M4 19h16M7 13c1 .7 2 .7 3 0s2-.7 3 0 2 .7 3 0" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            <strong>紅土黑泥</strong>
+            <span>慢、韌、控場佳。</span>
+          </div>
+          <div class="material-chip">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 17c1-6.5 4-10 8-10s7 3.5 8 10c-4.4 2.7-11.6 2.7-16 0Z" stroke="currentColor" stroke-width="1.9"/><path d="M8 16c.8-2 2.1-3 4-3s3.2 1 4 3" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            <strong>貝殼蚵殼</strong>
+            <span>彈、防、守護感強。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="guardian">
+      <div class="container burst-layout">
+        <figure class="burst-panel">
+          <img src="assets/landing/guardian-burst.png" width="1792" height="1024" alt="守護獸變形成戰鬥陀珠並啟動徽章爆發的概念圖">
+        </figure>
+        <div>
+          <div class="label">GUARDIAN BEAST</div>
+          <h2 class="section-title">守護獸要像夥伴，不只是戰鬥單位。</h2>
+          <p class="section-copy">我們正在測試一種介於角色、彈珠與陀珠之間的戰鬥形態。牠可以高速碰撞，也要保留臉、核心、材料紋理與地方記憶，讓玩家知道那是自己的夥伴。</p>
+          <div class="feature-list">
+            <div class="feature">
+              <h3>保留角色辨識度</h3>
+              <p>小石龜、玻璃蛙、紅磚拳仔等角色都應該有不同輪廓，不會只剩一顆普通球。</p>
+            </div>
+            <div class="feature">
+              <h3>IP 可以慢慢延伸</h3>
+              <p>如果角色成立，未來才有機會延伸到動畫短片、卡牌、實體小物、地方合作與募資回饋。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ware">
+      <div class="container split">
+        <div>
+          <div class="section-head">
+            <div class="label">LBS EXPLORATION</div>
+            <h2 class="section-title">走到哪裡，就從那個地方掃出材料與故事。</h2>
+            <p class="section-copy">比起先公開硬體想像，前測階段會先聚焦在玩家更容易理解的核心體驗：用 LBS 地圖掃描附近材料訊號、探索灰霧街區、進入附近戰鬥，讓台灣地方慢慢變成遊戲世界的一部分。</p>
+          </div>
+          <div class="ware-grid">
+            <div class="ware-item">
+              <h3>附近材料訊號</h3>
+              <p>玩家可以在地圖上看見再生玻璃、紅磚堆、骨材礦脈、廢鐵料等材料點，建立探索動機。</p>
+            </div>
+            <div class="ware-item">
+              <h3>灰霧街區掃描</h3>
+              <p>尚未淨化的區域會被灰霧覆蓋，玩家需要透過探索、戰鬥與材料收集慢慢清出道路。</p>
+            </div>
+            <div class="ware-item">
+              <h3>地方守護獸連動</h3>
+              <p>不同地點可以長出不同材料、角色與事件，未來能接到地方文化、職人故事與線下活動。</p>
+            </div>
+            <div class="ware-item">
+              <h3>實體工藝先保留</h3>
+              <p>硬體、NFC 與工藝擺件仍是未來可能，但目前不在公開頁面展開，先讓問卷聚焦核心遊戲。</p>
+            </div>
+          </div>
+        </div>
+        <figure class="media-frame contain">
+          <img src="assets/landing/lbs-scan-preview.png" width="1054" height="1492" alt="康加台灣 LBS 灰霧街區掃描與材料訊號概念畫面">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section dark" id="future">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">FUTURE ROADMAP</div>
+          <h2 class="section-title">願景可以很大，但第一步要先問清楚。</h2>
+          <p class="section-copy">這個計畫有遊戲、角色 IP、實體工藝、地方行動等很多可能；但第一版不會全部都做。問卷就是要幫我們知道哪一條路最值得先走。</p>
+        </div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card">
+            <div class="roadmap-icon" aria-hidden="true">AI</div>
+            <h3>守護獸長期記憶</h3>
+            <p>未來若條件成熟，守護獸可能接軌 AI 記憶，從單純角色變成更像陪伴型夥伴的存在。</p>
+          </article>
+          <article class="roadmap-card">
+            <div class="roadmap-icon" aria-hidden="true">LAN</div>
+            <h3>同 WiFi 串門破冰</h3>
+            <p>我們也在想像更輕鬆的社交玩法，讓守護獸先替玩家打招呼，降低現代人互動的尷尬。</p>
+          </article>
+          <article class="roadmap-card">
+            <div class="roadmap-icon" aria-hidden="true">善</div>
+            <h3>善良值與康加幣</h3>
+            <p>如果遊戲能鼓勵真實生活裡的小善意、材料募集或地方行動，它就不只是消磨時間。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="about">
+      <div class="container creator-layout">
+        <figure class="creator-photo">
+          <img src="assets/landing/guardian-home-preview.png" width="941" height="1672" alt="康加台灣小石龜家園與角色照顧概念畫面">
+        </figure>
+        <div>
+          <div class="label">ABOUT CREATORS</div>
+          <h2 class="section-title">我是建凱，這是我想重新把事情做出來的一次嘗試。</h2>
+          <div class="creator-copy body-copy">
+            <p>我過去是職業攝影師，拍過很多作品，也寫過很多影像故事。後來創業失敗、停下很久，現在想用比較踏實的方式，把影像、AI、遊戲、品牌和真實材料重新接起來。</p>
+            <p>這個計畫也結合了李老師在材料與工藝上的長期累積。現在它還很早期，所以我希望先透過問卷收集大家的直覺，而不是只靠自己想像。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cement survey" id="survey">
+      <div class="container">
+        <div class="section-head">
+          <div class="label">PRE-LAUNCH SURVEY</div>
+          <h2 class="section-title">願意的話，請用 3 分鐘幫我填這份問卷。</h2>
+          <p class="section-copy">你不用懂遊戲，也不用懂材料。只要告訴我們：這個方向有沒有吸引你、哪個部分最想看見、哪些地方你覺得還不夠清楚。</p>
+        </div>
+
+        <div class="survey-panel">
+          <aside class="survey-copy">
+            <h3>你的回答會幫我們做取捨。</h3>
+            <p>第一版到底要先做遊戲手感、角色 IP、實體工藝，還是地方活動？問卷結果會成為我們下一步開發與募資規劃的依據。</p>
+            <div class="survey-meta">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                約 3 分鐘完成
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                保留超早鳥通知
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                協助決定募資版本
+              </span>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-dark" href="https://tally.so/r/2E5L9A" target="_blank" rel="noopener">
+                另開問卷
+              </a>
+            </div>
+          </aside>
+
+          <div class="form-shell" aria-label="康加台灣前測問卷">
+            <iframe
+              src="https://tally.so/embed/2E5L9A?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              title="康加台灣募資前測問卷"
+              loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <span>康加台灣 Conga Taiwan · Be kind to all.</span>
+        <span>募資前測問卷版本</span>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
