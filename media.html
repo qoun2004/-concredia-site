@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影音專區 · VLOG — Concredia.Lab 士敏文品</title>
+<link rel="canonical" href="https://concredia.tw/media.html">
+<meta name="description" content="Concredia.Lab 士敏文品影音專區，集中整理寂寞公路、掃一張桌子、帶著高腳桌去旅行與來義社區共創案例。">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/global.css">
+<style>
+body{background:#FBFAF6;color:#27231F;}
+.media-hero{padding:9rem 4rem 4rem;background:#1C1A18;color:#FBFAF6;}
+.media-eye{font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#C87949;margin-bottom:1rem;}
+.media-hero h1{font-family:var(--fd);font-size:clamp(2.6rem,6vw,6.5rem);line-height:1.02;letter-spacing:0;font-weight:900;max-width:980px;margin-bottom:1.35rem;}
+.media-hero p{font-size:1rem;line-height:1.9;color:rgba(251,250,246,.76);max-width:700px;}
+.media-wrap{padding:4rem;display:grid;gap:2rem;}
+.media-card{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(300px,.78fr);gap:0;background:#fff;border:1px solid rgba(216,208,194,.75);}
+.media-card:nth-child(even){grid-template-columns:minmax(300px,.78fr) minmax(0,1.22fr);}
+.media-card:nth-child(even) .media-video{order:2;}
+.media-copy{padding:2rem;display:flex;flex-direction:column;justify-content:center;}
+.media-tag{font-family:var(--fd);font-size:.62rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#A9653D;margin-bottom:.8rem;}
+.media-copy h2{font-family:var(--fd);font-size:clamp(1.45rem,2.8vw,2.55rem);line-height:1.16;letter-spacing:0;color:#27231F;margin-bottom:1rem;}
+.media-copy p{font-size:.96rem;line-height:1.86;color:#615A51;margin-bottom:1.25rem;}
+.media-links{display:flex;gap:.85rem;flex-wrap:wrap;}
+.media-link{font-family:var(--fd);font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#A9653D;text-decoration:none;border-bottom:1px solid rgba(169,101,61,.45);padding-bottom:2px;}
+.media-video{background:#111;min-height:320px;display:flex;align-items:center;}
+.media-video .video-embed-card{width:100%;border:0;margin:0;background:#111;}
+.media-video .video-embed__label{color:#C87949;background:#111;border-bottom:1px solid rgba(255,255,255,.08);}
+.media-note{background:#F2EDE4;border-left:4px solid #A9653D;padding:1.5rem 2rem;max-width:820px;color:#514B44;line-height:1.85;}
+@media(max-width:900px){
+  .media-hero,.media-wrap{padding-left:1.5rem;padding-right:1.5rem;}
+  .media-card,.media-card:nth-child(even){grid-template-columns:1fr;}
+  .media-card:nth-child(even) .media-video{order:0;}
+  .media-video{min-height:220px;}
+}
+</style>
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">Concredia<span class="dot">.</span><span class="lab">Lab</span><span class="nav-logo-sub">士敏文品</span></a>
+  <ul class="nav-links">
+    <li><a href="story.html">品牌故事</a></li>
+    <li><a href="products.html">產品系列</a></li>
+    <li><a href="gifts.html">節慶禮品</a></li>
+    <li><a href="gallery.html">作品集</a></li>
+    <li><a href="sustainability.html">永續 · ESG</a></li>
+    <li><a href="blog.html">最新動態</a></li>
+    <li><a href="media.html" style="color:var(--fire-h);">影音專區</a></li>
+    <li><a href="contact.html">聯絡</a></li>
+  </ul>
+  <a href="conga-pretest.html" class="nav-fundraise">募資計畫 →</a>
+  <button class="hamburger" id="hamburger" aria-label="開啟選單"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">首頁</a>
+  <a href="story.html">品牌故事</a>
+  <a href="products.html">產品系列</a>
+  <a href="gifts.html">節慶禮品</a>
+  <a href="gallery.html">作品集</a>
+  <a href="sustainability.html">永續 · ESG</a>
+  <a href="blog.html">最新動態</a>
+  <a href="media.html">影音專區</a>
+  <a href="partners.html">合作夥伴</a>
+  <a href="contact.html">聯絡我們</a>
+  <a href="conga-pretest.html" class="fundraise-link">募資計畫 →</a>
+  <div class="mobile-menu-footer">Concredia.Lab · 士敏文品工作室</div>
+</div>
+
+<section class="media-hero">
+  <div class="media-eye">Video Hub · 展示用影音入口</div>
+  <h1>把路上的故事，集中放在一頁。</h1>
+  <p>這裡整理目前可對外展示的影片。原本品牌故事、合作案例中的影片仍保留在各自脈絡裡；這一頁則用來快速展示、開會分享、現場播放，不需要每次在網站裡翻找。</p>
+</section>
+
+<main class="media-wrap">
+  <div class="media-note">建議使用方式：對外介紹時先從這頁選影片；需要補背景時，再點回對應頁面的段落。未來影片若還會修改，只要替換 YouTube 連結即可，不必重排整個網站。</div>
+
+  <article class="media-card">
+    <div class="media-video">
+      <div class="video-embed-card">
+        <div class="video-embed__label">Video · 寂寞公路</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/qkBEMI48QA4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="寂寞公路"></iframe></div>
+      </div>
+    </div>
+    <div class="media-copy">
+      <div class="media-tag">Lonely Highway</div>
+      <h2>寂寞公路</h2>
+      <p>從一個人帶著混凝土作品上路開始，讓冷硬材料進入山海、道路與人的相遇。這是品牌語言的起點，也是「帶著高腳桌去旅行」的延伸背景。</p>
+      <div class="media-links"><a class="media-link" href="story.html">看品牌故事</a><a class="media-link" href="https://youtu.be/qkBEMI48QA4" target="_blank" rel="noopener">YouTube</a></div>
+    </div>
+  </article>
+
+  <article class="media-card">
+    <div class="media-video">
+      <div class="video-embed-card">
+        <div class="video-embed__label">Video · 掃一張桌子計劃</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/0N5cCWQsdg0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="掃一張桌子計劃"></iframe></div>
+      </div>
+    </div>
+    <div class="media-copy">
+      <div class="media-tag">Circular Table</div>
+      <h2>掃一張桌子計劃</h2>
+      <p>把路邊、社區與生活現場裡被丟棄的材料重新整理，做成可以回到地方使用的桌子。這不是單件家具，而是一套地方循環生產的方法。</p>
+      <div class="media-links"><a class="media-link" href="story.html#oral-history-civil-community">看社造淵源</a><a class="media-link" href="https://youtu.be/0N5cCWQsdg0" target="_blank" rel="noopener">YouTube</a></div>
+    </div>
+  </article>
+
+  <article class="media-card">
+    <div class="media-video">
+      <div class="video-embed-card">
+        <div class="video-embed__label">Video · 帶著高腳桌去旅行</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/B63S864o4sU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="帶著高腳桌去旅行"></iframe></div>
+      </div>
+    </div>
+    <div class="media-copy">
+      <div class="media-tag">Stand-Bar Journey</div>
+      <h2>帶著高腳桌去旅行</h2>
+      <p>一張高腳桌成為移動的聚會點，讓作品離開工作室，進入朋友、場所與日常對話。它也是寂寞公路從個人旅行轉向關係網絡的下一步。</p>
+      <div class="media-links"><a class="media-link" href="story.html">看相關故事</a><a class="media-link" href="https://youtu.be/B63S864o4sU" target="_blank" rel="noopener">YouTube</a></div>
+    </div>
+  </article>
+
+  <article class="media-card">
+    <div class="media-video">
+      <div class="video-embed-card">
+        <div class="video-embed__label">Video · 屏東來義案例</div>
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/005hmUbqH0U" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="屏東來義社區共創餐桌案例"></iframe></div>
+      </div>
+    </div>
+    <div class="media-copy">
+      <div class="media-tag">Case Study · Laiyi</div>
+      <h2>來義鄉「二峰圳，百年餐桌」</h2>
+      <p>在竹塘正式啟動前，來義案例已經示範過完整路徑：地方故事調查、居民參與設計、無機再生粒料排列、製作與公共活動使用。</p>
+      <div class="media-links"><a class="media-link" href="partners.html#laiyi-case">看完整案例</a><a class="media-link" href="https://www.youtube.com/watch?v=005hmUbqH0U" target="_blank" rel="noopener">YouTube</a></div>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">Concredia<span class="dot">.</span><span class="lab">Lab</span></div>
+      <div style="font-size:0.68rem;letter-spacing:0.12em;color:rgba(212,207,200,0.35);font-family:var(--fd);margin-bottom:0.75rem;">士敏文品</div>
+      <p>以土木博士研究為根，以設計為語言，<br>讓每一塊再生廢料都有自己的故事。</p>
+    </div>
+    <div class="footer-col"><h5>品牌</h5><ul>
+      <li><a href="story.html">品牌故事</a></li>
+      <li><a href="media.html">影音專區</a></li>
+      <li><a href="partners.html">合作夥伴</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>資源</h5><ul>
+      <li><a href="blog.html">最新動態</a></li>
+      <li><a href="gallery.html">作品集</a></li>
+      <li><a href="contact.html">聯絡我們</a></li>
+    </ul></div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function(){
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+var hamburger = document.getElementById('hamburger');
+var mobileMenu = document.getElementById('mobileMenu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', function(){
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+}
+</script>
+</body>
+</html>
