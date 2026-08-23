@@ -37,10 +37,28 @@ nav.scrolled,nav#mainNav.scrolled{
 nav.scrolled .nav-logo,nav#mainNav.scrolled .nav-logo{color:var(--bk);}
 .nav-logo .dot{color:var(--fire);}
 .nav-logo .lab{font-weight:300;opacity:.6;}
-.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links{display:flex;gap:clamp(.85rem,1.25vw,1.55rem);list-style:none;}
 .nav-links a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-family:var(--fd);font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;transition:color var(--ease);}
 nav.scrolled .nav-links a,nav#mainNav.scrolled .nav-links a{color:var(--g400);}
 .nav-links a:hover{color:var(--fire)!important;}
+.nav-links a.nav-market-link{
+  color:var(--w)!important;
+  background:var(--fire);
+  border:1px solid var(--fire);
+  padding:.34rem .62rem;
+  margin:-.34rem 0;
+}
+nav.scrolled .nav-links a.nav-market-link,
+nav#mainNav.scrolled .nav-links a.nav-market-link{
+  color:var(--fire)!important;
+  background:rgba(232,93,4,.09);
+  border-color:rgba(232,93,4,.42);
+}
+.nav-links a.nav-market-link:hover{
+  color:var(--w)!important;
+  background:var(--fire-h);
+  border-color:var(--fire-h);
+}
 .nav-cta{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-family:var(--fd);font-weight:600;color:rgba(255,255,255,.75)!important;text-decoration:none;border:none;background:transparent;padding:0;cursor:pointer;transition:color var(--ease);}
 nav.scrolled .nav-cta,nav#mainNav.scrolled .nav-cta{color:var(--g400)!important;}
 .nav-cta:hover{color:var(--fire)!important;}
